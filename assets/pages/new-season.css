@@ -1,0 +1,69 @@
+/* ===== «Новый сезон» · вёрстка v2 «Атлас на бумаге» · стили страницы, префикс nsp- ===== */
+
+main section[id]{scroll-margin-top:24px}
+
+/* ---- 1. первый экран ---- */
+.nsp-cover .cover-title{grid-column:1 / span 6}
+.nsp-cover .cover-text{grid-column:1 / span 5; padding-bottom:var(--sp-6)}
+.nsp-cover .cover-text .rows.facts{margin-top:var(--sp-5)}
+.nsp-cover .cover-text .actions{margin-top:var(--sp-5)}
+.nsp-cover .cover-text .actions + .small{margin-top:var(--sp-4)}
+@media (max-width:1024px){
+  .nsp-cover .cover-title{grid-column:1 / -1}
+  .nsp-cover .cover-text{grid-column:1 / span 9}
+}
+@media (max-width:760px){
+  .nsp-cover .cover-text .actions .btn{width:100%}
+}
+
+/* ---- вид между блоками ---- */
+.nsp-viewband{padding-top:var(--section)}
+.nsp-viewband + .band{padding-top:calc(var(--section) * .6)}
+
+/* ---- 3. «Две встречи»: модуль season — в центральных колонках ---- */
+.cols > .pg-mod{grid-column:2 / span 10}
+@media (max-width:1024px){ .cols > .pg-mod{grid-column:1 / -1} }
+.nsp-meetings .band-head{margin-bottom:0}
+/* в холодном низу передней карточки — море облаков вместо ровной заливки (только фон слоя модуля, разметка модуля не тронута) */
+.nsp-meetings .ns-past{background:linear-gradient(180deg, rgba(212,225,246,.97) 0%, rgba(212,225,246,.9) 30%, rgba(212,225,246,.35) 62%, rgba(212,225,246,.05) 100%),
+  url("../img/photo/cloud-sea-mono-1200.jpg") 50% 0 / 124% auto no-repeat, rgb(212,225,246)}
+.nsp-two{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-6) var(--col-gap); margin-top:var(--sp-7)}
+.nsp-two p{max-width:var(--measure); color:var(--ink-2)}
+.nsp-two .nsp-when{margin-bottom:var(--sp-2); font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.nsp-after{margin-top:var(--sp-7)}
+@media (max-width:760px){
+  .nsp-two{grid-template-columns:1fr; margin-top:var(--sp-6); row-gap:var(--sp-6)}
+  .nsp-meetings .ns-past{background-size:auto, cover, auto; background-position:0 0, 50% 30%, 0 0}
+  .nsp-after{margin-top:var(--sp-6)}
+}
+
+/* ---- 6. условия: таблица без коробки ---- */
+.nsp-terms{max-width:52rem}
+.nsp-terms .rows{border-top:0}
+.nsp-terms .rows > div:last-child{border-bottom:0}
+.nsp-wait{margin-top:var(--sp-5); color:var(--ink-2); max-width:32rem}
+/* готовый текст сообщения в список ожидания: выделяется целиком, чтобы скопировать (26.10, перед выкаткой) */
+.nsp-msg{-webkit-user-select:all; user-select:all}
+
+/* ---- 7. вопросы и строка про «Переход» ---- */
+.band--split .nsp-faq,.band--split .folds{max-width:52rem}
+.nsp-bridge{max-width:var(--measure); color:var(--ink-2)}
+
+/* Голоса из интервью в блоке «Что обычно ломается» (26.10): мелко, прямым начертанием, чтобы не спорить с крупными отзывами участников ниже */
+.nsp-voices{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-5) var(--sp-6); margin-top:var(--sp-6)}
+.nsp-voice{margin:0; padding-top:var(--sp-3); border-top:1px solid var(--line)}
+.nsp-voice blockquote{margin:0}
+.nsp-voice blockquote p{font:400 var(--s4)/1.5 var(--f-head); color:var(--ink); margin:0; text-wrap:pretty}
+.nsp-voice blockquote p::before{content:"«"} .nsp-voice blockquote p::after{content:"»"}
+.nsp-voice figcaption{margin-top:var(--sp-2); font:400 var(--s5)/1.4 var(--f-text); color:var(--ink-3)}
+@media (max-width:760px){ .nsp-voices{grid-template-columns:1fr; gap:var(--sp-4)} }
+/* голоса внутри описаний встреч и под итогом (26.10) */
+.nsp-voice--in{margin-top:var(--sp-4)}
+.nsp-voice--result{max-width:30rem; margin-top:var(--sp-5); margin-left:auto}
+.nsp-voice--result blockquote p{font-size:var(--s3); line-height:1.35}
+.nsp-after-wrap{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,22rem); gap:var(--sp-6); align-items:end}
+.nsp-after-wrap .nsp-voice--result{margin:0 0 .4em; max-width:none}
+@media (max-width:900px){ .nsp-after-wrap{grid-template-columns:1fr} }
+
+/* «Почему я это делаю»: два снимка парой под заголовком (27.10) */
+.nsp-why-photos{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-4); align-items:start}

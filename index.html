@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waykeeper · открытый ресурс про переходы</title>
+<meta name="description" content="Открытый ресурс про переходы: про время, когда старое закончилось, а новое ещё не построено. Практики, база знаний, ресурсы и работа с автором — Сашей Свердловской.">
+<!-- seo -->
+<link rel="canonical" href="https://waykeeper.org/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Waykeeper">
+<meta property="og:title" content="Waykeeper · открытый ресурс про переходы">
+<meta property="og:description" content="Открытый ресурс про переходы: про время, когда старое закончилось, а новое ещё не построено. Практики, база знаний, ресурсы и работа с автором — Сашей Свердловской.">
+<meta property="og:url" content="https://waykeeper.org/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waykeeper — открытый ресурс про переходы">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<!-- /seo -->
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site-v2.css">
+<link rel="stylesheet" href="assets/kb.css">
+<link rel="stylesheet" href="assets/kb-head.css">
+<link rel="stylesheet" href="assets/atmo.css">
+<script src="assets/atmo.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/site-v2.js" defer></script>
+<script src="assets/kb.js" defer></script>
+<script src="assets/kb-head.js" defer></script>
+<script src="assets/field.js" defer></script>
+<link rel="stylesheet" href="assets/pages/home.css">
+<script src="assets/pages/home.js" defer></script>
+<link rel="stylesheet" href="assets/alive.css">
+<link rel="stylesheet" href="modules/passage.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-atmo-frame data-field-blobs="off">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
+<header class="site-head">
+  <div class="frame head-row">
+    <a class="wordmark" href="index.html">Waykeeper</a>
+    <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <ul>
+        <li class="kb">
+          <button class="kb-btn" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
+          <div class="kb-pop nodes" id="kb-pop">
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
+              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
+              <kbd>/</kbd>
+            </form>
+            <ul class="kb-list">
+              <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+            </ul>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+          </div>
+        </li>
+        <li><a href="program.html">«Переход»</a></li>
+        <li><a href="new-season.html">«Новый сезон»</a></li>
+        <li><a href="project.html">О проекте</a></li>
+        <li><a href="about.html">О себе</a></li>
+        <li><a href="talk.html">Разговор</a></li>
+      </ul>
+      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== 1. ПЕРВЫЙ ЭКРАН (.cover). Имя крупно, описание и миссия; справа «Весна. Большая вода» целиком —
+       время, когда старое ушло под воду, а новое ещё не показалось. Картина проявляется, как фото в проявителе: из лодки у берега расходится пятно резкости и цвета (.plate-alive, site-v2.js). ===== -->
+  <section class="cover hm-cover" id="top" data-field="0" data-topo="23" data-atmo="dawn" aria-labelledby="page-title">
+    <div class="frame">
+      <h1 class="display cover-title" id="page-title"><span class="ln"><span>Waykeeper</span></span><span class="ln"><span><em>Keep your way</em></span></span></h1>
+      <div class="cover-text">
+        <p class="lede">Открытый ресурс про&nbsp;переходы: про&nbsp;время, когда старое закончилось, а&nbsp;новое ещё не&nbsp;построено. Как найти свой путь, держаться его и&nbsp;возвращаться, если сбился. Здесь можно понять, что&nbsp;с&nbsp;тобой происходит, попробовать практики, найти нужные ресурсы и, если захочется, пройти этот путь не&nbsp;в&nbsp;одиночку.</p>
+        <p class="lede-em">Миссия проекта&nbsp;— помогать людям переходить от&nbsp;«со&nbsp;мной так получилось» к&nbsp;«вот что&nbsp;я&nbsp;делаю с&nbsp;этим дальше».</p>
+      </div>
+      <div class="cover-aside">
+        <div class="hm-stage" id="hero-stage" aria-hidden="true">
+          <div class="hm-zone" data-field=".14"></div>
+          <div class="hm-gather"></div>
+        </div>
+        <figure class="plate-alive is-right hm-plate" data-processed data-clear data-pa-from=".42 .88" data-pa-eager style="--pa-r:.859; --pa-h:min(64vh, 600px)">
+          <div class="pa-img"><img src="assets/img/pd/processed/views/levitan-high-water-1200.jpg" srcset="assets/img/pd/processed/views/levitan-high-water-1200.jpg 1031w, assets/img/pd/processed/views/levitan-high-water.jpg 1719w" sizes="(max-width:1024px) 100vw, 42vw" alt="Картина Левитана: весенний разлив, тонкие берёзы стоят в светлой воде, у берега лодка" width="1031" height="1200" fetchpriority="high" decoding="async"></div>
+          <figcaption class="pa-cap">Исаак Левитан · «Весна. Большая вода», 1897<span class="pa-src"> · Третьяковская галерея, Москва</span></figcaption>
+        </figure>
+      </div>
+      <div class="cover-foot">
+        <p class="cover-links"><a href="#start">С&nbsp;чего начать ↓</a><a href="#who">Для кого это ↓</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. ДЛЯ КОГО ЭТО: крупный заголовок слева (прилипает), текст справа; две части проекта — ссылки вниз ===== -->
+  <section class="band hm-who-intro" id="who" data-atmo="day" aria-labelledby="s-who">
+    <div class="frame cols">
+      <div class="s-4"><h2 class="hm-h" id="s-who">Для кого это</h2></div>
+      <div class="s-6 at-6">
+        <div class="prose">
+          <p>Waykeeper для&nbsp;тех, у&nbsp;кого что-то закончилось: работа, своё дело, страна, роль, в&nbsp;которую было вложено много лет. Острая фаза, может быть, уже позади, а&nbsp;решать всё ещё не&nbsp;из&nbsp;чего. Сюда приходят люди, которые любят разбираться сами и&nbsp;не&nbsp;доверяют готовым ответам; те, кто уже пробовал тесты, консультации и&nbsp;советы друзей; те, кто просто хочет раз&nbsp;в&nbsp;год спокойно оглянуться.</p>
+          <p>Рядом с&nbsp;ними здесь есть что&nbsp;взять ещё двоим: близким человека в&nbsp;переходе, которые не&nbsp;знают, как&nbsp;поддержать и&nbsp;куда направить, и&nbsp;помогающим специалистам, которым нужна карта поля и&nbsp;к&nbsp;кому передавать.</p>
+        </div>
+        <p class="hm-parts-lead">У&nbsp;проекта две части:</p>
+        <ul class="hm-parts">
+          <li><a class="hm-part" href="#kb"><span class="num">i</span><span class="hm-part-t">некоммерческая (открытая база знаний, практик и&nbsp;ресурсов).</span></a></li>
+          <li><a class="hm-part hm-part--work" href="#work"><span class="num">ii</span><span class="hm-part-t">и&nbsp;коммерческая (работа со&nbsp;мной: автором ресурса и&nbsp;методологии, Сашей Свердловской).</span></a></li>
+        </ul>
+        <p class="hm-parts-choose">Выбирай любое, что&nbsp;тебе сейчас нужно и&nbsp;актуально.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. С ЧЕМ СЮДА ПРИХОДЯТ: указатель во всю ширину, как оглавление атласа ===== -->
+  <section class="band hm-sit" id="situations" data-atmo="day" data-topo="7" data-topo-at="left" aria-labelledby="s-sit">
+    <div class="frame">
+      <div class="band-head cols hm-sit-head">
+        <div class="s-8"><h2 class="hm-h" id="s-sit">С&nbsp;чем сюда приходят</h2></div>
+      </div>
+      <ol class="index index--numbered" data-kb-auto="situations">
+        <li><a class="index-row" href="encyclopedia/rabota-zakonchilas.html"><span class="index-dot"></span><span class="index-t">Закончилась работа или своё дело, и&nbsp;уже несколько месяцев «надо что-то решать».</span><span class="index-m">4 практики · 6 специалистов</span></a></li>
+        <li><a class="index-row" href="encyclopedia/pereezd.html"><span class="index-dot"></span><span class="index-t">Переезд: профессия, которая дома работала, здесь не&nbsp;складывается.</span><span class="index-m">4 практики · 7 специалистов</span></a></li>
+        <li><a class="index-row" href="encyclopedia/krizis-identichnosti.html"><span class="index-dot"></span><span class="index-t">Кризис идентичности: кто я, что&nbsp;я, в&nbsp;чем смыслы.</span><span class="index-m">4 практики · 4 специалиста</span></a></li>
+        <li><a class="index-row" href="encyclopedia/sily-konchilis.html"><span class="index-dot"></span><span class="index-t">Много лет в&nbsp;одном деле, и&nbsp;силы кончились. Обратно не&nbsp;хочется, а&nbsp;что&nbsp;вместо&nbsp;— непонятно.</span><span class="index-m">6 практик · 6 специалистов</span></a></li>
+        <li><a class="index-row" href="encyclopedia/ne-mogu-vybrat.html"><span class="index-dot"></span><span class="index-t">Есть две-три дороги в&nbsp;деле, в&nbsp;призвании, в&nbsp;будущем&nbsp;— и&nbsp;уже давно не&nbsp;получается выбрать.</span><span class="index-m">4 практики · 4 специалиста</span></a></li>
+        <li><a class="index-row" href="encyclopedia/plany-sryvayutsya.html"><span class="index-dot"></span><span class="index-t">Планы были, но&nbsp;каждый раз&nbsp;срывались на&nbsp;одном и&nbsp;том же&nbsp;месте.</span><span class="index-m">6 практик · 2 специалиста</span></a></li>
+        <li><a class="index-row" href="encyclopedia/ne-moe-strashno.html"><span class="index-dot"></span><span class="index-t">Всё в&nbsp;целом хорошо, но&nbsp;что-то чувствуется, что&nbsp;происходящее&nbsp;— не&nbsp;моё, и&nbsp;страшно шагнуть на&nbsp;новый путь.</span><span class="index-m">5 практик · 3 специалиста</span></a></li>
+        <li><a class="index-row" href="encyclopedia/ne-znayu-k-komu-idti.html"><span class="index-dot"></span><span class="index-t">Не знаю, к&nbsp;какому специалисту с&nbsp;этим идти: психолог, коуч, карьерный консультант?</span><span class="index-m">1 практика · 4 специалиста</span></a></li>
+        <li><a class="index-row" href="encyclopedia/ryadom-chelovek-v-krizise.html"><span class="index-dot"></span><span class="index-t">Рядом человек в&nbsp;кризисе или переходе, и&nbsp;я&nbsp;не&nbsp;знаю, как&nbsp;помочь.</span><span class="index-m">2 практики · 3 специалиста</span></a></li>
+        <li><a class="index-row" href="encyclopedia/podvesti-god.html"><span class="index-dot"></span><span class="index-t">Хочется спокойно подвести год, отрефлексировать этап и&nbsp;выбрать, куда дальше.</span><span class="index-m">5 практик · 5 подходов</span></a></li>
+        <li><a class="index-row" href="encyclopedia/trevoga.html"><span class="index-dot"></span><span class="index-t">Тревога не&nbsp;отпускает.</span><span class="index-m">5 практик · 6 специалистов</span></a></li>
+        <li><a class="index-row" href="encyclopedia/poterya-blizkogo.html"><span class="index-dot"></span><span class="index-t">Потеря близкого человека.</span><span class="index-m">4 практики · 8 специалистов</span></a></li>
+      </ol>
+      <div class="cols hm-deep">
+        <div class="s-6 at-6">
+          <p class="lede-em">Глубже всего здесь пока разобран один переход: когда в&nbsp;работе что-то закончилось.</p>
+          <p>Остальные ситуации покрыты практиками и&nbsp;тем, что&nbsp;я&nbsp;достраиваю, у&nbsp;каждой части ниже стоит статус. Ресурс будет развиваться (потому что&nbsp;я&nbsp;одержима сбором данных для&nbsp;себя и&nbsp;тех, кто вокруг). И&nbsp;если это кому-то поможет или сдвинет в&nbsp;нужную сторону&nbsp;— это уже огромная ценность.</p>
+          <p class="hm-notyet"><a href="#not-yet">Но если сейчас очень тяжело&nbsp;— сначала сюда ↓</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. БАЗА ЗНАНИЙ И ПРАКТИК: напечатанные карточки со статусами ===== -->
+  <section class="band hm-kb" id="kb" data-atmo="day" aria-labelledby="s-kb">
+    <div class="frame">
+      <div class="band-head cols">
+        <div class="s-7">
+          <h2 class="hm-h" id="s-kb">База знаний и&nbsp;практик: освоить самому</h2>
+          <p class="sub" style="margin-top:var(--sp-5)">Всё, что&nbsp;нужно, чтобы разобраться в&nbsp;переходе и&nbsp;найти инструменты под свою ситуацию. Открыто, без&nbsp;регистрации. Всё, что&nbsp;человек здесь отмечает или заполняет, остаётся в&nbsp;его браузере.</p>
+          <form class="kb-search hm-kb-search" role="search" onsubmit="return false">
+            <label class="visually-hidden" for="hm-q">Найти в базе знаний</label>
+            <input id="hm-q" type="search" placeholder="Найти: выгорание, коуч, WOOP, переезд…" autocomplete="off">
+            <kbd>/</kbd>
+          </form>
+          <p class="kb-hint">Ищет сразу в&nbsp;практиках, статьях, атласе, ресурсах и&nbsp;словаре.</p>
+        </div>
+        <ul class="status-legend s-4 at-9" aria-label="Что значат знаки" style="align-self:end; justify-content:flex-end">
+          <li><span class="status status--open">открыто</span></li>
+          <li><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><span class="status status--wait">лист ожидания</span></li>
+        </ul>
+      </div>
+      <div class="tiles">
+        <article class="tile tile--kb">
+          <div class="tile-top"><span class="num">i</span><span class="tile-n" data-kb-count="practices">39 практик</span><span class="status status--open">открыто</span></div>
+          <h3 class="tile-title">Практики</h3>
+          <p><span class="run">Внутри:</span> упражнения, которые можно сделать самому. Часть работает прямо на&nbsp;сайте.</p>
+          <p><span class="run">Когда сюда:</span> если хочется не&nbsp;читать, а&nbsp;попробовать. Понять, что&nbsp;умеешь, если забыть про&nbsp;должность. Посчитать, сколько нужно в&nbsp;месяц. Собрать опору на&nbsp;плохой день или уменьшить шаг до&nbsp;выполнимого.</p>
+          <p class="tile-go"><a class="link" href="practices.html">Все практики →</a></p>
+        </article>
+        <article class="tile tile--kb">
+          <div class="tile-top"><span class="num">ii</span><span class="tile-n" data-kb-count="encyclopedia">100 статей</span><span class="status status--wip">в&nbsp;работе</span></div>
+          <h3 class="tile-title">Энциклопедия переходов</h3>
+          <p><span class="run">Внутри:</span> что&nbsp;такое переход и&nbsp;из&nbsp;каких стадий он&nbsp;состоит, что&nbsp;в&nbsp;нём нормально чувствовать, какие подходы с&nbsp;этим работают и&nbsp;откуда они взялись. У&nbsp;каждого подхода метка, насколько он&nbsp;исследован, и&nbsp;предупреждение, когда он&nbsp;не&nbsp;подходит. Статьи выходят по&nbsp;мере готовности.</p>
+          <p><span class="run">Когда сюда:</span> если непонятно, что&nbsp;вообще происходит и&nbsp;как&nbsp;это называется. Если хочется понять, на&nbsp;чём стоят практики и&nbsp;консультации, прежде чем что-то пробовать. Если нужен язык, чтобы объяснить своё состояние себе или близким.</p>
+          <p class="tile-go"><a class="link" href="encyclopedia.html">Читать →</a></p>
+        </article>
+        <article class="tile tile--kb">
+          <div class="tile-top"><span class="num">iii</span><span class="tile-n" data-kb-count="atlas">125 специалистов</span><span class="status status--wip">в&nbsp;работе</span></div>
+          <h3 class="tile-title">Атлас помогающих профессий</h3>
+          <p><span class="run">Внутри:</span> кто чем помогает в&nbsp;большом помогающем поле: психолог, психотерапевт, коуч, карьерный консультант, доула, медиатор и&nbsp;другие. С&nbsp;каким вопросом к&nbsp;кому идти, с&nbsp;кем путают, где искать и&nbsp;сколько учиться. У&nbsp;каждого факта источник. Принцип атласа: описывает, а&nbsp;не&nbsp;рекомендует.</p>
+          <p><span class="run">Когда сюда:</span> если ясно, что&nbsp;нужна помощь, но&nbsp;непонятно чья. Если рядом человек в&nbsp;трудном периоде и&nbsp;нужно понять, к&nbsp;кому его направить. Если ты сам из&nbsp;помогающих профессий и&nbsp;нужна карта поля.</p>
+          <p class="tile-go"><a class="link" href="atlas.html">Смотреть →</a></p>
+        </article>
+        <article class="tile tile--kb">
+          <div class="tile-top"><span class="num">iv</span><span class="tile-n" data-kb-count="resources">150 записей</span><span class="status status--wip">в&nbsp;работе</span></div>
+          <h3 class="tile-title">Ресурсы</h3>
+          <p><span class="run">Внутри:</span> книги, ресурсы, тесты и&nbsp;сервисы по&nbsp;теме перехода (и&nbsp;не&nbsp;только).</p>
+          <p><span class="run">Когда сюда:</span> если своих практик и&nbsp;статей не&nbsp;хватает и&nbsp;хочется посмотреть, что&nbsp;ещё есть по&nbsp;теме. Без рекламы и&nbsp;без&nbsp;партнёрских ссылок.</p>
+          <p class="tile-go"><a class="link" href="resources.html">Смотреть →</a></p>
+        </article>
+      </div>
+      <p class="hm-kb-all"><a class="link" href="knowledge.html">Вся база знаний →</a> <span class="hm-kb-sep" aria-hidden="true">·</span> <a class="link" href="how.html#labels">Что значат метки</a></p>
+    </div>
+  </section>
+
+  <!-- ===== 5. РАБОТА СО МНОЙ: другой материал (лист потемнее во всю ширину), крупные карточки продуктов,
+       единственная чёрная кнопка страницы — у «Перехода»; ниже — с чего всё начинается (разговор) ===== -->
+  <section class="hm-work" id="work" data-atmo="haze" aria-labelledby="s-work">
+    <div class="frame">
+      <div class="cols hm-work-head">
+        <div class="s-7"><h2 class="hm-h" id="s-work">Работа со&nbsp;мной: пройти переход вместе</h2></div>
+        <div class="s-4 at-9">
+          <p>Иногда этот путь лучше проходить не&nbsp;в&nbsp;одиночку: круги изнутри не&nbsp;видны, а&nbsp;план без&nbsp;опор рассыпается на&nbsp;третьей неделе. Для этого есть два формата.</p>
+          <p class="hm-about"><a href="about.html">Обо мне →</a></p>
+        </div>
+      </div>
+      <div class="tiles">
+        <article class="tile tile--product nodes hm-prog">
+          <figure class="tile-view tile-view--melt" data-kind="thumb" data-processed style="--tv-at:50% 74%"><img src="assets/img/pd/processed/views/savrasov-country-road-1200.jpg" alt="Картина Саврасова: просёлочная дорога после дождя уходит к светлому горизонту, в лужах отражается небо" width="971" height="1200" loading="lazy" decoding="async"><figcaption>Алексей Саврасов · «Просёлок», 1873</figcaption></figure>
+          <div class="tile-body">
+            <span class="status status--open">открыто</span>
+            <h3 class="tile-title">Программа «Переход»</h3>
+            <p>Три месяца один на&nbsp;один, если в&nbsp;работе что-то закончилось и&nbsp;нужно решить, чем заниматься дальше. Двенадцать встреч, от&nbsp;истории к&nbsp;компасу, карте и&nbsp;маршруту. Беру двух человек на&nbsp;ноябрь.</p>
+            <div class="actions"><a class="btn primary" href="program.html">Как устроен «Переход» →</a></div>
+          </div>
+        </article>
+        <article class="tile tile--product nodes hm-season">
+          <figure class="tile-view tile-view--melt" data-kind="thumb" data-processed style="--tv-at:50% 60%"><img src="assets/img/pd/processed/views/kroyer-south-beach-1200.jpg" alt="Картина Крёйера: две женщины идут по светлому вечернему пляжу, за ними следы на песке" width="1200" height="759" loading="lazy" decoding="async"><figcaption>Педер Северин Крёйер · «Летний вечер на южном пляже Скагена», 1893</figcaption></figure>
+          <div class="tile-body">
+            <span class="status status--wait">лист ожидания</span>
+            <h3 class="tile-title">«Новый сезон»</h3>
+            <p>Две встречи онлайн в&nbsp;группе на&nbsp;стыке годов: в&nbsp;конце декабря смотрим на&nbsp;прошлый год, в&nbsp;начале января выбираем, куда дальше. Даты объявлю позже, а&nbsp;пока можно попасть в&nbsp;список ожидания: <a href="#telegram" data-tg data-tg-text="Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.">напиши мне в&nbsp;Telegram</a>.</p>
+            <div class="actions"><a class="btn quiet glass" href="new-season.html">Как устроен «Новый сезон» →</a></div>
+          </div>
+        </article>
+      </div>
+      <div class="hm-talk">
+        <div class="hm-talk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <p>Работа по&nbsp;этому треку начинается с&nbsp;разговора: 45–60 минут, бесплатно, созвон. Я&nbsp;выслушаю запрос, задам вопросы и скажу, ко&nbsp;мне это или нет.</p>
+        <a class="link hm-talk-go" href="talk.html">Как проходит разговор перед стартом работы →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ВИД-КАРТА (структура): Гумбольдт уложил гору наблюдений в один лист — перед «О проекте» ===== -->
+  <section class="hm-view" aria-label="Вид: лист атласа Гумбольдта">
+    <figure class="plate-map" data-processed style="--pm-at:50% 42%; --pm-h:clamp(280px, 30vw, 460px)">
+      <div class="pm-img"><img src="assets/img/pd/ad/processed/humboldt-andes-crop-1200.jpg" srcset="assets/img/pd/ad/processed/humboldt-andes-crop-1200.jpg 1200w, assets/img/pd/ad/processed/humboldt-andes-crop.jpg 2400w" sizes="100vw" alt="Лист атласа Гумбольдта: в центре профиль горы Чимборасо с растениями по высотам, по бокам таблицы наблюдений" width="1200" height="795" loading="lazy" decoding="async"></div>
+      <figcaption class="pm-cap">Александр фон Гумбольдт, Эме Бонплан · «Картина природы тропических стран», 1807<span class="pa-src"> · Центральная библиотека Цюриха</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== 6. О ПРОЕКТЕ: заголовок слева — текст справа; ниже маршрут с вехами (Сейчас = «ты здесь») ===== -->
+  <section class="band band--split hm-project" id="project" data-atmo="haze" aria-labelledby="s-project">
+    <div class="frame">
+      <div class="band-side"><h2 class="hm-h" id="s-project">О&nbsp;проекте</h2></div>
+      <div class="band-main">
+        <div class="prose">
+          <p>Waykeeper&nbsp;— мой проект про&nbsp;то, как&nbsp;пройти время, когда старое не&nbsp;работает, а&nbsp;новое ещё не&nbsp;построено. Он вырос из&nbsp;моей собственной истории начал и&nbsp;завершений, глубокой потребности в&nbsp;понимании, кто я, зачем я&nbsp;что-то делаю и&nbsp;помощи самой себе и&nbsp;другим, а&nbsp;еще&nbsp;— любви к&nbsp;коллекционированию всего, что&nbsp;кажется мне ценным, систематизации кучи сложных данных и&nbsp;навигации в&nbsp;них (иногда одержимому).</p>
+          <p>Проект вынашивался более семи лет, наконец обрел форму и&nbsp;расти будет нативно.</p>
+        </div>
+      </div>
+    </div>
+    <div class="frame hm-route-frame">
+      <ol class="hm-route" aria-label="Что сейчас и что дальше">
+        <li class="hm-stop hm-stop--now"><span class="hm-stop-k">Сейчас.</span><p>Я&nbsp;беру двух человек на&nbsp;личное сопровождение в&nbsp;таком переходе: мне удается роль спутника, который поможет пройти эту дорогу, когда что-то закончилось или не&nbsp;работает, а&nbsp;новое еще не&nbsp;появилось. Для этого есть «Переход», куда я&nbsp;сейчас возьму двух человек, а&nbsp;в&nbsp;декабре и&nbsp;январе я&nbsp;проведу встречи, чтобы увидеть свой год и&nbsp;выбрать намерения на&nbsp;следующий: «Новый сезон».</p></li>
+        <li class="hm-stop hm-stop--par"><span class="hm-stop-k">Параллельно.</span><p>Развивается сайт и&nbsp;база знаний. Складываю в&nbsp;сайт все, что&nbsp;кажется мне ценным для&nbsp;людей, которые ищут себя или находятся в&nbsp;состоянии перехода или кризиса: практики, знания.</p></li>
+        <li class="hm-stop"><span class="hm-stop-k">Следом.</span><p>Энциклопедия переходов и&nbsp;атлас, личные страницы для&nbsp;людей в&nbsp;программе, собеседник&nbsp;— ИИ на&nbsp;материалах человека, раздел «Практики со&nbsp;своим ИИ», личный кабинет... и&nbsp;то, что&nbsp;еще придумается.</p></li>
+        <li class="hm-stop hm-stop--later"><span class="hm-stop-k">Потом.</span><p>Расширенные и&nbsp;более глубокие программы и&nbsp;ресурсы, требующие времени. История рода, «Книга жизни», сеть Keepers (помогающих специалистов, реальных людей&nbsp;— Mental Keepers, Health Keepers и&nbsp;т.д.) и&nbsp;открытая энциклопедия, которую мы&nbsp;будем писать вместе с&nbsp;ними.</p></li>
+      </ol>
+      <p class="hm-project-go"><a class="link" href="project.html">Как появился, семь шагов метода и&nbsp;принципы →</a></p>
+    </div>
+  </section>
+
+  <!-- ===== 7. КТО ЭТО ДЕЛАЕТ: одна фотография (пока рамка-заглушка) и текст рядом ===== -->
+  <section class="band hm-me-band" id="about" data-atmo="day" aria-labelledby="s-me">
+    <div class="frame cols hm-me">
+      <div class="s-4">
+        <figure class="plate-alive hm-me-plate" data-kind="photo" data-processed data-pa-from=".46 .55" style="--pa-r:.6625; --pa-h:min(64vh, 600px)">
+          <div class="pa-img"><img src="assets/img/sasha/sasha-reykjavik-lake.jpg" alt="Саша у озера в Рейкьявике: ветер в волосах, рука у солнечных очков, за спиной вода и белые дома" width="848" height="1280" loading="lazy" decoding="async"></div>
+        </figure>
+      </div>
+      <div class="s-6 at-6 hm-me-text">
+        <h2 class="hm-h" id="s-me">Кто это делает</h2>
+        <div class="prose">
+          <p>Меня зовут Саша Свердловская. Я&nbsp;много раз&nbsp;завершала и&nbsp;начинала заново&nbsp;— в&nbsp;другой профессии, в&nbsp;другой стране, в&nbsp;другом городе, в&nbsp;отношениях. Я&nbsp;начинала и&nbsp;закрывала компанию, которую любила всем сердцем и&nbsp;которой отдала восемь лет. В&nbsp;студии каждый проект был нетиповым, под конкретного заказчика, и&nbsp;там я&nbsp;привыкла подолгу работать с&nbsp;людьми; работала с&nbsp;командой по&nbsp;несколько лет, чуя потенциал в&nbsp;людях и&nbsp;помогая ему раскрыться в&nbsp;работе; тянулась к&nbsp;помогающим профессиям, при&nbsp;этом будучи не&nbsp;слушателем, а&nbsp;спутником, который готов вести к&nbsp;результату и&nbsp;быть рядом&nbsp;— в&nbsp;процессе. Я&nbsp;никогда не&nbsp;знала конечных точек, но&nbsp;была убеждена, что&nbsp;дойду&nbsp;— или помогу нащупать.</p>
+        </div>
+        <p class="lede-em">Кажется, я&nbsp;научилась переходить из&nbsp;одного состояния в другое, не&nbsp;ломаться и&nbsp;найти то, на&nbsp;что&nbsp;могу опереться всегда, что&nbsp;бы&nbsp;ни&nbsp;произошло. И&nbsp;сейчас готова делиться этим с&nbsp;другими.</p>
+        <div class="prose">
+          <p>Я&nbsp;не&nbsp;психолог и&nbsp;не&nbsp;сертифицированный коуч, но&nbsp;человек, который строил дела с&nbsp;нуля рядом с&nbsp;людьми, которым помогал находить свой потенциал и&nbsp;реализовывать себя. Практик, который знает свои границы, и&nbsp;спутник, который поможет дойти туда-не-знаю-куда, но&nbsp;— своей дорогой.</p>
+          <p><a class="link" href="about.html">Подробнее обо мне →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. С ЧЕГО НАЧАТЬ: три действия — сделать · почитать · поговорить; строка про канал и тихая кнопка ===== -->
+  <section class="band hm-start" id="start" data-atmo="day" data-topo="41" aria-labelledby="s-start">
+    <div class="frame">
+      <div class="hm-start-head">
+        <h2 class="hm-h" id="s-start">С&nbsp;чего начать</h2>
+        <figure class="plate-alive plate-alive--quiet is-right hm-start-plate" data-processed data-clear data-pa-from=".5 .62" style="--pa-r:1.25; --pa-h:min(46vh, 440px)">
+          <div class="pa-img"><img src="assets/img/pd/processed/views/hodler-lake-thun-1200.jpg" alt="Картина Ходлера: спокойное горное озеро, горы и облака ровно отражаются в светлой воде" width="1200" height="960" loading="lazy" decoding="async"></div>
+          <figcaption class="pa-cap">Фердинанд Ходлер · «Тунское озеро с симметричным отражением», 1905</figcaption>
+        </figure>
+      </div>
+      <div class="hm-acts">
+        <article class="hm-act hm-act--do">
+          <h3 class="hm-act-k">Сделать.</h3>
+          <p>Любые практики: от&nbsp;пяти минут до&nbsp;часа, выбери те, что&nbsp;откликаются. Вот некоторые из&nbsp;них.</p>
+          <ul class="hm-tries">
+            <li><a class="hm-try" href="program.html#then-now"><span><span class="hm-try-t">Тогда и&nbsp;сейчас</span><span class="hm-try-d">Что ты умеешь, если забыть про&nbsp;должность.</span></span><span class="hm-try-m">3 мин</span></a></li>
+            <li><a class="hm-try" href="practices/t-money.html"><span><span class="hm-try-t">Приз в&nbsp;деньгах</span><span class="hm-try-d">Сколько стоит желанная жизнь.</span></span><span class="hm-try-m">20 мин</span></a></li>
+            <li><a class="hm-try" href="practices/t-wheel.html"><span><span class="hm-try-t">Колесо контекстов</span><span class="hm-try-d">Где ты в&nbsp;каждой сфере жизни.</span></span><span class="hm-try-m">20 мин</span></a></li>
+            <li><a class="hm-try" href="practices/t-kit.html"><span><span class="hm-try-t">Аптечка на&nbsp;стену</span><span class="hm-try-d">Страница на&nbsp;плохой день.</span></span><span class="hm-try-m">30 мин</span></a></li>
+          </ul>
+          <p class="hm-act-go"><a class="link" href="practices.html">Все практики →</a></p>
+        </article>
+        <article class="hm-act">
+          <h3 class="hm-act-k">Почитать.</h3>
+          <p>Почему через историю, как&nbsp;устроен метод и&nbsp;из&nbsp;чего состоит проект.</p>
+          <p class="hm-act-go"><a class="link" href="project.html">О&nbsp;проекте →</a></p>
+        </article>
+        <article class="hm-act">
+          <h3 class="hm-act-k">Поговорить.</h3>
+          <p>45–60 минут, бесплатно, без&nbsp;подготовки. Если нужно, чтобы было с&nbsp;поддержкой. Встретимся, поговорим, скажу, ко&nbsp;мне это или нет.</p>
+          <p class="hm-act-go"><a class="link" href="talk.html">Как проходит разговор →</a></p>
+        </article>
+      </div>
+      <div class="hm-also">
+        <p>Если хочется сначала просто посмотреть, как&nbsp;я&nbsp;думаю,&nbsp;— <a href="#channel" data-channel>канал в&nbsp;Telegram</a>, сайты компаний <a href="http://tetraform.art" target="_blank" rel="noopener">tetraform.art</a> или <a href="http://everly.one" target="_blank" rel="noopener">everly.one</a>. <a href="https://t.me/refdesign/390" target="_blank" rel="noopener">Небольшое выступление про&nbsp;внутренний компас</a>. Подкасты, статьи и&nbsp;другие прикольные штуки&nbsp;— <a href="about.html#public">в&nbsp;«Выступлениях и&nbsp;текстах»</a>.</p>
+        <div class="hm-tg">
+          <div class="actions"><a class="btn quiet glass" href="#telegram" data-tg>Написать в&nbsp;Telegram</a></div>
+          <p class="small hm-tg-note">Отвечаю за день-два. Напиши в&nbsp;двух словах, с&nbsp;каким запросом приходишь, чтобы я&nbsp;сразу ухватила, про что разговор.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== ПОДВАЛ v2: один на все страницы (тексты — texts/v2/00-footer.md, двери — 01-home-v5.md). Не менять текст на страницах. ===== -->
+<footer class="site-foot site-foot--v2" data-field="off">
+  <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
+  <div class="frame foot-grid">
+    <div class="foot-care-col" id="not-yet">
+      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+    </div>
+    <nav class="foot-doors" aria-label="Все разделы сайта">
+      <div class="foot-group">
+        <p class="label">База знаний</p>
+        <ul>
+          <li><a href="practices.html">Практики</a></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="knowledge.html">Вся база знаний</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="how.html">Как устроена база</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Работа со мной</p>
+        <ul>
+          <li><a href="program.html">«Переход»</a></li>
+          <li><a href="new-season.html">«Новый сезон»</a></li>
+          <li><a href="talk.html">Разговор</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Проект</p>
+        <ul>
+          <li><a href="project.html">О проекте</a></li>
+          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html#method">Почему через историю</a></li>
+          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="privacy.html">Данные и приватность</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="frame foot-base">
+    <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
+    <div class="foot-line">
+      <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
+      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/alive.js"></script>
+</body>
+</html>

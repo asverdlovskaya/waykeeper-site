@@ -1,0 +1,152 @@
+/* =====================================================================
+   Waykeeper · site-v2 · «О себе» (about.html) · префикс ab-
+   Раскладка v2 «Атлас на бумаге». Цвета — только токены. Контентная волна 26.10: блоки #earn, #systems, фото Саши.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------- 1. обложка */
+.ab-cover .cover-text{grid-column:1 / span 6}
+.ab-facts{max-width:34rem}
+.ab-cover .actions{display:flex; flex-wrap:wrap; gap:var(--sp-3) var(--sp-4)}
+/* фото Саши (ч/б портрет) — живой лист .plate-alive: края растворены, без рамки (контентная волна 26.10) */
+.ab-cover .cover-aside{margin-bottom:var(--sp-5)}
+@media (max-width:760px){ .ab-cover .cover-aside{margin:var(--sp-2) 0 var(--sp-5)} }
+
+/* ---------------------------------------------------------------- 2. «Завершение, начало…» */
+.ab-turn{position:relative}
+.ab-turn-text{max-width:none}
+.ab-beat{font:300 italic var(--s2)/1.2 var(--f-head); color:var(--ink); margin:0 0 var(--sp-6); max-width:12em; text-wrap:balance}
+.ab-turn-p{max-width:var(--measure); font-size:var(--s3); line-height:1.55; color:var(--ink-2)}
+.ab-forms{position:absolute; inset:0; pointer-events:none}
+.ab-forms i{position:absolute; width:1px; height:1px}
+.ab-band{margin-top:var(--section)}
+.ab-turn + .ab-band{margin-top:0}
+.ab-turn{padding-bottom:var(--section)}
+
+/* ---------------------------------------------------------------- 3–5, 8. длинные тексты .band--split */
+.ab-points > p + p{margin-top:var(--sp-5)}
+.band--split .prose p + p{margin-top:var(--sp-5)}
+.band--split .band-main.is-wide{grid-column:6 / span 6}
+.band--split .band-main .list{margin:0}
+@media (max-width:1024px){ .band--split .band-main.is-wide{grid-column:5 / -1} }
+
+/* ---------------------------------------------------------------- 6. «Мой компас» */
+.ab-compassec .band-head{margin-bottom:var(--sp-6)}
+.ab-compass-main .prose > p + p{margin-top:var(--sp-5)}
+.ab-card{margin-top:var(--sp-7); padding:var(--sp-6) var(--sp-7); border:1px solid var(--line); border-radius:var(--r-plate); background:var(--paper-2)}
+.ab-card dl{margin:0}
+.ab-card dt{font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.ab-card dd{margin:var(--sp-2) 0 0; color:var(--ink)}
+.ab-card dd + dt{margin-top:var(--sp-5); padding-top:var(--sp-5); border-top:1px solid var(--line)}
+.ab-mission{display:block; margin-bottom:var(--sp-2); font:400 var(--s3)/1.4 var(--f-head); color:var(--ink)}
+.ab-compass-view{position:sticky; top:calc(var(--head-h) + var(--sp-5)); align-self:start}
+@media (max-width:1024px){ .ab-compass-view{position:static} .ab-card{padding:var(--sp-5)} }
+
+/* ---------------------------------------------------------------- 7. История по сезонам: маршрут с вехами во всю ширину */
+.ab-seasons .band-head .sub{color:var(--ink-2)}
+.ab-line{position:relative; margin-top:var(--sp-8); --p:0}
+.ab-steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); column-gap:var(--col-gap)}
+.ab-steps > li{position:relative; padding-top:var(--sp-7)}
+.ab-track,.ab-fill{position:absolute; top:5px; left:0; height:1px}
+.ab-track{width:calc(75% + var(--col-gap) * .75); background:var(--line-2)}
+.ab-fill{width:calc(75% + var(--col-gap) * .75); background:var(--ink-2); transform:scaleX(var(--p)); transform-origin:0 50%; transition:transform 1.2s var(--ease)}
+.ab-tail{position:absolute; top:5px; left:calc(75% + var(--col-gap) * .75); width:calc(25% - var(--col-gap) * .75); height:1px; opacity:0; transition:opacity 1.2s .4s;
+  background:repeating-linear-gradient(90deg, var(--ink-3) 0 3px, transparent 3px 8px); -webkit-mask-image:linear-gradient(90deg,#000,transparent); mask-image:linear-gradient(90deg,#000,transparent)}
+.ab-line.is-done .ab-tail{opacity:1}
+.ab-dot{position:absolute; left:0; top:1px; width:9px; height:9px; border-radius:50%; background:var(--page); box-shadow:0 0 0 1px var(--line-2); transition:background .4s, box-shadow .4s}
+.ab-steps > li.is-passed .ab-dot{background:var(--ink-2); box-shadow:0 0 0 1px var(--ink-2)}
+.ab-ring{position:absolute; left:-2px; top:-2px; width:15px; height:15px; border-radius:50%; border:1px solid var(--accent); background:var(--page)}
+.ab-ring::after{content:""; position:absolute; left:4px; top:4px; width:5px; height:5px; border-radius:50%; background:var(--accent); opacity:0; transition:opacity .5s}
+.ab-steps > li.is-passed .ab-ring::after{opacity:1}
+.ab-season-label{font:500 var(--s5)/1.45 var(--f-text); color:var(--ink-2); margin:0}
+.ab-steps > li p{margin-top:var(--sp-3); color:var(--ink); font-size:var(--s4); line-height:1.6; max-width:28em}
+.ab-steps > li{opacity:.5; transition:opacity .8s var(--ease)}
+.ab-steps > li.is-passed{opacity:1}
+@media (max-width:1100px){
+  .ab-steps{grid-template-columns:repeat(2, minmax(0,1fr)); row-gap:var(--sp-8)}
+  .ab-track,.ab-fill,.ab-tail{display:none}
+  .ab-steps > li{border-top:1px solid var(--line-2); padding-top:var(--sp-6)}
+  .ab-dot{top:-5px; background:var(--page)}
+  .ab-ring{top:-8px}
+}
+/* телефон: вертикальная лента с линией слева */
+@media (max-width:760px){
+  .ab-steps{display:block; position:relative; padding-left:32px}
+  .ab-steps > li{border-top:0; padding-top:0; padding-bottom:var(--sp-7)}
+  .ab-steps > li:last-child{padding-bottom:0}
+  .ab-steps::before{content:""; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line-2)}
+  .ab-dot{left:-32px; top:.5em}
+  .ab-ring{left:-35px; top:calc(.5em - 3px)}
+  .ab-line{margin-top:var(--sp-6)}
+}
+@media (prefers-reduced-motion:reduce){ .ab-steps > li{opacity:1} .ab-fill{transition:none} }
+
+/* ---------------------------------------------------------------- 9. «Куда дальше» */
+.ab-next .tile--product .tile-body{padding:var(--sp-6) var(--sp-7) var(--sp-7)}
+.ab-next .tile--product p{color:var(--ink-2)}
+.ab-next .tile-title{margin-top:0}
+.ab-next .actions{margin-top:auto; padding-top:var(--sp-6); display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-3) var(--sp-5)}
+.ab-next-more{margin-top:var(--sp-7)}
+.ab-next-more p + p{margin-top:var(--sp-1)}
+.band#next{padding-bottom:var(--section)}
+@media (max-width:760px){ .ab-next .tile--product .tile-body{padding:var(--sp-5) var(--sp-5) var(--sp-6)} }
+
+/* карта Амстердама 1544 — узкий лист у последнего сезона (v2-alive-images 26.10) */
+.ab-ams{width:min(100%, 520px); margin:var(--sp-7) 0 0 auto}
+@media (max-width:760px){ .ab-ams{margin-top:var(--sp-5)} }
+
+/* ---------------------------------------------------------------- контентная волна 26.10 */
+/* фото в истории по сезонам: маленькие, края растворены, тише текста */
+.ab-snap{margin-top:var(--sp-5)}
+.ab-snap--color .pa-img > img:not(.pa-ghost){filter:saturate(.72)}
+@media (max-width:760px){ .ab-snap{--pa-h:180px !important} }
+
+/* «Системы, которые я строила»: витрины .showcase, названия на ступень ниже H2 */
+.ab-sys-intro{max-width:var(--measure); margin-top:var(--sp-5)}
+.ab-systems .band-head{margin-bottom:0}
+.ab-sys-intro + .ab-sys{margin-top:var(--sp-7)}
+.ab-sys{padding:var(--sp-7) 0}
+.ab-sys .showcase-title{font:400 var(--s3)/1.3 var(--f-head); margin-top:0}
+.ab-sys .showcase-text{grid-column:1 / span 5}
+.ab-sys .showcase-media{grid-column:8 / -1}
+.ab-sys.showcase--flip .showcase-text{grid-column:8 / -1}
+.ab-sys.showcase--flip .showcase-media{grid-column:1 / span 5}
+/* две свои вещи («почерк», LifeCompass) — парой в один ряд: текст сверху, экран под ним */
+.ab-sys-pair{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); column-gap:var(--col-gap); border-top:1px solid var(--line)}
+.ab-sys-pair > .ab-sys{display:flex; flex-direction:column; border-top:0; align-items:stretch}
+.ab-sys-pair > .ab-sys .showcase-media{display:block; margin-top:auto; padding-top:var(--sp-5)}
+.ab-sys-pair > .ab-sys .showcase-text{max-width:34rem}
+.ab-sys .showcase-text > * + *{margin-top:var(--sp-3)}
+.ab-sys-kind{font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.ab-sys .showcase-text > p:not(.ab-sys-kind){color:var(--ink-2)}
+.ab-sys .showcase-text > .ab-sys-go{margin-top:var(--sp-4)}
+.ab-sys .artifact-img img{object-position:50% 50%}
+.ab-sys-soon{margin-top:var(--sp-6); padding-top:var(--sp-5); border-top:1px solid var(--line); color:var(--ink-3)}
+@media (max-width:1024px){
+  .ab-sys .showcase-text,.ab-sys.showcase--flip .showcase-text{grid-column:1 / -1; grid-row:1}
+  .ab-sys .showcase-media,.ab-sys.showcase--flip .showcase-media{grid-column:1 / -1; grid-row:2; margin-top:var(--sp-5)}
+}
+@media (max-width:760px){
+  .ab-sys{padding:var(--sp-6) 0}
+  .ab-sys-pair{grid-template-columns:1fr}
+  .ab-sys-pair > .ab-sys + .ab-sys{border-top:1px solid var(--line)}
+}
+/* пара: строки текста и экранов выровнены между собой (subgrid), только на широком экране */
+@supports (grid-template-rows:subgrid){
+  @media (min-width:761px){
+    .ab-sys-pair{grid-template-rows:auto auto}
+    .ab-sys-pair > .ab-sys{display:grid; grid-template-columns:minmax(0,1fr); grid-row:span 2; grid-template-rows:subgrid; row-gap:0; align-items:start}
+    .ab-sys-pair > .ab-sys > .showcase-text,.ab-sys-pair > .ab-sys > .showcase-media{grid-column:1; margin-top:0}
+    .ab-sys-pair > .ab-sys > .showcase-text{grid-row:1}
+    .ab-sys-pair > .ab-sys > .showcase-media{grid-row:2}
+  }
+}
+
+/* ---------------------------------------------------------------- фото из Instagram (27.10) */
+/* «Мой компас»: два снимка в правой колонке, друг под другом; на планшете и телефоне — рядом под текстом */
+.ab-compass-snaps{align-self:start; display:flex; flex-direction:column; gap:var(--sp-6)}
+.ab-shot{margin:0}
+@media (max-width:1024px){
+  .ab-compass-snaps{grid-column:1 / -1; flex-direction:row; align-items:flex-start; gap:var(--sp-5)}
+  .ab-shot{--pa-h:min(30vh, 260px) !important}
+}
+@media (max-width:760px){ .ab-shot{--pa-h:min(26vh, 220px) !important} }

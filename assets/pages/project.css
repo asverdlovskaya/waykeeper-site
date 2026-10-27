@@ -1,0 +1,108 @@
+/* =====================================================================
+   Waykeeper · site-v2 · «О проекте» (project.html) · префикс pj-
+   Раскладка v2 «Атлас на бумаге». Цвета — только токены. Тексты страницы не менялись.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------- 1. обложка */
+.pj-cover .cover-text{grid-column:1 / span 6}
+.pj-cover .cover-aside{grid-column:8 / -1}
+.pj-cover .actions{margin-top:var(--sp-6)}
+.pj-mission{max-width:20em}
+@media (max-width:1024px){ .pj-cover .cover-aside{grid-column:1 / -1} .pj-cover .cover-text{grid-column:1 / span 9} }
+
+/* ---------------------------------------------------------------- 2–3, 6–8. длинные тексты .band--split */
+.band--split .band-main.is-wide{grid-column:6 / span 6}
+.pj-text > * + *{margin-top:1em}
+.pj-text .pj-more{margin-top:var(--sp-5)}
+.band--split .prose > p + p{margin-top:1em}
+@media (max-width:1024px){ .band--split .band-main.is-wide{grid-column:5 / -1} }
+.pj-band-view{margin-top:var(--section)}
+.band + .pj-band-view{margin-top:0}
+.pj-band-view + .band{padding-top:var(--section)}
+.pj-band-view{margin-bottom:0}
+
+/* ---------------------------------------------------------------- 4. «Из чего Waykeeper состоит»: карточки со статусами */
+.pj-status-sec{padding-bottom:var(--section)}
+.pj-cards{margin-top:var(--sp-2)}
+.pj-card .pj-status{font-size:var(--s5)}
+.tile--product .tile-body{display:flex; flex-direction:column}
+.pj-card--main .tile-body{padding:var(--sp-6) var(--sp-7) var(--sp-7)}
+.pj-card--main .tile-top{display:flex; align-items:baseline; gap:var(--sp-5)}
+.pj-card--main .tile-title{margin-top:var(--sp-4)}
+.pj-card--main p:not(.pj-go){max-width:var(--measure)}
+.pj-card--main .pj-go{margin-top:var(--sp-5)}
+.pj-card--main .pj-go .btn{margin:0}
+.pj-card.tile--kb p{font-size:var(--s4)}
+@media (max-width:760px){ .pj-card--main .tile-body{padding:var(--sp-5) var(--sp-5) var(--sp-6)} }
+
+/* ---------------------------------------------------------------- 5. «Семь шагов»: маршрут с узлами во всю ширину */
+.pj-steps-sec{padding-bottom:var(--section)}
+.pj-steps-lead{max-width:var(--measure); color:var(--ink-2); margin:0}
+.pj-route{list-style:none; margin:var(--sp-8) 0 0; padding:0; display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); column-gap:var(--col-gap)}
+.pj-stop{position:relative; padding-top:var(--sp-7); min-width:0}
+/* узел */
+.pj-node{position:absolute; left:0; top:0; width:11px; height:11px; box-sizing:border-box; border-radius:50%; background:var(--page); border:1px solid var(--ink-2)}
+.pj-stop--in .pj-node{background:var(--ink)}
+.pj-stop--wait .pj-node{border-style:dashed}
+.pj-stop--after .pj-node{border-color:var(--ink-3)}
+/* участок пути до следующего узла: внутри программы — сплошной, до и после неё — пунктир */
+.pj-stop::before{content:""; position:absolute; top:5px; left:14px; width:calc(100% + var(--col-gap) - 18px); height:0; border-top:1px dashed var(--ink-3)}
+.pj-stop--in:not(:nth-child(6))::before{border-top:1px solid var(--ink-2)}
+.pj-stop:last-child::before{display:none}
+.pj-step-body{min-width:0}
+.pj-step h3{font:500 var(--s4)/1.35 var(--f-text); margin:0}
+.pj-status-l{margin:var(--sp-1) 0 0}
+.pj-status-l .status{font-size:var(--s5)}
+.status.pj-after::before{border:1px dashed var(--ink-3); background:transparent}
+.pj-step .pj-text-step{margin-top:var(--sp-3); color:var(--ink-2); font-size:var(--s5); line-height:1.55}
+.pj-step .pj-go{margin-top:var(--sp-3); font-size:var(--s5)}
+.pj-step .btn{margin-top:var(--sp-3); white-space:normal; height:auto; min-height:44px; padding:10px 16px; text-align:center; line-height:1.25}
+.pj-step p + p{margin-top:var(--sp-2)}
+/* ниже 1280: вертикальный маршрут, узлы слева */
+@media (max-width:1279px){
+  .pj-route{display:block; position:relative; margin-top:var(--sp-7); max-width:52rem}
+  .pj-stop{padding:0 0 var(--sp-7) 40px}
+  .pj-stop:last-child{padding-bottom:0}
+  .pj-node{top:.55em}
+  .pj-stop::before{top:calc(.55em + 11px); left:5px; width:0; height:calc(100% - 11px); border-top:0; border-left:1px dashed var(--ink-3)}
+  .pj-stop--in:not(:nth-child(6))::before{border-top:0; border-left:1px solid var(--ink-2)}
+  .pj-step .pj-text-step{font-size:var(--s4); max-width:var(--measure)}
+  .pj-step .pj-go{font-size:var(--s4)}
+}
+
+/* ---------------------------------------------------------------- 6. «Что будет дальше» */
+.pj-bands{margin-top:var(--sp-6); max-width:var(--measure)}
+.pj-band{padding-left:var(--sp-5); border-left:2px solid var(--ink-2)}
+.pj-band + .pj-band{margin-top:var(--sp-6)}
+.pj-band--next{border-left:2px solid var(--line-2)}
+.pj-band--later{border-left:1px dashed var(--ink-3)}
+.pj-band p{color:var(--ink)}
+.pj-band--next p,.pj-band--later p{color:var(--ink-2)}
+
+/* ---------------------------------------------------------------- 7. «Принципы» */
+.pj-principles{max-width:var(--measure)}
+.pj-principles > li + li{margin-top:var(--sp-4)}
+.pj-principles > li{padding-left:34px}
+
+/* ---------------------------------------------------------------- 8. «Keepers — коллегам» */
+.pj-letter{max-width:38rem; margin-top:var(--sp-6); padding:var(--sp-6) var(--sp-7); border:1px solid var(--line); border-radius:var(--r-plate); background:var(--paper-2)}
+.pj-letter > * + *{margin-top:1em}
+.pj-letter .actions{margin-top:var(--sp-5)}
+@media (max-width:760px){ .pj-letter{padding:var(--sp-5)} }
+
+/* ---------------------------------------------------------------- 9. «Как поучаствовать» */
+.pj-join-sec{padding-bottom:var(--section)}
+.pj-join-cols{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); row-gap:var(--sp-6); align-items:end}
+.pj-join-cols > .pj-join{grid-column:1 / span 7}
+.pj-join-cols > .pj-small-lines{grid-column:9 / -1}
+.pj-join .tile-body{padding:var(--sp-6) var(--sp-7) var(--sp-7)}
+.pj-join p:not(.pj-note){color:var(--ink-2)}
+.pj-join h3 + p{margin-top:var(--sp-2)}
+.pj-join .actions{margin-top:var(--sp-5)}
+.pj-small-lines{align-self:end}
+.pj-small-lines p + p{margin-top:var(--sp-2)}
+@media (max-width:1024px){ .pj-join-cols > .pj-join,.pj-join-cols > .pj-small-lines{grid-column:1 / -1} }
+@media (max-width:760px){ .pj-join-cols{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); row-gap:var(--sp-6); align-items:end}
+.pj-join-cols > .pj-join{grid-column:1 / span 7}
+.pj-join-cols > .pj-small-lines{grid-column:9 / -1}
+.pj-join .tile-body{padding:var(--sp-5) var(--sp-5) var(--sp-6)} }

@@ -1,0 +1,72 @@
+/* =====================================================================
+   Waykeeper · site-v2 · «Ресурсы» (пакет 6 базы знаний, 26.10.2026)
+   Все компоненты — из assets/kb.css (.kb-cover, .kb-filters, .kb-row, .kb-group, .kb-near, .ev, .kb-sheet, .kb-empty, .kb-more).
+   Здесь только раскладка страницы и мелочи, которых в kb.css нет. Размеры шрифта — только токены --s1…--s5.
+   ===================================================================== */
+
+/* первый экран: текст слева, одна картина справа (.plate-alive из site-v2.css) */
+.res .kb-cover .cols{align-items:start}
+.res-lede{margin-top:var(--sp-5); max-width:34rem}
+.res .lede-em{margin-top:var(--sp-3)}
+.res-plate{display:flex; justify-content:flex-end; align-self:start}
+.res-plate .plate-alive{margin-left:auto}
+@media (max-width:1024px){
+  .res-plate{justify-content:center; margin-top:var(--sp-4)}
+  .res-plate .plate-alive{--pa-h:min(44vh, 340px); margin:0 auto}
+}
+
+/* список и колонка справа */
+.res-grid{margin-top:var(--sp-6)}
+.res-main{grid-column:1 / span 9; min-width:0}
+.res-aside{grid-column:10 / span 3}
+.res-main > .kb-group:first-child{margin-top:0}
+@media (max-width:1024px){
+  .res-main{grid-column:1 / -1}
+  .res-aside{display:none}
+}
+
+/* строка: подписи типа, мелкие примечания */
+.res .kb-row .res-sub{display:block}
+.res .kb-row .res-note{display:block; margin-top:6px; font:400 var(--s5)/1.45 var(--f-text); color:var(--ink-3); max-width:38rem}
+.res .kb-row dd.res-sits a{color:var(--ink-2)}
+.res .kb-row.is-hit{animation:res-hit 2.4s var(--ease) 1}
+@keyframes res-hit{ 0%,40%{background:rgba(15,23,34,.06)} 100%{background:transparent} }
+@media (prefers-reduced-motion:reduce){ .res .kb-row.is-hit{animation:none; background:rgba(15,23,34,.06)} }
+
+/* «Показать ещё 20» внутри группы */
+.res .kb-more{margin-top:var(--sp-4)}
+
+/* ещё фильтры, под основным рядом */
+.res-more-f{margin-top:var(--sp-3)}
+.res-more-f summary{cursor:pointer; list-style:none; font-size:var(--s5); color:var(--ink-2); min-height:32px; display:inline-flex; align-items:center}
+.res-more-f summary::-webkit-details-marker{display:none}
+.res-more-f summary::after{content:" ↓"} .res-more-f[open] summary::after{content:" ↑"}
+.res-more-row{display:flex; flex-wrap:wrap; gap:var(--sp-3) var(--sp-4); margin-top:var(--sp-2)}
+.res .kb-filters .kb-result a{color:var(--ink-2)}
+@media (max-width:760px){ .res-more-f{display:none} }
+
+/* лист фильтров на телефоне */
+.res-sh-l{margin-top:var(--sp-4); margin-bottom:var(--sp-2)}
+.res-sh-t{margin-top:var(--sp-4); display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-5)}
+.res-sh-m{display:flex; flex-direction:column; gap:var(--sp-3); align-items:flex-start}
+.res-sh-go{margin-top:var(--sp-5)}
+.res-sh-go .btn{width:100%}
+.kb-sheet .kb-select select{width:100%}
+.kb-sheet .kb-select{display:block}
+.kb-filters-btn .n{margin-left:2px}
+
+/* пустое состояние */
+.res .kb-empty .kb-h3{font:400 var(--s3)/1.3 var(--f-head)}
+.res-drops{display:flex; flex-direction:column; align-items:flex-start; gap:var(--sp-2)}
+.res .kb-empty .link{background:none; border:0; padding:0; min-height:32px; cursor:pointer; text-align:left; color:var(--ink); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px}
+.res-near-l{margin-top:var(--sp-5); margin-bottom:var(--sp-2)}
+.res .kb-empty .kb-near{max-width:34rem}
+
+/* колонка справа */
+.res-near-side > div{grid-template-columns:1fr; gap:4px}
+.res-legend{margin-top:var(--sp-5); line-height:1.9}
+.res-legend .ev{margin-right:var(--sp-2)}
+.res-near-row dd a{font-size:var(--s5)}
+
+/* строка «напишите в Telegram» */
+.res-write{margin-top:var(--sp-8); padding-bottom:var(--sp-8)}

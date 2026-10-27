@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как устроена база знаний и как мы проверяем · Waykeeper</title>
+<meta name="description" content="Что значат метки, как устроены четыре раздела базы знаний Waykeeper, как мы проверяем источники и на каких условиях тексты можно брать в работу.">
+<!-- seo -->
+<link rel="canonical" href="https://waykeeper.org/how.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Waykeeper">
+<meta property="og:title" content="Как устроена база знаний и как мы проверяем · Waykeeper">
+<meta property="og:description" content="Что значат метки, как устроены четыре раздела базы знаний Waykeeper, как мы проверяем источники и на каких условиях тексты можно брать в работу.">
+<meta property="og:url" content="https://waykeeper.org/how.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waykeeper — открытый ресурс про переходы">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<!-- /seo -->
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site-v2.css">
+<link rel="stylesheet" href="assets/kb.css">
+<link rel="stylesheet" href="assets/kb-head.css">
+<link rel="stylesheet" href="assets/atmo.css">
+<script src="assets/atmo.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/site-v2.js" defer></script>
+<script src="assets/kb.js" defer></script>
+<script src="assets/kb-head.js" defer></script>
+<link rel="stylesheet" href="assets/pages/knowledge.css">
+<link rel="stylesheet" href="assets/alive.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-atmo-frame data-field-blobs="off">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
+<header class="site-head">
+  <div class="frame head-row">
+    <a class="wordmark" href="index.html">Waykeeper</a>
+    <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <ul>
+        <li class="kb">
+          <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
+          <div class="kb-pop nodes" id="kb-pop">
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
+              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
+              <kbd>/</kbd>
+            </form>
+            <ul class="kb-list">
+              <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+            </ul>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+          </div>
+        </li>
+        <li><a href="program.html">«Переход»</a></li>
+        <li><a href="new-season.html">«Новый сезон»</a></li>
+        <li><a href="project.html">О проекте</a></li>
+        <li><a href="about.html">О себе</a></li>
+        <li><a href="talk.html">Разговор</a></li>
+      </ul>
+      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="frame kb-page kn-page">
+  <div class="kb-grid">
+    <aside class="kb-side" aria-label="В базе знаний">
+      <p class="label">В базе знаний</p>
+      <ul>
+        <li><a href="knowledge.html">Вход в базу</a></li>
+        <li><a href="glossary.html">Словарь</a></li>
+        <li><a class="is-here" href="how.html" aria-current="page">Как устроена база</a></li>
+      </ul>
+      <p class="grp label">Разделы</p>
+      <ul>
+        <li><a href="practices.html">Практики</a></li>
+        <li><a href="encyclopedia.html">Энциклопедия переходов</a></li>
+        <li><a href="atlas.html">Атлас помогающих профессий</a></li>
+        <li><a href="resources.html">Ресурсы</a></li>
+      </ul>
+    </aside>
+    <div class="kb-main">
+      <ol class="kb-crumbs"><li><a href="index.html">Главная</a></li><li><a href="knowledge.html">База знаний</a></li><li>Как устроена</li></ol>
+      <p class="kb-type">Справка · обновлено 26.10.2026</p>
+      <h1 class="kb-h1">Как устроена база и как мы проверяем</h1>
+      <div class="kb-two"><span class="label">В двух словах</span><p>Четыре раздела, один поиск и одни метки. У каждого подхода видно, насколько уверенно подтверждена польза и на какие работы мы опираемся; ошибку можно исправить, написав мне.</p></div>
+
+      <section class="kb-sec" id="structure" aria-labelledby="h-structure">
+        <h2 class="kb-h2" id="h-structure">Как устроена</h2>
+        <p>В базе четыре раздела. <a href="practices.html">Практики</a> — упражнения, которые можно сделать самому (39 практик). <a href="encyclopedia.html">Энциклопедия переходов</a> — что происходит и какие подходы помогают (100 статей). <a href="atlas.html">Атлас помогающих профессий</a> — кто чем помогает (125 специалистов). <a href="resources.html">Ресурсы</a> — книги, тесты и сервисы (150 записей). И один общий <a href="glossary.html">словарь</a> на всю базу.</p>
+        <p>Войти можно с трёх сторон: от ситуации, от вопроса или от раздела. Страницы связаны цепочкой: ситуация, подходы, которые в ней помогают, практики, которые можно сделать самому, специалисты из атласа, книги и тесты.</p>
+        <p>Энциклопедия называет исходный метод, практика — упражнение на его основе: подход «Колесо баланса» — практика «Колесо контекстов». Метка относится к методу, а не к упражнению.</p>
+        <p><a href="atlas/how.html">Как устроен атлас: уровни, правила размещения, маршруты →</a></p>
+      </section>
+
+      <section class="kb-sec" id="labels" aria-labelledby="h-labels">
+        <span id="marks"></span>
+        <h2 class="kb-h2" id="h-labels">Метки</h2>
+        <p>Метка говорит, насколько мы уверены, что польза есть, а не как метод сработает у тебя. Насколько польза велика, пишем рядом словами: «эффект малый», «эффект умеренный». Метки одинаковы во всех разделах.</p>
+        <dl class="kb-facts kb-facts--one hw-legend"><div><dt><span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></dt><dd>Для этого состояния есть не меньше двух независимых метаанализов, и они показывают пользу.</dd></div><div><dt><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></dt><dd>Исследования есть, но результаты смешанные, работ немного или проверяли на узкой группе.</dd></div><div><dt><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></dt><dd>Одно-два небольших исследования или пилоты. Данные только набираются.</dd></div><div><dt><span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></dt><dd>Исследования противоречат друг другу, проверка не удалась или объяснение «почему работает» опровергнуто. Использую как язык для разговора, а не как истину.</dd></div><div><dt><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></dt><dd>Как отдельный метод почти не изучалось. Держится на опыте практиков и здравом смысле.</dd></div></dl>
+        <p>У школ и понятий метки стоят по состояниям: «метка — для чего». Последней строкой — люди без диагноза в переходе, для них эта база и пишется. Оценки других систем (GRADE, рекомендации ВОЗ и NICE) даём отдельной строкой, нашу метку они не повышают.</p>
+        <p>У ресурсов «художественное» — тип записи, а не метка: роман, мемуары, личная история. Если проверять нечего (справочник, каталог, сервис), метки нет.</p>
+      </section>
+
+      <section class="kb-sec" id="states" aria-labelledby="h-states">
+        <h2 class="kb-h2" id="h-states">Что значат статусы</h2>
+        <dl class="kb-facts kb-facts--one hw-legend">
+          <div><dt>готово</dt><dd>Текст написан и вычитан. Особого знака нет.</dd></div>
+          <div><dt><span class="kb-state">черновик</span></dt><dd>Текст есть, но ещё правится.</dd></div>
+          <div><dt><span class="kb-state kb-state--plan">статья пишется</span></dt><dd>Текста ещё нет. Пока на странице то, что по этой теме уже есть в базе.</dd></div>
+          <div><dt><span class="status status--wip">в работе</span></dt><dd>Раздел открыт, но наполняется: страницы выходят по мере готовности.</dd></div>
+          <div><dt>(сверяется)</dt><dd>Факт, который я ещё сверяю с первоисточником.</dd></div>
+          <div><dt><span class="q-mark">∗</span></dt><dd>Не удалось проверить по первоисточнику.</dd></div>
+        </dl>
+      </section>
+
+      <section class="kb-sec" id="check" aria-labelledby="h-check">
+        <h2 class="kb-h2" id="h-check">Как мы проверяем</h2>
+        <p>У источника смотрим тип: метаанализ, обзор, исследование с контрольной группой, наблюдение, мнение — от сильного к слабому. Работу старше десяти лет без свежих подтверждений отмечаем. Оригинальная или часто цитируемая работа показывает, откуда идея, но не заменяет новых проверок. Сам метод и родственное считаем отдельно. Смотрим, не отозвана ли работа и нет ли поправок.</p>
+        <p>В карточке — «Опора» (две-четыре работы со ссылками) и «Чего не знаем». ∗ — не удалось проверить по первоисточнику. Личный опыт — отдельно, в «Как это у меня».</p>
+        <p>Четыре вопроса к любому исследованию: насколько сильные данные, насколько свежие, кто платил, на ком проверено.</p>
+        <p>Ссылки в ресурсах — к автору, издательству или проекту, без маркетплейсов.</p>
+      </section>
+
+      <section class="kb-sec" id="fixes" aria-labelledby="h-fixes">
+        <h2 class="kb-h2" id="h-fixes">Исправления</h2>
+        <p>Метки меняются, когда выходят новые работы. Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>, исправлю.</p>
+      </section>
+
+      <section class="kb-sec" id="license" aria-labelledby="h-license">
+        <h2 class="kb-h2" id="h-license">Лицензия: можно брать в работу</h2>
+        <p>Тексты практик и базы знаний — открытые, <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY 4.0</a>: можно брать и переделывать, указав источник. Психологам, коучам, фасилитаторам и другим коллегам: используйте в работе, печатайте, копируйте шаги практик, адаптируйте под своих людей.</p>
+        <p>Как указать источник: название страницы, «Waykeeper» и адрес страницы. Если переделали текст, напишите об этом.</p>
+        <p>Лицензия относится к текстам практик и базы знаний. Картины подписаны автором и собранием, у них свои условия. Фотографии и остальные страницы сайта в неё не входят.</p>
+      </section>
+
+      <nav class="kb-next" aria-label="Куда дальше">
+        <a href="glossary.html"><span>Дальше</span><b>Словарь</b></a>
+        <a class="r" href="knowledge.html"><span>В начало</span><b>Вход в базу знаний</b></a>
+      </nav>
+      <p class="kb-fix">Заметили ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+    </div>
+    <aside class="kb-toc" aria-label="На странице">
+      <p class="label">На странице</p>
+      <ul>
+        <li><a href="#structure">Как устроена</a></li>
+        <li><a href="#labels">Метки</a></li>
+        <li><a href="#states">Статусы</a></li>
+        <li><a href="#check">Как проверяем</a></li>
+        <li><a href="#fixes">Исправления</a></li>
+        <li><a href="#license">Лицензия</a></li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+</main>
+
+<!-- ===== ПОДВАЛ v2: один на все страницы (тексты — texts/v2/00-footer.md, двери — 01-home-v5.md). Не менять текст на страницах. ===== -->
+<footer class="site-foot site-foot--v2" data-field="off">
+  <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
+  <div class="frame foot-grid">
+    <div class="foot-care-col" id="not-yet">
+      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+    </div>
+    <nav class="foot-doors" aria-label="Все разделы сайта">
+      <div class="foot-group">
+        <p class="label">База знаний</p>
+        <ul>
+          <li><a href="practices.html">Практики</a></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="knowledge.html">Вся база знаний</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="how.html">Как устроена база</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Работа со мной</p>
+        <ul>
+          <li><a href="program.html">«Переход»</a></li>
+          <li><a href="new-season.html">«Новый сезон»</a></li>
+          <li><a href="talk.html">Разговор</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Проект</p>
+        <ul>
+          <li><a href="project.html">О проекте</a></li>
+          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html#method">Почему через историю</a></li>
+          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="privacy.html">Данные и приватность</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="frame foot-base">
+    <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
+    <div class="foot-line">
+      <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
+      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

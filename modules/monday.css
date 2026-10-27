@@ -1,0 +1,63 @@
+/* Waykeeper · «Проверка „завтра понедельник“» · префикс mn-
+   Токены берутся со страницы (скетч v3); в скобках — запасные значения. */
+
+.mn{
+  max-width:760px;
+  color:var(--ink,#0F1722);
+  font:400 var(--s4,16px)/1.6 var(--f-text,'Onest',system-ui,sans-serif);
+}
+.mn--panel{
+  padding:44px; border-radius:22px;
+  background:var(--glass,rgba(255,255,255,.56));
+  -webkit-backdrop-filter:blur(18px) saturate(1.3); backdrop-filter:blur(18px) saturate(1.3);
+  border:1px solid rgba(15,23,34,.07);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 22px 44px -28px rgba(15,23,34,.22);
+}
+.mn p{margin:0}
+.mn input,.mn button{font:inherit; color:inherit}
+.mn input::placeholder{color:rgba(15,23,34,.34); opacity:1}
+
+/* версии шага на тонкой линии */
+.mn-chain{list-style:none; margin:0 0 28px; padding:0}
+.mn-v{position:relative; padding:0 0 18px 30px; color:var(--ink-3,rgba(15,23,34,.62)); overflow-wrap:anywhere}
+.mn-v::before{content:""; position:absolute; left:4px; top:14px; bottom:-12px; width:1px; background:var(--line-2,rgba(15,23,34,.20))}
+.mn-v.is-last::before{display:none}
+.mn-v i{position:absolute; left:0; top:9px; width:9px; height:9px; box-sizing:border-box; border-radius:50%; border:1px solid rgba(15,23,34,.40); background:var(--page,#FCFDFF)}
+.mn-v span{text-decoration:line-through; text-decoration-color:rgba(15,23,34,.28); text-decoration-thickness:1px}
+.mn-v.is-last{padding-bottom:0; color:var(--ink,#0F1722)}
+.mn-v.is-last span{text-decoration:none; font:300 var(--s3,21px)/1.35 var(--f-head,'Spectral',Georgia,serif)}
+.mn-v.is-last i{top:10px; border-color:var(--ink,#0F1722)}
+.mn-v.is-done i{background:var(--accent,#EA5F22); border-color:var(--accent,#EA5F22); box-shadow:0 0 0 5px rgba(234,95,34,.12)}
+
+.mn-l{display:block; font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.mn-row{display:flex; align-items:center; gap:16px}
+.mn-row--btns{margin-top:16px; gap:12px}
+.mn-in{flex:1; min-width:0; padding:7px 0 6px; border:0; border-bottom:1px solid var(--line-2,rgba(15,23,34,.20)); background:transparent; outline:none; transition:border-color .2s}
+.mn-in:focus{border-bottom-color:var(--ink,#0F1722)}
+.mn .mn-btn{flex:none; min-height:44px; padding:0 22px; border-radius:999px; border:1px solid var(--line-2,rgba(15,23,34,.20)); background:rgba(255,255,255,.6); cursor:pointer; font-weight:500; transition:background .2s, border-color .2s}
+.mn .mn-btn:hover{background:#fff; border-color:rgba(15,23,34,.36)}
+.mn .mn-btn--main{border-color:var(--ink,#0F1722); background:var(--ink,#0F1722); color:#fff}
+.mn .mn-btn--main:hover{background:#243040; border-color:#243040}
+.mn-btn:active{transform:translateY(1px)}
+.mn-q{color:var(--ink-2,rgba(15,23,34,.78)); outline:none}
+.mn-err{margin-top:10px !important; font-size:var(--s5,13px); line-height:1.45; color:var(--accent-text,#C2410C)}
+.mn-err:empty{display:none}
+
+.mn-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.mn-foot{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-top:40px; padding-top:14px; border-top:1px solid var(--line,rgba(15,23,34,.10));
+  font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.mn-clear{min-height:32px; padding:0; border:0; background:none; cursor:pointer; font:inherit; color:var(--ink-2,rgba(15,23,34,.78));
+  text-decoration:underline; text-decoration-color:var(--line-2,rgba(15,23,34,.20)); text-underline-offset:3px}
+.mn-clear:hover{color:var(--ink,#0F1722); text-decoration-color:var(--ink,#0F1722)}
+.mn-btn:focus-visible,.mn-clear:focus-visible{outline:2px solid var(--ink,#0F1722); outline-offset:3px; border-radius:999px}
+
+@media (max-width:760px){
+  .mn--panel{padding:24px 20px; border-radius:18px}
+  .mn-form .mn-row{flex-direction:column; align-items:stretch; gap:14px}
+  .mn-row--btns .mn-btn{flex:1}
+  .mn-foot{flex-direction:column; gap:6px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mn *,.mn *::before,.mn *::after{transition:none !important; animation:none !important}
+}

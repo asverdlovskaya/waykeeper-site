@@ -1,0 +1,25 @@
+/* Waykeeper · «Облако и вешки» · префикс cl- · см. cloud.js */
+
+.cl-path{list-style:none; margin:var(--sp-7) 0 0; padding:0 0 0 30px}
+.cl-path li{position:relative; min-height:24px}
+.cl-path li + li{margin-top:var(--sp-4)}
+/* тропа между вешками — пунктир */
+.cl-path li:not(:last-child)::before{content:""; position:absolute; left:-25px; top:12px; bottom:calc(-1 * var(--sp-4) - 12px); width:1px;
+  background:repeating-linear-gradient(to bottom, rgba(15,23,34,.35) 0 2px, transparent 2px 6px)}
+/* ты здесь */
+.cl-here{min-height:12px !important}
+.cl-here i{position:absolute; left:-29px; top:8px; width:9px; height:9px; border-radius:50%; background:var(--accent)}
+/* вешка — точка на тропе, как в остальных списках (без флажка: образ «вершина с флагом» не наш) */
+.cl-pole > i{position:absolute; left:-28px; top:9px; width:7px; height:7px; border-radius:50%; background:var(--page); border:1px solid var(--ink); opacity:.7}
+.cl-pole a{font-size:var(--s4)}
+
+
+/* проступание: ссылки сразу нажимаются, проявляется только вид */
+@media (prefers-reduced-motion: no-preference){
+  .cl-pole{opacity:.18; transition:opacity .9s ease}
+  .cl-pole > i{transform:scale(.4); transition:transform .9s var(--ease)}
+  .cl-pole.on{opacity:1}
+  .cl-pole.on > i{transform:none}
+  .cl-path li:not(:last-child)::before{opacity:.3; transition:opacity 1.2s ease}
+  .cl.is-clear .cl-path li::before{opacity:1}
+}

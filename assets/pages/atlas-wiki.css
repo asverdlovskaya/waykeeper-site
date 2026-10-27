@@ -1,0 +1,388 @@
+/* =========================================================================
+   Атлас помогающих профессий · Waykeeper site-v2 · вики атласа (assets/pages/atlas-wiki.css)
+   Страницы: atlas.html (вход), atlas/<id>.html (специалисты), atlas/fam-*.html (семьи),
+   atlas/requests|all|glossary|how|compare.html; на atlas-map.html — токены и узкая шапка карты.
+   Подключается после site.css и site-v2.css; общие файлы не правятся.
+   Палитра — site-v1: белая страница, холодная дымка, текст #0F1722, огонёк #EA5F22 только «ты здесь»
+   (текущий раздел в оглавлении, наведение в списках). Без бумаги, туши и двойных рамок.
+   Шрифты — Spectral 300/400 и Onest 400/500; размеры — только --s1…--s5.
+   Колонка чтения — var(--measure) (35rem ≈ 60–70 знаков).
+   ========================================================================= */
+
+/* ---------- 0. Токены атласа (их же читает карта, atlas.css) ---------- */
+:root{
+  --c-surface:#FFFFFF;
+  --c-surface-2:#F3F6FA;
+  --c-surface-3:#E4EAF2;
+  --c-tint:rgba(15,23,34,.04);
+  --c-ink:var(--ink);
+  --c-text:var(--ink-2);
+  --c-text-2:var(--ink-2);
+  --c-text-3:var(--ink-3);
+  --c-line:var(--line);
+  --c-line-2:var(--line-2);
+  --c-map-bg:#F5F8FC;                 /* поле карты — холодная дымка, как фон v1 */
+  --c-heat:#1E2B3C;                   /* заливка территории по густоте — холодными чернилами */
+  --c-nav:rgba(252,253,255,.94);
+  --c-scrim:rgba(15,23,34,.28);
+  --sh-float:0 0 0 1px var(--line), 0 14px 34px -18px rgba(15,23,34,.30);
+  /* семьи: цвет несёт смысл (какая семья), поэтому остаётся */
+  --fam-body:#5E8A3E;  --fam-mind:#5B4E9A;   --fam-rel:#D49A1F;   --fam-comm:#2F8798;
+  --fam-work:#C4473E;  --fam-law:#3A6FB5;    --fam-home:#D2692F;  --fam-loss:#2E9A78;
+  --fam-spirit:#8E5A2B; --fam-hist:#C9739A;  --fam-support:#6F7770; --fam-alt:#8A857B;
+  /* порядковая шкала: дымка → чернила */
+  --ord-1:#E3EAF3; --ord-2:#C3D0E0; --ord-3:#8EA2BC; --ord-4:#4F6482; --ord-5:#1E2B3C;
+  --aw-gap:var(--col-gap, 24px);
+}
+[hidden]{display:none !important}
+html{scroll-padding-top:calc(var(--head-h) + 16px)}
+.aw [id]{scroll-margin-top:calc(var(--head-h) + 16px)}
+
+/* цвета семей — только на карте (atlas.css, atlas-map.js); на страницах вики точек семей нет */
+.kb-pending{font-size:var(--s5); color:var(--ink-3); white-space:nowrap}
+.kb-stamp-t{color:var(--ink)}
+.aw-srcn li::before{content:attr(data-n)}
+.aw-srcn li:target{background:linear-gradient(90deg, rgba(234,95,34,.10), transparent 70%)}
+.kb-main{padding-bottom:var(--sp-7)}
+.kb-sec .prose{max-width:36rem}
+.kb-sec .prose p + p,.kb-careful .prose p + p{margin-top:var(--sp-3)}
+.kb-careful .prose{margin-top:var(--sp-2)}
+.kb-sec h3.kb-h3{margin-top:var(--sp-5)}
+.kb-do + .kb-hint{margin-top:var(--sp-3)}
+sup.ref{line-height:0}
+sup.ref a{font-size:var(--s5); padding:0 2px; text-decoration:none; color:var(--ink-2); border-bottom:1px solid var(--line-2)}
+sup.ref a:hover{color:var(--ink); border-bottom-color:var(--ink)}
+.term{text-decoration:none; border-bottom:1px dotted var(--ink-3); cursor:help; color:inherit}
+.term:hover{border-bottom-color:var(--ink)}
+.aw-meta{font-size:var(--s5); line-height:1.5; color:var(--ink-3)}
+.aw-meta a{color:var(--ink-2); text-underline-offset:3px; text-decoration-color:var(--line-2)}
+.aw-meta a:hover{color:var(--ink)}
+
+/* ---------- 1. Строка атласа под шапкой: разделы вики, карта, поиск ---------- */
+.aw-bar{border-bottom:1px solid var(--line); background:rgba(252,253,255,.6)}
+.aw-bar-in{display:flex; align-items:center; gap:var(--sp-3) var(--sp-6); flex-wrap:wrap; min-height:60px; padding-top:6px; padding-bottom:6px}
+.aw-bar-home{font:400 var(--s4)/1.3 var(--f-head); color:var(--ink); text-decoration:none; white-space:nowrap}
+.aw-bar-home:hover{text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+.aw-bar-links{display:flex; flex-wrap:wrap; gap:0 var(--sp-5); margin:0; padding:0; list-style:none; flex:1; min-width:0}
+.aw-bar-links a{display:inline-flex; align-items:center; min-height:44px; font-size:var(--s5); color:var(--ink-2); text-decoration:none; white-space:nowrap}
+.aw-bar-links a:hover{color:var(--ink)}
+.aw-bar-links a[aria-current="page"]{color:var(--ink); box-shadow:inset 0 -1px 0 var(--ink)}
+
+/* ---------- 2. Поиск ---------- */
+/* Общий поиск базы знаний (.kb-search, assets/kb.css + kb.js). Здесь — только место в строке атласа и поля фильтров. */
+.aw-bar .kb-search{width:min(22rem, 100%); margin-left:auto}
+.aw-hero .kb-search{max-width:40rem; margin-top:var(--sp-6)}
+.aw-hero .kb-hint{margin-top:var(--sp-3)}
+.aw-q{display:flex; align-items:center; gap:10px; min-height:44px; padding:0 14px; border:1px solid var(--line-2); border-radius:var(--r-pill); background:var(--glass); color:var(--ink-3); cursor:text}
+.aw-q:focus-within{border-color:var(--ink); background:#fff}
+.aw-q input{flex:1; min-width:0; height:42px; border:0; background:transparent; font:400 var(--s4)/1.3 var(--f-text); color:var(--ink); outline:none}
+.aw-q input::placeholder{color:var(--ink-3)}
+.aw-q input::-webkit-search-cancel-button{opacity:.5}
+.aw-q--field{max-width:var(--measure)}
+
+/* ---------- 3. Статья: крошки, заголовок, оглавление, текст, справка ---------- */
+.aw-art{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--aw-gap); align-items:start;
+  padding-top:var(--sp-7); padding-bottom:var(--sp-9)}
+.aw-art-head{grid-column:4 / -1; grid-row:1; max-width:46rem; padding-bottom:var(--sp-6)}
+.aw-toc{grid-column:1 / span 3; grid-row:2; position:sticky; top:calc(var(--head-h) + var(--sp-5)); padding-right:var(--sp-5)}
+.aw-body{grid-column:4 / span 6; grid-row:2; min-width:0}
+.aw-info{grid-column:10 / -1; grid-row:2; min-width:0}
+.aw-art--fam .aw-body{grid-column:1 / span 8}
+.aw-art--fam .aw-body > * + *{margin-top:var(--sp-4)}
+.aw-art--fam .aw-body > .aw-sec{margin-top:var(--sp-7)}
+.aw-art--fam .aw-art-head{grid-column:1 / -1}
+.aw-art--wide .aw-art-head{grid-column:1 / -1}
+.aw-art--wide .aw-body{grid-column:1 / -1}
+
+.aw-crumbs ol{display:flex; flex-wrap:wrap; gap:2px 0; margin:0 0 var(--sp-4); padding:0; list-style:none; font-size:var(--s5); color:var(--ink-3)}
+.aw-crumbs li + li::before{content:"→"; padding:0 8px; color:var(--ink-3)}
+.aw-crumbs a{color:var(--ink-2); text-decoration:none}
+.aw-crumbs a:hover{color:var(--ink); text-decoration:underline; text-underline-offset:3px}
+.aw-crumbs [aria-current]{color:var(--ink-3)}
+.aw-h1{font:300 var(--s2)/1.15 var(--f-head); letter-spacing:-.01em; color:var(--ink); margin:0; text-wrap:balance}
+.aw-en{margin-top:var(--sp-2); font-size:var(--s5); color:var(--ink-3)}
+.aw-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:var(--sp-4)}
+.aw-tag{display:inline-flex; align-items:center; min-height:30px; padding:3px 12px; border:1px solid var(--line-2); border-radius:var(--r-pill); font:400 var(--s5)/1.3 var(--f-text); color:var(--ink-2); text-decoration:none; white-space:nowrap}
+a.aw-tag:hover{border-color:var(--ink); color:var(--ink)}
+.aw-tag--soft,.aw-tag--warn{border-style:dashed}
+.aw-tag--warn{white-space:normal; color:var(--ink)}
+.aw-lead{margin-top:var(--sp-5); max-width:34em; font:400 var(--s3)/1.5 var(--f-text); color:var(--ink-2)}
+.aw-art-head .aw-meta{margin-top:var(--sp-3)}
+
+.aw-toc .label{display:block; margin-bottom:var(--sp-3)}
+.aw-toc ol{margin:0; padding:0; list-style:none; border-left:1px solid var(--line)}
+.aw-toc a{position:relative; display:block; padding:6px 0 6px 14px; font-size:var(--s5); line-height:1.4; color:var(--ink-3); text-decoration:none}
+.aw-toc a:hover{color:var(--ink)}
+.aw-toc a.is-here{color:var(--ink)}
+.aw-toc a.is-here::before{content:""; position:absolute; left:-4px; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:var(--accent)}
+
+.aw-sec{margin-top:var(--sp-7)}
+.aw-body > .aw-sec:first-child,.aw-body > .prose:first-child{margin-top:0}
+.aw-sec > h2{font:400 var(--s3)/1.3 var(--f-head); color:var(--ink); margin:0 0 var(--sp-4); padding-top:var(--sp-4); border-top:1px solid var(--line)}
+.aw-sec h3{font:500 var(--s4)/1.45 var(--f-text); margin:var(--sp-5) 0 var(--sp-2)}
+.aw-sec h2 + h3{margin-top:0}
+.aw-body .prose{max-width:var(--measure)}
+.aw-body .prose p,.aw-body .prose li{color:var(--ink)}
+.aw-body .prose a{text-decoration-color:var(--line-2)}
+.aw-table{overflow-x:auto; max-width:100%}
+.aw-table table{border-collapse:collapse; font-size:var(--s5)}
+.aw-table th,.aw-table td{padding:8px 12px 8px 0; border-bottom:1px solid var(--line); text-align:left; vertical-align:top}
+.aw-table th{font-weight:500}
+
+.aw-reqs{margin:0; padding:0; list-style:none; max-width:var(--measure); border-top:1px solid var(--line)}
+.aw-reqs li{padding:10px 0; border-bottom:1px solid var(--line); line-height:1.5}
+
+/* списки специалистов: «Рядом в атласе», страница семьи */
+.aw-rows{margin:0; padding:0; list-style:none; border-top:1px solid var(--line)}
+.aw-rows li{border-bottom:1px solid var(--line)}
+.aw-row{position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:var(--sp-3); align-items:baseline; padding:14px 0; color:var(--ink); text-decoration:none; transition:padding .35s var(--ease)}
+.aw-row-t{grid-column:1; font-weight:500}
+.aw-row-m{grid-column:2; grid-row:1; font-size:var(--s5); color:var(--ink-3); text-align:right}
+.aw-row-d{grid-column:1 / -1; font-size:var(--s5); line-height:1.45; color:var(--ink-2); margin-top:2px}
+.aw-row:hover .aw-row-t{text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+.aw-row:hover{padding-left:6px}
+
+.aw-srcs{margin:0; padding:0; list-style:none; font-size:var(--s5); line-height:1.5; color:var(--ink-2)}
+.aw-srcs li{display:grid; grid-template-columns:28px minmax(0,1fr); padding:6px 0; border-bottom:1px solid var(--line); overflow-wrap:anywhere}
+.aw-srcs li:target{background:linear-gradient(90deg, rgba(234,95,34,.10), transparent 70%)}
+.aw-src-n{color:var(--ink-3); font-variant-numeric:tabular-nums}
+.aw-srcs a{color:var(--ink-2); text-underline-offset:3px; text-decoration-color:var(--line-2)}
+
+/* предыдущий / следующий в семье */
+.aw-pn{display:grid; grid-template-columns:1fr 1fr; gap:var(--aw-gap); margin-top:var(--sp-8); border-top:1px solid var(--line-2)}
+.aw-pn-a{display:grid; gap:4px; padding:var(--sp-4) 0; color:var(--ink); text-decoration:none}
+.aw-pn-next{text-align:right}
+.aw-pn-k{font-size:var(--s5); color:var(--ink-3)}
+.aw-pn-t{font:400 var(--s3)/1.3 var(--f-head)}
+.aw-pn-a:hover .aw-pn-t{text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+
+.aw-err{margin-top:var(--sp-7); padding-top:var(--sp-4); border-top:1px solid var(--line); font-size:var(--s4); color:var(--ink-2)}
+
+/* справка справа (инфобокс) */
+.aw-info{padding:var(--sp-5); border:1px solid var(--line); border-radius:var(--r-m); background:var(--glass)}
+.aw-facts{margin:0}
+.aw-facts > div{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:10px; padding:8px 0; border-bottom:1px solid var(--line); font-size:var(--s5); line-height:1.45}
+.aw-facts > div:last-child{border-bottom:0}
+.aw-facts dt{color:var(--ink-3)}
+.aw-facts dd{margin:0; color:var(--ink); overflow-wrap:anywhere}
+.aw-facts dd a{color:var(--ink); text-underline-offset:3px; text-decoration-color:var(--line-2)}
+.aw-note{display:block; margin-top:4px; color:var(--ink-3)}
+.aw-note-i{color:var(--ink-3)}
+.aw-facts-h{margin-top:var(--sp-5); padding-bottom:var(--sp-2); border-bottom:1px solid var(--line-2); font:500 var(--s5)/1.3 var(--f-text); color:var(--ink-3)}
+.aw-info--nav .aw-facts-h{margin-top:0}
+.aw-facts--flags > div{grid-template-columns:minmax(0,1fr) auto}
+.aw-actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:var(--sp-5)}
+.aw-body > .aw-actions{margin-top:var(--sp-5)}
+.aw-famnav{margin:0; padding:0; list-style:none}
+.aw-famnav a{display:flex; align-items:baseline; min-height:40px; padding:8px 0; border-bottom:1px solid var(--line); font-size:var(--s5); color:var(--ink-2); text-decoration:none}
+.aw-famnav a:hover{color:var(--ink)}
+
+/* картина: целиком, без обрезки */
+.aw-plate{margin:0}
+/* лист атласа (карта, role structure): целиком, чёткий, без скругления и рамки; бумага листа уходит в бумагу сайта,
+   края мягко растворяются (общее правило site-v2.css, раздел 16). Подпись — одна тихая строка, собрание по наведению. */
+.aw-plate img{display:block; width:100%; height:auto; border-radius:0; mix-blend-mode:multiply;
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent); -webkit-mask-composite:source-in;
+          mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent), linear-gradient(180deg, transparent, #000 6%, #000 94%, transparent); mask-composite:intersect}
+.aw-plate figcaption{margin-top:var(--sp-2); font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.aw-plate .pa-src{display:inline-block; max-width:0; overflow:hidden; white-space:nowrap; vertical-align:bottom; opacity:0; transition:max-width .7s var(--ease), opacity .5s var(--ease)}
+.aw-plate:hover .pa-src{max-width:40em; opacity:1}
+.aw-sec .aw-plate{margin:var(--sp-5) 0 var(--sp-6); max-width:var(--measure)}
+
+/* ---------- 4. Словарь, уровни, маршруты, указатель, список, сравнение ---------- */
+.aw-gloss{margin:0; max-width:var(--measure); border-top:1px solid var(--line)}
+.aw-gl{padding:var(--sp-4) 0; border-bottom:1px solid var(--line)}
+.aw-gl dt{font:400 var(--s3)/1.3 var(--f-head)}
+.aw-gl dd{margin:var(--sp-2) 0 0}
+.aw-gl:target{background:linear-gradient(90deg, rgba(234,95,34,.08), transparent 60%)}
+
+.aw-lvl{padding:var(--sp-5) 0; border-bottom:1px solid var(--line); max-width:var(--measure)}
+.aw-lvl h3{margin:0 0 var(--sp-2); font:400 var(--s3)/1.3 var(--f-head)}
+.aw-lvl h3 small{font:400 var(--s5)/1 var(--f-text); color:var(--ink-3); margin-left:8px}
+.aw-lvl .prose{margin-top:var(--sp-3)}
+.aw-lvl > .aw-meta:last-child{margin-top:var(--sp-3)}
+.aw-wall{max-width:var(--measure); margin-top:var(--sp-5); padding-top:var(--sp-2); border-top:1px dashed var(--ink-2); font-size:var(--s5); color:var(--ink-2)}
+.aw-route{padding:var(--sp-5) 0; border-bottom:1px solid var(--line); max-width:var(--measure)}
+.aw-route h3{margin:0; font:400 var(--s3)/1.3 var(--f-head)}
+.aw-route details{margin-top:var(--sp-3)}
+.aw-route summary{cursor:pointer; min-height:44px; display:flex; align-items:center; font-size:var(--s5); color:var(--ink-2)}
+.aw-route ol{margin:var(--sp-2) 0 0; padding-left:1.4em}
+.aw-route li{padding:6px 0}
+.aw-route li b{display:block; font-weight:500}
+.aw-route > .aw-meta:last-child{margin-top:var(--sp-2)}
+
+.aw-reqfams{margin-top:var(--sp-5); border-top:1px solid var(--line-2)}
+.aw-reqfam{border-bottom:1px solid var(--line)}
+.aw-reqfam summary{display:flex; align-items:center; gap:4px; min-height:56px; cursor:pointer; list-style:none; font:400 var(--s3)/1.3 var(--f-head)}
+.aw-reqfam summary::-webkit-details-marker{display:none}
+.aw-reqfam summary::after{content:"+"; margin-left:auto; font:400 var(--s3)/1 var(--f-text); color:var(--ink-3)}
+.aw-reqfam[open] summary::after{content:"−"}
+.aw-reqfam summary small{margin-left:10px; font:400 var(--s5)/1 var(--f-text); color:var(--ink-3)}
+.aw-reqlist{columns:2 22rem; column-gap:var(--sp-7); margin:0 0 var(--sp-5); padding:0; list-style:none}
+.aw-reqlist li{break-inside:avoid; padding:7px 0; border-bottom:1px solid var(--line); line-height:1.45}
+.aw-req-who{font-size:var(--s5); color:var(--ink-3)}
+.aw-req-who a{color:var(--ink-2); text-underline-offset:3px; text-decoration-color:var(--line-2)}
+.aw-empty{margin-top:var(--sp-5); color:var(--ink-3)}
+
+.aw-filters{display:flex; flex-wrap:wrap; gap:var(--sp-3); align-items:center}
+.aw-filters .aw-q{flex:1 1 280px}
+.aw-sel select{min-height:44px; padding:0 34px 0 16px; border:1px solid var(--line-2); border-radius:var(--r-pill); background:var(--glass); font:400 var(--s5)/1.2 var(--f-text); color:var(--ink); appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),linear-gradient(135deg,var(--ink-3) 50%,transparent 50%); background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%; background-size:5px 5px; background-repeat:no-repeat}
+.aw-filters + .aw-meta{margin-top:var(--sp-3)}
+.aw-tablewrap{margin-top:var(--sp-4)}
+.aw-all{width:100%; border-collapse:collapse; font-size:var(--s5); line-height:1.45}
+.aw-all thead th{position:sticky; top:0; z-index:1; padding:10px 12px 10px 0; text-align:left; font-weight:500; color:var(--ink-3); background:var(--page); border-bottom:1px solid var(--line-2)}
+.aw-all tbody th,.aw-all td{padding:12px 12px 12px 0; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); color:var(--ink-2); font-weight:400}
+.aw-all tbody th a{font:500 var(--s4)/1.4 var(--f-text); color:var(--ink); text-decoration:none}
+.aw-all tbody th a:hover{text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+.aw-td-d{display:block; margin-top:2px; color:var(--ink-3); max-width:34em}
+
+.aw-cmp-pick{display:flex; flex-wrap:wrap; gap:var(--sp-3); align-items:center}
+.aw-cmp-pick .aw-q{flex:1 1 300px; max-width:none}
+.aw-cmp{margin-top:var(--sp-5); overflow-x:auto; border-top:1px solid var(--line-2)}
+.aw-cmp table{width:100%; min-width:640px; border-collapse:collapse; font-size:var(--s5); line-height:1.45; table-layout:fixed}
+.aw-cmp th,.aw-cmp td{padding:10px 14px 10px 0; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); color:var(--ink)}
+.aw-cmp tbody th{width:150px; font-weight:400; color:var(--ink-3)}
+.aw-cmp thead th{padding-top:var(--sp-4)}
+.aw-cmp thead a{font:400 var(--s3)/1.25 var(--f-head); color:var(--ink); text-decoration:none}
+.aw-cmp thead a:hover{text-decoration:underline; text-underline-offset:4px}
+.aw-cmp thead small{display:block; margin-top:2px; color:var(--ink-3)}
+.aw-cmp tr.diff th{box-shadow:inset 2px 0 0 var(--ink); padding-left:10px}
+.aw-cmp ul{margin:0; padding-left:1.1em}
+.aw-x{appearance:none; margin-top:6px; padding:0; border:0; background:none; font:400 var(--s5)/1 var(--f-text); color:var(--ink-3); cursor:pointer; min-height:32px; text-decoration:underline; text-underline-offset:3px}
+.aw-x:hover{color:var(--ink)}
+.aw-chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:var(--sp-3)}
+.aw-chip{display:inline-flex; align-items:center; min-height:36px; padding:4px 14px; border:1px solid var(--line-2); border-radius:var(--r-pill); background:transparent; color:var(--ink-2); font:400 var(--s5)/1.2 var(--f-text); text-decoration:none; cursor:pointer; white-space:nowrap}
+.aw-chip:hover{border-color:var(--ink); color:var(--ink)}
+@media (max-width:760px){ .aw-chip{white-space:normal; max-width:100%} }  /* длинные имена в сравнении не вылезают (финальная проверка) */
+.aw-cmp-pairs{margin-top:var(--sp-7)}
+.aw-cmp-pairs h2{font:400 var(--s3)/1.3 var(--f-head)}
+
+/* ---------- 5. Вход: atlas.html ---------- */
+.aw-hero{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--aw-gap); align-items:center; padding-top:var(--sp-7); padding-bottom:var(--sp-7)}
+.aw-hero-text{grid-column:1 / span 7}
+.aw-hero-text > * + *{margin-top:var(--sp-5)}
+.aw-hero-text .display{margin-top:var(--sp-4)}
+.aw-hero-note{max-width:var(--measure); color:var(--ink-2)}
+.aw-hero-go{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-4) var(--sp-6)}
+.aw-hero-meta{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-5); font-size:var(--s5); color:var(--ink-3); font-variant-numeric:tabular-nums}
+.aw-hero-meta b{font-weight:500; color:var(--ink-2)}
+.aw-hero-plate{grid-column:9 / -1}
+
+.aw-door{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--aw-gap); row-gap:var(--sp-5); padding-top:var(--sp-7); padding-bottom:var(--sp-7); border-top:1px solid var(--line)}
+.aw-door-side{grid-column:1 / span 4}
+.aw-door-side h2{font:300 var(--s2)/1.15 var(--f-head)}
+.aw-door-side .aw-meta{margin-top:var(--sp-3); max-width:28em}
+.aw-door-main{grid-column:5 / -1; min-width:0}
+.aw-door--fams .aw-door-side{grid-column:1 / span 6}
+.aw-door--fams .aw-door-main{grid-column:1 / -1}
+.aw-door--how{padding-bottom:var(--sp-9)}
+.aw-more{display:flex; flex-wrap:wrap; gap:var(--sp-2) var(--sp-6); margin-top:var(--sp-5); font-size:var(--s4)}
+.aw-more a{display:inline-flex; align-items:baseline; min-height:44px; padding-top:10px; color:var(--ink); text-underline-offset:4px; text-decoration-color:var(--line-2)}
+.aw-more .tnum{margin-left:8px; color:var(--ink-3); font-size:var(--s5)}
+.aw-how{max-width:var(--measure); font:300 var(--s3)/1.45 var(--f-head); color:var(--ink)}
+.aw-door--how .aw-err{max-width:var(--measure)}
+
+.aw-req-out{margin-top:var(--sp-4); max-width:46rem}
+.aw-req-out:empty{display:none}
+.aw-req-out ul{margin:0; padding:0; list-style:none; border-top:1px solid var(--line)}
+.aw-req-out li a{display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:var(--sp-3); align-items:baseline; padding:12px 0; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none}
+.aw-req-out li b{font-weight:500}
+.aw-req-out li small{grid-column:1 / -1; font-size:var(--s5); color:var(--ink-2)}
+.aw-req-out li em{grid-column:2; grid-row:1; font-style:normal; font-size:var(--s5); color:var(--ink-3)}
+.aw-req-out li a:hover b{text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+.aw-req-out > p{font-size:var(--s5); color:var(--ink-3); margin-top:var(--sp-3)}
+
+.aw-fams{display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:var(--sp-6) var(--aw-gap); margin:0; padding:0; list-style:none}
+.aw-fam{position:relative; display:flex; flex-direction:column; height:100%; padding-top:var(--sp-4); border-top:1px solid var(--line-2); color:var(--ink); text-decoration:none}
+.aw-fam::before{content:""; position:absolute; left:0; top:-1px; height:1px; width:100%; background:var(--ink); transform:scaleX(0); transform-origin:0 50%; transition:transform .6s var(--ease)}
+.aw-fam:hover::before,.aw-fam:focus-visible::before{transform:scaleX(1)}
+.aw-fam-top{display:flex; justify-content:space-between; align-items:baseline}
+.aw-fam-n{font-size:var(--s5); color:var(--ink-3)}
+.aw-fam-t{display:block; margin-top:var(--sp-4); font:400 var(--s3)/1.25 var(--f-head)}
+.aw-fam-d{display:block; margin-top:var(--sp-2); font-size:var(--s5); line-height:1.45; color:var(--ink-2)}
+.aw-fam:hover .aw-fam-t{text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+
+/* ---------- 6. Большая карта: узкая шапка и карта во весь экран (atlas-map.html) ---------- */
+.am-body{height:100vh; height:100dvh; overflow:hidden; display:flex; flex-direction:column; min-height:0}
+.am-head{flex:none; display:flex; align-items:center; gap:var(--sp-3) var(--sp-5); min-height:60px; padding:8px var(--edge); border-bottom:1px solid var(--line); background:var(--page); position:relative; z-index:20}
+.am-back{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-size:var(--s4); white-space:nowrap}
+.am-back:hover{text-decoration:underline; text-underline-offset:4px}
+.am-title{flex:1; min-width:0; margin:0; font:400 var(--s4)/1.3 var(--f-head); color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.am-title a{color:inherit; text-decoration:none}
+.am-sub{color:var(--ink-3)}
+.am-tools{display:flex; gap:8px; flex:none}
+.am-main{flex:1; min-height:0; position:relative}
+.am-main .atlas-host{position:absolute; inset:0; min-height:0}
+.am-main .atlas-host > [data-boot]{border:0; border-radius:0}
+.am-main .atlas,.am-body .am-main .atlas{height:100%; border-radius:0}
+.am-body .a-stage{touch-action:none}
+.am-noscript{padding:var(--sp-6) var(--edge)}
+
+/* ---------- 7. Планшет ---------- */
+@media (max-width:1180px){
+  .aw-toc{display:none}
+  .aw-art-head{grid-column:1 / -1}
+  .aw-body{grid-column:1 / span 8}
+  .aw-info{grid-column:9 / -1}
+  .aw-fams{grid-template-columns:repeat(3, minmax(0,1fr))}
+  .aw-hero-text{grid-column:1 / span 8}
+  .aw-hero-plate{grid-column:9 / -1}
+}
+@media (max-width:960px){
+  .aw-bar .kb-search{width:100%; margin-left:0}
+  .aw-bar-links{flex-basis:100%; order:3}
+  .aw-art{grid-template-columns:minmax(0,1fr)}
+  .aw-art > *{grid-column:1 !important; grid-row:auto !important}
+  .aw-info{margin-bottom:var(--sp-7)}
+  .aw-art:not(.aw-art--fam) > .aw-info{order:1}   /* справка — сразу после заголовка */
+  .aw-art > .aw-body{order:2}
+  .aw-art--fam .aw-info{margin:var(--sp-7) 0 0; order:3}
+  .aw-hero,.aw-door{grid-template-columns:minmax(0,1fr)}
+  .aw-hero > *,.aw-door > *{grid-column:1 !important}
+  .aw-hero-plate{max-width:560px}
+  .aw-fams{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+/* ---------- 8. Телефон ---------- */
+@media (max-width:760px){
+  .aw-bar-in{gap:var(--sp-2) var(--sp-4); padding-top:var(--sp-3); padding-bottom:var(--sp-3)}
+  .aw-bar-links{gap:0 var(--sp-4)}
+  .aw-bar-links a{min-height:40px}
+  .aw-art{padding-top:var(--sp-5); padding-bottom:var(--sp-8)}
+  .aw-sec{margin-top:var(--sp-6)}
+  .aw-row{grid-template-columns:minmax(0,1fr)}
+  .aw-row-m{grid-column:1; grid-row:auto; text-align:left; margin-top:2px}
+  .aw-pn{grid-template-columns:1fr; gap:0}
+  .aw-pn-next{text-align:left; border-top:1px solid var(--line)}
+  .aw-info{padding:var(--sp-4)}
+  .aw-reqlist{columns:1}
+  .aw-hero{padding-top:var(--sp-5)}
+  .aw-hero-text > * + *{margin-top:var(--sp-4)}
+  .aw-hero .kb-search{margin-top:var(--sp-5)}
+  .aw-hero-go .btn{width:100%}
+  .aw-fams{gap:var(--sp-5) var(--sp-4)}
+  .aw-fam-d{display:none}
+  .aw-door{padding-top:var(--sp-6); padding-bottom:var(--sp-6)}
+  .aw-door-side h2{font-size:var(--s2)}
+  .aw-req-out li a{grid-template-columns:minmax(0,1fr)}
+  .aw-req-out li em{grid-column:1; grid-row:auto}
+  /* список всех — карточками */
+  .aw-all thead{display:none}
+  .aw-all,.aw-all tbody,.aw-all tr,.aw-all th,.aw-all td{display:block; width:100%}
+  .aw-all tr{padding:12px 0; border-bottom:1px solid var(--line)}
+  .aw-all tbody th,.aw-all td{padding:2px 0; border:0}
+  .aw-all td{display:grid; grid-template-columns:110px minmax(0,1fr)}
+  .aw-all td::before{content:attr(data-l); color:var(--ink-3)}
+  .aw-all tbody th{margin-bottom:6px}
+  /* карта */
+  .am-head{gap:var(--sp-2); padding:6px 12px; min-height:52px}
+  .am-sub{display:none}
+  .am-tools .btn{padding:8px 12px}
+}
+@media (max-width:420px){
+  .am-title{display:none}
+  .am-tools{margin-left:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .aw-row,.aw-fam::before{transition:none}
+}

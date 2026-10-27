@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Такой страницы нет · Waykeeper</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site-v2.css">
+<link rel="stylesheet" href="assets/kb.css">
+<link rel="stylesheet" href="assets/kb-head.css">
+<link rel="stylesheet" href="assets/atmo.css">
+<script src="assets/atmo.js" defer></script>
+<link rel="stylesheet" href="modules/passage.css">
+<link rel="stylesheet" href="modules/cloud.css">
+<script src="assets/site.js" defer></script>
+<script src="assets/site-v2.js" defer></script>
+<script src="assets/kb.js" defer></script>
+<script src="assets/kb-head.js" defer></script>
+<script src="assets/field.js" defer></script>
+<script src="modules/cloud.js" defer></script>
+<style>
+/* ===== 404 · облако и вешки: под полем — «Предварительная карта отмелей Нантакета» (1854): промеры стоят там, где уже прошли,
+   остальное честно пустое. Карта (role structure), не японская гравюра — решение Саши 26.10. Бумага листа уходит в бумагу сайта. ===== */
+.cl-hero .alive-deep{top:calc(var(--head-h) * -1); bottom:-120px; width:min(60vw, 960px); --alive-at:62% 40%}
+.cl-hero .alive-deep img{object-position:40% 45%; mix-blend-mode:multiply; opacity:.6}
+@media (max-width:760px){
+  .cl-hero .alive-deep{position:relative; top:auto; bottom:auto; display:block; width:100%; height:300px; margin-top:calc(var(--sp-5) * -1)}
+}
+</style>
+<link rel="stylesheet" href="assets/alive.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-atmo-frame data-field-blobs="off">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
+<header class="site-head">
+  <div class="frame head-row">
+    <a class="wordmark" href="index.html">Waykeeper</a>
+    <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <ul>
+        <li class="kb">
+          <button class="kb-btn" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
+          <div class="kb-pop nodes" id="kb-pop">
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
+              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
+              <kbd>/</kbd>
+            </form>
+            <ul class="kb-list">
+              <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+            </ul>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+          </div>
+        </li>
+        <li><a href="program.html">«Переход»</a></li>
+        <li><a href="new-season.html">«Новый сезон»</a></li>
+        <li><a href="project.html">О проекте</a></li>
+        <li><a href="about.html">О себе</a></li>
+        <li><a href="talk.html">Разговор</a></li>
+      </ul>
+      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- «Облако и вешки» (00-ix-play.md, решение 4): облако за текстом редеет, по одной проступают вешки.
+       Четыре вешки, без Telegram (решение Саши). На хостинге назначить 404.html страницей ошибки. -->
+  <section class="hero hero--text cl-hero" data-field=".15" data-atmo="haze" aria-labelledby="page-title">
+    <div class="wrap"><div class="hero-text">
+      <h1 id="page-title">Такой страницы нет</h1>
+      <div data-module="cloud" data-clear></div>
+    </div></div>
+    <div class="alive-deep" aria-hidden="true">
+      <img src="assets/img/pd/processed/maps/nantucket-chart-1854-1200.jpg" srcset="assets/img/pd/processed/maps/nantucket-chart-1854-1200.jpg 1200w, assets/img/pd/processed/maps/nantucket-chart-1854.jpg 2400w" sizes="(max-width:760px) 600px, 60vw" alt="" width="1200" height="1098" fetchpriority="high" decoding="async">
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== ПОДВАЛ v2: один на все страницы (тексты — texts/v2/00-footer.md, двери — 01-home-v5.md). Не менять текст на страницах. ===== -->
+<footer class="site-foot site-foot--v2" data-field="off">
+  <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
+  <div class="frame foot-grid">
+    <div class="foot-care-col" id="not-yet">
+      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+    </div>
+    <nav class="foot-doors" aria-label="Все разделы сайта">
+      <div class="foot-group">
+        <p class="label">База знаний</p>
+        <ul>
+          <li><a href="practices.html">Практики</a></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="knowledge.html">Вся база знаний</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="how.html">Как устроена база</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Работа со мной</p>
+        <ul>
+          <li><a href="program.html">«Переход»</a></li>
+          <li><a href="new-season.html">«Новый сезон»</a></li>
+          <li><a href="talk.html">Разговор</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Проект</p>
+        <ul>
+          <li><a href="project.html">О проекте</a></li>
+          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html#method">Почему через историю</a></li>
+          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="privacy.html">Данные и приватность</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="frame foot-base">
+    <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
+    <div class="foot-line">
+      <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
+      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/alive.js"></script>
+
+<script>
+  /* Облаку нужны широкие мягкие формы поля. Вешка «Написать в Telegram» здесь не нужна: модуль ставит пять, оставляем четыре. */
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.cl [data-tg]').forEach(function(a){ var li = a.closest('li'); if(li) li.remove(); });
+    Field.init({blobs: WaykeeperCloud.blobs});
+  });
+</script>
+</body>
+</html>

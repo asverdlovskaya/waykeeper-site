@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /_ux/
+Disallow: /_tools/
+Disallow: /_shots/
+Disallow: /content/
+Disallow: /_template.html
+
+Sitemap: https://waykeeper.org/sitemap.xml

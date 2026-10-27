@@ -1,0 +1,9 @@
+/* «Данные и приватность»: обычная текстовая страница, одна колонка. Только токены сайта; своих размеров шрифта нет. */
+.pv{padding-top:var(--hero-top); padding-bottom:var(--section)}
+.pv-head h1{max-width:11em}
+.pv-date{margin-top:var(--sp-4)}
+.pv-head .lead{margin-top:var(--sp-6); max-width:var(--measure); color:var(--ink)}
+.pv-sec{margin-top:var(--sp-8); padding-top:var(--sp-7); border-top:1px solid var(--line)}
+.pv-sec > h2{max-width:var(--measure)}
+.pv-sec .prose{margin-top:var(--h2-gap)}
+.pv .prose a{overflow-wrap:anywhere}

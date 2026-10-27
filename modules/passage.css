@@ -1,0 +1,35 @@
+/* =====================================================================
+   Waykeeper · «Переход между страницами» · префикс ps-
+   Игровой слой, все страницы (00-ix-play.md, решение 5). Только CSS, без скрипта.
+
+   Между страницами мир не обрывается: шапка стоит на месте, поле на фоне
+   плавно перетекает в поле новой страницы, а текст старой страницы растворяется
+   в белом и новый проступает снизу на 8 px (Journey, Death Stranding: переход без чёрного экрана).
+   Работает в браузерах с переходами между документами (Chrome/Edge 126+, Safari 18.2+);
+   в остальных — обычный переход, ничего не ломается.
+
+   Подключение: в <head> каждой страницы, после assets/site.css:
+     <link rel="stylesheet" href="modules/passage.css">
+   (потом можно перенести эти строки в site.css — см. 00-ix-play.md, «Хуки»)
+   ===================================================================== */
+@view-transition{ navigation:auto; }
+
+@media (prefers-reduced-motion: no-preference){
+  /* шапка и поле — отдельные слои: шапка не мигает, поле перетекает */
+  .site-head{ view-transition-name:ps-head; }
+  .field-canvas{ view-transition-name:ps-field; }
+
+  ::view-transition-old(root){ animation:ps-out .24s ease both; }
+  ::view-transition-new(root){ animation:ps-in .48s cubic-bezier(.16,1,.3,1) .06s both; }
+  ::view-transition-group(ps-field){ animation-duration:.7s; }
+  ::view-transition-old(ps-field){ animation:ps-fade-out .7s ease both; }
+  ::view-transition-new(ps-field){ animation:ps-fade-in .7s ease both; }
+  ::view-transition-group(ps-head){ animation-duration:0s; }
+}
+@media (prefers-reduced-motion: reduce){
+  @view-transition{ navigation:none; }
+}
+@keyframes ps-out{ to{ opacity:0; } }
+@keyframes ps-in{ from{ opacity:0; transform:translateY(8px); } }
+@keyframes ps-fade-out{ to{ opacity:0; } }
+@keyframes ps-fade-in{ from{ opacity:0; } }

@@ -1,0 +1,82 @@
+/* Waykeeper · общие механики страницы практики · префикс pk-
+   Токены берутся со страницы (скетч v3); в скобках — запасные значения.
+   Стили кита касаются только того, что он добавил сам (pk-*), и полей [data-kit-field]. */
+
+.pk{color:var(--ink,#0F1722)}
+.pk button,.pk textarea{font:inherit; color:inherit}
+
+/* ---------- таймер ---------- */
+.pk-timer{position:relative; display:flex; align-items:center; flex-wrap:wrap; gap:8px 18px; margin:0 0 28px; padding-bottom:14px}
+.pk-tt{font:300 var(--s3,21px)/1 var(--f-head,'Spectral',Georgia,serif); font-variant-numeric:lining-nums tabular-nums; min-width:3.2em}
+.pk-timer.is-over .pk-tt{color:var(--accent-text,#C2410C); font-size:var(--s4,16px); font-family:var(--f-text,'Onest',sans-serif)}
+.pk-run{position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--line,rgba(15,23,34,.10))}
+.pk-run i{position:absolute; left:0; top:0; height:1px; background:var(--ink,#0F1722); opacity:.7; transition:width .25s linear}
+.pk-timer.is-over .pk-run i{background:var(--accent,#EA5F22); opacity:1}
+.pk-run[hidden]{display:none}
+
+/* ---------- кнопки ---------- */
+.pk .pk-btn{display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0 20px; border-radius:999px;
+  border:1px solid var(--line-2,rgba(15,23,34,.20)); background:rgba(255,255,255,.6); cursor:pointer;
+  font:500 var(--s4,16px)/1 var(--f-text,'Onest',system-ui,sans-serif); white-space:nowrap; transition:background .2s, border-color .2s}
+.pk .pk-btn:hover{background:#fff; border-color:rgba(15,23,34,.36)}
+.pk .pk-btn--main{background:var(--ink,#0F1722); border-color:var(--ink,#0F1722); color:#fff}
+.pk .pk-btn--main:hover{background:#243040; border-color:#243040}
+.pk-btn:active{transform:translateY(1px)}
+.pk .pk-link,.pk .pk-clear,.pk .pk-use{min-height:44px; padding:0; border:0; background:none; cursor:pointer;
+  font:400 var(--s5,13px)/1.45 var(--f-text,'Onest',sans-serif); color:var(--ink-2,rgba(15,23,34,.78));
+  text-decoration:underline; text-decoration-color:var(--line-2,rgba(15,23,34,.20)); text-underline-offset:3px}
+.pk .pk-link:hover,.pk .pk-clear:hover,.pk .pk-use:hover{color:var(--ink,#0F1722); text-decoration-color:var(--ink,#0F1722)}
+/* «взять как заготовку» стоит в строке примера: зона нажатия 44 px — невидимым слоем, строка не раздвигается */
+.pk .pk-use{position:relative; display:inline; min-height:0; padding:0}
+.pk .pk-use::before{content:""; position:absolute; left:-4px; right:-4px; top:50%; height:44px; transform:translateY(-50%)}
+.pk-btn:focus-visible,.pk-link:focus-visible,.pk-clear:focus-visible,.pk-use:focus-visible{outline:2px solid var(--ink,#0F1722); outline-offset:3px; border-radius:6px}
+
+/* ---------- шаги: номер шага; сделанный — тонкая галочка на месте номера и бледный текст (без квадратиков-чекбоксов) ---------- */
+.pk-steps{list-style:none; padding-left:0; counter-reset:pk}
+.pk-steps > li{margin:0; padding:0; counter-increment:pk}
+.pk-steps > li::before{content:none}
+.pk-step{display:grid; grid-template-columns:20px minmax(0,1fr); column-gap:14px; align-items:start; padding:9px 0; cursor:pointer}
+.pk-cb{position:absolute; width:1px; height:1px; opacity:0; margin:0}
+.pk-box{position:relative; width:20px; height:1.6em; box-sizing:border-box; font-size:var(--s5,13px); line-height:1.6rem; color:var(--ink-3,rgba(15,23,34,.62)); transition:color .2s}
+.pk-box::before{content:counter(pk); transition:opacity .15s}
+.pk-box::after{content:""; position:absolute; left:3px; top:.45em; width:4px; height:8px; border:solid var(--ink-3,rgba(15,23,34,.62)); border-width:0 1px 1px 0; transform:rotate(45deg); opacity:0; transition:opacity .15s}
+.pk-step:hover .pk-box{color:var(--ink,#0F1722)}
+.pk-cb:checked + .pk-box::before{opacity:0}
+.pk-cb:checked + .pk-box::after{opacity:1}
+.pk-cb:focus-visible + .pk-box{outline:2px solid var(--ink,#0F1722); outline-offset:3px; border-radius:4px}
+.pk-st{transition:color .2s}
+.pk-steps > li.is-done .pk-st{color:var(--ink-3,rgba(15,23,34,.62))}
+
+/* ---------- поля ---------- */
+.pk-ta{display:block; width:100%; min-height:96px; padding:12px 14px; box-sizing:border-box; resize:vertical; overflow:hidden;
+  border:1px solid var(--line-2,rgba(15,23,34,.20)); border-radius:12px; background:rgba(255,255,255,.66); outline:none;
+  font:400 var(--s4,16px)/1.6 var(--f-text,'Onest',system-ui,sans-serif); color:var(--ink,#0F1722); transition:border-color .2s, box-shadow .2s}
+.pk-ta::placeholder{color:rgba(15,23,34,.34); opacity:1}
+.pk-ta:focus{border-color:var(--ink,#0F1722); box-shadow:0 0 0 1px var(--ink,#0F1722)}
+
+/* ---------- нижняя строка ---------- */
+.pk-bar{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px 20px; margin-top:32px; padding-top:18px; border-top:1px solid var(--line,rgba(15,23,34,.10))}
+.pk-acts{display:flex; align-items:center; flex-wrap:wrap; gap:12px 20px}
+.pk-note{font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.pk-out{flex-basis:100%; min-height:120px; padding:12px 14px; border:1px solid var(--line-2,rgba(15,23,34,.20)); border-radius:12px; background:#fff; font:400 var(--s5,13px)/1.6 var(--f-text,'Onest',sans-serif); resize:vertical}
+.pk-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0}
+
+/* нижняя строка инструмента, в которую кит добавил «Скопировать текстом» и строку про браузер */
+.pk [data-pk-foot]{justify-content:flex-start; flex-wrap:wrap; align-items:baseline; column-gap:20px}
+.pk [data-pk-foot] .pk-note{margin-left:auto}
+.pk [data-pk-foot] .pk-link{min-height:44px}
+.pk > .pk-out{display:block; width:100%; margin-top:16px; box-sizing:border-box}
+.pk > .pk-out[hidden]{display:none}
+
+@media (max-width:760px){
+  .pk [data-pk-foot] .pk-note{margin-left:0}
+  .pk-step{padding:11px 0}
+  .pk-bar{flex-direction:column; align-items:stretch}
+  .pk-acts{flex-direction:column; align-items:flex-start}
+  .pk-acts .pk-btn{width:100%}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pk *,.pk *::before,.pk *::after{transition:none !important; animation:none !important}
+}
+@media print{ .pk-timer,.pk-bar{display:none !important} }

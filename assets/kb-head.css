@@ -1,0 +1,20 @@
+/* =====================================================================
+   Waykeeper · окошко «База знаний» в шапке: строка поиска и ссылки (пакет 2, 26.10.2026)
+   Подключается на всех страницах из _tools/v2_chrome.py после kb.css. Только токены, размеров шрифта в px нет.
+   ===================================================================== */
+.kb-pop .kb-pop-search{margin:var(--sp-3) 14px var(--sp-2); max-width:none}
+.kb-pop .kb-list{margin-top:var(--sp-2)}
+.kb-pop .kb-pop-links{margin:var(--sp-2) 14px 2px; padding-top:var(--sp-3); border-top:1px solid var(--line)}
+.kb-pop .kb-pop-links a{display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px}
+.kb-pop .kb-suggest{left:0; right:0}
+.kb-pop .kb-suggest a{text-decoration:none}
+.site-nav .kb-suggest .kb-near a{display:flex; padding:2px 6px}
+@media (max-width:980px){
+  .kb-pop .kb-pop-search{margin-left:0; margin-right:0}
+  .kb-pop .kb-pop-links{margin-left:0; margin-right:0}
+}
+
+/* строка лицензии в подвале: под подписью, на всю ширину */
+.site-foot--v2 .foot-license{flex:1 0 100%; order:3; margin:0; color:var(--ink-3); max-width:46rem}
+.site-foot--v2 .foot-license a{color:var(--ink-2); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px}
+.site-foot--v2 .foot-license a:hover{color:var(--ink); text-decoration-color:var(--ink)}

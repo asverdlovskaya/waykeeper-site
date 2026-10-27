@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Словарь · Waykeeper</title>
+<meta name="description" content="Общий словарь базы знаний Waykeeper: термины энциклопедии переходов и атласа помогающих профессий.">
+<!-- seo -->
+<link rel="canonical" href="https://waykeeper.org/glossary.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Waykeeper">
+<meta property="og:title" content="Словарь · Waykeeper">
+<meta property="og:description" content="Общий словарь базы знаний Waykeeper: термины энциклопедии переходов и атласа помогающих профессий.">
+<meta property="og:url" content="https://waykeeper.org/glossary.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waykeeper — открытый ресурс про переходы">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<!-- /seo -->
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site-v2.css">
+<link rel="stylesheet" href="assets/kb.css">
+<link rel="stylesheet" href="assets/kb-head.css">
+<link rel="stylesheet" href="assets/atmo.css">
+<script src="assets/atmo.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/site-v2.js" defer></script>
+<script src="assets/kb.js" defer></script>
+<script src="assets/kb-head.js" defer></script>
+<link rel="stylesheet" href="assets/pages/knowledge.css">
+<script src="assets/pages/glossary.js" defer></script>
+<link rel="stylesheet" href="assets/alive.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-atmo-frame data-field-blobs="off">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
+<header class="site-head">
+  <div class="frame head-row">
+    <a class="wordmark" href="index.html">Waykeeper</a>
+    <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <ul>
+        <li class="kb">
+          <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
+          <div class="kb-pop nodes" id="kb-pop">
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
+              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
+              <kbd>/</kbd>
+            </form>
+            <ul class="kb-list">
+              <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+            </ul>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+          </div>
+        </li>
+        <li><a href="program.html">«Переход»</a></li>
+        <li><a href="new-season.html">«Новый сезон»</a></li>
+        <li><a href="project.html">О проекте</a></li>
+        <li><a href="about.html">О себе</a></li>
+        <li><a href="talk.html">Разговор</a></li>
+      </ul>
+      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="frame kb-page kn-page">
+  <div class="kb-grid">
+    <aside class="kb-side" aria-label="В базе знаний">
+      <p class="label">В базе знаний</p>
+      <ul>
+        <li><a href="knowledge.html">Вход в базу</a></li>
+        <li><a class="is-here" href="glossary.html" aria-current="page">Словарь</a></li>
+        <li><a href="how.html">Как устроена база</a></li>
+      </ul>
+      <p class="grp label">Разделы</p>
+      <ul>
+        <li><a href="practices.html">Практики</a></li>
+        <li><a href="encyclopedia.html">Энциклопедия переходов</a></li>
+        <li><a href="atlas.html">Атлас помогающих профессий</a></li>
+        <li><a href="resources.html">Ресурсы</a></li>
+      </ul>
+    </aside>
+    <div class="kb-main">
+      <ol class="kb-crumbs"><li><a href="index.html">Главная</a></li><li><a href="knowledge.html">База знаний</a></li><li>Словарь</li></ol>
+      <p class="kb-type">Словарь · 93 термина</p>
+      <h1 class="kb-h1">Словарь</h1>
+      <div class="kb-two"><span class="label">В двух словах</span><p>Один словарь на всю базу: термины энциклопедии и атласа.</p></div>
+      <form class="kb-search kb-search--sm gl-search" role="search" onsubmit="return false">
+        <label class="visually-hidden" for="gl-q">Найти термин</label>
+        <input id="gl-q" type="search" placeholder="Найти термин" autocomplete="off" data-kb-manual>
+      </form>
+      <p class="gl-letters" aria-label="По буквам"><a href="#g-А">А</a> <a href="#g-Б">Б</a> <a href="#g-В">В</a> <a href="#g-Г">Г</a> <a href="#g-З">З</a> <a href="#g-И">И</a> <a href="#g-К">К</a> <a href="#g-Л">Л</a> <a href="#g-М">М</a> <a href="#g-Н">Н</a> <a href="#g-О">О</a> <a href="#g-П">П</a> <a href="#g-Р">Р</a> <a href="#g-С">С</a> <a href="#g-Т">Т</a> <a href="#g-У">У</a> <a href="#g-Ф">Ф</a> <a href="#g-Х">Х</a> <a href="#g-Ц">Ц</a> <a href="#g-Э">Э</a> <a href="#g-lat">A–Z</a></p>
+      <p class="kb-result gl-result" id="gl-result" aria-live="polite"><b>93 термина</b></p>
+      <div class="gl-body" id="gl-body">
+<section class="gl-group" id="g-А" data-g="А"><h2 class="gl-letter">А</h2><dl class="gl-list">
+<div class="gl-term" id="term-accreditation" data-t="аккредитация специалиста"><dt>Аккредитация специалиста <span class="gl-src">атлас</span></dt><dd><p>Процедура допуска к медицинской деятельности в России (ст. 69 закона № 323-ФЗ). Без неё врач, медсестра и другие медицинские работники не могут работать самостоятельно (исключения — для обучающихся и стажёров под надзором). Для части категорий до 1 января 2027 года действуют сертификаты и отсрочки <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></dd></div>
+<div class="gl-term" id="term-aktivnoe-slushanie" data-t="активное слушание"><dt>Активное слушание</dt><dd><p>Дать договорить, задавать открытые вопросы, показывать, что слышишь.</p></dd></div>
+<div class="gl-term" id="term-alt" data-t="альтернативные и эзотерические практики"><dt>Альтернативные и эзотерические практики <span class="gl-src">атлас</span></dt><dd><p>Отдельный слой: астрологи, тарологи, расстановщики и другие. К ним нередко обращаются в трудные периоды, но это не помогающие профессии в принятом смысле. Описываем, не рекомендуем.</p></dd></div>
+<div class="gl-term" id="term-arkhivnyy-poisk-s-ii" data-t="архивный поиск с ии"><dt>Архивный поиск с ИИ <span class="kb-state">черновик</span></dt><dd><p>Метрические книги, переписи и военные документы, которые помогает читать ИИ.</p><p class="gl-more"><a href="encyclopedia/arkhivnyy-poisk-s-ii.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-autogennaya-trenirovka" data-t="аутогенная тренировка"><dt>Аутогенная тренировка</dt><dd><p>Расслабление через самовнушение ощущений тепла и тяжести в теле.</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Б" data-g="Б"><h2 class="gl-letter">Б</h2><dl class="gl-list">
+<div class="gl-term" id="term-gosmed" data-t="бесплатно в госмедицине"><dt>Бесплатно в госмедицине <span class="gl-src">атлас</span></dt><dd><p>Бесплатная медицинская помощь: по полису ОМС или за счёт бюджета. Психиатрическая и наркологическая помощь в государственных учреждениях бесплатна. В базовую программу ОМС она не входит: её оплачивают бюджеты регионов, а в федеральных клиниках — федеральный бюджет (Программа госгарантий, постановление Правительства № 2188 от 29.12.2025).</p></dd></div>
+<div class="gl-term" id="term-bolshaya-pyaterka" data-t="большая пятерка"><dt>Большая пятёрка <span class="kb-state">черновик</span></dt><dd><p>Пять черт личности: одна из самых изученных моделей описания личности (на взрослых из западных стран).</p><p class="gl-more"><a href="encyclopedia/bolshaya-pyaterka.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-В" data-g="В"><h2 class="gl-letter">В</h2><dl class="gl-list">
+<div class="gl-term" id="term-vzglyad-iz-budushchego" data-t="взгляд из будущего"><dt>Взгляд из будущего <span class="kb-state">черновик</span></dt><dd><p>Представить, что событие уже случилось, и посмотреть назад.</p><p class="gl-more"><a href="encyclopedia/vzglyad-iz-budushchego.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-vremya-dlya-trevogi" data-t="время для тревоги"><dt>Время для тревоги <span class="kb-state">черновик</span></dt><dd><p>Назначить тревоге отдельное время, а не носить её весь день.</p><p class="gl-more"><a href="encyclopedia/vremya-dlya-trevogi.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-vytesnenie" data-t="вытеснение"><dt>Вытеснение</dt><dd><p>В психоанализе: неприятная мысль, воспоминание или желание уходит из сознания. По этой теории, потом оно может проявляться в симптомах, снах, оговорках; исследованиями это почти не проверено.</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Г" data-g="Г"><h2 class="gl-letter">Г</h2><dl class="gl-list">
+<div class="gl-term" id="term-genogramma" data-t="генограмма"><dt>Генограмма <span class="kb-state">черновик</span></dt><dd><p>Семейное древо, на котором видно не только кто кому кем приходится, но и как жили.</p><p class="gl-more"><a href="encyclopedia/genogramma.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-gorizonty-fokusa" data-t="горизонты фокуса"><dt>Горизонты фокуса <span class="kb-state">черновик</span></dt><dd><p>Смотреть на жизнь с разной высоты: от дел до цели жизни.</p><p class="gl-more"><a href="encyclopedia/gorizonty-fokusa.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-dopusk" data-t="граница допуска"><dt>Граница допуска <span class="gl-src">атлас</span></dt><dd><p>Линия между уровнями «Профессия» и «Полномочия». Дальше начинаются диагноз, лечение и юридически значимые действия, для которых нужен государственный допуск.</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-З" data-g="З"><h2 class="gl-letter">З</h2><dl class="gl-list">
+<div class="gl-term" id="term-zapros" data-t="запрос"><dt>Запрос</dt><dd><p>Чего клиент хочет и ждёт от терапевта. Без запроса работы нет.</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-И" data-g="И"><h2 class="gl-letter">И</h2><dl class="gl-list">
+<div class="gl-term" id="term-ii-sobesednik" data-t="ии собеседник"><dt>ИИ-собеседник</dt><dd><p>Интерфейс к материалам человека, который помогает вернуть ему его собственные слова, решения и уже найденные опоры.</p><p class="gl-more"><a href="encyclopedia/ii-sobesednik.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-ikigay" data-t="икигай"><dt>Икигай <span class="kb-state">черновик</span></dt><dd><p>Японское слово: то, ради чего стоит жить (Миэко Камия, 1966). Популярная диаграмма из четырёх кругов — любишь, умеешь, нужно миру, за что платят — западная схема выбора занятия (Андрес Зузунага, 2011–2012; слово «икигай» в центр поставил Марк Винн, 2014), а не японское определение.</p><p class="gl-more"><a href="encyclopedia/ikigay.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-istoriya-roda" data-t="история рода"><dt>История рода <span class="kb-state">черновик</span></dt><dd><p>Восстановленная история семьи: люди, события, линии и повторяющиеся сюжеты.</p><p class="gl-more"><a href="encyclopedia/genogramma.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-К" data-g="К"><h2 class="gl-letter">К</h2><dl class="gl-list">
+<div class="gl-term" id="term-klassicheskoe-obuslovlivanie" data-t="классическое обусловливание"><dt>Классическое обусловливание</dt><dd><p>Два стимула связываются (Павлов: звонок → слюна).</p></dd></div>
+<div class="gl-term" id="term-klient-tsentrirovannyy-podkhod" data-t="клиент центрированный подход"><dt>Клиент-центрированный подход <span class="kb-state">черновик</span></dt><dd><p>Принятие, эмпатия и подлинность как основа помощи.</p><p class="gl-more"><a href="encyclopedia/klient-tsentrirovannyy-podkhod.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-koleso-kontekstov" data-t="колесо контекстов"><dt>Колесо контекстов <span class="kb-state">черновик</span></dt><dd><p>Сферы жизни своими словами, оценка «как есть» и шаг на балл выше.</p><p class="gl-more"><a href="encyclopedia/koleso-kontekstov.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-kompensatsiya" data-t="компенсация"><dt>Компенсация</dt><dd><p>Слабость в одном прикрывается силой в другом, часто с перегибом.</p></dd></div>
+<div class="gl-term" id="term-kouching" data-t="коучинг"><dt>Коучинг</dt><dd><p>Недирективная работа, обычно сфокусированная на целях, выборе и действиях клиента.</p><p class="gl-more"><a href="encyclopedia/kouching.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-krizis" data-t="кризис"><dt>Кризис</dt><dd><p>Событие, которое нельзя переработать сразу: привычных способов не хватает. Фазы: шок → реакция → обработка → переориентация.</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Л" data-g="Л"><h2 class="gl-letter">Л</h2><dl class="gl-list">
+<div class="gl-term" id="term-liniya-zhizni" data-t="линия жизни"><dt>Линия жизни <span class="kb-state">черновик</span></dt><dd><p>Вся жизнь на одной линии: взлёты, падения и что их объединяет.</p><p class="gl-more"><a href="encyclopedia/liniya-zhizni.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-lichnye-retrospektivy" data-t="личные ретроспективы"><dt>Личные ретроспективы <span class="kb-state">черновик</span></dt><dd><p>Раз в неделю: что было, что работало, что поменять.</p><p class="gl-more"><a href="encyclopedia/lichnye-retrospektivy.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-logicheskie-urovni-diltsa" data-t="логические уровни дилтса"><dt>Логические уровни Дилтса <span class="kb-state">черновик</span></dt><dd><p>Пирамида от окружения и поведения до идентичности и миссии.</p><p class="gl-more"><a href="encyclopedia/logicheskie-urovni-diltsa.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-luchshee-vozmozhnoe-ya" data-t="лучшее возможное я"><dt>Лучшее возможное «я» <span class="kb-state">черновик</span></dt><dd><p>Описать себя в будущем, где всё сложилось.</p><p class="gl-more"><a href="encyclopedia/luchshee-vozmozhnoe-ya.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-М" data-g="М"><h2 class="gl-letter">М</h2><dl class="gl-list">
+<div class="gl-term" id="term-malenkie-privychki" data-t="маленькие привычки"><dt>Маленькие привычки <span class="kb-state">черновик</span></dt><dd><p>Привычка такого размера, что её невозможно не сделать.</p><p class="gl-more"><a href="encyclopedia/malenkie-privychki.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-metka-opyt-praktikov" data-t="метка опыт практиков"><dt>Метка «опыт практиков» ◇ <span class="kb-state">черновик</span></dt><dd><p>Ремесло: как отдельный метод не исследовалось, держится на опыте практиков и здравом смысле. Это не «плохо» и не «доказано» — проверок просто нет.</p></dd></div>
+<div class="gl-term" id="term-metka-rannyaya" data-t="метка ранняя"><dt>Метка «ранняя» ●○○ <span class="kb-state">черновик</span></dt><dd><p>Польза возможна, но проверок пока мало: одно-два небольших испытания, пробные исследования или наблюдения без сравнения с группой, которая ничего не делала. Часто видна связь, но не доказано, что причина — сам метод.</p></dd></div>
+<div class="gl-term" id="term-metka-silnaya" data-t="метка сильная"><dt>Метка «сильная» ●●● <span class="kb-state">черновик</span></dt><dd><p>Мы уверены, что польза есть — для конкретного состояния или задачи. Ставим, только если есть не меньше двух независимых метаанализов про сам метод именно при этом состоянии, эффект виден не только по сравнению с «ничего не делать», но и по сравнению с обычной помощью, а лучший обзор не оценивает качество данных как «низкое». Метка говорит об уверенности, а не о величине пользы: размер эффекта пишем словами рядом («эффект малый»).</p></dd></div>
+<div class="gl-term" id="term-metka-spornaya" data-t="метка спорная"><dt>Метка «спорная» ○○○ <span class="kb-state">черновик</span></dt><dd><p>Проверки противоречат друг другу или не подтвердили пользу; или инструмент популярен, но проверка его надёжности не удалась; или объяснение «почему это работает» опровергнуто. Если проверок просто нет, это не «спорная», а «опыт практиков» или «нет данных».</p></dd></div>
+<div class="gl-term" id="term-metka-umerennaya" data-t="метка умеренная"><dt>Метка «умеренная» ●●○ <span class="kb-state">черновик</span></dt><dd><p>Польза вероятна, но уверенность ограничена: испытания или метаанализ есть, но независимых проверок мало, результаты смешанные, проверено на узкой группе людей или качество данных оценено как «низкое». Это не значит «эффект маленький»: размер эффекта пишем отдельно словами.</p></dd></div>
+<div class="gl-term" id="term-metka-po-sostoyaniyam" data-t="метка по состояниям"><dt>Метка по состояниям <span class="kb-state">черновик</span></dt><dd><p>У одного подхода или школы может быть несколько меток — своя для каждого состояния или задачи, не больше четырёх: сверху самая надёжная, последней — «люди без диагноза в переходе». Голую метку у школы не ставим. Оценки других систем (GRADE, ВОЗ, NICE) пишем отдельной строкой и в нашу метку не переводим.</p></dd></div>
+<div class="gl-term" id="term-model-4s-shlossberg" data-t="модель 4s шлоссберг"><dt>Модель 4S (Шлоссберг) <span class="kb-state">черновик</span></dt><dd><p>Модель Нэнси Шлоссберг: как человек проходит переход, зависит от четырёх групп обстоятельств — ситуация, сам человек, поддержка, стратегии.</p><p class="gl-more"><a href="encyclopedia/perehod.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Н" data-g="Н"><h2 class="gl-letter">Н</h2><dl class="gl-list">
+<div class="gl-term" id="term-namereniya-esli-to" data-t="намерения если то"><dt>Намерения «если — то» <span class="kb-state">черновик</span></dt><dd><p>Заранее решить, что сделать, когда наступит ситуация.</p><p class="gl-more"><a href="encyclopedia/namereniya-esli-to.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-narrativnaya-identichnost" data-t="нарративная идентичность"><dt>Нарративная идентичность <span class="kb-state">черновик</span></dt><dd><p>Внутренняя, меняющаяся история о себе, которая связывает прошлое, настоящее и будущее и придаёт жизни смысл (Дэн Макадамс).</p><p class="gl-more"><a href="encyclopedia/narrativnaya-identichnost.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-narrativnaya-praktika" data-t="нарративная практика"><dt>Нарративная практика <span class="kb-state">черновик</span></dt><dd><p>Жизнь как история, которую можно рассказать по-другому.</p><p class="gl-more"><a href="encyclopedia/narrativnaya-praktika.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-neytralnaya-zona" data-t="нейтральная зона"><dt>Нейтральная зона <span class="kb-state">черновик</span></dt><dd><p>Средняя стадия перехода по Бриджесу: старое закончилось, новое ещё не началось. Бриджес описывает её как время переориентации, а не провала.</p><p class="gl-more"><a href="encyclopedia/perehod.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-net-dannykh-bez-metki" data-t="нет данных без метки"><dt>Нет данных (без метки) <span class="kb-state">черновик</span></dt><dd><p>Для этого состояния или этой группы людей проверок мы не нашли, поэтому метку не ставим. Чаще всего так у пункта «люди без диагноза в переходе».</p></dd></div>
+<div class="gl-term" id="term-novoe-nachalo-stadiya-perekhoda" data-t="новое начало стадия перехода"><dt>Новое начало (стадия перехода) <span class="kb-state">черновик</span></dt><dd><p>Третья стадия перехода по Бриджесу: когда новое уже складывается.</p><p class="gl-more"><a href="encyclopedia/perehod.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-О" data-g="О"><h2 class="gl-letter">О</h2><dl class="gl-list">
+<div class="gl-term" id="term-obzor-zhizni" data-t="обзор жизни"><dt>Обзор жизни <span class="kb-state">черновик</span></dt><dd><p>Подведение итогов прожитого, чтобы принять его целиком.</p><p class="gl-more"><a href="encyclopedia/obzor-zhizni.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-obshchie-faktory-effektivnosti" data-t="общие факторы эффективности"><dt>Общие факторы эффективности</dt><dd><p>Общее для разных школ терапии: отношения, надежда, вера терапевта в свой метод, техника, совместный поиск, саморефлексия, новый опыт, понятное объяснение. Многие исследователи считают, что это важно для результата: связь с результатом показана, а причина ли это пользы — спорят.</p><p class="gl-more"><a href="encyclopedia/obshchie-faktory-effektivnosti.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-okno-tolerantnosti" data-t="окно толерантности"><dt>Окно толерантности <span class="kb-state">черновик</span></dt><dd><p>Зона, в которой мы можем думать и чувствовать одновременно.</p><p class="gl-more"><a href="encyclopedia/okno-tolerantnosti.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-okonchanie-stadiya-perekhoda" data-t="окончание стадия перехода"><dt>Окончание (стадия перехода) <span class="kb-state">черновик</span></dt><dd><p>Первая стадия перехода по модели Уильяма Бриджеса: переход начинается с того, что что-то заканчивается и его отпускают.</p><p class="gl-more"><a href="encyclopedia/perehod.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-operantnoe-obuslovlivanie" data-t="оперантное обусловливание"><dt>Оперантное обусловливание</dt><dd><p>Учимся на последствиях: что подкрепляется — повторяется.</p></dd></div>
+<div class="gl-term" id="term-otritsanie" data-t="отрицание"><dt>Отрицание</dt><dd><p>Не признаётся неприятная внешняя реальность («ничего страшного»).</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-П" data-g="П"><h2 class="gl-letter">П</h2><dl class="gl-list">
+<div class="gl-term" id="term-paradigma" data-t="парадигма"><dt>Парадигма</dt><dd><p>Набор базовых предположений, через которые школа смотрит на причины расстройств и на то, как лечить. Определяет, где искать ответы, и ограничивает взгляд.</p><p class="gl-more"><a href="encyclopedia/paradigmy-psikhoterapii.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-paradoksalnaya-intentsiya" data-t="парадоксальная интенция"><dt>Парадоксальная интенция</dt><dd><p>Метод Франкла: захотеть того, чего боишься (остаться бодрым) — страх и усилия заснуть падают.</p></dd></div>
+<div class="gl-term" id="term-pattern" data-t="паттерн"><dt>Паттерн</dt><dd><p>Повторяющаяся связь между условиями, способом действия и последствиями.</p><p class="gl-more"><a href="encyclopedia/patterny-i-drugaya-dorozhka.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-patterny-i-drugaya-dorozhka" data-t="паттерны и другая дорожка"><dt>Паттерны и другая дорожка <span class="kb-state">черновик</span></dt><dd><p>Повторяющийся сценарий, протокол из четырёх шагов и что делать вместо.</p><p class="gl-more"><a href="encyclopedia/patterny-i-drugaya-dorozhka.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-perenos" data-t="перенос"><dt>Перенос</dt><dd><p>Клиент переносит на терапевта чувства из других отношений.</p></dd></div>
+<div class="gl-term" id="term-perekhod" data-t="переход"><dt>Переход</dt><dd><p>Период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.</p><p class="gl-more"><a href="encyclopedia/perehod.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-plan-samopomoshchi" data-t="план самопомощи"><dt>План самопомощи <span class="kb-state">черновик</span></dt><dd><p>Заранее записанный план: что делать, когда становится плохо.</p><p class="gl-more"><a href="encyclopedia/plan-samopomoshchi-wrap.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-plany-odissei" data-t="планы одиссеи"><dt>Планы Одиссеи <span class="kb-state">черновик</span></dt><dd><p>Несколько версий следующих пяти лет вместо одной правильной.</p><p class="gl-more"><a href="encyclopedia/plany-odissei.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-training" data-t="подготовка"><dt>Подготовка <span class="gl-src">атлас</span></dt><dd><p>Насколько серьёзно обучен специалист: без подготовки, короткие курсы, длительная подготовка и сертификация, профильное образование, образование и государственный допуск.</p></dd></div>
+<div class="gl-term" id="term-helping" data-t="помогающие профессии"><dt>Помогающие профессии <span class="gl-src">атлас</span></dt><dd><p>Профессии, суть которых — помощь другому человеку в здоровье, переживаниях, отношениях, работе, быте или поиске смысла. В английском — helping professions.</p></dd></div>
+<div class="gl-term" id="term-praktika-douly-smerti" data-t="практика доулы смерти"><dt>Практика доулы смерти <span class="kb-state">черновик</span></dt><dd><p>Присутствие рядом в переходе. Не лечить, не спасать, быть.</p><p class="gl-more"><a href="encyclopedia/praktika-douly-smerti.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-privykanie" data-t="привыкание"><dt>Привыкание</dt><dd><p>К частому стимулу без последствий (шум) перестают реагировать.</p></dd></div>
+<div class="gl-term" id="term-prototipiruyushchie-razgovory" data-t="прототипирующие разговоры"><dt>Прототипирующие разговоры <span class="kb-state">черновик</span></dt><dd><p>Проверить версию будущего разговором с тем, кто уже так живёт.</p><p class="gl-more"><a href="encyclopedia/prototipiruyushchie-razgovory.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-profstandard" data-t="профстандарт"><dt>Профстандарт <span class="gl-src">атлас</span></dt><dd><p>Документ Минтруда, который описывает трудовые функции и требования к квалификации. Для частной практики обычно не обязателен.</p></dd></div>
+<div class="gl-term" id="term-psikhologicheskoe-konsultirovanie" data-t="психологическое консультирование"><dt>Психологическое консультирование</dt><dd><p>Профессиональная помощь психолога в трудной жизненной ситуации или при выборе: разобраться, что происходит, и найти свои решения. Обычно короче и ближе к конкретной задаче, чем психотерапия, но строгой границы по сроку нет. Расстройства не лечит.</p></dd></div>
+<div class="gl-term" id="term-psikhologiya" data-t="психология"><dt>Психология</dt><dd><p>Наука о психике и поведении. Делится на фундаментальную (законы), прикладную (в жизни), клиническую (отклонения, диагностика, терапия) и практическую.</p></dd></div>
+<div class="gl-term" id="term-psikhosomatika" data-t="психосоматика"><dt>Психосоматика</dt><dd><p>Область, которая изучает, как психологические факторы — стресс, эмоции, поведение — связаны с телесными жалобами и болезнями. Это не диагноз. Мысль, что болезни возникают «из-за внутренних конфликтов», — взгляд психоанализа, а не общий вывод науки. В классификациях болезней близкие рубрики называются «расстройство телесного дистресса» и «психологические факторы, влияющие на болезни».</p></dd></div>
+<div class="gl-term" id="term-psikhoterapiya" data-t="психотерапия"><dt>Психотерапия</dt><dd><p>Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями, привычными способами думать и вести себя. Бывает короткой и долгой. В России психотерапия входит в перечень лицензируемых медицинских работ, а врач-психотерапевт — врачебная специальность.</p></dd></div>
+<div class="gl-term" id="term-psychotherapy-ru" data-t="психотерапия в россии"><dt>Психотерапия в России <span class="gl-src">атлас</span></dt><dd><p>Психотерапия входит в перечень лицензируемых медицинских работ, врач-психотерапевт — врачебная специальность. Психологи без медицинского образования используют психотерапевтические методы и обычно называют свою работу «психологическим консультированием»; где проходит граница для них, закон прямо не говорит. Отдельного закона о психологической помощи пока нет: на октябрь 2026 обсуждаются три законопроекта, ни один не прошёл первое чтение.</p></dd></div>
+<div class="gl-term" id="term-put-geroya" data-t="путь героя"><dt>Путь героя</dt><dd><p>Способ увидеть в периоде вызов, движение, испытания и изменение героя.</p><p class="gl-more"><a href="encyclopedia/put-geroya.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Р" data-g="Р"><h2 class="gl-letter">Р</h2><dl class="gl-list">
+<div class="gl-term" id="term-rabota-s-chastyami-ifs" data-t="работа с частями ifs"><dt>Работа с частями (IFS) <span class="kb-state">черновик</span></dt><dd><p>Внутри несколько частей, у каждой своя задача.</p><p class="gl-more"><a href="encyclopedia/rabota-s-chastyami-ifs.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-peer" data-t="равный консультант"><dt>Равный консультант <span class="gl-src">атлас</span></dt><dd><p>Человек, который помогает на основе собственного пережитого опыта: болезни, зависимости, утраты.</p></dd></div>
+<div class="gl-term" id="term-resource" data-t="ресурс"><dt>Ресурс <span class="gl-src">атлас</span></dt><dd><p>Что можно получить от специалиста: диагноз, лечение или рецепт, официальный документ, план, обучение навыкам, эмоциональную поддержку, практическое действие, связи и контакты.</p></dd></div>
+<div class="gl-term" id="term-retro" data-t="ретро"><dt>Ретро</dt><dd><p>Регулярный обзор прошедшего периода: что произошло, что сработало, что изменилось и что из этого следует.</p><p class="gl-more"><a href="encyclopedia/lichnye-retrospektivy.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-ritual" data-t="ритуал"><dt>Ритуал</dt><dd><p>Повторяемая последовательность, которая помогает войти в нужное состояние или завершить переход между состояниями.</p><p class="gl-more"><a href="encyclopedia/ritualy.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-ritualy" data-t="ритуалы"><dt>Ритуалы <span class="kb-state">черновик</span></dt><dd><p>Действие с намерением. Конструктор из пяти деталей.</p><p class="gl-more"><a href="encyclopedia/ritualy.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-С" data-g="С"><h2 class="gl-letter">С</h2><dl class="gl-list">
+<div class="gl-term" id="term-samosostradanie" data-t="самосострадание"><dt>Самосострадание <span class="kb-state">черновик</span></dt><dd><p>Относиться к себе так, как к близкому другу в беде.</p><p class="gl-more"><a href="encyclopedia/samosostradanie.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-family" data-t="семья специалистов"><dt>Семья специалистов <span class="gl-src">атлас</span></dt><dd><p>Группа специалистов, которые отвечают за одну сферу жизни. В атласе их десять плюс внешнее кольцо «Опора для помогающих».</p></dd></div>
+<div class="gl-term" id="term-silnye-storony-via" data-t="сильные стороны via"><dt>Сильные стороны VIA <span class="kb-state">черновик</span></dt><dd><p>24 сильные стороны характера, бесплатный тест.</p><p class="gl-more"><a href="encyclopedia/silnye-storony-via.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-sistematicheskaya-desensibilizatsiya" data-t="систематическая десенсибилизация"><dt>Систематическая десенсибилизация</dt><dd><p>Постепенная встреча со страшным в сочетании с релаксацией (тревога и расслабление несовместимы).</p></dd></div>
+<div class="gl-term" id="term-stupenchataya-pomoshch" data-t="ступенчатая помощь"><dt>Ступенчатая помощь <span class="kb-state">черновик</span></dt><dd><p>Сначала самое простое достаточное, потом выше, если не хватает.</p><p class="gl-more"><a href="encyclopedia/stupenchataya-pomoshch.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-sublimatsiya" data-t="сублимация"><dt>Сублимация</dt><dd><p>Запретный импульс направляется в социально приемлемое дело (спорт, творчество). В классификациях защит по зрелости её относят к зрелым; что она «здоровее» других защит, исследованиями не подтверждено.</p></dd></div>
+<div class="gl-term" id="term-supervision" data-t="супервизия"><dt>Супервизия <span class="gl-src">атлас</span></dt><dd><p>Регулярный разбор работы специалиста с более опытным коллегой. Признак профессионального отношения к помощи.</p></dd></div>
+<div class="gl-term" id="term-skhema-terapiya" data-t="схема терапия"><dt>Схема-терапия</dt><dd><p>Терапия Джеффри Янга: соединяет когнитивно-поведенческие приёмы с идеями теории привязанности, психодинамики и гештальта. Работа с ранними «схемами» (устойчивыми убеждениями о себе и мире) и «режимами» (частями «Я»), ролевые игры.</p><p class="gl-more"><a href="encyclopedia/skhema-terapiya.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Т" data-g="Т"><h2 class="gl-letter">Т</h2><dl class="gl-list">
+<div class="gl-term" id="term-transgeneratsionnyy-podkhod" data-t="трансгенерационный подход"><dt>Трансгенерационный подход <span class="kb-state">черновик</span></dt><dd><p>Идея, что события предков повторяются в жизни потомков.</p><p class="gl-more"><a href="encyclopedia/transgeneratsionnyy-podkhod.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-У" data-g="У"><h2 class="gl-letter">У</h2><dl class="gl-list">
+<div class="gl-term" id="term-level" data-t="уровень"><dt>Уровень <span class="gl-src">атлас</span></dt><dd><p>На чём держится помощь специалиста в России: опыт, практика, профессия или полномочия.</p></dd></div>
+<div class="gl-term" id="term-unverified" data-t="уровень проверки"><dt>Уровень проверки <span class="gl-src">атлас</span></dt><dd><p>Насколько надёжно проверена карточка: высокий (до 2 непроверенных утверждений), средний (3–5), низкий (6 и больше). Непроверенное в тексте помечено <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></dd></div>
+<div class="gl-term" id="term-ustnaya-istoriya-semi" data-t="устная история семьи"><dt>Устная история семьи <span class="kb-state">черновик</span></dt><dd><p>Записанные разговоры со старшими: пока есть кого спросить.</p><p class="gl-more"><a href="encyclopedia/ustnaya-istoriya-semi.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Ф" data-g="Ф"><h2 class="gl-letter">Ф</h2><dl class="gl-list">
+<div class="gl-term" id="term-fazy-gorya-kast" data-t="фазы горя каст"><dt>Фазы горя (Каст)</dt><dd><p>Неприятие → взрыв эмоций → поиск и расставание → новые смыслы. Сопровождающий не подавляет чувства и не торопит.</p><p class="gl-more"><a href="encyclopedia/fazy-gorya-po-kast.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Х" data-g="Х"><h2 class="gl-letter">Х</h2><dl class="gl-list">
+<div class="gl-term" id="term-character" data-t="характер помощи"><dt>Характер помощи <span class="gl-src">атлас</span></dt><dd><p>Что происходит в работе: поддержка и практическая помощь, сопровождение и консультирование, терапия, лечение и медицинский уход. Это ярлык, а не шкала качества. «Терапия» здесь — название метода помощи, а не лечение болезни.</p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Ц" data-g="Ц"><h2 class="gl-letter">Ц</h2><dl class="gl-list">
+<div class="gl-term" id="term-tsennosti-v-act" data-t="ценности в act"><dt>Ценности в ACT <span class="kb-state">черновик</span></dt><dd><p>Ценности как направление, а не цель, которую можно достичь.</p><p class="gl-more"><a href="encyclopedia/tsennosti-v-act.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-Э" data-g="Э"><h2 class="gl-letter">Э</h2><dl class="gl-list">
+<div class="gl-term" id="term-ekspressivnoe-pismo" data-t="экспрессивное письмо"><dt>Экспрессивное письмо <span class="kb-state">черновик</span></dt><dd><p>Писать о трудном 15–20 минут несколько дней подряд.</p><p class="gl-more"><a href="encyclopedia/ekspressivnoe-pismo.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-enneagramma" data-t="эннеаграмма"><dt>Эннеаграмма <span class="kb-state">черновик</span></dt><dd><p>Девять типов личности. Популярна, но спорна.</p><p class="gl-more"><a href="encyclopedia/enneagramma.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+<section class="gl-group" id="g-lat" data-g="lat"><h2 class="gl-letter">A–Z</h2><dl class="gl-list">
+<div class="gl-term" id="term-cliftonstrengths" data-t="cliftonstrengths"><dt>CliftonStrengths <span class="kb-state">черновик</span></dt><dd><p>34 темы сильных сторон: что даётся естественно.</p><p class="gl-more"><a href="encyclopedia/cliftonstrengths.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-emdr-dpdg" data-t="emdr дпдг"><dt>EMDR / ДПДГ</dt><dd><p>Десенсибилизация и переработка движением глаз — метод травматерапии; требует отдельного обучения.</p><p class="gl-more"><a href="encyclopedia/emdr-dpdg.html">Читать в энциклопедии →</a></p></dd></div>
+<div class="gl-term" id="term-woop" data-t="woop"><dt>WOOP <span class="kb-state">черновик</span></dt><dd><p>Желание, результат, препятствие, план.</p><p class="gl-more"><a href="encyclopedia/woop.html">Читать в энциклопедии →</a></p></dd></div>
+</dl></section>
+      </div>
+      <div class="kb-none gl-none" id="gl-none" hidden><p class="kb-none-t">Такого слова в словаре нет.</p><p class="kb-hint">Ближе всего: <a href="knowledge.html">поиск по всей базе</a> · <a href="#telegram" data-tg>написать в Telegram, чего не хватает</a></p></div>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p><p class="kb-fix">Заметили ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ===== ПОДВАЛ v2: один на все страницы (тексты — texts/v2/00-footer.md, двери — 01-home-v5.md). Не менять текст на страницах. ===== -->
+<footer class="site-foot site-foot--v2" data-field="off">
+  <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
+  <div class="frame foot-grid">
+    <div class="foot-care-col" id="not-yet">
+      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+    </div>
+    <nav class="foot-doors" aria-label="Все разделы сайта">
+      <div class="foot-group">
+        <p class="label">База знаний</p>
+        <ul>
+          <li><a href="practices.html">Практики</a></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="knowledge.html">Вся база знаний</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="how.html">Как устроена база</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Работа со мной</p>
+        <ul>
+          <li><a href="program.html">«Переход»</a></li>
+          <li><a href="new-season.html">«Новый сезон»</a></li>
+          <li><a href="talk.html">Разговор</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Проект</p>
+        <ul>
+          <li><a href="project.html">О проекте</a></li>
+          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html#method">Почему через историю</a></li>
+          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="privacy.html">Данные и приватность</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="frame foot-base">
+    <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
+    <div class="foot-line">
+      <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
+      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* Waykeeper · «Колесо контекстов» · префикс wh-
+   Токены берутся со страницы (скетч v3); в скобках — запасные значения. */
+
+.wh{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,470px); grid-template-areas:"in fig" "focus fig" "foot foot";
+  column-gap:56px; align-items:start;
+  color:var(--ink,#0F1722);
+  font:400 var(--s4,16px)/1.6 var(--f-text,'Onest',system-ui,sans-serif);
+}
+.wh--panel{
+  padding:44px; border-radius:22px;
+  background:var(--glass,rgba(255,255,255,.56));
+  -webkit-backdrop-filter:blur(18px) saturate(1.3); backdrop-filter:blur(18px) saturate(1.3);
+  border:1px solid rgba(15,23,34,.07);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 22px 44px -28px rgba(15,23,34,.22);
+}
+.wh p{margin:0}
+.wh input,.wh button{font:inherit; color:inherit}
+.wh input::placeholder{color:rgba(15,23,34,.34); opacity:1}
+.wh-in{grid-area:in}
+.wh-fig{grid-area:fig; margin:0; position:sticky; top:24px}
+.wh-focus{grid-area:focus}
+.wh-foot{grid-area:foot}
+
+/* ---------- сферы ---------- */
+.wh-list{list-style:none; margin:0; padding:0}
+.wh-row{display:grid; grid-template-columns:minmax(0,1fr) 168px 22px 64px 32px; column-gap:16px; align-items:center; min-height:56px}
+.wh-nm{width:100%; min-width:0; padding:7px 0 6px; border:0; border-bottom:1px solid var(--line-2,rgba(15,23,34,.20)); background:transparent; outline:none; transition:border-color .2s}
+.wh-nm:focus{border-bottom-color:var(--ink,#0F1722)}
+
+.wh-sl{position:relative; height:36px; cursor:pointer; touch-action:pan-y; outline:none; -webkit-tap-highlight-color:transparent}
+.wh-track{position:absolute; left:7px; right:7px; top:50%; height:1px; background:var(--line-2,rgba(15,23,34,.20))}
+.wh-ticks i{position:absolute; top:4px; width:1px; height:4px; background:rgba(15,23,34,.18)}
+.wh-ticks i.wh-t5{height:7px; background:rgba(15,23,34,.30)}
+.wh-fill{position:absolute; left:0; top:0; height:1px; width:var(--p,0%); background:var(--ink,#0F1722); opacity:.7; transition:width .12s}
+.wh-thumb{position:absolute; left:var(--p,0%); top:0; width:13px; height:13px; margin:-6.5px 0 0 -6.5px; box-sizing:border-box;
+  border-radius:50%; background:#fff; border:1px solid var(--ink,#0F1722); box-shadow:0 2px 6px -2px rgba(15,23,34,.28);
+  transition:left .12s, transform .2s, box-shadow .2s, opacity .2s}
+.wh-sl.is-empty .wh-thumb{opacity:0}
+.wh-sl.is-empty:hover .wh-thumb{opacity:.3}
+.wh-sl:focus-visible .wh-thumb{opacity:1; box-shadow:0 0 0 5px rgba(15,23,34,.10), 0 2px 6px -2px rgba(15,23,34,.28)}
+.wh-sl:focus-visible .wh-track{background:rgba(15,23,34,.34)}
+.wh-sl.is-drag .wh-thumb{transform:scale(1.3)}
+.wh-sl.is-drag .wh-fill{transition:none}
+.wh-val{font:400 var(--s3,21px)/1 var(--f-head,'Spectral',Georgia,serif); text-align:right; font-variant-numeric:lining-nums tabular-nums}
+
+.wh-fb{display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 2px 0 6px; border:0; background:none; cursor:pointer;
+  font-size:var(--s5,13px); color:rgba(15,23,34,.42); transition:color .2s}
+.wh-fb i{width:7px; height:7px; box-sizing:border-box; border-radius:50%; border:1px solid rgba(15,23,34,.32); transition:background .2s, border-color .2s}
+/* слово «фокус» видно всегда: пустой кружок без слова читался как «0» рядом с оценкой (01-user.md, п. 4) */
+.wh-fb span{opacity:1}
+.wh-fb:hover{color:var(--ink,#0F1722)}
+.wh-fb:hover i{border-color:var(--ink,#0F1722)}
+.wh-fb[aria-pressed="true"]{color:var(--ink,#0F1722)}
+.wh-fb[aria-pressed="true"] i{background:var(--accent,#EA5F22); border-color:var(--accent,#EA5F22)}
+.wh-x{width:32px; height:44px; padding:0; border:0; background:none; cursor:pointer; font-size:var(--s3,21px); line-height:1; color:rgba(15,23,34,.38); transition:color .2s}
+.wh-x:hover{color:var(--ink,#0F1722)}
+.wh-x:disabled{visibility:hidden}
+.wh-fb:focus-visible,.wh-x:focus-visible,.wh-add:focus-visible,.wh-clear:focus-visible,.wh-link:focus-visible{outline:2px solid var(--ink,#0F1722); outline-offset:2px; border-radius:6px}
+
+.wh-add{margin-top:10px; min-height:44px; padding:0; border:0; background:none; cursor:pointer; color:var(--ink-2,rgba(15,23,34,.78));
+  text-decoration:underline; text-decoration-color:var(--line-2,rgba(15,23,34,.20)); text-underline-offset:4px}
+.wh-add:hover{color:var(--ink,#0F1722); text-decoration-color:var(--ink,#0F1722)}
+
+/* ---------- колесо ---------- */
+.wh-svg{display:block; width:100%; height:auto; overflow:visible; touch-action:pan-y; user-select:none; -webkit-user-select:none}
+.wh-svg.is-hot,.wh-svg.is-drag{cursor:pointer}
+.wh-rim{fill:none; stroke:var(--line-2,rgba(15,23,34,.20)); stroke-width:1}
+.wh-ray{stroke:rgba(15,23,34,.16); stroke-width:1}
+.wh-tk{stroke:rgba(15,23,34,.20); stroke-width:1}
+.wh-tk5{stroke:rgba(15,23,34,.34)}
+.wh-hub{fill:rgba(15,23,34,.4)}
+.wh-poly{fill:rgba(15,23,34,.035); stroke:var(--ink,#0F1722); stroke-opacity:.72; stroke-width:1; stroke-linejoin:round; transition:none}
+.wh-poly--open{fill:none}
+.wh-dot{fill:#fff; stroke:var(--ink,#0F1722); stroke-width:1}
+.wh-dot.is-f{fill:var(--accent,#EA5F22); stroke:var(--accent,#EA5F22)}
+.wh-lb{font:400 var(--s5,13px) var(--f-text,'Onest',sans-serif); fill:var(--ink-2,rgba(15,23,34,.78))}
+.wh--small .wh-lb,.wh--small .wh-empty{font-size:var(--s3,21px)}
+.wh-empty{font:400 var(--s5,13px) var(--f-text,'Onest',sans-serif); fill:var(--ink-3,rgba(15,23,34,.62))}
+.wh-cap{display:flex; justify-content:center; gap:20px; margin-top:6px; font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.wh-link{color:var(--ink-2,rgba(15,23,34,.78)); text-decoration:underline; text-decoration-color:var(--line-2,rgba(15,23,34,.20)); text-underline-offset:3px}
+.wh-link:hover{color:var(--ink,#0F1722); text-decoration-color:var(--ink,#0F1722)}
+
+/* ---------- фокус ---------- */
+.wh-focus{margin-top:40px}
+.wh-note{font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.wh-fq + .wh-fq{margin-top:32px}
+.wh-fh{margin:0 0 4px; font:400 var(--s3,21px)/1.3 var(--f-head,'Spectral',Georgia,serif)}
+.wh-q{display:block; margin-top:12px}
+.wh-q span{display:block; font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.wh-in-t{width:100%; min-width:0; padding:7px 0 6px; border:0; border-bottom:1px solid var(--line-2,rgba(15,23,34,.20)); background:transparent; outline:none; transition:border-color .2s}
+.wh-in-t:focus{border-bottom-color:var(--ink,#0F1722)}
+
+.wh-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.wh-foot{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-top:40px; padding-top:14px; border-top:1px solid var(--line,rgba(15,23,34,.10));
+  font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.wh-clear{min-height:44px; padding:0; border:0; background:none; cursor:pointer; font:inherit; color:var(--ink-2,rgba(15,23,34,.78));
+  text-decoration:underline; text-decoration-color:var(--line-2,rgba(15,23,34,.20)); text-underline-offset:3px}
+.wh-clear:hover{color:var(--ink,#0F1722); text-decoration-color:var(--ink,#0F1722)}
+
+/* ---------- узкий ноутбук ---------- */
+@media (max-width:1080px){
+  .wh{grid-template-columns:minmax(0,1fr) minmax(0,400px); column-gap:36px}
+  .wh-row{grid-template-columns:minmax(0,1fr) 132px 22px 64px 28px; column-gap:12px}
+}
+
+/* ---------- телефон: колесо сверху, ползунки под ним ---------- */
+@media (max-width:760px){
+  .wh{display:flex; flex-direction:column; align-items:stretch}
+  .wh--panel{padding:24px 20px; border-radius:18px}
+  .wh-fig{position:relative; top:auto; order:-1; width:100%; margin:0 0 24px}
+  .wh-in,.wh-focus{width:100%}
+  .wh-row{grid-template-columns:minmax(0,1fr) 64px 32px; grid-template-rows:auto auto; column-gap:8px; padding-top:6px}
+  .wh-row > .wh-nm{grid-column:1; grid-row:1}
+  .wh-row > .wh-fb{grid-column:2; grid-row:1}
+  .wh-row > .wh-x{grid-column:3; grid-row:1}
+  .wh-row > .wh-sl{grid-column:1 / 3; grid-row:2; height:44px}
+  .wh-row > .wh-val{grid-column:3; grid-row:2; text-align:center}
+  .wh-foot{flex-direction:column; gap:6px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .wh *,.wh *::before,.wh *::after{transition:none !important; animation:none !important}
+}

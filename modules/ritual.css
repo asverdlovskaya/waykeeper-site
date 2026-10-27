@@ -1,0 +1,95 @@
+/* Waykeeper · «Собрать один ритуал» · префикс rt-
+   Токены берутся со страницы (скетч v3); в скобках — запасные значения. */
+
+.rt{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,440px); grid-template-areas:"form side" "foot foot";
+  column-gap:64px; align-items:start;
+  color:var(--ink,#0F1722);
+  font:400 var(--s4,16px)/1.6 var(--f-text,'Onest',system-ui,sans-serif);
+}
+.rt--panel{
+  padding:44px; border-radius:22px;
+  background:var(--glass,rgba(255,255,255,.56));
+  -webkit-backdrop-filter:blur(18px) saturate(1.3); backdrop-filter:blur(18px) saturate(1.3);
+  border:1px solid rgba(15,23,34,.07);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 22px 44px -28px rgba(15,23,34,.22);
+}
+.rt p{margin:0}
+.rt input,.rt textarea,.rt button{font:inherit; color:inherit}
+.rt-ta{display:block; resize:none; overflow:hidden; line-height:1.6}
+.rt input::placeholder,.rt textarea::placeholder{color:rgba(15,23,34,.34); opacity:1}
+.rt-form{grid-area:form}
+.rt-side{grid-area:side; position:sticky; top:24px}
+.rt-foot{grid-area:foot}
+
+/* ---------- форма ---------- */
+.rt-f{display:block}
+.rt-f + .rt-f{margin-top:22px}
+.rt-f > span{display:block; font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.rt-f > span em{display:inline-block; min-width:18px; font-style:normal; color:rgba(15,23,34,.40); font-variant-numeric:tabular-nums}
+.rt-f > span small{font-size:inherit}
+.rt-f--name > span{padding-left:0}
+.rt-in{width:100%; min-width:0; padding:7px 0 6px; border:0; border-bottom:1px solid var(--line-2,rgba(15,23,34,.20)); background:transparent; outline:none; transition:border-color .2s}
+.rt-in:focus{border-bottom-color:var(--ink,#0F1722)}
+.rt-f--name .rt-in{font:300 var(--s3,21px)/1.3 var(--f-head,'Spectral',Georgia,serif)}
+.rt-f--name{margin-bottom:34px}
+
+/* ---------- карточка ---------- */
+.rt-card{
+  padding:34px 34px 26px; border-radius:16px;
+  background:rgba(255,255,255,.86); border:1px solid var(--line-2,rgba(15,23,34,.20));
+  box-shadow:0 1px 2px rgba(15,23,34,.03), 0 22px 44px -30px rgba(15,23,34,.22);
+}
+.rt-ct{margin:0 0 22px; font:300 var(--s2,34px)/1.15 var(--f-head,'Spectral',Georgia,serif); letter-spacing:-.01em; overflow-wrap:anywhere}
+.rt-ct.is-empty{color:rgba(15,23,34,.28)}
+.rt-dl{margin:0}
+.rt-dl > div{padding:12px 0; border-top:1px solid var(--line,rgba(15,23,34,.10))}
+.rt-dl dt{font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.rt-dl dd{margin:2px 0 0; font:400 var(--s3,21px)/1.35 var(--f-head,'Spectral',Georgia,serif); overflow-wrap:anywhere}
+.rt-dl dd.is-empty{color:rgba(15,23,34,.22)}
+.rt-cn{margin-top:14px !important; padding-top:14px; border-top:1px solid var(--line,rgba(15,23,34,.10)); font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+
+.rt-acts{margin-top:18px}
+.rt-btn{display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0 20px; border-radius:999px;
+  border:1px solid var(--line-2,rgba(15,23,34,.20)); background:rgba(255,255,255,.6); cursor:pointer; font-weight:500; transition:background .2s, border-color .2s}
+.rt-btn:hover{background:#fff; border-color:rgba(15,23,34,.36)}
+.rt-btn:active{transform:translateY(1px)}
+
+.rt-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.rt-foot{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-top:40px; padding-top:14px; border-top:1px solid var(--line,rgba(15,23,34,.10));
+  font-size:var(--s5,13px); line-height:1.45; color:var(--ink-3,rgba(15,23,34,.62))}
+.rt-clear{min-height:32px; padding:0; border:0; background:none; cursor:pointer; font:inherit; color:var(--ink-2,rgba(15,23,34,.78));
+  text-decoration:underline; text-decoration-color:var(--line-2,rgba(15,23,34,.20)); text-underline-offset:3px}
+.rt-clear:hover{color:var(--ink,#0F1722); text-decoration-color:var(--ink,#0F1722)}
+.rt-btn:focus-visible,.rt-clear:focus-visible{outline:2px solid var(--ink,#0F1722); outline-offset:3px}
+
+@media (max-width:1080px){ .rt{grid-template-columns:minmax(0,1fr) minmax(0,380px); column-gap:40px} }
+@media (max-width:760px){
+  .rt{display:flex; flex-direction:column; align-items:stretch}
+  .rt--panel{padding:24px 20px; border-radius:18px}
+  .rt-side{position:relative; top:auto; margin-top:40px}
+  .rt-card{padding:26px 22px 20px}
+  .rt-foot{flex-direction:column; gap:6px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .rt *,.rt *::before,.rt *::after{transition:none !important; animation:none !important}
+}
+
+/* ---------- печать: только карточка, по центру листа, можно вырезать ---------- */
+.wk-print-sheet{display:none}
+@media print{
+  @page{margin:16mm}
+  html.wk-print,html.wk-print body{background:#fff !important}
+  html.wk-print body > *:not(.wk-print-sheet){display:none !important}
+  html.wk-print .wk-print-sheet{display:block}
+  .rt-print{padding-top:10mm; color:#0F1722; font:400 12pt/1.5 var(--f-text,'Onest',system-ui,sans-serif)}
+  .rt-print .rt-card{width:120mm; margin:0 auto; padding:9mm 9mm 7mm; border:.3mm solid #9AA0A6; border-radius:4mm; background:#fff; box-shadow:none; break-inside:avoid}
+  .rt-print .rt-ct{margin:0 0 5mm; font:300 24pt/1.15 var(--f-head,'Spectral',Georgia,serif)}
+  .rt-print .rt-dl{margin:0}
+  .rt-print .rt-dl > div{padding:2.6mm 0; border-top:.2mm solid #D5D8DC}
+  .rt-print .rt-dl dt{font-size:8.5pt; color:#5F646B}
+  .rt-print .rt-dl dd{margin:.6mm 0 0; font:400 14pt/1.35 var(--f-head,'Spectral',Georgia,serif)}
+  .rt-print .rt-dl dd.is-empty{color:#C9CCD0}
+  .rt-print .rt-cn{margin:3mm 0 0; padding-top:3mm; border-top:.2mm solid #D5D8DC; font-size:8.5pt; color:#5F646B}
+}

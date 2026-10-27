@@ -1,0 +1,192 @@
+/* =====================================================================
+   Waykeeper · главная (index.html) · стили страницы, префикс hm-
+   Тексты — из пятой версии главной. Слой v2: site-v2.css (не правим).
+   Порядок: 1 первый экран · 2 для кого · 3 ситуации · 4 база знаний ·
+   5 работа со мной (другой материал) · 6 о проекте (маршрут) ·
+   7 кто это делает (фото Саши) · 8 с чего начать
+   ===================================================================== */
+
+/* ---------- 1. Первый экран ---------- */
+.hm-cover .cover-title{grid-column:1 / span 7}
+.hm-cover .cover-title em{display:block; font-size:var(--s2); line-height:1.2; margin-top:var(--sp-2); color:var(--ink-2)}
+.hm-cover .cover-text{grid-column:1 / span 5}
+.hm-cover .lede-em{max-width:24em}
+.hm-cover .cover-aside{grid-column:8 / -1}
+/* картина первого экрана — .plate-alive (site-v2.css, 16): целиком, края растворены, проступает из поля */
+.hm-cover .cover-aside{display:flex; align-items:flex-start; justify-content:flex-end}
+.hm-plate{position:relative; z-index:1}
+/* сцена «Хаос собирается»: невидимые точки-притяжения стягиваются вокруг листа и остаются у его растворённых краёв */
+.hm-stage{position:absolute; top:-40px; bottom:20px; left:-12%; right:-2%; pointer-events:none; z-index:-1}
+.hm-zone{position:absolute; inset:0}
+.hm-gather{position:absolute; inset:0}
+.hm-gather span{position:absolute; left:0; top:0; width:0; height:0}
+@media (max-width:1024px){
+  .hm-cover .cover-text{grid-column:1 / span 9}
+  .hm-cover .cover-aside{grid-column:1 / -1; margin-top:var(--sp-5)}
+}
+@media (max-width:760px){
+  .hm-cover .cover-aside{margin:0 0 var(--sp-5); justify-content:center}
+  .hm-plate{--pa-h:420px}
+  .hm-stage{left:0; right:0; top:-24px; bottom:0}
+}
+
+/* общий большой заголовок раздела главной (между H2 и дисплеем) */
+.hm-h{font:300 var(--s2)/1.15 var(--f-head); letter-spacing:-.01em; margin:0; text-wrap:balance}
+.hm-h em{font-style:normal}
+
+/* ---------- 2. Для кого ---------- */
+.hm-who-intro .hm-h{position:sticky; top:calc(var(--head-h) + var(--sp-5))}
+.hm-who-intro .prose p:first-child{font:300 var(--s3)/1.5 var(--f-head); color:var(--ink)}
+.hm-who-intro .prose{max-width:38rem}
+.hm-parts-lead{margin-top:var(--sp-7); color:var(--ink)}
+.hm-parts{list-style:none; margin:var(--sp-4) 0 0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:var(--col-gap)}
+.hm-part{position:relative; display:flex; flex-direction:column; gap:var(--sp-3); height:100%; min-height:44px; padding:var(--sp-5) var(--sp-5) var(--sp-5) 0; border-top:1px solid var(--ink-2);
+  color:var(--ink); text-decoration:none}
+.hm-part-t{font:400 var(--s4)/1.5 var(--f-text); color:var(--ink-2)}
+.hm-part-t b{font:300 var(--s3)/1.3 var(--f-head); color:var(--ink); display:block; margin-bottom:4px}
+.hm-part::after{content:"↓"; position:absolute; right:4px; top:var(--sp-5); color:var(--ink-3); transition:transform .4s var(--ease), color .2s}
+.hm-part:hover::after,.hm-part:focus-visible::after{transform:translateY(4px); color:var(--ink)}
+.hm-part--work{border-top-style:double; border-top-width:3px}
+.hm-parts-choose{margin-top:var(--sp-5); font:300 var(--s3)/1.4 var(--f-head); color:var(--ink)}
+@media (max-width:760px){ .hm-parts{grid-template-columns:1fr; gap:0} .hm-who-intro .hm-h{position:static} }
+
+/* ---------- 3. Ситуации ---------- */
+.hm-sit-head{align-items:end}
+.hm-sit-head .hm-sit-note{color:var(--ink-3); font-size:var(--s5); justify-self:end; text-align:right}
+.hm-sit .index-m{min-width:11em; text-align:right}
+.hm-deep{margin-top:var(--sp-7)}
+.hm-deep .lede-em{max-width:26em; font-style:normal}
+.hm-deep p + p{margin-top:var(--sp-4); color:var(--ink-2); max-width:var(--measure)}
+.hm-notyet{margin-top:var(--sp-5)}
+.hm-notyet a{display:inline-flex; align-items:center; min-height:44px; color:var(--ink-2); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:4px}
+.hm-notyet a:hover{color:var(--ink); text-decoration-color:var(--ink)}
+@media (max-width:760px){ .hm-sit .index-m{min-width:0; text-align:left} .hm-sit-head .hm-sit-note{justify-self:start; text-align:left} }
+
+/* ---------- 4. База знаний ---------- */
+.hm-kb .band-head{align-items:end}
+.hm-kb-search{margin-top:var(--sp-5)}
+.hm-kb .kb-hint{max-width:40rem}
+.hm-kb .tile-n{margin-right:auto; margin-left:var(--sp-3); font:400 var(--s5)/1.4 var(--f-text); color:var(--ink-3); font-variant-numeric:tabular-nums}
+.hm-kb-all{margin-top:var(--sp-7); display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-2) var(--sp-4)}
+.hm-kb-all .link{display:inline-flex; align-items:center; min-height:44px}
+.hm-kb-sep{color:var(--ink-3)}
+
+/* ---------- 5. Работа со мной: другой материал — лист потемнее, сетка координат, листы лежат на столе ---------- */
+.hm-work{position:relative; isolation:isolate; margin-top:var(--section); padding:var(--sp-9) 0; background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.hm-work-head{align-items:end}
+.hm-work-head p{color:var(--ink-2); max-width:34rem}
+.hm-work-head .hm-about{margin-top:var(--sp-4)}
+.hm-about a{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line-2)}
+.hm-about a:hover{border-color:var(--ink)}
+.hm-work .tiles{margin-top:var(--sp-7); align-items:stretch}
+.hm-work .tile--product{background:var(--page)}
+.hm-work .tile--product.hm-prog{grid-column:span 7}
+.hm-work .tile--product.hm-season{grid-column:span 5}
+.hm-work .tile--product .tile-view{height:clamp(240px, 27vw, 420px)}
+.hm-prog .tile-view img{object-position:50% 70%}
+.hm-season .tile-view img{object-position:30% 50%}
+.hm-work .tile-view figcaption{position:absolute; left:var(--sp-4); bottom:var(--sp-3); font-size:var(--s5); color:var(--ink-2); background:color-mix(in srgb, var(--page) 86%, transparent); padding:2px 8px; border-radius:2px}
+/* с чего всё начинается: стартовая точка маршрута под карточками */
+.hm-talk{position:relative; display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); align-items:center;
+  margin-top:var(--sp-7); padding:var(--sp-6) 0 0; border-top:1px dashed var(--line-2)}
+.hm-talk-mark{grid-column:1 / span 2; display:flex; align-items:center; gap:var(--sp-3)}
+.hm-talk-mark i{display:block; width:14px; height:14px; border-radius:50%; border:1px solid var(--ink); background:var(--page); box-shadow:0 0 0 5px var(--line)}
+.hm-talk-mark i + i{width:6px; height:6px; border:0; background:var(--ink-3); box-shadow:none}
+.hm-talk-mark i + i + i{opacity:.6}
+.hm-talk-mark i + i + i + i{opacity:.35}
+.hm-talk p{grid-column:3 / span 6; font:300 var(--s3)/1.45 var(--f-head); color:var(--ink); max-width:34em}
+.hm-talk .hm-talk-go{grid-column:10 / -1; justify-self:end; font:400 var(--s4)/1.4 var(--f-text)}
+@media (max-width:1024px){
+  .hm-work .tile--product.hm-prog,.hm-work .tile--product.hm-season{grid-column:1 / -1}
+  .hm-talk p{grid-column:3 / -1}
+  .hm-talk .hm-talk-go{grid-column:3 / -1; justify-self:start; margin-top:var(--sp-3)}
+}
+@media (max-width:760px){
+  .hm-work{padding:var(--sp-8) 0}
+  .hm-work .tile--product .tile-view{height:220px}
+  .hm-talk{display:block}
+  .hm-talk-mark{margin-bottom:var(--sp-4)}
+}
+
+/* ---------- 6. О проекте: маршрут с вехами ---------- */
+.hm-project > .frame.hm-route-frame{display:block}
+.hm-project .band-main .prose p{color:var(--ink)}
+.hm-route{list-style:none; margin:var(--sp-8) 0 0; padding:0; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); column-gap:var(--col-gap); position:relative}
+.hm-route::before{content:""; position:absolute; left:0; right:0; top:7px; height:1px;
+  background:linear-gradient(90deg, var(--ink-2) 0 38%, transparent 38%), repeating-linear-gradient(90deg, var(--ink-3) 0 6px, transparent 6px 12px)}
+.hm-stop{position:relative; padding-top:var(--sp-6); padding-right:var(--sp-4)}
+.hm-stop::before{content:""; position:absolute; left:0; top:0; width:15px; height:15px; box-sizing:border-box; border-radius:50%; border:1px solid var(--ink); background:var(--page)}
+.hm-stop--now::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 6px color-mix(in srgb, var(--accent) 16%, transparent)}
+.hm-stop--par::before{background:var(--ink)}
+.hm-stop--later::before{border-style:dashed}
+.hm-stop-k{display:block; font:400 var(--s3)/1.2 var(--f-head); color:var(--ink); margin-bottom:var(--sp-3)}
+.hm-stop p{color:var(--ink-2)}
+.hm-project-go{margin-top:var(--sp-7)}
+@media (max-width:1024px){ .hm-route{grid-template-columns:repeat(2, minmax(0,1fr)); row-gap:var(--sp-7)} .hm-route::before{display:none} }
+@media (max-width:760px){
+  .hm-route{grid-template-columns:1fr; row-gap:0; margin-top:var(--sp-7)}
+  .hm-route::before{display:block; left:7px; right:auto; top:8px; bottom:8px; width:1px; height:auto;
+    background:linear-gradient(180deg, var(--ink-2) 0 30%, transparent 30%), repeating-linear-gradient(180deg, var(--ink-3) 0 6px, transparent 6px 12px)}
+  .hm-stop{padding:0 0 var(--sp-6) var(--sp-7)}
+}
+
+/* ---------- 7. Кто это делает: живое фото Саши (.plate-alive, site-v2.css 16): целиком, края растворены, не шире половины экрана ---------- */
+.hm-me{align-items:start}
+.hm-me-plate{width:min(100%, calc(var(--pa-h) * var(--pa-r)), 50vw)}
+.hm-me-text h2{margin-bottom:var(--h2-gap)}
+.hm-me-text .prose{max-width:36rem}
+.hm-me-text .lede-em{margin:var(--sp-6) 0; max-width:26em; font-style:normal}
+@media (max-width:1024px){ .hm-me-plate{--pa-h:min(52vh, 480px)} }
+@media (max-width:760px){ .hm-me-plate{--pa-h:min(56vh, 420px); margin:0 auto var(--sp-6)} }
+
+/* ---------- 8. С чего начать: три действия ---------- */
+.hm-acts{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); column-gap:var(--col-gap); margin-top:var(--head-gap)}
+.hm-act{display:flex; flex-direction:column; padding:var(--sp-5) var(--sp-6) var(--sp-6) 0; border-top:1px solid var(--ink-2)}
+.hm-act + .hm-act{padding-left:var(--sp-6); border-left:1px solid var(--line)}
+.hm-act-k{font:300 var(--s2)/1.15 var(--f-head); letter-spacing:-.01em; margin:0 0 var(--sp-4)}
+.hm-act > p{color:var(--ink-2); max-width:30em}
+.hm-act .hm-act-go{margin-top:auto; padding-top:var(--sp-5)}
+.hm-tries{list-style:none; margin:var(--sp-5) 0 0; padding:0; border-top:1px solid var(--line)}
+.hm-tries li{border-bottom:1px solid var(--line)}
+.hm-try{display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; column-gap:var(--sp-4); min-height:64px; padding:8px 0; color:var(--ink); text-decoration:none; transition:padding .45s var(--ease)}
+/* картина практики (assets/img/pd/practices/<slug>-1200.jpg), когда появится: <a class="hm-try has-art"><img …> */
+.hm-try.has-art{grid-template-columns:64px minmax(0,1fr) auto}
+.hm-try img{width:64px; height:64px; object-fit:cover; border-radius:var(--r-plate)}
+.hm-try-t{display:block; font:400 var(--s4)/1.3 var(--f-text)}
+.hm-try-d{display:block; font-size:var(--s5); line-height:1.4; color:var(--ink-3)}
+.hm-try-m{font:400 var(--s5)/1 var(--f-text); color:var(--ink-3); white-space:nowrap; font-variant-numeric:tabular-nums}
+.hm-try:hover,.hm-try:focus-visible{padding-left:8px}
+.hm-try:hover .hm-try-t{text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px}
+.hm-also{margin-top:var(--sp-8); padding-top:var(--sp-6); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); align-items:center}
+.hm-also p{grid-column:1 / span 8; font:300 var(--s3)/1.45 var(--f-head); color:var(--ink); max-width:38em}
+.hm-also p a{color:inherit; text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:4px; text-decoration-thickness:1px}
+.hm-also p a:hover{text-decoration-color:var(--ink)}
+.hm-also .hm-tg{grid-column:9 / -1; justify-self:end; max-width:22rem}
+.hm-also .hm-tg .actions{margin:0; justify-content:flex-end}
+.hm-also .hm-tg-note{grid-column:auto; margin-top:var(--sp-3); font:400 var(--s5)/1.5 var(--f-text); color:var(--ink-3); text-align:right; max-width:none}
+@media (max-width:1024px){
+  .hm-acts{grid-template-columns:1fr 1fr; row-gap:var(--sp-7)}
+  .hm-act--do{grid-column:1 / -1; padding-right:0}
+  .hm-act--do + .hm-act{padding-left:0; border-left:0}
+  .hm-also p{grid-column:1 / -1}
+  .hm-also .hm-tg{grid-column:1 / -1; justify-self:start; margin-top:var(--sp-5); max-width:34rem}
+  .hm-also .hm-tg .actions{justify-content:flex-start}
+  .hm-also .hm-tg-note{text-align:left}
+}
+@media (max-width:760px){
+  .hm-acts{grid-template-columns:1fr}
+  .hm-act,.hm-act + .hm-act{padding:var(--sp-5) 0 var(--sp-6); border-left:0}
+  .hm-also{display:block}
+}
+
+/* вид-карта главной (одна полоса-структура) */
+.hm-view{padding-top:var(--section)}
+/* «С чего начать»: заголовок слева, тихая картина справа над тремя действиями */
+.hm-start-head{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); align-items:end}
+.hm-start-head h2{grid-column:1 / span 5; padding-bottom:var(--sp-5)}
+.hm-start-plate{grid-column:6 / -1}
+@media (max-width:760px){ .hm-start-head{display:block} .hm-start-plate{margin-top:var(--sp-5); --pa-h:240px} }
+
+/* финальная проверка 26.10: точки-«маршрут» у строки про разговор читались как переключатель карусели — убраны
+   (разметка осталась; вернуть — удалить это правило) */
+.hm-talk-mark{display:none}

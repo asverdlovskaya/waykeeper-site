@@ -1,0 +1,149 @@
+/* ===== «Переход» · вёрстка v2 «Атлас на бумаге» · стили страницы, префикс pg- ===== */
+
+/* якоря не прячутся под краем окна */
+main section[id], .pg-weeks{scroll-margin-top:24px}
+
+/* ---- 1. первый экран: длинный заголовок — чуть меньше общего дисплея ---- */
+.pg-cover .cover-title{grid-column:1 / span 6}
+.pg-cover .cover-text{grid-column:1 / span 5; padding-bottom:var(--sp-6)}
+.pg-cover .cover-text .lede + .lede{margin-top:var(--sp-4)}
+.pg-cover .cover-text .rows.facts{margin-top:var(--sp-5)}
+.pg-cover .cover-text .actions{margin-top:var(--sp-5)}
+.pg-cover .cover-text .note{margin-top:var(--sp-4)}
+@media (max-width:1024px){
+  .pg-cover .cover-title{grid-column:1 / -1}
+  .pg-cover .cover-text{grid-column:1 / span 9}
+}
+@media (max-width:760px){
+  .pg-cover .cover-text .actions .btn{width:100%}
+}
+
+/* ---- модули choice и then-now: в центральных колонках сетки ---- */
+.cols > .pg-mod{grid-column:2 / span 10}
+.cols > .pg-mod--narrow{grid-column:3 / span 8}
+@media (max-width:1024px){ .cols > .pg-mod,.cols > .pg-mod--narrow{grid-column:1 / -1} }
+.pg-choice .ch-field{column-gap:clamp(32px, 6vw, 96px)}
+
+/* ---- виды между блоками ---- */
+.pg-viewband{padding-top:var(--section)}
+.pg-viewband + .band{padding-top:calc(var(--section) * .6)}
+
+/* ---- 3, 5, 7, 9. текстовые блоки ---- */
+.pg-text .list > li strong{color:var(--ink)}
+.pg-text .prose{max-width:var(--measure)}
+
+/* ---- 4. Тогда и сейчас: фон полосы — бумага; модуль сам рисует свою рамку ---- */
+.pg-tn .tn{margin:0 auto}
+
+/* ---- 8. чем отличается: семь карточек, напечатаны на странице ---- */
+.pg-cmp-grid{margin-top:var(--sp-2)}
+.pg-cmp .tile-title{margin-top:0}
+.pg-cmp p{color:var(--ink-2)}
+
+/* ---- 10. цена ---- */
+.pg-price{max-width:52rem}
+.pg-price-sum{font:300 var(--s2)/1.15 var(--f-head); letter-spacing:-.01em; color:var(--ink); padding-bottom:var(--sp-5); margin:0; border-bottom:1px solid var(--line)}
+.pg-price .rows{border-top:0}
+.pg-price .rows > div:last-child{border-bottom:0}
+.pg-price-cta{margin-top:var(--sp-6)}
+.pg-price-cta .note{margin-top:var(--sp-4)}
+
+/* ---- 11. вопросы ---- */
+.pg-faq{max-width:52rem}
+.pg-faq .fold-body{color:var(--ink-2)}
+
+/* колонка недель шире обычной: от 5-й колонки до края */
+.band--split .band-main.pg-wide{grid-column:5 / -1}
+.pg-wide .pg-intro,.pg-wide .pg-between{max-width:var(--measure)}
+.pg-wide .fold-body{max-width:var(--measure)}
+
+/* ---- 6. двенадцать недель ---- */
+.pg-facts{margin-top:var(--sp-3)}
+.pg-weeks{position:relative; max-width:none; --pg-strip-h:0px}
+.pg-intro{max-width:var(--measure); color:var(--ink-2); margin-top:var(--sp-6)}
+.pg-grp{margin-top:var(--sp-7)}
+.pg-grp > h3 + *{margin-top:var(--sp-3)}
+.pg-weeks .fold--week{scroll-margin-top:calc(var(--pg-strip-h) + var(--pg-head-h,68px) + 16px); position:relative}
+.pg-weeks .fold--week .fold-title{font:500 var(--s4)/1.45 var(--f-text)}
+.pg-wn{display:block; color:var(--ink-3); font-weight:400; font-size:var(--s5); line-height:1.45}
+/* «твоя» неделя — тёплая точка в строке */
+.pg-weeks .fold--week.pg-mine .fold-title::after{content:""; display:inline-block; width:7px; height:7px; margin:0 0 2px 12px; border-radius:50%; background:var(--accent); vertical-align:middle}
+/* инструменты: мелкая свёрнутая строка, названия не ссылки */
+/* зона нажатия 44 px, строка в раскрывашке не раздвигается (поля по -12 px сверху и снизу) */
+.pg-tools > summary{display:inline-flex; align-items:center; gap:8px; min-height:44px; margin:-12px 0; list-style:none; cursor:pointer; font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.pg-tools > summary::-webkit-details-marker{display:none}
+.pg-tools > summary::after{content:"+"; font-size:var(--s5)}
+.pg-tools[open] > summary::after{content:"−"}
+.pg-tools > summary:hover{color:var(--ink)}
+.pg-tools > p{margin-top:4px; font-size:var(--s5); line-height:1.45; color:var(--ink-2)}
+.pg-after{margin-top:var(--sp-7)}
+.pg-between{margin-top:var(--sp-8)}
+
+/* полоска из 12 точек (строится скриптом из списка недель).
+   Липнет под шапкой: --pg-head-h — высота шапки, скрипт меряет её сам; когда шапка уехала вверх — к краю окна */
+.pg-strip{position:sticky; top:var(--pg-head-h,68px); z-index:3; margin:var(--sp-6) 0 0; padding:32px 0 14px; transition:background .25s, box-shadow .25s, top .35s var(--ease)}
+html.head-hidden .pg-strip{top:0}
+.pg-strip.pg-stuck{background:rgba(250,248,243,.88); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); box-shadow:0 1px 0 var(--line)}
+.pg-track{position:relative; display:flex; gap:16px}
+.pg-seg{flex:var(--n) 1 0; min-width:0}
+.pg-dots{display:flex}
+/* точка 7 px, зона нажатия 44 px по высоте (невидимая) */
+.pg-dot{position:relative; flex:1 1 0; height:44px; margin:0; padding:0; border:0; background:none; cursor:pointer}
+.pg-dot::before{content:""; position:absolute; left:50%; top:50%; width:7px; height:7px; margin:-3.5px 0 0 -3.5px; border-radius:50%; background:rgba(15,23,34,.34); transition:background .25s, transform .25s}
+.pg-dot.pg-rest::before{width:11px; height:11px; margin:-5.5px 0 0 -5.5px; box-sizing:border-box; background:var(--page); border:1px solid rgba(15,23,34,.42)}
+/* неделя 11 — координата: кольцо с тонким крестом */
+.pg-dot.pg-coord::before{width:14px; height:14px; margin:-7px 0 0 -7px; box-sizing:border-box; background:var(--page); border:1px solid rgba(15,23,34,.55)}
+.pg-dot.pg-coord::after{content:""; position:absolute; left:50%; top:50%; width:24px; height:24px; margin:-12px 0 0 -12px; pointer-events:none;
+  background:linear-gradient(rgba(15,23,34,.5),rgba(15,23,34,.5)) center/24px 1px no-repeat, linear-gradient(rgba(15,23,34,.5),rgba(15,23,34,.5)) center/1px 24px no-repeat}
+.pg-dot:hover::before{transform:scale(1.3)}
+.pg-dot.pg-on::before{background:var(--ink)}
+.pg-dot.pg-rest.pg-on::before,.pg-dot.pg-coord.pg-on::before{background:var(--page); border-color:var(--ink)}
+.pg-dot.pg-mine::before{background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 5px rgba(234,95,34,.12)}
+.pg-dot.pg-coord.pg-mine::before{background:var(--page)}
+.pg-line,.pg-path{position:absolute; top:22px; height:0; pointer-events:none}
+.pg-line{border-top:1px solid var(--line-2)}
+.pg-path{border-top:1px dashed var(--accent); top:21.5px; opacity:.8}
+.pg-dots{position:relative; z-index:1}
+.pg-seg-label{display:block; margin-top:0; padding:0 4px; text-align:center; font-size:var(--s5); line-height:1.35; color:var(--ink-3)}
+/* подпись по наведению: название и время, одна за раз */
+.pg-tip{position:absolute; bottom:calc(100% - 12px); z-index:4; padding:7px 12px 8px; border-radius:var(--r-s); white-space:nowrap; pointer-events:none;
+  opacity:0; transform:translateY(4px); transition:opacity .18s, transform .18s}
+.pg-tip.is-on{opacity:1; transform:none}
+.pg-tip b{display:block; font-weight:500; font-size:var(--s4); line-height:1.3; color:var(--ink)}
+.pg-tip span{display:block; font-size:var(--s5); line-height:1.4; color:var(--ink-3)}
+
+@media (max-width:760px){
+  /* телефон: полоски нет, вертикальная линия слева от списка, точки напротив строк */
+  .pg-strip{display:none}
+  .pg-weeks .folds{position:relative; margin-left:30px}
+  .pg-weeks .folds::before{content:""; position:absolute; left:-23px; top:0; bottom:0; width:1px; background:var(--line-2)}
+  .pg-weeks .fold--week::before{content:""; position:absolute; left:-26.5px; top:27px; width:7px; height:7px; border-radius:50%; background:rgba(15,23,34,.34)}
+  .pg-weeks .fold--week.pg-rest::before{left:-28.5px; top:25px; width:11px; height:11px; box-sizing:border-box; background:var(--page); border:1px solid rgba(15,23,34,.42)}
+  .pg-weeks .fold--week.pg-coord::before{left:-30px; top:23.5px; width:14px; height:14px; box-sizing:border-box; background:var(--page); border:1px solid rgba(15,23,34,.55)}
+  .pg-weeks .fold--week.pg-coord::after{content:""; position:absolute; left:-35px; top:18.5px; width:24px; height:24px; pointer-events:none;
+    background:linear-gradient(rgba(15,23,34,.5),rgba(15,23,34,.5)) center/24px 1px no-repeat, linear-gradient(rgba(15,23,34,.5),rgba(15,23,34,.5)) center/1px 24px no-repeat}
+  .pg-weeks .fold--week.pg-mine::before{background:var(--accent); border-color:var(--accent)}
+  .pg-weeks .fold--week.pg-coord.pg-mine::before{background:var(--page)}
+  .pg-weeks .fold--week.pg-mine .fold-title::after{display:none}
+}
+
+
+/* ---- контентная волна 26.10 ---- */
+/* строка-условие у кнопок Telegram */
+.pg-cover .cover-text .actions + .pg-terms{margin-top:var(--sp-4)}
+.pg-cover .cover-text .pg-terms + .note{margin-top:var(--sp-2)}
+.pg-terms{max-width:30rem}
+.pg-price-cta .pg-terms{margin-top:var(--sp-4)}
+.pg-price-cta .pg-terms + .note{margin-top:var(--sp-2)}
+/* «Кто рядом»: фото у водопада под заголовком */
+.pg-who-photo{margin-top:var(--sp-6)}
+@media (max-width:1024px){ .pg-who-photo{--pa-h:min(44vh, 360px) !important; margin-bottom:var(--sp-5)} }
+/* «Как это было» (ЧЕРНОВИК, data-needs-consent): цитаты Юры столбиком, чужая строка отдельно и тише */
+.pg-was .prose{max-width:var(--measure)}
+.pg-was .prose p + p{margin-top:var(--sp-5)}
+.pg-quotes{margin-top:var(--sp-7); display:grid; row-gap:var(--sp-6); max-width:40rem}
+.pg-quotes .testimony{max-width:none}
+.pg-quote-other{margin-top:var(--sp-8); max-width:30rem; margin-left:auto; border-top-color:var(--line)}
+.pg-quote-other blockquote p{color:var(--ink-2)}
+.pg-quote-other .testimony-who{font-weight:400; color:var(--ink-3)}
+@media (max-width:760px){ .pg-quote-other{margin-left:0} }

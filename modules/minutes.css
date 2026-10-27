@@ -1,0 +1,44 @@
+/* Waykeeper · «Сколько у тебя сейчас есть?» · префикс mn- · см. minutes.js */
+
+.mn{max-width:46rem; margin:0 0 var(--sp-7)}
+.mn-ask{color:var(--ink-2); max-width:35rem}
+.mn-opts{display:flex; flex-wrap:wrap; gap:var(--sp-2); margin-top:var(--sp-4)}
+.mn-opt{position:relative; display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 18px; border:1px solid var(--line-2);
+  border-radius:var(--r-pill); background:rgba(255,255,255,.5); font:400 var(--s4)/1 var(--f-text); color:var(--ink-2); cursor:pointer;
+  transition:border-color .2s, color .2s, background .2s}
+.mn-opt:hover{color:var(--ink); border-color:rgba(15,23,34,.4)}
+.mn-opt[aria-checked="true"]{color:var(--ink); border-color:var(--ink); background:#fff}
+/* «ты здесь» — твоё время */
+.mn-opt[aria-checked="true"]::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent)}
+.mn-opt:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+
+.mn-card{display:grid; grid-template-columns:120px minmax(0,1fr); gap:var(--sp-6); align-items:center; margin-top:var(--sp-5);
+  padding:var(--sp-5) var(--sp-6); border-radius:var(--r-l)}
+.mn-card[hidden]{display:none}
+.mn-art{width:120px; height:120px; color:var(--ink)}
+.mn-art svg,.mn-art img{width:120px; height:120px; display:block}
+.mn-name{font:400 var(--s3)/1.3 var(--f-head); color:var(--ink)}
+.mn-what{margin-top:4px; color:var(--ink-2)}
+.mn-meta{margin-top:6px}
+.mn-acts{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-4); margin-top:var(--sp-4)}
+
+/* проявление: рисунок и имя проступают из размытого, как фрагмент из поля */
+@media (prefers-reduced-motion: no-preference){
+  .mn-card .mn-art,.mn-card .mn-name{opacity:0; filter:blur(6px)}
+  .mn-card .mn-what,.mn-card .mn-meta,.mn-card .mn-acts{opacity:0}
+  .mn-card.is-in .mn-art{animation:mn-up .9s var(--ease) both}
+  .mn-card.is-in .mn-name{animation:mn-up .8s .12s var(--ease) both}
+  .mn-card.is-in .mn-what,.mn-card.is-in .mn-meta,.mn-card.is-in .mn-acts{animation:mn-fade .5s .45s ease both}
+}
+@keyframes mn-up{from{opacity:0; filter:blur(6px)} to{opacity:1; filter:none}}
+@keyframes mn-fade{from{opacity:0} to{opacity:1}}
+
+@media (max-width:760px){
+  .mn-card{grid-template-columns:72px minmax(0,1fr); gap:var(--sp-4); align-items:start; padding:var(--sp-5)}
+  .mn-art,.mn-art svg,.mn-art img{width:72px; height:72px}
+}
+@media (max-width:400px){ .mn-opt{padding:0 13px} .mn-opts{gap:6px} }
+
+/* data-no-art: карточка без рисунка (26.10) */
+.mn-card--plain,.mn-card--plain{grid-template-columns:minmax(0,1fr)}
+@media (max-width:760px){ .mn-card--plain{grid-template-columns:minmax(0,1fr)} }

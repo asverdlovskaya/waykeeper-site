@@ -1,0 +1,85 @@
+/* Waykeeper · «Поставить точку» · префикс cr- · см. coordinate.js
+   Токены — из assets/site.css. Прошлое (.cr-past) — зона поля слева, будущее — белый модуль справа. */
+
+.cr-wrap{display:grid; grid-template-columns:minmax(0,4fr) minmax(0,7fr); align-items:stretch}
+.cr-past{min-height:360px}
+
+.cr{position:relative; display:flex; flex-direction:column; padding-left:0}
+.cr-ask{font:400 var(--s3)/1.4 var(--f-head); color:var(--ink); max-width:30em; margin:0 0 var(--sp-4) var(--sp-5)}
+
+.cr-area{position:relative; display:block; width:100%; height:300px; margin:0; padding:0; border:0; background:transparent;
+  cursor:pointer; border-radius:var(--r-m); -webkit-tap-highlight-color:transparent}
+.cr:not(.is-placed) .cr-area{cursor:crosshair}
+.cr.is-placed .cr-area{cursor:default}
+.cr-area:focus{outline:none}
+.cr-area:focus-visible{outline:none; box-shadow:inset 0 0 0 1px var(--line-2)}
+.cr-svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible; max-width:none}
+
+/* «ты здесь» — граница прошлого и будущего */
+.cr-here{fill:var(--accent)}
+.cr-stub circle{fill:var(--ink)}
+.cr-stub{transition:opacity .3s ease}
+.cr.is-placed .cr-stub{opacity:0}
+/* пройденное за 12 недель — тонкая сплошная, дальше — пунктир (маршрут на год-два) */
+.cr-walk{fill:none; stroke:var(--ink-3); stroke-width:1; stroke-linecap:round}
+.cr-dash{fill:none; stroke:var(--ink-3); stroke-width:1.2; stroke-dasharray:1.5 5.5; stroke-linecap:round;
+  opacity:0; transition:opacity .6s ease}
+.cr.is-done .cr-dash{opacity:1}
+
+/* недели */
+.cr-wk{fill:rgba(15,23,34,.55); opacity:0; transform-box:fill-box; transform-origin:center; transform:scale(.4);
+  transition:opacity .35s ease, transform .45s var(--ease)}
+.cr-wk.on{opacity:1; transform:scale(1)}
+.cr-wk.is-rest{fill:var(--page); stroke:rgba(15,23,34,.5); stroke-width:1}
+.cr-wk.is-first{fill:var(--accent)}
+
+/* точка: сначала бледная и пунктирная (дальняя, неясная), на седьмой неделе — чёткая: решение */
+.cr-pt{opacity:0; transition:opacity .6s ease}
+.cr-pt circle{fill:var(--page); stroke:var(--ink); stroke-width:1; stroke-dasharray:2 2.4}
+.cr-pt line{stroke:var(--ink); stroke-width:1; opacity:.5}
+.cr-pt.on{opacity:.45}
+.cr-pt.on.clear{opacity:1}
+.cr-pt.clear circle{stroke-dasharray:none}
+
+/* превью при наведении — бледное кольцо без креста */
+.cr-prev{opacity:0; transition:opacity .25s ease; pointer-events:none}
+.cr-prev circle{fill:none; stroke:var(--ink-3); stroke-width:1; stroke-dasharray:2 3}
+.cr-prev.on{opacity:.7}
+
+.cr-after{margin:var(--sp-4) 0 0 var(--sp-5); max-width:30em; opacity:0; visibility:hidden; transform:translateY(6px);
+  transition:opacity .5s ease, transform .6s var(--ease), visibility 0s .6s}
+/* место под строкой держится всегда: после точки ничего ниже не прыгает */
+.cr.is-done .cr-after{opacity:1; visibility:visible; transform:none; transition:opacity .5s ease, transform .6s var(--ease)}
+
+/* тихое приглашение до первой точки: бледная координата впереди медленно дышит, к ней — едва видный пунктир.
+   Без слов. При наведении его сменяет превью под курсором; после точки — исчезает. Дышит, только пока модуль на экране */
+.cr-invite{pointer-events:none; transition:opacity .4s ease}
+.cr-inv-path{fill:none; stroke:var(--ink-3); stroke-width:1; stroke-dasharray:1.5 6; stroke-linecap:round; opacity:.45}
+.cr-inv-ring circle{fill:none; stroke:var(--accent); stroke-width:1; stroke-dasharray:2 3; opacity:.75}
+.cr-inv-ring{transform-box:fill-box; transform-origin:center}
+.cr-inv-ring circle{transform-box:fill-box; transform-origin:center}
+.cr.is-vis:not(.is-placed) .cr-inv-ring circle{animation:cr-breathe 3.6s ease-in-out infinite}
+@keyframes cr-breathe{0%,100%{transform:scale(.8); opacity:.35} 50%{transform:scale(1.25); opacity:.9}}
+.cr.is-vis:not(.is-placed) .cr-here{animation:cr-here 3.6s ease-in-out infinite}
+@keyframes cr-here{50%{opacity:.55}}
+.cr.is-placed .cr-invite,.cr.is-aiming .cr-invite{opacity:0}
+.cr-text{color:var(--ink-2)}
+.cr-acts{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-4); margin-top:var(--sp-4)}
+.cr-again{font-size:var(--s5)}
+
+/* сгущение тёплого поля у «ты здесь» — снаружи модуля, в зоне прошлого */
+.cr-warm{position:absolute; left:-70px; top:50%; width:2px; height:2px; pointer-events:none}
+
+@media (max-width:760px){
+  .cr-wrap{grid-template-columns:64px minmax(0,1fr)}
+  .cr-past{min-height:0}
+  .cr-ask{margin-left:var(--sp-4)}
+  .cr-area{height:220px}
+  .cr-after{margin-left:var(--sp-4)}
+  .cr-warm{left:-48px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cr-wk,.cr-pt,.cr-dash,.cr-after,.cr-prev{transition:none}
+  .cr-inv-ring circle,.cr-here{animation:none !important}
+}

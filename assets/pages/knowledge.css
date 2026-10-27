@@ -1,0 +1,69 @@
+/* =====================================================================
+   Waykeeper · вход в базу знаний, словарь, «как устроена» (knowledge.html, glossary.html, how.html)
+   Пакет 2, 26.10.2026. Префиксы kn- (вход), gl- (словарь), hw- (как устроена).
+   Общие компоненты — assets/kb.css; здесь только то, чего там нет. Размеры шрифта — только токены --s1…--s5.
+   ===================================================================== */
+
+/* ---------- Вход в базу ---------- */
+.kn-cover .kn-lede{margin-top:var(--sp-5)}
+.kn-cover .kn-search{margin-top:var(--sp-6)}
+.kn-cover .display em{font-style:normal; display:block; font-size:var(--s2); line-height:1.2; margin-top:var(--sp-2); color:var(--ink-2)}
+.kn-plate{--pa-h:380px}
+.kn-cover-aside{display:flex; justify-content:flex-end}
+@media (max-width:1024px){ .kn-cover-aside{justify-content:flex-start; margin-top:var(--sp-5)} .kn-plate{--pa-h:300px} }
+@media (max-width:760px){ .kn-plate{--pa-h:220px; margin:0} }
+.kn-band{padding-top:var(--sp-8)}
+.kn-head{margin-bottom:var(--sp-5)}
+.kn-head-note{align-self:end}
+.kn-foot{margin-top:var(--sp-6)}
+.kn-legend{margin-top:var(--sp-2)}
+.kn-foot-links{text-align:right; align-self:end}
+@media (max-width:760px){ .kn-foot-links{text-align:left; margin-top:var(--sp-4)} }
+.kn-foot-links a,.kn-head-note a{color:var(--ink-2)}
+.kn-band .kb-sections a:focus-visible,.kn-band .index-row:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+
+/* результаты поиска (?q=) */
+.kn-results{padding-top:var(--sp-5); padding-bottom:var(--sp-5)}
+.kn-results{scroll-margin-top:calc(var(--head-h) + var(--sp-4))}
+.kn-results[hidden]{display:none}
+.kn-results .kb-result{margin-top:0; margin-bottom:var(--sp-4)}
+.kn-results .kb-group{margin-top:var(--sp-6)}
+.kn-results .kb-row .t{font-size:var(--s3)}
+
+/* ---------- Страницы-справки: общая колонка ---------- */
+.kn-page .kb-main{padding-bottom:var(--sp-7)}
+.kn-page .kb-two{max-width:34rem}
+.kn-page .kb-fix{margin-top:var(--sp-5)}
+.kn-page .kb-sec a{color:var(--ink); text-decoration-color:var(--line-2); text-underline-offset:3px}
+.kn-page .kb-sec a:hover{text-decoration-color:var(--ink)}
+.kn-page .kb-type{margin-top:0}
+.kn-page .kb-side li a,.kn-page .kb-toc li a{min-height:32px}
+
+/* ---------- Как устроена ---------- */
+.hw-legend{margin-top:var(--sp-4)}
+.hw-legend > div{grid-template-columns:11em minmax(0,1fr)}
+.hw-legend dt{display:flex; align-items:baseline; color:var(--ink)}
+.kb-sec .hw-legend + p{margin-top:var(--sp-4)}
+@media (max-width:760px){ .hw-legend > div{grid-template-columns:1fr; gap:4px} }
+
+/* ---------- Словарь ---------- */
+.gl-search{margin-top:var(--sp-6)}
+.gl-letters{margin-top:var(--sp-4); display:flex; flex-wrap:wrap; gap:2px 4px; font-size:var(--s5)}
+.gl-letters a{display:inline-flex; align-items:center; justify-content:center; min-width:32px; min-height:32px; padding:0 6px; color:var(--ink-2); text-decoration:none; border-radius:var(--r-s)}
+.gl-letters a:hover{color:var(--ink); background:rgba(15,23,34,.05)}
+@media (max-width:760px){ .gl-letters a{min-width:44px; min-height:44px} }
+.gl-result{margin-top:var(--sp-4)}
+.gl-body{margin-top:var(--sp-3)}
+.gl-group{scroll-margin-top:calc(var(--head-h) + var(--sp-4))}
+.gl-letter{margin:var(--sp-7) 0 0; padding-bottom:var(--sp-2); font:300 var(--s2)/1.1 var(--f-head); letter-spacing:-.01em; border-bottom:1px solid var(--ink)}
+.gl-list{margin:0; padding:0}
+.gl-term{padding:var(--sp-4) 0; border-bottom:1px solid var(--line); scroll-margin-top:calc(var(--head-h) + var(--sp-4)); position:relative}
+.gl-term dt{font:400 var(--s3)/1.3 var(--f-head); color:var(--ink)}
+.gl-term dd{margin:var(--sp-2) 0 0; font-size:var(--s4); line-height:1.55; color:var(--ink-2); max-width:36rem}
+.gl-src{margin-left:var(--sp-3); font:400 var(--s5)/1.3 var(--f-text); color:var(--ink-3)}
+.gl-term .kb-state{margin-left:var(--sp-3); vertical-align:middle}
+.gl-more{margin-top:var(--sp-2); font-size:var(--s5)}
+.gl-more a{color:var(--ink); text-decoration-color:var(--line-2); text-underline-offset:3px}
+.gl-term:target::before{content:""; position:absolute; left:-18px; top:calc(var(--sp-4) + 9px); width:7px; height:7px; border-radius:50%; background:var(--accent)}
+.gl-term[hidden],.gl-group[hidden],.gl-none[hidden]{display:none}
+@media (max-width:760px){ .gl-term:target::before{left:-12px} }

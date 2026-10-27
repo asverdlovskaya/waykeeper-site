@@ -1,0 +1,1111 @@
+{
+ "version": 1,
+ "built": "2026-10-27",
+ "note": "Один список ситуаций на всю базу (12). Собрано _tools/kb_index.py. slug = адрес страницы encyclopedia/<slug>.html; title — короткое название; line — строка с главной; aliases — все другие формулировки (главная, энциклопедия, ресурсы); codes — коды ресурсов и старого сайта; old_urls — старые адреса; home — показывается ли на главной (первые 10).",
+ "home_count": 10,
+ "total": 12,
+ "items": [
+  {
+   "slug": "rabota-zakonchilas",
+   "n": 1,
+   "title": "Закончилась работа или своё дело",
+   "line": "Закончилась работа или своё дело, и уже несколько месяцев «надо что-то решать».",
+   "url": "encyclopedia/rabota-zakonchilas.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#rabota-zakonchilas",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Закончилась работа или своё дело, и уже несколько месяцев «надо что-то решать».",
+    "Закрыл дело или ушла роль"
+   ],
+   "codes": [
+    "job-ended",
+    "q-closed"
+   ],
+   "old_urls": [
+    "encyclopedia/rabota-zakonchilas.html",
+    "encyclopedia.html#rabota-zakonchilas"
+   ],
+   "counts": {
+    "practices": 4,
+    "specialists": 6,
+    "approaches": 5,
+    "concepts": 2,
+    "resources": 31
+   },
+   "practices": [
+    "t-chapters",
+    "t-life-review",
+    "t-close",
+    "t-lives"
+   ],
+   "specialists": [
+    "executive-coach",
+    "outplacement-consultant",
+    "financial-planner",
+    "business-closure-specialist",
+    "employment-centre-specialist",
+    "labour-lawyer"
+   ],
+   "approaches": [
+    "narrativnaya-identichnost",
+    "obzor-zhizni",
+    "put-geroya",
+    "cliftonstrengths",
+    "plany-odissei"
+   ],
+   "concepts": [
+    "perehod",
+    "gore"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-bridges-transitions",
+    "book-feiler",
+    "book-brooks-strength",
+    "book-dyl",
+    "book-dyl-work",
+    "book-ibarra",
+    "book-duke-quit",
+    "book-heath-moments",
+    "book-bolles",
+    "book-newport",
+    "test-via",
+    "test-cliftonstrengths",
+    "test-onet-ip",
+    "test-anchors",
+    "test-who5",
+    "tool-dyl-resources",
+    "tool-80k-template",
+    "tool-onet-online",
+    "tool-esco",
+    "tool-atlas100",
+    "pod-death-sex-money",
+    "pod-squiggly-careers",
+    "vid-burnett",
+    "vid-feiler",
+    "media-school-of-life",
+    "media-80k",
+    "art-bridges-transition",
+    "art-ibarra-stuck",
+    "art-psyche-disruptive",
+    "art-psyche-purpose-later",
+    "comm-leanin-circles"
+   ],
+   "method_step": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "slug": "pereezd",
+   "n": 2,
+   "title": "Переезд, и профессия не складывается",
+   "line": "Переезд: профессия, которая дома работала, здесь не складывается.",
+   "url": "encyclopedia/pereezd.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#pereezd",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Переезд: профессия, которая дома работала, здесь не складывается.",
+    "Переехал и потерял себя"
+   ],
+   "codes": [
+    "relocation",
+    "q-move"
+   ],
+   "old_urls": [
+    "encyclopedia/pereezd.html",
+    "encyclopedia.html#pereezd"
+   ],
+   "counts": {
+    "practices": 4,
+    "specialists": 7,
+    "approaches": 5,
+    "concepts": 1,
+    "resources": 20
+   },
+   "practices": [
+    "t-wheel",
+    "t-supports",
+    "t-ritual",
+    "t-15min"
+   ],
+   "specialists": [
+    "counselling-psychologist",
+    "life-coach",
+    "career-counsellor",
+    "mentor",
+    "career-guidance-specialist",
+    "existential-counsellor",
+    "community-organizer"
+   ],
+   "approaches": [
+    "koleso-kontekstov",
+    "narrativnaya-praktika",
+    "ritualy",
+    "prototipiruyushchie-razgovory",
+    "okno-tolerantnosti"
+   ],
+   "concepts": [
+    "perehod"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-bridges-transitions",
+    "book-feiler",
+    "book-petrova-emigration",
+    "book-hoffman-translation",
+    "book-grinberg-migration",
+    "book-adichie-americanah",
+    "tool-onet-online",
+    "tool-esco",
+    "pod-death-sex-money",
+    "pod-immigrantcast",
+    "pod-berlin-zero",
+    "pod-inostrantsy",
+    "pod-cross-borders",
+    "vid-feiler",
+    "media-psyche",
+    "media-reminder",
+    "art-bridges-transition",
+    "art-psyche-disruptive",
+    "svc-yasno",
+    "comm-internations"
+   ],
+   "method_step": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "slug": "krizis-identichnosti",
+   "n": 3,
+   "title": "Кризис идентичности",
+   "line": "Кризис идентичности: кто я, что я, в чем смыслы.",
+   "url": "encyclopedia/krizis-identichnosti.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#krizis-identichnosti",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Кризис идентичности: кто я, что я, в чем смыслы."
+   ],
+   "codes": [
+    "identity"
+   ],
+   "old_urls": [
+    "encyclopedia/krizis-identichnosti.html",
+    "encyclopedia.html#krizis-identichnosti"
+   ],
+   "counts": {
+    "practices": 4,
+    "specialists": 4,
+    "approaches": 4,
+    "concepts": 1,
+    "resources": 57
+   },
+   "practices": [
+    "t-periods",
+    "t-chapters",
+    "t-values",
+    "t-heroes"
+   ],
+   "specialists": [
+    "existential-counsellor",
+    "counselling-psychologist",
+    "philosophical-counsellor",
+    "spiritual-care-provider"
+   ],
+   "approaches": [
+    "narrativnaya-identichnost",
+    "narrativnaya-praktika",
+    "tsennosti-v-act",
+    "liniya-zhizni"
+   ],
+   "concepts": [
+    "perehod"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-bridges-transitions",
+    "book-feiler",
+    "book-may-wintering",
+    "book-ibarra",
+    "book-mcadams",
+    "book-white-maps",
+    "book-frankl",
+    "book-esfahani-smith",
+    "book-yalom-sun",
+    "book-harris-trap",
+    "book-hayes-mind",
+    "book-david-agility",
+    "book-neff",
+    "book-brown-gifts",
+    "book-chodron",
+    "book-gottlieb",
+    "book-hollis-middle",
+    "book-ostaseski",
+    "book-rubin-creative",
+    "book-cameron",
+    "book-epstein",
+    "book-wapnick",
+    "book-petrova-emigration",
+    "book-hoffman-translation",
+    "book-tolstoy-ilyich",
+    "book-adichie-americanah",
+    "test-via",
+    "test-ipip-bffm",
+    "test-bigfive-ru",
+    "test-cliftonstrengths",
+    "test-schwartz-pvq",
+    "test-values-card-sort",
+    "test-self-compassion",
+    "test-mlq",
+    "test-16personalities",
+    "tool-act-free",
+    "tool-self-compassion-practices",
+    "tool-atlas-emotions",
+    "app-how-we-feel",
+    "pod-hidden-brain",
+    "pod-on-being",
+    "pod-thanks-for-asking",
+    "pod-berlin-zero",
+    "pod-inostrantsy",
+    "pod-cross-borders",
+    "pod-yakovleva",
+    "pod-peremotka",
+    "pod-otkuda-rodom",
+    "vid-wapnick",
+    "vid-susan-david",
+    "vid-dan-gilbert",
+    "vid-feiler",
+    "vid-gottlieb",
+    "vid-esfahani-smith",
+    "media-psyche",
+    "media-school-of-life",
+    "art-bridges-transition"
+   ],
+   "method_step": [
+    2,
+    3
+   ]
+  },
+  {
+   "slug": "sily-konchilis",
+   "n": 4,
+   "title": "Силы кончились, а что вместо — непонятно",
+   "line": "Много лет в одном деле, и силы кончились. Обратно не хочется, а что вместо — непонятно.",
+   "url": "encyclopedia/sily-konchilis.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#sily-konchilis",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Много лет в одном деле, и силы кончились. Обратно не хочется, а что вместо — непонятно.",
+    "Выгорел"
+   ],
+   "codes": [
+    "burnout",
+    "q-burnout"
+   ],
+   "old_urls": [
+    "encyclopedia/sily-konchilis.html",
+    "encyclopedia.html#sily-konchilis"
+   ],
+   "counts": {
+    "practices": 6,
+    "specialists": 6,
+    "approaches": 5,
+    "concepts": 2,
+    "resources": 35
+   },
+   "practices": [
+    "t-kit",
+    "t-window",
+    "t-friend",
+    "t-tiny",
+    "t-pattern",
+    "t-mykit"
+   ],
+   "specialists": [
+    "counselling-psychologist",
+    "executive-coach",
+    "general-practitioner",
+    "psychiatrist",
+    "yoga-therapist",
+    "occupational-therapist"
+   ],
+   "approaches": [
+    "okno-tolerantnosti",
+    "samosostradanie",
+    "malenkie-privychki",
+    "patterny-i-drugaya-dorozhka",
+    "tsennosti-v-act"
+   ],
+   "concepts": [
+    "vygoranie",
+    "perehod"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-may-wintering",
+    "book-brooks-strength",
+    "book-dyl-work",
+    "book-harris-trap",
+    "book-david-agility",
+    "book-neff",
+    "book-nagoski-burnout",
+    "book-maslach-challenge",
+    "book-chodron",
+    "book-hollis-middle",
+    "book-rubin-creative",
+    "book-van-der-kolk",
+    "book-burkeman",
+    "book-cameron",
+    "book-ishiguro-remains",
+    "test-via",
+    "test-who5",
+    "test-cbi",
+    "test-self-compassion",
+    "test-proqol",
+    "tool-ggia",
+    "tool-act-free",
+    "tool-self-compassion-practices",
+    "tool-atlas-emotions",
+    "app-how-we-feel",
+    "pod-happiness-lab",
+    "pod-yakovleva",
+    "vid-susan-david",
+    "course-yale-wellbeing",
+    "media-psyche",
+    "media-greater-good",
+    "media-reminder",
+    "media-cuprum",
+    "art-psyche-burnout",
+    "art-psyche-purpose-later"
+   ],
+   "method_step": [
+    5,
+    3
+   ]
+  },
+  {
+   "slug": "ne-mogu-vybrat",
+   "n": 5,
+   "title": "Несколько дорог, и не получается выбрать",
+   "line": "Есть две-три дороги в деле, в призвании, в будущем — и уже давно не получается выбрать.",
+   "url": "encyclopedia/ne-mogu-vybrat.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#ne-mogu-vybrat",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Есть две-три дороги в деле, в призвании, в будущем — и уже давно не получается выбрать."
+   ],
+   "codes": [
+    "crossroads"
+   ],
+   "old_urls": [
+    "encyclopedia/ne-mogu-vybrat.html",
+    "encyclopedia.html#ne-mogu-vybrat"
+   ],
+   "counts": {
+    "practices": 4,
+    "specialists": 4,
+    "approaches": 5,
+    "concepts": 1,
+    "resources": 42
+   },
+   "practices": [
+    "t-lives",
+    "t-proto",
+    "t-money",
+    "t-premortem"
+   ],
+   "specialists": [
+    "existential-counsellor",
+    "career-counsellor",
+    "career-guidance-specialist",
+    "educational-tutor"
+   ],
+   "approaches": [
+    "plany-odissei",
+    "prototipiruyushchie-razgovory",
+    "vzglyad-iz-budushchego",
+    "woop",
+    "tsennosti-v-act"
+   ],
+   "concepts": [
+    "perehod"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-dyl",
+    "book-ibarra",
+    "book-duke-bets",
+    "book-duke-quit",
+    "book-heath-decisive",
+    "book-burkeman",
+    "book-bolles",
+    "book-newport",
+    "book-epstein",
+    "book-wapnick",
+    "book-sher-refuse",
+    "book-haig-midnight",
+    "book-leahy-worry",
+    "test-ipip-bffm",
+    "test-bigfive-ru",
+    "test-cliftonstrengths",
+    "test-schwartz-pvq",
+    "test-onet-ip",
+    "test-anchors",
+    "test-values-card-sort",
+    "test-16personalities",
+    "tool-dyl-resources",
+    "tool-woop",
+    "tool-untools",
+    "tool-80k-template",
+    "tool-onet-online",
+    "tool-atlas100",
+    "pod-hidden-brain",
+    "pod-squiggly-careers",
+    "vid-ruth-chang",
+    "vid-wapnick",
+    "vid-dan-gilbert",
+    "vid-burnett",
+    "vid-schwartz-choice",
+    "media-psyche",
+    "media-80k",
+    "art-ibarra-stuck",
+    "art-premortem",
+    "art-psyche-decision",
+    "art-psyche-future-self",
+    "comm-leanin-circles",
+    "art-psyche-uncertainty"
+   ],
+   "method_step": [
+    4
+   ]
+  },
+  {
+   "slug": "plany-sryvayutsya",
+   "n": 6,
+   "title": "Планы срываются на одном и том же месте",
+   "line": "Планы были, но каждый раз срывались на одном и том же месте.",
+   "url": "encyclopedia/plany-sryvayutsya.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#plany-sryvayutsya",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Планы были, но каждый раз срывались на одном и том же месте.",
+    "Внутри спорят двое"
+   ],
+   "codes": [
+    "broken-plans",
+    "q-parts"
+   ],
+   "old_urls": [
+    "encyclopedia/plany-sryvayutsya.html",
+    "encyclopedia.html#plany-sryvayutsya"
+   ],
+   "counts": {
+    "practices": 6,
+    "specialists": 2,
+    "approaches": 5,
+    "concepts": 2,
+    "resources": 39
+   },
+   "practices": [
+    "t-parts",
+    "t-pattern",
+    "t-friend",
+    "t-ifthen",
+    "t-monday",
+    "t-mykit"
+   ],
+   "specialists": [
+    "life-coach",
+    "learning-coach"
+   ],
+   "approaches": [
+    "rabota-s-chastyami-ifs",
+    "patterny-i-drugaya-dorozhka",
+    "samosostradanie",
+    "namereniya-esli-to",
+    "malenkie-privychki"
+   ],
+   "concepts": [
+    "vnutrenniy-konflikt",
+    "zashchitnye-mekhanizmy"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-bridges-transitions",
+    "book-feiler",
+    "book-may-wintering",
+    "book-frankl",
+    "book-harris-trap",
+    "book-hayes-mind",
+    "book-neff",
+    "book-devine",
+    "book-kessler",
+    "book-didion",
+    "book-chodron",
+    "book-gottlieb",
+    "book-kegan-immunity",
+    "book-ostaseski",
+    "book-goldsmith-triggers",
+    "book-fogg",
+    "book-clear",
+    "book-duke-bets",
+    "book-heath-switch",
+    "book-haig-midnight",
+    "test-self-compassion",
+    "wb-yearcompass",
+    "tool-ggia",
+    "tool-woop",
+    "tool-untools",
+    "tool-act-free",
+    "tool-self-compassion-practices",
+    "pod-hidden-brain",
+    "pod-thanks-for-asking",
+    "pod-megan-devine",
+    "vid-mcinerny",
+    "vid-feiler",
+    "vid-gottlieb",
+    "media-refuge-in-grief",
+    "art-bridges-transition",
+    "art-premortem",
+    "art-psyche-disruptive",
+    "art-psyche-grief-express",
+    "art-psyche-catastrophise"
+   ],
+   "method_step": [
+    5
+   ]
+  },
+  {
+   "slug": "ne-moe-strashno",
+   "n": 7,
+   "title": "Всё хорошо, но не моё, и страшно",
+   "line": "Всё в целом хорошо, но что-то чувствуется, что происходящее — не моё, и страшно шагнуть на новый путь.",
+   "url": "encyclopedia/ne-moe-strashno.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#ne-moe-strashno",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Всё в целом хорошо, но что-то чувствуется, что происходящее — не моё, и страшно шагнуть на новый путь.",
+    "Не понимаю, чего хочу"
+   ],
+   "codes": [
+    "not-mine",
+    "q-want"
+   ],
+   "old_urls": [
+    "encyclopedia/ne-moe-strashno.html",
+    "encyclopedia.html#ne-moe-strashno"
+   ],
+   "counts": {
+    "practices": 5,
+    "specialists": 3,
+    "approaches": 5,
+    "concepts": 1,
+    "resources": 44
+   },
+   "practices": [
+    "t-periods",
+    "t-lives",
+    "t-best-self",
+    "t-values",
+    "t-proto"
+   ],
+   "specialists": [
+    "career-counsellor",
+    "existential-counsellor",
+    "counselling-psychologist"
+   ],
+   "approaches": [
+    "liniya-zhizni",
+    "tsennosti-v-act",
+    "plany-odissei",
+    "luchshee-vozmozhnoe-ya",
+    "prototipiruyushchie-razgovory"
+   ],
+   "concepts": [
+    "perehod"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-brooks-strength",
+    "book-dyl",
+    "book-dyl-work",
+    "book-ibarra",
+    "book-frankl",
+    "book-esfahani-smith",
+    "book-yalom-sun",
+    "book-harris-trap",
+    "book-hayes-mind",
+    "book-david-agility",
+    "book-brown-gifts",
+    "book-kegan-immunity",
+    "book-hollis-middle",
+    "book-arthur-human",
+    "book-rubin-creative",
+    "book-duke-quit",
+    "book-seligman-flourish",
+    "book-cameron",
+    "book-newport",
+    "book-epstein",
+    "book-sher-refuse",
+    "book-tolstoy-ilyich",
+    "book-haig-midnight",
+    "book-ishiguro-remains",
+    "test-via",
+    "test-schwartz-pvq",
+    "test-onet-ip",
+    "test-anchors",
+    "test-values-card-sort",
+    "test-mlq",
+    "tool-dyl-resources",
+    "tool-act-free",
+    "pod-happiness-lab",
+    "pod-on-being",
+    "pod-squiggly-careers",
+    "vid-wapnick",
+    "vid-dan-gilbert",
+    "vid-burnett",
+    "vid-esfahani-smith",
+    "course-yale-wellbeing",
+    "media-school-of-life",
+    "media-80k",
+    "art-ibarra-stuck",
+    "art-psyche-purpose-later"
+   ],
+   "method_step": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "slug": "ne-znayu-k-komu-idti",
+   "n": 8,
+   "title": "Не знаю, к какому специалисту идти",
+   "line": "Не знаю, к какому специалисту с этим идти: психолог, коуч, карьерный консультант?",
+   "url": "encyclopedia/ne-znayu-k-komu-idti.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#ne-znayu-k-komu-idti",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Не знаю, к какому специалисту с этим идти: психолог, коуч, карьерный консультант?"
+   ],
+   "codes": [
+    "which-specialist"
+   ],
+   "old_urls": [
+    "encyclopedia/ne-znayu-k-komu-idti.html",
+    "encyclopedia.html#ne-znayu-k-komu-idti"
+   ],
+   "counts": {
+    "practices": 1,
+    "specialists": 4,
+    "approaches": 2,
+    "concepts": 4,
+    "resources": 20
+   },
+   "practices": [
+    "t-who"
+   ],
+   "specialists": [
+    "counselling-psychologist",
+    "psychotherapist-psychologist",
+    "psychiatrist",
+    "life-coach"
+   ],
+   "compare": [
+    "counselling-psychologist",
+    "psychotherapist-psychologist",
+    "psychiatrist",
+    "life-coach"
+   ],
+   "approaches": [
+    "stupenchataya-pomoshch",
+    "klient-tsentrirovannyy-podkhod"
+   ],
+   "concepts": [
+    "vidy-psikhologicheskoy-pomoshchi",
+    "obshchie-faktory-effektivnosti",
+    "terapevticheskiy-alyans",
+    "perekhod-i-rasstroystvo-adaptatsii"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-white-maps",
+    "book-gottlieb",
+    "book-stanier-coaching",
+    "book-van-der-kolk",
+    "book-grinberg-migration",
+    "test-proqol",
+    "pro-liberating-structures",
+    "pro-psychology-tools",
+    "pro-therapist-aid",
+    "pro-sessionlab",
+    "pod-esther-perel",
+    "vid-gottlieb",
+    "media-cuprum",
+    "art-psyche-therapist-bringup",
+    "art-yasno-difference",
+    "art-zigmund-choose",
+    "art-zigmund-refuses",
+    "art-pt-types-therapy",
+    "svc-alter",
+    "svc-yasno"
+   ],
+   "method_step": [
+    7
+   ]
+  },
+  {
+   "slug": "ryadom-chelovek-v-krizise",
+   "n": 9,
+   "title": "Рядом человек в кризисе",
+   "line": "Рядом человек в кризисе или переходе, и я не знаю, как помочь.",
+   "url": "encyclopedia/ryadom-chelovek-v-krizise.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#ryadom-chelovek-v-krizise",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Рядом человек в кризисе или переходе, и я не знаю, как помочь."
+   ],
+   "codes": [
+    "close-person"
+   ],
+   "old_urls": [
+    "encyclopedia/ryadom-chelovek-v-krizise.html",
+    "encyclopedia.html#ryadom-chelovek-v-krizise"
+   ],
+   "counts": {
+    "practices": 2,
+    "specialists": 3,
+    "approaches": 3,
+    "concepts": 2,
+    "resources": 33
+   },
+   "practices": [
+    "t-presence",
+    "t-who"
+   ],
+   "specialists": [
+    "sister-of-mercy",
+    "grief-counsellor",
+    "support-group-facilitator"
+   ],
+   "approaches": [
+    "klient-tsentrirovannyy-podkhod",
+    "praktika-douly-smerti",
+    "stupenchataya-pomoshch"
+   ],
+   "concepts": [
+    "gore",
+    "vidy-psikhologicheskoy-pomoshchi"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-yalom-sun",
+    "book-devine",
+    "book-kessler",
+    "book-didion",
+    "book-ostaseski",
+    "book-arthur-human",
+    "book-parker-gathering",
+    "book-stanier-coaching",
+    "book-heath-switch",
+    "book-heath-moments",
+    "book-crowe-card",
+    "book-rosenberg-nvc",
+    "tool-ggia",
+    "tool-atlas-emotions",
+    "tool-death-over-dinner",
+    "tool-conversation-project",
+    "pod-on-being",
+    "pod-thanks-for-asking",
+    "pod-death-sex-money",
+    "pod-esther-perel",
+    "pod-megan-devine",
+    "pod-yakovleva",
+    "vid-mcinerny",
+    "media-psyche",
+    "media-greater-good",
+    "media-refuge-in-grief",
+    "media-propalliativ-loss",
+    "art-psyche-grieving-talk",
+    "art-psyche-friend-difficult",
+    "art-psyche-therapist-bringup",
+    "art-psyche-grief-express",
+    "art-refuge-friend-video",
+    "art-zigmund-refuses"
+   ],
+   "method_step": [
+    7
+   ]
+  },
+  {
+   "slug": "podvesti-god",
+   "n": 10,
+   "title": "Подвести год и выбрать, куда дальше",
+   "line": "Хочется спокойно подвести год, отрефлексировать этап и выбрать, куда дальше.",
+   "url": "encyclopedia/podvesti-god.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#podvesti-god",
+   "home": true,
+   "status": "plan",
+   "aliases": [
+    "Хочется спокойно подвести год, отрефлексировать этап и выбрать, куда дальше."
+   ],
+   "codes": [
+    "year-review"
+   ],
+   "old_urls": [
+    "encyclopedia/podvesti-god.html",
+    "encyclopedia.html#podvesti-god"
+   ],
+   "counts": {
+    "practices": 5,
+    "specialists": 0,
+    "approaches": 5,
+    "concepts": 1,
+    "resources": 19
+   },
+   "practices": [
+    "t-retro",
+    "t-cards",
+    "t-wheel",
+    "t-quarter",
+    "t-horizons"
+   ],
+   "specialists": [],
+   "approaches": [
+    "lichnye-retrospektivy",
+    "vzglyad-iz-budushchego",
+    "koleso-kontekstov",
+    "gorizonty-fokusa",
+    "obzor-zhizni"
+   ],
+   "concepts": [
+    "perehod"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-mcadams",
+    "book-parker-gathering",
+    "book-heath-moments",
+    "book-burkeman",
+    "book-seligman-flourish",
+    "book-ishiguro-remains",
+    "test-values-card-sort",
+    "test-who5",
+    "wb-yearcompass",
+    "wb-unravel",
+    "tool-ggia",
+    "app-how-we-feel",
+    "pro-liberating-structures",
+    "pod-happiness-lab",
+    "pod-peremotka",
+    "course-yale-wellbeing",
+    "media-greater-good",
+    "media-reminder",
+    "art-psyche-future-self"
+   ],
+   "method_step": [
+    6,
+    7
+   ]
+  },
+  {
+   "slug": "trevoga",
+   "n": 11,
+   "title": "Тревога не отпускает",
+   "line": "Тревога не отпускает",
+   "url": "encyclopedia/trevoga.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#trevoga",
+   "home": false,
+   "status": "plan",
+   "aliases": [
+    "Тревога не отпускает."
+   ],
+   "codes": [
+    "q-anxiety",
+    "anxiety"
+   ],
+   "old_urls": [
+    "encyclopedia/trevoga.html",
+    "encyclopedia.html#trevoga"
+   ],
+   "counts": {
+    "practices": 5,
+    "specialists": 6,
+    "approaches": 5,
+    "concepts": 1,
+    "resources": 14
+   },
+   "practices": [
+    "t-worry",
+    "t-kit",
+    "t-express",
+    "t-window",
+    "t-friend"
+   ],
+   "specialists": [
+    "counselling-psychologist",
+    "psychotherapist-psychologist",
+    "psychiatrist",
+    "mindfulness-teacher",
+    "breathwork-practitioner",
+    "psychomotor-therapist"
+   ],
+   "approaches": [
+    "okno-tolerantnosti",
+    "vremya-dlya-trevogi",
+    "ekspressivnoe-pismo",
+    "samosostradanie",
+    "plan-samopomoshchi-wrap"
+   ],
+   "concepts": [
+    "perekhod-i-rasstroystvo-adaptatsii"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-harris-trap",
+    "book-hayes-mind",
+    "book-david-agility",
+    "book-neff",
+    "book-nagoski-burnout",
+    "book-chodron",
+    "book-leahy-worry",
+    "test-self-compassion",
+    "tool-act-free",
+    "tool-self-compassion-practices",
+    "app-how-we-feel",
+    "wb-cci-worry",
+    "art-psyche-uncertainty",
+    "art-psyche-catastrophise"
+   ],
+   "method_step": [
+    5
+   ]
+  },
+  {
+   "slug": "poterya-blizkogo",
+   "n": 12,
+   "title": "Потеря близкого человека",
+   "line": "Потерял близкого",
+   "url": "encyclopedia/poterya-blizkogo.html",
+   "exists": true,
+   "url_now": "encyclopedia.html#poterya-blizkogo",
+   "home": false,
+   "status": "plan",
+   "aliases": [
+    "Потерял близкого",
+    "Потеря близкого"
+   ],
+   "codes": [
+    "q-loss",
+    "loss"
+   ],
+   "old_urls": [
+    "encyclopedia.html#poterya-blizkogo"
+   ],
+   "counts": {
+    "practices": 4,
+    "specialists": 8,
+    "approaches": 5,
+    "concepts": 2,
+    "resources": 15
+   },
+   "practices": [
+    "t-ritual",
+    "t-express",
+    "t-five-questions",
+    "t-presence"
+   ],
+   "specialists": [
+    "grief-counsellor",
+    "counsellor",
+    "writing-therapist",
+    "peer-bereaved",
+    "psychotherapist-psychologist",
+    "death-doula",
+    "family-therapist",
+    "notary"
+   ],
+   "approaches": [
+    "praktika-douly-smerti",
+    "ritualy",
+    "ekspressivnoe-pismo",
+    "genogramma",
+    "stupenchataya-pomoshch"
+   ],
+   "concepts": [
+    "gore",
+    "fazy-gorya-po-kast"
+   ],
+   "questions": [
+    "k-komu-idti"
+   ],
+   "resources": [
+    "book-devine",
+    "book-kessler",
+    "book-didion",
+    "book-ostaseski",
+    "book-arthur-human",
+    "book-crowe-card",
+    "tool-conversation-project",
+    "pod-thanks-for-asking",
+    "pod-megan-devine",
+    "vid-mcinerny",
+    "media-refuge-in-grief",
+    "media-propalliativ-loss",
+    "art-psyche-grieving-talk",
+    "art-psyche-grief-express",
+    "art-refuge-friend-video"
+   ],
+   "method_step": [
+    1,
+    2,
+    7
+   ]
+  }
+ ]
+}

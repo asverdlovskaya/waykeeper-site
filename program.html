@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«Переход» · Waykeeper</title>
+<meta name="description" content="«Переход» — три месяца один на один, чтобы решить, чем заняться дальше, и сделать первый шаг. Двенадцать недель, онлайн.">
+<!-- seo -->
+<link rel="canonical" href="https://waykeeper.org/program.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Waykeeper">
+<meta property="og:title" content="«Переход» · Waykeeper">
+<meta property="og:description" content="«Переход» — три месяца один на один, чтобы решить, чем заняться дальше, и сделать первый шаг. Двенадцать недель, онлайн.">
+<meta property="og:url" content="https://waykeeper.org/program.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waykeeper — открытый ресурс про переходы">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<!-- /seo -->
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site-v2.css">
+<link rel="stylesheet" href="assets/kb.css">
+<link rel="stylesheet" href="assets/kb-head.css">
+<link rel="stylesheet" href="assets/atmo.css">
+<script src="assets/atmo.js" defer></script>
+<link rel="stylesheet" href="modules/choice.css">
+<link rel="stylesheet" href="modules/then-now.css">
+<script src="assets/site.js" defer></script>
+<script src="assets/site-v2.js" defer></script>
+<script src="assets/kb.js" defer></script>
+<script src="assets/kb-head.js" defer></script>
+<script src="assets/field.js" defer></script>
+<script src="modules/choice.js" defer></script>
+<script src="modules/then-now.js" defer></script>
+<script src="modules/trail.js" defer></script>
+<link rel="stylesheet" href="assets/pages/program.css">
+<link rel="stylesheet" href="assets/alive.css">
+<link rel="stylesheet" href="modules/passage.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-atmo-frame data-field-blobs="off">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
+<header class="site-head">
+  <div class="frame head-row">
+    <a class="wordmark" href="index.html">Waykeeper</a>
+    <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <ul>
+        <li class="kb">
+          <button class="kb-btn" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
+          <div class="kb-pop nodes" id="kb-pop">
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
+              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
+              <kbd>/</kbd>
+            </form>
+            <ul class="kb-list">
+              <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+            </ul>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+          </div>
+        </li>
+        <li><a href="program.html" aria-current="page">«Переход»</a></li>
+        <li><a href="new-season.html">«Новый сезон»</a></li>
+        <li><a href="project.html">О проекте</a></li>
+        <li><a href="about.html">О себе</a></li>
+        <li><a href="talk.html">Разговор</a></li>
+      </ul>
+      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Первый экран во всю ширину. Вид справа — «Переправа» Хиросигэ (role living): переход через реку. -->
+  <section class="cover pg-cover" id="hero" data-topo="31" data-atmo="day" aria-labelledby="pg-title">
+    <div class="frame">
+      <h1 class="display cover-title" id="pg-title"><span class="ln"><span>Решить, чем заняться дальше, </span></span><span class="ln"><span><em>и сделать первый шаг</em></span></span></h1>
+      <div class="cover-text pg-cover-text">
+        <p class="lede">Три месяца один на один, чтобы разобраться, какое дело твоё, и собрать к нему дорогу не из списка вакансий, а из твоей истории.</p>
+        <p class="lede">Дело&nbsp;— это работа в найме, свой проект или новая роль на прежнем месте. Иногда&nbsp;— решение остаться.</p>
+        <dl class="rows facts">
+          <div><dt>Срок</dt><dd>12 недель, встреча раз в неделю</dd></div>
+          <div><dt>Формат</dt><dd>онлайн, один на один</dd></div>
+          <div><dt>Время</dt><dd>3–5 часов в неделю вместе с заданиями</dd></div>
+          <div><dt>Старт</dt><dd>ноябрь, в этом формате программа идёт впервые</dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn primary" href="#telegram" data-tg>Написать в Telegram</a>
+        </div>
+        <p class="note pg-terms">Отвечаю за день-два. Напиши в двух словах, с каким запросом приходишь, чтобы я сразу ухватила, про что разговор.</p>
+        <p class="note pg-first">Первый разговор&nbsp;— 45–60 минут, бесплатно. <a class="link small" href="talk.html">Как проходит разговор →</a></p>
+      </div>
+      <div class="cover-aside">
+        <figure class="plate-alive is-right pg-plate" data-processed data-clear data-pa-from=".5 .62" data-pa-eager style="--pa-r:1.469; --pa-h:min(56vh, 520px)">
+          <div class="pa-img"><img src="assets/img/pd/ad/processed/hiroshige-nihonbashi-1200.jpg" alt="Гравюра Хиросигэ: на рассвете у моста Нихонбаси открываются ворота, путники с поклажей выходят в долгую дорогу" width="1200" height="817" fetchpriority="high" decoding="async"></div>
+          <figcaption class="pa-cap">Утагава Хиросигэ · «Нихонбаси. Утренний вид», ок. 1833–1834<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
+        </figure>
+      </div>
+      <div class="cover-foot">
+        <p class="cover-links"><a href="#how">Как это устроено ↓</a><a href="#price">Сколько стоит ↓</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Что ближе к тебе сейчас? Модуль choice рисует заголовок, строку, шесть строк выбора и ответ. Модуль в центральных колонках. -->
+  <section class="band pg-choice" id="choice" data-atmo="dawn" data-atmo-rule aria-label="Что ближе к тебе сейчас?">
+    <div class="frame cols">
+      <div class="pg-mod">
+        <div data-module="choice" data-mode="program" data-clear></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Вопрос про дело, ответ в истории. -->
+  <section class="band band--split pg-text" id="history" data-atmo="haze" aria-labelledby="pg-h-history">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-history">Вопрос про дело, ответ в истории</h2>
+      </div>
+      <div class="band-main is-wide">
+        <div class="prose">
+        <p>От людей, у которых в работе что-то закончилось, я часто слышу: «не понимаю, что делать дальше, и это тормозит всё остальное», «это всё ещё про меня?», страх прожить жизнь впустую. По-моему, ответ почти всегда уже лежит в прожитом, поэтому начинаем с твоей истории, а рынок смотрим позже, на неделях 7–8.</p>
+        <p><a class="link" href="project.html#method">Почему через историю →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Тогда и сейчас. Модуль then-now рисует заголовок, строку и четыре экрана. -->
+  <section class="band pg-tn" id="then-now" data-atmo="day" aria-label="Тогда и сейчас">
+    <div class="frame cols">
+      <div class="pg-mod pg-mod--narrow">
+        <div data-module="then-now" data-clear data-how="#how" data-telegram="#telegram"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Что останется на руках. Рисунки-сцены — под заголовком слева, текст справа. -->
+  <section class="band band--split pg-text" id="outcome" data-atmo="dawn" data-atmo-rule aria-labelledby="pg-h-outcome">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-outcome">Что останется на руках</h2>
+      </div>
+      <div class="band-main is-wide">
+        <div class="prose">
+        <p>Цель&nbsp;— чтобы к концу стало спокойнее: виден горизонт, понятно, из чего ты выбираешь и почему, на сколько месяцев хватит денег, и первый шаг уже сделан. На руках останется:</p>
+        <ul class="list">
+          <li><strong>Компас.</strong> Кто ты одной строкой, ценности и способности с примерами из жизни.</li>
+          <li><strong>Карта.</strong> Выбранное дело, проверенные направления и три цифры про деньги.</li>
+          <li><strong>Маршрут.</strong> Вехи на год-два и ближайший квартал по шагам.</li>
+          <li><strong>Снаряжение.</strong> Повторяющиеся сценарии, опоры, ритуал и аптечка на плохой день.</li>
+          <li><strong>Плейбук.</strong> Всё это одной книгой, к которой возвращаешься, когда надо что-то решить.</li>
+          <li><strong>Собеседник</strong>, пока в работе. ИИ на твоих материалах в твоей платной подписке на Claude или ChatGPT, а без подписки&nbsp;— все материалы на руки.</li>
+        </ul>
+        <p>И по желанию&nbsp;— <strong>Спутник</strong>: встречи-сверки после программы раз в две–четыре недели, чтобы маршрут не забылся через месяц.</p>
+        <p><a class="link" href="about.html#compass">Как выглядит компас&nbsp;— на моём примере →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Вид: дорога. Перед «двенадцатью неделями»: путь лентой, станция за станцией. -->
+  <section class="band pg-viewband" aria-label="Вид">
+    <figure class="plate-map" data-processed style="--pm-at:50% 40%; --pm-h:clamp(300px, 28vw, 420px)">
+      <div class="pm-img"><img src="assets/img/pd/processed/maps/tokaido-route-1690-1200.jpg" alt="Старинная японская карта дороги Токайдо: тушью нарисована лента пути с горами, рекой и станциями" width="1200" height="1022" loading="lazy" decoding="async"></div>
+      <figcaption class="pm-cap">Отикоти Доин, рисунки Хисикава Моронобу · «Поэтапная карта дороги Токайдо», лист 13, 1690<span class="pa-src"> · Национальная парламентская библиотека Японии</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- 6. Как устроено: двенадцать недель. Рабочий блок: полоска 12 точек + раскрывашки недель. -->
+  <section class="band band--split pg-how" id="how" data-atmo="day" data-atmo-rule aria-labelledby="pg-h-how">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-how">Как устроено: двенадцать недель</h2>
+      </div>
+      <div class="band-main is-wide pg-wide">
+      <div class="pg-weeks" id="weeks">
+        <!-- сюда скрипт ставит полоску .pg-strip (только на компьютере) -->
+        <p class="pg-intro">Каждая рабочая встреча начинается с получаса «что изменилось за неделю» и заканчивается одним маленьким заданием в жизни: рассказать близкому про живой период, спросить двух людей, что у тебя получается. После привалов задания нет. На встрече откапываем, на неделе ты проверяешь об жизнь.</p>
+
+        <div class="pg-grp" id="grp-compass">
+          <h3>Компас&nbsp;— кто выбирает</h3>
+          <div class="folds">
+            <details class="fold fold--week" id="week-1">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 1</span> <span class="pg-wt">Один главный вопрос на три месяца</span></span><span class="fold-meta">1,5 часа</span></summary>
+              <div class="fold-body">
+                <p>Твой запрос и что ещё происходит в жизни. Формулируем один главный вопрос на три месяца и отмечаем сферы жизни «как сейчас», чтобы в конце было с чем сравнить. Договариваемся, что записываем и что остаётся между нами. Первое задание&nbsp;— неделю замечать, где ты на своём месте, а где нет.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Колесо контекстов</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-2">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 2</span> <span class="pg-wt">Где у тебя уже получалось</span></span><span class="fold-meta">3 часа</span></summary>
+              <div class="fold-body">
+                <p>Идём по твоей жизни по сезонам и смотрим, где была энергия, где получалось, что «не считалось работой». На выходе три самых живых периода и три самых тяжёлых; в тяжёлые заходим настолько, насколько тебе нормально, и «сюда не пойдём» работе не помешает.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Три живых периода, полная версия</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-3">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 3</span> <span class="pg-wt">Что тебе важно и что навязано</span></span><span class="fold-meta">2 часа</span></summary>
+              <div class="fold-body">
+                <p>Кто ты одной строкой, что тебе важно и где две твои ценности спорят. Отдельно&nbsp;— список наносного: цели и «надо», которые на самом деле пришли от других.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Мои герои · Ценности из поступков</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-4">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 4</span> <span class="pg-wt">Что ты умеешь, с доказательствами</span></span><span class="fold-meta">2 часа</span></summary>
+              <div class="fold-body">
+                <p>Что ты умеешь как специалист, как человек и как тот, кто прожил свою жизнь, и у каждой способности есть история-доказательство. После неё у тебя первая версия компаса.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Интервью близких · CliftonStrengths по желанию, оплачивается отдельно</p></details>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="pg-grp" id="grp-horizons">
+          <h3>Горизонты&nbsp;— какое дело</h3>
+          <div class="folds">
+            <details class="fold fold--week" id="week-5">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 5</span> <span class="pg-wt">Какой может быть жизнь, если не фильтровать</span></span><span class="fold-meta">2 часа</span></summary>
+              <div class="fold-body">
+                <p>Сначала разрешаем себе фантазировать, без «а деньги?» и пока без выбора: собираем образы и то, как хочется себя чувствовать.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Семь жизней · 40 хочу</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-6">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 6</span> <span class="pg-wt">Два-три направления</span></span><span class="fold-meta">2 часа</span></summary>
+              <div class="fold-body">
+                <p>Смотрим, что из образов сходится с ценностями и способностями. Остаются два-три направления вида «сфера плюс роль», и на неделе ты по дню живёшь с каждым, будто оно уже выбрано, и замечаешь, к какому тянет вернуться.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Лучшее возможное «я» · Карточки событий</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-7">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 7</span> <span class="pg-wt">Одна дорога и деньги</span></span><span class="fold-meta">2,5 часа</span></summary>
+              <div class="fold-body">
+                <p>Берём одну дорогу и смотрим, чего она требует, что у тебя уже есть, во сколько обойдётся смена дела и сколько нужно в месяц: минимум, комфорт, мечта. Цель&nbsp;— понять, хочется ли проверять её дальше; «да», «нет» и «пока не знаю»&nbsp;— все рабочие ответы.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Приз в деньгах · Премортем дороги · Разговор-прототип</p></details>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="pg-grp" id="grp-rest-1">
+          <h3>Привал</h3>
+          <div class="folds">
+            <details class="fold fold--week" id="week-8">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 8</span> <span class="pg-wt">Разговоры с теми, кто уже там</span></span><span class="fold-meta">1 час</span></summary>
+              <div class="fold-body">
+                <p>Ты идёшь к двум-трём людям, которые уже живут в выбранной сфере, и спрашиваешь про обычный день. Если выйти на таких людей трудно, помогу найти, с кем поговорить. На привале час без упражнений: что услышано и держится ли решение.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="pg-grp" id="grp-route">
+          <h3>Выход на маршрут&nbsp;— как дойти</h3>
+          <div class="folds">
+            <details class="fold fold--week" id="week-9">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 9</span> <span class="pg-wt">Почему прошлые попытки срывались</span></span><span class="fold-meta">2 часа</span></summary>
+              <div class="fold-body">
+                <p>То, без чего у меня самой план не держался: один-три сценария, которые срывали прошлые попытки, и опоры&nbsp;— люди, ритм, ритуал, аптечка на плохой день. Сценарии разбираем, но не лечим: если что-то упирается в травму, тело или сильные перепады состояния, это к терапевту или врачу, и я скажу об этом.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Карточка паттерна · Аптечка на стену</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-10">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 10</span> <span class="pg-wt">Дорога к делу по шагам</span></span><span class="fold-meta">2 часа</span></summary>
+              <div class="fold-body">
+                <p>Вехи на год-два, ближайший квартал по шагам, деньги и сроки смены дела. Первый шаг ставим в календарь и проверяем вопросом «завтра понедельник&nbsp;— сделаю?»; если ответ «нет», делим шаг пополам и спрашиваем снова.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>Маршрут от 5 лет до сегодня · WOOP · Проверка «завтра понедельник»</p></details>
+              </div>
+            </details>
+            <details class="fold fold--week" id="week-11">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 11</span> <span class="pg-wt">Первый шаг</span></span><span class="fold-meta">1,5 часа</span></summary>
+              <div class="fold-body">
+                <p>Первый шаг&nbsp;— до этой встречи. Смотрим, что с ним случилось и что изменилось с первой недели; если шаг не сделан, разбираем, что помешало. Я передаю плейбук и аптечку, а собеседника&nbsp;— если он уже собран.</p>
+                <details class="pg-tools"><summary>Инструменты</summary><p>колесо «было → стало» · плейбук</p></details>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="pg-grp" id="grp-rest-2">
+          <h3>Привал</h3>
+          <div class="folds">
+            <details class="fold fold--week" id="week-12">
+              <summary><span class="fold-title"><span class="pg-wn">Неделя 12</span> <span class="pg-wt">Как прошли первые дни</span></span><span class="fold-meta">1 час</span></summary>
+              <div class="fold-body">
+                <p>Через неделю&nbsp;— час про первые дни на маршруте и, если хочется, про Спутника.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions pg-after"><a class="btn quiet glass" href="practices.html">Все практики →</a></div>
+
+      <div class="prose pg-between" id="between">
+        <h3>Между встречами</h3>
+        <p>После каждой встречи ты получаешь письменный итог: что мы нашли, твоими словами. Если ты согласишься на запись, я буду собирать его по расшифровке с ИИ-помощником: он будет искать повторы и противоречия, а я&nbsp;— проверять всё руками. Про записи&nbsp;— <a href="#faq-data">в вопросах ниже ↓</a></p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Кто рядом. -->
+  <section class="band band--split pg-who" id="who" data-atmo="dawn" data-atmo-rule aria-labelledby="pg-h-who">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-who">Кто рядом</h2>
+        <!-- Фото Саши у водопада (assets/img/sasha) — живой лист, края растворены. -->
+        <figure class="plate-alive plate-alive--quiet band-aside-plate pg-who-photo" data-kind="photo" data-clear data-pa-feather=".16" data-pa-from=".45 .48" style="--pa-r:.8006; --pa-h:min(48vh, 420px)">
+          <div class="pa-img"><img src="assets/img/sasha/sasha-iceland-waterfall.jpg" alt="Саша в жёлтой шапке и сером дождевике стоит у большого водопада и улыбается, глядя в сторону" width="1281" height="1600" loading="lazy" decoding="async"></div>
+        </figure>
+      </div>
+      <div class="band-main is-wide">
+        <div class="prose">
+        <p>Меня зовут Саша Свердловская, я живу в Амстердаме. Я несколько раз заканчивала и начинала заново, последний раз&nbsp;— когда после выгорания сворачивала студию Tetraform, где восемь лет была сооснователем и руководителем продакшена.</p>
+        <p>Увольнения в найме у меня не было, но были расставания с партнёрами, отказы заказчиков и большие завершения, а чувство там очень похожее, так что, скорее всего, я пойму. Мне кажется, мой опыт особенно пригодится, если ты думаешь, нырять ли в новое дело, или если за годы в одном деле кончились силы.</p>
+        <p>С 2017-го, медля перед новым решением, я спрашиваю себя: «Когда, если не сейчас?»&nbsp;— и начинаю.</p>
+        <p><a class="link" href="about.html">Подробнее обо мне →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- «Как это было» возвращено 26.10 по решению Саши (заготовка: texts/v2/02-program-how-it-was-HOLD.md) -->
+  <!-- ЧЕРНОВИК: показать Юре до публикации -->
+  <!-- «Как это было» (контентная волна 26.10, texts/v2/08-content-wave.md, раздел 5). Без «да» Юры на каждую цитату,
+       подпись и оба абзаца (цифры объёма, киты как совместная находка) блок не публиковать. Подпись — его выбор:
+       «Юра» / «Ю.» / без имени. Подводки после подписи («о компасе…», «о том, каким…») — Сашины, Юра может их снять.
+       Картинок из showcase/yura/ здесь нет до его согласия. -->
+  <section class="band band--split pg-was" id="how-it-was" data-needs-consent data-atmo="haze" data-atmo-rule aria-labelledby="pg-h-was">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-was">Как это было</h2>
+      </div>
+      <div class="band-main is-wide">
+        <div class="prose">
+        <p>С ноября по май я вела одного человека по ранней версии программы: она была длиннее и шла полгода. Если мерить объёмом, это около двадцати встреч и больше двухсот тысяч слов расшифровок, примерно два романа, которые никто никогда не станет перечитывать. Поэтому из них собрались вещи покороче: компас, карта повторяющихся сценариев (их набралось около тридцати, и работали мы по одному в месяц, а не со всеми сразу), ритуалы и плейбук. Часть снаряжения придумали вместе: например, киты&nbsp;— наборы вещей и действий под одно дело: собрал кит, вошёл в роль. Жизнь за полгода успела поменяться, и план устарел раньше, чем мы дошли до шага; почему теперь двенадцать недель, <a href="#faq">в вопросах ниже</a>.</p>
+        <p>Что из этого вышло, я пересказывать не буду: это его история, и мои цифры здесь ничего не докажут. Вот что он сказал сам на последней встрече.</p>
+        </div>
+        <div class="pg-quotes">
+          <figure class="testimony testimony--small">
+            <blockquote><p>Материал мой, я не строю защиту, я ему сразу изначально доверяю.</p></blockquote>
+            <figcaption><span class="testimony-who">Юра, первый участник</span><span class="testimony-when">о компасе и собеседнике на его материалах</span></figcaption>
+          </figure>
+          <figure class="testimony testimony--small">
+            <blockquote><p>Вытаскивали из меня, иногда клещами, иногда просто кинув мячик в нужную сторону. Я бегу и говорю: ой, так я уже в процессе.</p></blockquote>
+            <figcaption><span class="testimony-who">Юра, первый участник</span></figcaption>
+          </figure>
+          <figure class="testimony testimony--small">
+            <blockquote><p>Когда мы с тобой проговорили про киты, я такой: господи, это же геймчейнджер.</p></blockquote>
+            <figcaption><span class="testimony-who">Юра, первый участник</span></figcaption>
+          </figure>
+          <figure class="testimony testimony--small">
+            <blockquote><p>В действии нет унижения, но есть директивность. И иногда это нужно, иногда это окей. Просто не всегда.</p></blockquote>
+            <figcaption><span class="testimony-who">Юра, первый участник</span><span class="testimony-when">о том, каким должен быть тон собеседника</span></figcaption>
+          </figure>
+          <figure class="testimony testimony--small">
+            <blockquote><p>Это невероятный опыт. Я очень рад, что он помог мне.</p></blockquote>
+            <figcaption><span class="testimony-who">Юра, первый участник</span></figcaption>
+          </figure>
+        </div>
+        <figure class="testimony testimony--small pg-quote-other">
+          <blockquote><p>Будто просто поговорили. Я через тебя поговорил сам с собой.</p></blockquote>
+          <figcaption><span class="testimony-who">один из людей, с кем я разговаривала</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Чем отличается от того, что пробуют первым. Семь карточек одного веса, напечатаны на странице. -->
+  <section class="band" id="compare" data-atmo="haze" aria-labelledby="pg-h-compare">
+    <div class="frame">
+      <div class="band-head"><h2 id="pg-h-compare">Чем отличается от того, что пробуют первым</h2></div>
+      <div class="tiles pg-cmp-grid">
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">Переждать или взять похожую работу</h3>
+          <p>Иногда это верный ход, особенно если сейчас главное&nbsp;— деньги и отдых. Программа нужна, когда прошло несколько месяцев, а вопрос «что дальше» не уходит.</p>
+        </article>
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">Карьерный консультант</h3>
+          <p>Многие начинают с резюме и рынка, и это быстрый путь, если направление уже понятно. Я начинаю с истории и заканчиваю планом и опорами на случай, когда он начнёт срываться.</p>
+        </article>
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">Коуч</h3>
+          <p>Помогает двигаться к цели и держать темп, многие помогают и с выбором цели. Здесь выбор идёт из твоей истории, а в конце остаются компас и маршрут, к которым можно вернуться.</p>
+        </article>
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">Психолог или психотерапевт</h3>
+          <p>Работает с состоянием и его причинами и часто тоже с вопросами смысла и выбора. Если сейчас главное&nbsp;— состояние, начинать стоит с него, а если вопрос про дело и состояние в целом держит, тогда ко мне, иногда параллельно.</p>
+        </article>
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">Тесты и курсы</h3>
+          <p>Дают слова для себя. Я прошла много тестов, и каждый для меня&nbsp;— взгляд с одной стороны, но твоей истории ни один не знает.</p>
+        </article>
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">ИИ</h3>
+          <p>Когда он знает о тебе мало, ответы получаются общими. Мне с ним не хватало одного: чтобы в понедельник кто-то спросил, сделан ли шаг.</p>
+        </article>
+        <article class="tile tile--kb pg-cmp">
+          <h3 class="tile-title">Близкие</h3>
+          <p>Близкие нужны, и в программе мы к ним обратимся, но им трудно быть нейтральными: они хотят, чтобы тебе поскорее стало спокойнее.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Кому не подойдёт. -->
+  <section class="band band--split pg-text" id="not-for" data-atmo="day" aria-labelledby="pg-h-notfor">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-notfor">Кому не подойдёт</h2>
+      </div>
+      <div class="band-main is-wide">
+        <div class="prose">
+        <ul class="list">
+          <li>Если нужна конкретная вакансия к понедельнику, резюме или подготовка к собеседованию. Это к карьерному консультанту или рекрутёру.</li>
+          <li>Если сил не хватает даже на обычный день или появляются мысли о том, чтобы не жить. Это не терапия, и в остром состоянии я не беру: сначала врач или психолог.</li>
+          <li>Если хочется, чтобы кто-то сказал, что делать. Подсказать мне иногда очень хочется, но решения в программе остаются за тобой.</li>
+          <li>Если сейчас нет 3–5 часов в неделю. Тогда лучше начать, когда они появятся.</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Сколько стоит и как начать. Без поля. Цена — крупно над таблицей, без декора. -->
+  <section class="band band--split pg-price-sec" id="price" data-field="off" data-atmo="day" data-atmo-rule aria-labelledby="pg-h-price">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-price">Сколько стоит и как начать</h2>
+      </div>
+      <div class="band-main is-wide">
+        <div class="pg-price">
+        <p class="pg-price-sum">3&nbsp;500&nbsp;€</p>
+        <dl class="rows">
+          <div><dt>Встречи</dt><dd>от полутора до трёх часов, длинные&nbsp;— с перерывом</dd></div>
+          <div><dt>Старт</dt><dd>ноябрь, программа в этом формате идёт впервые</dd></div>
+          <div><dt>Что входит</dt><dd>десять встреч и два привала; после каждой встречи я разбираю, что мы нашли, и присылаю итог; на руках компас, карта, маршрут и плейбук</dd></div>
+          <div><dt>В работе</dt><dd>личная страница, где лежат все итоги встреч, и собеседник: если будут готовы к концу твоей программы, войдут без доплаты</dd></div>
+          <div><dt>Одновременно</dt><dd>беру двух человек, чтобы на каждого хватало внимания</dd></div>
+          <div><dt>Как начать</dt><dd>два разговора до старта. Первый&nbsp;— 45–60 минут, бесплатно: про твой запрос. На второй я прихожу с планом под него. Договорились&nbsp;— оплата за все встречи, детали обсуждаем в личке</dd></div>
+          <div><dt>Если остановимся</dt><dd>что будет с оплатой, если после первых недель станет ясно, что это не твоё, проговариваем на втором разговоре, до оплаты</dd></div>
+          <div><dt>Если хочется начать с одной встречи</dt><dd>личная сессия за 250&nbsp;€: одна встреча про твой вопрос, без трёх месяцев программы</dd></div>
+          <div><dt>Если сейчас нет дохода</dt><dd>скажи на разговоре, подумаем вместе</dd></div>
+          <div><dt>После программы</dt><dd>Спутник по желанию: чаще, чтобы держать темп, реже&nbsp;— чтобы свериться с компасом. Формат и цену обсуждаем</dd></div>
+        </dl>
+        </div>
+      <div class="pg-price-cta">
+        <a class="btn primary" href="#telegram" data-tg>Написать в Telegram</a>
+        <p class="note pg-terms">Отвечаю за день-два. Напиши в двух словах, с каким запросом приходишь, чтобы я сразу ухватила, про что разговор.</p>
+        <p class="note">Первый разговор&nbsp;— 45–60 минут, бесплатно. <a class="link small" href="talk.html">Как проходит разговор →</a></p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Частые вопросы. Без поля, всё закрыто. -->
+  <section class="band band--split" id="faq" data-field="off" aria-labelledby="pg-h-faq">
+    <div class="frame">
+      <div class="band-side">
+        <h2 id="pg-h-faq">Частые вопросы</h2>
+      </div>
+      <div class="band-main is-wide">
+      <div class="folds pg-faq">
+        <details class="fold">
+          <summary><span class="fold-title">Это коучинг или терапия?</span></summary>
+          <div class="fold-body"><p>По форме ближе всего к фасилитации: я больше спрашиваю, чем советую. С травмой мы не работаем. Если по ходу станет хуже или откроется то, что требует терапевта, скажи мне, даже если кажется, что это не по теме, и вместе решим, замедлиться, взять паузу или продолжать параллельно с терапией.</p></div>
+        </details>
+        <details class="fold">
+          <summary><span class="fold-title">А если я не найду своё дело за три месяца?</span></summary>
+          <div class="fold-body"><p>Может быть и так, обещать обратное не буду. Цель&nbsp;— чтобы стало спокойнее и понятнее, из чего ты выбираешь; иногда выбор&nbsp;— остаться на месте. Если по ходу поймёшь, что это не твоё, скажи сразу; что тогда с оплатой, проговариваем до оплаты.</p></div>
+        </details>
+        <details class="fold">
+          <summary><span class="fold-title">А если мне за сорок и рынок меня не ждёт?</span></summary>
+          <div class="fold-body"><p>Обещать, что ждёт, не могу. Рынок в программе есть, просто не в начале: на неделе 7 смотрим, чего требует выбранная дорога и что у тебя для неё уже есть, а на неделе 8 ты говоришь с людьми, которые там работают. Бывает, что после этого выбор меняется.</p></div>
+        </details>
+        <details class="fold">
+          <summary><span class="fold-title">Почему двенадцать недель и что, если жизнь поменяет планы?</span></summary>
+          <div class="fold-body"><p>Когда я полгода вела одного человека по ранней, более длинной версии, жизнь успела поменяться, и план устарел раньше, чем мы дошли до шага; поэтому здесь двенадцать недель. В студии мы ни разу не дошли до конца проекта по первому плану, так что перестраивать по ходу я привыкла.</p></div>
+        </details>
+        <details class="fold">
+          <summary><span class="fold-title">Можно перенести встречу, поставить программу на паузу или закончить раньше?</span></summary>
+          <div class="fold-body"><p>Перенести встречу можно, если предупредить за пару дней. Длинную паузу без причины я не советую: программа держится на ритме раз в неделю. Если жизнь накрыла&nbsp;— болезнь, новая работа, кончились силы,&nbsp;— скажи, и решим, сдвинуть встречи или остановиться.</p></div>
+        </details>
+        <details class="fold">
+          <summary><span class="fold-title">Сколько людей уже прошли программу?</span></summary>
+          <div class="fold-body"><p>В этом формате пока никто: программа идёт впервые, первые два человека начинают в ноябре.</p></div>
+        </details>
+        <details class="fold" id="faq-data">
+          <summary><span class="fold-title">Что с записями и данными?</span></summary>
+          <div class="fold-body"><p>Записи&nbsp;— только с твоего согласия; как храним и что остаётся у тебя, обсуждаем и фиксируем письменно до старта.</p></div>
+        </details>
+        <details class="fold">
+          <summary><span class="fold-title">Я в России. Как платить?</span></summary>
+          <div class="fold-body"><p>Можно в евро или в рублях, детали обсуждаем в личке.</p></div>
+        </details>
+      </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== ПОДВАЛ v2: один на все страницы (тексты — texts/v2/00-footer.md, двери — 01-home-v5.md). Не менять текст на страницах. ===== -->
+<footer class="site-foot site-foot--v2" data-field="off">
+  <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
+  <div class="frame foot-grid">
+    <div class="foot-care-col" id="not-yet">
+      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+    </div>
+    <nav class="foot-doors" aria-label="Все разделы сайта">
+      <div class="foot-group">
+        <p class="label">База знаний</p>
+        <ul>
+          <li><a href="practices.html">Практики</a></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="knowledge.html">Вся база знаний</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="how.html">Как устроена база</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Работа со мной</p>
+        <ul>
+          <li><a href="program.html">«Переход»</a></li>
+          <li><a href="new-season.html">«Новый сезон»</a></li>
+          <li><a href="talk.html">Разговор</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Проект</p>
+        <ul>
+          <li><a href="project.html">О проекте</a></li>
+          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html#method">Почему через историю</a></li>
+          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="privacy.html">Данные и приватность</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="frame foot-base">
+    <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
+    <div class="foot-line">
+      <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
+      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/alive.js"></script>
+<script>
+/* ===== «Переход»: полоска двенадцати недель, «твои» недели, ссылки на недели ===== */
+(function(){
+'use strict';
+var RM = window.matchMedia('(prefers-reduced-motion: reduce)');
+var DESK = window.matchMedia('(min-width: 761px)');
+var weeksBox, strip, track, tip, line, path, dots = {};
+var COORD = 11;
+
+function $(s, r){ return (r || document).querySelector(s); }
+function $$(s, r){ return [].slice.call((r || document).querySelectorAll(s)); }
+function weekEl(n){ return document.getElementById('week-' + n); }
+function numOf(el){ return +el.id.replace('week-', ''); }
+function isRest(el){ var g = el.closest('.pg-grp'); return !!(g && /^grp-rest/.test(g.id)); }
+
+/* ---------- 1. полоска из списка недель ---------- */
+function buildStrip(){
+  weeksBox = $('.pg-weeks');
+  strip = document.createElement('div');
+  strip.className = 'pg-strip';
+  strip.setAttribute('aria-hidden', 'true');
+  strip.setAttribute('data-clear', 'live');
+  track = document.createElement('div');
+  track.className = 'pg-track';
+  line = document.createElement('i'); line.className = 'pg-line';
+  path = document.createElement('i'); path.className = 'pg-path'; path.hidden = true;
+  track.appendChild(line); track.appendChild(path);
+  $$('.pg-grp', weeksBox).forEach(function(g){
+    var items = $$('.fold--week', g);
+    var seg = document.createElement('div');
+    seg.className = 'pg-seg'; seg.style.setProperty('--n', items.length);
+    var row = document.createElement('div'); row.className = 'pg-dots';
+    items.forEach(function(d){
+      var n = numOf(d), b = document.createElement('button');
+      b.type = 'button'; b.tabIndex = -1; b.className = 'pg-dot';
+      if(isRest(d)){ b.classList.add('pg-rest'); d.classList.add('pg-rest'); }
+      if(n === COORD){ b.classList.add('pg-coord'); d.classList.add('pg-coord'); }
+      b.dataset.w = n;
+      b.dataset.t = ($('.pg-wt', d) || $('.fold-title', d)).textContent.replace(/^Неделя \d+ · /, '');
+      b.dataset.m = $('.fold-meta', d).textContent.split(' · ').pop();
+      dots[n] = b; row.appendChild(b);
+    });
+    var lb = document.createElement('span');
+    lb.className = 'pg-seg-label';
+    lb.textContent = $('h3', g).textContent;
+    seg.appendChild(row); seg.appendChild(lb); track.appendChild(seg);
+  });
+  tip = document.createElement('div');
+  tip.className = 'pg-tip glass';
+  track.appendChild(tip);
+  strip.appendChild(track);
+  weeksBox.insertBefore(strip, weeksBox.firstChild);
+
+  track.addEventListener('mouseover', function(e){ var b = e.target.closest('.pg-dot'); if(b) showTip(b); });
+  track.addEventListener('mouseleave', function(){ tip.classList.remove('is-on'); });
+  track.addEventListener('click', function(e){ var b = e.target.closest('.pg-dot'); if(b) openWeek(+b.dataset.w, true); });
+
+  /* прилипание: фон-стекло только когда полоска действительно прилипла */
+  var sentinel = document.createElement('i');
+  sentinel.style.cssText = 'display:block;height:1px;margin-bottom:-1px';
+  weeksBox.insertBefore(sentinel, strip);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(en){ strip.classList.toggle('pg-stuck', !en.isIntersecting && en.boundingClientRect.top < 0 && weeksBox.getBoundingClientRect().bottom > strip.offsetHeight); });
+    }).observe(sentinel);
+  }
+}
+
+function centerOf(b){
+  var tr = track.getBoundingClientRect(), r = b.getBoundingClientRect();
+  return r.left + r.width / 2 - tr.left;
+}
+
+function showTip(b){
+  tip.innerHTML = '';
+  var t = document.createElement('b'); t.textContent = b.dataset.t;
+  var m = document.createElement('span'); m.textContent = b.dataset.m;
+  tip.appendChild(t); tip.appendChild(m);
+  var x = centerOf(b), w = tip.offsetWidth, W = track.offsetWidth;
+  tip.style.left = Math.max(0, Math.min(W - w, x - w / 2)) + 'px';
+  tip.classList.add('is-on');
+}
+
+function layoutStrip(){
+  if(!strip || !DESK.matches) return;
+  var a = centerOf(dots[1]), z = centerOf(dots[12]);
+  line.style.left = a + 'px'; line.style.width = (z - a) + 'px';
+  weeksBox.style.setProperty('--pg-strip-h', strip.offsetHeight + 'px');
+  drawPath();
+}
+
+/* ---------- 2. «твои» недели: из выбора «Что ближе» и вывода «Тогда и сейчас» ---------- */
+var mine = [];
+function readMine(){
+  var set = {};
+  $$('[data-module="choice"] a.ch-to[data-w]').forEach(function(a){ var n = +a.getAttribute('data-w'); if(n > 0) set[n] = 1; });
+  $$('[data-module="then-now"] .tn-weeks a[href^="#week-"]').forEach(function(a){ set[+a.getAttribute('href').replace('#week-', '')] = 1; });
+  var next = Object.keys(set).map(Number).sort(function(x, y){ return x - y; });
+  if(next.join() === mine.join()) return;
+  mine = next;
+  $$('.pg-weeks .fold--week').forEach(function(d){ d.classList.toggle('pg-mine', mine.indexOf(numOf(d)) > -1); });
+  Object.keys(dots).forEach(function(n){ dots[n].classList.toggle('pg-mine', mine.indexOf(+n) > -1); });
+  drawPath();
+}
+function drawPath(){
+  if(!path) return;
+  var first = mine.filter(function(n){ return n < COORD; })[0];
+  if(!first || !DESK.matches){ path.hidden = true; return; }
+  var a = centerOf(dots[first]), z = centerOf(dots[COORD]);
+  path.style.left = a + 'px'; path.style.width = (z - a - 8) + 'px';
+  path.hidden = false;
+}
+
+/* ---------- 3. ссылки на недели и на вопрос: открыть и плавно доехать ---------- */
+function openWeek(n, scroll){ openFold(weekEl(n), scroll); }
+function openFold(el, scroll){
+  if(!el) return;
+  el.open = true;
+  if(scroll){
+    el.scrollIntoView({behavior: RM.matches ? 'auto' : 'smooth', block:'start'});
+    try { history.replaceState(history.state, '', '#' + el.id); } catch(e){}
+  }
+}
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a[href^="#"]');
+  if(!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  var id = a.getAttribute('href').slice(1);
+  var el = id && document.getElementById(id);
+  if(el && el.tagName === 'DETAILS'){ e.preventDefault(); openFold(el, true); }
+});
+function fromHash(){
+  var id = location.hash.slice(1), el = id && document.getElementById(id);
+  if(el && el.tagName === 'DETAILS'){ el.open = true; requestAnimationFrame(function(){ el.scrollIntoView({block:'start'}); }); }
+}
+
+/* ---------- 4. неделя, которая сейчас на экране, — точка цвета текста ---------- */
+var ticking = false;
+function onScroll(){
+  if(ticking || !DESK.matches || !strip) return;
+  ticking = true;
+  requestAnimationFrame(function(){
+    ticking = false;
+    var limit = strip.getBoundingClientRect().bottom + 24, cur = null;
+    $$('.pg-weeks .fold--week').forEach(function(d){
+      var r = d.getBoundingClientRect();
+      if(r.top <= limit + 120 && r.bottom > limit) cur = cur || numOf(d);
+    });
+    var box = weeksBox.getBoundingClientRect();
+    if(box.bottom < 0 || box.top > innerHeight) cur = null;
+    Object.keys(dots).forEach(function(n){ dots[n].classList.toggle('pg-on', +n === cur); });
+  });
+}
+
+/* ---------- 5. «Тогда и сейчас»: кнопка Telegram ведёт на общий адрес из site.js ---------- */
+function fixTelegram(){
+  var ref = $('.site-head a[data-tg]');
+  if(!ref) return;
+  $$('[data-module="then-now"] a[href="#telegram"]:not([data-tg])').forEach(function(a){
+    a.setAttribute('data-tg', '');
+    a.setAttribute('href', ref.getAttribute('href'));
+    if(ref.getAttribute('target')){ a.setAttribute('target', ref.getAttribute('target')); a.setAttribute('rel', 'noopener'); }
+    else { a.removeAttribute('target'); a.removeAttribute('rel'); }
+  });
+}
+
+/* ---------- 6. высота шапки: полоска недель липнет прямо под ней ---------- */
+function measureHead(){
+  var h = $('.site-head');
+  if(h) document.documentElement.style.setProperty('--pg-head-h', h.offsetHeight + 'px');
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  measureHead();
+  var headEl = $('.site-head');
+  if(headEl && 'ResizeObserver' in window) new ResizeObserver(measureHead).observe(headEl);
+  buildStrip();
+  readMine(); fixTelegram();
+  ['choice', 'then-now'].forEach(function(m){
+    var root = $('[data-module="' + m + '"]');
+    if(root && 'MutationObserver' in window) new MutationObserver(function(){ readMine(); fixTelegram(); }).observe(root, {childList:true, subtree:true});
+  });
+  layoutStrip();
+  fromHash();
+  window.addEventListener('resize', layoutStrip);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(layoutStrip);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('hashchange', fromHash);
+  Field.init();
+});
+})();
+</script>
+</body>
+</html>

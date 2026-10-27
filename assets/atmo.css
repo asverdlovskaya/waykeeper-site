@@ -1,0 +1,177 @@
+/* =====================================================================
+   Waykeeper · атмосфера страницы (atmo)
+   Самый нижний слой: тёплая основа, плёночное зерно, мягкий свет сзади,
+   растворённые фото, тонкий каркас (рамка, узлы, кольца).
+   Живёт ПОД полем field.js (у его холста z-index:-1, у атмосферы -3 и -2).
+   site.css не трогает: только свои классы .atmo*, свои переменные --atmo-*.
+   Подключение и атрибуты — README.md, раздел «Атмосфера».
+   ===================================================================== */
+
+:root{
+  --atmo-base:#FAF8F3;                  /* слоновая кость, почти белая */
+  --atmo-line:rgba(15,23,34,.085);      /* линии каркаса: 8–9 % чернил */
+  --atmo-line-2:rgba(15,23,34,.16);     /* узлы, деления */
+  --atmo-node:#FBF9F5;                  /* заливка узла = фон */
+  --atmo-sky:169,193,238;               /* #A9C1EE */
+  --atmo-warm:255,178,127;              /* #FFB27F */
+  --atmo-ember:234,95,34;               /* #EA5F22 — только очень разбавленно */
+  --atmo-cool:236,242,251;              /* #EEF3FA */
+  --atmo-gold:255,226,204;              /* #FFE2CC — тёплый край */
+  --atmo-swap:2.6s;                     /* смена света между секциями */
+}
+
+/* ---------- 1. Неподвижный слой во весь экран ---------- */
+.atmo{
+  position:fixed; inset:0; z-index:-3; pointer-events:none; overflow:hidden;
+  background-color:var(--atmo-base);
+  transition:background-color var(--atmo-swap) ease;
+  contain:strict;
+}
+.atmo > *{position:absolute; inset:0}
+
+/* Варианты (выбор — README): a «Плёнка» (по умолчанию), b «Бумага и облака», c «Свет» */
+.atmo[data-v="b"]{--atmo-base:#F8F4EB; --atmo-node:#F9F6EF; --atmo-clouds-o:.75}
+.atmo[data-v="b"] .atmo-light{opacity:.72}
+.atmo[data-v="c"]{--atmo-base:#FCFBF8; --atmo-node:#FCFBF9}
+
+/* ---------- 2. Свет: 4 мягких пятна, медленный дрейф ---------- */
+/* Внешний <i> — где пятно стоит при этом свете (плавно переезжает),
+   внутренний <b> — сам дрейф 27–53 с. Только transform и opacity. */
+.atmo-blob{
+  position:absolute; left:0; top:0; width:72vmax; height:72vmax; margin:-36vmax 0 0 -36vmax;
+  opacity:0; will-change:transform,opacity;
+  transition:transform calc(var(--atmo-swap) * 1.6) cubic-bezier(.45,.05,.25,1), opacity var(--atmo-swap) ease;
+}
+.atmo-blob b{display:block; width:100%; height:100%; border-radius:50%; will-change:transform}
+.atmo-b1 b{background:radial-gradient(closest-side, rgba(var(--atmo-sky),.95), rgba(var(--atmo-sky),.42) 52%, rgba(var(--atmo-sky),0) 100%); animation:atmo-drift-1 41s ease-in-out infinite alternate}
+.atmo-b2 b{background:radial-gradient(closest-side, rgba(var(--atmo-warm),.9), rgba(var(--atmo-warm),.38) 50%, rgba(var(--atmo-warm),0) 100%); animation:atmo-drift-2 53s ease-in-out infinite alternate}
+.atmo-b3{width:40vmax; height:40vmax; margin:-20vmax 0 0 -20vmax}
+.atmo-b3 b{background:radial-gradient(closest-side, rgba(var(--atmo-ember),.55), rgba(var(--atmo-ember),.16) 48%, rgba(var(--atmo-ember),0) 100%); animation:atmo-drift-3 34s ease-in-out infinite alternate}
+.atmo-b4{width:96vmax; height:96vmax; margin:-48vmax 0 0 -48vmax}
+.atmo-b4 b{background:radial-gradient(closest-side, rgba(var(--atmo-cool),1), rgba(var(--atmo-cool),.6) 55%, rgba(var(--atmo-cool),0) 100%); animation:atmo-drift-4 59s ease-in-out infinite alternate}
+
+@keyframes atmo-drift-1{0%{transform:translate(-4vmax,-2vmax) scale(.94)} 50%{transform:translate(3vmax,4vmax) scale(1.05)} 100%{transform:translate(6vmax,-3vmax) scale(.98)}}
+@keyframes atmo-drift-2{0%{transform:translate(3vmax,2vmax) scale(1.04)} 50%{transform:translate(-5vmax,-2vmax) scale(.95)} 100%{transform:translate(-1vmax,5vmax) scale(1.07)}}
+@keyframes atmo-drift-3{0%{transform:translate(0,0) scale(.9)} 50%{transform:translate(4vmax,-3vmax) scale(1.08)} 100%{transform:translate(-3vmax,2vmax) scale(.96)}}
+@keyframes atmo-drift-4{0%{transform:translate(-3vmax,3vmax) scale(1)} 100%{transform:translate(4vmax,-2vmax) scale(1.06)}}
+
+/* Свет по секциям: data-atmo="dawn|day|haze|night-soft" (по умолчанию day).
+   translate(x,y) — центр пятна в долях экрана. */
+.atmo[data-light="day"] .atmo-b1{opacity:.42; transform:translate(84vw,8vh)}
+.atmo[data-light="day"] .atmo-b2{opacity:.26; transform:translate(10vw,96vh)}
+.atmo[data-light="day"] .atmo-b3{opacity:0;   transform:translate(18vw,90vh)}
+.atmo[data-light="day"] .atmo-b4{opacity:.9;  transform:translate(4vw,4vh)}
+
+.atmo[data-light="dawn"] .atmo-b1{opacity:.24; transform:translate(8vw,88vh)}
+.atmo[data-light="dawn"] .atmo-b2{opacity:.46; transform:translate(80vw,6vh)}
+.atmo[data-light="dawn"] .atmo-b3{opacity:.16; transform:translate(90vw,22vh)}
+.atmo[data-light="dawn"] .atmo-b4{opacity:.55; transform:translate(10vw,10vh)}
+
+.atmo[data-light="haze"] .atmo-b1{opacity:.16; transform:translate(76vw,90vh)}
+.atmo[data-light="haze"] .atmo-b2{opacity:.24; transform:translate(30vw,8vh)}
+.atmo[data-light="haze"] .atmo-b3{opacity:0;   transform:translate(50vw,50vh)}
+.atmo[data-light="haze"] .atmo-b4{opacity:.5;  transform:translate(50vw,60vh)}
+
+.atmo[data-light="night-soft"]{--atmo-base:#F5F6F9}
+.atmo[data-light="night-soft"] .atmo-b1{opacity:.42; transform:translate(30vw,12vh)}
+.atmo[data-light="night-soft"] .atmo-b2{opacity:.12; transform:translate(92vw,96vh)}
+.atmo[data-light="night-soft"] .atmo-b3{opacity:.1;  transform:translate(86vw,84vh)}
+.atmo[data-light="night-soft"] .atmo-b4{opacity:.95; transform:translate(70vw,30vh)}
+
+/* ---------- 3. Растворённое изображение (фото секции или облака) ---------- */
+.atmo-clouds,.atmo-photo{opacity:0; transition:opacity 2.2s ease}
+.atmo-clouds{
+  -webkit-mask-image:linear-gradient(180deg, transparent 18%, #000 78%); mask-image:linear-gradient(180deg, transparent 18%, #000 78%);
+}
+.atmo-clouds > i{position:absolute; inset:-8%; background-repeat:no-repeat; background-size:cover; background-position:50% 100%; animation:atmo-kb 70s ease-in-out infinite alternate}
+.atmo.has-clouds .atmo-clouds{opacity:var(--atmo-clouds-o,.7)}
+.atmo.is-abstract .atmo-clouds{opacity:.9}
+
+.atmo-photo{
+  /* фото проступает по краям, в середине — где текст — почти чисто */
+  -webkit-mask-image:radial-gradient(ellipse 66% 60% at 42% 48%, transparent 30%, rgba(0,0,0,.6) 66%, #000 96%);
+          mask-image:radial-gradient(ellipse 66% 60% at 42% 48%, transparent 30%, rgba(0,0,0,.6) 66%, #000 96%);
+}
+.atmo.has-photo .atmo-photo{opacity:1}
+.atmo[data-photo-pos="right"] .atmo-photo{
+  -webkit-mask-image:linear-gradient(90deg, transparent 38%, rgba(0,0,0,.6) 70%, #000 100%);
+          mask-image:linear-gradient(90deg, transparent 38%, rgba(0,0,0,.6) 70%, #000 100%);
+}
+.atmo[data-photo-pos="bottom"] .atmo-photo{
+  -webkit-mask-image:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.6) 72%, #000 100%);
+          mask-image:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.6) 72%, #000 100%);
+}
+.atmo-ph{position:absolute; inset:0; opacity:0; transition:opacity 2s ease}
+.atmo-ph.on{opacity:var(--atmo-photo-o,.36)}
+.atmo-ph img{
+  position:absolute; inset:-7%; width:114%; height:114%; max-width:none; object-fit:cover;
+  /* чистый кадр, свои цвета: без сепии и серого. Дымка — только прозрачность слоя (--atmo-photo-o) и маска по краям */
+  filter:none;
+  animation:atmo-kb 48s ease-in-out infinite alternate; will-change:transform;
+}
+@keyframes atmo-kb{0%{transform:scale(1.02) translate(0,0)} 100%{transform:scale(1.12) translate(-2.2%,-1.6%)}}
+
+/* ---------- 4. Зерно ---------- */
+/* Плитка рисуется один раз в atmo.js под плотность экрана (ретина — мельче),
+   дальше просто повторяется. Без mix-blend-mode: светлые и тёмные зёрна
+   с прозрачностью прямо в плитке. */
+.atmo-grain{background-repeat:repeat; opacity:var(--atmo-grain-o,1); transition:opacity 4s ease}
+.atmo-grain + .atmo-grain{opacity:0}
+.atmo[data-v="c"] .atmo-grain{animation:atmo-breathe 9s ease-in-out infinite alternate}
+.atmo[data-v="c"] .atmo-grain + .atmo-grain{animation-direction:alternate-reverse}
+@keyframes atmo-breathe{0%{opacity:.25} 100%{opacity:1}}
+
+/* ---------- 5. Рамка: две вертикали по краям колонки --wrap ---------- */
+.atmo-rails{display:none}
+.atmo-rails i{
+  position:absolute; top:0; bottom:0; width:1px; background:var(--atmo-line);
+  -webkit-mask-image:linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+          mask-image:linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+}
+.atmo-rails i:first-child{left:calc(50% - var(--atmo-frame, var(--wrap,1200px)) / 2)}
+.atmo-rails i:last-child{left:calc(50% + var(--atmo-frame, var(--wrap,1200px)) / 2 - 1px)}
+.atmo.has-frame .atmo-rails{display:block}
+@media (max-width:1279px){ .atmo.has-frame .atmo-rails{display:none} }
+
+/* ---------- 6. Метки в документе: линии секций, узлы, кольца ---------- */
+.atmo-marks{position:absolute; left:0; top:0; width:100%; height:0; z-index:-2; pointer-events:none; overflow:hidden}
+.atmo-rule{position:absolute; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, rgba(15,23,34,0), var(--atmo-line) 14%, var(--atmo-line) 86%, rgba(15,23,34,0))}
+.atmo-node{position:absolute; width:9px; height:9px; margin:-4px 0 0 -4px; border-radius:50%;
+  background:var(--atmo-node); border:1px solid var(--atmo-line-2);
+  transition:background-color 1.2s ease, border-color 1.2s ease, box-shadow 1.2s ease}
+/* точка на пути, где ты сейчас — тёплая (тот же смысл, что у --accent в site.css) */
+.atmo-node.is-here{background:#EA5F22; border-color:#EA5F22; box-shadow:0 0 0 5px rgba(234,95,34,.10)}
+@media (max-width:1279px){ .atmo-node{display:none} }
+
+.atmo-ring{position:absolute; overflow:visible}
+.atmo-ring circle,.atmo-ring line,.atmo-ring path{vector-effect:non-scaling-stroke}
+.atmo-ring .r-dial{transform-box:view-box; transform-origin:50% 50%; animation:atmo-turn 480s linear infinite}
+@keyframes atmo-turn{to{transform:rotate(360deg)}}
+
+/* одновременно движется только то, что видно: невидимое пятно (opacity 0 при этом свете) и фото, которое сейчас не показано, стоят */
+.atmo[data-light="day"] .atmo-b3 b,.atmo[data-light="haze"] .atmo-b3 b{animation-play-state:paused}
+.atmo-ph:not(.on) img{animation-play-state:paused}
+
+/* ---------- 7. Пауза, тишина, телефон ---------- */
+.atmo.is-paused *, .atmo-marks.is-paused *{animation-play-state:paused !important}
+.atmo.is-still *, .atmo-marks.is-still *{animation:none !important}
+.atmo.is-still .atmo-blob{transition-duration:.01s}
+@media (prefers-reduced-motion:reduce){
+  .atmo *, .atmo-marks *{animation:none !important}
+}
+@media (max-width:760px){
+  .atmo-b4{display:none}
+  .atmo-blob{width:110vmax; height:110vmax; margin:-55vmax 0 0 -55vmax}
+  .atmo-b3{width:60vmax; height:60vmax; margin:-30vmax 0 0 -30vmax}
+  /* на узком экране пятно занимает почти весь экран, и тёплый цвет сгущается: свет тише, тёплое ещё тише — верх остаётся прохладным */
+  .atmo-blob b{opacity:.6}
+  .atmo-b2 b,.atmo-b3 b{opacity:.22}
+  .atmo{--atmo-base:#F9F9F7}   /* основа чуть прохладнее: на узком экране тёплого и так больше */
+  .atmo-ph img{animation-duration:70s}
+  .atmo-photo{
+    -webkit-mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,.35) 30%, transparent 52%, transparent 70%, #000 100%);
+            mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,.35) 30%, transparent 52%, transparent 70%, #000 100%);
+  }
+}
+@media print{ .atmo,.atmo-marks{display:none} }

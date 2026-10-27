@@ -1,0 +1,45 @@
+/* Waykeeper · «Что уже нашлось» · префикс tr- · см. trail.js
+   Тонкая вертикальная линия-маршрут, как сезоны на «О себе»: без рамок, счётчиков и подписей у точек. */
+
+.tr{max-width:var(--measure); margin:var(--sp-7) 0 var(--sp-6)}
+.tr[hidden]{display:none}
+.tr-h{font:400 var(--s3)/1.3 var(--f-head)}
+.tr-sub{margin-top:var(--sp-2)}
+
+.tr-line{list-style:none; margin:var(--sp-5) 0 0; padding:0 0 0 28px}
+.tr-node{position:relative; padding:0 0 var(--sp-4); min-height:20px; line-height:1.55}
+.tr-node > i{position:absolute; left:-24px; top:.62em; width:7px; height:7px; margin:-3.5px 0 0 -3.5px; border-radius:50%; background:rgba(15,23,34,.55)}
+/* линия к следующей точке */
+.tr-node:not(:last-child)::before{content:""; position:absolute; left:-24.5px; top:.62em; bottom:-.62em; width:1px; background:rgba(15,23,34,.28)}
+
+.tr-v{display:block; color:var(--ink)}
+.tr-k{color:var(--ink-3)}
+.tr-k::after{content:":"}
+.tr-quote{font:italic 300 var(--s3)/1.4 var(--f-head); color:var(--ink)}
+
+/* пропавшее из дней — пустая точка, как оборванная линия в «Тогда и сейчас» */
+.tr-node--gone > i{background:var(--page); border:1px solid rgba(15,23,34,.5)}
+
+/* «сейчас» — тёплая точка; ниже — только белое */
+.tr-node--now{min-height:8px; padding-bottom:0}
+.tr-node--now > i{top:4px; width:9px; height:9px; margin:-4.5px 0 0 -4.5px; background:var(--accent)}
+.tr.has-point .tr-node--now{padding-bottom:56px}
+.tr.has-point .tr-node--now::before{top:4px; bottom:-6px; background:repeating-linear-gradient(to bottom, rgba(15,23,34,.4) 0 2px, transparent 2px 7px)}
+
+/* точка впереди — кольцо 14 px с тонким крестом (как .coord в site.css) */
+.tr-node--point{min-height:14px; padding-bottom:0}
+.tr-node--point > i{top:7px; width:14px; height:14px; margin:-7px 0 0 -7px; background:transparent; border:1px solid rgba(15,23,34,.7)}
+.tr-node--point > i::before,.tr-node--point > i::after{content:""; position:absolute; background:rgba(15,23,34,.45)}
+.tr-node--point > i::before{left:6px; top:-6px; width:1px; height:24px}
+.tr-node--point > i::after{top:6px; left:-6px; height:1px; width:24px}
+
+.tr-foot{margin-top:var(--sp-5)}
+
+/* появление: линия проступает сверху вниз, один раз */
+@media (prefers-reduced-motion: no-preference){
+  .tr-node{animation:tr-in .5s var(--ease) both}
+  .tr-node:nth-child(2){animation-delay:.08s} .tr-node:nth-child(3){animation-delay:.16s}
+  .tr-node:nth-child(4){animation-delay:.24s} .tr-node:nth-child(5){animation-delay:.32s}
+  .tr-node:nth-child(6){animation-delay:.48s} .tr-node:nth-child(7){animation-delay:.64s}
+}
+@keyframes tr-in{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}

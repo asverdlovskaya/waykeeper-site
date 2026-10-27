@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кейс-менеджер · Атлас помогающих профессий · Waykeeper</title>
+<meta name="description" content="Кейс-менеджер: Ведение «случая» человека: единый план и координация всех служб вокруг него. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
+<!-- seo -->
+<link rel="canonical" href="https://waykeeper.org/atlas/case-manager.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Waykeeper">
+<meta property="og:title" content="Кейс-менеджер · Атлас помогающих профессий · Waykeeper">
+<meta property="og:description" content="Кейс-менеджер: Ведение «случая» человека: единый план и координация всех служб вокруг него. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
+<meta property="og:url" content="https://waykeeper.org/atlas/case-manager.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waykeeper — открытый ресурс про переходы">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
+<!-- /seo -->
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/site-v2.css">
+<link rel="stylesheet" href="../assets/kb.css">
+<link rel="stylesheet" href="../assets/kb-head.css">
+<link rel="stylesheet" href="../assets/atmo.css">
+<script src="../assets/atmo.js" defer></script>
+<script src="../assets/site.js" defer></script>
+<script src="../assets/site-v2.js" defer></script>
+<script src="../assets/field.js" defer></script>
+<script src="../assets/kb.js" defer></script>
+<script src="../assets/kb-head.js" defer></script>
+<script src="../assets/pages/atlas-wiki.js" defer></script>
+<link rel="stylesheet" href="../assets/pages/atlas-wiki.css">
+<link rel="stylesheet" href="../assets/alive.css">
+<link rel="stylesheet" href="../modules/passage.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-atmo-frame data-field-blobs="off" data-aw-root="../">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
+<header class="site-head">
+  <div class="frame head-row">
+    <a class="wordmark" href="../index.html">Waykeeper</a>
+    <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <ul>
+        <li class="kb">
+          <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
+          <div class="kb-pop nodes" id="kb-pop">
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
+              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
+              <kbd>/</kbd>
+            </form>
+            <ul class="kb-list">
+              <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+            </ul>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+          </div>
+        </li>
+        <li><a href="../program.html">«Переход»</a></li>
+        <li><a href="../new-season.html">«Новый сезон»</a></li>
+        <li><a href="../project.html">О проекте</a></li>
+        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../talk.html">Разговор</a></li>
+      </ul>
+      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="aw">
+<div class="frame kb-page" data-atmo="day">
+  <div class="kb-grid">
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Быт и социальная поддержка · 10</span><ul><li><a href="housing-advisor.html">Жилищный консультант</a></li><li><a href="case-manager.html" class="is-here" aria-current="page">Кейс-менеджер</a></li><li><a href="move-manager.html">Менеджер переезда</a></li><li><a href="nanny.html">Няня</a></li><li><a href="professional-organizer.html">Организатор пространства</a></li><li><a href="personal-assistant-disability.html">Персональный ассистент</a></li><li><a href="relocation-consultant.html">Релокационный консультант</a></li><li><a href="sister-of-mercy.html">Сестра милосердия</a></li><li><a href="home-care-worker.html">Сиделка</a></li><li><a href="social-worker.html">Соцработник</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-home" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <article class="kb-main" aria-labelledby="page-title">
+      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-home.html">Быт и социальная поддержка</a></li><li>Кейс-менеджер</li></ol>
+      <p class="kb-type">Специалист<span class="sep">·</span>семья «Быт и социальная поддержка»<span class="sep">·</span>данные 27.10.2026</p>
+      <h1 class="kb-h1" id="page-title">Кейс-менеджер<small lang="en">Case manager</small></h1>
+      
+      <div class="kb-two"><span class="label">В двух словах</span><p>Ведение «случая» человека: единый план и координация всех служб вокруг него</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>9 источников</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 3 утверждения не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — средний. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>нет</dd></div><div><dt>Работает с будущим</dt><dd>да</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>да</dd></div><div><dt>Работает с группами</dt><dd>нет</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в госучреждениях · бесплатно в НКО · платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, эмоциональная поддержка, практическое действие, сеть/контакты</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Ведёт «случай» (кейс) одного человека или семьи от начала до конца: собирает в один план все нужные виды помощи — медицинскую, социальную, юридическую, психологическую — и следит, чтобы службы работали согласованно, а человек не «потерялся» между ними.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«У меня диагноз (например, ВИЧ или онкология), и я не понимаю, куда идти дальше»</li><li>«Близкий с деменцией — нужно организовать уход, врачей, документы»</li><li>«Я хожу по кругу между пятью ведомствами, и никто не отвечает за итог»</li><li>«После больницы или реабилитации нужно заново выстроить жизнь»</li><li>«Человеку нужна помощь сразу от нескольких служб, и он сам не справится с координацией»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Оценивает потребности, вместе с человеком составляет план, договаривается со службами, сопровождает на приёмы, отслеживает результат и пересматривает план. Американская комиссия по сертификации (CCMC) описывает это как процесс «оценки, планирования, координации, мониторинга и оценки» нужных услуг.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально; регулярные контакты (встречи, звонки, сопровождение на приёмы) в течение нескольких месяцев, пока цели плана не достигнуты.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Сам обычно не лечит и не оказывает каждую услугу — он координатор. Не заменяет врача, психотерапевта или юриста. Не берёт на себя ответственность за решения человека.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Чаще всего — социальный работник, медсестра или психолог с дополнительным обучением ведению случая. В российских вузах «технология ведения случая» (case-технологии) входит в программы по социальной работе. В НКО обучают по своим методическим рекомендациям. В мире обычно: базовое профессиональное образование в здравоохранении или социальной работе плюс добровольная сертификация.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Отдельной профессии и отдельного профстандарта «кейс-менеджер» не найдено (проверены тексты трёх профстандартов по социальной работе, а не весь реестр) <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. Функции ведения случая входят в профстандарт «Специалист по социальной работе» (приказ № 455н: оценка нужд, программа помощи, организация её оказания, сопровождение участников боевых действий и их семей). В законе № 442-ФЗ есть понятие «социальное сопровождение» (ст. 22) — привлечение медицинской, психологической, юридической и другой помощи сверх социальных услуг. В мире обычно: добровольная сертификация, например CCM в США (CCMC).</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Органы соцзащиты и КЦСОН (социальное сопровождение); центры СПИД и ВИЧ-сервисные НКО — например, фонд «Гуманитарное действие» (Санкт-Петербург) издаёт рекомендации по кейс-менеджменту; пациентские НКО <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>; для участников боевых действий и их семей — социальные координаторы фонда «Защитники Отечества» (фонд создан Указом Президента № 232 от 03.04.2023).</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в госучреждениях · бесплатно в НКО · платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Направляют: врачи, центры СПИД, больницы, соцзащита, НКО. Передаёт и координирует: врачей, <a href="social-worker.html">социального работника</a>, юриста, психолога, <a href="peer-support-worker.html">равного консультанта</a>.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Полезен, когда переход сложный и многослойный (болезнь + работа + документы + семья) и нужен один человек, который держит всю картину.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 9</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://legalacts.ru/doc/prikaz-mintruda-rossii-ot-06092024-n-455n-ob-utverzhdenii/" target="_blank" rel="noopener">Приказ Минтруда России от 06.09.2024 № 455н «Об утверждении профессионального стандарта „Специалист по социальной работе“» — legalacts.ru ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://base.garant.ru/70552648/" target="_blank" rel="noopener">Федеральный закон от 28.12.2013 № 442-ФЗ «Об основах социального обслуживания граждан в РФ» — Гарант ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://ccmcertification.org/about-ccmc" target="_blank" rel="noopener">About CCMC (определение кейс-менеджмента, сертификация CCM) — Commission for Case Manager Certification ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://haf-spb.org/wp-content/uploads/2022/04/rekomendaczii-po-kejs-menedzhmentu.pdf" target="_blank" rel="noopener">Рекомендации по кейс-менеджменту — фонд «Гуманитарное действие» ↗</a></span></li><li id="src-5" data-n="5"><span><a href="https://www.miloserdie.help/" target="_blank" rel="noopener">Православная служба помощи «Милосердие» — проекты ↗</a></span></li><li id="src-6" data-n="6"><span><a href="https://www.miloserdie.help/projects/miloserdie-seme/" target="_blank" rel="noopener">«Милосердие семье» — служба «Милосердие» ↗</a></span></li><li id="src-7" data-n="7"><span><a href="https://www.miloserdie.help/projects/patronazhnyy-ukhod-v-bolnitsakh/" target="_blank" rel="noopener">Уход в больницах — служба «Милосердие» ↗</a></span></li><li id="src-8" data-n="8"><span><a href="https://www.diaconia.ru/" target="_blank" rel="noopener">Синодальный отдел по церковной благотворительности и социальному служению («Дела Церкви») ↗</a></span></li><li id="src-9" data-n="9"><span><a href="https://diaconia.ru/training/" target="_blank" rel="noopener">Обучение — Синодальный отдел по благотворительности РПЦ ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр — в чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В атласе</dt><dd><a href="social-worker.html"><span class="t">Социальный работник</span><span class="m">стыкуется</span></a><a href="peer-support-worker.html"><span class="t">Равный консультант</span><span class="m">стыкуется</span></a><a href="peer-cancer.html"><span class="t">Равный консультант в онкологии</span><span class="m">упоминает</span></a><a href="peer-hiv.html"><span class="t">Равный консультант по ВИЧ</span><span class="m">упоминает</span></a><a href="volunteer-coordinator.html"><span class="t">Координатор волонтёров</span><span class="m">упоминает</span></a><a href="housing-advisor.html"><span class="t">Жилищный консультант</span><span class="m">та же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=case-manager,social-worker,peer-support-worker">Сравнить с похожими</a><a class="kb-do-alt" href="../atlas-map.html#case-manager" target="_blank" rel="noopener">Показать на карте ↗</a></div></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="housing-advisor.html" rel="prev">← Предыдущий в семье<b>Жилищный консультант</b></a><a class="r" href="move-manager.html" rel="next">Следующий в семье →<b>Менеджер переезда</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
+      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+    </article>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 9</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+  </div>
+</div>
+</main>
+
+<!-- ===== ПОДВАЛ v2: один на все страницы (тексты — texts/v2/00-footer.md, двери — 01-home-v5.md). Не менять текст на страницах. ===== -->
+<footer class="site-foot site-foot--v2" data-field="off">
+  <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
+  <div class="frame foot-grid">
+    <div class="foot-care-col" id="not-yet">
+      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+    </div>
+    <nav class="foot-doors" aria-label="Все разделы сайта">
+      <div class="foot-group">
+        <p class="label">База знаний</p>
+        <ul>
+          <li><a href="../practices.html">Практики</a></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../knowledge.html">Вся база знаний</a></li>
+          <li><a href="../glossary.html">Словарь</a></li>
+          <li><a href="../how.html">Как устроена база</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Работа со мной</p>
+        <ul>
+          <li><a href="../program.html">«Переход»</a></li>
+          <li><a href="../new-season.html">«Новый сезон»</a></li>
+          <li><a href="../talk.html">Разговор</a></li>
+        </ul>
+      </div>
+      <div class="foot-group">
+        <p class="label">Проект</p>
+        <ul>
+          <li><a href="../project.html">О проекте</a></li>
+          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html#method">Почему через историю</a></li>
+          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="../privacy.html">Данные и приватность</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="frame foot-base">
+    <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
+    <div class="foot-line">
+      <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
+      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/alive.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function(){ Field.init(); });</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* Waykeeper · site-v2 · энциклопедия переходов (пакет 4 базы знаний, 26.10.2026)
+   Общие компоненты — assets/kb.css. Здесь только то, чего там нет: вход энциклопедии, термины пунктиром,
+   «ещё N» в «Рядом», литература, лестница помощи, порядок действий. Только токены сайта, размеры --s1…--s5. */
+
+/* термины словаря в тексте: пунктир, ведёт в общий glossary.html */
+a.kb-term{color:inherit; text-decoration:underline dotted; text-decoration-color:var(--ink-3); text-underline-offset:4px}
+a.kb-term:hover{text-decoration-color:var(--ink)}
+
+/* «ещё N» в строке «Рядом» */
+.kb-near details.kb-more-d{display:flex; flex-direction:column; gap:6px}
+.kb-near details.kb-more-d > summary{cursor:pointer; list-style:none; font-size:var(--s5); color:var(--ink-2); min-height:44px; display:flex; align-items:center}
+.kb-near details.kb-more-d > summary::-webkit-details-marker{display:none}
+.kb-near details.kb-more-d > summary::after{content:" ↓"}
+.kb-near details.kb-more-d[open] > summary::after{content:" ↑"}
+.kb-near .steprow{font-size:var(--s4); line-height:1.4}
+.kb-near .steprow a{display:inline; text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px}
+
+/* тело статьи */
+.kb-sec ol{padding-left:1.4em}
+.kb-sec blockquote{margin:var(--sp-3) 0; padding-left:var(--sp-4); border-left:1px solid var(--line-2); color:var(--ink-2); max-width:34rem}
+.kb-sec hr{border:0; border-top:1px solid var(--line); margin:var(--sp-5) 0; max-width:36rem}
+.kb-sec .kb-h3{margin-top:var(--sp-4)}
+.kb-careful ul,.kb-careful ol{padding-left:1.1em; max-width:34rem}
+.kb-careful p + p{margin-top:var(--sp-2)}
+.enc-sub{margin-top:var(--sp-3); font-size:var(--s4); color:var(--ink-2); max-width:34rem}
+.enc-order,.enc-ladder{margin-top:var(--sp-3); padding-left:1.4em; max-width:36rem}
+.enc-order li,.enc-ladder li{max-width:36rem}
+.enc-order li + li,.enc-ladder li + li{margin-top:var(--sp-3)}
+.enc-ladder .when{display:block; margin-top:2px; font-size:var(--s5); color:var(--ink-3)}
+
+/* литература к статье */
+.kb-sec ul.kb-books{list-style:none; margin:var(--sp-3) 0 0; padding:0; border-top:1px solid var(--line-2)}
+.kb-books li{padding:10px 0; border-bottom:1px solid var(--line); font-size:var(--s4); line-height:1.5; max-width:none}
+.kb-books .a{color:var(--ink-2)}
+.kb-books .w{display:block; margin-top:2px; font-size:var(--s5); color:var(--ink-3)}
+.kb-books .soft{color:var(--ink-2)}
+
+/* ===== вход: encyclopedia.html ===== */
+.enc-cover .enc-plate{margin-top:var(--sp-5)}
+.enc-begin{padding-top:var(--sp-5)}
+.enc-begin .lede{max-width:46rem}
+.enc-go{margin-top:var(--sp-4); display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-3) var(--sp-5)}
+.enc-go a:not(.btn){color:var(--ink-2); font-size:var(--s5)}
+.enc-band{padding-top:var(--sp-6)}
+.enc-bh{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:var(--sp-2) var(--sp-6); margin-bottom:var(--sp-4)}
+.enc-bh .small{max-width:34rem; color:var(--ink-3)}
+.enc-steps{list-style:none; margin:0; padding:0; border-top:1px solid var(--line-2)}
+.enc-steps li{display:grid; grid-template-columns:2em minmax(0,13em) minmax(0,1fr); gap:var(--sp-3) var(--sp-5); align-items:baseline; padding:9px 0; border-bottom:1px solid var(--line); font-size:var(--s4); line-height:1.5}
+.enc-steps .n{color:var(--ink-3); font-size:var(--s5); font-variant-numeric:tabular-nums}
+.enc-steps b{font:400 var(--s3)/1.3 var(--f-head)}
+.enc-steps .l a{color:var(--ink); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px; white-space:nowrap}
+.enc-steps .l a:hover{text-decoration-color:var(--ink)}
+.enc-steps--sub{margin-top:var(--sp-5)}
+.enc-foot{margin-top:var(--sp-5)}
+.enc-band .ev-legend{margin-top:var(--sp-3)}
+@media (max-width:760px){
+  .enc-steps li{grid-template-columns:minmax(0,1fr); gap:4px}
+  .enc-steps .n{display:none}
+  .enc-steps .l a{white-space:normal}
+  .enc-cover .enc-plate{max-width:28rem}
+}
+
+.enc-cover{padding-bottom:var(--sp-5)}
+.enc-begin{padding-top:0}
+.enc-marks{padding-bottom:var(--sp-6)}
+.enc-marks .ev-legend{margin-top:var(--sp-3)}
+.enc-cover{padding-top:var(--sp-8)}
+.enc-marks{padding-bottom:0}
+.enc-steps--sub{margin-top:var(--sp-4)}
+
+/* метка под «В двух словах» (интеграция I1, 26.10.2026): метка, ссылка «Что значат метки» и строки «метка — для чего»
+   простым списком. Заменяет штамп «метка проверена …». Только токены сайта. */
+.kb-ev{margin-top:var(--sp-5); padding:14px 0; border-top:1px solid var(--line-2); border-bottom:1px solid var(--line-2); font-size:var(--s5); line-height:1.5; color:var(--ink-2)}
+.kb-ev-line{display:flex; flex-wrap:wrap; align-items:center; gap:6px var(--sp-5)}
+.kb-ev-how{margin-left:auto; color:var(--ink-2); text-decoration:underline; text-decoration-color:var(--line-2); text-underline-offset:3px}
+.kb-ev-states{list-style:none; margin:var(--sp-3) 0 0; padding:0; max-width:40rem}
+.kb-ev-states li + li{margin-top:4px}
+.kb-ev-note{margin-top:var(--sp-3); max-width:40rem}

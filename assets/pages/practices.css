@@ -1,0 +1,261 @@
+/* =====================================================================
+   Waykeeper · site-v2 · «Практики»: каталог (practices.html) и 38 страниц практик (practices/*.html)
+   Раскладка v2 «Атлас на бумаге» поверх assets/practice.css (там остались шаги, поля, «осторожно»).
+   Цвета — только токены (--ink*, --line*, --paper-2, --page, --accent). Новых шрифтов и размеров нет.
+   Собирается practices/_build.py; руками HTML не править — править _build.py и пересобрать.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------- каталог: обложка */
+.pr-cover .cover-text{grid-column:1 / span 6}
+.pr-cover .lede-em a{white-space:nowrap}
+@media (max-width:1024px){ .pr-cover .cover-text{grid-column:1 / span 9} }
+/* модуль «Сколько у тебя сейчас есть?»: градиентные схемы убраны, карточка без рисунка */
+.pr-cat .mn-art{display:none}
+.pr-cat .mn-card{grid-template-columns:minmax(0,1fr)}
+.pr-cat .mn{max-width:none; margin-bottom:var(--sp-6)}
+
+/* ---------------------------------------------------------------- «Сделать прямо здесь»: живые карточки разного размера */
+.pr-try .band-head{margin-bottom:var(--sp-5)}
+.pr-mosaic{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); grid-auto-rows:1fr; gap:var(--col-gap); margin-top:var(--sp-6)}
+/* .pr-card.pr-card--try: две классовые части, чтобы общие правила .pr-card ниже не обнуляли поля и рамку */
+.pr-card.pr-card--try{min-height:0; background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r-plate); padding:var(--sp-5) var(--sp-5) var(--sp-4);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 30px 60px -48px rgba(15,23,34,.28); transition:transform .45s var(--ease), box-shadow .45s var(--ease)}
+.pr-card--try:hover,.pr-card--try:focus-visible{transform:translateY(-3px); box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 40px 60px -44px rgba(15,23,34,.38)}
+/* на «Практиках» ответ на «сколько времени» — сами карточки ниже, отдельная карточка-подсказка не нужна */
+.pr-try .mn-card{display:none !important}
+@media (max-width:1024px){ .pr-mosaic{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:640px){ .pr-mosaic{grid-template-columns:1fr} }
+
+/* ---------------------------------------------------------------- карточка практики (каталог): оттиск с номером листа */
+.pr-card{position:relative; display:flex; flex-direction:column; min-height:176px; padding:var(--sp-4) 0 var(--sp-4); border-top:1px solid var(--line-2);
+  color:var(--ink); text-decoration:none}
+.pr-card::after{content:""; position:absolute; left:0; top:-1px; height:1px; width:100%; background:var(--ink); transform:scaleX(0); transform-origin:0 50%; transition:transform .6s var(--ease)}
+.pr-card--try::after{display:none}
+.pr-card:hover::after,.pr-card:focus-visible::after{transform:scaleX(1)}
+.pr-card[data-n]::before{content:attr(data-n); font:400 var(--s5)/1 var(--f-text); font-variant-numeric:tabular-nums; color:var(--ink-3); margin-bottom:var(--sp-4)}
+.pr-card.is-live[data-n]::before{color:var(--ink)}
+.pr-card-body{display:flex; flex-direction:column; flex:1}
+.pr-card .t3{display:block; font:400 var(--s3)/1.25 var(--f-head); text-wrap:balance}
+.pr-card-gives{display:block; margin-top:var(--sp-2); color:var(--ink-2)}
+.pr-card .small{display:block; margin-top:auto; padding-top:var(--sp-4); font-variant-numeric:tabular-nums; color:var(--ink-3)}
+a.pr-card:hover .t3{text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; text-decoration-color:var(--line-2)}
+.pr-card:focus-visible{outline:2px solid var(--ink); outline-offset:4px}
+.pr-card--try .small{padding-top:var(--sp-5)}
+
+/* ---------------------------------------------------------------- полосы-виды между блоками */
+.pr-band{margin:var(--section) 0 0}
+.pr-try,.pr-catalog{padding-bottom:var(--section)}
+.pr-band{margin-top:0}
+
+/* ---------------------------------------------------------------- каталог: фильтр и строки (пакет 3, 26.10) */
+.pr-sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.pr-catalog .band-head{margin-bottom:var(--sp-3)}
+.pr-care{color:var(--ink-3); max-width:34em; margin:0 0 var(--sp-5)}
+.pr-filters{position:static; margin:0 0 var(--sp-6); padding:var(--sp-4) 0; background:none; -webkit-backdrop-filter:none; backdrop-filter:none; border-top:1px solid var(--line-2)}
+.pr-list .kb-row[hidden],.pr-list .kb-group[hidden],.pr-list .kb-none[hidden]{display:none}
+.pr-list .kb-row{grid-template-columns:8.5em minmax(0,1fr) 14em 24px}
+.pr-list .kb-row .k b{font-weight:500; color:var(--ink)}
+.pr-list .kb-row .t a{color:var(--ink)}
+.pr-list .kb-row .marks{align-items:flex-start}
+.pr-list .kb-group + .kb-group{margin-top:var(--sp-8)}
+@media (max-width:760px){ .pr-list .kb-row{grid-template-columns:minmax(0,1fr) 44px} }
+@media (min-width:761px){ .pr-filters .kb-select select{min-width:min(100%, 22em)} }
+
+/* ---------------------------------------------------------------- (старое) каталог: оглавление слева, листы справа */
+.pr-cat-grid{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); align-items:start}
+.pr-toc{grid-column:1 / span 3; position:sticky; top:calc(var(--head-h) + var(--sp-5))}
+.pr-toc h2{max-width:6em}
+.pr-care{color:var(--ink-3); max-width:22em; margin:var(--sp-4) 0 var(--sp-6)}
+.pr-cat-main{grid-column:5 / -1; min-width:0}
+/* фильтр как оглавление атласа: столбик строк с номерами и линией; выбранная — с тёплой точкой «ты здесь» */
+.pr-filter{display:flex; flex-direction:column; counter-reset:flt; margin:0; padding:0; overflow:visible; border-top:1px solid var(--line-2); gap:0}
+.pr-chip{position:relative; flex:none; display:grid; grid-template-columns:36px minmax(0,1fr); align-items:baseline; text-align:left; min-height:44px; padding:11px 0;
+  border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; box-shadow:none; cursor:pointer; font:400 var(--s4)/1.3 var(--f-text); color:var(--ink-2); transition:color .2s, padding .45s var(--ease)}
+.pr-chip::before{content:""; font:400 var(--s5)/1 var(--f-text); font-variant-numeric:tabular-nums; color:var(--ink-3)}
+.pr-chip:not([data-filter="all"]){counter-increment:flt}
+.pr-chip:not([data-filter="all"])::before{content:counter(flt, decimal-leading-zero)}
+.pr-chip::after{content:""; position:absolute; left:-14px; top:50%; width:7px; height:7px; margin-top:-3.5px; border-radius:50%; background:var(--accent); opacity:0; transform:scale(.4); transition:opacity .3s, transform .45s var(--ease)}
+.pr-chip:hover{color:var(--ink); padding-left:6px}
+.pr-chip[aria-pressed="true"]{color:var(--ink); box-shadow:none}
+.pr-chip[aria-pressed="true"]::after{opacity:1; transform:none}
+.pr-chip:focus-visible{outline:2px solid var(--ink); outline-offset:-2px}
+/* группы листов */
+.pr-group + .pr-group{margin-top:var(--sp-9)}
+.pr-group-h{display:flex; align-items:baseline; gap:var(--sp-5); margin:0 0 var(--sp-6); font:300 var(--s2)/1.15 var(--f-head); letter-spacing:-.01em}
+.pr-group-h::after{content:""; flex:1; height:1px; background:var(--line-2); align-self:center; min-width:24px}
+.pr-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--sp-6) var(--col-gap)}
+@media (max-width:1200px){ .pr-toc{grid-column:1 / span 4} .pr-cat-main{grid-column:5 / -1} .pr-grid{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:900px){
+  .pr-cat-grid{display:block}
+  .pr-toc{position:static; margin-bottom:var(--sp-7)}
+  .pr-toc h2{max-width:none}
+  /* на узком экране оглавление — строка прокручиваемых пунктов */
+  .pr-filter{flex-direction:row; flex-wrap:nowrap; gap:0 var(--sp-5); overflow-x:auto; scrollbar-width:none; border-top:0; border-bottom:1px solid var(--line-2); margin-right:calc(var(--edge) * -1); padding-right:var(--edge);
+    -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent); mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .pr-filter::-webkit-scrollbar{display:none}
+  .pr-chip{display:block; border-bottom:0; padding:12px 0; white-space:nowrap}
+  .pr-chip::before,.pr-chip::after{display:none}
+  .pr-chip:hover{padding-left:0}
+  .pr-chip[aria-pressed="true"]{box-shadow:inset 0 -1.5px 0 var(--accent)}
+}
+@media (max-width:640px){ .pr-grid{grid-template-columns:1fr; gap:var(--sp-5)} .pr-card{min-height:0} .pr-group + .pr-group{margin-top:var(--sp-8)} }
+
+/* ---------------------------------------------------------------- «Как из практик собирается программа» */
+.pr-how-sec .pr-sec-lead{max-width:34em; font:300 var(--s3)/1.4 var(--f-head); color:var(--ink); margin:0}
+.pr-goal-stage{margin:var(--sp-8) 0 var(--sp-5); display:flex; align-items:baseline; gap:var(--sp-5); font:400 var(--s3)/1.25 var(--f-head)}
+.pr-goal-stage::after{content:""; flex:1; height:1px; background:var(--line-2); align-self:center}
+.pr-goals{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap:var(--sp-6) var(--col-gap)}
+.pr-goal{padding:var(--sp-4) 0 0; border-top:1px solid var(--line-2); border-radius:0; background:none}
+.pr-goal h4{font:400 var(--s3)/1.25 var(--f-head); margin:0}
+.pr-goal p{margin-top:var(--sp-2); color:var(--ink-2)}
+.pr-goal .pr-goal-pr{color:var(--ink)}
+
+/* ---------------------------------------------------------------- хвост каталога */
+.pr-ai .band-main p{max-width:var(--measure)}
+.pr-ai .actions{margin-top:var(--sp-5)}
+.pr-bridge-sec .actions{margin-top:var(--sp-5)}
+.pr-bridge-lead{max-width:34em}
+.pr-colleagues-sec{padding-top:var(--sp-7); padding-bottom:var(--section)}
+.pr-colleagues{max-width:46rem}
+
+/* ================================================================ страница практики */
+/* шапка — «лист» атласа: номер листа и деления, название, строка меток, что даёт; справа картина-«лист» */
+.pr-top{position:relative; padding-top:clamp(20px, 4vh, 48px); padding-bottom:var(--sp-5)}
+.pr-sheet{display:flex; align-items:center; gap:var(--sp-5); margin-bottom:var(--sp-7)}
+.pr-sheet .label{flex:none}
+.pr-sheet .ruler{flex:1}
+.pr-top-grid{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); align-items:start}
+.pr-top-text{grid-column:1 / span 7}
+.pr-top-grid--solo .pr-top-text{grid-column:1 / span 9}
+.pr-top-art{grid-column:9 / -1; position:relative}
+.pr-title{font:300 var(--s2)/1.12 var(--f-head); letter-spacing:-.01em; margin:var(--sp-3) 0 0; max-width:20em; text-wrap:balance}
+.pr-meta{margin-top:var(--sp-5); font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.pr-gives{margin-top:var(--sp-5); max-width:30em}
+.pr-hands{margin-top:var(--sp-6); max-width:var(--measure)}
+.pr-hands > div{grid-template-columns:7rem minmax(0,1fr)}
+.pr-plate{margin:0}
+/* нет картины-«листа» — справа пустое место листа: крупный номер (только цифры) */
+.pr-top-n{grid-column:9 / -1; align-self:start; justify-self:end; font:300 var(--s1)/1 var(--f-head); font-variant-numeric:lining-nums; color:var(--line-2); user-select:none; margin-top:var(--sp-5)}
+@media (max-width:1024px){ .pr-top-n{display:none} }
+@media (max-width:1024px){
+  .pr-top-text,.pr-top-grid--solo .pr-top-text{grid-column:1 / -1}
+  .pr-top-art{grid-column:1 / span 8; margin-top:var(--sp-7)}
+}
+@media (max-width:760px){
+  .pr-top{padding-bottom:var(--sp-7)}
+  .pr-sheet{margin-bottom:var(--sp-5)}
+  .pr-top-art{grid-column:1 / -1; margin-top:var(--sp-6)}
+  .pr-hands > div{grid-template-columns:1fr}
+}
+
+/* «осторожно» перед упражнением: листок с узлами по углам */
+.pr-sec{padding-top:var(--sp-7)}
+.pr-sec--careful{padding-top:0}
+.pr-careful{max-width:46rem; padding:var(--sp-5) var(--sp-6); border:1px solid var(--line); border-radius:var(--r-plate); background:var(--paper-2)}
+.pr-careful .pr-h{margin-bottom:var(--sp-3)}
+
+/* шаги слева (прилипают), модуль и заготовки — в центре сетки */
+.pr-sec--kit{padding-top:var(--sp-8)}
+.pr-kit{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); column-gap:var(--col-gap); row-gap:var(--sp-7); align-items:start}
+.pr-kit-side{grid-column:1 / span 5; position:sticky; top:calc(var(--head-h) + var(--sp-5)); max-height:calc(100svh - var(--head-h) - var(--sp-7)); overflow:auto; scrollbar-width:thin}
+.pr-kit-main{grid-column:7 / -1; min-width:0}
+.pr-kit.pr-kit--tool > .pr-kit-side{grid-column:1 / span 4; max-width:none}
+.pr-kit.pr-kit--tool > .pr-kit-main{grid-column:5 / -1; max-width:none}
+.pr-kit-main > .pr-tool{margin-top:0}
+.pr-kit .pr-tool + .pr-fields{margin-top:var(--sp-8)}
+.pr-kit-main > .pr-fields{margin-top:0}
+.pr-field label{font-size:var(--s4)}
+.pr-field textarea{border-radius:var(--r-plate)}
+.pr-kit-main .pk-ta{border-radius:var(--r-plate)}
+.pr-stuck{border-radius:var(--r-plate); background:var(--paper-2)}
+@media (max-width:1100px){
+  .pr-kit-side{grid-column:1 / span 5}
+  .pr-kit-main{grid-column:6 / -1}
+  .pr-kit.pr-kit--tool > .pr-kit-side{grid-column:1 / span 5}
+  .pr-kit.pr-kit--tool > .pr-kit-main{grid-column:6 / -1}
+}
+@media (max-width:860px){
+  .pr-kit{display:block}
+  .pr-kit-side,.pr-kit.pr-kit--tool > .pr-kit-side{position:static; max-height:none; overflow:visible; margin-bottom:var(--sp-7)}
+}
+
+/* откуда и корни — узкая колонка справа; рядом — две-три ссылки-указателя */
+.pr-sec--roots{padding-top:var(--sp-7)}
+.pr-sec--roots .frame:first-child{margin-bottom:var(--sp-6)}
+.pr-roots-col .pr-roots{margin-top:0}
+.pr-roots-col .small{max-width:var(--measure)}
+.pr-inprog{margin-top:var(--sp-5); color:var(--ink-2)}
+@media (max-width:1024px){ .pr-roots-col{grid-column:1 / -1 !important} }
+
+.pr-sec--rel{padding-top:var(--sp-6)}
+.pr-rel .index-row{grid-template-columns:minmax(0,3fr) minmax(0,4fr) 28px}
+.pr-rel .index-m{white-space:normal; max-width:34em}
+@media (max-width:760px){ .pr-rel .index-row{grid-template-columns:minmax(0,1fr) 24px} }
+.pr-end{padding-bottom:var(--section)}
+.pr-bridge{max-width:34em}
+.pr-end .actions{margin-top:var(--sp-6)}
+
+/* ================================================================ страница практики: шаблон базы знаний (пакет 3, 26.10) */
+.pr-top-text .kb-crumbs{margin-top:var(--sp-2)}
+.pr-top-text .kb-two{margin-top:var(--sp-5)}
+.pr-top-text .kb-two p{max-width:30em}
+.pr-top-text .kb-do{margin-top:var(--sp-5)}
+.pr-sec--facts{padding-top:0}
+.pr-sec--facts .pr-facts{margin-top:0; max-width:46rem}
+.pr-sec--why .measure p + p{margin-top:var(--sp-3)}
+.pr-sec--why .measure{max-width:36rem}
+.pr-sec--extra .measure{max-width:36rem}
+.pr-sec--extra .measure > p,.pr-sec--extra .measure > .kb-h2 + p{margin-top:var(--sp-3)}
+.pr-sec--extra .pr-ol{list-style:none; counter-reset:w; margin:var(--sp-4) 0 var(--sp-4); padding:0; border-top:1px solid var(--line)}
+.pr-sec--extra .pr-ol li{counter-increment:w; position:relative; padding:12px 0 12px 32px; border-bottom:1px solid var(--line)}
+.pr-sec--extra .pr-ol li::before{content:counter(w); position:absolute; left:2px; top:12px; font-size:var(--s5); line-height:1.6rem; color:var(--ink-3)}
+.pr-sec--extra .pr-ol li b{font-weight:500}
+.pr-sec--extra .list{margin-top:var(--sp-3)}
+.pr-link-note{margin-top:var(--sp-5) !important; color:var(--ink-2)}
+.pr-sec--kit{scroll-margin-top:calc(var(--head-h) + var(--sp-4))}
+
+/* штамп «На чём стоит» */
+.pr-stamp{max-width:42rem}
+.pr-stamp > summary{align-items:baseline}
+.pr-stamp-k{color:var(--ink); font-weight:500}
+.pr-root{display:inline-flex; flex-wrap:wrap; align-items:baseline; gap:2px 8px}
+.pr-root a{color:var(--ink); text-decoration-color:var(--line-2); text-underline-offset:3px}
+.pr-stamp .kb-who{flex-basis:100%}
+.pr-stamp-none{display:flex; flex-wrap:wrap; gap:4px var(--sp-5); margin:0; padding:14px 0; font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.pr-stamp.kb-stamp--none{margin-top:var(--sp-5); border-top:1px solid var(--line-2); border-bottom:1px solid var(--line-2)}
+.pr-rootlist{list-style:none; margin:0; padding:0}
+.pr-rootlist li{padding:12px 0; border-top:1px solid var(--line)}
+.pr-rootlist li:first-child{border-top:0; padding-top:0}
+.pr-rootlist p{margin:0}
+.pr-rootlist p + p{margin-top:4px}
+.pr-rt{display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; color:var(--ink)}
+.pr-rt a{color:var(--ink); font-weight:500}
+.pr-t{display:inline-block; padding:0 7px; border:1px solid var(--line-2); border-radius:999px; color:var(--ink-3); white-space:nowrap}
+.pr-rs{color:var(--ink-3)}
+.pr-rs a{color:var(--ink-2)}
+.pr-beside{margin-top:var(--sp-3) !important}
+
+/* «Для специалистов», «Рядом» */
+.pr-pros{padding-top:var(--sp-7)}
+.pr-pros-acts{margin-top:var(--sp-4)}
+.pr-pros-note{margin-top:var(--sp-3); color:var(--ink-3)}
+.pr-copied{margin-left:var(--sp-3); font-size:var(--s5); color:var(--ink-3)}
+.pr-sec--rel .kb-near-wrap{max-width:46rem}
+.pr-sec--rel .kb-near-wrap > .kb-h2{margin-bottom:var(--sp-3)}
+.pr-more{margin-top:2px}
+.pr-more > summary{cursor:pointer; list-style:none; font-size:var(--s5); color:var(--ink-3); min-height:28px}
+.pr-more > summary::-webkit-details-marker{display:none}
+.pr-more[open] > summary{display:none}
+.pr-more > a{margin-top:6px}
+.pr-sec--rel .kb-next{margin-top:var(--sp-6)}
+
+/* печать страницы практики: только название, шаги, заготовки и «Осторожно» */
+@media print{
+  .site-head,.site-foot,.skip,.pr-top-art,.kb-crumbs,.kb-stamp,.kb-do,.pr-pros,.pr-sec--rel,.pr-end,.pk-timer,.pk-bar,.pr-kit-bar,.pr-sec--facts,#atmo,.atmo,canvas{display:none !important}
+  body{background:#fff !important}
+  .pr-kit,.pr-kit--tool{display:block}
+  .pr-kit-side{position:static; max-height:none; overflow:visible}
+  .pr-title{font-size:var(--s2)}
+  .pr-careful{border:.3mm solid #999; background:none}
+  .pr-field textarea{border:.3mm solid #999; min-height:30mm}
+}

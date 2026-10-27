@@ -1,0 +1,87 @@
+/* ===== «Разговор» · вёрстка v2 «Атлас на бумаге» · стили страницы, префикс tk- ===== */
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+main section[id]{scroll-margin-top:24px}
+
+/* ---- 1. первый экран ---- */
+.tk-cover .cover-title{grid-column:1 / span 8}
+.tk-cover .cover-text{grid-column:1 / span 5; padding-bottom:var(--sp-6)}
+.tk-cover .tk-facts{margin-top:var(--sp-5)}
+.tk-cover .actions{margin-top:var(--sp-5)}
+@media (max-width:1024px){
+  .tk-cover .cover-title{grid-column:1 / -1}
+  .tk-cover .cover-text{grid-column:1 / span 9}
+}
+@media (max-width:760px){
+  .tk-cover .actions .btn{width:100%}
+}
+
+/* ---- вид между блоками ---- */
+.tk-viewband{padding-top:var(--section)}
+.tk-viewband + .band{padding-top:calc(var(--section) * .6)}
+
+/* ---- блоки «заголовок слева, текст справа» ---- */
+.band--split .band-main > .tk-body,.band--split .band-main > .tk-steps,.band--split .band-main > .tk-wont,.band--split .band-main > .tk-pairs{max-width:var(--measure)}
+.band--split .band-main > .tk-steps{max-width:44rem}
+
+/* блок: заголовок слева, содержание справа — общий .split-head (site.css) */
+.tk-sec{scroll-margin-top:var(--sp-7)}
+.tk-body > * + *{margin-top:1em}
+.tk-body a:not(.btn){text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:var(--line-2)}
+.tk-body a:not(.btn):hover{text-decoration-color:var(--ink)}
+/* пять шагов на одной вертикальной линии */
+.tk-steps{list-style:none; margin:0; padding:0}
+.split-head > .tk-steps{max-width:44rem}
+.tk-steps > li{display:grid; grid-template-columns:6.5rem minmax(0,1fr)}
+.tk-when{padding-top:.2rem; padding-right:var(--sp-4); text-align:right; font-size:var(--s5); line-height:1.6; font-weight:400; color:var(--ink-3)}
+.tk-text{position:relative; display:block; padding:0 0 var(--sp-6) var(--sp-6); border-left:1px solid var(--line-2)}
+.tk-text::before{content:""; position:absolute; left:-4px; top:.65em; width:7px; height:7px; border-radius:50%; background:var(--page); border:1px solid var(--ink-3)}
+.tk-steps > li:last-child .tk-text{padding-bottom:var(--sp-5); border-left-style:dashed}
+.tk-steps > li:last-child .tk-text::before{border-style:dashed}
+@media (max-width:760px){
+  .tk-steps > li{display:block; position:relative; padding:0 0 var(--sp-6) var(--sp-5); border-left:1px solid var(--line-2)}
+  .tk-steps > li:last-child{border-left-style:dashed; padding-bottom:var(--sp-5)}
+  .tk-steps > li::before{content:""; position:absolute; left:-4px; top:.55em; width:7px; height:7px; border-radius:50%; background:var(--page); border:1px solid var(--ink-3)}
+  .tk-steps > li:last-child::before{border-style:dashed}
+  .tk-when{display:block; padding:0; text-align:left; margin-bottom:var(--sp-1)}
+  .tk-text{padding:0; border-left:0}
+  .tk-text::before{display:none}
+}
+
+/* шаблон первого сообщения: рамка 1 px, тот же шрифт, текст выделяется */
+.tk-template{margin:var(--sp-5) 0 0; max-width:var(--measure); font:400 var(--s4)/1.8 var(--f-text); color:var(--ink);
+  white-space:pre-wrap; overflow-wrap:anywhere; border:1px solid var(--line-2); -webkit-user-select:text; user-select:text}
+.tk-hint{margin-top:var(--sp-3)}
+.tk-body .actions{margin-top:var(--sp-6)}
+.tk-body .actions + p{margin-top:var(--sp-5)}
+
+/* чего не будет: простые строки */
+.tk-wont{max-width:var(--measure); border-top:1px solid var(--line)}
+.tk-wont > p{padding:18px 0; border-bottom:1px solid var(--line)}
+
+/* мелочи: пары «подпись — ответ», раскрыты */
+.tk-pairs{margin:0; max-width:var(--measure); border-top:1px solid var(--line)}
+.tk-pairs > div{padding:18px 0; border-bottom:1px solid var(--line)}
+.tk-pairs dt{font-weight:500}
+.tk-pairs dd{margin:4px 0 0; color:var(--ink-2)}
+.tk-pairs a{text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:var(--line-2)}
+.tk-pairs a:hover{text-decoration-color:var(--ink)}
+
+
+
+/* ---- после разговора: три плитки, напечатаны на странице ---- */
+.tiles.tk-cards{margin-top:0}
+.tk-cards .tile{grid-column:span 4}
+.tk-cards .tk-card{padding:var(--sp-4) 0 0; border-radius:0}
+.tk-cards .tk-card p{margin-top:0}
+@media (max-width:1024px){ .tk-cards .tile{grid-column:1 / -1} }
+
+/* ---- контентная волна 26.10: близкое фото Саши на первом экране (не шире трети окна) и строка-условие у кнопки ---- */
+.tk-cover .cover-title{grid-column:1 / span 7}
+.tk-cover .tk-aside{grid-column:9 / -1; padding-top:var(--sp-5)}
+.tk-photo{max-width:33vw}
+.tk-cover .actions + .tk-terms{margin-top:var(--sp-4); max-width:30rem}
+@media (max-width:1024px){
+  .tk-cover .tk-aside{grid-column:1 / -1; padding-top:0}
+  .tk-photo{max-width:none}
+}
+@media (max-width:760px){ .tk-cover .tk-aside > .tk-photo{--pa-h:min(40vh, 300px)} }
