@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>«Новый сезон» · Waykeeper</title>
-<meta name="description" content="Две встречи онлайн в группе на стыке годов: в конце декабря смотрим на прошлый сезон, в начале января выбираем два-три фокуса на следующий. 60 € за обе встречи.">
+<meta name="description" content="Две встречи онлайн в группе: в конце декабря смотрим на прошлый сезон, в начале января выбираем два-три фокуса на следующий. 60 € за обе встречи.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/new-season.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="«Новый сезон» · Waykeeper">
-<meta property="og:description" content="Две встречи онлайн в группе на стыке годов: в конце декабря смотрим на прошлый сезон, в начале января выбираем два-три фокуса на следующий. 60 € за обе встречи.">
+<meta property="og:title" content="«Новый сезон»">
+<meta property="og:description" content="Две встречи онлайн в группе: в конце декабря смотрим на прошлый сезон, в начале января выбираем два-три фокуса на следующий. 60 € за обе встречи.">
 <meta property="og:url" content="https://waykeeper.org/new-season.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/kb.css">
@@ -39,42 +46,64 @@
 <link rel="stylesheet" href="assets/alive.css">
 <link rel="stylesheet" href="modules/passage.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html" aria-current="page">«Новый сезон»</a></li>
-        <li><a href="project.html">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -84,23 +113,23 @@
   <!-- 1. Первый экран во всю ширину. Вид справа — «Горы Кисо в снегу» Хиросигэ: белое и синее, конец года. -->
   <section class="cover nsp-cover" id="hero" data-topo="47" data-atmo="day" aria-labelledby="page-title">
     <div class="frame">
-      <h1 class="display cover-title" id="page-title"><span class="ln"><span>Спокойно увидеть свой год </span></span><span class="ln"><span><em>и выбрать, куда дальше</em></span></span></h1>
+      <h1 class="display cover-title" id="page-title"><span class="ln"><span>Спокойно увидеть свой год </span></span><span class="ln"><span><em>и&nbsp;выбрать, куда дальше</em></span></span></h1>
       <div class="cover-text">
-        <p class="lede">Две встречи онлайн в группе: в конце декабря смотрим на прошлый сезон, в начале января выбираем два-три фокуса на следующий, и итог одной страницей остаётся у тебя.</p>
+        <p class="lede">Две встречи онлайн в&nbsp;группе: в&nbsp;конце декабря смотрим на&nbsp;прошлый сезон, в&nbsp;начале января выбираем два-три фокуса на&nbsp;следующий, и&nbsp;итог одной страницей остаётся у&nbsp;тебя.</p>
         <dl class="rows facts">
-          <div><dt>Когда</dt><dd>конец декабря и начало января, точные даты позже</dd></div>
-          <div><dt>Формат</dt><dd>две встречи онлайн по два часа, группа до 15 человек</dd></div>
-          <div><dt>Цена</dt><dd>60&nbsp;€ за обе встречи, оплата&nbsp;— когда появятся даты</dd></div>
+          <div><dt>Когда</dt><dd>конец декабря и&nbsp;начало января, точные даты позже</dd></div>
+          <div><dt>Формат</dt><dd>две встречи онлайн по&nbsp;два часа, группа до&nbsp;15&nbsp;человек</dd></div>
+          <div><dt>Цена</dt><dd>60&nbsp;€ за&nbsp;обе встречи, оплата&nbsp;— когда появятся даты</dd></div>
         </dl>
         <div class="actions">
-          <a class="btn primary" href="#telegram" data-tg data-tg-text="Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.">Написать в Telegram</a>
+          <a class="btn primary" href="https://t.me/asverdlovskaya?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%20%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA%20%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F%20%C2%AB%D0%9D%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D1%81%D0%B5%D0%B7%D0%BE%D0%BD%D0%B0%C2%BB.%20%D0%9D%D0%B0%D0%BF%D0%B8%D1%88%D0%B8%2C%20%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0%20%D0%BF%D0%BE%D1%8F%D0%B2%D1%8F%D1%82%D1%81%D1%8F%20%D0%B4%D0%B0%D1%82%D1%8B." target="_blank" rel="noopener" data-tg data-tg-text="Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.">Написать в&nbsp;Telegram</a>
         </div>
-        <p class="small">Напиши, и я добавлю тебя в список ожидания; платить сейчас ничего не нужно. Можно просто отправить: <span class="nsp-msg">Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.</span></p>
+        <p class="small">Напиши, и&nbsp;я добавлю тебя в&nbsp;список ожидания; платить сейчас ничего не&nbsp;нужно. Можно просто отправить: <span class="nsp-msg">Привет! Хочу в&nbsp;список ожидания «Нового сезона». Напиши, когда появятся даты.</span></p>
       </div>
       <div class="cover-aside">
         <figure class="plate-alive is-right nsp-plate" data-processed data-clear data-pa-from=".6 .44" data-pa-eager style="--pa-r:1.581; --pa-h:min(52vh, 480px)">
           <div class="pa-img"><img src="assets/img/pd/processed/views/kroyer-south-beach-1200.jpg" alt="Картина Крёйера: две женщины идут по светлому вечернему пляжу, за ними следы на песке" width="1200" height="759" fetchpriority="high" decoding="async"></div>
-          <figcaption class="pa-cap">Педер Северин Крёйер · «Летний вечер на южном пляже Скагена», 1893<span class="pa-src"> · Коллекция Хиршпрунга, Копенгаген</span></figcaption>
+          <figcaption class="pa-cap">Педер Северин Крёйер · «Летний вечер на&nbsp;южном пляже Скагена», 1893<span class="pa-src"> · Коллекция Хиршпрунга, Копенгаген</span></figcaption>
         </figure>
       </div>
       <div class="cover-foot"></div>
@@ -110,19 +139,19 @@
   <!-- 2. Что обычно ломается с итогами года -->
   <section class="band band--split" id="breaks" data-atmo="dawn" data-atmo-rule aria-labelledby="s-breaks">
     <div class="frame">
-      <div class="band-side"><h2 id="s-breaks">Что обычно ломается с итогами года</h2></div>
+      <div class="band-side"><h2 id="s-breaks">Что обычно ломается с&nbsp;итогами года</h2></div>
       <div class="band-main is-wide">
         <div class="prose">
-        <p>В конце прошлого года, перед первыми такими встречами, я больше десяти раз созванивалась с людьми и расспрашивала, как они подводят год. Мне рассказывали, что записанное в декабре забывается за месяц, что шаблоны итогов разрастаются до тридцати листов, а вопросы в них повторяются, и что даже после итогов висит вопрос «и что теперь с этим делать?». Когда я спрашивала, чего хочется от итогов, чаще всего отвечали: чтобы стало спокойно и было понятно, куда дальше.</p>
+        <p>В&nbsp;конце прошлого года, перед первыми такими встречами, я больше десяти раз созванивалась с&nbsp;людьми и&nbsp;расспрашивала, как они подводят год. Мне рассказывали, что записанное в&nbsp;декабре забывается за&nbsp;месяц, что шаблоны итогов разрастаются до&nbsp;тридцати листов, а&nbsp;вопросы в&nbsp;них повторяются, и&nbsp;что даже после итогов висит вопрос «и&nbsp;что теперь с&nbsp;этим делать?». Когда я спрашивала, чего хочется от&nbsp;итогов, чаще всего отвечали: чтобы стало спокойно и&nbsp;было понятно, куда дальше.</p>
         </div>
         <!-- Цитаты из интервью перед первыми встречами (07-site/texts/v2/07-new-season-quotes.md). Анонимно; согласия на цитирование в материалах нет — спросить при желании. №5 сверить с расшифровкой. -->
         <div class="nsp-voices" data-needs-consent aria-label="Голоса из интервью">
-          <figure class="nsp-voice"><blockquote><p>…в планы на следующий год, и я такой воодушевлённый хожу. А через месяц я вообще забываю об этом.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
-          <figure class="nsp-voice"><blockquote><p>К пятому-шестому вопросу я уже исписала по нескольку страниц А4, а спрашивается там всё то же самое, только более детально.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
-          <figure class="nsp-voice"><blockquote><p>Написано хорошо, но мало написать.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
-          <figure class="nsp-voice"><blockquote><p>Я очень верю в систему, я просто не умею её выстроить.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
-          <figure class="nsp-voice"><blockquote><p>Мои планы крутятся вокруг работы, меня в этом планировании нету.</p></blockquote><figcaption>из интервью, ноябрь 2025</figcaption></figure>
-          <figure class="nsp-voice"><blockquote><p>Понять: всё, что я сейчас делаю или собиралась делать, — это всё ещё про меня, или мне это уже не подходит.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
+          <figure class="nsp-voice"><blockquote><p>…в&nbsp;планы на&nbsp;следующий год, и&nbsp;я такой воодушевлённый хожу. А&nbsp;через месяц я вообще забываю об&nbsp;этом.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
+          <figure class="nsp-voice"><blockquote><p>К&nbsp;пятому-шестому вопросу я уже исписала по&nbsp;нескольку страниц А4, а&nbsp;спрашивается там всё то&nbsp;же самое, только более детально.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
+          <figure class="nsp-voice"><blockquote><p>Написано хорошо, но&nbsp;мало написать.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
+          <figure class="nsp-voice"><blockquote><p>Я очень верю в&nbsp;систему, я просто не&nbsp;умею её выстроить.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
+          <figure class="nsp-voice"><blockquote><p>Мои планы крутятся вокруг работы, меня в&nbsp;этом планировании нету.</p></blockquote><figcaption>из&nbsp;интервью, ноябрь 2025</figcaption></figure>
+          <figure class="nsp-voice"><blockquote><p>Понять: всё, что я сейчас делаю или собиралась делать,&nbsp;— это всё ещё про&nbsp;меня, или мне это уже не&nbsp;подходит.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
         </div>
       </div>
     </div>
@@ -135,20 +164,20 @@
         <div class="nsp-why-photos">
           <figure class="plate-alive plate-alive--quiet" data-kind="photo" data-clear data-pa-feather=".08" data-pa-from=".5 .6" style="--pa-r:.9; --pa-h:min(32vh, 270px)">
             <div class="pa-img"><img src="assets/img/sasha/sasha-ns-board-laptop.jpg" alt="Экран ноутбука в тёмной комнате: доска в Figma, где по месяцам разложен год" width="1440" height="1600" loading="lazy" decoding="async"></div>
-            <figcaption class="pa-cap">Декабрь 2025: итоги года на доске</figcaption>
+            <figcaption class="pa-cap">Декабрь 2025: итоги года на&nbsp;доске</figcaption>
           </figure>
           <figure class="plate-alive plate-alive--quiet" data-kind="photo" data-clear data-pa-feather=".08" data-pa-from=".5 .6" style="--pa-r:.75; --pa-h:min(32vh, 270px)">
             <div class="pa-img"><img src="assets/img/sasha/sasha-ns-desk-notebook.jpg" alt="Деревянный стол в доме при вечернем свете: закрытый ноутбук, тетради, очки на раскрытом блокноте" width="1200" height="1600" loading="lazy" decoding="async"></div>
-            <figcaption class="pa-cap">Стол с тетрадью, декабрь 2025</figcaption>
+            <figcaption class="pa-cap">Стол с&nbsp;тетрадью, декабрь 2025</figcaption>
           </figure>
         </div>
       </div>
       <div class="band-main is-wide">
         <div class="prose">
-        <p>Свой день рождения в декабре 2025-го я провела одна в доме посреди поля: четыре дня без соцсетей и почти двадцать часов рефлексий. Свела итоги года, записала, где я «сейчас», и начала обрисовывать образ следующего. Когда всё было выложено из головы, внутри стало тихо и спокойно.</p>
+        <p>Свой день рождения в&nbsp;декабре 2025-го я провела одна в&nbsp;доме посреди поля: четыре дня без&nbsp;соцсетей и&nbsp;почти двадцать часов рефлексий. Свела итоги года, записала, где я «сейчас», и&nbsp;начала обрисовывать образ следующего. Когда всё было выложено из&nbsp;головы, внутри стало тихо и&nbsp;спокойно.</p>
         </div>
-        <figure class="nsp-voice nsp-voice--in"><blockquote><p>Да, вот зачем это нужно: ощущать непрерывность своей жизни и жить не вчера и не завтра, а прямо сейчас.</p></blockquote><figcaption>из моей записи в тот день</figcaption></figure>
-        <div class="prose"><p style="margin-top:var(--sp-4)">Ровно за этим я и зову на «Новый сезон».</p></div>
+        <figure class="nsp-voice nsp-voice--in"><blockquote><p>Да, вот зачем это нужно: ощущать непрерывность своей жизни и&nbsp;жить не&nbsp;вчера и&nbsp;не&nbsp;завтра, а&nbsp;прямо сейчас.</p></blockquote><figcaption>из&nbsp;моей записи в&nbsp;тот день</figcaption></figure>
+        <div class="prose"><p style="margin-top:var(--sp-4)">Ровно за&nbsp;этим я и&nbsp;зову на&nbsp;«Новый сезон».</p></div>
       </div>
     </div>
   </section>
@@ -162,22 +191,22 @@
         <div class="nsp-two">
         <div>
           <p class="nsp-when">Встреча 1 · конец декабря</p>
-          <p>Раскладываем события по месяцам и собираем год в одну картину: каким он начался и каким заканчивается, три момента, которые вспомнятся через пять лет, урок года одной фразой и за что себя похвалить. Когда я раскладываю свой год по месяцам, каждый раз удивляюсь, сколько в нём всего было, хотя по ощущению он пролетел.</p>
-          <figure class="nsp-voice nsp-voice--in" data-needs-consent><blockquote><p>Я думал, что какой год, вообще суперсложный. А когда я сделал ретро года и посмотрел, думаю: вау, офигенный год вообще.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
+          <p>Раскладываем события по&nbsp;месяцам и&nbsp;собираем год в&nbsp;одну картину: каким он начался и&nbsp;каким заканчивается, три момента, которые вспомнятся через пять лет, урок года одной фразой и&nbsp;за&nbsp;что себя похвалить. Когда я раскладываю свой год по&nbsp;месяцам, каждый раз удивляюсь, сколько в&nbsp;нём всего было, хотя по&nbsp;ощущению он пролетел.</p>
+          <figure class="nsp-voice nsp-voice--in" data-needs-consent><blockquote><p>Я думал, что какой год, вообще суперсложный. А&nbsp;когда я сделал ретро года и&nbsp;посмотрел, думаю: вау, офигенный год вообще.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
         </div>
         <div>
           <p class="nsp-when">Встреча 2 · начало января</p>
-          <p>Смотрим на сферы жизни «как сейчас», задаём по каждой один вопрос на год, который начинается со слов «получится ли», и выбираем два-три фокуса, чтобы не распыляться на тысячу разных штук. Потом намерения, состояние, в котором хочется жить, и чему в этом году говоришь «да», а чему «нет». Плана по месяцам здесь не будет.</p>
-          <figure class="nsp-voice nsp-voice--in" data-needs-consent><blockquote><p>Намерение — гораздо более приятное слово, чем планирование. Оно меня ни к чему не обязывает.</p></blockquote><figcaption>из интервью, декабрь 2025</figcaption></figure>
+          <p>Смотрим на&nbsp;сферы жизни «как сейчас», задаём по&nbsp;каждой один вопрос на&nbsp;год, который начинается со&nbsp;слов «получится&nbsp;ли», и&nbsp;выбираем два-три фокуса, чтобы не&nbsp;распыляться на&nbsp;тысячу разных штук. Потом намерения, состояние, в&nbsp;котором хочется жить, и&nbsp;чему в&nbsp;этом году говоришь «да», а&nbsp;чему «нет». Плана по&nbsp;месяцам здесь не&nbsp;будет.</p>
+          <figure class="nsp-voice nsp-voice--in" data-needs-consent><blockquote><p>Намерение&nbsp;— гораздо более приятное слово, чем планирование. Оно меня ни&nbsp;к&nbsp;чему не&nbsp;обязывает.</p></blockquote><figcaption>из&nbsp;интервью, декабрь 2025</figcaption></figure>
         </div>
         </div>
         <div class="nsp-after-wrap">
         <div class="prose nsp-after">
-        <p>Почти всё время ты пишешь для себя; поделиться можно в тройке, несколько минут. Где и как работаем, покажу на встрече. У каждой части своё время на таймере. ИИ&nbsp;— только если захочешь, без него всё тоже работает.</p>
-        <p>Итог одной страницей ты собираешь по ходу встреч и забираешь сразу: год одной фразой, три его момента и урок, два-три фокуса с вопросами на год, состояние, «да» и «нет». Его удобно держать под рукой. На второй встрече ты выбираешь дату, когда открыть его снова. Перечитать&nbsp;— минут пятнадцать: отметить, что сделано, что отпало и что ещё живо. Запись встречи и другие важные материалы я пришлю на следующий день.</p>
+        <p>Почти всё время ты пишешь для&nbsp;себя; поделиться можно в&nbsp;тройке, несколько минут. Где и&nbsp;как работаем, покажу на&nbsp;встрече. У&nbsp;каждой части своё время на&nbsp;таймере. ИИ&nbsp;— только если захочешь, без&nbsp;него всё тоже работает.</p>
+        <p>Итог одной страницей ты собираешь по&nbsp;ходу встреч и&nbsp;забираешь сразу: год одной фразой, три его момента и&nbsp;урок, два-три фокуса с&nbsp;вопросами на&nbsp;год, состояние, «да» и&nbsp;«нет». Его удобно держать под&nbsp;рукой. На&nbsp;второй встрече ты выбираешь дату, когда открыть его снова. Перечитать&nbsp;— минут пятнадцать: отметить, что сделано, что отпало и&nbsp;что ещё живо. Запись встречи и&nbsp;другие важные материалы я пришлю на&nbsp;следующий день.</p>
         </div>
         <!-- Цитаты-голоса из интервью (07-new-season-quotes.md, 00-synthesis.md): анонимно, согласия нет — спросить при желании. -->
-        <figure class="nsp-voice nsp-voice--result" data-needs-consent><blockquote><p>Не всё решено, но всё понятно.</p></blockquote><figcaption>так в интервью описали хороший итог года</figcaption></figure>
+        <figure class="nsp-voice nsp-voice--result" data-needs-consent><blockquote><p>Не&nbsp;всё решено, но&nbsp;всё понятно.</p></blockquote><figcaption>так в&nbsp;интервью описали хороший итог года</figcaption></figure>
         </div>
       </div>
     </div>
@@ -186,20 +215,20 @@
   <!-- 5. Как было в прошлый раз. Цитаты — только после согласия авторов. -->
   <section class="band band--split" id="last-time" data-atmo="dawn" data-atmo-rule aria-labelledby="s-last-time">
     <div class="frame">
-      <div class="band-side"><h2 id="s-last-time">Как было в прошлый раз</h2></div>
+      <div class="band-side"><h2 id="s-last-time">Как было в&nbsp;прошлый раз</h2></div>
       <div class="band-main is-wide">
         <div class="prose">
-        <p>В январе 2026-го я провела эти встречи для сообщества предпринимателей: две встречи онлайн, на каждой было 15–20 человек.</p>
+        <p>В&nbsp;январе 2026-го я провела эти встречи для&nbsp;сообщества предпринимателей: две встречи онлайн, на&nbsp;каждой было 15–20&nbsp;человек.</p>
         <!-- ВЁРСТКА: не публиковать до согласия. Каждая цитата — отдельной стеклянной карточкой, без имён и фото. Когда придут согласия, снять <template> с тех цитат, на которые согласие есть. -->
         <template class="quotes-pending" data-publish-after="consent">
-          <blockquote class="quote" data-consent="pending">«Я несколько раз уже пытался заняться итогами года и планами… После двух сессий главное изменение&nbsp;— хочется дальше теперь этим заниматься.»</blockquote>
-          <blockquote class="quote" data-consent="pending">«Я как-то дожил до 40 лет без этих планов, без подведений итогов… А здесь даже за эти два часа родилось много идей, что я действительно хочу это сделать.»</blockquote>
-          <blockquote class="quote" data-consent="pending">«Я видела, что приоритеты немножко по-другому звучат, и это было ценно.»</blockquote>
-          <blockquote class="quote" data-consent="pending">«Два часа пролетают незаметно… Ощущение такой лёгкой незавершённости, и хочется в этом покопаться.»</blockquote>
+          <blockquote class="quote" data-consent="pending">«Я несколько раз уже пытался заняться итогами года и&nbsp;планами… После двух сессий главное изменение&nbsp;— хочется дальше теперь этим заниматься.»</blockquote>
+          <blockquote class="quote" data-consent="pending">«Я как-то дожил до&nbsp;40&nbsp;лет без&nbsp;этих планов, без&nbsp;подведений итогов… А&nbsp;здесь даже за&nbsp;эти два часа родилось много идей, что я действительно хочу это сделать.»</blockquote>
+          <blockquote class="quote" data-consent="pending">«Я видела, что приоритеты немножко по-другому звучат, и&nbsp;это было ценно.»</blockquote>
+          <blockquote class="quote" data-consent="pending">«Два часа пролетают незаметно… Ощущение такой лёгкой незавершённости, и&nbsp;хочется в&nbsp;этом покопаться.»</blockquote>
           <blockquote class="quote" data-consent="pending">«Вот есть ключевая точка… она передо мной настолько ясная.»</blockquote>
         </template>
         <p>Веду встречи я, Саша Свердловская.</p>
-        <p><a class="link" href="about.html">Подробнее обо мне →</a></p>
+        <p><a class="link" href="about.html">Подробнее обо&nbsp;мне →</a></p>
         </div>
       </div>
     </div>
@@ -212,18 +241,18 @@
       <div class="band-main is-wide">
         <div class="nsp-terms">
         <dl class="rows">
-          <div><dt>Цена</dt><dd>60&nbsp;€ за обе встречи</dd></div>
-          <div><dt>Встречи</dt><dd>две по два часа, онлайн; приходить нужно на обе</dd></div>
-          <div><dt>Группа</dt><dd>не больше 15 человек</dd></div>
-          <div><dt>Даты</dt><dd>конец декабря и начало января, точные даты позже</dd></div>
-          <div><dt>Когда платить</dt><dd>когда объявлю даты; до этого ты просто в списке ожидания</dd></div>
-          <div><dt>Оплата</dt><dd>в евро или в рублях; если ты в России, напиши, договоримся</dd></div>
-          <div><dt>Возврат</dt><dd>если отменить не позже чем за две недели до первой встречи; позже деньги не возвращаются</dd></div>
+          <div><dt>Цена</dt><dd>60&nbsp;€ за&nbsp;обе встречи</dd></div>
+          <div><dt>Встречи</dt><dd>две по&nbsp;два часа, онлайн; приходить нужно на&nbsp;обе</dd></div>
+          <div><dt>Группа</dt><dd>не&nbsp;больше 15&nbsp;человек</dd></div>
+          <div><dt>Даты</dt><dd>конец декабря и&nbsp;начало января, точные даты позже</dd></div>
+          <div><dt>Когда платить</dt><dd>когда объявлю даты; до&nbsp;этого ты просто в&nbsp;списке ожидания</dd></div>
+          <div><dt>Оплата</dt><dd>в&nbsp;евро или в&nbsp;рублях; если ты в&nbsp;России, напиши, договоримся</dd></div>
+          <div><dt>Возврат</dt><dd>если отменить не&nbsp;позже чем за&nbsp;две недели до&nbsp;первой встречи; позже деньги не&nbsp;возвращаются</dd></div>
         </dl>
         <div class="actions">
-          <a class="btn primary" href="#telegram" data-tg data-tg-text="Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.">Написать в Telegram</a>
+          <a class="btn primary" href="https://t.me/asverdlovskaya?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%20%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA%20%D0%BE%D0%B6%D0%B8%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F%20%C2%AB%D0%9D%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D1%81%D0%B5%D0%B7%D0%BE%D0%BD%D0%B0%C2%BB.%20%D0%9D%D0%B0%D0%BF%D0%B8%D1%88%D0%B8%2C%20%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0%20%D0%BF%D0%BE%D1%8F%D0%B2%D1%8F%D1%82%D1%81%D1%8F%20%D0%B4%D0%B0%D1%82%D1%8B." target="_blank" rel="noopener" data-tg data-tg-text="Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.">Написать в&nbsp;Telegram</a>
         </div>
-        <p class="nsp-wait">Напиши мне в Telegram, и я добавлю тебя в список ожидания. Платить сейчас ничего не нужно: когда появятся даты, напишу один раз. Можно просто отправить: <span class="nsp-msg">Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.</span></p>
+        <p class="nsp-wait">Напиши мне в&nbsp;Telegram, и&nbsp;я добавлю тебя в&nbsp;список ожидания. Платить сейчас ничего не&nbsp;нужно: когда появятся даты, напишу один раз. Можно просто отправить: <span class="nsp-msg">Привет! Хочу в&nbsp;список ожидания «Нового сезона». Напиши, когда появятся даты.</span></p>
         </div>
       </div>
     </div>
@@ -236,24 +265,24 @@
       <div class="band-main is-wide">
       <div class="folds nsp-faq">
         <details class="fold">
-          <summary><span class="fold-title">Я каждый год бросаю итоги на середине.</span></summary>
-          <div class="fold-body"><p>Здесь вопросов меньше, они не повторяются, и у каждой части своё время. Что не успелось, можно дописать потом: итог остаётся у тебя, а запись встречи я пришлю на следующий день.</p></div>
+          <summary><span class="fold-title">Я каждый год бросаю итоги на&nbsp;середине.</span></summary>
+          <div class="fold-body"><p>Здесь вопросов меньше, они не&nbsp;повторяются, и&nbsp;у&nbsp;каждой части своё время. Что не&nbsp;успелось, можно дописать потом: итог остаётся у&nbsp;тебя, а&nbsp;запись встречи я пришлю на&nbsp;следующий день.</p></div>
         </details>
         <details class="fold">
-          <summary><span class="fold-title">Можно прийти только на одну встречу?</span></summary>
-          <div class="fold-body"><p>Нет, встречи идут парой: на первой смотрим на прошлый год, на второй выбираем, куда дальше. Записываться стоит, когда свободны оба дня.</p></div>
+          <summary><span class="fold-title">Можно прийти только на&nbsp;одну встречу?</span></summary>
+          <div class="fold-body"><p>Нет, встречи идут парой: на&nbsp;первой смотрим на&nbsp;прошлый год, на&nbsp;второй выбираем, куда дальше. Записываться стоит, когда свободны оба дня.</p></div>
         </details>
         <details class="fold">
-          <summary><span class="fold-title">Не люблю расписывать год по датам.</span></summary>
-          <div class="fold-body"><p>Дат и сроков здесь нет: фокусы, вопросы на год и состояние, в котором хочется жить. Если нравится измеримое, к фокусу можно добавить свой знак, по которому станет видно, что получилось.</p></div>
+          <summary><span class="fold-title">Не&nbsp;люблю расписывать год по&nbsp;датам.</span></summary>
+          <div class="fold-body"><p>Дат и&nbsp;сроков здесь нет: фокусы, вопросы на&nbsp;год и&nbsp;состояние, в&nbsp;котором хочется жить. Если нравится измеримое, к&nbsp;фокусу можно добавить свой знак, по&nbsp;которому станет видно, что получилось.</p></div>
         </details>
         <details class="fold">
-          <summary><span class="fold-title">Мне трудно открываться в группе.</span></summary>
-          <div class="fold-body"><p>В тройке делишься только тем, чем хочется, а можно сказать «пропускаю».</p></div>
+          <summary><span class="fold-title">Мне трудно открываться в&nbsp;группе.</span></summary>
+          <div class="fold-body"><p>В&nbsp;тройке делишься только тем, чем хочется, а&nbsp;можно сказать «пропускаю».</p></div>
         </details>
         <details class="fold">
-          <summary><span class="fold-title">А если год был тяжёлый?</span></summary>
-          <div class="fold-body"><p>Мне кажется, после тяжёлого года особенно хочется скорее его отпустить, и всё же сначала мы просто смотрим, что в нём происходило, без оценок. Это не терапия: если сейчас совсем тяжело, начать стоит с врача или психолога.</p></div>
+          <summary><span class="fold-title">А&nbsp;если год был тяжёлый?</span></summary>
+          <div class="fold-body"><p>Мне кажется, после тяжёлого года особенно хочется скорее его отпустить, и&nbsp;всё&nbsp;же сначала мы просто смотрим, что в&nbsp;нём происходило, без&nbsp;оценок. Это не&nbsp;терапия: если сейчас совсем тяжело, начать стоит с&nbsp;врача или психолога.</p></div>
         </details>
       </div>
       </div>
@@ -264,7 +293,7 @@
   <section class="band band--offset" id="program-bridge" data-field="off" aria-label="«Переход»">
     <div class="frame">
       <div class="band-main is-wide">
-        <p class="nsp-bridge">Если в работе что-то закончилось и нужно больше, чем две встречи,&nbsp;— есть «Переход». <a class="link" href="program.html">Как устроен «Переход» →</a></p>
+        <p class="nsp-bridge">Если в&nbsp;работе что-то закончилось и&nbsp;нужно больше, чем две встречи,&nbsp;— есть «Переход». <a class="link" href="program.html">Как устроен «Переход» →</a></p>
       </div>
     </div>
   </section>
@@ -276,25 +305,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -304,12 +333,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -318,7 +347,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

@@ -7,9 +7,9 @@
 <meta name="description" content="Идея, что события предков повторяются у потомков. Эта идея почти не проверена. Есть ранние данные о передаче трудностей через воспитание и семейное молчание; биологическая передача опыта у людей не…">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/transgeneratsionnyy-podkhod.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Трансгенерационный подход · подход · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Трансгенерационный подход">
 <meta property="og:description" content="Идея, что события предков повторяются у потомков. Эта идея почти не проверена. Есть ранние данные о передаче трудностей через воспитание и семейное молчание; биологическая передача опыта у людей не…">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/transgeneratsionnyy-podkhod.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,45 +107,45 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 1 «История рода»"><ul><li><a href="genogramma.html">Генограмма</a></li><li><a href="ustnaya-istoriya-semi.html">Устная история семьи</a></li><li><a class="is-here" aria-current="page" href="transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a></li><li><a href="arkhivnyy-poisk-s-ii.html">Архивный поиск с ИИ</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38 подходов →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 1 «История рода»"><ul><li><a href="genogramma.html">Генограмма</a></li><li><a href="ustnaya-istoriya-semi.html">Устная история семьи</a></li><li><a class="is-here" aria-current="page" href="transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a></li><li><a href="arkhivnyy-poisk-s-ii.html">Архивный поиск с&nbsp;ИИ</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38&nbsp;подходов →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Шаг 1. История рода</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Трансгенерационный подход</li></ol>
 <h1 class="kb-h1" id="h1">Трансгенерационный подход</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Идея, что события предков повторяются у потомков. Эта идея почти не проверена. Есть ранние данные о передаче трудностей через воспитание и семейное молчание; биологическая передача опыта у людей не доказана; повторение дат и возрастов между поколениями никто не проверял. Поэтому в методе отсюда берутся только вопросы и наблюдения, а не объяснения.</p></div>
+<div class="kb-two"><p>Идея, что события предков повторяются у потомков. Эта идея почти не проверена. Есть ранние данные о передаче трудностей через воспитание и семейное молчание; биологическая передача опыта у людей не доказана; повторение дат и возрастов между поколениями никто не проверял. Поэтому в методе отсюда берутся только вопросы и наблюдения, а не&nbsp;объяснения.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--craft ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
-<div class="kb-do"><a class="btn primary" href="../practices/t-genogram.html">Сделать: Генограмма за вечер</a><span class="kb-do-alt">или <a href="../practices/t-family-musts.html">«Семейные «надо»»</a> · 20 мин</span></div>
-<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Анн Анселин Шутценбергер, «Aïe, mes aïeux!» (1993; по-русски «Синдром предков»).</dd></div><div><dt>В «Переходе»</dt><dd><a href="../project.html#steps">шаг 1 «История рода»</a></dd></div></dl>
+<div class="kb-do"><a class="btn primary" href="../practices/t-genogram.html">Сделать: Генограмма за&nbsp;вечер</a><span class="kb-do-alt">или <a href="../practices/t-family-musts.html">«Семейные „надо“»</a> · 20&nbsp;мин</span></div>
+<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Анн Анселин Шутценбергер, «Aïe, mes aïeux!» (1993; по-русски «Синдром предков»).</dd></div><div><dt>В&nbsp;«Переходе»</dt><dd><a href="../project.html#steps">шаг 1 «История рода»</a></dd></div></dl>
 <section class="kb-sec" id="what"><h2 class="kb-h2">Что это</h2>
 <p><strong>Коротко.</strong> Идея, что события предков повторяются в жизни потомков.</p>
 <p>Подход, который ищет совпадения дат, повторяющиеся события и «семейные тайны», влияющие на следующие поколения. Связан с психодрамой и «психогенеалогией» (идеи Шутценбергер).</p></section>
 <section class="kb-sec" id="when"><h2 class="kb-h2">Когда помогает</h2>
-<p>Как источник вопросов, а не ответов: что в семье считалось правильным, о чём молчали, какие роли передавались.</p></section>
+<p>Как источник вопросов, а не&nbsp;ответов: что в&nbsp;семье считалось правильным, о чём молчали, какие роли передавались.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда не подходит</h2>
 <p>Реакции на годовщину своей собственной утраты описаны. Повторение дат и событий между поколениями исследованиями не подтверждено: проверок нет. В обычных (не клинических) группах потомков выживших в Холокосте передачи травмы два метаанализа не нашли. Использовать как язык для разговора, не как объяснение.</p></section>
 <section class="kb-sec" id="mine"><h2 class="kb-h2">Как это у меня</h2>
 <p>Беру только наблюдательную часть: какие сюжеты повторяются и что из этого человек хочет оставить себе. Мистические объяснения не использую.</p></section>
 <section class="kb-sec" id="try"><h2 class="kb-h2">Попробовать</h2>
-<p>Если находите повторы, задайте себе вопрос «что я хочу с этим делать», а не «что это значит».</p>
+<p>Если находишь повторы, задай себе вопрос «что я хочу с этим делать», а не&nbsp;«что это значит».</p>
 <p>Практики:</p>
 <ul><li><a href="../practices/t-genogram.html">Генограмма за вечер</a></li><li><a href="../practices/t-family-musts.html">Семейные «надо»</a></li></ul></section>
 <section class="kb-sec" id="pro"><h2 class="kb-h2">Для помогающих специалистов</h2>
-<p>Будьте осторожны с интерпретациями. Совпадения дат легко находятся случайно и могут напугать клиента. Не подавайте идею о повторении дат в роду как факт: проверок нет.</p></section>
+<p>Осторожнее с интерпретациями. Совпадения дат легко находятся случайно и могут напугать клиента. Не подавай идею о повторении дат в роду как факт: проверок нет.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Ранняя ●○○</strong> — передача трудностей детям через воспитание и семейное молчание: описана у потомков беженцев, но в обычных группах потомков выживших в Холокосте передачи не нашли. Метка на границе со «спорной».</li><li><strong>Спорная ○○○</strong> — биологическое наследование травмы у людей: не доказано.</li><li><strong>Опыт практиков ◇</strong> — «синдром годовщины» и «синдром предков» Шутценбергер (повторение дат и возрастов между поколениями): проверок нет.</li><li><strong>Нет данных</strong> — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>.</li></ul>
-<p>Использую как язык для разговора, а не как истину.</p>
-<p><strong>Что проверено и на ком.</strong> У потомков беженцев чаще психологические трудности; среди возможных путей — воспитание и молчание о травме (обзор 20 работ, много маленьких выборок). Два метаанализа по детям и внукам выживших в Холокосте в обычных (не клинических) группах передачи не нашли; она видна только у тех, кто сам пришёл за помощью. Биологическая передача: одно маленькое исследование против критики генетиков — у людей нельзя отделить биологию от воспитания и культуры. Проверены только реакции на годовщину своей утраты; повторение дат у разных поколений не проверял никто.</p>
+<ul><li><strong>Ранняя ●○○</strong>&nbsp;— передача трудностей детям через воспитание и семейное молчание: описана у потомков беженцев, но в&nbsp;обычных группах потомков выживших в Холокосте передачи не нашли. Метка на границе со «спорной».</li><li><strong>Спорная ○○○</strong>&nbsp;— биологическое наследование травмы у людей: не доказано.</li><li><strong>Опыт практиков ◇</strong>&nbsp;— «синдром годовщины» и «синдром предков» Шутценбергер (повторение дат и возрастов между поколениями): проверок нет.</li><li><strong>Нет данных</strong>&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>.</li></ul>
+<p>Использую как язык для разговора, а не&nbsp;как истину.</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> У потомков беженцев чаще психологические трудности; среди возможных путей&nbsp;— воспитание и молчание о травме (обзор 20&nbsp;работ, много маленьких выборок). Два метаанализа по детям и внукам выживших в Холокосте в обычных (не клинических) группах передачи не нашли; она видна только у тех, кто сам пришёл за помощью. Биологическая передача: одно маленькое исследование против критики генетиков&nbsp;— у людей нельзя отделить биологию от воспитания и культуры. Проверены только реакции на годовщину своей утраты; повторение дат у разных поколений не проверял никто.</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/27659490/" target="_blank" rel="noopener">Sangalang &amp; Vang 2017<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹О› — 20 работ: у потомков беженцев чаще проблемы, важны воспитание и семейное общение; выборки маленькие — читано: полный текст — ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/14584630/" target="_blank" rel="noopener">van IJzendoorn 2003<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 32 выборки, 4 418 человек: в обычных группах детей выживших в Холокосте влияния травмы родителей нет — читано: аннотация — ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/18773314/" target="_blank" rel="noopener">Sagi-Schwartz 2008<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 13 выборок внуков: передачи «через поколение» нет; те же авторы, что в 2003, так что два метаанализа не независимы — читано: аннотация — ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/30061690/" target="_blank" rel="noopener">Horsthemke 2018<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Т› — биологическое наследование опыта у людей не доказано; передача через культуру и общение вероятнее — читано: полный текст — ⏳</li></ul>
-<p><strong>Чего не знаем.</strong> Переносятся ли данные о беженцах и выживших в Холокосте на обычные семьи. Есть ли у людей биологическая передача.</p>
-<p><strong>Осторожно.</strong> Семейная история может объяснять многое, но не всё: большинство потомков тяжело переживших людей живут без «унаследованной травмы». Идеи о том, что болезни и смерти «повторяются» в те же даты, что у предков, не проверены и могут пугать.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/27659490/" target="_blank" rel="noopener">Sangalang &amp; Vang 2017<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹О›&nbsp;— 20&nbsp;работ: у потомков беженцев чаще проблемы, важны воспитание и семейное общение; выборки маленькие&nbsp;— читано: полный текст&nbsp;— ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/14584630/" target="_blank" rel="noopener">van IJzendoorn 2003<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 32&nbsp;выборки, 4&nbsp;418&nbsp;человек: в обычных группах детей выживших в Холокосте влияния травмы родителей нет&nbsp;— читано: аннотация&nbsp;— ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/18773314/" target="_blank" rel="noopener">Sagi-Schwartz 2008<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 13&nbsp;выборок внуков: передачи «через поколение» нет; те&nbsp;же авторы, что в&nbsp;2003, так что два метаанализа не независимы&nbsp;— читано: аннотация&nbsp;— ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/30061690/" target="_blank" rel="noopener">Horsthemke 2018<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Т›&nbsp;— биологическое наследование опыта у людей не доказано; передача через культуру и общение вероятнее&nbsp;— читано: полный текст&nbsp;— ⏳</li></ul>
+<p><strong>Чего не знаем.</strong> Переносятся&nbsp;ли данные о беженцах и выживших в Холокосте на обычные семьи. Есть&nbsp;ли у&nbsp;людей биологическая передача.</p>
+<p><strong>Осторожно.</strong> Семейная история может объяснять многое, но не&nbsp;всё: большинство потомков тяжело переживших людей живут без «унаследованной травмы». Идеи о том, что болезни и смерти «повторяются» в те&nbsp;же даты, что у&nbsp;предков, не проверены и могут пугать.</p></section>
 <section class="kb-sec" id="lit"><h2 class="kb-h2">Литература</h2>
-<ul class="kb-books"><li><span class="a">Анн Анселин Шутценбергер</span> <em>Синдром предков</em>, 1990-е<span class="w">Трансгенерационный подход</span></li><li><a href="https://en.wikipedia.org/wiki/Anne_Ancelin_Sch%C3%BCtzenberger" target="_blank" rel="noopener"><em>Anne Ancelin Schützenberger, Wikipedia</em><span class="visually-hidden"> (откроется в новой вкладке)</span></a><span class="w">Трансгенерационный подход</span></li></ul></section>
+<ul class="kb-books"><li><span class="a">Анн Анселин Шутценбергер</span> <em>Синдром предков</em>, 1990-е<span class="w">Трансгенерационный подход</span></li><li><a href="https://en.wikipedia.org/wiki/Anne_Ancelin_Sch%C3%BCtzenberger" target="_blank" rel="noopener"><em>Anne Ancelin Schützenberger, Wikipedia</em><span class="visually-hidden"> (откроется в&nbsp;новой вкладке)</span></a><span class="w">Трансгенерационный подход</span></li></ul></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-genogram.html"><span class="t">Генограмма за вечер</span><span class="m">практика · 60 мин</span></a><a href="../practices/t-family-musts.html"><span class="t">Семейные «надо»</span><span class="m">практика · 20 мин</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/family-therapist.html"><span class="t">Семейный и парный терапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="ustnaya-istoriya-semi.html" rel="prev">← 1. История рода<b>Устная история семьи</b></a><a class="r" href="arkhivnyy-poisk-s-ii.html" rel="next">1. История рода →<b>Архивный поиск с ИИ</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-genogram.html"><span class="t">Генограмма за&nbsp;вечер</span><span class="m">практика · 60&nbsp;мин</span></a><a href="../practices/t-family-musts.html"><span class="t">Семейные «надо»</span><span class="m">практика · 20&nbsp;мин</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/family-therapist.html"><span class="t">Семейный и&nbsp;парный терапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="ustnaya-istoriya-semi.html" rel="prev">← 1. История рода<b>Устная история семьи</b></a><a class="r" href="arkhivnyy-poisk-s-ii.html" rel="next">1. История рода →<b>Архивный поиск с&nbsp;ИИ</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не подходит</a></li><li><a href="#mine">Как это у меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не&nbsp;подходит</a></li><li><a href="#mine">Как это у&nbsp;меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для&nbsp;помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -127,25 +156,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -155,12 +184,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -169,7 +198,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

@@ -118,6 +118,6 @@ function renderCounts() {
   $$('[data-n="fams"]').forEach(e => e.textContent = FAMS.length - 1);
 }
 fetch('assets/data/atlas.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(boot).catch(err => {
-  $$('[data-boot]').forEach(b => { b.textContent = location.protocol === 'file:' ? 'Карта открывается только с сайта (адрес http://…), не двойным щелчком по файлу.' : 'Не удалось загрузить данные атласа (' + err.message + '). Обновите страницу.'; });
+  $$('[data-boot]').forEach(b => { b.textContent = location.protocol === 'file:' ? 'Карта открывается только с сайта (адрес http://…), не двойным щелчком по файлу.' : 'Атлас не загрузился. Обнови страницу.'; });
 });
 })();

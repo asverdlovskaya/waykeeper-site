@@ -503,7 +503,7 @@ img[src*="assets/ill/"]:not([data-ill-keep]),svg.wk-ill:not([data-ill-keep]){dis
 .plate-alive:hover .pa-src,.plate-alive:focus-within .pa-src{opacity:1}
 .is-right > .pa-cap,.plate-alive.is-right .pa-cap{text-align:right}
 .plate-alive.is-center .pa-cap{text-align:center}
-.plate-alive:not([data-pa="done"]) .pa-cap{opacity:0}
+/* 27.10: подпись не ждёт картину (старое .plate-alive:not([data-pa="done"]) .pa-cap{opacity:0} снято вместе с проявкой site-v2.js) */
 @media (hover:none){ .pa-cap .pa-src{display:none} }
 
 /* картина на первом экране: прижата вправо и вверх колонки, на телефоне — по центру между полями */

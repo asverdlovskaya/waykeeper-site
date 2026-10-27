@@ -7,9 +7,9 @@
 <meta name="description" content="Консультант по воспитанию / родительский коуч: Помогает родителям справляться с воспитанием и поведением ребёнка. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/parenting-coach.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Родительский консультант · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Родительский консультант">
 <meta property="og:description" content="Консультант по воспитанию / родительский коуч: Помогает родителям справляться с воспитанием и поведением ребёнка. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/parenting-coach.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Отношения и семья · 9</span><ul><li><a href="parent-expert.html">Родитель-эксперт</a></li><li><a href="doula.html">Доула в родах</a></li><li><a href="relationship-counsellor.html">Консультант по отношениям</a></li><li><a href="divorce-coach.html">Коуч по разводу</a></li><li><a href="parenting-coach.html" class="is-here" aria-current="page">Родительский консультант</a></li><li><a href="family-mediator.html">Медиатор</a></li><li><a href="sex-therapist.html">Сексолог</a></li><li><a href="family-therapist.html">Семейный терапевт</a></li><li><a href="family-support-worker.html">Специалист по семье</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-rel" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Отношения и&nbsp;семья · 9</span><ul><li><a href="parent-expert.html">Родитель-эксперт</a></li><li><a href="doula.html">Доула в&nbsp;родах</a></li><li><a href="relationship-counsellor.html">Консультант по&nbsp;отношениям</a></li><li><a href="divorce-coach.html">Коуч по&nbsp;разводу</a></li><li><a href="parenting-coach.html" class="is-here" aria-current="page">Родительский консультант</a></li><li><a href="family-mediator.html">Медиатор</a></li><li><a href="sex-therapist.html">Сексолог</a></li><li><a href="family-therapist.html">Семейный терапевт</a></li><li><a href="family-support-worker.html">Специалист по&nbsp;семье</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-rel" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-rel.html">Отношения и семья</a></li><li>Родительский консультант</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>семья «Отношения и семья»<span class="sep">·</span>данные 27.10.2026</p>
-      <h1 class="kb-h1" id="page-title">Консультант по воспитанию / родительский коуч<small lang="en">Parenting coach / parenting adviser</small></h1>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-rel.html">Отношения и&nbsp;семья</a></li><li>Родительский консультант</li></ol>
       
-      <div class="kb-two"><span class="label">В двух словах</span><p>Помогает родителям справляться с воспитанием и поведением ребёнка</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>5 источников</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 3 утверждения не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — средний. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
-      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>иногда</dd></div><div><dt>Работает с будущим</dt><dd>да</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>иногда</dd></div><div><dt>Работает с группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>да</dd></div><div><dt>Доступность</dt><dd>бесплатно в госучреждениях · платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, обучение навыкам, эмоциональная поддержка</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Помогает родителям понять поведение ребёнка, выстроить спокойные правила и отношения, справиться с родительской усталостью. Работает с родителем, а не лечит ребёнка.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«Ребёнок закатывает истерики, я срываюсь»</li><li>«Не спит, не ест, не слушается — что делать»</li><li>«Подросток перестал разговаривать»</li><li>«Как объяснить ребёнку развод или переезд»</li><li>«Ребёнок не адаптируется в новой стране и школе»</li><li>«Мы с партнёром воспитываем по-разному»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Разговор о конкретных ситуациях, объяснение, что нормально для возраста, план новых действий, отработка навыков. Есть программы, польза которых изучалась в исследованиях, — например, Triple P (Positive Parenting Program): несколько уровней — от коротких семинаров до интенсивной помощи семьям в сложной ситуации; есть групповой и онлайн-формат. Авторы программы пишут, что её исследуют более 35 лет и используют в десятках стран (данные с сайта самой программы) <sup class="ref"><a href="#src-2" title="Triple P — Positive Parenting Program">2</a></sup>.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально или группы родителей; от одной консультации до курса из 8–10 встреч <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Не ставит ребёнку диагнозы (СДВГ, аутизм, задержки развития) — это врачи (<a href="psychiatrist.html">психиатр</a>, <a href="neurologist.html">невролог</a>) и <a href="clinical-psychologist.html">клинические психологи</a>. Не лечит. При подозрении на насилие над ребёнком или тяжёлое состояние — передаёт специалистам.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Обычно педагогическое или психологическое образование и курсы по родительскому консультированию; у программ вроде Triple P — своё обучение и сертификация ведущих <sup class="ref"><a href="#src-2" title="Triple P — Positive Parenting Program">2</a></sup>. Единых требований к званию «родительский коуч» нет <sup class="ref"><a href="#src-5" title="Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ">5</a></sup>.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Как частная услуга не регулируется <sup class="ref"><a href="#src-4" title="Федеральный закон от 04.05.2011 № 99-ФЗ «О лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на которые требуются лицензии» (копия текста закона) — zakonrf.info">4</a></sup>, <sup class="ref"><a href="#src-5" title="Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ">5</a></sup>. В системе социального обслуживания закон предусматривает социально-педагогические услуги (профилактика отклонений в поведении и развитии) и социально-психологические услуги <sup class="ref"><a href="#src-1" title="Федеральный закон от 28.12.2013 № 442-ФЗ «Об основах социального обслуживания граждан в РФ» (ст. 20, 31) — legalacts.ru">1</a></sup>. Консультируют родителей и центры психолого-педагогической, медицинской и социальной помощи (ППМС-центры) при системе образования: они помогают детям с трудностями в учёбе, развитии или адаптации, а консультирование их родителей — часть этой помощи (по согласию родителей; закон «Об образовании», ст. 42) <sup class="ref"><a href="#src-3" title="Федеральный закон от 29.12.2012 № 273-ФЗ «Об образовании в Российской Федерации», ст. 42 — legalacts.ru">3</a></sup>. В мире обычно: не регулируется, программы поддержки родителей часто финансирует государство или муниципалитет <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>ППМС-центры и школьные/садовские психологи <sup class="ref"><a href="#src-3" title="Федеральный закон от 29.12.2012 № 273-ФЗ «Об образовании в Российской Федерации», ст. 42 — legalacts.ru">3</a></sup>; центры социальной помощи семье и детям <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>; частная практика; онлайн-курсы для родителей.</p><p><b>Онлайн?</b> да · <b>Доступность.</b> бесплатно в госучреждениях · платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Направляют педагоги, педиатры, <a href="school-psychologist.html">школьные психологи</a>. Передаёт <a href="child-psychiatrist.html">детскому психиатру</a>/<a href="neurologist.html">неврологу</a> (подозрение на расстройство), семейному <a href="general-practitioner.html">терапевту</a> (конфликт в семье глубже воспитания), органам опеки и защиты детей (риск для ребёнка).</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Полезен, когда переход семьи (переезд, развод, новый ребёнок) отражается на поведении детей.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 5</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-28122013-n-442-fz-ob/" target="_blank" rel="noopener">Федеральный закон от 28.12.2013 № 442-ФЗ «Об основах социального обслуживания граждан в РФ» (ст. 20, 31) — legalacts.ru ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://www.triplep.net/glo-en/home/" target="_blank" rel="noopener">Triple P — Positive Parenting Program ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://legalacts.ru/doc/273_FZ-ob-obrazovanii/glava-4/statja-42/" target="_blank" rel="noopener">Федеральный закон от 29.12.2012 № 273-ФЗ «Об образовании в Российской Федерации», ст. 42 — legalacts.ru ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://zakonrf.info/zakon-o-licenzirovanii/12/" target="_blank" rel="noopener">Федеральный закон от 04.05.2011 № 99-ФЗ «О лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на которые требуются лицензии» (копия текста закона) — zakonrf.info ↗</a></span></li><li id="src-5" data-n="5"><span><a href="https://classinform.ru/profstandarty.html" target="_blank" rel="noopener">Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр — в чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В атласе</dt><dd><a href="psychiatrist.html"><span class="t">Психиатр</span><span class="m">стыкуется</span></a><a href="child-psychiatrist.html"><span class="t">Детский и подростковый психиатр</span><span class="m">стыкуется</span></a><a href="family-therapist.html"><span class="t">Семейный и парный терапевт</span><span class="m">стыкуется</span></a><a href="school-psychologist.html"><span class="t">Школьный психолог</span><span class="m">стыкуется</span></a><a href="general-practitioner.html"><span class="t">Терапевт / врач общей практики</span><span class="m">стыкуется</span></a><a href="neurologist.html"><span class="t">Невролог</span><span class="m">стыкуется</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=parenting-coach,psychiatrist,child-psychiatrist">Сравнить с похожими</a><a class="kb-do-alt" href="../atlas-map.html#parenting-coach" target="_blank" rel="noopener">Показать на карте ↗</a></div></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="divorce-coach.html" rel="prev">← Предыдущий в семье<b>Коуч по разводу</b></a><a class="r" href="family-mediator.html" rel="next">Следующий в семье →<b>Медиатор</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <h1 class="kb-h1" id="page-title">Консультант по&nbsp;воспитанию / родительский коуч<small lang="en">Parenting coach / parenting adviser</small></h1>
+      
+      <div class="kb-two"><p>Помогает родителям справляться с&nbsp;воспитанием и&nbsp;поведением ребёнка</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;5&nbsp;источникам<span class="kb-pending">, 3&nbsp;утверждения ещё сверяются</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— средний. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На&nbsp;чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и&nbsp;участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>да</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>да</dd></div><div><dt>Доступность</dt><dd>бесплатно в&nbsp;госучреждениях · платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и&nbsp;консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, обучение навыкам, эмоциональная поддержка</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Помогает родителям понять поведение ребёнка, выстроить спокойные правила и&nbsp;отношения, справиться с&nbsp;родительской усталостью. Работает с&nbsp;родителем, а&nbsp;не&nbsp;лечит ребёнка.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем к&nbsp;нему приходят</h2><ul><li>«Ребёнок закатывает истерики, я срываюсь»</li><li>«Не&nbsp;спит, не&nbsp;ест, не&nbsp;слушается&nbsp;— что делать»</li><li>«Подросток перестал разговаривать»</li><li>«Как объяснить ребёнку развод или переезд»</li><li>«Ребёнок не&nbsp;адаптируется в&nbsp;новой стране и&nbsp;школе»</li><li>«Мы с&nbsp;партнёром воспитываем по-разному»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Разговор о&nbsp;конкретных ситуациях, объяснение, что нормально для&nbsp;возраста, план новых действий, отработка навыков. Есть программы, польза которых изучалась в&nbsp;исследованиях,&nbsp;— например, Triple P (Positive Parenting Program): несколько уровней&nbsp;— от&nbsp;коротких семинаров до&nbsp;интенсивной помощи семьям в&nbsp;сложной ситуации; есть групповой и&nbsp;онлайн-формат. Авторы программы пишут, что её исследуют более 35&nbsp;лет и&nbsp;используют в&nbsp;десятках стран (данные с&nbsp;сайта самой программы)<sup class="ref"><a href="#src-2" title="Triple P — Positive Parenting Program">2</a></sup>.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально или группы родителей; от&nbsp;одной консультации до&nbsp;курса из&nbsp;8–10&nbsp;встреч <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>Не&nbsp;ставит ребёнку диагнозы (СДВГ, аутизм, задержки развития)&nbsp;— это врачи (<a href="psychiatrist.html">психиатр</a>, <a href="neurologist.html">невролог</a>) и&nbsp;<a href="clinical-psychologist.html">клинические психологи</a>. Не&nbsp;лечит. При&nbsp;подозрении на&nbsp;насилие над&nbsp;ребёнком или тяжёлое состояние&nbsp;— передаёт специалистам.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>Обычно педагогическое или психологическое образование и&nbsp;курсы по&nbsp;родительскому консультированию; у&nbsp;программ вроде Triple P&nbsp;— своё обучение и&nbsp;сертификация ведущих<sup class="ref"><a href="#src-2" title="Triple P — Positive Parenting Program">2</a></sup>. Единых требований к&nbsp;званию «родительский коуч» нет<sup class="ref"><a href="#src-5" title="Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ">5</a></sup>.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>Как частная услуга не&nbsp;регулируется<sup class="ref"><a href="#src-4" title="Федеральный закон от 04.05.2011 № 99-ФЗ «О лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на которые требуются лицензии» (копия текста закона) — zakonrf.info">4</a></sup>,<sup class="ref"><a href="#src-5" title="Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ">5</a></sup>. В&nbsp;системе социального обслуживания закон предусматривает социально-педагогические услуги (профилактика отклонений в&nbsp;поведении и&nbsp;развитии) и&nbsp;социально-психологические услуги<sup class="ref"><a href="#src-1" title="Федеральный закон от 28.12.2013 № 442-ФЗ «Об основах социального обслуживания граждан в РФ» (ст. 20, 31) — legalacts.ru">1</a></sup>. Консультируют родителей и&nbsp;центры психолого-педагогической, медицинской и&nbsp;социальной помощи (ППМС-центры) при&nbsp;системе образования: они помогают детям с&nbsp;трудностями в&nbsp;учёбе, развитии или адаптации, а&nbsp;консультирование их родителей&nbsp;— часть этой помощи (по&nbsp;согласию родителей; закон «Об&nbsp;образовании», ст. 42)<sup class="ref"><a href="#src-3" title="Федеральный закон от 29.12.2012 № 273-ФЗ «Об образовании в Российской Федерации», ст. 42 — legalacts.ru">3</a></sup>. В&nbsp;мире обычно: не&nbsp;регулируется, программы поддержки родителей часто финансирует государство или муниципалитет <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>ППМС-центры и&nbsp;школьные/садовские психологи<sup class="ref"><a href="#src-3" title="Федеральный закон от 29.12.2012 № 273-ФЗ «Об образовании в Российской Федерации», ст. 42 — legalacts.ru">3</a></sup>; центры социальной помощи семье и&nbsp;детям <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>; частная практика; онлайн-курсы для&nbsp;родителей.</p><p><b>Онлайн?</b> да · <b>Доступность.</b> бесплатно в&nbsp;госучреждениях · платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С&nbsp;кем стыкуется</h2><div class="prose"><p>Направляют педагоги, педиатры, <a href="school-psychologist.html">школьные психологи</a>. Передаёт <a href="child-psychiatrist.html">детскому психиатру</a>/<a href="neurologist.html">неврологу</a> (подозрение на&nbsp;расстройство), семейному <a href="general-practitioner.html">терапевту</a> (конфликт в&nbsp;семье глубже воспитания), органам опеки и&nbsp;защиты детей (риск для&nbsp;ребёнка).</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В&nbsp;переходе</h2><div class="prose"><p>Полезен, когда переход семьи (переезд, развод, новый ребёнок) отражается на&nbsp;поведении детей.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 5</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-28122013-n-442-fz-ob/" target="_blank" rel="noopener">Федеральный закон от&nbsp;28.12.2013 №&nbsp;442-ФЗ «Об&nbsp;основах социального обслуживания граждан в&nbsp;РФ» (ст. 20, 31)&nbsp;— legalacts.ru ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://www.triplep.net/glo-en/home/" target="_blank" rel="noopener">Triple P&nbsp;— Positive Parenting Program ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://legalacts.ru/doc/273_FZ-ob-obrazovanii/glava-4/statja-42/" target="_blank" rel="noopener">Федеральный закон от&nbsp;29.12.2012 №&nbsp;273-ФЗ «Об&nbsp;образовании в&nbsp;Российской Федерации», ст. 42&nbsp;— legalacts.ru ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://zakonrf.info/zakon-o-licenzirovanii/12/" target="_blank" rel="noopener">Федеральный закон от&nbsp;04.05.2011 №&nbsp;99-ФЗ «О&nbsp;лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на&nbsp;которые требуются лицензии» (копия текста закона)&nbsp;— zakonrf.info ↗</a></span></li><li id="src-5" data-n="5"><span><a href="https://classinform.ru/profstandarty.html" target="_blank" rel="noopener">Профессиональные стандарты: справочник по&nbsp;разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026)&nbsp;— КлассИнформ ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр&nbsp;— в&nbsp;чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и&nbsp;формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="psychiatrist.html"><span class="t">Психиатр</span><span class="m">стыкуется</span></a><a href="child-psychiatrist.html"><span class="t">Детский и&nbsp;подростковый психиатр</span><span class="m">стыкуется</span></a><a href="family-therapist.html"><span class="t">Семейный и&nbsp;парный терапевт</span><span class="m">стыкуется</span></a><a href="school-psychologist.html"><span class="t">Школьный психолог</span><span class="m">стыкуется</span></a><a href="general-practitioner.html"><span class="t">Терапевт / врач общей практики</span><span class="m">стыкуется</span></a><a href="neurologist.html"><span class="t">Невролог</span><span class="m">стыкуется</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=parenting-coach,psychiatrist,child-psychiatrist">Сравнить с&nbsp;похожими</a><a class="kb-do-alt" href="../atlas-map.html#parenting-coach" target="_blank" rel="noopener">Показать на&nbsp;карте ↗</a></div></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="divorce-coach.html" rel="prev">← Предыдущий в&nbsp;семье<b>Коуч по&nbsp;разводу</b></a><a class="r" href="family-mediator.html" rel="next">Следующий в&nbsp;семье →<b>Медиатор</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 5</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем к&nbsp;нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С&nbsp;кем стыкуется</a></li><li><a href="#perehod">В&nbsp;переходе</a></li><li><a href="#istochniki">Источники · 5</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

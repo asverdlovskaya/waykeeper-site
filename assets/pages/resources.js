@@ -173,13 +173,13 @@ function controlsHtml(where){
     GROUPS.map(function(g){ return '<button type="button" data-f="doo" data-v="' + g[0] + '" aria-pressed="false">' + g[1] + '<span class="n"></span></button>'; }).join('') + '</div>';
   var evOpts = '<option value="">Любая метка</option>' + ['strong','mid','early','craft','contested'].map(function(c){ return '<option value="' + c + '">' + EV_LABEL[c] + '</option>'; }).join('');
   var tyOpts = '<option value="">Любой тип</option>' + TYPE_ORDER.map(function(t){ return '<option value="' + t + '">' + TYPE_NAME[t] + '</option>'; }).join('');
-  var sel = '<label class="kb-select"><span class="visually-hidden">С чем ты пришёл</span><select data-f="sit">' + sitOpts + '</select></label>';
+  var sel = '<label class="kb-select"><span class="visually-hidden">С чем ты сейчас</span><select data-f="sit">' + sitOpts + '</select></label>';
   var tog = '<label class="kb-toggle"><input type="checkbox" data-f="ru"> По-русски</label><label class="kb-toggle"><input type="checkbox" data-f="free"> Бесплатно</label>';
   var more = '<label class="kb-select"><span class="visually-hidden">Метка</span><select data-f="ev">' + evOpts + '</select></label>' +
     '<label class="kb-select"><span class="visually-hidden">Тип</span><select data-f="type">' + tyOpts + '</select></label>';
   if(where === 'sheet'){
     return '<p class="kb-h3">Фильтры</p>' +
-      '<p class="label res-sh-l">С чем ты пришёл</p>' + sel +
+      '<p class="label res-sh-l">С чем ты сейчас</p>' + sel +
       '<p class="label res-sh-l">Что делать</p>' + seg +
       '<p class="res-sh-t">' + tog + '</p>' +
       '<p class="label res-sh-l">Ещё</p><p class="res-sh-m">' + more + '</p>' +
@@ -274,7 +274,7 @@ function emptyHtml(){
   }
   var rel = relatedBlock(st.sit);
   if(rel) body += '<p class="label res-near-l">По этой ситуации в базе</p>' + rel;
-  body += '<p class="small">Знаете хороший ресурс&nbsp;— <a class="link" href="#telegram" data-tg>напишите в&nbsp;Telegram</a>.</p>';
+  body += '<p class="small">Знаешь хороший ресурс&nbsp;— <a class="link" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>';
   return '<div class="kb-empty"><p class="kb-h3">' + esc(title) + '</p>' + body + '</div>';
 }
 function renderList(){
@@ -415,7 +415,7 @@ function init(res, sits, kbi){
 }
 function fail(err){
   if(window.console) console.warn('Ресурсы: не удалось загрузить данные', err);
-  var m = q('[data-res="main"]'); if(m) m.innerHTML = '<div class="kb-empty"><p class="kb-h3">Список не загрузился</p><p class="small">Обновите страницу чуть позже.</p></div>';
+  var m = q('[data-res="main"]'); if(m) m.innerHTML = '<div class="kb-empty"><p class="kb-h3">Список не загрузился</p><p class="small">Обнови страницу чуть позже.</p></div>';
 }
 function start(){
   Promise.all([json('resources.json'), json('situations.json'), json('kb-index.json').catch(function(){ return null; })])

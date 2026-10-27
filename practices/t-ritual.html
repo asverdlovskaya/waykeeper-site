@@ -7,9 +7,9 @@
 <meta name="description" content="Ритуал из пяти деталей, достаточно короткий для плохого дня.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices/t-ritual.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Собрать один ритуал · Практики · Waykeeper">
+<meta property="og:title" content="Собрать один ритуал">
 <meta property="og:description" content="Ритуал из пяти деталей, достаточно короткий для плохого дня.">
 <meta property="og:url" content="https://waykeeper.org/practices/t-ritual.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -43,42 +50,64 @@
 <script src="../assets/pages/practices.js" defer></script>
 <script src="../modules/trail.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -88,14 +117,14 @@
       <div class="pr-top-grid">
         <div class="pr-top-text">
           <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Собрать один ритуал</li></ol>
-          <p class="kb-type">Практика<span class="sep">·</span>15 минут<span class="sep">·</span>без меня<span class="sep">·</span>основная</p>
+          <p class="kb-type">Практика<span class="sep">·</span>15&nbsp;минут<span class="sep">·</span>без&nbsp;меня<span class="sep">·</span>основная</p>
           <h1 id="pr-title" class="kb-h1 pr-title">Собрать один ритуал</h1>
-          <div class="kb-two"><span class="label">В двух словах</span><p>Ритуал из пяти деталей, достаточно короткий для плохого дня. Многим короткие ритуалы помогают в плохой день, а если не пошёл — чиним дизайн, а не себя.</p></div>
+          <div class="kb-two"><p>Ритуал из&nbsp;пяти деталей, достаточно короткий для&nbsp;плохого дня. Многим короткие ритуалы помогают в&nbsp;плохой день, а&nbsp;если не&nbsp;пошёл&nbsp;— чиним дизайн, а&nbsp;не&nbsp;себя.</p></div>
           <details class="kb-stamp pr-stamp" id="roots">
-          <summary><span class="pr-stamp-k">На чём стоит</span><span class="pr-root"><a href="../encyclopedia/ritualy.html">Ритуалы</a><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span><span class="kb-who">студенты и онлайн-участники в лабораторных опытах; взрослые после утраты (обзор и опрос)</span><span class="kb-checked">метка проверена 26.10.2026</span><span class="more">Почему так</span></summary>
+          <summary><span class="pr-stamp-k">На&nbsp;чём стоит</span><span class="pr-root"><a href="../encyclopedia/ritualy.html">Ритуалы</a><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span><span class="kb-who">студенты и&nbsp;онлайн-участники в&nbsp;лабораторных опытах; взрослые после утраты (обзор и&nbsp;опрос)</span><span class="kb-checked">метка проверена 26.10.2026</span><span class="more">Почему так</span></summary>
           <div class="kb-stamp-body">
-            <ul class="pr-rootlist"><li><p class="pr-rt"><a href="../encyclopedia/ritualy.html">Ритуалы</a> <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <span class="pr-t">опыт практиков</span></p><p>Ежедневный ритуал как опору отдельно не проверяли: это опыт практиков. Ближе всего — маленький ритуал после «потери»: в лабораторных опытах он немного снижал горе сразу после (ранняя). У людей, переживших настоящую утрату, данные расходятся: ритуал скорее помогает, если человек выбрал его сам (спорная).</p><p class="pr-rs"><a href="https://doi.org/10.1177/0030222820941296">Burrell, Selman, 2022; Mitima-Verloop и соавт., 2022; Norton, Gino, 2014</a> · на ком проверяли: студенты и онлайн-участники в лабораторных опытах; взрослые после утраты (обзор и опрос)</p></li></ul>
-            <p>Метка говорит, насколько исследован метод, а не как он сработает у тебя. <a href="../how.html#marks">Что значат метки</a></p>
+            <ul class="pr-rootlist"><li><p class="pr-rt"><a href="../encyclopedia/ritualy.html">Ритуалы</a> <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <span class="pr-t">опыт практиков</span></p><p>Ежедневный ритуал как опору отдельно не&nbsp;проверяли: это опыт практиков. Ближе всего&nbsp;— маленький ритуал после «потери»: в&nbsp;лабораторных опытах он немного снижал горе сразу после (ранняя). У&nbsp;людей, переживших настоящую утрату, данные расходятся: ритуал скорее помогает, если человек выбрал его сам (спорная).</p><p class="pr-rs"><a href="https://doi.org/10.1177/0030222820941296">Burrell, Selman, 2022; Mitima-Verloop и&nbsp;соавт., 2022; Norton, Gino, 2014</a> · на&nbsp;ком проверяли: студенты и&nbsp;онлайн-участники в&nbsp;лабораторных опытах; взрослые после утраты (обзор и&nbsp;опрос)</p></li></ul>
+            <p>Метка говорит, насколько исследован метод, а&nbsp;не&nbsp;как он сработает у&nbsp;тебя. <a href="../how.html#marks">Что значат метки</a></p>
           </div>
         </details>
           <div class="kb-do"><a class="btn primary" href="#steps">Начать</a></div>
@@ -103,7 +132,7 @@
         <div class="pr-top-art">
           <figure class="plate-alive plate-alive--quiet is-right pr-plate" data-processed data-clear style="--pa-r:1.333; --pa-h:min(52vh, 460px)">
           <div class="pa-img"><img src="../assets/img/pd/practices/sobrat-odin-ritual-1200.jpg" alt="Набор для чайной церемонии (суримоно). Кубо Сюнман" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <figcaption class="pa-cap">Кубо Сюнман · «Набор для чайной церемонии (суримоно)», 1810-е<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
+          <figcaption class="pa-cap">Кубо Сюнман · «Набор для&nbsp;чайной церемонии (суримоно)», 1810-е<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
         </figure>
         </div>
       </div>
@@ -112,10 +141,10 @@
 
   <section class="pr-sec pr-sec--facts" aria-label="О практике">
     <div class="frame"><dl class="kb-facts kb-facts--one pr-facts">
-      <div><dt>На руках</dt><dd>Карточка ритуала, которую можно распечатать и держать на виду.</dd></div>
-      <div><dt>Откуда</dt><dd>карточку можно распечатать; не пошёл — чиним дизайн, а не себя.</dd></div>
+      <div><dt>На&nbsp;руках</dt><dd>Карточка ритуала, которую можно распечатать и&nbsp;держать на&nbsp;виду.</dd></div>
+      <div><dt>Откуда</dt><dd>карточку можно распечатать; не&nbsp;пошёл&nbsp;— чиним дизайн, а&nbsp;не&nbsp;себя.</dd></div>
       <div><dt>Это упражнение</dt><dd>моя адаптация.</dd></div>
-      <div><dt>В «Переходе»</dt><dd>это <a class="link" href="../program.html#week-9">неделя 9</a>: опоры — люди, ритм, ритуал и аптечка на плохой день.</dd></div>
+      <div><dt>В&nbsp;«Переходе»</dt><dd>это <a class="link" href="../program.html#week-9">неделя 9</a>: опоры&nbsp;— люди, ритм, ритуал и&nbsp;аптечка на&nbsp;плохой день.</dd></div>
     </dl></div>
   </section>
 
@@ -124,7 +153,7 @@
       <aside class="pr-careful">
         <h2 class="pr-h" id="pr-careful">Осторожно</h2>
         <ul class="list">
-            <li>Ритуал не должен превращаться в обязанность, за которую потом стыдно.</li>
+            <li>Ритуал не&nbsp;должен превращаться в&nbsp;обязанность, за&nbsp;которую потом стыдно.</li>
         </ul>
       </aside>
     </div>
@@ -135,14 +164,14 @@
       <div class="pr-kit pr-kit--tool" data-module="practice-kit" data-id="t-ritual" data-title="Собрать один ритуал" data-minutes="15" data-store="waykeeper.practice.t-ritual">
         <div class="pr-kit-side">
           <ol class="pr-steps" data-kit-steps>
-              <li data-kit-step="0">Намерение: зачем тебе этот ритуал — войти в день, закончить работу, переключиться после тяжёлого разговора.</li>
-              <li data-kit-step="1">Триггер: после чего он начинается. Проще всего привязать к тому, что и так случается каждый день.</li>
-              <li data-kit-step="2">Предметы: что должно быть под рукой.</li>
-              <li data-kit-step="3">Действие: такое короткое, чтобы получилось и в плохой день.</li>
+              <li data-kit-step="0">Намерение: зачем тебе этот ритуал&nbsp;— войти в&nbsp;день, закончить работу, переключиться после тяжёлого разговора.</li>
+              <li data-kit-step="1">Триггер: после чего он начинается. Проще всего привязать к&nbsp;тому, что и&nbsp;так случается каждый день.</li>
+              <li data-kit-step="2">Предметы: что должно быть под&nbsp;рукой.</li>
+              <li data-kit-step="3">Действие: такое короткое, чтобы получилось и&nbsp;в&nbsp;плохой день.</li>
               <li data-kit-step="4">Знак завершения: слово или жест, после которого ритуал закончен.</li>
-              <li data-kit-step="5">Если ритуал не прижился, поменяй одну деталь и попробуй снова.</li>
+              <li data-kit-step="5">Если ритуал не&nbsp;прижился, поменяй одну деталь и&nbsp;попробуй снова.</li>
           </ol>
-          <p class="pr-stuck"><span class="pr-stuck-k">Если не получается начать.</span> Возьми пример под заготовкой и поменяй одну деталь под себя.</p>
+          <p class="pr-stuck"><span class="pr-stuck-k">Если не&nbsp;получается начать.</span> Возьми пример под&nbsp;заготовкой и&nbsp;поменяй одну деталь под&nbsp;себя.</p>
         </div>
         <div class="pr-kit-main">
             <div class="pr-tool" data-kit-tool>
@@ -156,9 +185,9 @@
 
   <section class="pr-sec pr-pros" data-atmo="haze" aria-labelledby="pr-pros-h">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-pros-h">Для специалистов</h2>
+      <h2 class="kb-h2" id="pr-pros-h">Для&nbsp;специалистов</h2>
       <div class="actions pr-pros-acts"><button type="button" class="btn quiet" data-print-page>Распечатать</button> <button type="button" class="btn quiet" data-copy-steps>Скопировать шаги</button><span class="pr-copied" role="status" aria-live="polite" data-copy-note></span></div>
-      <p class="small pr-pros-note">Тексты базы можно брать в работу со ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
+      <p class="small pr-pros-note">Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
     </div></div>
   </section>
 
@@ -166,19 +195,19 @@
     <div class="frame"><div class="kb-near-wrap">
       <h2 class="kb-h2" id="pr-near">Рядом</h2>
         <dl class="kb-near">
-          <div><dt>Сделать</dt><dd><a href="../practices/t-kit.html"><span class="t">Аптечка на стену</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-supports.html"><span class="t">Карта опор</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-tiny.html"><span class="t">Одна маленькая привычка</span><span class="m">практика · 5 мин</span></a><details class="pr-more"><summary>ещё 5 →</summary><a href="../practices/t-monday.html"><span class="t">Проверка «завтра понедельник»</span><span class="m">практика · 2 мин</span></a><a href="../practices/t-express.html"><span class="t">Экспрессивное письмо</span><span class="m">практика · 4 дня по 15 мин</span></a><a href="../practices/t-mykit.html"><span class="t">Кит (kit): набор под состояние</span><span class="m">практика · 20 мин</span></a><a href="../practices/t-presence.html"><span class="t">Памятка для близкого</span><span class="m">практика · 10 мин</span></a><a href="../practices/t-worry.html"><span class="t">Контейнер для тревоги</span><span class="m">практика · 2 мин</span></a></details></dd></div>
+          <div><dt>Сделать</dt><dd><a href="../practices/t-kit.html"><span class="t">Аптечка на&nbsp;стену</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-supports.html"><span class="t">Карта опор</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-tiny.html"><span class="t">Одна маленькая привычка</span><span class="m">практика · 5&nbsp;мин</span></a><details class="pr-more"><summary>ещё 5 →</summary><a href="../practices/t-monday.html"><span class="t">Проверка «завтра понедельник»</span><span class="m">практика · 2&nbsp;мин</span></a><a href="../practices/t-express.html"><span class="t">Экспрессивное письмо</span><span class="m">практика · 4&nbsp;дня по&nbsp;15&nbsp;мин</span></a><a href="../practices/t-mykit.html"><span class="t">Кит (kit): набор под&nbsp;состояние</span><span class="m">практика · 20&nbsp;мин</span></a><a href="../practices/t-presence.html"><span class="t">Памятка для&nbsp;близкого</span><span class="m">практика · 10&nbsp;мин</span></a><a href="../practices/t-worry.html"><span class="t">Контейнер для&nbsp;тревоги</span><span class="m">практика · 2&nbsp;мин</span></a></details></dd></div>
           <div><dt>Понять</dt><dd><a href="../encyclopedia/ritualy.html"><span class="t">Ритуалы</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a></dd></div>
-          <div><dt>В ситуациях</dt><dd><a href="../encyclopedia/pereezd.html"><span class="t">Переезд, и профессия не складывается</span></a><a href="../encyclopedia/poterya-blizkogo.html"><span class="t">Потеря близкого человека</span></a></dd></div>
+          <div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/pereezd.html"><span class="t">Переезд, и&nbsp;профессия не&nbsp;складывается</span></a><a href="../encyclopedia/poterya-blizkogo.html"><span class="t">Потеря близкого человека</span></a></dd></div>
         </dl>
-      <nav class="kb-next" aria-label="Соседние практики"><a href="t-mykit.html">← предыдущая<b>Кит (kit)</b></a><a class="r" href="t-kit.html">следующая →<b>Аптечка на стену</b></a></nav>
-      <p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+      <nav class="kb-next" aria-label="Соседние практики"><a href="t-mykit.html">← предыдущая<b>Кит (kit)</b></a><a class="r" href="t-kit.html">следующая →<b>Аптечка на&nbsp;стену</b></a></nav>
+      <p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-end" data-atmo="dawn" data-atmo-rule aria-label="Дальше">
     <div class="frame cols">
       <div class="s-7">
-        <p class="lede pr-bridge">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
+        <p class="lede pr-bridge">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
         <div class="actions"><a class="btn primary" href="../practices.html#catalog">Все практики →</a></div>
       </div>
     </div>
@@ -191,25 +220,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -219,12 +248,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -233,7 +262,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

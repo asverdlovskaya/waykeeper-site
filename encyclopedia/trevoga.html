@@ -7,9 +7,9 @@
 <meta name="description" content="Тревога — это не поломка, а система безопасности, которая работает на полную. Задача не выключить её, а вернуть себе руль: сначала тело и база, потом мысли, потом смысл.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/trevoga.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Тревога не отпускает · ситуация · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Тревога не отпускает">
 <meta property="og:description" content="Тревога — это не поломка, а система безопасности, которая работает на полную. Задача не выключить её, а вернуть себе руль: сначала тело и база, потом мысли, потом смысл.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/trevoga.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,24 +107,24 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Ситуации"><ul><li><a href="rabota-zakonchilas.html">Закончилась работа или своё дело</a></li><li><a href="pereezd.html">Переезд, и профессия не складывается</a></li><li><a href="krizis-identichnosti.html">Кризис идентичности</a></li><li><a href="sily-konchilis.html">Силы кончились, а что вместо — непонятно</a></li><li><a href="ne-mogu-vybrat.html">Несколько дорог, и не получается выбрать</a></li><li><a href="plany-sryvayutsya.html">Планы срываются на одном и том же месте</a></li><li><a href="ne-moe-strashno.html">Всё хорошо, но не моё, и страшно</a></li><li><a href="ne-znayu-k-komu-idti.html">Не знаю, к какому специалисту идти</a></li><li><a href="ryadom-chelovek-v-krizise.html">Рядом человек в кризисе</a></li><li><a href="podvesti-god.html">Подвести год и выбрать, куда дальше</a></li><li><a class="is-here" aria-current="page" href="trevoga.html">Тревога не отпускает</a></li><li><a href="poterya-blizkogo.html">Потеря близкого человека</a></li></ul><a class="all" href="../encyclopedia.html#sit">Все ситуации →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Ситуации"><ul><li><a href="rabota-zakonchilas.html">Закончилась работа или своё дело</a></li><li><a href="pereezd.html">Переезд, и&nbsp;профессия не&nbsp;складывается</a></li><li><a href="krizis-identichnosti.html">Кризис идентичности</a></li><li><a href="sily-konchilis.html">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</a></li><li><a href="ne-mogu-vybrat.html">Несколько дорог, и&nbsp;не&nbsp;получается выбрать</a></li><li><a href="plany-sryvayutsya.html">Планы срываются на&nbsp;одном и&nbsp;том&nbsp;же месте</a></li><li><a href="ne-moe-strashno.html">Всё хорошо, но&nbsp;не&nbsp;моё, и&nbsp;страшно</a></li><li><a href="ne-znayu-k-komu-idti.html">Не&nbsp;знаю, к&nbsp;какому специалисту идти</a></li><li><a href="ryadom-chelovek-v-krizise.html">Рядом человек в&nbsp;кризисе</a></li><li><a href="podvesti-god.html">Подвести год и&nbsp;выбрать, куда дальше</a></li><li><a class="is-here" aria-current="page" href="trevoga.html">Тревога не&nbsp;отпускает</a></li><li><a href="poterya-blizkogo.html">Потеря близкого человека</a></li></ul><a class="all" href="../encyclopedia.html#sit">Все ситуации →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#sit">Ситуации</a></li><li>Тревога не отпускает</li></ol>
-<h1 class="kb-h1" id="h1">Тревога не отпускает</h1>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#sit">Ситуации</a></li><li>Тревога не&nbsp;отпускает</li></ol>
+<h1 class="kb-h1" id="h1">Тревога не&nbsp;отпускает</h1>
 <p class="enc-sub">Мысли крутятся по кругу, сон сбит, тело в напряжении.</p>
-<div class="kb-two"><span class="label">В двух словах</span><p>Тревога — это не поломка, а система безопасности, которая работает на полную. Задача не выключить её, а вернуть себе руль: сначала тело и база, потом мысли, потом смысл.</p></div>
-<div class="kb-do"><a class="btn primary" href="../practices/t-worry.html">Сделать сегодня: Контейнер для тревоги</a><span class="kb-do-alt">или <a href="../practices/t-kit.html">«Аптечка на стену»</a> · 30 мин</span></div>
-<section class="kb-sec" id="start"><h2 class="kb-h2">С чего начать</h2>
-<ol class="enc-order"><li>Сначала база: сон, еда, вода, движение. Если база проседает, никакая техника не держит.</li><li>Вернуть тело в окно толерантности: дыхание, заземление, длинная прогулка.</li><li>Дать тревоге контейнер: назначить ей время, а не пережёвывать весь день.</li><li>Выписать то, что крутится. Мысль на бумаге весит меньше, чем в голове.</li><li>Отнестись к себе как к другу, а не как к проекту, который сломался.</li></ol></section>
+<div class="kb-two"><p>Тревога&nbsp;— это не&nbsp;поломка, а система безопасности, которая работает на полную. Задача не выключить её, а вернуть себе руль: сначала тело и база, потом мысли, потом смысл.</p></div>
+<div class="kb-do"><a class="btn primary" href="../practices/t-worry.html">Сделать сегодня: Контейнер для&nbsp;тревоги</a><span class="kb-do-alt">или <a href="../practices/t-kit.html">«Аптечка на&nbsp;стену»</a> · 30&nbsp;мин</span></div>
+<section class="kb-sec" id="start"><h2 class="kb-h2">С&nbsp;чего начать</h2>
+<ol class="enc-order"><li>Сначала база: сон, еда, вода, движение. Если база проседает, никакая техника не держит.</li><li>Вернуть тело в окно толерантности: дыхание, заземление, длинная прогулка.</li><li>Дать тревоге контейнер: назначить ей время, а не&nbsp;пережёвывать весь день.</li><li>Выписать то, что крутится. Мысль на бумаге весит меньше, чем в голове.</li><li>Отнестись к себе как к&nbsp;другу, а не&nbsp;как к&nbsp;проекту, который сломался.</li></ol></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Осторожно</h2>
-<p>Если есть мысли о том, чтобы не жить, обратитесь за помощью сразу, не ждите; если опасность прямо сейчас — вызовите скорую помощь или экстренные службы. Если тревога держится несколько недель и мешает спать или работать, или бывают панические атаки, запишитесь к врачу или психотерапевту. Это не слабость, это правильный шаг.</p></section>
-<section class="kb-plan" id="near"><h2 class="kb-h2">Пока здесь то, что уже есть</h2>
-<p>Полный текст этой статьи ещё пишется. Пока собрано то, что по этой ситуации уже есть в базе: что сделать, что прочитать и кто помогает.</p>
-<dl class="kb-near"><div><dt>Сделать сегодня</dt><dd><a href="../practices/t-worry.html"><span class="t">Контейнер для тревоги</span><span class="m">практика · 2 мин</span></a><a href="../practices/t-kit.html"><span class="t">Аптечка на стену</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-express.html"><span class="t">Экспрессивное письмо</span><span class="m">практика · 4 дня по 15 мин</span></a><a href="../practices/t-window.html"><span class="t">Как я понимаю, что мне хуже</span><span class="m">практика · 15 мин</span></a><a href="../practices/t-friend.html"><span class="t">Письмо себе как другу</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>Понять</dt><dd><a href="okno-tolerantnosti.html"><span class="t">Окно толерантности</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="vremya-dlya-trevogi.html"><span class="t">Время для тревоги</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="ekspressivnoe-pismo.html"><span class="t">Экспрессивное письмо</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="samosostradanie.html"><span class="t">Самосострадание</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="plan-samopomoshchi-wrap.html"><span class="t">План самопомощи</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><details class="kb-more-d"><summary>ещё 2</summary><a href="perekhod-i-rasstroystvo-adaptatsii.html"><span class="t">Переход и расстройство адаптации: где граница</span><span class="m">понятие</span></a><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/counselling-psychologist.html"><span class="t">Психолог-консультант</span><span class="m">«Неуверенность, тревога» · атлас</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">«Тревога и панические атаки» · атлас</span></a><a href="../atlas/psychiatrist.html"><span class="t">Психиатр</span><span class="m">«Панические атаки и тревога мешают жить» · атлас</span></a><a href="../atlas/mindfulness-teacher.html"><span class="t">Преподаватель программ осознанности</span><span class="m">«Тревожно — хочу научиться замечать это и не сваливаться в панику» · атлас</span></a><details class="kb-more-d"><summary>ещё 2</summary><a href="../atlas/breathwork-practitioner.html"><span class="t">Практик дыхательных техник</span><span class="m">«хочу научиться успокаиваться, когда накрывает тревога» · атлас</span></a><a href="../atlas/psychomotor-therapist.html"><span class="t">Психомоторный терапевт</span><span class="m">«тревога и напряжение, разговоры не помогают» · атлас</span></a></details></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-harris-trap"><span class="t">Ловушка счастья. Как перестать переживать и начать жить</span><span class="m">книга · Расс Хэррис</span></a><a href="../resources.html#book-hayes-mind"><span class="t">Освобождённый разум</span><span class="m">книга · Стивен Хейс</span></a><a href="../resources.html#book-david-agility"><span class="t">Эмоциональная гибкость</span><span class="m">книга · Сьюзан Дэвид</span></a><a href="../resources.html#book-neff"><span class="t">Сочувствие к себе (ранее «Самосострадание. О силе сочувствия и доброты к себе»)</span><span class="m">книга · Кристин Нефф</span></a><a href="../resources.html#book-nagoski-burnout"><span class="t">Выгорание. Новый подход к избавлению от стресса</span><span class="m">книга · Эмили Нагоски, Амелия Нагоски</span></a><a href="../resources.html?sit=trevoga"><span class="t">Все 14 по этой ситуации →</span></a></dd></div><div><dt>В «Переходе»</dt><dd><span class="steprow"><a href="../project.html#steps">шаг 5 «Снаряжение»</a>, <a href="../program.html#week-9">неделя 9</a></span></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="podvesti-god.html" rel="prev">← По ситуации<b>Подвести год и выбрать, куда дальше</b></a><a class="r" href="poterya-blizkogo.html" rel="next">По ситуации →<b>Потеря близкого человека</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<p>Если есть мысли о том, чтобы не жить, обратись за помощью сразу, не жди; если опасность прямо сейчас&nbsp;— вызови скорую помощь или экстренные службы. Если тревога держится несколько недель и мешает спать или работать, или бывают панические атаки, запишись к врачу или психотерапевту. Это не&nbsp;слабость, это правильный шаг.</p></section>
+<section class="kb-plan" id="near"><h2 class="kb-h2">Что уже есть по&nbsp;этой теме</h2>
+<p>Здесь собрано то, что по&nbsp;этой ситуации есть в&nbsp;базе: что сделать, что прочитать и&nbsp;кто помогает.</p>
+<dl class="kb-near"><div><dt>Сделать сегодня</dt><dd><a href="../practices/t-worry.html"><span class="t">Контейнер для&nbsp;тревоги</span><span class="m">практика · 2&nbsp;мин</span></a><a href="../practices/t-kit.html"><span class="t">Аптечка на&nbsp;стену</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-express.html"><span class="t">Экспрессивное письмо</span><span class="m">практика · 4&nbsp;дня по&nbsp;15&nbsp;мин</span></a><a href="../practices/t-window.html"><span class="t">Как я понимаю, что мне хуже</span><span class="m">практика · 15&nbsp;мин</span></a><a href="../practices/t-friend.html"><span class="t">Письмо себе как другу</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>Понять</dt><dd><a href="okno-tolerantnosti.html"><span class="t">Окно толерантности</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="vremya-dlya-trevogi.html"><span class="t">Время для&nbsp;тревоги</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="ekspressivnoe-pismo.html"><span class="t">Экспрессивное письмо</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="samosostradanie.html"><span class="t">Самосострадание</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="plan-samopomoshchi-wrap.html"><span class="t">План самопомощи</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><details class="kb-more-d"><summary>ещё 2</summary><a href="perekhod-i-rasstroystvo-adaptatsii.html"><span class="t">Переход и&nbsp;расстройство адаптации: где граница</span><span class="m">понятие</span></a><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/counselling-psychologist.html"><span class="t">Психолог-консультант</span><span class="m">«Неуверенность, тревога» · атлас</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">«Тревога и&nbsp;панические атаки» · атлас</span></a><a href="../atlas/psychiatrist.html"><span class="t">Психиатр</span><span class="m">«Панические атаки и&nbsp;тревога мешают жить» · атлас</span></a><a href="../atlas/mindfulness-teacher.html"><span class="t">Преподаватель программ осознанности</span><span class="m">«Тревожно&nbsp;— хочу научиться замечать это и&nbsp;не&nbsp;сваливаться в&nbsp;панику» · атлас</span></a><details class="kb-more-d"><summary>ещё 2</summary><a href="../atlas/breathwork-practitioner.html"><span class="t">Практик дыхательных техник</span><span class="m">«хочу научиться успокаиваться, когда накрывает тревога» · атлас</span></a><a href="../atlas/psychomotor-therapist.html"><span class="t">Психомоторный терапевт</span><span class="m">«тревога и&nbsp;напряжение, разговоры не&nbsp;помогают» · атлас</span></a></details></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-harris-trap"><span class="t">Ловушка счастья. Как перестать переживать и&nbsp;начать жить</span><span class="m">книга · Расс Хэррис</span></a><a href="../resources.html#book-hayes-mind"><span class="t">Освобождённый разум</span><span class="m">книга · Стивен Хейс</span></a><a href="../resources.html#book-david-agility"><span class="t">Эмоциональная гибкость</span><span class="m">книга · Сьюзан Дэвид</span></a><a href="../resources.html#book-neff"><span class="t">Сочувствие к&nbsp;себе (ранее «Самосострадание. О&nbsp;силе сочувствия и&nbsp;доброты к&nbsp;себе»)</span><span class="m">книга · Кристин Нефф</span></a><a href="../resources.html#book-nagoski-burnout"><span class="t">Выгорание. Новый подход к&nbsp;избавлению от&nbsp;стресса</span><span class="m">книга · Эмили Нагоски, Амелия Нагоски</span></a><a href="../resources.html?sit=trevoga"><span class="t">Все 14&nbsp;по&nbsp;этой ситуации →</span></a></dd></div><div><dt>В&nbsp;«Переходе»</dt><dd><span class="steprow"><a href="../project.html#steps">шаг 5 «Снаряжение»</a>, <a href="../program.html#week-9">неделя 9</a></span></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="podvesti-god.html" rel="prev">← По&nbsp;ситуации<b>Подвести год и&nbsp;выбрать, куда дальше</b></a><a class="r" href="poterya-blizkogo.html" rel="next">По&nbsp;ситуации →<b>Потеря близкого человека</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#start">С чего начать</a></li><li><a href="#not">Осторожно</a></li><li><a href="#near">Пока здесь то, что уже есть</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#start">С&nbsp;чего начать</a></li><li><a href="#not">Осторожно</a></li><li><a href="#near">Что уже есть по&nbsp;этой теме</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

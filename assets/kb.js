@@ -1,11 +1,16 @@
 /* =====================================================================
    Waykeeper · база знаний · assets/kb.js (пакет 1, 26.10.2026)
    Поиск одной строкой по kb-index.json: подсказки по типам, «/», стрелки, Enter, Esc.
+   Правка 27.10 (дизайн-слой «состояния», patches/states.md): Enter без выбора стрелками ведёт
+   на полный список (knowledge.html?q=), а не на первую статью; «Ищу…» пока грузится реестр;
+   спокойная ошибка с «Попробовать ещё раз»; строка для диктора (role=status); в списке
+   подсказок только варианты (группы — role=group); группы идут по лучшему совпадению;
+   синонимы ситуаций (поле syn в kb-index.json, его пишет _tools/kb_index.py).
    Подключение (после kb.css): <script src="assets/kb.js" defer></script>
    Разметка: любой <form class="kb-search"><input type="search">…</form> (см. assets/kb.css, раздел 16)
    подхватывается сам. Выключить на конкретном поле: data-kb-manual.
    Для других скриптов — window.KB:
-     KB.ready(fn)            вызвать fn(index), когда реестр загружен
+     KB.ready(fn, onError)   вызвать fn(index), когда реестр загружен; onError() — если не загрузился
      KB.search(q, opts)      [{item, score}], opts: {limit, types:[…], situation:'slug'}
      KB.resolve(alias)       запись по ключу (type:id) или по псевдониму (woop-5, job-ended)
      KB.url(item)            адрес для ссылки с учётом глубины страницы (пока нет страницы — url_now)
@@ -29,19 +34,36 @@
   var RTYPE = { book: 'книга', test: 'тест', workbook: 'тетрадь', tool: 'инструмент', app: 'приложение', podcast: 'подкаст',
     video: 'видео', article: 'статья', media: 'медиа', service: 'сервис', community: 'сообщество', course: 'курс', pro: 'для специалистов' };
 
-  var idx = null, byKey = {}, loading = null, waiting = [], sitData = null;
+  var idx = null, byKey = {}, loading = null, waiting = [], failing = [], sitData = null;
+
+  /* строки состояний (одобрены Сашей 26.10, decisions-26-10.md) */
+  var TXT = {
+    wait: 'Ищу…',
+    fail1: 'Поиск сейчас не работает. Обнови страницу или открой ',
+    failLink: 'всю базу',
+    retry: 'Попробовать ещё раз',
+    typo: 'Проверь, нет ли опечатки.'
+  };
 
   /* ---------- загрузка ---------- */
-  function load(cb){
+  function load(cb, onErr){
     if(idx){ if(cb) cb(idx); return; }
     if(cb) waiting.push(cb);
+    if(onErr) failing.push(onErr);
     if(loading) return;
-    loading = fetch(INDEX_URL, { credentials: 'same-origin' }).then(function(r){ return r.json(); }).then(function(d){
+    loading = fetch(INDEX_URL, { credentials: 'same-origin' }).then(function(r){
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function(d){
       idx = d;
       d.items.forEach(function(it){ byKey[it.key] = it; it._s = null; });
-      var w = waiting; waiting = [];
+      var w = waiting; waiting = []; failing = [];
       w.forEach(function(f){ f(idx); });
-    }).catch(function(){ loading = null; });
+    }).catch(function(){
+      loading = null; waiting = [];
+      var f = failing; failing = [];
+      f.forEach(function(fn){ fn(); });
+    });
   }
 
   /* ---------- нормализация и поиск ---------- */
@@ -50,7 +72,7 @@
   }
   function prep(it){
     if(it._s) return it._s;
-    var names = [it.title].concat(it.aka || []);
+    var names = [it.title].concat(it.aka || [], it.syn || []);     // syn — слова людей: «выгорание» → «Силы кончились»
     it._s = {
       names: names.map(norm),
       words: norm(names.join(' ')).split(' '),
@@ -150,12 +172,15 @@
     var input = box.querySelector('input');
     if(!input || input.hasAttribute('data-kb-manual') || input._kb) return;
     input._kb = true;
-    var panel = el('div', 'kb-suggest');
+    var panel = el('div', 'kb-suggest');            // сама панель без роли: в ней список, «Все N →», «ничего нет»
     panel.id = 'kb-sg-' + (++seq);
     panel.hidden = true;
-    panel.setAttribute('role', 'listbox');
-    panel.setAttribute('aria-label', 'Подсказки поиска');
     box.appendChild(panel);
+    var live = el('p', 'visually-hidden');            // строка для экранного диктора
+    live.setAttribute('role', 'status');
+    box.appendChild(live);
+    var liveT = 0;
+    function say(t){ clearTimeout(liveT); liveT = setTimeout(function(){ live.textContent = t; }, 450); }
     input.setAttribute('role', 'combobox');
     input.setAttribute('aria-autocomplete', 'list');
     input.setAttribute('aria-expanded', 'false');
@@ -176,17 +201,54 @@
       links[cur].scrollIntoView({ block: 'nearest' });
     }
     function allUrl(q){ return ROOT + 'knowledge.html?q=' + encodeURIComponent(q); }
+    function open(){ panel.hidden = false; input.setAttribute('aria-expanded', 'true'); }
+
+    /* пока грузится реестр */
+    function showWait(){
+      if(!input.value.trim()){ close(); return; }
+      panel.textContent = ''; links = []; cur = -1;
+      panel.appendChild(el('p', 'kb-wait', TXT.wait));
+      box.setAttribute('aria-busy', 'true');
+      open(); say(TXT.wait);
+    }
+    /* реестр не загрузился: спокойно, конкретно, с выходом */
+    function showFail(){
+      box.removeAttribute('aria-busy');
+      panel.textContent = ''; links = []; cur = -1;
+      var none = el('div', 'kb-none kb-fail');
+      var p = el('p', 'kb-none-t');
+      p.appendChild(D.createTextNode(TXT.fail1));
+      var a = el('a', null, TXT.failLink); a.href = ROOT + 'knowledge.html'; p.appendChild(a);
+      p.appendChild(D.createTextNode('.'));
+      none.appendChild(p);
+      var again = el('p', 'kb-hint');
+      var b = el('button', 'link', TXT.retry); b.type = 'button';
+      b.addEventListener('click', function(){ showWait(); input.focus(); update(); });
+      again.appendChild(b); none.appendChild(again);
+      panel.appendChild(none);
+      open(); say(TXT.fail1 + TXT.failLink + '.');
+    }
+    /* «Ищу…» — только если реестр грузится дольше 150 мс (обычно 2–40 мс, тогда без мигания) */
+    function update(){
+      if(idx){ render(); return; }
+      var t = setTimeout(showWait, 150);
+      load(function(){ clearTimeout(t); render(); }, function(){ clearTimeout(t); showFail(); });
+    }
 
     function render(){
+      box.removeAttribute('aria-busy');
       var q = input.value.trim();
       lastQ = q;
       panel.textContent = '';
       links = []; cur = -1;
-      if(!q){ close(); return; }
+      if(!q){ close(); live.textContent = ''; return; }
       var res = search(q);
       if(!res.length){
         var none = el('div', 'kb-none');
-        none.appendChild(el('p', 'kb-none-t', 'По слову «' + q + '» в базе ничего нет. База — про переходы.'));
+        var noneT = 'По слову «' + q + '» в базе ничего нет.';
+        none.appendChild(el('p', 'kb-none-t', noneT));
+        none.appendChild(el('p', 'kb-hint kb-typo', TXT.typo));
+        say(noneT + ' ' + TXT.typo);
         var hint = el('p', 'kb-hint');
         hint.appendChild(D.createTextNode('Ближе всего: '));
         var a1 = el('a', null, 'ситуации'); a1.href = ROOT + 'knowledge.html#situations';
@@ -198,15 +260,22 @@
         hint.appendChild(a2);
         none.appendChild(hint);
         panel.appendChild(none);
-        panel.hidden = false; input.setAttribute('aria-expanded', 'true');
+        open();
         return;
       }
-      var groups = {};
-      res.forEach(function(r){ var g = groupOf(r.item); (groups[g] = groups[g] || []).push(r.item); });
+      /* группы — в порядке лучшего совпадения: где самый высокий результат, та группа и первая */
+      var groups = {}, order = [];
+      res.forEach(function(r){ var g = groupOf(r.item); if(!groups[g]){ groups[g] = []; order.push(g); } groups[g].push(r.item); });
+      /* разметка для диктора: список вариантов (listbox) → группы (group) → варианты (option);
+         dt виден глазами, а диктору название группы даёт aria-label */
       var dl = el('dl', 'kb-near'), n = 0;
-      GROUP_ORDER.forEach(function(g){
-        if(!groups[g]) return;
+      dl.id = panel.id + '-lb';
+      dl.setAttribute('role', 'listbox');
+      dl.setAttribute('aria-label', 'Подсказки поиска');
+      order.forEach(function(g){
         var row = D.createElement('div'), dt = el('dt', null, GROUP_LABEL[g]), dd = el('dd');
+        row.setAttribute('role', 'group'); row.setAttribute('aria-label', GROUP_LABEL[g]);
+        dt.setAttribute('aria-hidden', 'true'); dd.setAttribute('role', 'none');
         groups[g].slice(0, PER_GROUP).forEach(function(it){
           var a = el('a'); a.href = url(it); a.id = panel.id + '-' + (n++); a.setAttribute('role', 'option'); a.setAttribute('aria-selected', 'false');
           a.appendChild(el('span', 't', it.title));
@@ -218,22 +287,23 @@
       panel.appendChild(dl);
       var all = el('p', 'kb-hint'), aa = el('a', null, 'Все ' + res.length + ' ' + plural(res.length) + ' →');
       aa.href = allUrl(q); all.appendChild(aa); panel.appendChild(all);
-      panel.hidden = false; input.setAttribute('aria-expanded', 'true');
+      open();
+      say(res.length + ' ' + plural(res.length));
     }
 
     input.addEventListener('focus', function(){ load(); });
-    input.addEventListener('input', function(){ if(idx) render(); else load(render); });
+    input.addEventListener('input', update);
     input.addEventListener('keydown', function(e){
       if(e.key === 'Escape'){ if(!panel.hidden){ close(); e.preventDefault(); } else if(input.value){ input.value = ''; } return; }
-      if(e.key === 'ArrowDown'){ if(panel.hidden && input.value.trim()){ render(); } mark(cur + 1); e.preventDefault(); return; }
+      if(e.key === 'ArrowDown'){ if(panel.hidden && input.value.trim()){ update(); } mark(cur + 1); e.preventDefault(); return; }
       if(e.key === 'ArrowUp'){ mark(cur - 1); e.preventDefault(); return; }
       if(e.key === 'Enter'){
         e.preventDefault();
         var q = input.value.trim();
         if(!q) return;
+        /* стрелками выбрана строка — открыть её; иначе — полный список результатов, а не первую статью */
         if(cur >= 0 && links[cur]){ location.href = links[cur].href; return; }
-        if(idx && lastQ === q && links[0]){ location.href = links[0].href; return; }
-        load(function(){ var r = search(q); location.href = r.length ? url(r[0].item) : allUrl(q); });
+        location.href = allUrl(q);
       }
     });
     panel.addEventListener('mousedown', function(e){ e.preventDefault(); });
@@ -265,12 +335,13 @@
   }
 
   window.KB = {
-    ready: function(fn){ load(fn); },
+    ready: function(fn, onErr){ load(fn, onErr); },
     search: search,
     resolve: resolve,
     url: url,
     ev: ev,
     norm: norm,
+    TXT: TXT,
     situations: function(fn){
       if(sitData){ fn(sitData); return; }
       fetch(SIT_URL).then(function(r){ return r.json(); }).then(function(d){ sitData = d.items; fn(sitData); });

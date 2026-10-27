@@ -1,0 +1,929 @@
+/* design-layer.css — дизайн-слой v2 (внесён 27.10.2026 по команде Саши «вноси тогда все»).
+   Пять слоёв из 07-site/options-v2/layer/ подряд, в порядке стенда: цвет → отступы → типографика → состояния → движение.
+   Подключается ПОСЛЕДНИМ стилем на каждой странице (перед </head>) — это делает _tools/head_meta.py (вызывается из v2_chrome.py).
+   Править здесь; источник для сверки — options-v2/layer/layer-*.css. Описание правок — options-v2/layer/patches/*.md. */
+
+/* ================================================================ layer-color.css ================================================================ */
+/* layer-color.css — дизайн-слой v2: ЦВЕТ. См. README и patches/color.md.
+   Решения Саши (decisions-26-10.md): фон Б, зерно «со страницей», одна тёплая точка на экран,
+   карта атласа — «Минералы» (pal=3), картины — «выцветшая печать» faded3 (файлами, patches/files/).
+   При внедрении: раздел 1 — в :root site.css (заменяет старые значения), остальное — в конец site-v2.css
+   (или отдельным файлом). Адрес зерна поменять на assets/grain-graphite.png. */
+
+/* ================= 1. Лесенка цвета: токены =================
+   Чернила — 6 ступеней. Текст — сплошными цветами (не прозрачностью): тогда подпись не буреет на тёплом свете
+   и не бледнеет на голубой дымке. Контраст посчитан по самому тёмному реальному фону (дымка #D5DDEB):
+     --ink     #0F1722  основной текст, фокус, текущий пункт меню            ≥ 14 : 1
+     --ink-2   #434A53  второй текст (= бывшие 78 % на белом)                ≥ 6,5 : 1
+     --ink-3   #565C64  подписи, подсказки в полях, «×», пустые состояния    ≥ 4,9 : 1 (было 4,47)
+     --ink-ctl #73787F  элементы управления: линии полей, рамка поиска,
+                        дорожки ползунков, пустая ручка, кружок «фокус»       ≥ 3,2 : 1 (было 1,3–2,4)
+     --line-2  .22      засечки, деления, маркеры-украшения                   (не несут смысла — норма не нужна)
+     --line    .10      разделители, рамки стекла, волоски каркаса
+   Стекло — 3 ступени, один белый: #FFFFFF.  Бумага — одна: #FAF8F3 (фон Б). */
+:root{
+  --paper:#FAF8F3;
+  --page:var(--paper);
+  --ink:#0F1722;
+  --ink-2:#434A53;
+  --ink-3:#565C64;
+  --ink-ctl:#73787F;
+  --line-2:rgba(15,23,34,.22);
+  --line:rgba(15,23,34,.10);
+  --tint:rgba(15,23,34,.04);          /* подложка наведения (заливка, не линия) */
+  --glass:rgba(255,255,255,.56);      /* карточки, панели модулей */
+  --glass-2:rgba(255,255,255,.80);    /* наведение, кнопки-стекло, рамки скриншотов */
+  --glass-3:rgba(255,255,255,.94);    /* шапка, меню, выпадашки */
+  --accent:#EA5F22;                   /* огонёк — только «ты здесь» */
+  --accent-text:#9A3412;              /* огонёк-текст и ошибки: ≥ 5,3 : 1 на любом фоне (было #C2410C, 3,8–5,2) */
+  --ink-hover:#243040;
+}
+
+/* ================= 2. Фон Б и зерно «со страницей» (как options-v2/paper/?bg=b&grain=page) ================= */
+:root,.atmo,.atmo[data-v],.atmo[data-light]{--atmo-base:var(--paper); --atmo-node:var(--paper)}
+html .atmo{--atmo-warm:247,228,212}                 /* свет молочный вместо персикового */
+html .atmo-b2 b{opacity:.55}
+html .atmo-b3{display:none}                         /* пятно цвета огонька в свете — убрано: огонёк снова точка */
+@media (max-width:760px){ html .atmo{--atmo-base:var(--paper)} }   /* одна бумага и на телефоне (было #F9F9F7) */
+/* зерно — графитовое, фон самого документа: едет вместе с текстом, при прокрутке ничего не пересчитывается */
+html .atmo-grain{display:none}
+html body{background:url("grain-graphite.png") 0 0 / 240px 240px repeat scroll}
+html body.am-body{background:var(--paper)}          /* большая карта атласа: без зерна, ровная бумага */
+
+/* ================= 3. Одна тёплая точка на экран ================= */
+/* линия секции: горит один узел (левый), правый — как остальные */
+.atmo-rule + .atmo-node + .atmo-node.is-here{background:var(--atmo-node); border-color:var(--atmo-line-2); box-shadow:none}
+/* где на экране видна своя «ты здесь» (лестница, неделя, точка модуля) — узел линии не горит (класс ставит layer-color.js) */
+html.lc-here-busy .atmo-node.is-here,
+body:has(.kb-ladder li.is-here) .atmo-node.is-here{background:var(--atmo-node); border-color:var(--atmo-line-2); box-shadow:none}
+/* меню: текущий раздел — чернилами (было: огонёк, 2,66 : 1 на тёплом свете) */
+.site-nav a[aria-current="page"]::after,
+.kb-btn.is-current::after{background:var(--ink)}
+.site-nav a.kb-item::before{background:var(--ink)}
+/* боковые оглавления базы и атласа: текущий пункт — чернильная точка */
+.kb-side li a.is-here::before,.kb-toc li a.is-here::before,.aw-toc a.is-here::before{background:var(--ink)}
+/* «выбрано руками» в каталоге — это не «ты здесь»: серая точка */
+.kb-row.is-pick::before,.kb-card.is-pick::before{background:var(--ink-3)}
+/* фильтры практик */
+.pr-chip::after{background:var(--ink)}
+@media (max-width:760px){ .pr-chip[aria-pressed="true"]{box-shadow:inset 0 -1.5px 0 var(--ink)} }
+/* «Приз в деньгах»: выбранная вкладка и точка «сейчас» на линии месяцев — чернилами */
+.pz-lv button[aria-pressed="true"]::after{background:var(--ink)}
+.pz-now{background:var(--ink); box-shadow:0 0 0 5px rgba(15,23,34,.08)}
+/* «Переход»: пунктир пути — серый, тёплая остаётся только точка «моя неделя» */
+.pg-path{border-top-color:var(--ink-ctl); opacity:1}
+/* выделение текста и подсветка якоря — без персика */
+::selection{background:rgba(169,193,238,.45)}
+.aw-srcn li:target,.aw-srcs li:target,.aw-gl:target{background:linear-gradient(90deg, rgba(15,23,34,.06), transparent 70%)}
+
+/* ================= 4. Элементы управления ≥ 3 : 1, подсказки ≥ 4,5 : 1 ================= */
+/* подсказки в полях — цветом подписей */
+.wh input::placeholder,.pz input::placeholder,.pz-amt input::placeholder,.kt input::placeholder,.kt textarea::placeholder,
+.mn input::placeholder,.mk-in::placeholder,.lf input::placeholder,.lf textarea::placeholder,.rt input::placeholder,
+.rt textarea::placeholder,.pk-ta::placeholder,.wr input::placeholder,.kb-search input::placeholder{color:var(--ink-3); opacity:1}
+/* линии под полями */
+.wh-nm,.wh-in-t,.pz-amt,.mk-in,.mn-in,.lf-in,.kt-in,.rt-in,.wr-in{border-bottom-color:var(--ink-ctl)}
+.pz-nm{border-bottom:1px solid var(--ink-ctl)}
+.pk-ta,.mark input{border-color:var(--ink-ctl)}
+.ns-gfield{border-color:var(--ink-ctl)}
+/* поиск по базе */
+.kb-search input{border-color:var(--ink-ctl)}
+/* ползунки: дорожка, пустая ручка (видно, за что тянуть), фокус */
+.wh-track,.pz-track{background:var(--ink-ctl)}
+.wh-sl.is-empty .wh-thumb,.pz-sl.is-empty .pz-thumb{opacity:1; border-color:var(--ink-ctl); box-shadow:none}
+.wh-sl:focus-visible .wh-track,.pz-sl:focus-visible .pz-track{background:var(--ink)}
+.wh-sl:focus-visible .wh-thumb,.pz-sl:focus-visible .pz-thumb{border-color:var(--ink); box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--ink)}
+/* шкала «Месяцы свободы»: пунктир остаётся (это будущее), но различимый */
+.pz-base{background:repeating-linear-gradient(to right, var(--ink-ctl) 0 2px, transparent 2px 6px)}
+/* «фокус» и «×» в модулях */
+.wh-fb{color:var(--ink-3)}
+.wh-fb i{flex:none; border-color:var(--ink-ctl)}
+.wh-x,.kt-x,.lf-x,.wr-x,.kt-ar{color:var(--ink-3)}
+.wh-x:hover,.kt-x:hover,.lf-x:hover,.wr-x:hover{color:var(--ink)}
+/* пустые состояния: серые, но читаемые («0 €» в «Призе» было 1,6 : 1) */
+.pz-big.is-empty,.mk-ct.is-empty,.rt-ct.is-empty,.mk-dl dd.is-empty,.rt-dl dd.is-empty{color:var(--ink-3)}
+.rt-f > span em{color:var(--ink-3)}
+/* наведение на свёртки — видимое подчёркивание */
+.fold > summary:hover .fold-title{text-decoration-color:var(--ink-ctl)}
+/* точка-разделитель в строке типа («Практика · 20 минут») — была 1,6 : 1, строка выглядела дырявой */
+.kb-type .sep{color:var(--ink-ctl)}
+/* ошибки — тёмным огоньком-текстом */
+.mn-err,.wr-err,.wr-it.is-due .wr-at,.pk-timer.is-over .pk-tt{color:var(--accent-text)}
+
+/* ================= 5. Карта атласа: палитра «Минералы» (options-v2/paper/map.css, pal=3) =================
+   Цвет семьи — точки, чипы, подписи; сектора на карте — своя светлая заливка. Соседние семьи различимы
+   (ΔE ≥ 15,6, в т. ч. при дальтонизме), точка к заливке ≥ 3 : 1, ни одна семья не похожа на огонёк. */
+body{--fam-body:#4E8440; --fam-mind:#3C4689; --fam-rel:#A26A7D; --fam-comm:#024D4C; --fam-work:#8F7102; --fam-law:#003E77;
+  --fam-home:#9A5D95; --fam-loss:#004B1B; --fam-spirit:#956C08; --fam-hist:#792C4F; --fam-support:#6B7280; --fam-alt:#8C9096}
+body.am-body{--c-map-bg:var(--paper); --c-surface:#FDFCF9}
+.atlas-host svg path[fill="var(--fam-body)"]{fill:#DBE3D3; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-mind)"]{fill:#D8D8E0; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-rel)"]{fill:#EADEDE; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-comm)"]{fill:#CDD9D5; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-work)"]{fill:#E7E0C8; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-law)"]{fill:#CDD6DD; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-home)"]{fill:#E9DCE2; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-loss)"]{fill:#CDD9CC; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-spirit)"]{fill:#E8DFC9; fill-opacity:1}
+.atlas-host svg path[fill="var(--fam-hist)"]{fill:#E3D3D6; fill-opacity:1}
+
+/* ================= 6. Картинки ================= */
+/* ч/б портрет: фон снимка осветлён в файле (patches/files/sasha/), multiply растворяет остаток в бумаге */
+.ab-portrait .pa-img img:not(.pa-ghost){mix-blend-mode:multiply}
+/* скриншоты проектов на «О себе»: тише в покое (насыщенность 40 %), почти свой цвет при наведении.
+   Работает и для нынешней вёрстки (.ab-sys), и для выбранной «три в ряд» (.sys-shot, options-v2/reveal) */
+.ab-sys .artifact-img img,.sys-shot img{filter:saturate(.4); transition:filter .5s var(--ease)}
+.ab-sys .artifact:hover .artifact-img img,.sys-card:hover .sys-shot img{filter:saturate(.85)}
+@media (hover:none){ .ab-sys .artifact-img img,.sys-shot img{filter:saturate(.45)} }
+
+/* «Новый сезон», модуль «Две встречи»: тень следующего слоя — молочная, как свет фона Б (была персиковой) */
+.ns-next{box-shadow:inset 0 1px 0 rgba(255,255,255,.95), 0 30px 120px -30px rgba(247,228,212,.8), 0 30px 60px -36px rgba(15,23,34,.18)}
+.ns-next.ns-front{box-shadow:inset 0 1px 0 rgba(255,255,255,.95), 0 30px 120px -30px rgba(247,228,212,.85), 0 40px 70px -40px rgba(15,23,34,.28)}
+
+/* ================================================================ layer-spacing.css ================================================================ */
+/* =====================================================================
+   layer-spacing.css — дизайн-слой v2: отступы, сетка, ряды карточек (26.10.2026)
+   Песочница. site-v2 не трогаем; при внедрении этот файл вливается в site-v2.css
+   (или подключается отдельным файлом после стилей страниц).
+   Источник: аудиты 01-A, 01-B, 06-A (Б1), 07 (п. 1–3); правила Саши (feedback_design_waykeeper).
+
+   Шкала (одна на весь сайт):
+     поле плашки  <  промежуток между плашками  <  воздух между секциями
+         32       <            48              <           120      (компьютер)
+         24       <            32              <            84      (телефон)
+   Нижний отступ плашки и последней секции чуть больше верхнего (оптическая поправка): +8 и +12.
+   Вложенные скругления: внутреннее = внешнее − отступ (если отступ < 32 и результат > 2), иначе 0.
+
+   Разделы:
+     0. Токены
+     1. Блокер: узкие телефоны 320–360 (ничего не уходит за край)
+     2. Воздух между секциями: провалы и единый шаг (главные страницы)
+     3. База знаний: один шаг секций, одна высота начала, один конец страницы
+     4. Сетка: модули и колонки на общих осях
+     5. Плашки и стекло: одно поле, низ больше верха
+     6. Ряды карточек: кнопки к низу на одной линии, описания с одной высоты
+     7. Связанные пары: заголовок → текст, подпись → своё
+     8. Вложенные скругления
+     9. 404 на каркасе v2
+   ===================================================================== */
+
+/* ---------- 0. Токены ---------- */
+:root{
+  --pad-plate:var(--sp-6);                                 /* 32 — поле любой плашки и стекла */
+  --pad-plate-end:calc(var(--pad-plate) + var(--sp-2));    /* 40 — низ плашки чуть больше верха */
+  --gap-plate:var(--sp-7);                                 /* 48 — промежуток между плашками */
+  --section-end:calc(var(--section) + var(--sp-3));        /* 132 / 96 — низ последней секции перед подвалом */
+  --crumbs-h:calc(var(--s5) * 1.45 + var(--sp-5));         /* высота строки крошек с отступом до H1 */
+  --col-gap:clamp(16px, 2.25vw, 32px);                     /* 32 на 1440, как в брифе v4 (было 28,8) */
+}
+@media (max-width:760px){
+  :root{ --pad-plate:var(--sp-5); --gap-plate:var(--sp-6); }   /* 24 < 32 < 84 */
+}
+
+
+/* ---------- 1. Блокер: узкие телефоны ----------
+   .tiles на телефоне оставались 12-колоночными с промежутком 32: 11 × 32 = 352 px > экрана 320/360.
+   Карточки уходили за край, концы строк срезались (06-A Б1). Теперь одна колонка. */
+@media (max-width:760px){
+  .tiles{grid-template-columns:minmax(0,1fr); gap:var(--gap-plate)}
+  .tiles > *{grid-column:1 / -1 !important}
+  /* «Как поучаствовать» на «О проекте»: сетка 12 колонок на телефоне сжимала карточку до 197 px */
+  .pj-join-cols{grid-template-columns:minmax(0,1fr)}
+  .pj-join-cols > .pj-join,.pj-join-cols > .pj-small-lines{grid-column:1 / -1}
+  .pj-join .btn{white-space:normal; height:auto; min-height:44px; text-align:center; line-height:1.3}
+  /* источники в статьях: метка доказательности не переносилась и уходила за край на 320–360 */
+  .kb-src span.t{white-space:normal; max-width:100%}
+}
+@media (max-width:380px){
+  /* большая карта атласа: кнопка «Все специалисты списком» не помещалась на 320 */
+  .am-tools .btn{white-space:normal; height:auto; min-height:44px; line-height:1.25; text-align:center}
+}
+
+
+/* ---------- 2. Воздух между секциями (главные страницы) ----------
+   Провал = секция добавляет себе нижний отступ, а следующая — свой верхний (01-A №2–4).
+   Правило: нижний отступ только у последней полосы; секции с видимой границей (лист «Работа со мной»)
+   делят воздух пополам: половина снаружи линии, половина внутри. */
+/* главная: «База знаний» → «Работа со мной» → карта */
+.hm-work{margin-top:calc(var(--section) * .5); padding:calc(var(--section) * .5) 0 calc(var(--section) * .5 + var(--sp-3))}
+.hm-view{padding-top:calc(var(--section) * .5)}
+/* «О себе»: после «Завершение, начало» */
+.ab-turn{padding-bottom:0}
+/* «О проекте»: «Из чего состоит», «Семь шагов» */
+.pj-status-sec,.pj-steps-sec{padding-bottom:0}
+/* «О проекте»: карта прилипала к ссылке выше (2,6 px) */
+.band + .pj-band-view{margin-top:var(--gap-plate)}
+.pj-band-view + .band{padding-top:var(--section)}
+/* последняя секция перед подвалом — чуть больше воздуха снизу (оптическая поправка) */
+.band:last-child,.sec:last-child,.pj-join-sec{padding-bottom:var(--section-end)}
+
+
+/* ---------- 3. База знаний ---------- */
+/* 3.1 Один шаг секций на всех входах в базу: 32 / 72 / 97 / 240 → --section (01-B №1, 4, 5) */
+.enc-band{padding-top:var(--section)}
+.kn-band{padding-top:var(--section)}
+.pr-try,.pr-catalog{padding-bottom:0}                       /* «Практики»: дыра 240 → 120 */
+.aw-door{padding-top:calc(var(--section) * .5); padding-bottom:calc(var(--section) * .5)}   /* линия посередине воздуха */
+.aw-hero{padding-bottom:calc(var(--section) * .5)}
+.aw-door:last-child{padding-bottom:var(--section-end)}
+.kb-group{margin-top:var(--sp-8)}                           /* «Ресурсы»: над группой 72, под заголовком 12 + линия */
+/* 3.2 Заголовок секции энциклопедии ближе к своему списку, чем к блоку выше */
+.enc-bh{align-items:flex-end; margin-bottom:var(--sp-3)}
+.enc-begin{padding-top:var(--sp-5)}
+
+/* 3.3 Одна высота начала. H1 входов (База знаний, Энциклопедия, Ресурсы, Атлас) — на той же высоте,
+   что у всего сайта (шапка + --hero-top); крошки над ним, верх картинки = верх крошек (01-B №6, 14). */
+.kb-cover .cols{align-items:start}
+.enc-cover{padding-top:var(--hero-top)}
+@media (min-width:761px){
+  .kb-cover,.enc-cover{padding-top:calc(var(--hero-top) - var(--crumbs-h))}
+  .aw-hero{padding-top:calc(var(--hero-top) - 25px - var(--sp-4)); align-items:start}   /* 25 — строка «в работе» над H1 (с воздухом строки) */
+}
+@media (max-width:760px){
+  .aw-hero{padding-top:var(--hero-top)}
+}
+/* статьи и практики: крошки на одной высоте (шапка + 32) */
+.pr-top{padding-top:var(--sp-6); padding-bottom:var(--sp-7)}
+.pr-top-text .kb-crumbs{margin-top:0}
+@media (max-width:760px){ .pr-top{padding-top:var(--sp-5)} }
+
+/* 3.4 Один конец страницы: от последнего текста до подвала --section-end везде (было 56–192) */
+.kb-page{padding-bottom:var(--section-end)}
+.kb-page .kb-fix:last-child{margin-bottom:0}
+.res > .frame:last-child{padding-bottom:var(--section-end)}
+.kn-cover{padding-bottom:var(--sp-5)}
+.pr-end{padding-bottom:var(--section-end)}
+
+/* 3.5 Страницы практик */
+.pr-sec--careful{padding-top:var(--sp-6)}                   /* «Осторожно» не прилипает к таблице (было 0) */
+.pr-sec--rel{padding-top:var(--sp-7)}                       /* «Рядом» как в статьях: 48 сверху */
+.kb-near-wrap{margin-top:var(--sp-7)}
+/* один правый край: «В двух словах», «На чём стоит», таблица и «Осторожно» — до края 7-й колонки */
+.pr-top-text .pr-stamp,.pr-top-text .kb-stamp{max-width:none}
+@media (min-width:1025px){
+  .pr-sec--facts .pr-facts,.pr-careful{max-width:calc((100% + var(--col-gap)) / 12 * 7 - var(--col-gap))}
+}
+@media (max-width:1024px){ .pr-sec--facts .pr-facts,.pr-careful{max-width:none} }
+/* телефон: метка «Книга» / «основная» рядом со своим названием (стрелка больше не раздвигает строку) */
+@media (max-width:760px){
+  .kb-row .go{grid-row:1 / span 2; align-self:start}
+}
+/* «Каталог практик»: фильтр ближе к своему списку, чем к пояснению над ним (01-B №7а) */
+.pr-catalog .kb-filters{margin-top:var(--sp-7)}
+/* словарь: строка букв прилипает под шапкой (31 экран длины) */
+.gl-letters{position:sticky; top:calc(var(--head-h) + var(--sp-2)); z-index:5; background:var(--page); padding-top:var(--sp-2); padding-bottom:var(--sp-2)}
+/* «Пока здесь то, что уже есть»: заголовок прилип к тексту (0 px) */
+.kb-plan > h2{margin-bottom:var(--sp-3)}
+
+
+/* ---------- 4. Сетка: всё на общих осях ---------- */
+/* модули «Что ближе к тебе сейчас?», «Тогда и сейчас», «Две встречи» — с 1-й колонки, как все H2 (01-A №6, 7) */
+.cols > .pg-mod{grid-column:1 / span 10}
+.cols > .pg-mod--narrow{grid-column:1 / span 8}
+.pg-tn .tn{margin:0}
+@media (max-width:1024px){ .cols > .pg-mod,.cols > .pg-mod--narrow{grid-column:1 / -1} }
+/* «Как устроено: двенадцать недель» — с 6-й колонки, как текст соседних полос (было с 5-й) */
+@media (min-width:1025px){ .band--split .band-main.pg-wide{grid-column:6 / -1} }
+/* «Разговор», «Как это проходит»: метки времени висят на полях слева, текст на оси 6-й колонки */
+@media (min-width:1100px){ .band--split .band-main > .tk-steps{margin-left:-6.5rem; max-width:calc(44rem + 6.5rem)} }
+
+
+/* ---------- 5. Плашки и стекло: одно поле ---------- */
+/* стеклянные карточки продуктов: поле 32 со всех сторон, низ 40; промежуток между ними 48 (было поле 48 > промежутка 28,8) */
+.tile--product .tile-body,
+.pj-card--main .tile-body,
+.pj-join .tile-body{padding:var(--pad-plate) var(--pad-plate) var(--pad-plate-end)}
+.tiles:has(> .tile--product){column-gap:var(--gap-plate)}
+/* листы и карточки на «О себе», «О проекте», «Разговоре» */
+.ab-card,.pj-letter,.panel-glass{padding:var(--pad-plate) var(--pad-plate) var(--pad-plate-end)}
+.tk-template{padding-bottom:calc(var(--sp-5) + var(--sp-2))}
+/* «Тогда и сейчас»: поля 32 / 36 / 26 → 32 / 32 / 40; на первом шаге карточка по содержимому (было 411 px пустоты) */
+.tn-frame{padding:var(--pad-plate) var(--pad-plate) var(--pad-plate-end)}
+.tn-frame[data-step="1"]{min-height:0}
+.tn-frame[data-step="1"] .tn-pool{flex:0 0 0; margin-top:0}
+.tn-intro{margin-top:var(--sp-3) !important}
+.tn-frame{margin-top:var(--head-gap)}
+@media (max-width:760px){
+  .tn-frame{padding:var(--pad-plate) var(--pad-plate) 0}
+  .tn-foot{margin:var(--sp-4) calc(var(--pad-plate) * -1) 0; padding:var(--sp-3) var(--pad-plate) var(--pad-plate)}
+}
+/* страницы практик: «Осторожно», «Если не получается», «Попробовать», «Цена мечты» — на шкалу, низ больше верха */
+.pr-careful{padding:var(--sp-5) var(--pad-plate) calc(var(--sp-5) + var(--sp-2))}
+.pr-stuck{padding:var(--sp-3) var(--sp-4) var(--sp-4)}
+.pr-card.pr-card--try{padding:var(--sp-5) var(--sp-5) var(--pad-plate)}
+.pr-mosaic{gap:var(--gap-plate)}
+.pz-out{padding:var(--sp-5) var(--sp-5) var(--pad-plate)}
+@media (max-width:760px){
+  .pr-careful{padding:var(--sp-5) var(--sp-5) var(--pad-plate)}
+  .pz-out{padding:var(--sp-5) var(--sp-5) var(--pad-plate)}
+}
+/* панели модулей практик: 44 / 44 → 48 / 56 (компьютер), 24 / 32 (телефон) — низ больше верха */
+.ch--panel,.mn--panel,.mk--panel,.kt--panel,.pz--panel,.rt--panel{padding:var(--sp-7) var(--sp-7) calc(var(--sp-7) + var(--sp-2))}
+@media (max-width:760px){
+  .ch--panel,.mn--panel,.mk--panel,.kt--panel,.pz--panel,.rt--panel{padding:var(--sp-5) var(--sp-5) var(--sp-6)}
+}
+.rt-card,.mk-card{padding-bottom:calc(var(--sp-6) + var(--sp-2))}
+
+
+/* ---------- 6. Ряды карточек ---------- */
+/* 6.1 Ссылка карточки — к низу. Раньше .tile p{margin-top:12px} перебивал margin-top:auto (07 §2) */
+.tile .tile-go{margin-top:auto}
+/* 6.2 Описания в соседних карточках с одной высоты там, где заголовки разной длины («Статус» на «О проекте»,
+   «Сравнение» на «Переходе»): строки карточки встают на общие линии ряда (subgrid).
+   В «Базе знаний» на главной заголовки в одну строку — там хватает 6.1, иначе между абзацами появляются дыры. */
+@media (min-width:761px){
+  .pj-cards > .tile--kb,
+  .pg-cmp-grid > .tile--kb{display:grid; grid-template-rows:subgrid; grid-row:span var(--tile-rows, 2); row-gap:0; align-content:start}
+  .pj-cards{--tile-rows:4}
+  .pg-cmp-grid{--tile-rows:2}
+  .pj-cards > .tile--kb > .tile-go{align-self:end}
+}
+/* 6.3 «С чего начать»: заголовки и тексты трёх колонок на общих линиях; ссылка — сразу под своим текстом
+   (было 262–314 px ниже — дальше, чем соседняя секция). У «Сделать» ссылка остаётся хвостом своего списка. */
+@media (min-width:1025px){
+  .hm-acts{grid-template-rows:auto auto auto 1fr}
+  .hm-act--do{grid-row:1 / span 4}
+  .hm-act:not(.hm-act--do){display:grid; grid-row:1 / span 4; grid-template-rows:subgrid; row-gap:0}
+  .hm-act:not(.hm-act--do) > .hm-act-k{grid-row:1}
+  .hm-act:not(.hm-act--do) > p:not(.hm-act-go){grid-row:2}
+  .hm-act:not(.hm-act--do) > .hm-act-go{grid-row:3; align-self:start; margin-top:0}
+}
+/* 6.4 «О проекте», маршрут из 7 шагов: строки шага на общих линиях, ссылки «Неделя N →» по низу одной линией */
+@media (min-width:1280px){
+  .pj-route{grid-template-rows:auto auto auto auto}
+  .pj-stop{display:grid; grid-row:span 4; grid-template-rows:subgrid; row-gap:0}
+  .pj-stop > .pj-step,.pj-stop .pj-step-body{display:contents}
+  .pj-step-body > h3{grid-row:1}
+  .pj-step-body > .pj-status-l{grid-row:2}
+  .pj-step-body > .pj-text-step{grid-row:3}
+  .pj-step-body > .pj-go,.pj-step-body > .btn{grid-row:4; align-self:end; justify-self:start}
+}
+/* 6.5 «Практики», «Как из практик собирается программа»: список практик с одной высоты */
+.pr-goal{display:flex; flex-direction:column}
+.pr-goal .pr-goal-pr{margin-top:auto; padding-top:var(--sp-3)}
+/* 6.6 Карточки базы на телефоне: ссылка ближе к своему тексту, чем к следующей карточке (01-A №14) */
+@media (max-width:760px){ .tile--kb .tile-go{padding-top:var(--sp-4)} }
+
+
+/* ---------- 7. Связанные пары ---------- */
+/* H2 → первый ряд карточек: 32 + верхнее поле карточки (было 40–68; сильнее всего выбивалось «С чего начать» — 68) */
+.hm-start-head h2{padding-bottom:0}
+/* название карточки продукта → текст: было 7 px */
+.tile--product .tile-title + p{margin-top:var(--sp-3)}
+/* «Для кого это»: вводная фраза при своём списке */
+.hm-parts-lead{margin-top:var(--sp-7)}
+.hm-parts{margin-top:var(--sp-3)}
+/* подвал: статус «в работе» при своей ссылке */
+.foot-group li + li{margin-top:var(--sp-2)}
+.foot-group li > .status,.foot-group li .status{margin-top:0}
+
+
+/* ---------- 8. Вложенные скругления: внутреннее = внешнее − отступ ---------- */
+/* окошко «База знаний»: радиус 20, поле 10 → подсветка строки 10 (было 12) */
+.site-nav a.kb-item{border-radius:calc(var(--r-l) - 10px)}
+/* «Новый сезон»: кольцо фокуса наследует скругление слоя (22 − 6 = 16), без своих 18 px */
+.ns-lift:focus-visible{border-radius:22px}
+
+
+/* ---------- 9. 404 на каркасе v2 ---------- */
+/* заголовок на общей оси (было 144 px от края при 63 у всех), карта не уходит под подвал */
+.cl-hero > .wrap{max-width:none; padding-left:max(var(--edge), (100% - var(--frame-max)) / 2); padding-right:max(var(--edge), (100% - var(--frame-max)) / 2)}
+.cl-hero{padding-bottom:var(--section-end)}
+@media (min-width:761px){ .cl-hero .alive-deep{bottom:0} }
+
+
+/* ---------- 10. Узкие телефоны: таблица фактов в статьях ---------- */
+/* на 320–400 колонка значения в «фактах» сжималась до 121 px, и длинное слово («психологического»)
+   вылезало за край экрана. Метка над значением, а не слева. */
+@media (max-width:420px){
+  .kb-facts > div{grid-template-columns:minmax(0,1fr); gap:2px}
+  .kb-facts dd{overflow-wrap:break-word}
+}
+/* большая карта атласа на 320: кнопка в шапке карты сжимается и переносится, а не уходит за край */
+@media (max-width:380px){
+  .am-tools{flex:1 1 0; min-width:0; justify-content:flex-end}
+  .am-tools .btn{max-width:100%}
+}
+/* атлас, семьи профессий на 320: «взаимопомощь» не влезала в колонку 132 px — перенос по слогам */
+@media (max-width:400px){
+  .aw-fam-t{-webkit-hyphens:auto; hyphens:auto; overflow-wrap:break-word}
+}
+
+/* ================================================================ layer-type.css ================================================================ */
+/* layer-type.css — дизайн-слой v2: типографика (см. README; аудит 02-type, 07-extra §4, 00-summary А7/Б3/Б5)
+   Только размеры, интерлиньяж, переносы, ссылки. Цвета, отступы, состояния — в соседних слоях.
+   При внедрении: раздел «Токены» → в :root site.css (--s5 14, --lh-*), остальное — в конец site-v2.css. */
+
+/* ---------- 1. Токены: шкала и интерлиньяж по ролям ---------- */
+:root{
+  --s5:14px;              /* подписи: было 13 (на персиковом свете таяли), теперь 14 — одна подпись на весь сайт */
+  --lh-h1:1.04;           /* H1, первый экран, слово в подвале */
+  --lh-h2:1.15;           /* H2, крупные карточки */
+  --lh-title:1.3;         /* H3 и названия засечным (21) */
+  --lh-quote:1.4;         /* засечная строка-абзац и курсивная строка (21) */
+  --lh-lead:1.5;          /* лид без засечек (21) */
+  --lh-text:1.6;          /* абзацы 16 */
+  --lh-ui:1.4;            /* 16 в интерфейсе: строки списков, карточки, раскрывашки */
+  --lh-small:1.45;        /* подписи 14 */
+}
+/* Телефон: лид и H3 были 19 при тексте 16 (×1,19) — поднимаем до 20, это значение токена, не новый размер */
+@media (max-width:760px){ :root{ --s3:20px } }
+
+/* ---------- 2. Переносы: заголовки ровными строками, текст без одного слова в последней строке ---------- */
+h1,h2,h3,h4,.display,.h1,.h2,.t3,
+.fold-title,.kb-t,.aw-fam-t,.ch-t,.tile-title,.index-t,.kb-h1,.kb-h2,.kb-h3,.gl-term dt,.aw-row-t,.pr-goal-stage{text-wrap:balance}
+p,li,dd,dt:not(.gl-term dt),figcaption,blockquote,summary,.lede,.lead,.lede-em,.small,.kb-two p,.d,.m{text-wrap:pretty}
+
+/* ---------- 3. Шкала: роли, которые выпадали ---------- */
+/* H3 — один размер на всех страницах (21/20, засечный 400). Исключение (решение Саши 27.10): названия карточек «Переход» и «Новый сезон» (.tile--product .tile-title) остаются 34. Было: 34 у карточек продуктов и «Сделать / Почитать / Поговорить»,
+   16 без засечек у шагов «О проекте» и в статьях атласа, 34 у слоёв «Нового сезона». */
+h3,.hm-act-k,.pj-step-body h3,.ns-hd h3,.kb-sec h3.kb-h3,.kb-group-h .kb-h3{
+  font-family:var(--f-head); font-size:var(--s3); font-weight:400; font-style:normal; line-height:var(--lh-title); letter-spacing:0}
+/* Подзаголовок внутри статьи (уровень ниже H2 «Осторожно», «Как работает») — тот же размер, отличается курсивом */
+.kb-sec h3.kb-h3{font-weight:300; font-style:italic}
+/* Подпись-дата на «О себе» оформлена как подпись, это не заголовок по виду — оставляем подписью */
+h3.ab-season-label{font:500 var(--s5)/var(--lh-small) var(--f-text)}
+/* H2 «Осторожно / Когда не подходит» в статьях — как остальные H2 статьи (линия слева уже выделяет) */
+.kb-careful .kb-h2{font:400 var(--s3)/var(--lh-title) var(--f-head)}
+/* Буквы словаря — не размером с заголовок страницы: 21, линия под буквой остаётся */
+.gl-letter{font:400 var(--s3)/var(--lh-title) var(--f-head); letter-spacing:0}
+/* Значения в таблицах фактов — содержание, а не подписи: 16; ключ слева остаётся подписью 14 */
+.kb-facts > div > dd,.aw-facts > div > dd{font-size:var(--s4); line-height:var(--lh-ui)}
+.kb-facts > div > dt,.aw-facts > div > dt{font-size:var(--s5); line-height:var(--lh-small); padding-top:.15em}
+/* Действия в модулях («стереть», «взять как заготовку», «Скопировать текстом») — 16, как остальные кнопки */
+.pk .pk-link,.pk .pk-clear,.pk .pk-use,.kt-clear,.mk-clear,.mn-clear,.rt-clear,.pz-clear,.wh-clear,.lf-clear,.wr-clear,.ns-clear{font-size:var(--s4)}
+/* Вложенный курсив в дисплее: разрядка от своего кегля, а не унаследованная в px (мелочь 8) */
+.display em,h1 em,h2 em{letter-spacing:-.01em}
+/* Кнопки и поля наследуют шрифт (мелочь 9) */
+button,input,select,textarea{font-family:inherit}
+
+/* ---------- 4. Интерлиньяж: одно значение на роль ---------- */
+/* H2 и крупное */
+h2,.h2,.kb-h1,.pr-title,.ab-beat{line-height:var(--lh-h2)}
+/* Названия засечным 21 */
+.index-t,.kb-index2 .index-t,.tile-title,.t3,.aw-fam-t,.pr-goal h4,h4,.pr-row .t,.kb-row .t,.hm-stop-k,.showcase-title,.pz-gh,.pr-goal-stage,.gl-term dt,.kb-h2,.am-title,.kb-next b{line-height:var(--lh-title)}
+/* Засечный абзац 21 и курсивная строка */
+.hm-also p,.hm-talk p,.kb-two p,.lede-em,.pr-sec-lead,.hm-parts-choose,.ab-mission,.testimony blockquote p,.ch-frag,.nsp-voice--result blockquote p{line-height:var(--lh-quote)}
+/* Лид без засечек */
+.lede,.lead,.ab-turn-p,.prose .lede{line-height:var(--lh-lead)}
+/* Абзацы 16 */
+.gl-term dd p,.gl-term dd,.kb-sec .prose p,.kb-careful p,.kb-two + p{line-height:var(--lh-text)}
+/* 16 в интерфейсе */
+.kb-near a,.kb-near dd a span.t,.kb-near .steprow,.enc-steps .l,.kb-row .d,.kb-books li,.kb-vs li,.fold-title,.kb-h3,.cover-links a,.hm-try-t{line-height:var(--lh-ui)}
+/* Подписи 14: одно значение (было девять: 1,0 · 1,23 · 1,3 · 1,35 · 1,4 · 1,45 · 1,5 · 1,55 · 1,6 · 1,97) */
+.small,.label,figcaption,.pa-cap,.pm-cap,.kb-crumbs,.aw-crumbs ol,.kb-type,.kb-src,.kb-near .m,.kb-near dd a span.m,.kb-near dt,
+.kb-stamp-body p,.kb-stamp-body li,.pr-ex,.pk-note,.pk-out,.gl-more,.gl-term .kb-state,.ev,.status,.kb-hint,.kb-result,
+.nsp-voice figcaption,.enc-steps .n,.pg-seg-label,.hm-tg-note,.foot-license,
+.aw-toc a,.aw-facts-h,.aw-hero-meta,.kb-src li,.aw-srcn li,.tile-top,.hm-try-m,.kb-row .k,.kb-row .marks,.kb-cover-meta,.enc-foot{line-height:var(--lh-small)}
+/* Точечно — там, где у исходного правила селектор сильнее общего списка выше */
+.pr-card .t3,.kb-next a b,.kb-sections a .t,.kn-results .kb-row .t,.hm-part-t b{line-height:var(--lh-title)}
+.aw-how,.hm-who-intro .prose p:first-child{line-height:var(--lh-quote)}
+.hm-part-t,.site-foot--v2 .foot-group a,.site-foot .foot-group li{line-height:var(--lh-ui)}
+.gl-term dd p.gl-more,.pj-step .pj-text-step,.hm-kb .tile-n,.hm-try-d,.kb-ladder li,.aw-meta,.hm-also .hm-tg-note,.aw-fam-n{line-height:var(--lh-small)}
+@media (max-width:1279px){ .pj-step .pj-text-step{line-height:var(--lh-text)} }  /* до 1279 px это уже текст 16 (project.css:69) */
+.fold-title,.pg-weeks .fold--week .fold-title{line-height:var(--lh-ui)}
+.fold--week .fold-title{line-height:var(--lh-title)}
+.site-foot .foot-care,.site-foot .foot-bounds{line-height:var(--lh-text)}           /* в подвале это абзацы 16 */
+.kb-row summary,.kb-row details dl > div,.kb-fix,.a-hint p,.a-famlab small{line-height:var(--lh-small)}
+.a-famlab b,.kb-item .kb-t,.a-hint b{line-height:var(--lh-title)}
+.display em,.cover-title em{line-height:inherit}
+/* Ключи в строке фактов первого экрана ровняются по базовой линии значения 16 × 1,6 (было 1,97 — наследство в px) */
+.rows.facts dt{line-height:calc(var(--s4) * var(--lh-text))}
+
+/* ---------- 5. Длина строки ≤ ~75 знаков на 1024 (В1) ---------- */
+.showcase-text > p,.ab-card dd,.tk-cards .tile p,.tk-cards .tk-card p{max-width:var(--measure)}
+.kb-src,ol.kb-src{max-width:40rem}
+.hm-also p{max-width:30em}
+@media (max-width:1024px){ .ab-sys-pair > .ab-sys .showcase-text,.ab-sys .showcase-text{max-width:var(--measure)} }
+
+/* ---------- 6. Ссылки: одно подчёркивание на весь сайт ---------- */
+/* Где подчёркивание есть, оно одинаковое: линия 1 px, отступ .22em от букв, цвет — текст ссылки на 40 % (видно, но не кричит);
+   при наведении — полный цвет текста. Пунктир терминов словаря и энциклопедии — отдельный приём, не трогаем. */
+*{text-decoration-thickness:1px !important; text-underline-offset:.22em !important}
+a:not(.kb-term):not(.term),a:not(.kb-term):not(.term) *{text-decoration-color:color-mix(in srgb, currentColor 40%, transparent) !important}
+a:not(.kb-term):not(.term):hover,a:not(.kb-term):not(.term):hover *{text-decoration-color:currentColor !important}
+a.kb-term,.term{text-underline-offset:.22em}
+/* Ссылка «О проекте» на главной была нарисована нижней рамкой — теперь как все */
+.hm-about a{border-bottom:0; text-decoration:underline}
+/* Сноски — цифра без линии (в атласе была рамка снизу, в энциклопедии — нет) */
+sup.ref a{border-bottom:0; text-decoration:none}
+/* Ссылки внутри текста без подчёркивания (атлас, «Рядом» в строке шага) — подчеркнуть, иначе их не видно */
+.aw-body .prose a,.aw-meta a,.aw-srcs a,.aw-facts dd a,.aw-req-who a,.kb-vs a,.pr-root a,.kn-page .kb-sec a,.gl-more a{text-decoration-line:underline}
+
+/* ---------- 7. Хлебные крошки на телефоне не прыгают (В6) ---------- */
+@media (max-width:760px){
+  .kb-crumbs{align-items:baseline}
+  .kb-crumbs li:not(:has(> a)){padding:10px 0}   /* текущий пункт — тот же отступ, что у ссылок (kb.css:341) */
+  /* разделитель «›» не остаётся один в конце строки: пункт до последнего не рвётся внутри */
+  .kb-crumbs li:not(:last-child){white-space:nowrap}
+  /* «›» стоит в конце строки за своим пунктом, а не открывает новую строку («› WOOP за 5 минут») */
+  .kb-crumbs li + li::before{content:none}
+  .kb-crumbs li:not(:last-child)::after{content:"›"; margin:0 8px; color:var(--ink-3)}
+}
+
+/* ---------- 8. Сноски подряд: «¹,²», а не «¹²» (Б2) ---------- */
+sup.ref + sup.ref::before{content:","; color:var(--ink-3)}
+
+/* ================================================================ layer-states.css ================================================================ */
+/* =====================================================================
+   layer-states.css — дизайн-слой v2: СОСТОЯНИЯ (наведение, нажатие, фокус, отключено, выбранное)
+   Песочница options-v2/layer, 26.10.2026. site-v2 не трогаем: при внедрении файл вливается
+   в assets/site-v2.css целиком (или подключается последним). Пояснения — patches/states.md.
+
+   Правило сайта (redesign-skill, «заберём», 26.10): у каждого интерактивного элемента есть
+   наведение, нажатие (scale .98 или сдвиг 1 px), видимый фокус, отключённое; касание ≥ 44 px.
+   Язык состояний — только чернила: огонёк (accent) остаётся у «ты здесь» и выбранного ответа.
+     наведение  — текст и подчёркивание темнеют до чернил; у плашек — лёгкий тон 5 %
+     нажатие    — сдвиг на 1 px вниз (ссылки, кнопки, раскрывашки); карточки — scale .98
+     фокус      — одно кольцо: 2 px чернил, отступ 3 px (в тесных местах — внутрь)
+     отключено  — 45 % непрозрачности, курсор обычный, без наведения и нажатия
+   Сдвиг и масштаб — через отдельные свойства translate / scale: они складываются с transform,
+   который уже стоит у элементов (позиция точки, подъём карточки), и ничего не сбивают.
+   ===================================================================== */
+
+:root{
+  --st-ring:var(--ink,#0F1722);
+  --st-ring-w:2px;
+  --st-ring-off:3px;
+  --st-tint:rgba(15,23,34,.05);        /* наведение на плашку / пункт фильтра */
+  --st-tint-2:rgba(15,23,34,.08);      /* нажатие */
+  --st-field:rgba(15,23,34,.5);        /* линия поля при наведении (3,4 : 1) */
+}
+
+/* ---------------------------------------------------------------- 1. ФОКУС: одно кольцо на весь сайт
+   Глобальное правило в site.css уже рисует кольцо, но модули гасят его своим outline:none
+   (поля, ползунки, «Куда примерно хочется?», «Линия года»). Здесь кольцо возвращается всем,
+   кроме заголовков, на которые скрипт ставит фокус для диктора (tabindex="-1"). */
+html body :focus-visible:not([tabindex="-1"]){
+  outline:var(--st-ring-w) solid var(--st-ring); outline-offset:var(--st-ring-off)
+}
+/* поля ввода: кольцо по самому полю, без смены скругления (у линий-полей скругления нет) */
+html body :is(input:not([type="checkbox"]):not([type="radio"]),textarea,select):focus-visible{
+  outline:var(--st-ring-w) solid var(--st-ring); outline-offset:var(--st-ring-off)
+}
+/* поля, у которых рамка нарисована обёрткой (поиск атласа, суммы в «Призе»): кольцо у обёртки */
+html body :is(.aw-q,.a-q,.q,.pz-amt):has(input:focus-visible){outline:var(--st-ring-w) solid var(--st-ring); outline-offset:var(--st-ring-off)}
+html body :is(.aw-q,.a-q,.q,.pz-amt) input:focus-visible{outline:none}
+/* .q и .aw-q — таблетки: кольцо повторяет скругление */
+:is(.aw-q,.a-q,.q):has(input:focus-visible){border-radius:var(--r-pill,999px)}
+
+/* ползунки: кольцо вокруг ручки (ручку видно и у пустого, см. раздел 6) */
+html body :is(.wh-sl,.pz-sl):focus-visible{outline:none}
+/* :not(#_) — поднимает силу правила выше «пустой ручки» (раздел 6), иначе кольцо у пустого ползунка пропадает */
+:is(.wh-sl,.pz-sl):focus-visible:not(#_) :is(.wh-thumb,.pz-thumb){
+  opacity:1; border-color:var(--ink); box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--st-ring)
+}
+:is(.wh-sl,.pz-sl):focus-visible :is(.wh-track,.pz-track){background:var(--st-field)}
+
+/* «Новый сезон»: «Линия года» и «одно слово» — то же кольцо (было 1,5 px на 45 % и линия 1 px) */
+html body .ns-track:focus-visible{outline:var(--st-ring-w) solid var(--st-ring); outline-offset:-8px; border-radius:16px}
+html body .ns .ns-focus:focus-visible{outline:var(--st-ring-w) solid var(--st-ring); outline-offset:var(--st-ring-off); border-radius:6px}
+html body .ns .ns-edit:focus-visible{outline:var(--st-ring-w) solid var(--st-ring); outline-offset:var(--st-ring-off)}
+/* вложенное скругление: кольцо внутри слоя = радиус слоя − отступ (22 − 6 = 16), поэтому радиус не меняем */
+html body .ns-lift:focus-visible{outline-offset:-6px; border-radius:22px}
+
+/* «Куда примерно хочется?» (модуль «Поставить точку»): было 1 px серой линии внутрь */
+html body .cr-area:focus-visible{outline:var(--st-ring-w) solid var(--st-ring); outline-offset:-2px; box-shadow:none; border-radius:var(--r-m,14px)}
+
+/* фильтры: кольцо у пункта сегмента умещается в поле таблетки; ряд фильтров на телефоне не режет кольцо */
+html body .kb-seg button:focus-visible{outline-offset:1px}   /* снаружи пункта, но внутри таблетки: не путается с выбранным (у него рамка 1 px вплотную) */
+html body .kb-select select:focus-visible{outline-offset:2px}
+@media (max-width:760px){
+  /* ряд фильтров прокручивается вбок (overflow) и срезал кольцо: даём ему поле под кольцо */
+  .kb-filters-row{padding:6px; margin:-6px}
+  /* фильтр практик: список «С чем ты пришёл» шире экрана уходил за правый край вместе с кольцом,
+     а «Все / Основные» прятались за прокруткой. Ряд переносится: список во всю ширину, под ним сегмент */
+  .pr-filters .kb-filters-row{flex-wrap:wrap; overflow:visible}
+  .pr-filters .kb-select,.pr-filters .kb-select select{max-width:100%; width:100%}
+  .pr-filter{padding-top:4px; padding-left:4px; margin-left:-4px}
+}
+/* галочки шагов: кольцо вокруг всей строки шага, а не только цифры */
+html body .pk-cb:focus-visible + .pk-box{outline:none}
+.pk-step:has(.pk-cb:focus-visible){outline:var(--st-ring-w) solid var(--st-ring); outline-offset:2px; border-radius:6px}
+/* точки большой карты атласа — у кнопки нет размера, кольцо у самой точки */
+html body .a-pin:focus-visible{outline:none}
+.a-pin:focus-visible .a-dot{outline:var(--st-ring-w) solid var(--st-ring); outline-offset:3px; border-radius:50%}
+/* строка подсказки поиска, выбранная стрелками (фокус остаётся в поле — это «виртуальный» фокус) */
+.kb-suggest .kb-near a[aria-selected="true"]{background:var(--st-tint-2); box-shadow:inset 2px 0 0 var(--st-ring)}
+
+/* ---------------------------------------------------------------- 2. НАВЕДЕНИЕ
+   Только устройства с мышью: на телефоне «залипшее» наведение после касания путает. */
+@media (hover:hover) and (pointer:fine){
+
+  /* 2.1 ссылки-действия и ссылки в тексте без наведения (~30 видов, аудит 07 §5) */
+  :is(a.go,.pr-goal-pr a,.gl-more a,.res-sits a,.kb-next a,a.r,a.all,a.m,.aw-more a,.enc-go a,
+      .kb-src a,.kb-fix a,.kb-facts a,.tile a,.pr-root a,.pr-rt a,.pr-rs a,.kb-do-alt a,.steprow a,
+      .kb-cover-meta a,.kb-hint a,.small a,.kb-stamp-body a,.prose a,.kb-term,a.is-here,.ref a,
+      .kb-crumbs a,.l a,.h2 a,.pr-more a,.kb-more-d a,.s-4 a,.foot-license a,.cl-path a,.cr-acts a):hover{
+    color:var(--ink); text-decoration-line:underline; text-decoration-color:var(--ink)
+  }
+  /* стрелка каталога «→» и «следующая →»: стрелка чуть уходит вперёд, как у строк главной */
+  a.go{display:inline-block; transition:translate .25s var(--ease,ease), color .2s}
+  a.go:hover{translate:4px 0; text-decoration:none}
+  .kb-next a:hover b{text-decoration:underline; text-decoration-color:var(--ink); text-underline-offset:4px}
+  .kb-next a:hover{text-decoration:none}
+  /* названия в каталоге: подчёркивание было line-2 (1,5 : 1) — почти невидимо */
+  .kb-row .t a:hover{text-decoration-color:var(--ink-3)}
+  .kb-row:has(.t a:hover) .go,.kb-row:has(.go:hover) .t a{color:var(--ink)}
+
+  /* 2.2 раскрывашки без наведения: «ещё 3 →», «На чём стоит», «Как выбираю», «ещё…», «Подробнее» */
+  :is(.kb-row summary,.kb-stamp > summary,.pr-more > summary,.pr-how summary,.kb-more-d summary,.kb-more-d > summary,details.kb-more summary):hover{color:var(--ink)}
+  .kb-stamp > summary:hover .more{text-decoration-color:var(--ink)}
+  :is(.kb-row summary,.pr-more > summary,.pr-how summary,.kb-more-d summary){text-decoration:underline; text-decoration-color:transparent; text-underline-offset:3px; transition:text-decoration-color .2s, color .2s}
+  :is(.kb-row summary,.pr-more > summary,.pr-how summary,.kb-more-d summary):hover{text-decoration-color:var(--ink)}
+
+  /* 2.3 фильтры: пункт сегмента, выпадающий список, переключатель */
+  .kb-seg button:not([aria-pressed="true"]):not(:disabled):hover{background:var(--st-tint); color:var(--ink)}
+  .kb-select select:hover,.wr-sel:hover{border-color:var(--ink); background:#fff; box-shadow:inset 0 0 0 1px var(--ink)}
+  .kb-toggle:hover{color:var(--ink)}
+  .kb-toggle:hover input{outline:1px solid var(--ink-3); outline-offset:1px}
+
+  /* 2.4 поля: линия или рамка темнеет до 50 % (было без изменений) */
+  :is(.wh-nm,.wh-in-t,.pz-nm,.wr-in,.kt-in,.mn-in,.rt-in,.mk-in,.lf-in,.ns-focus):not(:focus):hover{border-bottom-color:var(--st-field)}
+  :is(.pk-ta,.lf-ta,.wr-sel,.kb-search input,.mark input):not(:focus):hover{border-color:var(--st-field)}
+  :is(.aw-q,.a-q,.q,.pz-amt):not(:focus-within):hover{border-color:var(--st-field)}
+
+  /* 2.5 ползунки: ручка подрастает, дорожка темнеет */
+  :is(.wh-sl,.pz-sl):hover :is(.wh-thumb,.pz-thumb){scale:1.15}
+  :is(.wh-sl,.pz-sl):hover :is(.wh-track,.pz-track){background:var(--st-field)}
+  .ns-track.is-near:hover{cursor:pointer}
+
+  /* 2.6 кнопки «фокус» и «×» в «Колесе»; галочки шагов */
+  .wh-fb:hover i{border-color:var(--ink)}
+  .wh-x:not(:disabled):hover{color:var(--ink); background:var(--st-tint); border-radius:6px}
+  .pk-step:hover .pk-st{color:var(--ink)}
+
+  /* 2.7 шапка: знак Waykeeper */
+  .wordmark:hover{color:var(--ink-2)}
+
+  /* 2.8 точки карты атласа: точка подрастает */
+  .a-pin:hover .a-dot{scale:1.25}
+}
+/* курсор «рука» там, где его не было (аудит 07 §5) */
+.pr-how summary,.kb-toggle input,.pk-cb,.pk-step{cursor:pointer}
+
+/* ---------------------------------------------------------------- 3. НАЖАТИЕ
+   Кнопки .btn и кнопки модулей (.pk-btn, .wr-btn, .mk-btn, .kt-btn, .rt-btn, .mn-btn) уже
+   сдвигаются на 1 px через transform — их не трогаем, чтобы не вышло 2 px. */
+:is(a[href],button,summary,[role="button"],.pk-step):not(.btn):not(.pk-btn):not(.wr-btn):not(.mk-btn):not(.kt-btn):not(.rt-btn):not(.mn-btn):not(.cr-area):not(.ns-lift):not(:disabled):not([aria-disabled="true"]):active{translate:0 1px}
+/* ссылки внутри строки текста: translate на строчные элементы не действует — сдвиг через top */
+:is(.prose,.kb-hint,.kb-fix,.small,.pr-rs,.kb-src,.kb-facts,.kb-stamp-body,.lead,.note,.foot-license,.gl-more,.enc-go,.pr-root,.pr-rt,.kb-do-alt,.steprow,.kb-cover-meta,.s-4,.ref,.l,.res-sits,.pr-goal-pr,.site-foot li,.cl-path,.cr-acts) a:not(.btn):active,
+a.link:active,a.kb-term:active,a.is-here:active,a.all:active,a.m:active{position:relative; top:1px}
+/* карточки-ссылки: сжимаются на 2 % (подъём при наведении сохраняется) */
+:is(a.pr-card,a.aw-fam,a.hm-part,a.card,a.tile-link):active{translate:none; scale:.98}
+/* строки во всю ширину (index-row, hm-try, строки окошка): сдвиг, а не масштаб — 2 % от 1300 px заметно «прыгает» */
+/* выбранный пункт фильтра и чипы — та же 1 px; ползунок при нажатии — ручка крупнее (как при перетаскивании) */
+:is(.wh-sl,.pz-sl):active :is(.wh-thumb,.pz-thumb){scale:1.3}
+.a-pin:active{translate:none}
+.a-pin:active .a-dot{scale:.9}
+@media (prefers-reduced-motion:reduce){
+  a.go{transition:none}
+}
+
+/* ---------------------------------------------------------------- 4. ОТКЛЮЧЁННОЕ
+   Общего правила у .btn не было. Всё отключённое — 45 %, обычный курсор, без наведения. */
+:is(.btn,button,.link)[disabled],:is(.btn,button,.link,a)[aria-disabled="true"]{
+  opacity:.45; cursor:default
+}
+a[aria-disabled="true"]{pointer-events:none}
+.btn[disabled]:hover,.btn[aria-disabled="true"]:hover{background:inherit}
+.btn.primary[disabled],.btn.primary[aria-disabled="true"]{background:var(--ink)}
+.kb-seg button:disabled{opacity:1; color:rgba(15,23,34,.38)}    /* у фильтра своё бледное состояние, не гасим дважды */
+.wh-x:disabled{opacity:0}                                        /* «×» у последних трёх сфер просто не видно, как было */
+
+/* ---------------------------------------------------------------- 5. ВЫБРАННОЕ В ФИЛЬТРЕ
+   Было: сплошная чёрная плашка — вторая чёрная вещь рядом с главной кнопкой.
+   Стало: белая плашка, тонкая рамка чернилами, текст чернилами. */
+.kb-seg button[aria-pressed="true"]{background:#fff; color:var(--ink); box-shadow:inset 0 0 0 1px var(--ink)}
+.kb-seg button[aria-pressed="true"] .n{color:var(--ink-3)}
+
+/* ---------------------------------------------------------------- 6. ПОЛЗУНКИ И ПОЛЯ МОДУЛЕЙ
+   Ручка у пустого ползунка была невидимой (opacity 0): человек не понимал, что тянуть.
+   Теперь пустая ручка — белый кружок с серой рамкой у левого края; после оценки — как было. */
+:is(.wh-sl,.pz-sl).is-empty :is(.wh-thumb,.pz-thumb){opacity:1; border-color:var(--ink-3); box-shadow:none}
+@media (hover:hover) and (pointer:fine){
+  :is(.wh-sl,.pz-sl).is-empty:hover :is(.wh-thumb,.pz-thumb){opacity:1; border-color:var(--ink)}
+}
+
+/* «Колесо» на ноутбуке: поля названий сфер были шириной 0 px (колонка ввода 340 px, а строка
+   просит 350). Когда колонка ввода уже 560 px, строка складывается как на телефоне:
+   название, «фокус», «×» — сверху, ползунок с оценкой — под ними. */
+.wh-in{container-type:inline-size; container-name:wh-in}
+@container wh-in (max-width:560px){
+  .wh-row{grid-template-columns:minmax(0,1fr) auto 32px; grid-template-rows:auto auto; column-gap:8px; padding-top:6px}
+  .wh-row > .wh-nm{grid-column:1; grid-row:1}
+  .wh-row > .wh-fb{grid-column:2; grid-row:1}
+  .wh-row > .wh-x{grid-column:3; grid-row:1}
+  .wh-row > .wh-sl{grid-column:1 / 3; grid-row:2; height:44px}
+  .wh-row > .wh-val{grid-column:3; grid-row:2; text-align:center}
+}
+/* «Приз в деньгах» на ноутбуке: та же беда — ползунок шириной 0 px (колонка 400 px, а строка
+   просит 180 + 176 + 2 × 28). В узкой колонке ползунок уходит строкой ниже, как на телефоне. */
+.pz-in{container-type:inline-size; container-name:pz-in}
+@container pz-in (max-width:620px){
+  .pz-row{grid-template-columns:minmax(0,1fr) minmax(0,172px); column-gap:12px; row-gap:0; padding-top:10px}
+  .pz-row > .pz-name,.pz-row > .pz-nm{grid-column:1; grid-row:1}
+  .pz-row > .pz-amt{grid-column:2; grid-row:1}
+  .pz-row > .pz-sl{grid-column:1 / -1; grid-row:2; height:40px}
+}
+/* кружок «фокус» не сжимается до 3 px */
+.wh-fb i{flex:none}
+
+/* ---------------------------------------------------------------- 7. КАСАНИЕ ≥ 44 PX
+   Кнопки и поля, которые сами по себе ниже 44 px, на сенсорных экранах получают высоту 44.
+   Ссылкам в тексте и мелким ссылкам-действиям высоту не меняем (это сдвинуло бы вёрстку):
+   layer-states.js расширяет им зону нажатия невидимой рамкой (класс .st-hit) — ровно до
+   середины промежутка с соседней ссылкой, чтобы зоны не налезали друг на друга. */
+@media (hover:none),(pointer:coarse){
+  :is(.pk-use,.wr-clear,.pz-clear,.ns-clear,.cr-again,.pk-clear,.pk-link,.wh-clear,.wh-add,.aw-chip,.mn-opt,.kb-seg button,.pr-more > summary,.pr-how summary,.kb-more-d summary,.kb-row summary){min-height:44px}
+  :is(.pk-use,.wr-clear,.pz-clear,.ns-clear,.cr-again,.aw-chip){display:inline-flex; align-items:center}
+  :is(.wh-nm,.pz-nm,.wr-in,.wh-in-t,.kt-in,.mn-in,.rt-in,.mk-in,.lf-in,.kb-select select,.wr-sel){min-height:44px}
+  :is(.aw-q,.a-q) input{height:44px}
+  :is(.wh-row,.pz-row) > :is(.wh-sl,.pz-sl){height:44px}
+  .gl-letters a{min-width:44px; min-height:44px}
+}
+.st-hit{position:relative}
+.st-hit::before{content:""; position:absolute; left:-4px; right:-4px; top:calc(var(--st-hit-t,0px) * -1); bottom:calc(var(--st-hit-b,0px) * -1)}
+
+/* ---------------------------------------------------------------- 8. СКРЫТОЕ — ЗНАЧИТ НЕ НАЖИМАЕТСЯ
+   Найдено при проверке (27.10): на телефоне при закрытом меню строки окошка «База знаний»
+   невидимы, но нажимаются и ловят Tab — .kb-pop в меню ставит visibility:visible поверх
+   скрытого меню (site-v2.css, @media ≤ 980). Касание верха страницы (крошки, заголовок)
+   уводило на «Практики» / «Энциклопедию». Наследуем видимость от меню. */
+@media (max-width:980px){ .kb-pop{visibility:inherit} }
+
+/* ---------------------------------------------------------------- 9. ЗАГРУЗКА И ОШИБКА ПОИСКА (строки — в kb.js, патч)
+   «Ищу…» — тихой подписью; панель подсказок плотная, чтобы сквозь неё не читались пункты меню. */
+.kb-wait{margin:0; font-size:var(--s5); line-height:1.45; color:var(--ink-3)}
+.kb-suggest{background:#fff}
+.kb-fail .kb-hint .link{min-height:44px; display:inline-flex; align-items:center}
+.kb-typo{color:var(--ink-2)}
+
+/* ================================================================ layer-motion.css ================================================================ */
+/* =====================================================================
+   layer-motion.css — дизайн-слой v2: движение, видимость, скорость (26.10.2026)
+   Источник: аудит 04-motion.md (П0-1…7, П1-8…15), решения Саши decisions-26-10.md.
+   Пара: layer-motion.js. Что нельзя сделать слоем — patches/motion.md.
+
+   Правила системы (их держит этот файл):
+   1. Текст никогда не ждёт. Ни заголовок, ни абзац, ни карточка, ни ссылка не бывают
+      невидимыми до прокрутки. После нажатия текст появляется без задержки (≤ .1 с) и без размытия.
+      Проявляться могут только картинки и фон.
+   2. При загрузке движется один слой — картина первого экрана, ≤ 1,2 с, один раз за визит.
+      Свет и поле стоят на месте и дальше живут своим медленным дрейфом.
+   3. Бесконечное — только фон (период от 30 с) или одно «дыхание»-приглашение, и только пока на экране.
+   4. Перемещение дольше --dur-4 — только у фона и картинок.
+   5. Всё, что скрыто до появления, видно в печати, с «меньше движения» и без JS.
+
+   Переключатель появления картин: одна переменная --wk-reveal (a|b|c|d) на :root
+   или один класс на <html>: .reveal-a / .reveal-b / .reveal-c / .reveal-d. По умолчанию A.
+   Для показа: ?reveal=b в адресе.
+   ===================================================================== */
+
+/* ---------- 0. Токены: 3 кривые × 6 длительностей ---------- */
+:root{
+  --ease-out:  cubic-bezier(.16,1,.3,1);    /* появление, ответ на действие, шапка, меню */
+  --ease-move: cubic-bezier(.45,.05,.25,1); /* смена состояний: слои сезона, свет между секциями */
+  --ease-slow: cubic-bezier(.35,0,.15,1);   /* медленное: проявление картины, таяние картинки, наезд */
+  --dur-1: .15s;  /* нажатие */
+  --dur-2: .25s;  /* наведение, цвет, текст ответа */
+  --dur-3: .4s;   /* складка, ответ, смена шага */
+  --dur-4: .8s;   /* смена сцены, картинка ниже первого экрана */
+  --dur-5: 1.2s;  /* одно проявление картины первого экрана — предел */
+  --dur-6: 40s;   /* фоновый дрейф света */
+  --stagger: 60ms;/* очередь — не больше 4 элементов */
+  /* старые имена главной кривой смотрят на один токен */
+  --ease: var(--ease-out);
+  /* вариант появления картин */
+  --wk-reveal: i;  /* «Тихий масштаб» везде — решение Саши 27.10 */
+}
+html.reveal-a{--wk-reveal: a}
+html.reveal-b{--wk-reveal: b}
+html.reveal-c{--wk-reveal: c}
+html.reveal-d{--wk-reveal: d}
+html.reveal-i{--wk-reveal: i}
+
+/* ---------- 1. БЛОКЕР: «всплытие» .rise больше не прячет текст ----------
+   site-v2.js вешает .rise на карточки, строки, заголовки секций, цитаты, витрины, подвал.
+   Текст и контент видны сразу: при быстрой прокрутке, после якоря, под фокусом, в печати, без JS. */
+.v2-js .rise:not(.is-in){opacity:1; transform:none}
+.v2-js .rise{transition:none}
+/* строки большого заголовка не выезжают из-под маски */
+.v2-js .display:not(.is-in) .ln > span,.v2-js .display .ln > span{transform:none; transition:none}
+/* лёгкое появление оставлено только картинкам-видам и карте-полосе: прозрачность, без сдвига; подпись не ждёт */
+.v2-js .rise.view:not(.is-in) .view-img,
+.v2-js .rise.plate-map:not(.is-in) .pm-img{opacity:0}
+.v2-js .rise.view .view-img,
+.v2-js .rise.plate-map .pm-img{transition:opacity var(--dur-4) var(--ease-slow)}
+
+/* ---------- 2. Первый экран спокойный ---------- */
+/* 2а. Пятна света не летят при загрузке и при смене секции: свет меняется на месте (только прозрачность).
+   Пока layer-motion.js не поставил html.wk-live, переходов нет совсем — свет сразу стоит на своём месте. */
+.atmo .atmo-blob{transition:opacity var(--atmo-swap, 2.6s) ease}
+html:not(.wk-live) .atmo .atmo-blob,html:not(.wk-live) .atmo .atmo-grain{transition:none}
+/* невидимое не движется: облака на пустом слое и «дышащее» зерно (talk) */
+.atmo:not(.has-clouds) .atmo-clouds > i{animation-play-state:paused}
+.atmo[data-v="c"] .atmo-grain{animation:none}
+
+/* 2б. Картина .plate-alive: старая проявка (прямоугольная растушёвка, размытый подмалёвок, ожидание подписи) снята.
+   Новая — layer-motion.js, вариант из --wk-reveal, один раз за визит, без размытия. */
+.plate-alive .pa-img img{-webkit-mask-image:none !important; mask-image:none !important}
+.pa-ghost{display:none !important}
+.plate-alive .pa-cap{opacity:1 !important; transition:none !important}
+.pa-img{overflow:hidden}
+.plate-alive.wk-hold .pa-img{visibility:hidden}
+.plate-alive.wk-run .pa-img > img{opacity:0}
+.wk-rv-cv{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; display:block}
+/* телефон без двойного проявления: пока скрипт не решил, картина первого экрана не показывается
+   (иначе она видна целиком, потом прячется и проявляется снова). Только при включённом JS;
+   страховка — если скрипт не пришёл за 3 с, картина просто есть, и скрипт её уже не трогает.
+   На сайте это заменит строка в <head> (patches/motion.md, п. 2) — тогда страховка не нужна. */
+@media (scripting: enabled){
+  html:not(.wk-rv-on) .plate-alive[data-pa-eager] .pa-img{animation:wk-safety 0s 3s both}
+}
+@keyframes wk-safety{from{visibility:hidden} to{visibility:visible}}
+
+/* 2в. 404: карта за текстом раскрывается быстрее (было 3,2 с + наезд 32 с) */
+.alive-deep{animation-duration:var(--dur-5); animation-delay:0s; animation-timing-function:var(--ease-slow)}
+
+/* ---------- 3. Текст не ждёт после нажатия ---------- */
+/* «Что ближе» (program): варианты видны сразу, ответ — без размытия и почти без задержки */
+.ch--pre .ch-item{opacity:1; transform:none; transition:none}
+.ch-ans > *{filter:none; transition:opacity var(--dur-2) var(--ease-out), top var(--dur-3) var(--ease-out)}
+.ch-ans.is-in > *{filter:none}
+.ch-ans.is-in > .ch-to{transition-delay:var(--stagger)}
+.ch-ans.is-in > .ch-to + .ch-to{transition-delay:calc(var(--stagger) * 1.5)}
+/* «Сколько у тебя времени?» (practices): имя, описание и кнопки сразу; рисунок проступает без размытия */
+@media (prefers-reduced-motion: no-preference){
+  .mn-card .mn-art,.mn-card .mn-name{filter:none}
+  .mn-card .mn-name,.mn-card .mn-what,.mn-card .mn-meta,.mn-card .mn-acts{opacity:1}
+  .mn-card.is-in .mn-art{opacity:1; animation:wk-fade var(--dur-3) var(--ease-out) both}
+  .mn-card.is-in .mn-name,.mn-card.is-in .mn-what,.mn-card.is-in .mn-meta,.mn-card.is-in .mn-acts{animation:wk-fade var(--dur-2) var(--ease-out) both}
+}
+@keyframes wk-fade{from{opacity:.15}}
+/* «Тогда и сейчас»: плитки без размытия, вывод без задержки */
+@keyframes tn-rise{from{opacity:.2}}
+.tn-wake{animation-duration:var(--dur-3)}
+.tn-wake .tn-out,.tn-wake .tn-fine{animation-duration:var(--dur-3); animation-delay:0s}
+.tn-foot.tn-wake{animation-delay:0s}
+/* 404: ссылки-вешки видны сразу (проступает только точка вешки) */
+@media (prefers-reduced-motion: no-preference){
+  .cl-pole{opacity:1; transition:none}
+  .cl-pole > i{transition:transform var(--dur-4) var(--ease-out)}
+}
+/* 404: место под список ссылок, пока его вставляет cloud.js — подвал не прыгает (CLS) */
+[data-module="cloud"]:empty{min-height:226px} /* замер 26.10: отступ списка 48 + 6 строк 178 = 226 на всех ширинах */
+
+/* ---------- 4. Шрифты: запасной шрифт той же ширины — заголовок не прыгает, когда приходит Spectral/Onest ----------
+   Замер 26.10 (Chrome 155): ширина кириллического абзаца Spectral 300 / Georgia = 0,983; Onest 400 / Arial = 1,043, 500 — 1,054.
+   Высоты по ascent/descent Spectral 106/46, Onest 97/30 (на 100 px). */
+@font-face{font-family:'Spectral Fallback'; src:local('Georgia'); font-weight:300 400; font-style:normal;
+  size-adjust:98.3%; ascent-override:107.8%; descent-override:46.8%; line-gap-override:0%}
+@font-face{font-family:'Spectral Fallback'; src:local('Georgia Italic'), local('Georgia-Italic'); font-weight:300 400; font-style:italic;
+  size-adjust:98.3%; ascent-override:107.8%; descent-override:46.8%; line-gap-override:0%}
+@font-face{font-family:'Onest Fallback'; src:local('Arial'), local('ArialMT'); font-weight:400;
+  size-adjust:104.3%; ascent-override:93%; descent-override:28.8%; line-gap-override:0%}
+@font-face{font-family:'Onest Fallback'; src:local('Arial'), local('ArialMT'); font-weight:500;
+  size-adjust:105.4%; ascent-override:92%; descent-override:28.5%; line-gap-override:0%}
+:root{
+  --f-head:'Spectral','Spectral Fallback',Georgia,serif;
+  --f-text:'Onest','Onest Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+
+/* ---------- 5. Фокус не прячется под шапку (Shift+Tab, якоря) ---------- */
+html{scroll-padding-top:calc(var(--head-h, 78px) + 12px)}
+
+/* ---------- 6. «Меньше движения»: всё сразу в итоге ---------- */
+@media (prefers-reduced-motion: reduce){
+  .v2-js .rise .view-img,.v2-js .rise .pm-img{opacity:1 !important; transition:none !important}
+  .plate-alive .pa-img{visibility:visible !important; animation:none !important}
+  .wk-rv-cv{display:none !important}
+  .mn-card *,.ch-ans > *{animation:none !important; transition:none !important}
+}
+
+/* ---------- 7. Печать: ничего не пропадает ---------- */
+@media print{
+  *,*::before,*::after{animation:none !important; transition:none !important}
+  .field-canvas,.topo-layer,.paper-layer,.atmo,.atmo-marks,.pa-ghost,.wk-rv-cv,.menu-scrim,.skip,.ghosts,.kb-pop{display:none !important}
+  .site-head{position:static !important; transform:none !important; background:none !important; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; box-shadow:none !important}
+  .rise,.rise .view-img,.rise .pm-img,.display .ln > span,.ch-item,.ch--pre .ch-item,.cl-pole,.mn-card *,.tile-view--melt,.tile-view--melt img{opacity:1 !important; filter:none !important; transform:none !important}
+  .plate-alive .pa-img{visibility:visible !important; -webkit-mask-image:none !important; mask-image:none !important}
+  .plate-alive .pa-img > img{opacity:1 !important}
+  .tile--product .tile-view.tile-view--melt{--melt:100% !important}
+  .tile-view--melt figcaption{display:block !important; position:static !important; opacity:1 !important; margin-top:6px}
+  .alive-deep{--reveal:100% !important}
+  .alive-deep img{transform:none !important}
+  .pa-cap .pa-src,.pm-cap .pa-src{max-width:none !important; opacity:1 !important; display:inline !important}
+  html{scroll-padding-top:0}
+}
+
+/* ================================================================ правки при внедрении (27.10) ================================================================ */
+/* Большая карта атласа на 320: подписи 14 (было 13) не влезали в нижнюю панель — «Моя сеть» уходила за край. Кнопки сжимаются, подпись переносится. */
+@media (max-width:760px){
+  .a-rail button{min-width:0}
+  .a-rail button span{text-align:center; overflow-wrap:anywhere}
+}
+/* Штамп проверки в атласе на 320: «, 2 утверждения ещё сверяются» не переносилось (nowrap) и при подписях 14 уходило за край. На телефоне переносится. */
+@media (max-width:760px){
+  .kb-pending{white-space:normal}
+}

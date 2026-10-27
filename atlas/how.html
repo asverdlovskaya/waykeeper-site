@@ -7,9 +7,9 @@
 <meta name="description" content="Как устроен атлас помогающих профессий: две оси (семьи и уровни), правила размещения, проверка по источникам, маршруты по карте.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/how.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Как устроен атлас · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Как устроен атлас">
 <meta property="og:description" content="Как устроен атлас помогающих профессий: две оси (семьи и уровни), правила размещения, проверка по источникам, маршруты по карте.">
 <meta property="og:url" content="https://waykeeper.org/atlas/how.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,67 +45,89 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
 <nav class="aw-bar" aria-label="Атлас">
   <div class="frame aw-bar-in">
     <a class="aw-bar-home" href="../atlas.html">Атлас помогающих профессий</a>
-    <ul class="aw-bar-links"><li><a href="../atlas.html#families">Семьи</a></li><li><a href="../atlas/requests.html">С каким вопросом к кому</a></li><li><a href="../atlas/all.html">Все специалисты</a></li><li><a href="../glossary.html">Словарь</a></li><li><a href="../atlas/how.html" aria-current="page">Как устроен</a></li><li><a href="../atlas-map.html" target="_blank" rel="noopener">Большая карта ↗</a></li></ul>
+    <ul class="aw-bar-links"><li><a href="../atlas.html#families">Семьи</a></li><li><a href="../atlas/requests.html">С&nbsp;каким вопросом к&nbsp;кому</a></li><li><a href="../atlas/all.html">Все специалисты</a></li><li><a href="../glossary.html">Словарь</a></li><li><a href="../atlas/how.html" aria-current="page">Как устроен</a></li><li><a href="../atlas-map.html" target="_blank" rel="noopener">Большая карта ↗</a></li></ul>
     <form class="kb-search kb-search--sm" role="search" action="../knowledge.html" method="get"><input type="search" name="q" aria-label="Найти в базе знаний" placeholder="Найти по базе знаний…" spellcheck="false"><kbd aria-hidden="true">/</kbd></form>
   </div>
 </nav>
 <main id="main" class="aw">
 <div class="frame aw-art" data-atmo="day">
   <div class="aw-art-head">
-    <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li>Как устроен атлас</li></ol>
+    <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li>Как устроен атлас</li></ol>
     <h1 id="page-title" class="aw-h1">Как устроен атлас</h1>
   </div>
-  <aside class="aw-toc" aria-label="Содержание"><p class="label">На этой странице</p><ol><li><a href="#model">Модель</a></li><li><a href="#levels">Уровни</a></li><li><a href="#rules">Правила размещения</a></li><li><a href="#routes">Маршруты по карте</a></li></ol></aside>
+  <aside class="aw-toc" aria-label="Содержание"><p class="label">На&nbsp;этой странице</p><ol><li><a href="#model">Модель</a></li><li><a href="#levels">Уровни</a></li><li><a href="#rules">Правила размещения</a></li><li><a href="#routes">Маршруты по&nbsp;карте</a></li></ol></aside>
   <div class="aw-body">
-    <div class="prose"><p>Помогающие специалисты — это люди, чья работа состоит в том, чтобы помогать другим людям справляться с жизнью: со здоровьем, переживаниями, отношениями, работой, деньгами, бытом, утратой, поиском смысла. Термин «помогающие профессии» (helping professions) давно используется в англоязычной литературе и объединяет очень разных специалистов — от психиатра до волонтёра хосписа.</p><p>Здесь собран весь этот ландшафт: 125 специалистов, разложенных по двум осям. <b>Семья</b> отвечает на вопрос, за какую сферу жизни отвечает специалист. <b>Уровень</b> — на чём держится его помощь в России и что он вправе делать. Между третьим и четвёртым уровнем проходит <a class="term" href="../glossary.html#term-dopusk" title="Линия между уровнями «Профессия» и «Полномочия». Дальше начинаются диагноз, лечение и юридически значимые действия, для которых нужен государственный допуск.">граница допуска</a>: дальше начинаются диагноз, лечение и юридическая сила.</p><p>Атлас ничего не рекомендует и не оценивает конкретных людей. Он объясняет, кто есть кто, за что отвечает, с какими запросами работает и где заканчивается его зона. Всё, что не удалось проверить по первоисточникам, помечено знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div>
-    <section class="aw-sec" id="model"><h2>Модель</h2><div class="prose"><p>125 специалистов по двум осям: 10 семей (за что отвечает) и 4 уровня (на чём держится помощь в России), плюс внешнее кольцо «Опора для помогающих». 10 практик — в <a href="fam-alt.html">отдельном слое</a>. Данные собраны 27.10.2026. Как мы проверяем факты и что значат метки — в <a href="../how.html#check">общем разделе «Как устроена база»</a>.</p></div></section>
-    <section class="aw-sec" id="levels"><h2>Уровни</h2><p class="aw-meta">На чём держится помощь специалиста в России: опыт, практика, профессия или полномочия. Между третьим и четвёртым уровнем проходит граница допуска: дальше начинаются диагноз, лечение и юридическая сила.</p><figure class="aw-plate" data-processed><img src="../assets/img/pd/processed/atlas/goethe-heights-1200.jpg" alt="Старинная гравюра: горы Старого и Нового света поставлены рядом по высоте, отмечена линия снегов" width="1200" height="873" loading="lazy" decoding="async"><figcaption>Иоганн Вольфганг Гёте · «Высоты Старого и Нового света», 1807<span class="pa-src"> · скан книги, Internet Archive</span></figcaption></figure><div class="aw-lvl" id="lvl-1"><h3>1 · Опыт <small class="tnum">11 специалистов</small></h3><p class="aw-meta">Свой прожитый опыт и участие. Формальных требований нет, обучение по желанию.</p><div class="prose"><p>Даёт поддержку, присутствие, связи и ощущение «я не один». Не диагностирует, не лечит, не даёт профессиональных заключений. Примеры: равный консультант, волонтёр хосписа, спонсор в программах «12 шагов».</p></div><p class="aw-meta"><a href="all.html?lvl=1">Все специалисты уровня →</a></p></div><div class="aw-lvl" id="lvl-2"><h3>2 · Практика <small class="tnum">62 специалиста</small></h3><p class="aw-meta">Обучение методу: курсы, сертификат ассоциации. Государственного допуска нет.</p><div class="prose"><p>Самый населённый уровень. Подготовка здесь очень разная — от выходных курсов до многолетней сертификации, поэтому смотрите на срез «подготовка». Даёт процесс, навыки, сопровождение, практическую помощь. Не лечит расстройства.</p></div><p class="aw-meta"><a href="all.html?lvl=2">Все специалисты уровня →</a></p></div><div class="aw-lvl" id="lvl-3"><h3>3 · Профессия <small class="tnum">35 специалистов</small></h3><p class="aw-meta">Профильное высшее или среднее образование и/или профстандарт.</p><div class="prose"><p>Профессиональная помощь, методы и заключения в пределах профессии. Медицинского диагноза и лечения нет; документы с юридической силой выдаёт специалист с полномочиями (например, нотариус). Примеры: психолог, социальный работник, медиатор, юрист.</p></div><p class="aw-meta"><a href="all.html?lvl=3">Все специалисты уровня →</a></p></div><p class="aw-wall"><a class="term" href="../glossary.html#term-dopusk" title="Линия между уровнями «Профессия» и «Полномочия». Дальше начинаются диагноз, лечение и юридически значимые действия, для которых нужен государственный допуск.">граница допуска</a></p><div class="aw-lvl" id="lvl-4"><h3>4 · Полномочия <small class="tnum">17 специалистов</small></h3><p class="aw-meta">Государственный допуск: аккредитация, лицензия, статус, реестр.</p><div class="prose"><p>Диагноз, лечение и назначения, больничный, госпитализация; юридически значимые действия и документы. Примеры: врач, нотариус, арбитражный управляющий, уполномоченный по правам человека.</p></div><p class="aw-meta"><a href="all.html?lvl=4">Все специалисты уровня →</a></p></div></section>
-    <section class="aw-sec" id="rules"><h2>Правила размещения</h2><div class="prose"><p>Семья — предмет ответственности, а не запрос и не метод. Профессии, существующие ради ситуации (паллиатив, горе), живут в семье этой ситуации. Уровень — минимальное основание, без которого в России нельзя законно и добросовестно работать в роли. Одна карточка — одна роль с одним основанием. Равные — в семье своей темы на уровне «Опыт».</p></div></section>
-    <section class="aw-sec" id="routes"><h2>Маршруты по карте</h2><p class="aw-meta">Короткие экскурсии по карте: не справочник, а рассказ.</p><div class="aw-route" id="route-quick"><h3>Ландшафт за 10 минут</h3><p class="aw-meta">Самый короткий путь, чтобы почувствовать всё поле. · 8 шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="fam-mind.html">Семья: Психика и эмоции</a></b><span class="aw-meta">Самая населённая семья: здесь видна вся лестница от равного до врача.</span></li><li><b><a href="psychiatrist.html">Психиатр</a></b><span class="aw-meta">Диагноз и лечение психических расстройств.</span></li><li><b><a href="counselling-psychologist.html">Психолог-консультант</a></b><span class="aw-meta">Один из самых распространённых «разговорных» специалистов.</span></li><li><b><a href="life-coach.html">Лайф-коуч</a></b><span class="aw-meta">Где заканчивается психология и начинается развитие.</span></li><li><b><a href="fam-law.html">Семья: Деньги и право</a></b><span class="aw-meta">Полномочия бывают не только у врачей.</span></li><li><b><a href="notary.html">Нотариус</a></b><span class="aw-meta">Юридическая сила.</span></li><li><b><a href="fam-hist.html">Семья: История и память</a></b><span class="aw-meta">Самая тихая семья.</span></li><li><b><a href="../glossary.html#term-dopusk">Понятие: Граница допуска</a></b><span class="aw-meta">Главная граница на карте.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-quick" target="_blank" rel="noopener">Пройти на большой карте ↗</a></p></div><div class="aw-route" id="route-mind-ladder"><h3>Психика: от равного до психиатра</h3><p class="aw-meta">Как устроена помощь при психологических трудностях, ступень за ступенью. · 7 шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="peer-support-worker.html">Равный консультант</a></b><span class="aw-meta">Опыт: «я прошёл через это».</span></li><li><b><a href="crisis-line-worker.html">Консультант кризисной линии / телефона доверия</a></b><span class="aw-meta">Срочная поддержка.</span></li><li><b><a href="counselling-psychologist.html">Психолог-консультант</a></b><span class="aw-meta">Профессиональная разговорная помощь.</span></li><li><b><a href="clinical-psychologist.html">Клинический психолог</a></b><span class="aw-meta">Психологическая диагностика и помощь при расстройствах; диагноз ставит врач.</span></li><li><b><a href="psychotherapist-psychologist.html">Психолог-психотерапевт</a></b><span class="aw-meta">Помощь психотерапевтическими методами без лекарств (юридически — серая зона).</span></li><li><b><a href="psychotherapist-physician.html">Врач-психотерапевт</a></b><span class="aw-meta">Врач, который лечит словом и при необходимости лекарствами.</span></li><li><b><a href="psychiatrist.html">Психиатр</a></b><span class="aw-meta">Диагноз и лечение психических расстройств.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-mind-ladder" target="_blank" rel="noopener">Пройти на большой карте ↗</a></p></div><div class="aw-route" id="route-transition"><h3>Деньги и право в переходе</h3><p class="aw-meta">Кто помогает с практической стороной больших перемен: переезда, закрытия дела, развода. · 6 шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="immigration-lawyer.html">Иммиграционный юрист / консультант</a></b><span class="aw-meta">Статус в стране.</span></li><li><b><a href="relocation-consultant.html">Релокационный консультант</a></b><span class="aw-meta">Бытовое «приземление».</span></li><li><b><a href="tax-advisor.html">Налоговый консультант</a></b><span class="aw-meta">Налоги при переезде.</span></li><li><b><a href="business-closure-specialist.html">Специалист по закрытию бизнеса</a></b><span class="aw-meta">Закрыть дело.</span></li><li><b><a href="family-lawyer.html">Семейный юрист / адвокат</a></b><span class="aw-meta">Развод и дети.</span></li><li><b><a href="financial-planner.html">Финансовый планировщик / советник</a></b><span class="aw-meta">Деньги на новый этап.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-transition" target="_blank" rel="noopener">Пройти на большой карте ↗</a></p></div><div class="aw-route" id="route-end-of-life"><h3>Кто помогает в конце жизни</h3><p class="aw-meta">Вся команда вокруг умирающего человека и его близких. · 8 шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="palliative-physician.html">Врач паллиативной помощи</a></b><span class="aw-meta">Облегчить боль и симптомы.</span></li><li><b><a href="palliative-nurse.html">Медсестра паллиативной помощи / хосписа</a></b><span class="aw-meta">Ежедневный уход.</span></li><li><b><a href="death-doula.html">Доула конца жизни</a></b><span class="aw-meta">Немедицинское сопровождение.</span></li><li><b><a href="hospice-volunteer.html">Волонтёр хосписа</a></b><span class="aw-meta">Присутствие.</span></li><li><b><a href="spiritual-care-provider.html">Капеллан / духовный опекун</a></b><span class="aw-meta">Духовная поддержка.</span></li><li><b><a href="funeral-director.html">Похоронный распорядитель</a></b><span class="aw-meta">Похороны.</span></li><li><b><a href="grief-counsellor.html">Консультант / терапевт по горю</a></b><span class="aw-meta">Жизнь после утраты.</span></li><li><b><a href="peer-bereaved.html">Равная поддержка в утрате</a></b><span class="aw-meta">Тот, кто пережил похожее.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-end-of-life" target="_blank" rel="noopener">Пройти на большой карте ↗</a></p></div></section>
-    <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+    <div class="prose"><p>Помогающие специалисты&nbsp;— это люди, чья работа состоит в&nbsp;том, чтобы помогать другим людям справляться с&nbsp;жизнью: со&nbsp;здоровьем, переживаниями, отношениями, работой, деньгами, бытом, утратой, поиском смысла. Термин «помогающие профессии» (helping professions) давно используется в&nbsp;англоязычной литературе и&nbsp;объединяет очень разных специалистов&nbsp;— от&nbsp;психиатра до&nbsp;волонтёра хосписа.</p><p>Здесь собран весь этот ландшафт: 125&nbsp;специалистов, разложенных по&nbsp;двум осям. <b>Семья</b> отвечает на&nbsp;вопрос, за&nbsp;какую сферу жизни отвечает специалист. <b>Уровень</b>&nbsp;— на&nbsp;чём держится его помощь в&nbsp;России и&nbsp;что он вправе делать. Между третьим и&nbsp;четвёртым уровнем проходит <a class="term" href="../glossary.html#term-dopusk" title="Линия между уровнями «Профессия» и «Полномочия». Дальше начинаются диагноз, лечение и юридически значимые действия, для которых нужен государственный допуск.">граница допуска</a>: дальше начинаются диагноз, лечение и&nbsp;юридическая сила.</p><p>Атлас ничего не&nbsp;рекомендует и&nbsp;не&nbsp;оценивает конкретных людей. Он объясняет, кто есть кто, за&nbsp;что отвечает, с&nbsp;какими запросами работает и&nbsp;где заканчивается его зона. Всё, что не&nbsp;удалось проверить по&nbsp;первоисточникам, помечено знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div>
+    <section class="aw-sec" id="model"><h2>Модель</h2><div class="prose"><p>125&nbsp;специалистов по&nbsp;двум осям: 10&nbsp;семей (за&nbsp;что отвечает) и&nbsp;4&nbsp;уровня (на&nbsp;чём держится помощь в&nbsp;России), плюс внешнее кольцо «Опора для&nbsp;помогающих». 10&nbsp;практик&nbsp;— в&nbsp;<a href="fam-alt.html">отдельном слое</a>. Данные собраны 27.10.2026. Как мы проверяем факты и&nbsp;что значат метки&nbsp;— в&nbsp;<a href="../how.html#check">общем разделе «Как устроена база»</a>.</p></div></section>
+    <section class="aw-sec" id="levels"><h2>Уровни</h2><p class="aw-meta">На&nbsp;чём держится помощь специалиста в&nbsp;России: опыт, практика, профессия или полномочия. Между третьим и&nbsp;четвёртым уровнем проходит граница допуска: дальше начинаются диагноз, лечение и&nbsp;юридическая сила.</p><figure class="aw-plate" data-processed><img src="../assets/img/pd/processed/atlas/goethe-heights-1200.jpg" alt="Старинная гравюра: горы Старого и Нового света поставлены рядом по высоте, отмечена линия снегов" width="1200" height="873" loading="lazy" decoding="async"><figcaption>Иоганн Вольфганг Гёте · «Высоты Старого и&nbsp;Нового света», 1807<span class="pa-src"> · скан книги, Internet Archive</span></figcaption></figure><div class="aw-lvl" id="lvl-1"><h3>1 · Опыт <small class="tnum">11&nbsp;специалистов</small></h3><p class="aw-meta">Свой прожитый опыт и&nbsp;участие. Формальных требований нет, обучение по&nbsp;желанию.</p><div class="prose"><p>Даёт поддержку, присутствие, связи и&nbsp;ощущение «я не&nbsp;один». Не&nbsp;диагностирует, не&nbsp;лечит, не&nbsp;даёт профессиональных заключений. Примеры: равный консультант, волонтёр хосписа, спонсор в&nbsp;программах «12&nbsp;шагов».</p></div><p class="aw-meta"><a href="all.html?lvl=1">Все специалисты уровня →</a></p></div><div class="aw-lvl" id="lvl-2"><h3>2 · Практика <small class="tnum">62&nbsp;специалиста</small></h3><p class="aw-meta">Обучение методу: курсы, сертификат ассоциации. Государственного допуска нет.</p><div class="prose"><p>Самый населённый уровень. Подготовка здесь очень разная&nbsp;— от&nbsp;выходных курсов до&nbsp;многолетней сертификации, поэтому смотри на&nbsp;срез «подготовка». Даёт процесс, навыки, сопровождение, практическую помощь. Не&nbsp;лечит расстройства.</p></div><p class="aw-meta"><a href="all.html?lvl=2">Все специалисты уровня →</a></p></div><div class="aw-lvl" id="lvl-3"><h3>3 · Профессия <small class="tnum">35&nbsp;специалистов</small></h3><p class="aw-meta">Профильное высшее или среднее образование и/или профстандарт.</p><div class="prose"><p>Профессиональная помощь, методы и&nbsp;заключения в&nbsp;пределах профессии. Медицинского диагноза и&nbsp;лечения нет; документы с&nbsp;юридической силой выдаёт специалист с&nbsp;полномочиями (например, нотариус). Примеры: психолог, социальный работник, медиатор, юрист.</p></div><p class="aw-meta"><a href="all.html?lvl=3">Все специалисты уровня →</a></p></div><p class="aw-wall"><a class="term" href="../glossary.html#term-dopusk" title="Линия между уровнями «Профессия» и «Полномочия». Дальше начинаются диагноз, лечение и юридически значимые действия, для которых нужен государственный допуск.">граница допуска</a></p><div class="aw-lvl" id="lvl-4"><h3>4 · Полномочия <small class="tnum">17&nbsp;специалистов</small></h3><p class="aw-meta">Государственный допуск: аккредитация, лицензия, статус, реестр.</p><div class="prose"><p>Диагноз, лечение и&nbsp;назначения, больничный, госпитализация; юридически значимые действия и&nbsp;документы. Примеры: врач, нотариус, арбитражный управляющий, уполномоченный по&nbsp;правам человека.</p></div><p class="aw-meta"><a href="all.html?lvl=4">Все специалисты уровня →</a></p></div></section>
+    <section class="aw-sec" id="rules"><h2>Правила размещения</h2><div class="prose"><p>Семья&nbsp;— предмет ответственности, а&nbsp;не&nbsp;запрос и&nbsp;не&nbsp;метод. Профессии, существующие ради ситуации (паллиатив, горе), живут в&nbsp;семье этой ситуации. Уровень&nbsp;— минимальное основание, без&nbsp;которого в&nbsp;России нельзя законно и&nbsp;добросовестно работать в&nbsp;роли. Одна карточка&nbsp;— одна роль с&nbsp;одним основанием. Равные&nbsp;— в&nbsp;семье своей темы на&nbsp;уровне «Опыт».</p></div></section>
+    <section class="aw-sec" id="routes"><h2>Маршруты по&nbsp;карте</h2><p class="aw-meta">Короткие экскурсии по&nbsp;карте: не&nbsp;справочник, а&nbsp;рассказ.</p><div class="aw-route" id="route-quick"><h3>Ландшафт за&nbsp;10&nbsp;минут</h3><p class="aw-meta">Самый короткий путь, чтобы почувствовать всё поле. · 8&nbsp;шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="fam-mind.html">Семья: Психика и&nbsp;эмоции</a></b><span class="aw-meta">Самая населённая семья: здесь видна вся лестница от&nbsp;равного до&nbsp;врача.</span></li><li><b><a href="psychiatrist.html">Психиатр</a></b><span class="aw-meta">Диагноз и&nbsp;лечение психических расстройств.</span></li><li><b><a href="counselling-psychologist.html">Психолог-консультант</a></b><span class="aw-meta">Один из&nbsp;самых распространённых «разговорных» специалистов.</span></li><li><b><a href="life-coach.html">Лайф-коуч</a></b><span class="aw-meta">Где заканчивается психология и&nbsp;начинается развитие.</span></li><li><b><a href="fam-law.html">Семья: Деньги и&nbsp;право</a></b><span class="aw-meta">Полномочия бывают не&nbsp;только у&nbsp;врачей.</span></li><li><b><a href="notary.html">Нотариус</a></b><span class="aw-meta">Юридическая сила.</span></li><li><b><a href="fam-hist.html">Семья: История и&nbsp;память</a></b><span class="aw-meta">Самая тихая семья.</span></li><li><b><a href="../glossary.html#term-dopusk">Понятие: Граница допуска</a></b><span class="aw-meta">Главная граница на&nbsp;карте.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-quick" target="_blank" rel="noopener">Пройти на&nbsp;большой карте ↗</a></p></div><div class="aw-route" id="route-mind-ladder"><h3>Психика: от&nbsp;равного до&nbsp;психиатра</h3><p class="aw-meta">Как устроена помощь при&nbsp;психологических трудностях, ступень за&nbsp;ступенью. · 7&nbsp;шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="peer-support-worker.html">Равный консультант</a></b><span class="aw-meta">Опыт: «я прошёл через это».</span></li><li><b><a href="crisis-line-worker.html">Консультант кризисной линии / телефона доверия</a></b><span class="aw-meta">Срочная поддержка.</span></li><li><b><a href="counselling-psychologist.html">Психолог-консультант</a></b><span class="aw-meta">Профессиональная разговорная помощь.</span></li><li><b><a href="clinical-psychologist.html">Клинический психолог</a></b><span class="aw-meta">Психологическая диагностика и&nbsp;помощь при&nbsp;расстройствах; диагноз ставит врач.</span></li><li><b><a href="psychotherapist-psychologist.html">Психолог-психотерапевт</a></b><span class="aw-meta">Помощь психотерапевтическими методами без&nbsp;лекарств (юридически&nbsp;— серая зона).</span></li><li><b><a href="psychotherapist-physician.html">Врач-психотерапевт</a></b><span class="aw-meta">Врач, который лечит словом и&nbsp;при&nbsp;необходимости лекарствами.</span></li><li><b><a href="psychiatrist.html">Психиатр</a></b><span class="aw-meta">Диагноз и&nbsp;лечение психических расстройств.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-mind-ladder" target="_blank" rel="noopener">Пройти на&nbsp;большой карте ↗</a></p></div><div class="aw-route" id="route-transition"><h3>Деньги и&nbsp;право в&nbsp;переходе</h3><p class="aw-meta">Кто помогает с&nbsp;практической стороной больших перемен: переезда, закрытия дела, развода. · 6&nbsp;шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="immigration-lawyer.html">Иммиграционный юрист / консультант</a></b><span class="aw-meta">Статус в&nbsp;стране.</span></li><li><b><a href="relocation-consultant.html">Релокационный консультант</a></b><span class="aw-meta">Бытовое «приземление».</span></li><li><b><a href="tax-advisor.html">Налоговый консультант</a></b><span class="aw-meta">Налоги при&nbsp;переезде.</span></li><li><b><a href="business-closure-specialist.html">Специалист по&nbsp;закрытию бизнеса</a></b><span class="aw-meta">Закрыть дело.</span></li><li><b><a href="family-lawyer.html">Семейный юрист / адвокат</a></b><span class="aw-meta">Развод и&nbsp;дети.</span></li><li><b><a href="financial-planner.html">Финансовый планировщик / советник</a></b><span class="aw-meta">Деньги на&nbsp;новый этап.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-transition" target="_blank" rel="noopener">Пройти на&nbsp;большой карте ↗</a></p></div><div class="aw-route" id="route-end-of-life"><h3>Кто помогает в&nbsp;конце жизни</h3><p class="aw-meta">Вся команда вокруг умирающего человека и&nbsp;его близких. · 8&nbsp;шагов</p><details><summary>Шаги маршрута</summary><ol><li><b><a href="palliative-physician.html">Врач паллиативной помощи</a></b><span class="aw-meta">Облегчить боль и&nbsp;симптомы.</span></li><li><b><a href="palliative-nurse.html">Медсестра паллиативной помощи / хосписа</a></b><span class="aw-meta">Ежедневный уход.</span></li><li><b><a href="death-doula.html">Доула конца жизни</a></b><span class="aw-meta">Немедицинское сопровождение.</span></li><li><b><a href="hospice-volunteer.html">Волонтёр хосписа</a></b><span class="aw-meta">Присутствие.</span></li><li><b><a href="spiritual-care-provider.html">Капеллан / духовный опекун</a></b><span class="aw-meta">Духовная поддержка.</span></li><li><b><a href="funeral-director.html">Похоронный распорядитель</a></b><span class="aw-meta">Похороны.</span></li><li><b><a href="grief-counsellor.html">Консультант / терапевт по&nbsp;горю</a></b><span class="aw-meta">Жизнь после утраты.</span></li><li><b><a href="peer-bereaved.html">Равная поддержка в&nbsp;утрате</a></b><span class="aw-meta">Тот, кто пережил похожее.</span></li></ol></details><p class="aw-meta"><a href="../atlas-map.html#route-end-of-life" target="_blank" rel="noopener">Пройти на&nbsp;большой карте ↗</a></p></div></section>
+    <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
   </div>
 </div>
 </main>
@@ -108,25 +137,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -136,12 +165,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -150,7 +179,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

@@ -7,9 +7,9 @@
 <meta name="description" content="Русский физиолог, который открыл условный рефлекс. Из его опытов следует: многие наши реакции выучены через повторение. А значит, их можно ослабить новым опытом.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/ivan-pavlov.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Иван Павлов · человек · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Иван Павлов">
 <meta property="og:description" content="Русский физиолог, который открыл условный рефлекс. Из его опытов следует: многие наши реакции выучены через повторение. А значит, их можно ослабить новым опытом.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/ivan-pavlov.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -82,22 +111,22 @@
     <article class="kb-main" aria-labelledby="h1">
 <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#concepts">Люди</a></li><li>Иван Павлов</li></ol>
 <h1 class="kb-h1" id="h1">Иван Павлов</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Русский физиолог, который открыл условный рефлекс. Из его опытов следует: многие наши реакции выучены через повторение. А значит, их можно ослабить новым опытом.</p></div>
-<dl class="kb-facts kb-facts--one"><div><dt>Годы</dt><dd>1849–1936</dd></div><div><dt>Откуда</dt><dd>Русский физиолог, открыл условный рефлекс; Петербург, конец XIX — начало XX века; Нобелевская премия 1904</dd></div><div><dt>Ещё называют</dt><dd>Павлов, И. П. Павлов, Ivan Pavlov</dd></div></dl>
+<div class="kb-two"><p>Русский физиолог, который открыл условный рефлекс. Из его опытов следует: многие наши реакции выучены через повторение. А значит, их можно ослабить новым опытом.</p></div>
+<dl class="kb-facts kb-facts--one"><div><dt>Годы</dt><dd>1849–1936</dd></div><div><dt>Откуда</dt><dd>Русский физиолог, открыл условный рефлекс; Петербург, конец XIX&nbsp;— начало XX века; Нобелевская премия 1904</dd></div><div><dt>Ещё называют</dt><dd>Павлов, И.&nbsp;П.&nbsp;Павлов, Ivan Pavlov</dd></div></dl>
 <section class="kb-sec" id="life"><h2 class="kb-h2">Жизнь и главные идеи</h2>
-<p>Родился в Рязани, работал в Петербурге. Стал первым российским лауреатом Нобелевской премии — в 1904 году, за работы о пищеварении.</p>
-<p>Павлов изучал, как у собак выделяется слюна. Он заметил: собака начинает пускать слюну не только на еду, но и на сигнал, который много раз звучал перед едой, — на звук или свет. Так появилось понятие <strong>условного рефлекса</strong> — выученной связи «сигнал → реакция».</p>
+<p>Родился в Рязани, работал в Петербурге. Стал первым российским лауреатом Нобелевской премии&nbsp;— в 1904&nbsp;году, за работы о пищеварении.</p>
+<p>Павлов изучал, как у&nbsp;собак выделяется слюна. Он заметил: собака начинает пускать слюну не только на еду, но и&nbsp;на сигнал, который много раз звучал перед едой,&nbsp;— на звук или свет. Так появилось понятие <strong>условного рефлекса</strong>&nbsp;— выученной связи «сигнал → реакция».</p>
 <p>Отсюда главный вывод: многие наши реакции не врождённые, а <strong>выученные</strong>. И если сигнал долго ничем не подкреплять, реакция постепенно угасает.</p></section>
-<section class="kb-sec" id="left"><h2 class="kb-h2">Что от этого осталось</h2>
-<ul><li><strong><a class="kb-term" href="../glossary.html#term-klassicheskoe-obuslovlivanie" title="Два стимула связываются (Павлов: звонок → слюна).">Классическое обусловливание</a></strong> — так называют обучение через связь двух событий. Это основа теории обучения.</li><li>Понятия <strong>угасания</strong> (реакция слабеет без подкрепления) и <strong>генерализации</strong> (реакция переносится на похожие сигналы).</li><li>Учение о свойствах нервной системы (сила, уравновешенность, подвижность) и её типах. Оно близко к идее темперамента.</li><li>На этих идеях стоит поведенческая терапия, а потом и когнитивно-поведенческая (КПТ). Они объясняют, например, как страх «выучивается» в связке с ситуацией.</li></ul></section>
+<section class="kb-sec" id="left"><h2 class="kb-h2">Что от&nbsp;этого осталось</h2>
+<ul><li><strong><a class="kb-term" href="../glossary.html#term-klassicheskoe-obuslovlivanie" title="Два стимула связываются (Павлов: звонок → слюна).">Классическое обусловливание</a></strong>&nbsp;— так называют обучение через связь двух событий. Это основа теории обучения.</li><li>Понятия <strong>угасания</strong> (реакция слабеет без подкрепления) и <strong>генерализации</strong> (реакция переносится на похожие сигналы).</li><li>Учение о свойствах нервной системы (сила, уравновешенность, подвижность) и её типах. Оно близко к идее темперамента.</li><li>На этих идеях стоит поведенческая терапия, а потом и когнитивно-поведенческая (КПТ). Они объясняют, например, как страх «выучивается» в связке с ситуацией.</li></ul></section>
 <section class="kb-sec" id="lit"><h2 class="kb-h2">Литература</h2>
-<ul class="kb-books"><li><span class="a">Иван Павлов</span> <em>Лекции о работе больших полушарий головного мозга</em><span class="w">главный научный труд Павлова; для начала Basis советует прочитать о нём в учебнике по психологии обучения</span></li></ul></section>
+<ul class="kb-books"><li><span class="a">Иван Павлов</span> <em>Лекции о&nbsp;работе больших полушарий головного мозга</em><span class="w">главный научный труд Павлова; для&nbsp;начала Basis советует прочитать о&nbsp;нём в&nbsp;учебнике по&nbsp;психологии обучения</span></li></ul></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
 <dl class="kb-near"><div><dt>Понять</dt><dd><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="povedencheskaya-terapiya.html"><span class="t">Поведенческая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="paradigmy-psikhoterapii.html"><span class="t">Парадигмы психотерапии</span><span class="m">понятие</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-physician.html"><span class="t">Врач-психотерапевт</span><span class="m">атлас · уровень «Полномочия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
 <nav class="kb-next" aria-label="Соседние статьи"><a href="frits-perlz.html" rel="prev">← Люди<b>Фриц Перлз</b></a><a class="r" href="karl-rodzhers.html" rel="next">Люди →<b>Карл Роджерс</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#life">Жизнь и главные идеи</a></li><li><a href="#left">Что от этого осталось</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#life">Жизнь и&nbsp;главные идеи</a></li><li><a href="#left">Что от&nbsp;этого осталось</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -108,25 +137,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -136,12 +165,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -150,7 +179,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

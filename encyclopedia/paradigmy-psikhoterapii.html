@@ -7,9 +7,9 @@
 <meta name="description" content="Парадигма — это большое объяснение, откуда берутся душевные трудности. Причину ищут в теле, в бессознательном, в выученном поведении, в мыслях, в смысле жизни или в семье. От ответа зависит, как…">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/paradigmy-psikhoterapii.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Парадигмы психотерапии · понятие · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Парадигмы психотерапии">
 <meta property="og:description" content="Парадигма — это большое объяснение, откуда берутся душевные трудности. Причину ищут в теле, в бессознательном, в выученном поведении, в мыслях, в смысле жизни или в семье. От ответа зависит, как…">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/paradigmy-psikhoterapii.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,32 +107,32 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Понятия"><ul><li><a href="fazy-gorya-po-kast.html">Фазы горя по Верене Каст</a></li><li><a href="gore.html">Горе и затяжное горе</a></li><li><a href="obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a></li><li><a class="is-here" aria-current="page" href="paradigmy-psikhoterapii.html">Парадигмы психотерапии</a></li><li><a href="terapevticheskiy-alyans.html">Терапевтический альянс</a></li><li><a href="vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a></li><li><a href="vnutrenniy-konflikt.html">Внутренний конфликт</a></li><li><a href="vygoranie.html">Выгорание</a></li><li><a href="zashchitnye-mekhanizmy.html">Защитные механизмы</a></li></ul><a class="all" href="../encyclopedia.html#concepts">Все понятия →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Понятия"><ul><li><a href="fazy-gorya-po-kast.html">Фазы горя по&nbsp;Верене Каст</a></li><li><a href="gore.html">Горе и&nbsp;затяжное горе</a></li><li><a href="obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a></li><li><a class="is-here" aria-current="page" href="paradigmy-psikhoterapii.html">Парадигмы психотерапии</a></li><li><a href="terapevticheskiy-alyans.html">Терапевтический альянс</a></li><li><a href="vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a></li><li><a href="vnutrenniy-konflikt.html">Внутренний конфликт</a></li><li><a href="vygoranie.html">Выгорание</a></li><li><a href="zashchitnye-mekhanizmy.html">Защитные механизмы</a></li></ul><a class="all" href="../encyclopedia.html#concepts">Все понятия →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
 <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#concepts">Понятия</a></li><li>Парадигмы психотерапии</li></ol>
 <h1 class="kb-h1" id="h1">Парадигмы психотерапии</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Парадигма — это большое объяснение, откуда берутся душевные трудности. Причину ищут в теле, в бессознательном, в выученном поведении, в мыслях, в смысле жизни или в семье. От ответа зависит, как помогать.</p></div>
+<div class="kb-two"><p>Парадигма&nbsp;— это большое объяснение, откуда берутся душевные трудности. Причину ищут в теле, в бессознательном, в выученном поведении, в мыслях, в смысле жизни или в&nbsp;семье. От ответа зависит, как помогать.</p></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Шесть больших объяснений, откуда берутся душевные трудности, сложившихся в психологии и психиатрии XIX–XX веков</dd></div><div><dt>Ещё называют</dt><dd>школы психотерапии, направления психотерапии</dd></div></dl>
 <section class="kb-sec" id="how2"><h2 class="kb-h2">Как это устроено</h2>
-<p>Есть шесть больших <a class="kb-term" href="../glossary.html#term-paradigma" title="Набор базовых предположений, через которые школа смотрит на причины расстройств и на то, как лечить. Определяет, где искать ответы, и…">парадигм</a>. На практике границ между ними нет: специалисты берут приёмы из разных школ. Рядом стоит ещё модель «уязвимость и стресс»: трудность возникает, когда на личную уязвимость накладывается стресс. Она не привязана к одной школе и смотрит на всё сразу.</p>
+<p>Есть шесть больших <a class="kb-term" href="../glossary.html#term-paradigma" title="Набор базовых предположений, через которые школа смотрит на причины расстройств и на то, как лечить. Определяет, где искать ответы, и…">парадигм</a>. На практике границ между ними нет: специалисты берут приёмы из разных школ. Рядом стоит ещё модель «уязвимость и стресс»: трудность возникает, когда на личную уязвимость накладывается стресс. Она не&nbsp;привязана к одной школе и смотрит на всё сразу.</p>
 <h3 class="kb-h3">Биологическая</h3>
-<p>Трудность понимают как сбой в теле — в генах, в работе мозга, в химии нервной системы. Отсюда медицинский язык: «диагноз», «пациент». Помогают прежде всего лекарства, при тяжёлых состояниях — клиника. Эта парадигма дала лекарства, которые при тяжёлых состояниях часто нужны, обычно вместе с разговорной помощью и поддержкой. Но объясняет она не всё: жизненный опыт сам меняет работу мозга.</p>
+<p>Трудность понимают как сбой в теле&nbsp;— в генах, в работе мозга, в химии нервной системы. Отсюда медицинский язык: «диагноз», «пациент». Помогают прежде всего лекарства, при тяжёлых состояниях&nbsp;— клиника. Эта парадигма дала лекарства, которые при тяжёлых состояниях часто нужны, обычно вместе с разговорной помощью и поддержкой. Но объясняет она не&nbsp;всё: жизненный опыт сам меняет работу мозга.</p>
 <h3 class="kb-h3">Психоаналитическая</h3>
-<p>Её ещё называют глубинной <a class="kb-term" href="../glossary.html#term-psikhologiya" title="Наука о психике и поведении. Делится на фундаментальную (законы), прикладную (в жизни), клиническую (отклонения, диагностика, терапия) и…">психологией</a>. Трудности растут из <strong>бессознательного</strong> — того, что в нас действует, но не осознаётся. Корни — в раннем детстве. Внутри спорят три части: Оно («хочу»), Я (договаривается с реальностью) и Сверх-Я («нельзя», «должна»). Терапия помогает осознать скрытое: через свободный рассказ обо всём, что приходит в голову, и разбор снов. Имена: Зигмунд Фрейд, Карл Густав Юнг, Альфред Адлер.</p>
+<p>Её ещё называют глубинной <a class="kb-term" href="../glossary.html#term-psikhologiya" title="Наука о психике и поведении. Делится на фундаментальную (законы), прикладную (в жизни), клиническую (отклонения, диагностика, терапия) и…">психологией</a>. Трудности растут из <strong>бессознательного</strong>&nbsp;— того, что в&nbsp;нас действует, но не&nbsp;осознаётся. Корни&nbsp;— в раннем детстве. Внутри спорят три части: Оно («хочу»), Я (договаривается с реальностью) и Сверх-Я («нельзя», «должна»). Терапия помогает осознать скрытое: через свободный рассказ обо&nbsp;всём, что приходит в голову, и разбор снов. Имена: Зигмунд Фрейд, Карл Густав Юнг, Альфред Адлер.</p>
 <h3 class="kb-h3">Теории обучения</h3>
-<p>Она же бихевиоризм, от английского behavior — «поведение». Проблемное поведение выучено, значит, его можно разучить. Учимся тремя путями: через связь двух событий (собака Павлова), через последствия (что приносит облегчение, повторяется) и глядя на других. Имена: Иван Павлов, Джон Уотсон, Эдвин Гатри. Иногда сюда же относят Жана Пиаже и Льва Выготского — обычно их считают психологами развития.</p>
+<p>Она же бихевиоризм, от английского behavior&nbsp;— «поведение». Проблемное поведение выучено, значит, его можно разучить. Учимся тремя путями: через связь двух событий (собака Павлова), через последствия (что приносит облегчение, повторяется) и глядя на других. Имена: Иван Павлов, Джон Уотсон, Эдвин Гатри. Иногда сюда&nbsp;же относят Жана Пиаже и Льва Выготского&nbsp;— обычно их считают психологами развития.</p>
 <h3 class="kb-h3">Когнитивная</h3>
-<p>Ранит не само событие, а то, как мы его толкуем. Толкуем через «схемы» — привычные рамки из прошлого опыта. Терапия помогает заметить привычные мысли и проверить их на реальность. Отсюда выросла когнитивно-поведенческая терапия (КПТ). Имена: Джордж Миллер и Джером Брунер (основатели когнитивной психологии), Аарон Бек и Альберт Эллис.</p>
+<p>Ранит не само событие, а то, как мы его толкуем. Толкуем через «схемы»&nbsp;— привычные рамки из прошлого опыта. Терапия помогает заметить привычные мысли и проверить их на&nbsp;реальность. Отсюда выросла когнитивно-поведенческая терапия (КПТ). Имена: Джордж Миллер и Джером Брунер (основатели когнитивной психологии), Аарон Бек и Альберт Эллис.</p>
 <h3 class="kb-h3">Гуманистическая</h3>
-<p>Её часто объединяют с экзистенциальной. В центре не диагноз, а человек: его рост, свобода выбора и смысл. Вместо «пациента» — <strong>клиент</strong>, эксперт своей жизни. Терапия здесь скорее встреча, чем лечение. Имена: Карл Роджерс, Виктор Франкл, Фриц Перлз, Абрахам Маслоу.</p>
+<p>Её часто объединяют с экзистенциальной. В центре не диагноз, а человек: его рост, свобода выбора и смысл. Вместо «пациента»&nbsp;— <strong>клиент</strong>, эксперт своей жизни. Терапия здесь скорее встреча, чем лечение. Имена: Карл Роджерс, Виктор Франкл, Фриц Перлз, Абрахам Маслоу.</p>
 <h3 class="kb-h3">Системная</h3>
-<p>Трудности одного человека — часть системы вокруг него: семьи, окружения, культуры. Того, у кого видны трудности, называют «носителем симптома»: он может выражать напряжение всей семьи. Меняют правила системы, а не «чинят» одного. Для перемен не обязательно участие всех. Имена: Людвиг фон Берталанфи, Вирджиния Сатир.</p></section>
+<p>Трудности одного человека&nbsp;— часть системы вокруг него: семьи, окружения, культуры. Того, у кого видны трудности, называют «носителем симптома»: он может выражать напряжение всей семьи. Меняют правила системы, а не&nbsp;«чинят» одного. Для перемен не обязательно участие всех. Имена: Людвиг фон Берталанфи, Вирджиния Сатир.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="ekzistentsialnaya-terapiya.html"><span class="t">Экзистенциальная терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="geshtalt-terapiya.html"><span class="t">Гештальт-терапия</span><span class="m">школа · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="klient-tsentrirovannaya-terapiya.html"><span class="t">Клиент-центрированный подход</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><details class="kb-more-d"><summary>ещё 20</summary><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="povedencheskaya-terapiya.html"><span class="t">Поведенческая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="psikhodinamicheskaya-terapiya.html"><span class="t">Психоанализ и психодинамическая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="sistemnaya-semeynaya-terapiya.html"><span class="t">Системная семейная терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="obshchie-faktory-effektivnosti.html"><span class="t">Общие факторы эффективности психотерапии</span><span class="m">понятие</span></a><a href="vidy-psikhologicheskoy-pomoshchi.html"><span class="t">Виды психологической помощи</span><span class="m">понятие</span></a><a href="vnutrenniy-konflikt.html"><span class="t">Внутренний конфликт</span><span class="m">понятие</span></a><a href="zashchitnye-mekhanizmy.html"><span class="t">Защитные механизмы</span><span class="m">понятие</span></a><a href="aaron-bek.html"><span class="t">Аарон Бек</span><span class="m">человек</span></a><a href="abrakham-maslou.html"><span class="t">Абрахам Маслоу</span><span class="m">человек</span></a><a href="alfred-adler.html"><span class="t">Альфред Адлер</span><span class="m">человек</span></a><a href="bob-khoffman.html"><span class="t">Боб Хоффман</span><span class="m">человек</span></a><a href="dzhon-boulbi.html"><span class="t">Джон Боулби</span><span class="m">человек</span></a><a href="frits-perlz.html"><span class="t">Фриц Перлз</span><span class="m">человек</span></a><a href="ivan-pavlov.html"><span class="t">Иван Павлов</span><span class="m">человек</span></a><a href="karl-rodzhers.html"><span class="t">Карл Роджерс</span><span class="m">человек</span></a><a href="karl-yung.html"><span class="t">Карл Густав Юнг</span><span class="m">человек</span></a><a href="viktor-frankl.html"><span class="t">Виктор Франкл</span><span class="m">человек</span></a><a href="virdzhiniya-satir.html"><span class="t">Вирджиния Сатир</span><span class="m">человек</span></a><a href="zigmund-freyd.html"><span class="t">Зигмунд Фрейд</span><span class="m">человек</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/existential-counsellor.html"><span class="t">Экзистенциальный консультант</span><span class="m">атлас · уровень «Практика»</span></a><a href="../atlas/philosophical-counsellor.html"><span class="t">Философский консультант / практикующий философ</span><span class="m">атлас · уровень «Практика»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="ekzistentsialnaya-terapiya.html"><span class="t">Экзистенциальная терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="geshtalt-terapiya.html"><span class="t">Гештальт-терапия</span><span class="m">школа · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="klient-tsentrirovannaya-terapiya.html"><span class="t">Клиент-центрированный подход</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><details class="kb-more-d"><summary>ещё 20</summary><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="povedencheskaya-terapiya.html"><span class="t">Поведенческая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="psikhodinamicheskaya-terapiya.html"><span class="t">Психоанализ и&nbsp;психодинамическая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="sistemnaya-semeynaya-terapiya.html"><span class="t">Системная семейная терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="obshchie-faktory-effektivnosti.html"><span class="t">Общие факторы эффективности психотерапии</span><span class="m">понятие</span></a><a href="vidy-psikhologicheskoy-pomoshchi.html"><span class="t">Виды психологической помощи</span><span class="m">понятие</span></a><a href="vnutrenniy-konflikt.html"><span class="t">Внутренний конфликт</span><span class="m">понятие</span></a><a href="zashchitnye-mekhanizmy.html"><span class="t">Защитные механизмы</span><span class="m">понятие</span></a><a href="aaron-bek.html"><span class="t">Аарон Бек</span><span class="m">человек</span></a><a href="abrakham-maslou.html"><span class="t">Абрахам Маслоу</span><span class="m">человек</span></a><a href="alfred-adler.html"><span class="t">Альфред Адлер</span><span class="m">человек</span></a><a href="bob-khoffman.html"><span class="t">Боб Хоффман</span><span class="m">человек</span></a><a href="dzhon-boulbi.html"><span class="t">Джон Боулби</span><span class="m">человек</span></a><a href="frits-perlz.html"><span class="t">Фриц Перлз</span><span class="m">человек</span></a><a href="ivan-pavlov.html"><span class="t">Иван Павлов</span><span class="m">человек</span></a><a href="karl-rodzhers.html"><span class="t">Карл Роджерс</span><span class="m">человек</span></a><a href="karl-yung.html"><span class="t">Карл Густав Юнг</span><span class="m">человек</span></a><a href="viktor-frankl.html"><span class="t">Виктор Франкл</span><span class="m">человек</span></a><a href="virdzhiniya-satir.html"><span class="t">Вирджиния Сатир</span><span class="m">человек</span></a><a href="zigmund-freyd.html"><span class="t">Зигмунд Фрейд</span><span class="m">человек</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/existential-counsellor.html"><span class="t">Экзистенциальный консультант</span><span class="m">атлас · уровень «Практика»</span></a><a href="../atlas/philosophical-counsellor.html"><span class="t">Философский консультант / практикующий философ</span><span class="m">атлас · уровень «Практика»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
 <nav class="kb-next" aria-label="Соседние статьи"><a href="obshchie-faktory-effektivnosti.html" rel="prev">← Понятия рядом<b>Общие факторы эффективности психотерапии</b></a><a class="r" href="terapevticheskiy-alyans.html" rel="next">Понятия рядом →<b>Терапевтический альянс</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#how2">Как это устроено</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#how2">Как это устроено</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -114,25 +143,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -142,12 +171,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -156,7 +185,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

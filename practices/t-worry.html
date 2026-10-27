@@ -7,9 +7,9 @@
 <meta name="description" content="Записать мысль, которая крутится, одной строкой и назначить ей время.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices/t-worry.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Контейнер для тревоги · Практики · Waykeeper">
+<meta property="og:title" content="Контейнер для тревоги">
 <meta property="og:description" content="Записать мысль, которая крутится, одной строкой и назначить ей время.">
 <meta property="og:url" content="https://waykeeper.org/practices/t-worry.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -43,42 +50,64 @@
 <script src="../assets/pages/practices.js" defer></script>
 <script src="../modules/trail.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -87,15 +116,15 @@
     <div class="frame">
       <div class="pr-top-grid">
         <div class="pr-top-text">
-          <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Контейнер для тревоги</li></ol>
-          <p class="kb-type">Практика<span class="sep">·</span>2 минуты<span class="sep">·</span>без меня<span class="sep">·</span>основная</p>
-          <h1 id="pr-title" class="kb-h1 pr-title">Контейнер для тревоги</h1>
-          <div class="kb-two"><span class="label">В двух словах</span><p>Записать мысль, которая крутится, одной строкой и назначить ей время. Я так делаю сама: «подумаю об этом в пятницу, пятнадцать минут», и иногда к пятнице отпускает.</p></div>
+          <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Контейнер для&nbsp;тревоги</li></ol>
+          <p class="kb-type">Практика<span class="sep">·</span>2&nbsp;минуты<span class="sep">·</span>без&nbsp;меня<span class="sep">·</span>основная</p>
+          <h1 id="pr-title" class="kb-h1 pr-title">Контейнер для&nbsp;тревоги</h1>
+          <div class="kb-two"><p>Записать мысль, которая крутится, одной строкой и&nbsp;назначить ей время. Я так делаю сама: «подумаю об&nbsp;этом в&nbsp;пятницу, пятнадцать минут», и&nbsp;иногда к&nbsp;пятнице отпускает.</p></div>
           <details class="kb-stamp pr-stamp" id="roots">
-          <summary><span class="pr-stamp-k">На чём стоит</span><span class="pr-root"><a href="../encyclopedia/vremya-dlya-trevogi.html">Время для тревоги</a><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span><span class="kb-who">обычные взрослые (онлайн-RCT почти на 1000 человек) и люди с выраженной тревогой</span><span class="kb-checked">метка проверена 26.10.2026</span><span class="more">Почему так</span></summary>
+          <summary><span class="pr-stamp-k">На&nbsp;чём стоит</span><span class="pr-root"><a href="../encyclopedia/vremya-dlya-trevogi.html">Время для&nbsp;тревоги</a><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span><span class="kb-who">обычные взрослые (онлайн-RCT почти на&nbsp;1000&nbsp;человек) и&nbsp;люди с&nbsp;выраженной тревогой</span><span class="kb-checked">метка проверена 26.10.2026</span><span class="more">Почему так</span></summary>
           <div class="kb-stamp-body">
-            <ul class="pr-rootlist"><li><p class="pr-rt"><a href="../encyclopedia/vremya-dlya-trevogi.html">Время для тревоги</a> <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <span class="pr-t">RCT</span></p><p>Несколько RCT, в том числе на обычных людях; эффекты небольшие, у людей с тяжёлой тревогой данные смешанные.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1111/bjhp.12170">Versluis и соавт., 2016</a> · на ком проверяли: обычные взрослые (онлайн-RCT почти на 1000 человек) и люди с выраженной тревогой</p></li></ul>
-            <p>Метка говорит, насколько исследован метод, а не как он сработает у тебя. <a href="../how.html#marks">Что значат метки</a></p>
+            <ul class="pr-rootlist"><li><p class="pr-rt"><a href="../encyclopedia/vremya-dlya-trevogi.html">Время для&nbsp;тревоги</a> <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <span class="pr-t">RCT</span></p><p>Несколько RCT, в&nbsp;том числе на&nbsp;обычных людях; эффекты небольшие, у&nbsp;людей с&nbsp;тяжёлой тревогой данные смешанные.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1111/bjhp.12170">Versluis и&nbsp;соавт., 2016</a> · на&nbsp;ком проверяли: обычные взрослые (онлайн-RCT почти на&nbsp;1000&nbsp;человек) и&nbsp;люди с&nbsp;выраженной тревогой</p></li></ul>
+            <p>Метка говорит, насколько исследован метод, а&nbsp;не&nbsp;как он сработает у&nbsp;тебя. <a href="../how.html#marks">Что значат метки</a></p>
           </div>
         </details>
           <div class="kb-do"><a class="btn primary" href="#steps">Начать</a></div>
@@ -103,7 +132,7 @@
         <div class="pr-top-art">
           <figure class="plate-alive plate-alive--quiet is-right pr-plate" data-processed data-clear style="--pa-r:1.333; --pa-h:min(52vh, 460px)">
           <div class="pa-img"><img src="../assets/img/pd/practices/konteiner-dlya-trevogi-1200.jpg" alt="Посетители в кабинете редкостей Левинуса Винсента в Харлеме. Андрис ван Бёйсен по рисунку Ромейна де Хоге" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <figcaption class="pa-cap">Андрис ван Бёйсен по рисунку Ромейна де Хоге · «Посетители в кабинете редкостей Левинуса Винсента в Харлеме», ок. 1706<span class="pa-src"> · Рейксмюсеум, Амстердам</span></figcaption>
+          <figcaption class="pa-cap">Андрис ван Бёйсен по&nbsp;рисунку Ромейна де Хоге · «Посетители в&nbsp;кабинете редкостей Левинуса Винсента в&nbsp;Харлеме», ок. 1706<span class="pa-src"> · Рейксмюсеум, Амстердам</span></figcaption>
         </figure>
         </div>
       </div>
@@ -112,10 +141,10 @@
 
   <section class="pr-sec pr-sec--facts" aria-label="О практике">
     <div class="frame"><dl class="kb-facts kb-facts--one pr-facts">
-      <div><dt>На руках</dt><dd>Записанная мысль и время, когда ты к ней вернёшься.</dd></div>
-      <div><dt>Откуда</dt><dd>я так делаю сама: «подумаю об этом в пятницу, пятнадцать минут». Иногда отпускает. Если тревога держится неделями — к врачу или психологу.</dd></div>
+      <div><dt>На&nbsp;руках</dt><dd>Записанная мысль и&nbsp;время, когда ты к&nbsp;ней вернёшься.</dd></div>
+      <div><dt>Откуда</dt><dd>я так делаю сама: «подумаю об&nbsp;этом в&nbsp;пятницу, пятнадцать минут». Иногда отпускает. Если тревога держится неделями&nbsp;— к&nbsp;врачу или психологу.</dd></div>
       <div><dt>Это упражнение</dt><dd>моя адаптация.</dd></div>
-      <div><dt>В «Переходе»</dt><dd>это <a class="link" href="../program.html#week-9">неделя 9</a>: один из способов собрать опоры.</dd></div>
+      <div><dt>В&nbsp;«Переходе»</dt><dd>это <a class="link" href="../program.html#week-9">неделя 9</a>: один из&nbsp;способов собрать опоры.</dd></div>
     </dl></div>
   </section>
 
@@ -124,8 +153,8 @@
       <aside class="pr-careful">
         <h2 class="pr-h" id="pr-careful">Осторожно</h2>
         <ul class="list">
-            <li>Если тревога держится неделями — к врачу или психологу.</li>
-            <li>При генерализованной тревоге такой приём бывает частью лечения, но лечение он не заменяет.</li>
+            <li>Если тревога держится неделями&nbsp;— к&nbsp;врачу или психологу.</li>
+            <li>При&nbsp;генерализованной тревоге такой приём бывает частью лечения, но&nbsp;лечение он не&nbsp;заменяет.</li>
         </ul>
       </aside>
     </div>
@@ -136,13 +165,13 @@
       <div class="pr-kit pr-kit--tool" data-module="practice-kit" data-id="t-worry" data-title="Контейнер для тревоги" data-minutes="2" data-store="waykeeper.practice.t-worry">
         <div class="pr-kit-side">
           <ol class="pr-steps" data-kit-steps>
-              <li data-kit-step="0">Заметь, что мысль пошла по кругу: тот же вопрос, те же ответы, ничего нового.</li>
-              <li data-kit-step="1">Скажи себе: «Я подумаю об этом в такое-то время».</li>
+              <li data-kit-step="0">Заметь, что мысль пошла по&nbsp;кругу: тот&nbsp;же вопрос, те&nbsp;же ответы, ничего нового.</li>
+              <li data-kit-step="1">Скажи себе: «Я подумаю об&nbsp;этом в&nbsp;такое-то время».</li>
               <li data-kit-step="2">Запиши мысль одной строкой.</li>
-              <li data-kit-step="3">Назначь ей время — минут двадцать, в удобный день и час.</li>
-              <li data-kit-step="4">В назначенное время вернись к записанному. Иногда к этому моменту мысль уже не кажется такой важной.</li>
+              <li data-kit-step="3">Назначь ей время&nbsp;— минут двадцать, в&nbsp;удобный день и&nbsp;час.</li>
+              <li data-kit-step="4">В&nbsp;назначенное время вернись к&nbsp;записанному. Иногда к&nbsp;этому моменту мысль уже не&nbsp;кажется такой важной.</li>
           </ol>
-          <p class="pr-stuck"><span class="pr-stuck-k">Если не получается начать.</span> Напиши одну мысль, которая крутится прямо сейчас.</p>
+          <p class="pr-stuck"><span class="pr-stuck-k">Если не&nbsp;получается начать.</span> Напиши одну мысль, которая крутится прямо сейчас.</p>
         </div>
         <div class="pr-kit-main">
             <div class="pr-tool" data-kit-tool>
@@ -156,9 +185,9 @@
 
   <section class="pr-sec pr-pros" data-atmo="haze" aria-labelledby="pr-pros-h">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-pros-h">Для специалистов</h2>
+      <h2 class="kb-h2" id="pr-pros-h">Для&nbsp;специалистов</h2>
       <div class="actions pr-pros-acts"><button type="button" class="btn quiet" data-print-page>Распечатать</button> <button type="button" class="btn quiet" data-copy-steps>Скопировать шаги</button><span class="pr-copied" role="status" aria-live="polite" data-copy-note></span></div>
-      <p class="small pr-pros-note">Тексты базы можно брать в работу со ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
+      <p class="small pr-pros-note">Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
     </div></div>
   </section>
 
@@ -166,19 +195,19 @@
     <div class="frame"><div class="kb-near-wrap">
       <h2 class="kb-h2" id="pr-near">Рядом</h2>
         <dl class="kb-near">
-          <div><dt>Сделать</dt><dd><a href="../practices/t-kit.html"><span class="t">Аптечка на стену</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-window.html"><span class="t">Как я понимаю, что мне хуже</span><span class="m">практика · 15 мин</span></a><a href="../practices/t-friend.html"><span class="t">Письмо себе как другу</span><span class="m">практика · 15 мин</span></a><details class="pr-more"><summary>ещё 2 →</summary><a href="../practices/t-ritual.html"><span class="t">Собрать один ритуал</span><span class="m">практика · 15 мин</span></a><a href="../practices/t-express.html"><span class="t">Экспрессивное письмо</span><span class="m">практика · 4 дня по 15 мин</span></a></details></dd></div>
-          <div><dt>Понять</dt><dd><a href="../encyclopedia/vremya-dlya-trevogi.html"><span class="t">Время для тревоги</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a></dd></div>
-          <div><dt>В ситуациях</dt><dd><a href="../encyclopedia/trevoga.html"><span class="t">Тревога не отпускает</span></a></dd></div>
+          <div><dt>Сделать</dt><dd><a href="../practices/t-kit.html"><span class="t">Аптечка на&nbsp;стену</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-window.html"><span class="t">Как я понимаю, что мне хуже</span><span class="m">практика · 15&nbsp;мин</span></a><a href="../practices/t-friend.html"><span class="t">Письмо себе как другу</span><span class="m">практика · 15&nbsp;мин</span></a><details class="pr-more"><summary>ещё 2 →</summary><a href="../practices/t-ritual.html"><span class="t">Собрать один ритуал</span><span class="m">практика · 15&nbsp;мин</span></a><a href="../practices/t-express.html"><span class="t">Экспрессивное письмо</span><span class="m">практика · 4&nbsp;дня по&nbsp;15&nbsp;мин</span></a></details></dd></div>
+          <div><dt>Понять</dt><dd><a href="../encyclopedia/vremya-dlya-trevogi.html"><span class="t">Время для&nbsp;тревоги</span><span class="m">подход · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a></dd></div>
+          <div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/trevoga.html"><span class="t">Тревога не&nbsp;отпускает</span></a></dd></div>
         </dl>
       <nav class="kb-next" aria-label="Соседние практики"><a href="t-window.html">← предыдущая<b>Как я понимаю, что мне хуже</b></a></nav>
-      <p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+      <p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-end" data-atmo="dawn" data-atmo-rule aria-label="Дальше">
     <div class="frame cols">
       <div class="s-7">
-        <p class="lede pr-bridge">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
+        <p class="lede pr-bridge">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
         <div class="actions"><a class="btn primary" href="../practices.html#catalog">Все практики →</a></div>
       </div>
     </div>
@@ -191,25 +220,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -219,12 +248,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -233,7 +262,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

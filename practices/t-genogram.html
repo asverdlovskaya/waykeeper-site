@@ -7,9 +7,9 @@
 <meta name="description" content="Древо семьи на три поколения с отметками о том, что повторяется.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices/t-genogram.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Генограмма за вечер · Практики · Waykeeper">
+<meta property="og:title" content="Генограмма за вечер">
 <meta property="og:description" content="Древо семьи на три поколения с отметками о том, что повторяется.">
 <meta property="og:url" content="https://waykeeper.org/practices/t-genogram.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -41,42 +48,64 @@
 <script src="../assets/pages/practices.js" defer></script>
 <script src="../modules/trail.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -85,15 +114,15 @@
     <div class="frame">
       <div class="pr-top-grid">
         <div class="pr-top-text">
-          <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html#catalog">Остальные практики</a></li><li aria-current="page">Генограмма за вечер</li></ol>
-          <p class="kb-type">Практика<span class="sep">·</span>60 минут<span class="sep">·</span>без меня</p>
-          <h1 id="pr-title" class="kb-h1 pr-title">Генограмма за вечер</h1>
-          <div class="kb-two"><span class="label">В двух словах</span><p>Древо семьи на три поколения с отметками о том, что повторяется. Когда вся семья на одном листе, видно не только родство, но и сюжеты: переезды, профессии, ранние смерти, разрывы.</p></div>
+          <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html#catalog">Остальные практики</a></li><li aria-current="page">Генограмма за&nbsp;вечер</li></ol>
+          <p class="kb-type">Практика<span class="sep">·</span>60&nbsp;минут<span class="sep">·</span>без&nbsp;меня</p>
+          <h1 id="pr-title" class="kb-h1 pr-title">Генограмма за&nbsp;вечер</h1>
+          <div class="kb-two"><p>Древо семьи на&nbsp;три поколения с&nbsp;отметками о&nbsp;том, что повторяется. Когда вся семья на&nbsp;одном листе, видно не&nbsp;только родство, но&nbsp;и&nbsp;сюжеты: переезды, профессии, ранние смерти, разрывы.</p></div>
           <details class="kb-stamp pr-stamp" id="roots">
-          <summary><span class="pr-stamp-k">На чём стоит</span><span class="pr-root"><a href="../encyclopedia/genogramma.html">Генограмма</a><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span><span class="pr-root"><a href="../encyclopedia/transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span><span class="kb-who">Трансгенерационный подход: потомки беженцев (обзор 20 работ); дети и внуки людей, переживших Холокост</span><span class="kb-checked">метки проверены 26.10.2026</span><span class="more">Почему так</span></summary>
+          <summary><span class="pr-stamp-k">На&nbsp;чём стоит</span><span class="pr-root"><a href="../encyclopedia/genogramma.html">Генограмма</a><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span><span class="pr-root"><a href="../encyclopedia/transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span><span class="kb-who">Трансгенерационный подход: потомки беженцев (обзор 20&nbsp;работ); дети и&nbsp;внуки людей, переживших Холокост</span><span class="kb-checked">метки проверены 26.10.2026</span><span class="more">Почему так</span></summary>
           <div class="kb-stamp-body">
-            <ul class="pr-rootlist"><li><p class="pr-rt"><a href="../encyclopedia/genogramma.html">Генограмма</a> <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <span class="pr-t">опыт практиков</span></p><p>Психологическую генограмму как способ помощи никто не проверял. Есть маленькое испытание 1987 года у семейного врача: генограмма собрала больше сведений, но на его действия не повлияла.</p><p class="pr-rs"><a href="https://doi.org/10.1093/fampra/4.4.291">Rogers, Cohn, 1987</a> · на ком проверяли: семейная медицина и семейная терапия; изучали точность записи, а не пользу для человека</p></li><li><p class="pr-rt"><a href="../encyclopedia/transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a> <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span> <span class="pr-t">систематический обзор</span></p><p>Передачу трудностей детям через воспитание и семейное молчание описывали, в основном у потомков беженцев, но данных мало (ранняя). Что травма наследуется биологически, у людей не доказано (спорная). Повторы дат и событий через поколения, «синдром предков» Шутценбергер, никто не проверял: беру только как язык для разговора.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1007/s10903-016-0499-7">Sangalang, Vang, 2017; van IJzendoorn и соавт., 2003</a> · на ком проверяли: потомки беженцев (обзор 20 работ); дети и внуки людей, переживших Холокост</p></li></ul>
-            <p>Метка говорит, насколько исследован метод, а не как он сработает у тебя. <a href="../how.html#marks">Что значат метки</a></p>
+            <ul class="pr-rootlist"><li><p class="pr-rt"><a href="../encyclopedia/genogramma.html">Генограмма</a> <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <span class="pr-t">опыт практиков</span></p><p>Психологическую генограмму как способ помощи никто не&nbsp;проверял. Есть маленькое испытание 1987&nbsp;года у&nbsp;семейного врача: генограмма собрала больше сведений, но&nbsp;на&nbsp;его действия не&nbsp;повлияла.</p><p class="pr-rs"><a href="https://doi.org/10.1093/fampra/4.4.291">Rogers, Cohn, 1987</a> · на&nbsp;ком проверяли: семейная медицина и&nbsp;семейная терапия; изучали точность записи, а&nbsp;не&nbsp;пользу для&nbsp;человека</p></li><li><p class="pr-rt"><a href="../encyclopedia/transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a> <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span> <span class="pr-t">систематический обзор</span></p><p>Передачу трудностей детям через воспитание и&nbsp;семейное молчание описывали, в&nbsp;основном у&nbsp;потомков беженцев, но&nbsp;данных мало (ранняя). Что травма наследуется биологически, у&nbsp;людей не&nbsp;доказано (спорная). Повторы дат и&nbsp;событий через поколения, «синдром предков» Шутценбергер, никто не&nbsp;проверял: беру только как язык для&nbsp;разговора.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1007/s10903-016-0499-7">Sangalang, Vang, 2017; van IJzendoorn и&nbsp;соавт., 2003</a> · на&nbsp;ком проверяли: потомки беженцев (обзор 20&nbsp;работ); дети и&nbsp;внуки людей, переживших Холокост</p></li></ul>
+            <p>Метка говорит, насколько исследован метод, а&nbsp;не&nbsp;как он сработает у&nbsp;тебя. <a href="../how.html#marks">Что значат метки</a></p>
           </div>
         </details>
           <div class="kb-do"><a class="btn primary" href="#steps">Начать</a></div>
@@ -101,7 +130,7 @@
         <div class="pr-top-art">
           <figure class="plate-alive plate-alive--quiet is-right pr-plate" data-processed data-clear style="--pa-r:1.333; --pa-h:min(52vh, 460px)">
           <div class="pa-img"><img src="../assets/img/pd/practices/genogramma-za-vecher-1200.jpg" alt="Родословное древо с пустыми картушами: человек сажает дерево, за ним сад. Неизвестный немецкий рисовальщик" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <figcaption class="pa-cap">Неизвестный немецкий рисовальщик · «Родословное древо с пустыми картушами: человек сажает дерево, за ним сад», XVIII в.<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
+          <figcaption class="pa-cap">Неизвестный немецкий рисовальщик · «Родословное древо с&nbsp;пустыми картушами: человек сажает дерево, за&nbsp;ним сад», XVIII в.<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
         </figure>
         </div>
       </div>
@@ -110,8 +139,8 @@
 
   <section class="pr-sec pr-sec--facts" aria-label="О практике">
     <div class="frame"><dl class="kb-facts kb-facts--one pr-facts">
-      <div><dt>На руках</dt><dd>Схема семьи и список повторяющихся сюжетов.</dd></div>
-      <div><dt>Откуда</dt><dd>на одном листе видно не только родство, но и сюжеты. Поднимает тяжёлое, в остром состоянии лучше отложить.</dd></div>
+      <div><dt>На&nbsp;руках</dt><dd>Схема семьи и&nbsp;список повторяющихся сюжетов.</dd></div>
+      <div><dt>Откуда</dt><dd>на&nbsp;одном листе видно не&nbsp;только родство, но&nbsp;и&nbsp;сюжеты. Поднимает тяжёлое, в&nbsp;остром состоянии лучше отложить.</dd></div>
       <div><dt>Это упражнение</dt><dd>моя адаптация.</dd></div>
     </dl></div>
   </section>
@@ -121,9 +150,9 @@
       <aside class="pr-careful">
         <h2 class="pr-h" id="pr-careful">Осторожно</h2>
         <ul class="list">
-            <li>Генограмма поднимает тяжёлое: смерти, насилие, разрывы. В остром состоянии её лучше не делать.</li>
-            <li>Это карта для разговора, она ничего не диагностирует. Повторы на древе — повод для вопросов семье, но не объяснение: научного подтверждения, что события передаются через поколения, нет.</li>
-            <li>Если упражнение поднимает больше, чем по силам, — остановись: с этим лучше к специалисту.</li>
+            <li>Генограмма поднимает тяжёлое: смерти, насилие, разрывы. В&nbsp;остром состоянии её лучше не&nbsp;делать.</li>
+            <li>Это карта для&nbsp;разговора, она ничего не&nbsp;диагностирует. Повторы на&nbsp;древе&nbsp;— повод для&nbsp;вопросов семье, но&nbsp;не&nbsp;объяснение: научного подтверждения, что события передаются через поколения, нет.</li>
+            <li>Если упражнение поднимает больше, чем по&nbsp;силам,&nbsp;— остановись: с&nbsp;этим лучше к&nbsp;специалисту.</li>
         </ul>
       </aside>
     </div>
@@ -134,30 +163,30 @@
       <div class="pr-kit" data-module="practice-kit" data-id="t-genogram" data-title="Генограмма за вечер" data-minutes="60" data-store="waykeeper.practice.t-genogram">
         <div class="pr-kit-side">
           <ol class="pr-steps" data-kit-steps>
-              <li data-kit-step="0">На большом листе нарисуй три поколения: себя, родителей, бабушек и дедушек.</li>
-              <li data-kit-step="1">Подпиши имена, годы и города.</li>
+              <li data-kit-step="0">На&nbsp;большом листе нарисуй три поколения: себя, родителей, бабушек и&nbsp;дедушек.</li>
+              <li data-kit-step="1">Подпиши имена, годы и&nbsp;города.</li>
               <li data-kit-step="2">Отметь значками переезды, болезни, разводы, ранние смерти, профессии.</li>
-              <li data-kit-step="3">Обведи то, что повторяется хотя бы дважды.</li>
+              <li data-kit-step="3">Обведи то, что повторяется хотя&nbsp;бы дважды.</li>
               <li data-kit-step="4">Запиши один вопрос, который хочется задать семье.</li>
           </ol>
-          <p class="pr-stuck"><span class="pr-stuck-k">Если не получается начать.</span> Нарисуй квадрат или круг для себя посередине листа. Всё, первый шаг сделан.</p>
+          <p class="pr-stuck"><span class="pr-stuck-k">Если не&nbsp;получается начать.</span> Нарисуй квадрат или круг для&nbsp;себя посередине листа. Всё, первый шаг сделан.</p>
         </div>
         <div class="pr-kit-main">
             <div class="pr-fields" data-kit-fields>
               <div class="pr-field">
                 <label for="f-t-genogram-0">Что я знаю точно</label>
                 <textarea id="f-t-genogram-0" data-kit-field="0" rows="3" placeholder="Имена, годы, города по линиям мамы и папы"></textarea>
-                <p class="pr-ex">Мама: Анна, 1962, областной город. Её родители: Мария (1937, село) и Иван (1935–2001)…</p>
+                <p class="pr-ex">Мама: Анна, 1962, областной город. Её родители: Мария (1937, село) и&nbsp;Иван (1935–2001)…</p>
               </div>
               <div class="pr-field">
                 <label for="f-t-genogram-1">Что повторяется</label>
                 <textarea id="f-t-genogram-1" data-kit-field="1" rows="3" placeholder="Сюжеты, которые встречаются хотя бы дважды"></textarea>
-                <p class="pr-ex">Женщины по маминой линии рано уезжали из дома. Мужчины уходили в работу и мало говорили.</p>
+                <p class="pr-ex">Женщины по&nbsp;маминой линии рано уезжали из&nbsp;дома. Мужчины уходили в&nbsp;работу и&nbsp;мало говорили.</p>
               </div>
               <div class="pr-field">
                 <label for="f-t-genogram-2">Мой вопрос семье</label>
                 <textarea id="f-t-genogram-2" data-kit-field="2" rows="3" placeholder="Один вопрос, который хочется задать"></textarea>
-                <p class="pr-ex">Почему про прадеда по папиной линии никто ничего не рассказывает?</p>
+                <p class="pr-ex">Почему про&nbsp;прадеда по&nbsp;папиной линии никто ничего не&nbsp;рассказывает?</p>
               </div>
             </div>
           <div class="pr-kit-bar" data-kit-bar></div>
@@ -168,9 +197,9 @@
 
   <section class="pr-sec pr-pros" data-atmo="haze" aria-labelledby="pr-pros-h">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-pros-h">Для специалистов</h2>
+      <h2 class="kb-h2" id="pr-pros-h">Для&nbsp;специалистов</h2>
       <div class="actions pr-pros-acts"><button type="button" class="btn quiet" data-print-page>Распечатать</button> <button type="button" class="btn quiet" data-copy-steps>Скопировать шаги</button><span class="pr-copied" role="status" aria-live="polite" data-copy-note></span></div>
-      <p class="small pr-pros-note">Тексты базы можно брать в работу со ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
+      <p class="small pr-pros-note">Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
     </div></div>
   </section>
 
@@ -178,18 +207,18 @@
     <div class="frame"><div class="kb-near-wrap">
       <h2 class="kb-h2" id="pr-near">Рядом</h2>
         <dl class="kb-near">
-          <div><dt>Сделать</dt><dd><a href="../practices/t-five-questions.html"><span class="t">Пять вопросов старшему</span><span class="m">практика · 60 мин</span></a><a href="../practices/t-family-musts.html"><span class="t">Семейные «надо»</span><span class="m">практика · 20 мин</span></a></dd></div>
+          <div><dt>Сделать</dt><dd><a href="../practices/t-five-questions.html"><span class="t">Пять вопросов старшему</span><span class="m">практика · 60&nbsp;мин</span></a><a href="../practices/t-family-musts.html"><span class="t">Семейные «надо»</span><span class="m">практика · 20&nbsp;мин</span></a></dd></div>
           <div><dt>Понять</dt><dd><a href="../encyclopedia/genogramma.html"><span class="t">Генограмма</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="../encyclopedia/transgeneratsionnyy-podkhod.html"><span class="t">Трансгенерационный подход</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a></dd></div>
         </dl>
       <nav class="kb-next" aria-label="Соседние практики"><a href="t-five-questions.html">← предыдущая<b>Пять вопросов старшему</b></a><a class="r" href="t-express.html">следующая →<b>Экспрессивное письмо</b></a></nav>
-      <p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+      <p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-end" data-atmo="dawn" data-atmo-rule aria-label="Дальше">
     <div class="frame cols">
       <div class="s-7">
-        <p class="lede pr-bridge">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
+        <p class="lede pr-bridge">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
         <div class="actions"><a class="btn primary" href="../practices.html#catalog">Все практики →</a></div>
       </div>
     </div>
@@ -202,25 +231,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -230,12 +259,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -244,7 +273,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

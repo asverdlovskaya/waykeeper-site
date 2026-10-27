@@ -7,9 +7,9 @@
 <meta name="description" content="Двадцать персонажей, которые цепляют, и что у них общего.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices/t-heroes.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Мои герои · Практики · Waykeeper">
+<meta property="og:title" content="Мои герои">
 <meta property="og:description" content="Двадцать персонажей, которые цепляют, и что у них общего.">
 <meta property="og:url" content="https://waykeeper.org/practices/t-heroes.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -41,42 +48,64 @@
 <script src="../assets/pages/practices.js" defer></script>
 <script src="../modules/trail.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -86,16 +115,16 @@
       <div class="pr-top-grid">
         <div class="pr-top-text">
           <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Мои герои</li></ol>
-          <p class="kb-type">Практика<span class="sep">·</span>45 минут<span class="sep">·</span>без меня<span class="sep">·</span>основная</p>
+          <p class="kb-type">Практика<span class="sep">·</span>45&nbsp;минут<span class="sep">·</span>без&nbsp;меня<span class="sep">·</span>основная</p>
           <h1 id="pr-title" class="kb-h1 pr-title">Мои герои</h1>
-          <div class="kb-two"><span class="label">В двух словах</span><p>Двадцать персонажей, которые цепляют, и что у них общего. О себе через персонажей говорить проще: они показывают твои ценности и роли как будто со стороны.</p></div>
-          <div class="kb-stamp kb-stamp--none pr-stamp"><p class="pr-stamp-none"><span class="pr-stamp-k">На чём стоит</span><span>Исходного метода нет: упражнение придумано мной.</span></p></div>
+          <div class="kb-two"><p>Двадцать персонажей, которые цепляют, и&nbsp;что у&nbsp;них общего. О&nbsp;себе через персонажей говорить проще: они показывают твои ценности и&nbsp;роли как будто со&nbsp;стороны.</p></div>
+          <div class="kb-stamp kb-stamp--none pr-stamp"><p class="pr-stamp-none"><span class="pr-stamp-k">На&nbsp;чём стоит</span><span>Исходного метода нет: упражнение придумано мной.</span></p></div>
           <div class="kb-do"><a class="btn primary" href="#steps">Начать</a></div>
         </div>
         <div class="pr-top-art">
           <figure class="plate-alive plate-alive--quiet is-right pr-plate" data-processed data-clear style="--pa-r:1.333; --pa-h:min(52vh, 460px)">
           <div class="pa-img"><img src="../assets/img/pd/practices/moi-geroi-1200.jpg" alt="Разворот «Манги» Хокусая: мудрецы и герои с подписями. Кацусика Хокусай" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <figcaption class="pa-cap">Кацусика Хокусай · «Разворот «Манги» Хокусая: мудрецы и герои с подписями», 1814–1878<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
+          <figcaption class="pa-cap">Кацусика Хокусай · «Разворот „Манги“ Хокусая: мудрецы и&nbsp;герои с&nbsp;подписями», 1814–1878<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
         </figure>
         </div>
       </div>
@@ -104,10 +133,10 @@
 
   <section class="pr-sec pr-sec--facts" aria-label="О практике">
     <div class="frame"><dl class="kb-facts kb-facts--one pr-facts">
-      <div><dt>На руках</dt><dd>Черновик того, кто ты, одной фразой: «Я — человек, который…».</dd></div>
-      <div><dt>Откуда</dt><dd>о себе через персонажей говорить проще.</dd></div>
+      <div><dt>На&nbsp;руках</dt><dd>Черновик того, кто ты, одной фразой: «Я&nbsp;— человек, который…».</dd></div>
+      <div><dt>Откуда</dt><dd>о&nbsp;себе через персонажей говорить проще.</dd></div>
       <div><dt>Это упражнение</dt><dd>моё.</dd></div>
-      <div><dt>В «Переходе»</dt><dd>это <a class="link" href="../program.html#week-3">неделя 3</a>: Что тебе важно и что навязано — из героев собираем миссию и ценности, если о себе напрямую говорить неловко.</dd></div>
+      <div><dt>В&nbsp;«Переходе»</dt><dd>это <a class="link" href="../program.html#week-3">неделя 3</a>: Что тебе важно и&nbsp;что навязано&nbsp;— из&nbsp;героев собираем миссию и&nbsp;ценности, если о&nbsp;себе напрямую говорить неловко.</dd></div>
     </dl></div>
   </section>
 
@@ -116,29 +145,29 @@
       <div class="pr-kit" data-module="practice-kit" data-id="t-heroes" data-title="Мои герои" data-minutes="45" data-store="waykeeper.practice.t-heroes">
         <div class="pr-kit-side">
           <ol class="pr-steps" data-kit-steps>
-              <li data-kit-step="0">Выпиши 20–25 персонажей из фильмов, книг, игр. Бери тех, кто цепляет, даже если быть ими не хочется.</li>
-              <li data-kit-step="1">Для каждого одним словом: чем цепляет.</li>
+              <li data-kit-step="0">Выпиши 20–25&nbsp;персонажей из&nbsp;фильмов, книг, игр. Бери тех, кто цепляет, даже если быть ими не&nbsp;хочется.</li>
+              <li data-kit-step="1">Для&nbsp;каждого одним словом: чем цепляет.</li>
               <li data-kit-step="2">Найди слова, которые повторяются.</li>
-              <li data-kit-step="3">Сформулируй: «Я — человек, который…».</li>
+              <li data-kit-step="3">Сформулируй: «Я&nbsp;— человек, который…».</li>
           </ol>
-          <p class="pr-stuck"><span class="pr-stuck-k">Если не получается начать.</span> Назови трёх персонажей, которые первыми приходят в голову.</p>
+          <p class="pr-stuck"><span class="pr-stuck-k">Если не&nbsp;получается начать.</span> Назови трёх персонажей, которые первыми приходят в&nbsp;голову.</p>
         </div>
         <div class="pr-kit-main">
             <div class="pr-fields" data-kit-fields>
               <div class="pr-field">
                 <label for="f-t-heroes-0">Мои персонажи</label>
                 <textarea id="f-t-heroes-0" data-kit-field="0" rows="5" placeholder="Имя — чем цепляет"></textarea>
-                <p class="pr-ex">Мэри Поппинс — порядок с волшебством<br>Шерлок Холмс — видит детали<br>Хагрид — заботится о тех, кого боятся<br>Муми-мама — дом, куда можно вернуться</p>
+                <p class="pr-ex">Мэри Поппинс&nbsp;— порядок с&nbsp;волшебством<br>Шерлок Холмс&nbsp;— видит детали<br>Хагрид&nbsp;— заботится о&nbsp;тех, кого боятся<br>Муми-мама&nbsp;— дом, куда можно вернуться</p>
               </div>
               <div class="pr-field">
                 <label for="f-t-heroes-1">Что повторяется</label>
                 <textarea id="f-t-heroes-1" data-kit-field="1" rows="3" placeholder="Слова и роли"></textarea>
-                <p class="pr-ex">Замечает то, что другие пропускают. Создаёт место, где спокойно. Не боится странного.</p>
+                <p class="pr-ex">Замечает то, что другие пропускают. Создаёт место, где спокойно. Не&nbsp;боится странного.</p>
               </div>
               <div class="pr-field">
-                <label for="f-t-heroes-2">Я — …</label>
+                <label for="f-t-heroes-2">Я&nbsp;— …</label>
                 <textarea id="f-t-heroes-2" data-kit-field="2" rows="3" placeholder="Одна-две фразы"></textarea>
-                <p class="pr-ex">Я — человек, который замечает детали и делает так, чтобы рядом было спокойно.</p>
+                <p class="pr-ex">Я&nbsp;— человек, который замечает детали и&nbsp;делает так, чтобы рядом было спокойно.</p>
               </div>
             </div>
           <div class="pr-kit-bar" data-kit-bar></div>
@@ -149,9 +178,9 @@
 
   <section class="pr-sec pr-pros" data-atmo="haze" aria-labelledby="pr-pros-h">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-pros-h">Для специалистов</h2>
+      <h2 class="kb-h2" id="pr-pros-h">Для&nbsp;специалистов</h2>
       <div class="actions pr-pros-acts"><button type="button" class="btn quiet" data-print-page>Распечатать</button> <button type="button" class="btn quiet" data-copy-steps>Скопировать шаги</button><span class="pr-copied" role="status" aria-live="polite" data-copy-note></span></div>
-      <p class="small pr-pros-note">Тексты базы можно брать в работу со ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
+      <p class="small pr-pros-note">Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
     </div></div>
   </section>
 
@@ -159,19 +188,19 @@
     <div class="frame"><div class="kb-near-wrap">
       <h2 class="kb-h2" id="pr-near">Рядом</h2>
         <dl class="kb-near">
-          <div><dt>Сделать</dt><dd><a href="../practices/t-horsemen.html"><span class="t">Всадники апокалипсиса</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-values.html"><span class="t">Ценности из поступков</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-wheel.html"><span class="t">Колесо контекстов</span><span class="m">практика · 20 мин</span></a><details class="pr-more"><summary>ещё 1 →</summary><a href="../practices/t-close.html"><span class="t">Интервью близких</span><span class="m">практика · неделя</span></a></details></dd></div>
+          <div><dt>Сделать</dt><dd><a href="../practices/t-horsemen.html"><span class="t">Всадники апокалипсиса</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-values.html"><span class="t">Ценности из&nbsp;поступков</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-wheel.html"><span class="t">Колесо контекстов</span><span class="m">практика · 20&nbsp;мин</span></a><details class="pr-more"><summary>ещё 1 →</summary><a href="../practices/t-close.html"><span class="t">Интервью близких</span><span class="m">практика · неделя</span></a></details></dd></div>
           <div><dt>Понять</dt><dd><a href="../encyclopedia/narrativnaya-identichnost.html"><span class="t">Нарративная идентичность</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a></dd></div>
-          <div><dt>В ситуациях</dt><dd><a href="../encyclopedia/krizis-identichnosti.html"><span class="t">Кризис идентичности</span></a></dd></div>
+          <div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/krizis-identichnosti.html"><span class="t">Кризис идентичности</span></a></dd></div>
         </dl>
       <nav class="kb-next" aria-label="Соседние практики"><a href="t-periods.html">← предыдущая<b>Три живых периода</b></a><a class="r" href="t-horsemen.html">следующая →<b>Всадники апокалипсиса</b></a></nav>
-      <p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+      <p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-end" data-atmo="dawn" data-atmo-rule aria-label="Дальше">
     <div class="frame cols">
       <div class="s-7">
-        <p class="lede pr-bridge">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
+        <p class="lede pr-bridge">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
         <div class="actions"><a class="btn primary" href="../practices.html#catalog">Все практики →</a></div>
       </div>
     </div>
@@ -184,25 +213,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -212,12 +241,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -226,7 +255,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

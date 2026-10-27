@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Атлас помогающих профессий · Waykeeper</title>
-<meta name="description" content="Атлас помогающих профессий: 125 специалистов, десять семей и четыре уровня — кто за что отвечает, с какими запросами работает и где заканчивается его зона. Описываем, не рекомендуем. В работе.">
+<meta name="description" content="Кто есть кто среди помогающих профессий: за что отвечают психолог, коуч, психиатр или юрист, с какими запросами к ним идут и где заканчивается их зона.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Атлас помогающих профессий · Waykeeper">
-<meta property="og:description" content="Атлас помогающих профессий: 125 специалистов, десять семей и четыре уровня — кто за что отвечает, с какими запросами работает и где заканчивается его зона. Описываем, не рекомендуем. В работе.">
+<meta property="og:title" content="Атлас помогающих профессий">
+<meta property="og:description" content="Кто есть кто среди помогающих профессий: за что отвечают психолог, коуч, психиатр или юрист, с какими запросами к ним идут и где заканчивается их зона.">
 <meta property="og:url" content="https://waykeeper.org/atlas.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -43,6 +43,13 @@
 })();
 </script>
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/kb.css">
@@ -59,42 +66,64 @@
 <link rel="stylesheet" href="assets/alive.css">
 <link rel="stylesheet" href="modules/passage.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html">«Новый сезон»</a></li>
-        <li><a href="project.html">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -104,33 +133,30 @@
   <!-- ===== 1. ВХОД: что это, принцип, поиск, большая карта ===== -->
   <section class="frame aw-hero" data-atmo="dawn" aria-labelledby="page-title">
     <div class="aw-hero-text">
-      <p class="status status--wip">в работе</p>
+      <p class="status status--wip">в&nbsp;работе</p>
       <h1 class="display" id="page-title"><span class="ln"><span>Атлас</span></span><span class="ln"><span><em>помогающих профессий</em></span></span></h1>
-      <p class="lede">Помогающие специалисты — это люди, чья работа состоит в&nbsp;том, чтобы помогать другим людям справляться с&nbsp;жизнью: со&nbsp;здоровьем, переживаниями, отношениями, работой, деньгами, бытом, утратой, поиском смысла.</p>
-      <p class="lede-em">Описываем, не&nbsp;рекомендуем.</p>
-      <p class="aw-hero-note">Атлас ничего не рекомендует и не оценивает конкретных людей. Он объясняет, кто есть кто, за что отвечает, с какими запросами работает и где заканчивается его зона.</p>
+      <p class="lede">Помогающие специалисты&nbsp;— это люди, чья работа состоит в&nbsp;том, чтобы помогать другим людям справляться с&nbsp;жизнью: со&nbsp;здоровьем, переживаниями, отношениями, работой, деньгами, бытом, утратой, поиском смысла.</p>
+      <p class="aw-hero-note">Атлас ничего не&nbsp;рекомендует и&nbsp;не&nbsp;оценивает конкретных людей. Он объясняет, кто есть кто, за&nbsp;что отвечает, с&nbsp;какими запросами работает и&nbsp;где заканчивается его зона.</p>
       <form class="kb-search" role="search" action="knowledge.html" method="get"><input type="search" name="q" aria-label="Найти в базе знаний" placeholder="Специалист, запрос, семья, понятие…" spellcheck="false"><kbd aria-hidden="true">/</kbd></form>
-      <p class="kb-hint">Ищет сразу в практиках, статьях, атласе, ресурсах и словаре.</p>
       <div class="aw-hero-go">
         <a class="btn primary" href="atlas-map.html" target="_blank" rel="noopener">Открыть большую карту ↗</a>
-        <p class="aw-hero-meta"><span><b>125</b> специалистов</span><span><b>10</b> семей</span><span>4 уровня</span><span><b>10</b> практик в отдельном слое</span></p>
       </div>
     </div>
     <figure class="aw-plate aw-hero-plate" data-processed>
       <img src="assets/img/pd/ad/processed/ortelius-typus-1200.jpg" alt="Старинная карта мира в овале: все известные в XVI веке материки на одном листе, по углам облака и надписи" width="1200" height="944" fetchpriority="high">
-      <figcaption>Абрахам Ортелий, гравёр Франс Хогенберг · карта мира из атласа «Зрелище круга земного», 1579<span class="pa-src"> · Библиотека Конгресса США</span></figcaption>
+      <figcaption>Абрахам Ортелий, гравёр Франс Хогенберг · карта мира из&nbsp;атласа «Зрелище круга земного», 1579<span class="pa-src"> · Библиотека Конгресса США</span></figcaption>
     </figure>
   </section>
 
   <!-- ===== 2. ТРИ ВХОДА: с каким вопросом к кому · семьи · (поиск — выше) ===== -->
   <section class="frame aw-door" id="requests" data-atmo="day" aria-labelledby="s-req">
     <div class="aw-door-side">
-      <h2 id="s-req">С каким вопросом к кому</h2>
-      <p class="aw-meta">С чем приходят к специалистам — словами самих людей. 757 запросов в указателе.</p>
+      <h2 id="s-req">С&nbsp;каким вопросом к&nbsp;кому</h2>
+      <p class="aw-meta">С&nbsp;чем приходят к&nbsp;специалистам&nbsp;— словами самих людей. 757&nbsp;запросов в&nbsp;указателе.</p>
     </div>
     <div class="aw-door-main" data-aw-req>
       <label class="aw-q aw-q--field"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="m11 11 3.5 3.5"/></svg><span class="visually-hidden">Что происходит</span><input type="search" placeholder="Например: не сплю, переезд, наследство" autocomplete="off"></label>
-      <p class="aw-chips"><button type="button" class="aw-chip" data-req-try="не сплю">не сплю</button><button type="button" class="aw-chip" data-req-try="переезд">переезд</button><button type="button" class="aw-chip" data-req-try="наследство">наследство</button></p>
+      <p class="aw-chips"><button type="button" class="aw-chip" data-req-try="не сплю">не&nbsp;сплю</button><button type="button" class="aw-chip" data-req-try="переезд">переезд</button><button type="button" class="aw-chip" data-req-try="наследство">наследство</button></p>
       <div class="aw-req-out" aria-live="polite"></div>
       <p class="aw-more"><a class="link" href="atlas/requests.html">Весь указатель запросов →</a></p>
     </div>
@@ -139,11 +165,11 @@
   <section class="frame aw-door aw-door--fams" id="families" data-atmo="day" aria-labelledby="s-fam">
     <div class="aw-door-side">
       <h2 id="s-fam">Семьи профессий</h2>
-      <p class="aw-meta">Семья отвечает на вопрос, за какую сферу жизни отвечает специалист. Десять семей и внешнее кольцо «Опора для помогающих».</p>
+      <p class="aw-meta">Семья отвечает на&nbsp;вопрос, за&nbsp;какую сферу жизни отвечает специалист. Десять семей и&nbsp;внешнее кольцо «Опора для&nbsp;помогающих».</p>
     </div>
     <div class="aw-door-main">
-      <ul class="aw-fams"><li><a class="aw-fam" href="atlas/fam-body.html"><span class="aw-fam-top"><span class="num">I</span><span class="aw-fam-n tnum">19</span></span><span class="aw-fam-t">Тело и здоровье</span><span class="aw-fam-d">Телесное здоровье, восстановление функций, движение, питание.</span></a></li><li><a class="aw-fam" href="atlas/fam-mind.html"><span class="aw-fam-top"><span class="num">II</span><span class="aw-fam-n tnum">29</span></span><span class="aw-fam-t">Психика и эмоции</span><span class="aw-fam-d">Психическое состояние, переживания, расстройства, психологическое развитие.</span></a></li><li><a class="aw-fam" href="atlas/fam-rel.html"><span class="aw-fam-top"><span class="num">III</span><span class="aw-fam-n tnum">9</span></span><span class="aw-fam-t">Отношения и семья</span><span class="aw-fam-d">Пары, семья, дети, конфликты между людьми.</span></a></li><li><a class="aw-fam" href="atlas/fam-comm.html"><span class="aw-fam-top"><span class="num">IV</span><span class="aw-fam-n tnum">8</span></span><span class="aw-fam-t">Сообщества и взаимопомощь</span><span class="aw-fam-d">Группы, местные сообщества, волонтёрство, адаптация на новом месте.</span></a></li><li><a class="aw-fam" href="atlas/fam-work.html"><span class="aw-fam-top"><span class="num">V</span><span class="aw-fam-n tnum">15</span></span><span class="aw-fam-t">Работа и развитие</span><span class="aw-fam-d">Карьера, обучение, цели, рабочая жизнь.</span></a></li><li><a class="aw-fam" href="atlas/fam-law.html"><span class="aw-fam-top"><span class="num">VI</span><span class="aw-fam-n tnum">14</span></span><span class="aw-fam-t">Деньги и право</span><span class="aw-fam-d">Финансы, документы, права, споры с юридическими последствиями.</span></a></li><li><a class="aw-fam" href="atlas/fam-home.html"><span class="aw-fam-top"><span class="num">VII</span><span class="aw-fam-n tnum">10</span></span><span class="aw-fam-t">Быт и социальная поддержка</span><span class="aw-fam-d">Повседневная жизнь, уход, жильё, социальные услуги, бытовая сторона переезда.</span></a></li><li><a class="aw-fam" href="atlas/fam-loss.html"><span class="aw-fam-top"><span class="num">VIII</span><span class="aw-fam-n tnum">9</span></span><span class="aw-fam-t">Утрата и конец жизни</span><span class="aw-fam-d">Умирание, паллиатив, похороны, горе.</span></a></li><li><a class="aw-fam" href="atlas/fam-spirit.html"><span class="aw-fam-top"><span class="num">IX</span><span class="aw-fam-n tnum">5</span></span><span class="aw-fam-t">Дух и смысл</span><span class="aw-fam-d">Вера, ценности, экзистенциальные вопросы, практики созерцания.</span></a></li><li><a class="aw-fam" href="atlas/fam-hist.html"><span class="aw-fam-top"><span class="num">X</span><span class="aw-fam-n tnum">4</span></span><span class="aw-fam-t">История и память</span><span class="aw-fam-d">Род, биография, наследие, семейная память.</span></a></li></ul>
-      <p class="aw-more"><a href="atlas/fam-support.html"> Опора для помогающих <span class="tnum">3</span></a><a href="atlas/fam-alt.html"> Отдельный слой: альтернативные и эзотерические практики <span class="tnum">10</span></a><a href="atlas/all.html">Все специалисты списком →</a></p>
+      <ul class="aw-fams"><li><a class="aw-fam" href="atlas/fam-body.html"><span class="aw-fam-top"><span class="num">I</span><span class="aw-fam-n tnum">19</span></span><span class="aw-fam-t">Тело и&nbsp;здоровье</span><span class="aw-fam-d">Телесное здоровье, восстановление функций, движение, питание.</span></a></li><li><a class="aw-fam" href="atlas/fam-mind.html"><span class="aw-fam-top"><span class="num">II</span><span class="aw-fam-n tnum">29</span></span><span class="aw-fam-t">Психика и&nbsp;эмоции</span><span class="aw-fam-d">Психическое состояние, переживания, расстройства, психологическое развитие.</span></a></li><li><a class="aw-fam" href="atlas/fam-rel.html"><span class="aw-fam-top"><span class="num">III</span><span class="aw-fam-n tnum">9</span></span><span class="aw-fam-t">Отношения и&nbsp;семья</span><span class="aw-fam-d">Пары, семья, дети, конфликты между людьми.</span></a></li><li><a class="aw-fam" href="atlas/fam-comm.html"><span class="aw-fam-top"><span class="num">IV</span><span class="aw-fam-n tnum">8</span></span><span class="aw-fam-t">Сообщества и&nbsp;взаимопомощь</span><span class="aw-fam-d">Группы, местные сообщества, волонтёрство, адаптация на&nbsp;новом месте.</span></a></li><li><a class="aw-fam" href="atlas/fam-work.html"><span class="aw-fam-top"><span class="num">V</span><span class="aw-fam-n tnum">15</span></span><span class="aw-fam-t">Работа и&nbsp;развитие</span><span class="aw-fam-d">Карьера, обучение, цели, рабочая жизнь.</span></a></li><li><a class="aw-fam" href="atlas/fam-law.html"><span class="aw-fam-top"><span class="num">VI</span><span class="aw-fam-n tnum">14</span></span><span class="aw-fam-t">Деньги и&nbsp;право</span><span class="aw-fam-d">Финансы, документы, права, споры с&nbsp;юридическими последствиями.</span></a></li><li><a class="aw-fam" href="atlas/fam-home.html"><span class="aw-fam-top"><span class="num">VII</span><span class="aw-fam-n tnum">10</span></span><span class="aw-fam-t">Быт и&nbsp;социальная поддержка</span><span class="aw-fam-d">Повседневная жизнь, уход, жильё, социальные услуги, бытовая сторона переезда.</span></a></li><li><a class="aw-fam" href="atlas/fam-loss.html"><span class="aw-fam-top"><span class="num">VIII</span><span class="aw-fam-n tnum">9</span></span><span class="aw-fam-t">Утрата и&nbsp;конец жизни</span><span class="aw-fam-d">Умирание, паллиатив, похороны, горе.</span></a></li><li><a class="aw-fam" href="atlas/fam-spirit.html"><span class="aw-fam-top"><span class="num">IX</span><span class="aw-fam-n tnum">5</span></span><span class="aw-fam-t">Дух и&nbsp;смысл</span><span class="aw-fam-d">Вера, ценности, экзистенциальные вопросы, практики созерцания.</span></a></li><li><a class="aw-fam" href="atlas/fam-hist.html"><span class="aw-fam-top"><span class="num">X</span><span class="aw-fam-n tnum">4</span></span><span class="aw-fam-t">История и&nbsp;память</span><span class="aw-fam-d">Род, биография, наследие, семейная память.</span></a></li></ul>
+      <p class="aw-more"><a href="atlas/fam-support.html"> Опора для&nbsp;помогающих <span class="tnum">3</span></a><a href="atlas/fam-alt.html">&nbsp;Отдельный слой: альтернативные и&nbsp;эзотерические практики <span class="tnum">10</span></a><a href="atlas/all.html">Все специалисты списком →</a></p>
     </div>
   </section>
 
@@ -151,10 +177,10 @@
   <section class="frame aw-door aw-door--how" id="howto" data-atmo="haze" aria-labelledby="s-how">
     <div class="aw-door-side"><h2 id="s-how">Как устроен атлас</h2></div>
     <div class="aw-door-main">
-      <p class="aw-how">Две оси — семья и уровень. У каждого факта есть источник; то, что не удалось проверить по первоисточнику, помечено знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p>
+      <p class="aw-how">У&nbsp;каждого факта есть источник; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p>
       <p class="aw-more"><a class="link" href="atlas/how.html">Как устроен атлас →</a><a class="link" href="how.html#check">Как проверяем →</a><a class="link" href="glossary.html">Словарь →</a><a class="link" href="atlas/compare.html">Сравнить специалистов →</a></p>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </div>
   </section>
 
@@ -165,25 +191,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -193,12 +219,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -207,7 +233,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

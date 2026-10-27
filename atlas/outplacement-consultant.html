@@ -7,9 +7,9 @@
 <meta name="description" content="Консультант по аутплейсменту: Помогает уволенным сотрудникам найти новую работу (платит работодатель). Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/outplacement-consultant.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Аутплейсмент · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Аутплейсмент">
 <meta property="og:description" content="Консультант по аутплейсменту: Помогает уволенным сотрудникам найти новую работу (платит работодатель). Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/outplacement-consultant.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Работа и развитие · 15</span><ul><li><a href="mentor.html">Ментор</a></li><li><a href="outplacement-consultant.html" class="is-here" aria-current="page">Аутплейсмент</a></li><li><a href="executive-coach.html">Бизнес-коуч</a></li><li><a href="career-counsellor.html">Карьерный консультант</a></li><li><a href="education-consultant.html">Консультант по поступлению</a></li><li><a href="learning-coach.html">Коуч по обучению</a></li><li><a href="life-coach.html">Лайф-коуч</a></li><li><a href="language-teacher.html">Преподаватель языка</a></li><li><a href="career-guidance-specialist.html">Профориентолог</a></li><li><a href="tutor.html">Репетитор</a></li><li><a href="trainer.html">Бизнес-тренер</a></li><li><a href="special-needs-educator.html">Дефектолог</a></li><li><a href="organizational-psychologist.html">Организационный психолог</a></li><li><a href="educational-tutor.html">Тьютор</a></li><li><a href="employment-centre-specialist.html">Центр занятости</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-work" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Работа и&nbsp;развитие · 15</span><ul><li><a href="mentor.html">Ментор</a></li><li><a href="outplacement-consultant.html" class="is-here" aria-current="page">Аутплейсмент</a></li><li><a href="executive-coach.html">Бизнес-коуч</a></li><li><a href="career-counsellor.html">Карьерный консультант</a></li><li><a href="education-consultant.html">Консультант по&nbsp;поступлению</a></li><li><a href="learning-coach.html">Коуч по&nbsp;обучению</a></li><li><a href="life-coach.html">Лайф-коуч</a></li><li><a href="language-teacher.html">Преподаватель языка</a></li><li><a href="career-guidance-specialist.html">Профориентолог</a></li><li><a href="tutor.html">Репетитор</a></li><li><a href="trainer.html">Бизнес-тренер</a></li><li><a href="special-needs-educator.html">Дефектолог</a></li><li><a href="organizational-psychologist.html">Организационный психолог</a></li><li><a href="educational-tutor.html">Тьютор</a></li><li><a href="employment-centre-specialist.html">Центр занятости</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-work" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-work.html">Работа и развитие</a></li><li>Аутплейсмент</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>семья «Работа и развитие»<span class="sep">·</span>данные 27.10.2026</p>
-      <h1 class="kb-h1" id="page-title">Консультант по аутплейсменту<small lang="en">Outplacement consultant</small></h1>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-work.html">Работа и&nbsp;развитие</a></li><li>Аутплейсмент</li></ol>
       
-      <div class="kb-two"><span class="label">В двух словах</span><p>Помогает уволенным сотрудникам найти новую работу (платит работодатель)</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>5 источников</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 4 утверждения не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — средний. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
-      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>иногда</dd></div><div><dt>Работает с будущим</dt><dd>да</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>да</dd></div><div><dt>Работает с группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>да</dd></div><div><dt>Доступность</dt><dd>платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, обучение навыкам, эмоциональная поддержка, практическое действие, сеть/контакты</dd></div></dl><dl class="kb-facts kb-facts--one"><div><dt>В России</dt><dd>редко: В крупных компаниях и кадровых агентствах.</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Помогает сотрудникам, которых увольняет компания, найти новую работу или другой путь (своё дело, пенсия, фриланс). Услугу оплачивает бывший работодатель, а не сам человек <sup class="ref"><a href="#src-1" title="Outplacement — Wikipedia (отправная точка)">1</a></sup>.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«Меня сократили — что делать дальше»</li><li>«Не искал работу 10 лет, не знаю, как сейчас это делается»</li><li>«Нужно обновить резюме и подготовиться к собеседованиям»</li><li>«Как договориться о зарплате на новом месте»</li><li>«Может, пора открыть своё дело?»</li><li>«Тяжело пережить увольнение»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Оценка опыта и карьерных вариантов, помощь с резюме, собеседованиями, переговорами о зарплате, нетворкингом; иногда — психологическая поддержка; индивидуально или в группах <sup class="ref"><a href="#src-1" title="Outplacement — Wikipedia (отправная точка)">1</a></sup>.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуальные встречи и групповые мастер-классы; программа от нескольких месяцев до года <sup class="ref"><a href="#src-1" title="Outplacement — Wikipedia (отправная точка)">1</a></sup>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Не трудоустраивает напрямую и не гарантирует работу. Не юрист: не оспаривает увольнение и не проверяет выплаты. Не <a href="general-practitioner.html">терапевт</a>, хотя может помочь пережить первый шок. Заказчик — работодатель: стоит уточнить, какая информация ему передаётся.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Обычно опыт в подборе персонала, HR или карьерном консультировании плюс курсы <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Отдельно не регулируется <sup class="ref"><a href="#src-4" title="Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ">4</a></sup>, <sup class="ref"><a href="#src-5" title="Федеральный закон от 04.05.2011 № 99-ФЗ «О лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на которые требуются лицензии» (копия текста закона) — zakonrf.info">5</a></sup>. Трудовой кодекс не обязывает работодателя оплачивать аутплейсмент, но обязывает предупредить о сокращении лично и под подпись не менее чем за 2 месяца и предложить другую имеющуюся работу (вакантную должность) <sup class="ref"><a href="#src-2" title="Трудовой кодекс РФ, статья 180 (гарантии при сокращении) — legalacts.ru">2</a></sup>; выходные пособия — статья 178 ТК РФ <sup class="ref"><a href="#src-3" title="Трудовой кодекс РФ, статья 178 «Выходные пособия» — legalacts.ru">3</a></sup>. В мире обычно: добровольная услуга работодателя; в ряде стран её включают в соглашения об увольнении <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Кадровые и HR-консалтинговые компании (по договору с работодателем); если работодатель не оплачивает — <a href="career-counsellor.html">карьерные консультанты</a> и <a href="employment-centre-specialist.html">центры занятости</a> <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p><p><b>Онлайн?</b> да · <b>Доступность.</b> платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Направляет HR увольняющей компании. Передаёт юристу по трудовому праву, психологу при тяжёлой реакции на потерю работы, <a href="career-counsellor.html">карьерному консультанту</a> для долгой смены профессии.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Если при увольнении предлагают аутплейсмент — это бесплатный для вас ресурс; стоит спросить о нём при переговорах об уходе <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 5</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://en.wikipedia.org/wiki/Outplacement" target="_blank" rel="noopener">Outplacement — Wikipedia (отправная точка) ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://legalacts.ru/kodeks/TK-RF/chast-iii/razdel-vii/glava-27/statja-180/" target="_blank" rel="noopener">Трудовой кодекс РФ, статья 180 (гарантии при сокращении) — legalacts.ru ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://legalacts.ru/kodeks/TK-RF/chast-iii/razdel-vii/glava-27/statja-178/" target="_blank" rel="noopener">Трудовой кодекс РФ, статья 178 «Выходные пособия» — legalacts.ru ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://classinform.ru/profstandarty.html" target="_blank" rel="noopener">Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ ↗</a></span></li><li id="src-5" data-n="5"><span><a href="https://zakonrf.info/zakon-o-licenzirovanii/12/" target="_blank" rel="noopener">Федеральный закон от 04.05.2011 № 99-ФЗ «О лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на которые требуются лицензии» (копия текста закона) — zakonrf.info ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/rabota-zakonchilas.html"><span class="t">Закончилась работа или своё дело</span><span class="m">ситуация</span></a><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#test-anchors"><span class="t">Якоря карьеры Шейна (psytests.org)</span><span class="m">тест · Эдгар Шейн; русская версия В. Чикер · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр — в чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a></dd></div><div><dt>В атласе</dt><dd><a href="career-counsellor.html"><span class="t">Карьерный консультант / карьерный коуч</span><span class="m">стыкуется</span></a><a href="labour-lawyer.html"><span class="t">Трудовой юрист</span><span class="m">упоминает</span></a><a href="executive-coach.html"><span class="t">Executive-коуч / бизнес-коуч</span><span class="m">та же семья</span></a><a href="education-consultant.html"><span class="t">Консультант по образованию и поступлению</span><span class="m">та же семья</span></a><a href="learning-coach.html"><span class="t">Коуч по обучению / наставник по обучению взрослых</span><span class="m">та же семья</span></a><a href="life-coach.html"><span class="t">Лайф-коуч</span><span class="m">та же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=outplacement-consultant,career-counsellor,labour-lawyer">Сравнить с похожими</a><a class="kb-do-alt" href="../atlas-map.html#outplacement-consultant" target="_blank" rel="noopener">Показать на карте ↗</a></div></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="mentor.html" rel="prev">← Предыдущий в семье<b>Ментор</b></a><a class="r" href="executive-coach.html" rel="next">Следующий в семье →<b>Бизнес-коуч</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <h1 class="kb-h1" id="page-title">Консультант по&nbsp;аутплейсменту<small lang="en">Outplacement consultant</small></h1>
+      
+      <div class="kb-two"><p>Помогает уволенным сотрудникам найти новую работу (платит работодатель)</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;5&nbsp;источникам<span class="kb-pending">, 4&nbsp;утверждения ещё сверяются</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— средний. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На&nbsp;чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и&nbsp;участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>да</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>да</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>да</dd></div><div><dt>Доступность</dt><dd>платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и&nbsp;консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, обучение навыкам, эмоциональная поддержка, практическое действие, сеть/контакты</dd></div></dl><dl class="kb-facts kb-facts--one"><div><dt>В&nbsp;России</dt><dd>редко: В&nbsp;крупных компаниях и&nbsp;кадровых агентствах.</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Помогает сотрудникам, которых увольняет компания, найти новую работу или другой путь (своё дело, пенсия, фриланс). Услугу оплачивает бывший работодатель, а&nbsp;не&nbsp;сам человек<sup class="ref"><a href="#src-1" title="Outplacement — Wikipedia (отправная точка)">1</a></sup>.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем к&nbsp;нему приходят</h2><ul><li>«Меня сократили&nbsp;— что делать дальше»</li><li>«Не&nbsp;искал работу 10&nbsp;лет, не&nbsp;знаю, как сейчас это делается»</li><li>«Нужно обновить резюме и&nbsp;подготовиться к&nbsp;собеседованиям»</li><li>«Как договориться о&nbsp;зарплате на&nbsp;новом месте»</li><li>«Может, пора открыть своё дело?»</li><li>«Тяжело пережить увольнение»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Оценка опыта и&nbsp;карьерных вариантов, помощь с&nbsp;резюме, собеседованиями, переговорами о&nbsp;зарплате, нетворкингом; иногда&nbsp;— психологическая поддержка; индивидуально или в&nbsp;группах<sup class="ref"><a href="#src-1" title="Outplacement — Wikipedia (отправная точка)">1</a></sup>.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуальные встречи и&nbsp;групповые мастер-классы; программа от&nbsp;нескольких месяцев до&nbsp;года<sup class="ref"><a href="#src-1" title="Outplacement — Wikipedia (отправная точка)">1</a></sup>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>Не&nbsp;трудоустраивает напрямую и&nbsp;не&nbsp;гарантирует работу. Не&nbsp;юрист: не&nbsp;оспаривает увольнение и&nbsp;не&nbsp;проверяет выплаты. Не&nbsp;<a href="general-practitioner.html">терапевт</a>, хотя может помочь пережить первый шок. Заказчик&nbsp;— работодатель: стоит уточнить, какая информация ему передаётся.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>Обычно опыт в&nbsp;подборе персонала, HR или карьерном консультировании плюс курсы <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>Отдельно не&nbsp;регулируется<sup class="ref"><a href="#src-4" title="Профессиональные стандарты: справочник по разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026) — КлассИнформ">4</a></sup>,<sup class="ref"><a href="#src-5" title="Федеральный закон от 04.05.2011 № 99-ФЗ «О лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на которые требуются лицензии» (копия текста закона) — zakonrf.info">5</a></sup>. Трудовой кодекс не&nbsp;обязывает работодателя оплачивать аутплейсмент, но&nbsp;обязывает предупредить о&nbsp;сокращении лично и&nbsp;под&nbsp;подпись не&nbsp;менее чем за&nbsp;2&nbsp;месяца и&nbsp;предложить другую имеющуюся работу (вакантную должность)<sup class="ref"><a href="#src-2" title="Трудовой кодекс РФ, статья 180 (гарантии при сокращении) — legalacts.ru">2</a></sup>; выходные пособия&nbsp;— статья 178&nbsp;ТК РФ<sup class="ref"><a href="#src-3" title="Трудовой кодекс РФ, статья 178 «Выходные пособия» — legalacts.ru">3</a></sup>. В&nbsp;мире обычно: добровольная услуга работодателя; в&nbsp;ряде стран её включают в&nbsp;соглашения об&nbsp;увольнении <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Кадровые и&nbsp;HR-консалтинговые компании (по&nbsp;договору с&nbsp;работодателем); если работодатель не&nbsp;оплачивает&nbsp;— <a href="career-counsellor.html">карьерные консультанты</a> и&nbsp;<a href="employment-centre-specialist.html">центры занятости</a> <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p><p><b>Онлайн?</b> да · <b>Доступность.</b> платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С&nbsp;кем стыкуется</h2><div class="prose"><p>Направляет HR увольняющей компании. Передаёт юристу по&nbsp;трудовому праву, психологу при&nbsp;тяжёлой реакции на&nbsp;потерю работы, <a href="career-counsellor.html">карьерному консультанту</a> для&nbsp;долгой смены профессии.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В&nbsp;переходе</h2><div class="prose"><p>Если при&nbsp;увольнении предлагают аутплейсмент&nbsp;— это бесплатный для&nbsp;тебя ресурс; стоит спросить о&nbsp;нём при&nbsp;переговорах об&nbsp;уходе <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 5</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://en.wikipedia.org/wiki/Outplacement" target="_blank" rel="noopener">Outplacement&nbsp;— Wikipedia (отправная точка) ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://legalacts.ru/kodeks/TK-RF/chast-iii/razdel-vii/glava-27/statja-180/" target="_blank" rel="noopener">Трудовой кодекс РФ, статья 180 (гарантии при&nbsp;сокращении)&nbsp;— legalacts.ru ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://legalacts.ru/kodeks/TK-RF/chast-iii/razdel-vii/glava-27/statja-178/" target="_blank" rel="noopener">Трудовой кодекс РФ, статья 178 «Выходные пособия»&nbsp;— legalacts.ru ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://classinform.ru/profstandarty.html" target="_blank" rel="noopener">Профессиональные стандарты: справочник по&nbsp;разделам (неофициальная копия реестра Минтруда; доступ 26–27.10.2026)&nbsp;— КлассИнформ ↗</a></span></li><li id="src-5" data-n="5"><span><a href="https://zakonrf.info/zakon-o-licenzirovanii/12/" target="_blank" rel="noopener">Федеральный закон от&nbsp;04.05.2011 №&nbsp;99-ФЗ «О&nbsp;лицензировании отдельных видов деятельности», ст. 12 «Перечень видов деятельности, на&nbsp;которые требуются лицензии» (копия текста закона)&nbsp;— zakonrf.info ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/rabota-zakonchilas.html"><span class="t">Закончилась работа или своё дело</span><span class="m">ситуация</span></a><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#test-anchors"><span class="t">Якоря карьеры Шейна (psytests.org)</span><span class="m">тест · Эдгар Шейн; русская версия В.&nbsp;Чикер · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр&nbsp;— в&nbsp;чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="career-counsellor.html"><span class="t">Карьерный консультант / карьерный коуч</span><span class="m">стыкуется</span></a><a href="labour-lawyer.html"><span class="t">Трудовой юрист</span><span class="m">упоминает</span></a><a href="executive-coach.html"><span class="t">Executive-коуч / бизнес-коуч</span><span class="m">та&nbsp;же семья</span></a><a href="education-consultant.html"><span class="t">Консультант по&nbsp;образованию и&nbsp;поступлению</span><span class="m">та&nbsp;же семья</span></a><a href="learning-coach.html"><span class="t">Коуч по&nbsp;обучению / наставник по&nbsp;обучению взрослых</span><span class="m">та&nbsp;же семья</span></a><a href="life-coach.html"><span class="t">Лайф-коуч</span><span class="m">та&nbsp;же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=outplacement-consultant,career-counsellor,labour-lawyer">Сравнить с&nbsp;похожими</a><a class="kb-do-alt" href="../atlas-map.html#outplacement-consultant" target="_blank" rel="noopener">Показать на&nbsp;карте ↗</a></div></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="mentor.html" rel="prev">← Предыдущий в&nbsp;семье<b>Ментор</b></a><a class="r" href="executive-coach.html" rel="next">Следующий в&nbsp;семье →<b>Бизнес-коуч</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 5</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем к&nbsp;нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С&nbsp;кем стыкуется</a></li><li><a href="#perehod">В&nbsp;переходе</a></li><li><a href="#istochniki">Источники · 5</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

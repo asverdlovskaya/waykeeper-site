@@ -7,9 +7,9 @@
 <meta name="description" content="Описать себя в будущем, где всё сложилось как можно лучше. Даёт образ, который тянет вперёд; удобно сочетать с WOOP (совет метода; вместе эти приёмы в исследованиях не сравнивали).">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/luchshee-vozmozhnoe-ya.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Лучшее возможное «я» · подход · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Лучшее возможное «я»">
 <meta property="og:description" content="Описать себя в будущем, где всё сложилось как можно лучше. Даёт образ, который тянет вперёд; удобно сочетать с WOOP (совет метода; вместе эти приёмы в исследованиях не сравнивали).">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/luchshee-vozmozhnoe-ya.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,17 +107,17 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 4 «Карта»"><ul><li><a href="plany-odissei.html">Планы Одиссеи</a></li><li><a class="is-here" aria-current="page" href="luchshee-vozmozhnoe-ya.html">Лучшее возможное «я»</a></li><li><a href="vzglyad-iz-budushchego.html">Взгляд из будущего</a></li><li><a href="prototipiruyushchie-razgovory.html">Прототипирующие разговоры</a></li><li><a href="ikigay.html">Икигай</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38 подходов →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 4 «Карта»"><ul><li><a href="plany-odissei.html">Планы Одиссеи</a></li><li><a class="is-here" aria-current="page" href="luchshee-vozmozhnoe-ya.html">Лучшее возможное «я»</a></li><li><a href="vzglyad-iz-budushchego.html">Взгляд из&nbsp;будущего</a></li><li><a href="prototipiruyushchie-razgovory.html">Прототипирующие разговоры</a></li><li><a href="ikigay.html">Икигай</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38&nbsp;подходов →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Шаг 4. Карта</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Лучшее возможное «я»</li></ol>
 <h1 class="kb-h1" id="h1">Лучшее возможное «я»</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Описать себя в будущем, где всё сложилось как можно лучше. Даёт образ, который тянет вперёд; удобно сочетать с WOOP (совет метода; вместе эти приёмы в исследованиях не сравнивали).</p></div>
+<div class="kb-two"><p>Описать себя в будущем, где всё сложилось как можно лучше. Даёт образ, который тянет вперёд; удобно сочетать с WOOP (совет метода; вместе эти приёмы в исследованиях не сравнивали).</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <div class="kb-do"><a class="btn primary" href="../practices/t-best-self.html">Сделать: Лучшее возможное «я»</a></div>
-<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Лора Кинг, 2001.</dd></div><div><dt>В «Переходе»</dt><dd><a href="../project.html#steps">шаг 4 «Карта»</a>, <a href="../program.html#week-5">недели 5–8</a></dd></div></dl>
+<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Лора Кинг, 2001.</dd></div><div><dt>В&nbsp;«Переходе»</dt><dd><a href="../project.html#steps">шаг 4 «Карта»</a>, <a href="../program.html#week-5">недели 5–8</a></dd></div></dl>
 <section class="kb-sec" id="what"><h2 class="kb-h2">Что это</h2>
 <p><strong>Коротко.</strong> Описать себя в будущем, где всё сложилось.</p>
-<p>Человек пишет о себе в будущем, где всё сложилось как можно лучше: в работе, отношениях, здоровье. Пишет 15–20 минут, конкретно.</p></section>
+<p>Человек пишет о себе в будущем, где всё сложилось как можно лучше: в работе, отношениях, здоровье. Пишет 15–20&nbsp;минут, конкретно.</p></section>
 <section class="kb-sec" id="when"><h2 class="kb-h2">Когда помогает</h2>
 <p>Нужен образ будущего, который тянет. Лёгкий пессимизм: может немного поднять настроение. Тяжёлая подавленность, депрессия: упражнение не лечит, нужен специалист.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда не подходит</h2>
@@ -96,26 +125,26 @@
 <section class="kb-sec" id="mine"><h2 class="kb-h2">Как это у меня</h2>
 <p>Основа «образа будущего» в шаге «Карта» и карточек событий в совершенном виде.</p></section>
 <section class="kb-sec" id="try"><h2 class="kb-h2">Попробовать</h2>
-<p>Напишите день из жизни через пять лет, в котором всё получилось. Что вы видите утром?</p>
+<p>Напиши день из жизни через пять лет, в котором всё получилось. Что ты видишь утром?</p>
 <p>Практики:</p>
 <ul><li><a href="../practices/t-best-self.html">Лучшее возможное «я»</a></li></ul></section>
 <section class="kb-sec" id="pro"><h2 class="kb-h2">Для помогающих специалистов</h2>
 <p>Простое упражнение с небольшим эффектом на оптимизм; польза держится, пока его делают. Подходит как домашнее задание.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Умеренная ●●○</strong> — для настроения, оптимизма и самочувствия в ближайшие недели (эффект малый или средний).</li><li><strong>Спорная ○○○</strong> — для депрессии и плохих чувств: эффект не найден.</li><li><strong>Умеренная ●●○</strong> — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>: это <a class="kb-term" href="../glossary.html#term-perenos" title="Клиент переносит на терапевта чувства из других отношений.">перенос</a>, проверяли в основном на студентах и молодых здоровых людях; людей в переходе отдельно не изучали.</li></ul>
-<p><strong>Что проверено и на ком.</strong> Несколько раз написать или представить себя в будущем, где всё сложилось как можно лучше. Сравнивали почти везде с нейтральным письмом (описать свой день или планы). Участники — в основном студенты и молодые люди, чаще женщины; клинических пациентов нет. Наблюдение дольше 3 месяцев — только в 3 исследованиях из 29. Метаанализ про сам метод один.</p>
+<ul><li><strong>Умеренная ●●○</strong>&nbsp;— для настроения, оптимизма и самочувствия в ближайшие недели (эффект малый или средний).</li><li><strong>Спорная ○○○</strong>&nbsp;— для депрессии и плохих чувств: эффект не найден.</li><li><strong>Умеренная ●●○</strong>&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>: это <a class="kb-term" href="../glossary.html#term-perenos" title="Клиент переносит на терапевта чувства из других отношений.">перенос</a>, проверяли в основном на студентах и молодых здоровых людях; людей в переходе отдельно не изучали.</li></ul>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Несколько раз написать или представить себя в будущем, где всё сложилось как можно лучше. Сравнивали почти везде с нейтральным письмом (описать свой день или планы). Участники&nbsp;— в основном студенты и молодые люди, чаще женщины; клинических пациентов нет. Наблюдение дольше 3&nbsp;месяцев&nbsp;— только в 3&nbsp;исследованиях из 29. Метаанализ про сам метод один.</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/31545815/" target="_blank" rel="noopener">Carrillo 2019<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 29 исследований, 2909 человек: благополучие и оптимизм выросли (эффект около 0,33), положительные эмоции сильнее; плохие чувства и депрессия — без значимой разницы; разброс между исследованиями большой — читано: полный текст — ✱ (среди включённых работ есть работы авторов метода)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/21450262/" target="_blank" rel="noopener">Meevissen, Peters &amp; Alberts 2011<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› — 51 студент, 5 минут в день 2 недели: оптимизм вырос сильнее, чем при представлении обычных дел — читано: аннотация — ⏳</li><li><a href="https://doi.org/10.1177/0146167201277003" target="_blank" rel="noopener">King 2001<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› (небольшой эксперимент) — 81 студент: письмо о лучшем «я» повышает самочувствие — читано: аннотация — ✱ 🏛 ⏳</li><li><a href="https://doi.org/10.1080/17439760500510676" target="_blank" rel="noopener">Sheldon &amp; Lyubomirsky 2006<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› (небольшой эксперимент) — 67 студентов, 4 недели: настроение держится лучше, если упражнение продолжать — читано: аннотация — ✱ 🏛 ⏳</li></ul>
-<p><strong>Чего не знаем.</strong> Что будет через полгода. Как упражнение действует на людей в трудном переходе и с диагнозами.</p>
-<p><strong>Осторожно.</strong> Это упражнение для настроения и надежды, а не помощь при депрессии. Эффект держится, пока упражнение делают. Человеку, которому сейчас очень плохо, яркая картинка «идеального будущего» может подчеркнуть разрыв с настоящим (предостережение практиков, данных нет).</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/31545815/" target="_blank" rel="noopener">Carrillo 2019<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 29&nbsp;исследований, 2909&nbsp;человек: благополучие и оптимизм выросли (эффект около 0,33), положительные эмоции сильнее; плохие чувства и депрессия&nbsp;— без значимой разницы; разброс между исследованиями большой&nbsp;— читано: полный текст&nbsp;— ✱ (среди включённых работ есть работы авторов метода)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/21450262/" target="_blank" rel="noopener">Meevissen, Peters &amp; Alberts 2011<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р›&nbsp;— 51&nbsp;студент, 5&nbsp;минут в день 2&nbsp;недели: оптимизм вырос сильнее, чем при представлении обычных дел&nbsp;— читано: аннотация&nbsp;— ⏳</li><li><a href="https://doi.org/10.1177/0146167201277003" target="_blank" rel="noopener">King 2001<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р› (небольшой эксперимент)&nbsp;— 81&nbsp;студент: письмо о лучшем «я» повышает самочувствие&nbsp;— читано: аннотация&nbsp;— ✱ 🏛 ⏳</li><li><a href="https://doi.org/10.1080/17439760500510676" target="_blank" rel="noopener">Sheldon &amp; Lyubomirsky 2006<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р› (небольшой эксперимент)&nbsp;— 67&nbsp;студентов, 4&nbsp;недели: настроение держится лучше, если упражнение продолжать&nbsp;— читано: аннотация&nbsp;— ✱ 🏛 ⏳</li></ul>
+<p><strong>Чего не знаем.</strong> Что будет через полгода. Как упражнение действует на людей в трудном переходе и с&nbsp;диагнозами.</p>
+<p><strong>Осторожно.</strong> Это упражнение для настроения и надежды, а не&nbsp;помощь при депрессии. Эффект держится, пока упражнение делают. Человеку, которому сейчас очень плохо, яркая картинка «идеального будущего» может подчеркнуть разрыв с настоящим (предостережение практиков, данных нет).</p></section>
 <section class="kb-sec" id="lit"><h2 class="kb-h2">Литература</h2>
 <ul class="kb-books"><li><span class="a">Лора Кинг</span> <span class="soft">Лучшее возможное «я»</span>, 2001</li></ul></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-best-self.html"><span class="t">Лучшее возможное «я»</span><span class="m">практика · 20 мин</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/life-coach.html"><span class="t">Лайф-коуч</span><span class="m">атлас · уровень «Практика»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-brooks-strength"><span class="t">From Strength to Strength</span><span class="m">книга · Артур Брукс</span></a><a href="../resources.html#book-dyl"><span class="t">Дизайн вашей жизни. Живите так, как нужно именно вам</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#book-dyl-work"><span class="t">Дизайн работы мечты</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-ibarra"><span class="t">Working Identity</span><span class="m">книга · Эрминия Ибарра</span></a><a href="../resources.html#book-frankl"><span class="t">Сказать жизни «Да!». Психолог в концлагере</span><span class="m">книга · Виктор Франкл</span></a><a href="../resources.html#book-esfahani-smith"><span class="t">Сила смысла. Создай жизнь, которая имеет значение</span><span class="m">книга · Эмили Эсфахани Смит</span></a></details></dd></div><div><dt>В ситуациях</dt><dd><a href="ne-moe-strashno.html"><span class="t">Всё хорошо, но не моё, и страшно</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="plany-odissei.html" rel="prev">← 4. Карта<b>Планы Одиссеи</b></a><a class="r" href="vzglyad-iz-budushchego.html" rel="next">4. Карта →<b>Взгляд из будущего</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-best-self.html"><span class="t">Лучшее возможное «я»</span><span class="m">практика · 20&nbsp;мин</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/life-coach.html"><span class="t">Лайф-коуч</span><span class="m">атлас · уровень «Практика»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-brooks-strength"><span class="t">From Strength to Strength</span><span class="m">книга · Артур Брукс</span></a><a href="../resources.html#book-dyl"><span class="t">Дизайн вашей жизни. Живите так, как нужно именно вам</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#book-dyl-work"><span class="t">Дизайн работы мечты</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-ibarra"><span class="t">Working Identity</span><span class="m">книга · Эрминия Ибарра</span></a><a href="../resources.html#book-frankl"><span class="t">Сказать жизни «Да!». Психолог в&nbsp;концлагере</span><span class="m">книга · Виктор Франкл</span></a><a href="../resources.html#book-esfahani-smith"><span class="t">Сила смысла. Создай жизнь, которая имеет значение</span><span class="m">книга · Эмили Эсфахани Смит</span></a></details></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="ne-moe-strashno.html"><span class="t">Всё хорошо, но&nbsp;не&nbsp;моё, и&nbsp;страшно</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="plany-odissei.html" rel="prev">← 4. Карта<b>Планы Одиссеи</b></a><a class="r" href="vzglyad-iz-budushchego.html" rel="next">4. Карта →<b>Взгляд из&nbsp;будущего</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не подходит</a></li><li><a href="#mine">Как это у меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не&nbsp;подходит</a></li><li><a href="#mine">Как это у&nbsp;меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для&nbsp;помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -126,25 +155,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -154,12 +183,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -168,7 +197,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

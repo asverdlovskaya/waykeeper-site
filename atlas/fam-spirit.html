@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://waykeeper.org/atlas/fam-spirit.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Дух и смысл · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Дух и смысл">
 <meta property="og:description" content="Дух и смысл: Вера, ценности, экзистенциальные вопросы, практики созерцания. 5 специалистов в атласе помогающих профессий Waykeeper.">
 <meta property="og:url" content="https://waykeeper.org/atlas/fam-spirit.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,65 +45,87 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
 <nav class="aw-bar" aria-label="Атлас">
   <div class="frame aw-bar-in">
     <a class="aw-bar-home" href="../atlas.html">Атлас помогающих профессий</a>
-    <ul class="aw-bar-links"><li><a href="../atlas.html#families">Семьи</a></li><li><a href="../atlas/requests.html">С каким вопросом к кому</a></li><li><a href="../atlas/all.html">Все специалисты</a></li><li><a href="../glossary.html">Словарь</a></li><li><a href="../atlas/how.html">Как устроен</a></li><li><a href="../atlas-map.html" target="_blank" rel="noopener">Большая карта ↗</a></li></ul>
+    <ul class="aw-bar-links"><li><a href="../atlas.html#families">Семьи</a></li><li><a href="../atlas/requests.html">С&nbsp;каким вопросом к&nbsp;кому</a></li><li><a href="../atlas/all.html">Все специалисты</a></li><li><a href="../glossary.html">Словарь</a></li><li><a href="../atlas/how.html">Как устроен</a></li><li><a href="../atlas-map.html" target="_blank" rel="noopener">Большая карта ↗</a></li></ul>
     <form class="kb-search kb-search--sm" role="search" action="../knowledge.html" method="get"><input type="search" name="q" aria-label="Найти в базе знаний" placeholder="Найти по базе знаний…" spellcheck="false"><kbd aria-hidden="true">/</kbd></form>
   </div>
 </nav>
 <main id="main" class="aw">
 <div class="frame aw-art aw-art--fam" data-atmo="day">
   <div class="aw-art-head">
-    <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li>Дух и смысл</li></ol>
-    <h1 id="page-title" class="aw-h1"> Дух и смысл</h1>
-    <p class="aw-meta">5 специалистов · <a href="how.html#lvl-2">Практика</a> 3 · <a href="how.html#lvl-3">Профессия</a> 2</p>
+    <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li>Дух и&nbsp;смысл</li></ol>
+    <h1 id="page-title" class="aw-h1"> Дух и&nbsp;смысл</h1>
+    <p class="aw-meta">5&nbsp;специалистов · <a href="how.html#lvl-2">Практика</a> 3 · <a href="how.html#lvl-3">Профессия</a> 2</p>
   </div>
   <div class="aw-body">
-    <p class="aw-lead">Вера, ценности, экзистенциальные вопросы, практики созерцания.</p><div class="prose"><p>Священнослужители, капелланы, духовные наставники, философские практики. Граница: экзистенциальный психолог — «Психика» с меткой «смысл».</p></div><p class="aw-meta">Соседние семьи: <a href="fam-loss.html">Утрата и конец жизни</a>, <a href="fam-hist.html">История и память</a>, <a href="fam-mind.html">Психика и эмоции</a></p><p class="aw-actions"><a class="btn quiet glass sm" href="../atlas-map.html#fam-spirit" target="_blank" rel="noopener">Показать на большой карте ↗</a></p>
-    <section class="aw-sec" id="lvl-2" aria-labelledby="lvl-2-h"><h2 id="lvl-2-h">2 · Практика</h2><p class="aw-meta">Обучение методу: курсы, сертификат ассоциации. Государственного допуска нет.</p><ul class="aw-rows"><li><a class="aw-row" href="spiritual-director.html"><span class="aw-row-t">Духовный наставник</span><span class="aw-row-d">Сопровождает духовный путь человека, внимательно слушая</span><span class="aw-row-m">длительная подготовка и сертификация</span></a></li><li><a class="aw-row" href="pastoral-counsellor.html"><span class="aw-row-t">Пастырский консультант / психолог в религиозной традиции</span><span class="aw-row-d">Консультирование, в котором соединены психологические методы и вера клиента</span><span class="aw-row-m">профильное образование · в России редко</span></a></li><li><a class="aw-row" href="philosophical-counsellor.html"><span class="aw-row-t">Философский консультант / практикующий философ</span><span class="aw-row-d">Вместе с человеком продумывает жизненные вопросы, ценности и решения</span><span class="aw-row-m">профильное образование · в России редко</span></a></li></ul></section><section class="aw-sec" id="lvl-3" aria-labelledby="lvl-3-h"><h2 id="lvl-3-h">3 · Профессия</h2><p class="aw-meta">Профильное высшее или среднее образование и/или профстандарт.</p><ul class="aw-rows"><li><a class="aw-row" href="spiritual-care-provider.html"><span class="aw-row-t">Капеллан / духовный опекун</span><span class="aw-row-d">Духовная и смысловая поддержка больных и близких — верующих и неверующих</span><span class="aw-row-m">длительная подготовка и сертификация · в России редко</span></a></li><li><a class="aw-row" href="clergy-pastoral-care.html"><span class="aw-row-t">Священнослужитель (пастырская забота)</span><span class="aw-row-d">Духовная поддержка, обряды и опора общины в жизни и утрате</span><span class="aw-row-m">профильное образование</span></a></li></ul></section>
-    <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+    <p class="aw-lead">Вера, ценности, экзистенциальные вопросы, практики созерцания.</p><div class="prose"><p>Священнослужители, капелланы, духовные наставники, философские практики. Граница: экзистенциальный психолог&nbsp;— «Психика» с&nbsp;меткой «смысл».</p></div><p class="aw-meta">Соседние семьи: <a href="fam-loss.html">Утрата и&nbsp;конец жизни</a>, <a href="fam-hist.html">История и&nbsp;память</a>, <a href="fam-mind.html">Психика и&nbsp;эмоции</a></p><p class="aw-actions"><a class="btn quiet glass sm" href="../atlas-map.html#fam-spirit" target="_blank" rel="noopener">Показать на&nbsp;большой карте ↗</a></p>
+    <section class="aw-sec" id="lvl-2" aria-labelledby="lvl-2-h"><h2 id="lvl-2-h">2 · Практика</h2><p class="aw-meta">Обучение методу: курсы, сертификат ассоциации. Государственного допуска нет.</p><ul class="aw-rows"><li><a class="aw-row" href="spiritual-director.html"><span class="aw-row-t">Духовный наставник</span><span class="aw-row-d">Сопровождает духовный путь человека, внимательно слушая</span><span class="aw-row-m">длительная подготовка и&nbsp;сертификация</span></a></li><li><a class="aw-row" href="pastoral-counsellor.html"><span class="aw-row-t">Пастырский консультант / психолог в&nbsp;религиозной традиции</span><span class="aw-row-d">Консультирование, в&nbsp;котором соединены психологические методы и&nbsp;вера клиента</span><span class="aw-row-m">профильное образование · в&nbsp;России редко</span></a></li><li><a class="aw-row" href="philosophical-counsellor.html"><span class="aw-row-t">Философский консультант / практикующий философ</span><span class="aw-row-d">Вместе с&nbsp;человеком продумывает жизненные вопросы, ценности и&nbsp;решения</span><span class="aw-row-m">профильное образование · в&nbsp;России редко</span></a></li></ul></section><section class="aw-sec" id="lvl-3" aria-labelledby="lvl-3-h"><h2 id="lvl-3-h">3 · Профессия</h2><p class="aw-meta">Профильное высшее или среднее образование и/или профстандарт.</p><ul class="aw-rows"><li><a class="aw-row" href="spiritual-care-provider.html"><span class="aw-row-t">Капеллан / духовный опекун</span><span class="aw-row-d">Духовная и&nbsp;смысловая поддержка больных и&nbsp;близких&nbsp;— верующих и&nbsp;неверующих</span><span class="aw-row-m">длительная подготовка и&nbsp;сертификация · в&nbsp;России редко</span></a></li><li><a class="aw-row" href="clergy-pastoral-care.html"><span class="aw-row-t">Священнослужитель (пастырская забота)</span><span class="aw-row-d">Духовная поддержка, обряды и&nbsp;опора общины в&nbsp;жизни и&nbsp;утрате</span><span class="aw-row-m">профильное образование</span></a></li></ul></section>
+    <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
   </div>
-  <aside class="aw-info aw-info--nav" aria-label="Другие семьи"><p class="aw-facts-h">Другие семьи</p><ul class="aw-famnav"><li><a href="fam-body.html">Тело и здоровье</a></li><li><a href="fam-mind.html">Психика и эмоции</a></li><li><a href="fam-rel.html">Отношения и семья</a></li><li><a href="fam-comm.html">Сообщества и взаимопомощь</a></li><li><a href="fam-work.html">Работа и развитие</a></li><li><a href="fam-law.html">Деньги и право</a></li><li><a href="fam-home.html">Быт и социальная поддержка</a></li><li><a href="fam-loss.html">Утрата и конец жизни</a></li><li><a href="fam-hist.html">История и память</a></li><li><a href="fam-support.html">Опора для помогающих</a></li><li><a href="fam-alt.html">Отдельный слой</a></li></ul></aside>
+  <aside class="aw-info aw-info--nav" aria-label="Другие семьи"><p class="aw-facts-h">Другие семьи</p><ul class="aw-famnav"><li><a href="fam-body.html">Тело и&nbsp;здоровье</a></li><li><a href="fam-mind.html">Психика и&nbsp;эмоции</a></li><li><a href="fam-rel.html">Отношения и&nbsp;семья</a></li><li><a href="fam-comm.html">Сообщества и&nbsp;взаимопомощь</a></li><li><a href="fam-work.html">Работа и&nbsp;развитие</a></li><li><a href="fam-law.html">Деньги и&nbsp;право</a></li><li><a href="fam-home.html">Быт и&nbsp;социальная поддержка</a></li><li><a href="fam-loss.html">Утрата и&nbsp;конец жизни</a></li><li><a href="fam-hist.html">История и&nbsp;память</a></li><li><a href="fam-support.html">Опора для&nbsp;помогающих</a></li><li><a href="fam-alt.html">Отдельный слой</a></li></ul></aside>
 </div>
 </main>
 
@@ -105,25 +134,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -133,12 +162,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -147,7 +176,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

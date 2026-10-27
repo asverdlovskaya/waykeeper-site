@@ -7,9 +7,9 @@
 <meta name="description" content="Похоронный распорядитель: Организация похорон: документы, перевозка, прощание, погребение или кремация. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/funeral-director.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Похоронный агент · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Похоронный агент">
 <meta property="og:description" content="Похоронный распорядитель: Организация похорон: документы, перевозка, прощание, погребение или кремация. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/funeral-director.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Утрата и конец жизни · 9</span><ul><li><a href="hospice-volunteer.html">Волонтёр хосписа</a></li><li><a href="peer-bereaved.html">Равный в утрате</a></li><li><a href="celebrant.html">Ведущий церемоний</a></li><li><a href="death-doula.html">Доула конца жизни</a></li><li><a href="grief-counsellor.html">Консультант по горю</a></li><li><a href="funeral-director.html" class="is-here" aria-current="page">Похоронный агент</a></li><li><a href="legacy-facilitator.html">Проекты наследия</a></li><li><a href="palliative-nurse.html">Медсестра хосписа</a></li><li><a href="palliative-physician.html">Паллиативный врач</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-loss" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Утрата и&nbsp;конец жизни · 9</span><ul><li><a href="hospice-volunteer.html">Волонтёр хосписа</a></li><li><a href="peer-bereaved.html">Равный в&nbsp;утрате</a></li><li><a href="celebrant.html">Ведущий церемоний</a></li><li><a href="death-doula.html">Доула конца жизни</a></li><li><a href="grief-counsellor.html">Консультант по&nbsp;горю</a></li><li><a href="funeral-director.html" class="is-here" aria-current="page">Похоронный агент</a></li><li><a href="legacy-facilitator.html">Проекты наследия</a></li><li><a href="palliative-nurse.html">Медсестра хосписа</a></li><li><a href="palliative-physician.html">Паллиативный врач</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-loss" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-loss.html">Утрата и конец жизни</a></li><li>Похоронный агент</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>семья «Утрата и конец жизни»<span class="sep">·</span>данные 27.10.2026</p>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-loss.html">Утрата и&nbsp;конец жизни</a></li><li>Похоронный агент</li></ol>
+      
       <h1 class="kb-h1" id="page-title">Похоронный распорядитель<small lang="en">Funeral director</small></h1>
       
-      <div class="kb-two"><span class="label">В двух словах</span><p>Организация похорон: документы, перевозка, прощание, погребение или кремация</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>4 источника</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 2 утверждения не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — высокий. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
-      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>нет</dd></div><div><dt>Работает с будущим</dt><dd>иногда</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>да</dd></div><div><dt>Работает с группами</dt><dd>нет</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в госучреждениях · платно</dd></div><div><dt>Характер помощи</dt><dd>поддержка и практическая помощь</dd></div><div><dt>Что можно получить</dt><dd>план, практическое действие, сеть/контакты</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Организует всё, что нужно сделать после смерти: помогает оформить документы, организует перевозку и подготовку тела, прощание, погребение или кремацию. Берёт на себя практические дела, чтобы у семьи осталось время горевать.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«Человек умер дома — кому звонить?»</li><li>«Какие документы нужны и где их получить?»</li><li>«Сколько стоят похороны и что положено бесплатно?»</li><li>«Хотим кремацию / похоронить рядом с родными»</li><li>«Как перевезти тело в другой город или страну?»</li><li>«Он просил всё скромно — как выполнить его волю?»</li><li>«Хочу заранее договориться о собственных похоронах»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Встречается с семьёй, помогает выбрать вид погребения и услуги, составляет смету. Помогает с документами: врач выдаёт медицинское свидетельство о смерти, ЗАГС регистрирует смерть и выдаёт свидетельство. Организует транспорт, место на кладбище или в крематории, прощание.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально с семьёй: одна-три встречи и звонки в течение нескольких дней до похорон. Заранее можно оставить письменное распоряжение о своих похоронах, в том числе в завещании (ФЗ-8, ст. 5) <sup class="ref"><a href="#src-4" title="ФЗ-8 «О погребении и похоронном деле», ст. 5 «Волеизъявление лица о достойном отношении к его телу после смерти» (копия текста закона) — zakonrf.info">4</a></sup>, и договориться с ритуальной службой <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Сам не выдаёт ни медицинское свидетельство о смерти (это врач), ни свидетельство о смерти (это ЗАГС). Не психолог. Не обязательно ведёт церемонию (см. «<a href="celebrant.html">Ведущий церемоний и ритуалов</a>»).</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Есть профстандарт «Работник в области похоронного дела» (33.009, приказ Минтруда № 828н от 22.11.2023, действует с 01.09.2024 по 01.09.2030): нужно профессиональное обучение по программам подготовки рабочих <sup class="ref"><a href="#src-3" title="Профстандарт 33.009 «Работник в области похоронного дела» (приказ Минтруда № 828н от 22.11.2023) — КлассИнформ">3</a></sup>. На практике — обучение на рабочем месте и короткие курсы <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В мире обычно: например, в Великобритании профессиональная ассоциация NAFD (с 1905 г.) предлагает Diploma in Funeral Directing.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>ФЗ-8 «О погребении и похоронном деле» (12.01.1996). Каждый может заранее выразить волю о своём погребении (ст. 5). Есть гарантированный перечень бесплатных услуг: оформление документов, гроб и его доставка, перевозка тела на кладбище, погребение или кремация с выдачей урны (ст. 9). Тот, кто хоронил за свой счёт, получает социальное пособие на погребение (ст. 10). Чтобы получить услуги по перечню, нужна выписка о выборе услуг из Социального фонда (заявление лично или через Госуслуги). Пособие по ст. 10 и услуги по ст. 9 одновременно не выдаются. Органы местного самоуправления создают специализированные службы по вопросам похоронного дела (ст. 25). Лицензии на похоронную деятельность закон не требует.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Специализированная (муниципальная) служба по вопросам похоронного дела — для услуг из гарантированного перечня. Частные ритуальные агентства. Смету лучше получить письменно и сравнить с другими предложениями.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в госучреждениях · платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Подключается после врача, скорой или полиции, которые констатируют смерть. Работает с ЗАГСом, кладбищем, крематорием, <a href="celebrant.html">ведущим церемоний</a>, <a href="clergy-pastoral-care.html">священником</a>. Семье могут понадобиться <a href="grief-counsellor.html">консультант по горю</a> и группа поддержки.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Нужен в первые дни после смерти. Если чувствуете давление «взять подороже», можно взять паузу и сравнить предложения.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 4</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-12011996-n-8-fz-o/" target="_blank" rel="noopener">ФЗ-8 «О погребении и похоронном деле» от 12.01.1996 — legalacts.ru ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://www.nafd.org.uk/" target="_blank" rel="noopener">National Association of Funeral Directors (NAFD) ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://classinform.ru/profstandarty/33.009-spetcialist-v-oblasti-pohoronnogo-dela.html" target="_blank" rel="noopener">Профстандарт 33.009 «Работник в области похоронного дела» (приказ Минтруда № 828н от 22.11.2023) — КлассИнформ ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://www.zakonrf.info/doc-13535608/gl1-st5/" target="_blank" rel="noopener">ФЗ-8 «О погребении и похоронном деле», ст. 5 «Волеизъявление лица о достойном отношении к его телу после смерти» (копия текста закона) — zakonrf.info ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Чем работает</dt><dd><a href="../encyclopedia/death-positive.html"><span class="t">Движение «позитивного отношения к смерти»</span><span class="m">школа · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a></dd></div><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр — в чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В атласе</dt><dd><a href="grief-counsellor.html"><span class="t">Консультант / терапевт по горю</span><span class="m">стыкуется</span></a><a href="celebrant.html"><span class="t">Ведущий церемоний и ритуалов</span><span class="m">стыкуется</span></a><a href="clergy-pastoral-care.html"><span class="t">Священнослужитель (пастырская забота)</span><span class="m">стыкуется</span></a><a href="palliative-physician.html"><span class="t">Врач паллиативной помощи</span><span class="m">упоминает</span></a><a href="death-doula.html"><span class="t">Доула конца жизни</span><span class="m">упоминает</span></a><a href="legacy-facilitator.html"><span class="t">Специалист по «наследию»</span><span class="m">та же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=funeral-director,grief-counsellor,celebrant">Сравнить с похожими</a><a class="kb-do-alt" href="../atlas-map.html#funeral-director" target="_blank" rel="noopener">Показать на карте ↗</a></div></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="grief-counsellor.html" rel="prev">← Предыдущий в семье<b>Консультант по горю</b></a><a class="r" href="legacy-facilitator.html" rel="next">Следующий в семье →<b>Проекты наследия</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <div class="kb-two"><p>Организация похорон: документы, перевозка, прощание, погребение или кремация</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;4&nbsp;источникам<span class="kb-pending">, 2&nbsp;утверждения ещё сверяются</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— высокий. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На&nbsp;чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и&nbsp;участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>да</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>нет</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в&nbsp;госучреждениях · платно</dd></div><div><dt>Характер помощи</dt><dd>поддержка и&nbsp;практическая помощь</dd></div><div><dt>Что можно получить</dt><dd>план, практическое действие, сеть/контакты</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Организует всё, что нужно сделать после смерти: помогает оформить документы, организует перевозку и&nbsp;подготовку тела, прощание, погребение или кремацию. Берёт на&nbsp;себя практические дела, чтобы у&nbsp;семьи осталось время горевать.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем к&nbsp;нему приходят</h2><ul><li>«Человек умер дома&nbsp;— кому звонить?»</li><li>«Какие документы нужны и&nbsp;где их получить?»</li><li>«Сколько стоят похороны и&nbsp;что положено бесплатно?»</li><li>«Хотим кремацию / похоронить рядом с&nbsp;родными»</li><li>«Как перевезти тело в&nbsp;другой город или страну?»</li><li>«Он просил всё скромно&nbsp;— как выполнить его волю?»</li><li>«Хочу заранее договориться о&nbsp;собственных похоронах»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Встречается с&nbsp;семьёй, помогает выбрать вид погребения и&nbsp;услуги, составляет смету. Помогает с&nbsp;документами: врач выдаёт медицинское свидетельство о&nbsp;смерти, ЗАГС регистрирует смерть и&nbsp;выдаёт свидетельство. Организует транспорт, место на&nbsp;кладбище или в&nbsp;крематории, прощание.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально с&nbsp;семьёй: одна-три встречи и&nbsp;звонки в&nbsp;течение нескольких дней до&nbsp;похорон. Заранее можно оставить письменное распоряжение о&nbsp;своих похоронах, в&nbsp;том числе в&nbsp;завещании (ФЗ-8, ст. 5)<sup class="ref"><a href="#src-4" title="ФЗ-8 «О погребении и похоронном деле», ст. 5 «Волеизъявление лица о достойном отношении к его телу после смерти» (копия текста закона) — zakonrf.info">4</a></sup>, и&nbsp;договориться с&nbsp;ритуальной службой <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>Сам не&nbsp;выдаёт ни&nbsp;медицинское свидетельство о&nbsp;смерти (это врач), ни&nbsp;свидетельство о&nbsp;смерти (это ЗАГС). Не&nbsp;психолог. Не&nbsp;обязательно ведёт церемонию (см. «<a href="celebrant.html">Ведущий церемоний и&nbsp;ритуалов</a>»).</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>Есть профстандарт «Работник в&nbsp;области похоронного дела» (33.009, приказ Минтруда №&nbsp;828н от&nbsp;22.11.2023, действует с&nbsp;01.09.2024 по&nbsp;01.09.2030): нужно профессиональное обучение по&nbsp;программам подготовки рабочих<sup class="ref"><a href="#src-3" title="Профстандарт 33.009 «Работник в области похоронного дела» (приказ Минтруда № 828н от 22.11.2023) — КлассИнформ">3</a></sup>. На&nbsp;практике&nbsp;— обучение на&nbsp;рабочем месте и&nbsp;короткие курсы <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В&nbsp;мире обычно: например, в&nbsp;Великобритании профессиональная ассоциация NAFD (с&nbsp;1905&nbsp;г.) предлагает Diploma in Funeral Directing.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>ФЗ-8 «О&nbsp;погребении и&nbsp;похоронном деле» (12.01.1996). Каждый может заранее выразить волю о&nbsp;своём погребении (ст. 5). Есть гарантированный перечень бесплатных услуг: оформление документов, гроб и&nbsp;его доставка, перевозка тела на&nbsp;кладбище, погребение или кремация с&nbsp;выдачей урны (ст. 9). Тот, кто хоронил за&nbsp;свой счёт, получает социальное пособие на&nbsp;погребение (ст. 10). Чтобы получить услуги по&nbsp;перечню, нужна выписка о&nbsp;выборе услуг из&nbsp;Социального фонда (заявление лично или через Госуслуги). Пособие по&nbsp;ст. 10&nbsp;и&nbsp;услуги по&nbsp;ст. 9&nbsp;одновременно не&nbsp;выдаются. Органы местного самоуправления создают специализированные службы по&nbsp;вопросам похоронного дела (ст. 25). Лицензии на&nbsp;похоронную деятельность закон не&nbsp;требует.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Специализированная (муниципальная) служба по&nbsp;вопросам похоронного дела&nbsp;— для&nbsp;услуг из&nbsp;гарантированного перечня. Частные ритуальные агентства. Смету лучше получить письменно и&nbsp;сравнить с&nbsp;другими предложениями.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в&nbsp;госучреждениях · платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С&nbsp;кем стыкуется</h2><div class="prose"><p>Подключается после врача, скорой или полиции, которые констатируют смерть. Работает с&nbsp;ЗАГСом, кладбищем, крематорием, <a href="celebrant.html">ведущим церемоний</a>, <a href="clergy-pastoral-care.html">священником</a>. Семье могут понадобиться <a href="grief-counsellor.html">консультант по&nbsp;горю</a> и&nbsp;группа поддержки.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В&nbsp;переходе</h2><div class="prose"><p>Нужен в&nbsp;первые дни после смерти. Если чувствуешь давление «взять подороже», можно взять паузу и&nbsp;сравнить предложения.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 4</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-12011996-n-8-fz-o/" target="_blank" rel="noopener">ФЗ-8 «О&nbsp;погребении и&nbsp;похоронном деле» от&nbsp;12.01.1996&nbsp;— legalacts.ru ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://www.nafd.org.uk/" target="_blank" rel="noopener">National Association of Funeral Directors (NAFD) ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://classinform.ru/profstandarty/33.009-spetcialist-v-oblasti-pohoronnogo-dela.html" target="_blank" rel="noopener">Профстандарт 33.009 «Работник в&nbsp;области похоронного дела» (приказ Минтруда №&nbsp;828н от&nbsp;22.11.2023)&nbsp;— КлассИнформ ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://www.zakonrf.info/doc-13535608/gl1-st5/" target="_blank" rel="noopener">ФЗ-8 «О&nbsp;погребении и&nbsp;похоронном деле», ст. 5 «Волеизъявление лица о&nbsp;достойном отношении к&nbsp;его телу после смерти» (копия текста закона)&nbsp;— zakonrf.info ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Чем работает</dt><dd><a href="../encyclopedia/death-positive.html"><span class="t">Движение «позитивного отношения к&nbsp;смерти»</span><span class="m">школа · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a></dd></div><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр&nbsp;— в&nbsp;чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и&nbsp;формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="grief-counsellor.html"><span class="t">Консультант / терапевт по&nbsp;горю</span><span class="m">стыкуется</span></a><a href="celebrant.html"><span class="t">Ведущий церемоний и&nbsp;ритуалов</span><span class="m">стыкуется</span></a><a href="clergy-pastoral-care.html"><span class="t">Священнослужитель (пастырская забота)</span><span class="m">стыкуется</span></a><a href="palliative-physician.html"><span class="t">Врач паллиативной помощи</span><span class="m">упоминает</span></a><a href="death-doula.html"><span class="t">Доула конца жизни</span><span class="m">упоминает</span></a><a href="legacy-facilitator.html"><span class="t">Специалист по&nbsp;«наследию»</span><span class="m">та&nbsp;же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=funeral-director,grief-counsellor,celebrant">Сравнить с&nbsp;похожими</a><a class="kb-do-alt" href="../atlas-map.html#funeral-director" target="_blank" rel="noopener">Показать на&nbsp;карте ↗</a></div></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="grief-counsellor.html" rel="prev">← Предыдущий в&nbsp;семье<b>Консультант по&nbsp;горю</b></a><a class="r" href="legacy-facilitator.html" rel="next">Следующий в&nbsp;семье →<b>Проекты наследия</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 4</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем к&nbsp;нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С&nbsp;кем стыкуется</a></li><li><a href="#perehod">В&nbsp;переходе</a></li><li><a href="#istochniki">Источники · 4</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

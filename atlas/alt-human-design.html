@@ -7,9 +7,9 @@
 <meta name="description" content="Консультант по «дизайну человека»: Определяет «тип» и «стратегию» жизни по данным рождения. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/alt-human-design.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="«Дизайн человека» · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="«Дизайн человека»">
 <meta property="og:description" content="Консультант по «дизайну человека»: Определяет «тип» и «стратегию» жизни по данным рождения. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/alt-human-design.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Отдельный слой · 10</span><ul><li><a href="alt-human-design.html" class="is-here" aria-current="page">«Дизайн человека»</a></li><li><a href="alt-esoteric-psychosomatics.html">«Психосоматолог»</a></li><li><a href="alt-astrologer.html">Астролог</a></li><li><a href="alt-numerologist.html">Нумеролог</a></li><li><a href="alt-plant-medicine-retreat.html">Психоделический ретрит</a></li><li><a href="alt-family-constellations.html">Расстановщик</a></li><li><a href="alt-past-life-regression.html">Регрессолог</a></li><li><a href="alt-tarot-reader.html">Таролог</a></li><li><a href="alt-psychic.html">Экстрасенс, «маг»</a></li><li><a href="alt-energy-healer.html">Энергопрактик</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-alt" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Отдельный слой · 10</span><ul><li><a href="alt-human-design.html" class="is-here" aria-current="page">«Дизайн человека»</a></li><li><a href="alt-esoteric-psychosomatics.html">«Психосоматолог»</a></li><li><a href="alt-astrologer.html">Астролог</a></li><li><a href="alt-numerologist.html">Нумеролог</a></li><li><a href="alt-plant-medicine-retreat.html">Психоделический ретрит</a></li><li><a href="alt-family-constellations.html">Расстановщик</a></li><li><a href="alt-past-life-regression.html">Регрессолог</a></li><li><a href="alt-tarot-reader.html">Таролог</a></li><li><a href="alt-psychic.html">Экстрасенс, «маг»</a></li><li><a href="alt-energy-healer.html">Энергопрактик</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-alt" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-alt.html">Отдельный слой</a></li><li>«Дизайн человека»</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>отдельный слой<span class="sep">·</span>данные 27.10.2026</p>
-      <h1 class="kb-h1" id="page-title">Консультант по «дизайну человека»<small lang="en">Human Design analyst / reader</small></h1>
-      <div class="kb-careful"><h2 class="kb-h2">Отдельный слой: вне карты помогающих профессий</h2><p>Это не помогающие профессии в принятом смысле, и они не входят в колесо. Но к ним нередко обращаются в трудные периоды, поэтому мы описываем их честно: что обещают, что известно научно, какие риски и как отличить от помогающей профессии. Описываем, не рекомендуем.</p></div>
-      <div class="kb-two"><span class="label">В двух словах</span><p>Определяет «тип» и «стратегию» жизни по данным рождения</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>3 источника</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 1 утверждение не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — высокий. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-alt.html">Отдельный слой</a></li><li>«Дизайн человека»</li></ol>
       
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>нет</dd></div><div><dt>Работает с будущим</dt><dd>да</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>иногда</dd></div><div><dt>Работает с группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>да</dd></div><div><dt>Доступность</dt><dd>платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и консультирование</dd></div><div><dt>Что можно получить</dt><dd>эмоциональная поддержка</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Систему придумал Алан Кракауэр (псевдоним — Ра Уру Ху), бывший работник рекламы и издатель журнала. По его словам, это произошло после «мистического опыта» в 1987 году; книга о системе вышла в 1992 году <sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>. Система соединяет астрологию, китайскую «Книгу перемен», каббалу, индийские представления о «центрах» тела и отсылки к физике <sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>. По дате, времени и месту рождения строят «бодиграф» и относят человека к одному из «типов» (манифестор, генератор, манифестирующий генератор, проектор, рефлектор). Каждому типу соответствует своя «стратегия»: как принимать решения, с кем и как работать, как жить <sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем приходят</h2><ul><li>«Не понимаю, кто я и чего хочу»</li><li>«Выгорела — хочу работать “по дизайну”»</li><li>«Подходим ли мы с партнёром?»</li><li>«Какая профессия моя?»</li><li>«Как воспитывать ребёнка по его типу?»</li><li>«Хочу перестать себя ломать»</li></ul></section><section class="kb-sec" id="putayut" aria-labelledby="putayut-h"><h2 class="kb-h2" id="putayut-h">С кем путают</h2><div class="prose"><p><a href="career-counsellor.html">Карьерный консультант</a>: помогает выбрать работу по интересам, навыкам и рынку. <a href="life-coach.html">Лайф-коуч</a>: работает с вашими целями и действиями, а не с «типом». <a href="counselling-psychologist.html">Психолог-консультант</a>: помогает разобраться в себе через ваш опыт.</p></div><ul class="kb-vs"><li><a href="career-counsellor.html">Карьерный консультант</a><span>Выбор и смена профессии, план поиска работы</span></li><li><a href="life-coach.html">Лайф-коуч</a><span>Помогает сформулировать личные цели и пройти путь к ним</span></li><li><a href="counselling-psychologist.html">Психолог-консультант</a><span>Профессиональная разговорная помощь при жизненных трудностях и кризисах</span></li></ul><div class="kb-do"><a class="btn primary" href="compare.html?ids=alt-human-design,career-counsellor,life-coach,counselling-psychologist">Сравнить в таблице</a></div></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Человек присылает данные рождения, консультант делает «разбор» устно или в записи. Дальше предлагают курсы, группы, длинные программы «жизни по дизайну».</p></div></section><section class="kb-sec" id="nauka" aria-labelledby="nauka-h"><h2 class="kb-h2" id="nauka-h">Что известно научно</h2><div class="prose"><p>Научных исследований, которые проверяли бы «типы» и «стратегии», мы не нашли; систему относят к псевдонаучным <sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>. Поскольку в основе лежит астрологический расчёт, к ней относятся и результаты проверок астрологии <sup class="ref"><a href="#src-1" title="Carlson S. A double-blind test of astrology. Nature, 1985; 318: 419–425">1</a></sup>, и эффект Барнума <sup class="ref"><a href="#src-2" title="Forer B. R. The fallacy of personal validation: a classroom demonstration of gullibility. J Abnorm Soc Psychol, 1949; 44(1): 118–123 — PubMed">2</a></sup>.</p></div></section><section class="kb-careful" id="riski" aria-labelledby="riski-h"><h2 class="kb-h2" id="riski-h">Риски</h2><div class="prose"><ul><li><b>Ярлык ограничивает выбор:</b> «я проектор, мне нельзя много работать».</li><li><b>Решения о работе, отношениях, воспитании детей</b> принимают по «типу».</li><li><b>Деньги:</b> длинные платные программы.</li><li><b>Время:</b> «так задумано» вместо разбора реальных причин выгорания или депрессии.</li></ul></div></section><section class="kb-sec" id="otlichit" aria-labelledby="otlichit-h"><h2 class="kb-h2" id="otlichit-h">Как отличить от помогающей профессии</h2><div class="prose"><ul><li>Ваш «тип» определяют по дате рождения, не задав ни одного вопроса о вас.</li><li>Объяснение не меняется, что бы вы ни рассказали.</li><li>Обещают, что жизнь «по дизайну» снимет все трудности.</li></ul></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Не психологическая типология: научные модели личности проверяют на данных и строят по ответам самого человека. Не профориентация и не лечение выгорания или депрессии.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Курсы авторских школ, онлайн-обучение. Единых требований нет.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Не лицензируется и не запрещено (см. «Общее»).</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Соцсети, онлайн-школы, марафоны, частная практика.</p><p><b>Онлайн?</b> да · <b>Доступность.</b> платно</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 3</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.nature.com/articles/318419a0" target="_blank" rel="noopener">Carlson S. A double-blind test of astrology. Nature, 1985; 318: 419–425 ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://pubmed.ncbi.nlm.nih.gov/18110193/" target="_blank" rel="noopener">Forer B. R. The fallacy of personal validation: a classroom demonstration of gullibility. J Abnorm Soc Psychol, 1949; 44(1): 118–123 — PubMed ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://en.wikipedia.org/wiki/Human_Design" target="_blank" rel="noopener">Human Design — Wikipedia (отправная точка) ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр — в чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В атласе</dt><dd><a href="counselling-psychologist.html"><span class="t">Психолог-консультант</span><span class="m">путают</span></a><a href="life-coach.html"><span class="t">Лайф-коуч</span><span class="m">путают</span></a><a href="career-counsellor.html"><span class="t">Карьерный консультант / карьерный коуч</span><span class="m">путают</span></a><a href="alt-esoteric-psychosomatics.html"><span class="t">«Психосоматолог» по метафорическим таблицам</span><span class="m">та же семья</span></a><a href="alt-astrologer.html"><span class="t">Астролог</span><span class="m">та же семья</span></a><a href="alt-numerologist.html"><span class="t">Нумеролог</span><span class="m">та же семья</span></a></dd></div></dl></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="fam-alt.html">← Семья<b>Отдельный слой: все 10</b></a><a class="r" href="alt-esoteric-psychosomatics.html" rel="next">Следующий в семье →<b>«Психосоматолог»</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <h1 class="kb-h1" id="page-title">Консультант по&nbsp;«дизайну человека»<small lang="en">Human Design analyst / reader</small></h1>
+      <div class="kb-careful"><h2 class="kb-h2">Отдельный слой: вне карты помогающих профессий</h2><p>Это не&nbsp;помогающие профессии в&nbsp;принятом смысле, и&nbsp;они не&nbsp;входят в&nbsp;колесо. Но&nbsp;к&nbsp;ним нередко обращаются в&nbsp;трудные периоды, поэтому мы их описываем: что обещают, что известно научно, какие риски и&nbsp;как отличить от&nbsp;помогающей профессии. Описываем, не&nbsp;рекомендуем.</p></div>
+      <div class="kb-two"><p>Определяет «тип» и&nbsp;«стратегию» жизни по&nbsp;данным рождения</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;3&nbsp;источникам<span class="kb-pending">, 1&nbsp;утверждение ещё сверяется</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— высокий. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>да</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>да</dd></div><div><dt>Доступность</dt><dd>платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и&nbsp;консультирование</dd></div><div><dt>Что можно получить</dt><dd>эмоциональная поддержка</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Систему придумал Алан Кракауэр (псевдоним&nbsp;— Ра Уру Ху), бывший работник рекламы и&nbsp;издатель журнала. По&nbsp;его словам, это произошло после «мистического опыта» в&nbsp;1987&nbsp;году; книга о&nbsp;системе вышла в&nbsp;1992&nbsp;году<sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>. Система соединяет астрологию, китайскую «Книгу перемен», каббалу, индийские представления о&nbsp;«центрах» тела и&nbsp;отсылки к&nbsp;физике<sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>. По&nbsp;дате, времени и&nbsp;месту рождения строят «бодиграф» и&nbsp;относят человека к&nbsp;одному из&nbsp;«типов» (манифестор, генератор, манифестирующий генератор, проектор, рефлектор). Каждому типу соответствует своя «стратегия»: как принимать решения, с&nbsp;кем и&nbsp;как работать, как жить<sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем приходят</h2><ul><li>«Не&nbsp;понимаю, кто я и&nbsp;чего хочу»</li><li>«Выгорела&nbsp;— хочу работать “по&nbsp;дизайну”»</li><li>«Подходим&nbsp;ли мы с&nbsp;партнёром?»</li><li>«Какая профессия моя?»</li><li>«Как воспитывать ребёнка по&nbsp;его типу?»</li><li>«Хочу перестать себя ломать»</li></ul></section><section class="kb-sec" id="putayut" aria-labelledby="putayut-h"><h2 class="kb-h2" id="putayut-h">С&nbsp;кем путают</h2><div class="prose"><p><a href="career-counsellor.html">Карьерный консультант</a>: помогает выбрать работу по&nbsp;интересам, навыкам и&nbsp;рынку. <a href="life-coach.html">Лайф-коуч</a>: работает с&nbsp;твоими целями и&nbsp;действиями, а&nbsp;не&nbsp;с&nbsp;«типом». <a href="counselling-psychologist.html">Психолог-консультант</a>: помогает разобраться в&nbsp;себе через твой опыт.</p></div><ul class="kb-vs"><li><a href="career-counsellor.html">Карьерный консультант</a><span>Выбор и&nbsp;смена профессии, план поиска работы</span></li><li><a href="life-coach.html">Лайф-коуч</a><span>Помогает сформулировать личные цели и&nbsp;пройти путь к&nbsp;ним</span></li><li><a href="counselling-psychologist.html">Психолог-консультант</a><span>Профессиональная разговорная помощь при&nbsp;жизненных трудностях и&nbsp;кризисах</span></li></ul><div class="kb-do"><a class="btn primary" href="compare.html?ids=alt-human-design,career-counsellor,life-coach,counselling-psychologist">Сравнить в&nbsp;таблице</a></div></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Человек присылает данные рождения, консультант делает «разбор» устно или в&nbsp;записи. Дальше предлагают курсы, группы, длинные программы «жизни по&nbsp;дизайну».</p></div></section><section class="kb-sec" id="nauka" aria-labelledby="nauka-h"><h2 class="kb-h2" id="nauka-h">Что известно научно</h2><div class="prose"><p>Научных исследований, которые проверяли&nbsp;бы «типы» и&nbsp;«стратегии», мы не&nbsp;нашли; систему относят к&nbsp;псевдонаучным<sup class="ref"><a href="#src-3" title="Human Design — Wikipedia (отправная точка)">3</a></sup>. Поскольку в&nbsp;основе лежит астрологический расчёт, к&nbsp;ней относятся и&nbsp;результаты проверок астрологии<sup class="ref"><a href="#src-1" title="Carlson S. A double-blind test of astrology. Nature, 1985; 318: 419–425">1</a></sup>, и&nbsp;эффект Барнума<sup class="ref"><a href="#src-2" title="Forer B. R. The fallacy of personal validation: a classroom demonstration of gullibility. J Abnorm Soc Psychol, 1949; 44(1): 118–123 — PubMed">2</a></sup>.</p></div></section><section class="kb-careful" id="riski" aria-labelledby="riski-h"><h2 class="kb-h2" id="riski-h">Риски</h2><div class="prose"><ul><li><b>Ярлык ограничивает выбор:</b> «я проектор, мне нельзя много работать».</li><li><b>Решения о&nbsp;работе, отношениях, воспитании детей</b> принимают по&nbsp;«типу».</li><li><b>Деньги:</b> длинные платные программы.</li><li><b>Время:</b> «так задумано» вместо разбора реальных причин выгорания или депрессии.</li></ul></div></section><section class="kb-sec" id="otlichit" aria-labelledby="otlichit-h"><h2 class="kb-h2" id="otlichit-h">Как отличить от&nbsp;помогающей профессии</h2><div class="prose"><ul><li>Твой «тип» определяют по&nbsp;дате рождения, не&nbsp;задав ни&nbsp;одного вопроса о&nbsp;тебе.</li><li>Объяснение не&nbsp;меняется, что&nbsp;бы ни&nbsp;было в&nbsp;твоём рассказе.</li><li>Обещают, что жизнь «по&nbsp;дизайну» снимет все трудности.</li></ul></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>Не&nbsp;психологическая типология: научные модели личности проверяют на&nbsp;данных и&nbsp;строят по&nbsp;ответам самого человека. Не&nbsp;профориентация и&nbsp;не&nbsp;лечение выгорания или депрессии.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>Курсы авторских школ, онлайн-обучение. Единых требований нет.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>Не&nbsp;лицензируется и&nbsp;не&nbsp;запрещено (см. «Общее»).</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Соцсети, онлайн-школы, марафоны, частная практика.</p><p><b>Онлайн?</b> да · <b>Доступность.</b> платно</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 3</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.nature.com/articles/318419a0" target="_blank" rel="noopener">Carlson S. A double-blind test of astrology. Nature, 1985; 318: 419–425 ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://pubmed.ncbi.nlm.nih.gov/18110193/" target="_blank" rel="noopener">Forer B. R. The fallacy of personal validation: a classroom demonstration of gullibility. J Abnorm Soc Psychol, 1949; 44(1): 118–123&nbsp;— PubMed ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://en.wikipedia.org/wiki/Human_Design" target="_blank" rel="noopener">Human Design&nbsp;— Wikipedia (отправная точка) ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр&nbsp;— в&nbsp;чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и&nbsp;формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="counselling-psychologist.html"><span class="t">Психолог-консультант</span><span class="m">путают</span></a><a href="life-coach.html"><span class="t">Лайф-коуч</span><span class="m">путают</span></a><a href="career-counsellor.html"><span class="t">Карьерный консультант / карьерный коуч</span><span class="m">путают</span></a><a href="alt-esoteric-psychosomatics.html"><span class="t">«Психосоматолог» по&nbsp;метафорическим таблицам</span><span class="m">та&nbsp;же семья</span></a><a href="alt-astrologer.html"><span class="t">Астролог</span><span class="m">та&nbsp;же семья</span></a><a href="alt-numerologist.html"><span class="t">Нумеролог</span><span class="m">та&nbsp;же семья</span></a></dd></div></dl></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="fam-alt.html">← Семья<b>Отдельный слой: все 10</b></a><a class="r" href="alt-esoteric-psychosomatics.html" rel="next">Следующий в&nbsp;семье →<b>«Психосоматолог»</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем приходят</a></li><li><a href="#putayut">С кем путают</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#nauka">Что известно научно</a></li><li><a href="#riski">Риски</a></li><li><a href="#otlichit">Как отличить от помогающей профессии</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#istochniki">Источники · 3</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем приходят</a></li><li><a href="#putayut">С&nbsp;кем путают</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#nauka">Что известно научно</a></li><li><a href="#riski">Риски</a></li><li><a href="#otlichit">Как отличить от&nbsp;помогающей профессии</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#istochniki">Источники · 3</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

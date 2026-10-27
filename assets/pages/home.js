@@ -94,6 +94,7 @@
   }
 
   function start(){
+    if(!GATHER) return;   /* 27.10: точек «Хаоса» нет — пустой цикл 60 раз в секунду не крутим (patches/motion.md п. 4) */
     if(running) return; running = true;
     T0 = performance.now();
     raf = requestAnimationFrame(tick);
@@ -107,6 +108,7 @@
 
   /* при прокрутке ниже первого экрана — стоп, вернулся — дальше дрейф */
   function watchVisibility(){
+    if(!GATHER) return;
     if(!('IntersectionObserver' in window)) return;
     new IntersectionObserver(function(es){
       es.forEach(function(e){
@@ -135,7 +137,7 @@
     Field.init({blobs:[]});
 
     var seen = false; try{ seen = sessionStorage.getItem(KEY) === '1'; }catch(e){}
-    if(RM || seen){ showFinal(); if(!RM){ running = true; T0 = performance.now(); raf = requestAnimationFrame(tick); } }
+    if(RM || seen || !GATHER){ showFinal(); if(!RM && GATHER){ running = true; T0 = performance.now(); raf = requestAnimationFrame(tick); } }
     else {
       place(0);
       if(mobile && 'IntersectionObserver' in window){

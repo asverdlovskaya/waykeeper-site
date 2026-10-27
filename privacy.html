@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://waykeeper.org/privacy.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Данные и приватность · Waykeeper">
+<meta property="og:title" content="Данные и приватность">
 <meta property="og:description" content="Что Waykeeper знает о визите, что остаётся в твоём браузере и что происходит с перепиской в Telegram. Форм, cookies и счётчиков на сайте нет.">
 <meta property="og:url" content="https://waykeeper.org/privacy.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/kb.css">
@@ -34,42 +41,64 @@
 <script src="assets/kb-head.js" defer></script>
 <link rel="stylesheet" href="assets/pages/privacy.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html">«Новый сезон»</a></li>
-        <li><a href="project.html">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -80,15 +109,15 @@
     <div class="frame">
       <div class="pv-head">
         <h1 id="page-title">Как я обращаюсь с&nbsp;данными</h1>
-        <p class="small pv-date">Обновлено 26 октября 2026</p>
+        <p class="small pv-date">Обновлено 26&nbsp;октября 2026</p>
         <p class="lead">Если коротко: на&nbsp;сайте нет форм, регистрации и&nbsp;оплаты. Cookies и&nbsp;счётчиков посещений тоже нет. То, что ты пишешь в&nbsp;практиках, остаётся в&nbsp;твоём браузере, и&nbsp;я этого не&nbsp;вижу. Всё, что ты пишешь мне лично, живёт в&nbsp;Telegram и&nbsp;видно только тебе и&nbsp;мне.</p>
       </div>
 
       <section class="pv-sec" id="who" aria-labelledby="h-who">
         <h2 id="h-who">Кто за&nbsp;это отвечает</h2>
         <div class="prose">
-          <p>Сайт waykeeper.org делаю и&nbsp;веду я, Саша Свердловская, живу в&nbsp;Амстердаме. За&nbsp;данные на&nbsp;сайте и&nbsp;в&nbsp;нашей переписке отвечаю я сама, без команды и&nbsp;подрядчиков, которым я бы&nbsp;что-то передавала.</p>
-          <p>По&nbsp;любому вопросу про данные пиши мне в&nbsp;Telegram: <a href="#telegram" data-tg>t.me/asverdlovskaya</a></p>
+          <p>Сайт waykeeper.org делаю и&nbsp;веду я, Саша Свердловская, живу в&nbsp;Амстердаме. За&nbsp;данные на&nbsp;сайте и&nbsp;в&nbsp;нашей переписке отвечаю я сама, без&nbsp;команды и&nbsp;подрядчиков, которым я&nbsp;бы&nbsp;что-то передавала.</p>
+          <p>По&nbsp;любому вопросу про&nbsp;данные пиши мне в&nbsp;Telegram: <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>t.me/asverdlovskaya</a></p>
         </div>
       </section>
       <section class="pv-sec" id="absent" aria-labelledby="h-absent">
@@ -107,7 +136,7 @@
         <h2 id="h-visit">Что я узнаю о&nbsp;визите</h2>
         <div class="prose">
           <p>Почти ничего. Счётчиков посещений на&nbsp;сайте сейчас нет, поэтому я не&nbsp;знаю, кто, когда и&nbsp;откуда заходил.</p>
-          <p>Если я подключу аналитику, то&nbsp;заранее обновлю эту страницу и&nbsp;напишу об&nbsp;этом в&nbsp;канале. Это будет обезличенная статистика без cookies: какие страницы открывают и&nbsp;из&nbsp;какой страны, без города и&nbsp;без возможности узнать конкретного человека. Хранить такие данные буду не&nbsp;дольше 12 месяцев.</p>
+          <p>Если я подключу аналитику, то&nbsp;заранее обновлю эту страницу и&nbsp;напишу об&nbsp;этом в&nbsp;канале. Это будет обезличенная статистика без&nbsp;cookies: какие страницы открывают и&nbsp;из&nbsp;какой страны, без&nbsp;города и&nbsp;без&nbsp;возможности узнать конкретного человека. Хранить такие данные буду не&nbsp;дольше 12&nbsp;месяцев.</p>
           <p>Сервер, на&nbsp;котором лежит сайт, как любой сервер, видит технические данные запроса (адрес, браузер) и&nbsp;коротко хранит их в&nbsp;журнале, чтобы сайт работал и&nbsp;его можно было защитить от&nbsp;атак. Я эти журналы не&nbsp;изучаю и&nbsp;ни&nbsp;с&nbsp;чем не&nbsp;связываю.</p>
         </div>
       </section>
@@ -115,12 +144,12 @@
         <h2 id="h-browser">Что остаётся в&nbsp;твоём браузере</h2>
         <div class="prose">
           <p><strong>В&nbsp;практиках.</strong> Отметки шагов, ответы в&nbsp;полях, твоё колесо, ритуал, цифры в&nbsp;«Призе в&nbsp;деньгах» запоминаются в&nbsp;этом браузере на&nbsp;этом устройстве, чтобы можно было вернуться и&nbsp;продолжить. Никуда не&nbsp;отправляются, я их не&nbsp;вижу. Стереть их можно кнопкой «Стереть ответы» на&nbsp;странице практики или очистив данные сайта в&nbsp;настройках браузера. Если пишешь с&nbsp;общего компьютера, лучше стирать за&nbsp;собой. В&nbsp;приватном окне ничего не&nbsp;запоминается.</p>
-          <p><strong>На&nbsp;страницах сайта.</strong> Ещё в&nbsp;этом браузере запоминается, какие находки на&nbsp;фоне страниц уже открыты и&nbsp;как настроена карта атласа, чтобы при возвращении всё было на&nbsp;месте. Это тоже никуда не&nbsp;уходит.</p>
+          <p><strong>На&nbsp;страницах сайта.</strong> Ещё в&nbsp;этом браузере запоминается, какие находки на&nbsp;фоне страниц уже открыты и&nbsp;как настроена карта атласа, чтобы при&nbsp;возвращении всё было на&nbsp;месте. Это тоже никуда не&nbsp;уходит.</p>
           <p>Кнопка «Скопировать текстом» кладёт твои ответы в&nbsp;буфер обмена. Дальше они там, куда ты их вставишь, и&nbsp;по&nbsp;правилам того места.</p>
           <p><strong>До&nbsp;закрытия вкладки.</strong> Кое-что сайт помнит, только пока вкладка открыта:</p>
           <ul class="list">
             <li>ответы в&nbsp;«Трёх моментах года» на&nbsp;странице «Нового сезона»;</li>
-            <li>что выбрано на&nbsp;странице «Перехода» и&nbsp;какие практики начаты: на&nbsp;«Разговоре» это собирается в&nbsp;«Что уже нашлось», чтобы было проще написать первое сообщение (там же&nbsp;есть «стереть»);</li>
+            <li>что выбрано на&nbsp;странице «Перехода» и&nbsp;какие практики начаты: на&nbsp;«Разговоре» это собирается в&nbsp;«Что уже нашлось», чтобы было проще написать первое сообщение (там&nbsp;же&nbsp;есть «стереть»);</li>
             <li>что заставка на&nbsp;главной уже показалась, чтобы не&nbsp;повторять её.</li>
           </ul>
           <p>Закроешь вкладку&nbsp;— пропадёт.</p>
@@ -130,14 +159,14 @@
         <h2 id="h-telegram">Когда ты пишешь мне в&nbsp;Telegram</h2>
         <div class="prose">
           <p>Записаться в&nbsp;список ожидания «Нового сезона», на&nbsp;разговор или просто спросить можно только в&nbsp;Telegram. Твои сообщения вижу только я и&nbsp;никому их не&nbsp;пересылаю. Сама переписка хранится в&nbsp;Telegram по&nbsp;его правилам: <a href="https://telegram.org/privacy" target="_blank" rel="noopener">telegram.org/privacy</a></p>
-          <p>Из&nbsp;переписки я беру только то, что нужно для дела: ответить, договориться о&nbsp;времени, записать тебя в&nbsp;список ожидания и&nbsp;написать, когда появятся даты. Список ожидания&nbsp;— это наши чаты в&nbsp;Telegram и&nbsp;короткая заметка у&nbsp;меня; после встреч я её удаляю.</p>
+          <p>Из&nbsp;переписки я беру только то, что нужно для&nbsp;дела: ответить, договориться о&nbsp;времени, записать тебя в&nbsp;список ожидания и&nbsp;написать, когда появятся даты. Список ожидания&nbsp;— это наши чаты в&nbsp;Telegram и&nbsp;короткая заметка у&nbsp;меня; после встреч я её удаляю.</p>
           <p>Разговор по&nbsp;видео я не&nbsp;записываю. В&nbsp;программе запись бывает только с&nbsp;твоего согласия.</p>
         </div>
       </section>
       <section class="pv-sec" id="stories" aria-labelledby="h-stories">
         <h2 id="h-stories">Истории и&nbsp;цитаты</h2>
         <div class="prose">
-          <p>Слова из&nbsp;интервью и&nbsp;истории людей, с&nbsp;которыми я работаю, появляются на&nbsp;сайте и&nbsp;в&nbsp;канале только с&nbsp;согласия и&nbsp;без имён и&nbsp;деталей, по&nbsp;которым человека можно узнать. Если передумаешь&nbsp;— напиши, и&nbsp;я уберу.</p>
+          <p>Слова из&nbsp;интервью и&nbsp;истории людей, с&nbsp;которыми я работаю, появляются на&nbsp;сайте и&nbsp;в&nbsp;канале только с&nbsp;согласия и&nbsp;без&nbsp;имён и&nbsp;деталей, по&nbsp;которым человека можно узнать. Если передумаешь&nbsp;— напиши, и&nbsp;я уберу.</p>
         </div>
       </section>
       <section class="pv-sec" id="rights" aria-labelledby="h-rights">
@@ -154,9 +183,9 @@
         </div>
       </section>
       <section class="pv-sec" id="children" aria-labelledby="h-children">
-        <h2 id="h-children">Про детей</h2>
+        <h2 id="h-children">Про&nbsp;детей</h2>
         <div class="prose">
-          <p>Сайт и&nbsp;всё, что я делаю,&nbsp;— для взрослых. Данные детей я сознательно не&nbsp;собираю, а&nbsp;если окажется, что мне написал ребёнок, удалю переписку.</p>
+          <p>Сайт и&nbsp;всё, что я делаю,&nbsp;— для&nbsp;взрослых. Данные детей я сознательно не&nbsp;собираю, а&nbsp;если окажется, что мне написал ребёнок, удалю переписку.</p>
         </div>
       </section>
       <section class="pv-sec" id="changes" aria-labelledby="h-changes">
@@ -174,25 +203,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -202,12 +231,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -216,7 +245,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

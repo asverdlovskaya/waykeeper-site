@@ -430,7 +430,7 @@ function openFamily(id) {
     <div><span class="label">${esc(RM.label)} · по кольцам</span>${bars(ringRows, n)}</div>
     <div><span class="label">Что можно получить</span>${bars(resRows, n, `var(--fam-${id})`)}</div>
     ${M.vals.map(v => { const c = list.filter(p => RM.of(p) === v); return c.length ? `<div><span class="label">${esc(ringName(v))}</span><div class="a-chips">${c.map(p => chip(p.id)).join('')}</div></div>` : ''; }).join('')}
-    ${mine ? `<p class="a-netline"><i class="mk have"></i>В вашей сети: ${mine} из ${n}</p>` : ''}
+    ${mine ? `<p class="a-netline"><i class="mk have"></i>В твоей сети: ${mine} из ${n}</p>` : ''}
     ${f.neighbors && f.neighbors.length ? `<div><span class="label">Соседние семьи</span><div class="a-chips">${f.neighbors.filter(x => X.FAM[x]).map(x => `<button type="button" class="chip" data-gofam="${x}"><i style="background:var(--fam-${x})"></i>${esc(X.FAM[x].name)}</button>`).join('')}</div></div>` : ''}
   </div>
   <div class="a-panel-f"><a class="btn primary" href="${X.famHref(id)}">Все специалисты семьи →</a></div>`, 'f');
@@ -560,7 +560,7 @@ function storySteps() {
     { t: 'Десять семей', p: 'По кругу — семьи: за какую сферу жизни отвечает специалист. Чем больше сектор, тем больше в семье ролей. Соседи по кругу чаще всего передают людей друг другу.', go: () => { fitAll(); sweep(); } },
     { t: 'Опора для помогающих', p: 'Внешний пояс — те, кто поддерживает самих помогающих: супервизоры, ведущие балинтовских групп, преподаватели.', go: () => { flySector('support'); spot({ support: true }, true); } },
     { t: 'Отдельный слой', p: 'Остров за пределами карты — альтернативные и эзотерические практики. К ним массово идут в кризисе, поэтому мы их описываем, но не рекомендуем.', go: () => { flySector('alt'); spot({ island: true }, true); } },
-    { t: 'Дальше — сами', p: 'Приближайте карту: появятся имена, затем подробности и карточки. В «Территории» кольца перестраиваются по подготовке или характеру помощи, а заливка показывает смысл: где ставят диагноз, где бесплатно, где онлайн.', go: () => { fitAll(); spot(null); } }
+    { t: 'Дальше — ты', p: 'Приближай карту: появятся имена, затем подробности и карточки. В «Территории» кольца перестраиваются по подготовке или характеру помощи, а заливка показывает смысл: где ставят диагноз, где бесплатно, где онлайн.', go: () => { fitAll(); spot(null); } }
   ];
 }
 function sweep() {
@@ -604,7 +604,7 @@ function buildInsights() {
   const dx = MAIN.filter(by('dx').test), dx4 = dx.filter(p => p.level === 4).length;
   out.push({ n: dx.length, t: dx4 === dx.length ? `ролей ставят диагноз — и все они за границей допуска, на уровне «Полномочия».` : `ролей ставят диагноз; ${dx4} из них — за границей допуска.`, act: () => { setRing('level'); setHeat('dx'); deselect(true); fitAll(); } });
   const l2 = MAIN.filter(p => p.level === 2), tr2 = new Set(l2.map(p => p.training)).size;
-  out.push({ n: l2.length, t: `из ${n} ролей — на уровне «Практика», без государственного допуска. Подготовка там очень разная: ${tr2} ступени, от «без подготовки» до многолетней сертификации. Перестройте кольца по подготовке — увидите разброс.`, act: () => { setHeat(null); setRing('training'); fitAll(); } });
+  out.push({ n: l2.length, t: `из ${n} ролей — на уровне «Практика», без государственного допуска. Подготовка там очень разная: ${tr2} ступени, от «без подготовки» до многолетней сертификации. Перестрой кольца по подготовке — увидишь разброс.`, act: () => { setHeat(null); setRing('training'); fitAll(); } });
   out.push({ n: cnt(by('free').test), t: `ролей можно найти бесплатно: в госмедицине, госучреждениях или НКО. Заливка покажет, в каких частях карты бесплатного больше.`, act: () => { setHeat('free'); fitAll(); } });
   out.push({ n: cnt(by('online').test), t: `ролей полноценно работают онлайн. Ближе к границе допуска онлайна меньше: там нужен очный приём.`, act: () => { setHeat('online'); fitAll(); } });
   out.push({ n: ALL.filter(p => p.inRussia !== 'да').length, t: `ролей в России встречаются редко или пока не существуют. Это профессии, которые здесь только складываются.`, act: () => { setHeat('ru'); fitAll(); } });
@@ -697,11 +697,10 @@ function drTerrain() {
     <div class="a-legend-b">${M.colorBy === 'family'
       ? X.FAMS.map(f => `<button type="button" data-gofam="${f.id}"><i style="background:var(--fam-${f.id})"></i>${esc(f.name)}<small>${X.MAIN.filter(p => p.family === f.id).length}</small></button>`).join('') + `<button type="button" data-gofam="alt"><i style="background:var(--fam-alt)"></i>Отдельный слой<small>${X.ALT.length}</small></button>`
       : fc.values().map(v => `<span><i style="background:${fc.color(v)}"></i>${esc(fc.name(v))}</span>`).join('')}</div></section>
-  <section><h4>Линии связей</h4><p class="a-dr-note"><span class="a-key"></span>сплошная — стыкуются, передают людей друг другу<br><span class="a-key conf"></span>пунктир — их часто путают<br>Цвет линии — семья того, к кому она ведёт. Наведите на точку, чтобы увидеть связи.</p></section>`;
+  <section><h4>Линии связей</h4><p class="a-dr-note"><span class="a-key"></span>сплошная — стыкуются, передают людей друг другу<br><span class="a-key conf"></span>пунктир — их часто путают<br>Цвет линии — семья того, к кому она ведёт.</p></section>`;
 }
 function drInsights() {
-  return `<p class="a-dr-note">Выводы считаются из базы знаний при каждой сборке. Нажмите, чтобы увидеть на карте.</p>` +
-    M.insights.map((x, i) => `<button type="button" class="a-ins" data-ins="${i}"><b>${x.n}</b><span>${esc(x.t)}</span><small>Показать на карте →</small></button>`).join('');
+  return M.insights.map((x, i) => `<button type="button" class="a-ins" data-ins="${i}"><b>${x.n}</b><span>${esc(x.t)}</span><small>Показать на карте →</small></button>`).join('');
 }
 function drRoutes() {
   return `<button type="button" class="a-route story" data-story><b>${IC.play} Как читать карту</b><small>10 шагов: центр, кольца, граница допуска, семьи, внешний пояс, отдельный слой</small></button>` +
@@ -712,7 +711,7 @@ function drNet() {
   const have = ids('have'), want = ids('want');
   const fams = M.sectors.map(s => ({ s, have: have.filter(id => X.BY[id].family === s.id).length, want: want.filter(id => X.BY[id].family === s.id).length }));
   const covered = fams.filter(x => x.have).length, empty = fams.filter(x => !x.have);
-  return `<p class="a-dr-note">Отмечайте в карточке специалиста: у кого есть контакт, кого хотите найти, о ком хотите узнать больше. Так карта становится картой ваших опор. Отметки хранятся только в этом браузере.</p>
+  return `<p class="a-dr-note">Отмечай в карточке специалиста: у кого есть контакт, кого хочешь найти, о ком хочешь узнать больше. Так карта становится картой твоих опор. Отметки хранятся только в этом браузере.</p>
   <div class="a-kpis">${Object.entries(MARKS).map(([k, n]) => `<div><b>${ids(k).length}</b><span><i class="mk ${k}"></i>${esc(n.toLowerCase())}</span></div>`).join('')}</div>
   <section><h4>Опора по семьям</h4><p class="a-dr-note">Контакты есть в ${covered} из ${M.sectors.length} семей. <span class="a-key solid-acc"></span>есть контакт <span class="a-key solid-warm"></span>хочу найти</p>
     <div class="a-bars">${fams.map(x => `<button type="button" class="a-bar" data-gofam="${x.s.id}"><span><i style="background:var(--fam-${x.s.id})"></i>${esc(x.s.f.name)}</span><i><b style="width:${(x.have / x.s.n * 100).toFixed(1)}%;background:var(--c-accent)"></b><b style="width:${(x.want / x.s.n * 100).toFixed(1)}%;background:var(--c-warm)"></b></i><em>${x.have}/${x.s.n}</em></button>`).join('')}</div>
@@ -782,7 +781,7 @@ function hudHTML() {
   <div class="a-hud a-hud-tl">
     <div class="a-searchrow"><label class="a-q">${X.ICON.search}<input id="aq" type="search" autocomplete="off" placeholder="Специалист или запрос: «не сплю»" aria-label="Найти на карте"></label></div>
     <div class="a-sugg" id="aSugg" hidden></div>
-    <div class="a-crumbrow"><nav class="a-crumbs" id="aCrumbs" aria-label="Где вы на карте"></nav><span class="a-count" id="aCount" hidden></span></div>
+    <div class="a-crumbrow"><nav class="a-crumbs" id="aCrumbs" aria-label="Навигация по карте"></nav><span class="a-count" id="aCount" hidden></span></div>
   </div>
   <nav class="a-hud a-rail" aria-label="Инструменты карты">${RAIL.map(r => `<button type="button" data-drawer="${r[0]}" aria-pressed="false">${r[2]}<span>${r[1]}</span><b></b></button>`).join('')}<button type="button" data-story>${IC.play}<span>Как читать</span></button></nav>
   <aside class="a-hud a-drawer" id="aDrawer" hidden></aside>
@@ -796,7 +795,7 @@ function hudHTML() {
   <div class="a-hud a-mini" aria-label="Мини-карта">${miniSVG()}</div>
   <button type="button" class="a-hud a-status" id="aStatus" data-drawer="terrain" title="Изменить в «Территории»"></button>
   <div class="a-hud a-tour" id="aTour" hidden></div>
-  <div class="a-hud a-hint" id="aHint" hidden><div><b>Атлас помогающих специалистов</b><p>${X.MAIN.length} ролей: ${X.FAMS.length - 1} семей по кругу, 4 уровня от центра к краю. Приближайте колёсиком или щипком, тяните карту, нажимайте на точки.</p></div><div class="a-hint-b"><button type="button" class="btn sm a-hint-go" data-story>${IC.play} Как читать карту · 1 мин</button><button type="button" class="btn sm a-hint-skip" id="aHintOk">Сразу исследовать</button></div></div>
+  <div class="a-hud a-hint" id="aHint" hidden><div><b>Атлас помогающих специалистов</b><p>${X.MAIN.length} ролей: ${X.FAMS.length - 1} семей по кругу, 4 уровня от центра к краю. Приближай колёсиком или щипком, тяни карту, нажимай на точки.</p></div><div class="a-hint-b"><button type="button" class="btn sm a-hint-go" data-story>${IC.play} Как читать карту · 1 мин</button><button type="button" class="btn sm a-hint-skip" id="aHintOk">Сразу исследовать</button></div></div>
   <div class="a-tip" id="aTip" hidden></div>
   <aside class="a-panel" id="aPanel" hidden aria-labelledby="aPanelT"></aside>`;
 }
@@ -808,7 +807,7 @@ function mount(host, arg) {
   M.sectors = buildSectors(); M.pins = buildPins(); M.metrics = metrics();
   M.byId = {}; M.pins.forEach(q => M.byId[q.id] = q);
   const root = document.createElement('section'); root.className = 'atlas'; root.setAttribute('aria-label', 'Карта помогающих специалистов'); root.setAttribute('role', 'region');
-  root.innerHTML = `<div class="a-stage" id="aStage" tabindex="0" aria-label="Карта. Нажмите, чтобы управлять с клавиатуры: стрелки двигают, плюс и минус приближают, ноль показывает всю карту, F открывает на весь экран"><svg class="a-svg" aria-hidden="true"><g class="a-world">${worldSVG()}</g></svg><div class="a-labels"></div><div class="a-pins" role="list" aria-label="Специалисты на карте"></div></div>${hudHTML()}`;
+  root.innerHTML = `<div class="a-stage" id="aStage" tabindex="0" aria-label="Карта. Стрелки двигают, плюс и минус приближают, ноль показывает всю карту, F открывает на весь экран"><svg class="a-svg" aria-hidden="true"><g class="a-world">${worldSVG()}</g></svg><div class="a-labels"></div><div class="a-pins" role="group" aria-label="Специалисты на карте. Стрелки — к следующему, Home и End — к первому и последнему"></div></div>${hudHTML()}`;
   host.querySelectorAll('[data-boot]').forEach(b => b.remove());
   host.appendChild(root);
   const $r = q => root.querySelector(q);
@@ -818,12 +817,31 @@ function mount(host, arg) {
   // точки-специалисты: кнопки, порядок табуляции — по семьям и кольцам
   const pinsHost = $r('.a-pins'), frag = document.createDocumentFragment();
   M.pins.forEach(q => {
-    const el = document.createElement('button'); el.type = 'button'; el.className = 'a-pin'; el.dataset.pin = q.id; el.setAttribute('role', 'listitem');
+    const el = document.createElement('button'); el.type = 'button'; el.className = 'a-pin'; el.dataset.pin = q.id; el.tabIndex = -1;   // кнопка (без role=listitem): диктор называет её кнопкой
     el.setAttribute('aria-label', q.p.name + (q.p.layer === 'alt' ? ' (отдельный слой)' : ' — ' + q.p.familyName + ', ' + q.p.levelName));
     el.innerHTML = '<span class="a-dot"></span><span class="a-badge"></span><span class="a-lab" hidden></span>';
     el.hidden = true; q.el = el; q.lab = el.lastChild; q.lt = ''; frag.appendChild(el);
   });
   pinsHost.appendChild(frag);
+  // 27.10 (patches/states.md): одна остановка Tab на все точки вместо ~125 подряд; внутри — стрелки, Home, End.
+  // Остановка «помнит» последнюю точку; если та скрылась фильтром или масштабом — переходит на первую видимую.
+  const visPins = () => M.pins.map(q => q.el).filter(el => !el.hidden);
+  let rove = null;
+  const setRove = el => { if (rove && rove !== el) rove.tabIndex = -1; rove = el; if (el) el.tabIndex = 0; };
+  const fixRove = () => { if (!rove || rove.hidden) setRove(visPins()[0] || null); };
+  pinsHost.addEventListener('focusin', e => { const p = e.target.closest('.a-pin'); if (p) setRove(p); });
+  pinsHost.addEventListener('keydown', e => {
+    const p = e.target.closest('.a-pin'); if (!p) return;
+    const L = visPins(), i = L.indexOf(p); let n = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = L[(i + 1) % L.length];
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = L[(i - 1 + L.length) % L.length];
+    else if (e.key === 'Home') n = L[0];
+    else if (e.key === 'End') n = L[L.length - 1];
+    if (!n) return;
+    e.preventDefault(); e.stopPropagation(); e.atlasHandled = true;   // стрелки не двигают карту, пока фокус на точке
+    setRove(n); n.focus({ preventScroll: true });
+  });
+  new MutationObserver(fixRove).observe(pinsHost, { subtree: true, attributes: true, attributeFilter: ['hidden'] });
   buildFixed();
   setRing(RINGS[X.store('atlasRing')] ? X.store('atlasRing') : 'level', false);
   M.pins.forEach(q => { setXY(q); q.el.style.setProperty('--d', Math.round(Math.min(1, Math.hypot(q.x, q.y) / 1900) * 700) + 'ms'); });
@@ -965,11 +983,11 @@ function hoverTip(e) {
   const t = e.target.closest && e.target.closest('.a-cell, .a-sup, .a-island');
   if (!t || sNow() > 2.6 || M.sel || matchMedia('(hover: none)').matches) { M.tip.hidden = true; return; }
   let html;
-  if (t.classList.contains('a-sup')) html = `<b>Опора для помогающих</b><span>${X.MAIN.filter(p => p.family === 'support').length} роли · внешний пояс</span><small>Нажмите, чтобы открыть</small>`;
-  else if (t.classList.contains('a-island')) html = `<b>Отдельный слой</b><span>${X.ALT.length} альтернативных практик · вне карты</span><small>Нажмите, чтобы открыть</small>`;
+  if (t.classList.contains('a-sup')) html = `<b>Опора для помогающих</b><span>${X.MAIN.filter(p => p.family === 'support').length} роли · внешний пояс</span>`;
+  else if (t.classList.contains('a-island')) html = `<b>Отдельный слой</b><span>${X.ALT.length} альтернативных практик · вне карты</span>`;
   else {
     const c = M.cells.find(x => x.fam === t.dataset.fam && String(x.l) === t.dataset.l); if (!c) return;
-    html = `<b><i style="background:var(--fam-${c.fam})"></i>${esc(X.FAM[c.fam].name)}</b><span>${esc(ringName(c.l))} · ${plural(c.n, 'специалист', 'специалиста', 'специалистов')}</span>${M.metric && c.n ? `<span class="a-tip-h">${c.hk} из ${c.n} — ${esc(M.metric.short)}</span>` : ''}<small>${sNow() < 2.2 ? 'Нажмите, чтобы открыть семью' : 'Нажмите, чтобы приблизить'}</small>`;
+    html = `<b><i style="background:var(--fam-${c.fam})"></i>${esc(X.FAM[c.fam].name)}</b><span>${esc(ringName(c.l))} · ${plural(c.n, 'специалист', 'специалиста', 'специалистов')}</span>${M.metric && c.n ? `<span class="a-tip-h">${c.hk} из ${c.n} — ${esc(M.metric.short)}</span>` : ''}`;
   }
   if (M.tip.dataset.k !== html) { M.tip.innerHTML = html; M.tip.dataset.k = html; }
   const r = M.root.getBoundingClientRect(); let x = e.clientX - r.left + 16, y = e.clientY - r.top + 18;
@@ -1016,7 +1034,7 @@ function onClick(e) {
   if (t.closest('#aReset') || t.closest('[data-clearf]')) { const f = M.f; f.flags.clear(); f.res.clear(); f.train.clear(); f.free = f.online = f.ru = f.net = false; f.q = ''; M.root.querySelector('#aq').value = ''; M.root.querySelector('#aSugg').hidden = true; refilter(); refreshDrawer(); return; }
   if (t.closest('#aCopyNet')) {
     const txt = netText(), ta = M.root.querySelector('#aNetText'), b = t.closest('#aCopyNet');
-    const fallback = () => { ta.hidden = false; ta.value = txt; ta.select(); b.textContent = 'Выделено — скопируйте'; };
+    const fallback = () => { ta.hidden = false; ta.value = txt; ta.select(); b.textContent = 'Выделено — скопируй'; };
     try { navigator.clipboard.writeText(txt).then(() => { b.textContent = 'Скопировано'; }, fallback); } catch (x) { fallback(); }
     return;
   }

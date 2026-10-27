@@ -2,7 +2,8 @@
    Контейнер: <div data-module="season" data-clear></div>
    Необязательно: data-intro="none" — без вводного абзаца в слое (если он уже есть на странице);
                   data-cta="none" — без кнопки «Записаться в список ожидания».
-   Ничего не отправляется: ответы живут только в этой вкладке (sessionStorage).
+   Ничего не отправляется: ответы хранятся в этом браузере (localStorage), как во всех практиках;
+   «Стереть ответы» — в два нажатия («Точно стереть?», 3 с). Правка 27.10, patches/states.md.
    Видимых подсказок нет: куда нажать, показывает дышащее кольцо на линии; что дальше — кольца
    следующего сезона, которые проявляются с каждым моментом. Клавиатурная подсказка — только в aria. */
 (function(){
@@ -22,7 +23,8 @@ var TXT = {
   note: 'Ответы остаются у тебя в браузере. Если сейчас совсем тяжело, сначала врач или психолог.',
   cta: 'Записаться в список ожидания',
   tgText: 'Привет! Хочу в список ожидания «Нового сезона». Напиши, когда появятся даты.',
-  clear: 'стереть',
+  clear: 'Стереть ответы',
+  clearSure: 'Точно стереть?',
   edit: 'что это было?',
   change: 'что он поменял?',
   focus: 'одно слово'
@@ -42,7 +44,14 @@ function rm(){ return window.matchMedia && matchMedia('(prefers-reduced-motion: 
 function fine(){ return window.matchMedia && matchMedia('(pointer: fine)').matches; }
 
 function load(){
-  try{ var s = JSON.parse(sessionStorage.getItem(KEY)); if(s && s.m && s.f) return s; }catch(e){}
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(!raw){                                   // ответы, записанные до правки (только в этой вкладке), переносим
+      raw = sessionStorage.getItem(KEY);
+      if(raw){ localStorage.setItem(KEY, raw); sessionStorage.removeItem(KEY); }
+    }
+    var s = JSON.parse(raw); if(s && s.m && s.f) return s;
+  }catch(e){}
   return null;
 }
 function fresh(){ return {m:[], f:['','',''], phase:0, front:'past'}; }
@@ -140,7 +149,7 @@ function mount(root){
   wrap.appendChild(stage); wrap.appendChild(end); wrap.appendChild(foot); wrap.appendChild(live);
   root.appendChild(wrap);
 
-  function save(){ try{ sessionStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
   function say(t){ live.textContent = ''; setTimeout(function(){ live.textContent = t; }, 60); }
   function filled(){ return S.m.filter(function(m){ return m.x; }).length; }
   // поле растёт по тексту, а не прячет его
@@ -537,8 +546,15 @@ function mount(root){
   liftPast.addEventListener('click', function(){ setFront('past', true); });
   liftNext.addEventListener('click', function(){ setFront('next', true); });
 
+  var armed = 0;
   clr.addEventListener('click', function(){
-    try{ sessionStorage.removeItem(KEY); }catch(e){}
+    if(!armed){                                 // первое нажатие спрашивает
+      armed = setTimeout(function(){ armed = 0; clr.textContent = TXT.clear; }, 3000);
+      clr.textContent = TXT.clearSure;
+      return;
+    }
+    clearTimeout(armed); armed = 0; clr.textContent = TXT.clear;
+    try{ localStorage.removeItem(KEY); sessionStorage.removeItem(KEY); }catch(e){}
     S = fresh(); editing = null; step = 'x'; edit.hidden = true; cur = 5;
     inputs.forEach(function(inp){ inp.value = ''; grow(inp); });
     next.classList.add('ns-pre');

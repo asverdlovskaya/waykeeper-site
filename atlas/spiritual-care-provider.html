@@ -7,9 +7,9 @@
 <meta name="description" content="Капеллан / духовный опекун: Духовная и смысловая поддержка больных и близких — верующих и неверующих. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/spiritual-care-provider.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Капеллан · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Капеллан">
 <meta property="og:description" content="Капеллан / духовный опекун: Духовная и смысловая поддержка больных и близких — верующих и неверующих. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/spiritual-care-provider.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Дух и смысл · 5</span><ul><li><a href="spiritual-director.html">Духовный наставник</a></li><li><a href="pastoral-counsellor.html">Пастырский консультант</a></li><li><a href="philosophical-counsellor.html">Философский практик</a></li><li><a href="spiritual-care-provider.html" class="is-here" aria-current="page">Капеллан</a></li><li><a href="clergy-pastoral-care.html">Священник</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-spirit" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Дух и&nbsp;смысл · 5</span><ul><li><a href="spiritual-director.html">Духовный наставник</a></li><li><a href="pastoral-counsellor.html">Пастырский консультант</a></li><li><a href="philosophical-counsellor.html">Философский практик</a></li><li><a href="spiritual-care-provider.html" class="is-here" aria-current="page">Капеллан</a></li><li><a href="clergy-pastoral-care.html">Священник</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-spirit" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-spirit.html">Дух и смысл</a></li><li>Капеллан</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>семья «Дух и смысл»<span class="sep">·</span>данные 27.10.2026</p>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-spirit.html">Дух и&nbsp;смысл</a></li><li>Капеллан</li></ol>
+      
       <h1 class="kb-h1" id="page-title">Капеллан / духовный опекун<small lang="en">Chaplain / spiritual care provider</small></h1>
       
-      <div class="kb-two"><span class="label">В двух словах</span><p>Духовная и смысловая поддержка больных и близких — верующих и неверующих</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>4 источника</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 3 утверждения не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — средний. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
-      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и участие</li><li><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li class="is-here"><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>иногда</dd></div><div><dt>Работает с будущим</dt><dd>нет</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>нет</dd></div><div><dt>Работает с группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>длительная подготовка и сертификация</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в НКО</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и консультирование</dd></div><div><dt>Что можно получить</dt><dd>эмоциональная поддержка, сеть/контакты</dd></div></dl><dl class="kb-facts kb-facts--one"><div><dt>В России</dt><dd>редко: Больничные священники и храмы при больницах.</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Даёт духовную и смысловую поддержку тяжелобольным, умирающим и их близким — в больнице, хосписе или дома. Говорит с человеком о смысле, вине, прощении, страхе смерти; по желанию проводит молитву, таинства и обряды или приглашает священнослужителя нужной веры. В мировой практике духовный опекун работает и с неверующими.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«За что мне это?»</li><li>«Боюсь умирать, боюсь того, что будет после»</li><li>«Хочу исповедаться, причаститься, позвать имама или раввина»</li><li>«Хочу помириться и попросить прощения»</li><li>«Я неверующий, но мне нужно поговорить о смысле»</li><li>«Как проститься по нашей традиции?»</li><li>«Злюсь на Бога»</li></ul></section><section class="kb-sec" id="putayut" aria-labelledby="putayut-h"><h2 class="kb-h2" id="putayut-h">С кем путают</h2><div class="prose"><p><a href="clergy-pastoral-care.html">Священнослужитель (пастырская забота)</a>: служит прежде всего своей общине и традиции, а капеллан / духовный опекун работает в больнице, хосписе или паллиативной службе с людьми любой веры и неверующими.</p></div><ul class="kb-vs"><li><a href="clergy-pastoral-care.html">Священник</a><span>Духовная поддержка, обряды и опора общины в жизни и утрате</span></li></ul><div class="kb-do"><a class="btn primary" href="compare.html?ids=spiritual-care-provider,clergy-pastoral-care">Сравнить в таблице</a></div></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Слушает и помогает сформулировать, что для человека сейчас важно. Совершает или организует обряды. Сопровождает семью у постели и в момент смерти.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально у постели и с семьёй, разово или регулярно. Обряды могут быть общими.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>В профессиональной модели духовный опекун не навязывает веру и не обращает в неё. Не психотерапевт и не медик, медицинских вопросов не решает. <a href="clergy-pastoral-care.html">Священник</a> как служитель своей церкви и пастырская помощь в общине.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>В России это обычно священник или подготовленный мирянин своей конфессии; светской подготовки «капелланов» нет <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В мире обычно: богословское или пастырское образование и практика в больнице. В Великобритании есть добровольный реестр профессиональных капелланов и пастырских помощников — CPCPC (бывший UKBHC), аккредитованный государственным Professional Standards Authority. Капелланом там считается специалист, который даёт пастырскую поддержку «с религиозным измерением или без него», включая гуманистов, атеистов и агностиков.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Отдельной профессии нет. Пациент вправе пригласить священнослужителя, а в стационаре — получить условия для религиозных обрядов (ФЗ-323, ст. 19, ч. 5, п. 11). Положение 208н/243н (п. 27) предусматривает взаимодействие медорганизаций с религиозными организациями, чтобы обеспечить духовную помощь.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Через персонал хосписа или паллиативной службы. Больничные храмы и молельные комнаты <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. Через свою религиозную общину. Неверующим людям похожую поддержку чаще дают психологи хосписа <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в НКО</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Входит в многопрофильную помощь вместе с паллиативной командой (ВОЗ относит духовные проблемы к её задачам), волонтёрами, доулой, <a href="celebrant.html">ведущим церемоний</a>. После смерти может передать семью <a href="grief-counsellor.html">консультанту по горю</a>. См. также: <a href="spiritual-director.html">Духовный наставник</a>; священнослужитель, <a href="pastoral-counsellor.html">пастырский консультант</a>.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Подходит, когда в болезни или утрате главный вопрос — «зачем?» и «что дальше?», а не «как лечить?».</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 4</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.who.int/news-room/fact-sheets/detail/palliative-care" target="_blank" rel="noopener">Palliative care — fact sheet — World Health Organization ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://www.zakonrf.info/zakon-o-zdorovye-grazhdan/19/" target="_blank" rel="noopener">ФЗ-323, ст. 19 «Право на медицинскую помощь» (ч. 5, п. 11 — допуск священнослужителя) — zakonrf.info ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://www.garant.ru/products/ipo/prime/doc/411989350/" target="_blank" rel="noopener">Приказ Минздрава № 208н / Минтруда № 243н от 14.04.2025 «Об утверждении Положения об организации оказания паллиативной медицинской помощи…» (действует с 1 сентября 2025 г., заменил приказ 345н/372н от 31.05.2019) — ГАРАНТ ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://www.cpcpc.org.uk/" target="_blank" rel="noopener">Council for Professional Chaplains and Pastoral Carers (CPCPC, ранее UKBHC) ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/krizis-identichnosti.html"><span class="t">Кризис идентичности</span><span class="m">ситуация</span></a><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-white-maps"><span class="t">Карты нарративной практики. Введение в нарративную терапию</span><span class="m">книга · Майкл Уайт · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="../resources.html#book-gottlieb"><span class="t">Вы хотите поговорить об этом?</span><span class="m">книга · Лори Готтлиб</span></a></dd></div><div><dt>В атласе</dt><dd><a href="clergy-pastoral-care.html"><span class="t">Священнослужитель (пастырская забота)</span><span class="m">путают</span></a><a href="grief-counsellor.html"><span class="t">Консультант / терапевт по горю</span><span class="m">стыкуется</span></a><a href="celebrant.html"><span class="t">Ведущий церемоний и ритуалов</span><span class="m">стыкуется</span></a><a href="spiritual-director.html"><span class="t">Духовный наставник</span><span class="m">стыкуется</span></a><a href="pastoral-counsellor.html"><span class="t">Пастырский консультант / психолог в религиозной традиции</span><span class="m">стыкуется</span></a><a href="palliative-physician.html"><span class="t">Врач паллиативной помощи</span><span class="m">упоминает</span></a></dd></div></dl></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="philosophical-counsellor.html" rel="prev">← Предыдущий в семье<b>Философский практик</b></a><a class="r" href="clergy-pastoral-care.html" rel="next">Следующий в семье →<b>Священник</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <div class="kb-two"><p>Духовная и&nbsp;смысловая поддержка больных и&nbsp;близких&nbsp;— верующих и&nbsp;неверующих</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;4&nbsp;источникам<span class="kb-pending">, 3&nbsp;утверждения ещё сверяются</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— средний. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На&nbsp;чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и&nbsp;участие</li><li><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li class="is-here"><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>длительная подготовка и&nbsp;сертификация</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в&nbsp;НКО</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и&nbsp;консультирование</dd></div><div><dt>Что можно получить</dt><dd>эмоциональная поддержка, сеть/контакты</dd></div></dl><dl class="kb-facts kb-facts--one"><div><dt>В&nbsp;России</dt><dd>редко: Больничные священники и&nbsp;храмы при&nbsp;больницах.</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Даёт духовную и&nbsp;смысловую поддержку тяжелобольным, умирающим и&nbsp;их близким&nbsp;— в&nbsp;больнице, хосписе или дома. Говорит с&nbsp;человеком о&nbsp;смысле, вине, прощении, страхе смерти; по&nbsp;желанию проводит молитву, таинства и&nbsp;обряды или приглашает священнослужителя нужной веры. В&nbsp;мировой практике духовный опекун работает и&nbsp;с&nbsp;неверующими.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем к&nbsp;нему приходят</h2><ul><li>«За&nbsp;что мне это?»</li><li>«Боюсь умирать, боюсь того, что будет после»</li><li>«Хочу исповедаться, причаститься, позвать имама или раввина»</li><li>«Хочу помириться и&nbsp;попросить прощения»</li><li>«Я неверующий, но&nbsp;мне нужно поговорить о&nbsp;смысле»</li><li>«Как проститься по&nbsp;нашей традиции?»</li><li>«Злюсь на&nbsp;Бога»</li></ul></section><section class="kb-sec" id="putayut" aria-labelledby="putayut-h"><h2 class="kb-h2" id="putayut-h">С&nbsp;кем путают</h2><div class="prose"><p><a href="clergy-pastoral-care.html">Священнослужитель (пастырская забота)</a>: служит прежде всего своей общине и&nbsp;традиции, а&nbsp;капеллан / духовный опекун работает в&nbsp;больнице, хосписе или паллиативной службе с&nbsp;людьми любой веры и&nbsp;неверующими.</p></div><ul class="kb-vs"><li><a href="clergy-pastoral-care.html">Священник</a><span>Духовная поддержка, обряды и&nbsp;опора общины в&nbsp;жизни и&nbsp;утрате</span></li></ul><div class="kb-do"><a class="btn primary" href="compare.html?ids=spiritual-care-provider,clergy-pastoral-care">Сравнить в&nbsp;таблице</a></div></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Слушает и&nbsp;помогает сформулировать, что для&nbsp;человека сейчас важно. Совершает или организует обряды. Сопровождает семью у&nbsp;постели и&nbsp;в&nbsp;момент смерти.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуально у&nbsp;постели и&nbsp;с&nbsp;семьёй, разово или регулярно. Обряды могут быть общими.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>В&nbsp;профессиональной модели духовный опекун не&nbsp;навязывает веру и&nbsp;не&nbsp;обращает в&nbsp;неё. Не&nbsp;психотерапевт и&nbsp;не&nbsp;медик, медицинских вопросов не&nbsp;решает. <a href="clergy-pastoral-care.html">Священник</a> как служитель своей церкви и&nbsp;пастырская помощь в&nbsp;общине.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>В&nbsp;России это обычно священник или подготовленный мирянин своей конфессии; светской подготовки «капелланов» нет <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В&nbsp;мире обычно: богословское или пастырское образование и&nbsp;практика в&nbsp;больнице. В&nbsp;Великобритании есть добровольный реестр профессиональных капелланов и&nbsp;пастырских помощников&nbsp;— CPCPC (бывший UKBHC), аккредитованный государственным Professional Standards Authority. Капелланом там считается специалист, который даёт пастырскую поддержку «с&nbsp;религиозным измерением или без&nbsp;него», включая гуманистов, атеистов и&nbsp;агностиков.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>Отдельной профессии нет. Пациент вправе пригласить священнослужителя, а&nbsp;в&nbsp;стационаре&nbsp;— получить условия для&nbsp;религиозных обрядов (ФЗ-323, ст. 19, ч. 5, п. 11). Положение 208н/243н (п. 27) предусматривает взаимодействие медорганизаций с&nbsp;религиозными организациями, чтобы обеспечить духовную помощь.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Через персонал хосписа или паллиативной службы. Больничные храмы и&nbsp;молельные комнаты <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. Через свою религиозную общину. Неверующим людям похожую поддержку чаще дают психологи хосписа <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в&nbsp;НКО</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С&nbsp;кем стыкуется</h2><div class="prose"><p>Входит в&nbsp;многопрофильную помощь вместе с&nbsp;паллиативной командой (ВОЗ относит духовные проблемы к&nbsp;её задачам), волонтёрами, доулой, <a href="celebrant.html">ведущим церемоний</a>. После смерти может передать семью <a href="grief-counsellor.html">консультанту по&nbsp;горю</a>. См. также: <a href="spiritual-director.html">Духовный наставник</a>; священнослужитель, <a href="pastoral-counsellor.html">пастырский консультант</a>.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В&nbsp;переходе</h2><div class="prose"><p>Подходит, когда в&nbsp;болезни или утрате главный вопрос&nbsp;— «зачем?» и&nbsp;«что дальше?», а&nbsp;не&nbsp;«как лечить?».</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 4</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.who.int/news-room/fact-sheets/detail/palliative-care" target="_blank" rel="noopener">Palliative care&nbsp;— fact sheet&nbsp;— World Health Organization ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://www.zakonrf.info/zakon-o-zdorovye-grazhdan/19/" target="_blank" rel="noopener">ФЗ-323, ст. 19 «Право на&nbsp;медицинскую помощь» (ч. 5, п. 11&nbsp;— допуск священнослужителя)&nbsp;— zakonrf.info ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://www.garant.ru/products/ipo/prime/doc/411989350/" target="_blank" rel="noopener">Приказ Минздрава №&nbsp;208н / Минтруда №&nbsp;243н от&nbsp;14.04.2025 «Об&nbsp;утверждении Положения об&nbsp;организации оказания паллиативной медицинской помощи…» (действует с&nbsp;1&nbsp;сентября 2025&nbsp;г., заменил приказ 345н/372н от&nbsp;31.05.2019)&nbsp;— ГАРАНТ ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://www.cpcpc.org.uk/" target="_blank" rel="noopener">Council for Professional Chaplains and Pastoral Carers (CPCPC, ранее UKBHC) ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/krizis-identichnosti.html"><span class="t">Кризис идентичности</span><span class="m">ситуация</span></a><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-white-maps"><span class="t">Карты нарративной практики. Введение в&nbsp;нарративную терапию</span><span class="m">книга · Майкл Уайт · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="../resources.html#book-gottlieb"><span class="t">Вы хотите поговорить об&nbsp;этом?</span><span class="m">книга · Лори Готтлиб</span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="clergy-pastoral-care.html"><span class="t">Священнослужитель (пастырская забота)</span><span class="m">путают</span></a><a href="grief-counsellor.html"><span class="t">Консультант / терапевт по&nbsp;горю</span><span class="m">стыкуется</span></a><a href="celebrant.html"><span class="t">Ведущий церемоний и&nbsp;ритуалов</span><span class="m">стыкуется</span></a><a href="spiritual-director.html"><span class="t">Духовный наставник</span><span class="m">стыкуется</span></a><a href="pastoral-counsellor.html"><span class="t">Пастырский консультант / психолог в&nbsp;религиозной традиции</span><span class="m">стыкуется</span></a><a href="palliative-physician.html"><span class="t">Врач паллиативной помощи</span><span class="m">упоминает</span></a></dd></div></dl></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="philosophical-counsellor.html" rel="prev">← Предыдущий в&nbsp;семье<b>Философский практик</b></a><a class="r" href="clergy-pastoral-care.html" rel="next">Следующий в&nbsp;семье →<b>Священник</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#putayut">С кем путают</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 4</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем к&nbsp;нему приходят</a></li><li><a href="#putayut">С&nbsp;кем путают</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С&nbsp;кем стыкуется</a></li><li><a href="#perehod">В&nbsp;переходе</a></li><li><a href="#istochniki">Источники · 4</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

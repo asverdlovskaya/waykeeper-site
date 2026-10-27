@@ -7,9 +7,9 @@
 <meta name="description" content="Выгорание — состояние полного истощения, «выжженности». По определению ВОЗ (МКБ-11) это состояние от хронического стресса на работе, с которым не удалось справиться. Это не болезнь, а…">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/vygoranie.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Выгорание · понятие · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Выгорание">
 <meta property="og:description" content="Выгорание — состояние полного истощения, «выжженности». По определению ВОЗ (МКБ-11) это состояние от хронического стресса на работе, с которым не удалось справиться. Это не болезнь, а…">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/vygoranie.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,42 +107,42 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Понятия"><ul><li><a href="fazy-gorya-po-kast.html">Фазы горя по Верене Каст</a></li><li><a href="gore.html">Горе и затяжное горе</a></li><li><a href="obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a></li><li><a href="paradigmy-psikhoterapii.html">Парадигмы психотерапии</a></li><li><a href="terapevticheskiy-alyans.html">Терапевтический альянс</a></li><li><a href="vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a></li><li><a href="vnutrenniy-konflikt.html">Внутренний конфликт</a></li><li><a class="is-here" aria-current="page" href="vygoranie.html">Выгорание</a></li><li><a href="zashchitnye-mekhanizmy.html">Защитные механизмы</a></li></ul><a class="all" href="../encyclopedia.html#concepts">Все понятия →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Понятия"><ul><li><a href="fazy-gorya-po-kast.html">Фазы горя по&nbsp;Верене Каст</a></li><li><a href="gore.html">Горе и&nbsp;затяжное горе</a></li><li><a href="obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a></li><li><a href="paradigmy-psikhoterapii.html">Парадигмы психотерапии</a></li><li><a href="terapevticheskiy-alyans.html">Терапевтический альянс</a></li><li><a href="vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a></li><li><a href="vnutrenniy-konflikt.html">Внутренний конфликт</a></li><li><a class="is-here" aria-current="page" href="vygoranie.html">Выгорание</a></li><li><a href="zashchitnye-mekhanizmy.html">Защитные механизмы</a></li></ul><a class="all" href="../encyclopedia.html#concepts">Все понятия →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
 <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#concepts">Понятия</a></li><li>Выгорание</li></ol>
 <h1 class="kb-h1" id="h1">Выгорание</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Выгорание — состояние полного истощения, «выжженности». По определению ВОЗ (МКБ-11) это состояние от хронического стресса на работе, с которым не удалось справиться. Это не болезнь, а «профессиональный феномен». Три признака: истощение; отстранённость или цинизм по отношению к работе; ощущение, что работаешь хуже.
+<div class="kb-two"><p>Выгорание&nbsp;— состояние полного истощения, «выжженности». По определению ВОЗ (МКБ-11) это состояние от хронического стресса на работе, с которым не удалось справиться. Это не&nbsp;болезнь, а «профессиональный феномен». Три признака: истощение; отстранённость или цинизм по отношению к работе; ощущение, что работаешь хуже.
 
-Если истощение не связано с работой (уход за больным, переезд), честнее говорить «истощение» и смотреть на депрессию, тревогу, расстройство адаптации.</p></div>
+Если истощение не связано с работой (уход за больным, переезд), точнее говорить «истощение» и смотреть на депрессию, тревогу, расстройство адаптации.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Ещё называют</dt><dd>burnout, эмоциональное выгорание, синдром выгорания</dd></div></dl>
 <section class="kb-sec" id="look"><h2 class="kb-h2">Как выглядит</h2>
-<ul><li>Истощение, усталость, слабость, сил хватает на меньшее, чем раньше.</li><li>Эмоциональная пустота. Трудно откликаться на нужды других людей.</li><li>Раздражительность, нервозность, напряжение, сильное разочарование.</li><li>Труднее сосредоточиться, хуже держится в памяти недавнее.</li><li>Тело тоже откликается: плохой сон, меньше желания близости, разлитые боли, спазмы в мышцах, головная боль (<span class="q-mark" title="не проверено по первоисточнику">∗</span> не проверено).</li><li>Нарастает чувство беспомощности — вплоть до желания совсем устраниться от всего.</li></ul></section>
+<ul><li>Истощение, усталость, слабость, сил хватает на меньшее, чем раньше.</li><li>Эмоциональная пустота. Трудно откликаться на нужды других людей.</li><li>Раздражительность, нервозность, напряжение, сильное разочарование.</li><li>Труднее сосредоточиться, хуже держится в памяти недавнее.</li><li>Тело тоже откликается: плохой сон, меньше желания близости, разлитые боли, спазмы в мышцах, головная боль (<span class="q-mark" title="не проверено по первоисточнику">∗</span> не проверено).</li><li>Нарастает чувство беспомощности&nbsp;— вплоть до желания совсем устраниться от всего.</li></ul></section>
 <section class="kb-sec" id="how2"><h2 class="kb-h2">Как это устроено</h2>
 <p>Выгорание вырастает из долгого стресса на работе, с которым не удаётся справиться.</p>
-<p>Слово «выгорание» часто легче произнести, чем «депрессия». С ним проще прийти за помощью. Но выгорание часто идёт вместе с депрессией и тревогой; что из чего вырастает, исследования пока не показали. Поэтому важно посмотреть, что сейчас с настроением и сном.</p>
+<p>Слово «выгорание» часто легче произнести, чем «депрессия». С ним проще прийти за помощью. Но выгорание часто идёт вместе с депрессией и тревогой; что из&nbsp;чего вырастает, исследования пока не показали. Поэтому важно посмотреть, что сейчас с настроением и сном.</p>
 <p>Выгорание и депрессия похожи, и исследователи спорят, где между ними граница. Если подавленность, потеря радости и мысли о смерти не уходят, нужен врач.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Умеренная</strong> — описание из трёх частей: истощение; отстранённость или цинизм по отношению к работе; ощущение, что работаешь хуже.</li><li><strong>Спорная</strong> — что выгорание и депрессия — разные состояния.</li><li><strong>Нет данных</strong> — что выгорание со временем <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходит</a> в депрессию или тревогу: связь есть, но что из чего вырастает, не изучено.</li><li><strong>Нет данных</strong> — люди без диагноза в переходе и выгорание вне работы. По МКБ-11 слово «выгорание» относится только к работе.</li></ul>
-<p><strong>Что проверено и на ком.</strong> Работающие взрослые, почти все данные — опросы в одной точке времени. Выгорание тесно связано с депрессией и тревогой, но направление связи не изучено. Из работ о помощи при выгорании мы разбирали только метаанализ про врачей: эффект небольшой.</p>
+<ul><li><strong>Умеренная</strong>&nbsp;— описание из трёх частей: истощение; отстранённость или цинизм по отношению к работе; ощущение, что работаешь хуже.</li><li><strong>Спорная</strong>&nbsp;— что выгорание и депрессия&nbsp;— разные состояния.</li><li><strong>Нет данных</strong>&nbsp;— что выгорание со временем <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходит</a> в депрессию или тревогу: связь есть, но что из чего вырастает, не изучено.</li><li><strong>Нет данных</strong>&nbsp;— люди без диагноза в переходе и выгорание вне работы. По МКБ-11&nbsp;слово «выгорание» относится только к работе.</li></ul>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Работающие взрослые, почти все данные&nbsp;— опросы в одной точке времени. Выгорание тесно связано с депрессией и тревогой, но направление связи не изучено. Из работ о помощи при выгорании мы разбирали только метаанализ про врачей: эффект небольшой.</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/30918490/" target="_blank" rel="noopener">Koutsimani, Montgomery, Georganta 2019<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 101 исследование: выгорание заметно связано с депрессией и тревогой; данные почти все одномоментные — читано: полный текст</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/25638755/" target="_blank" rel="noopener">Bianchi, Schonfeld, Laurent 2015<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — О — граница между выгоранием и депрессией «концептуально хрупкая» — читано: аннотация — авторы — сторона спора</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27265691/" target="_blank" rel="noopener">Maslach &amp; Leiter 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Т — выгорание связано с работой, депрессия шире; исследований помощи очень мало — читано: полный текст частично (пересказом) — ✱ (авторы опросника MBI)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27692469/" target="_blank" rel="noopener">West и соавт. 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — только врачи: программы помощи немного снижают выгорание (с 54 % до 44 %) — читано: аннотация — 37 из 52 исследований без случайного распределения</li></ul>
-<p><strong>Чего не знаем.</strong> Переходит ли выгорание в депрессию со временем. Что помогает людям не из медицины. Как отличить выгорание от депрессии на практике — общих правил нет. Какая формулировка третьего признака действует в МКБ-11, по официальному сайту ВОЗ пока не сверили.</p>
-<p><strong>Осторожно.</strong> Если истощение не от работы (уход за родными, затяжной переезд), слово «выгорание» по МКБ-11 не подходит: лучше говорить «истощение» и смотреть на депрессию, тревогу или расстройство адаптации.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/30918490/" target="_blank" rel="noopener">Koutsimani, Montgomery, Georganta 2019<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 101&nbsp;исследование: выгорание заметно связано с депрессией и тревогой; данные почти все одномоментные&nbsp;— читано: полный текст</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/25638755/" target="_blank" rel="noopener">Bianchi, Schonfeld, Laurent 2015<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— О — граница между выгоранием и депрессией «концептуально хрупкая»&nbsp;— читано: аннотация&nbsp;— авторы&nbsp;— сторона спора</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27265691/" target="_blank" rel="noopener">Maslach &amp; Leiter 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Т&nbsp;— выгорание связано с работой, депрессия шире; исследований помощи очень мало&nbsp;— читано: полный текст частично (пересказом)&nbsp;— ✱ (авторы опросника MBI)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27692469/" target="_blank" rel="noopener">West и соавт. 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— только врачи: программы помощи немного снижают выгорание (с 54&nbsp;% до 44&nbsp;%)&nbsp;— читано: аннотация&nbsp;— 37&nbsp;из 52&nbsp;исследований без случайного распределения</li></ul>
+<p><strong>Чего не знаем.</strong> Переходит&nbsp;ли выгорание в депрессию со временем. Что помогает людям не из&nbsp;медицины. Как отличить выгорание от депрессии на практике&nbsp;— общих правил нет. Какая формулировка третьего признака действует в МКБ-11, по официальному сайту ВОЗ пока не сверили.</p>
+<p><strong>Осторожно.</strong> Если истощение не от&nbsp;работы (уход за родными, затяжной переезд), слово «выгорание» по МКБ-11&nbsp;не подходит: лучше говорить «истощение» и смотреть на депрессию, тревогу или расстройство адаптации.</p></section>
 <section class="kb-sec" id="origin"><h2 class="kb-h2">Откуда</h2>
-<p>Термин «выгорание» появился в 1970-х. В международной классификации болезней (МКБ-11, код QD85) выгорание описано не как болезнь, а как «профессиональный феномен» — и только в рабочем контексте.</p></section>
+<p>Термин «выгорание» появился в 1970-х. В международной классификации болезней (МКБ-11, код QD85) выгорание описано не как болезнь, а как «профессиональный феномен»&nbsp;— и только в рабочем контексте.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда идти к специалисту</h2>
 <p>Стоит пойти к врачу или психотерапевту, если:</p>
 <ul><li>долго не восстанавливается сон или аппетит;</li><li>настроение остаётся подавленным;</li><li>появилось ощущение, что всё бессмысленно.</li></ul>
-<p>Если появились мысли о том, чтобы не жить, обратитесь за помощью сразу, не ждите; если опасность прямо сейчас — вызовите скорую помощь или экстренные службы.</p>
-<p>Специалист поможет понять, нет ли рядом с выгоранием депрессии, тревоги или бессонницы. Тогда нужна уже помощь именно с ними.</p></section>
+<p>Если появились мысли о том, чтобы не жить, обратись за помощью сразу, не жди; если опасность прямо сейчас&nbsp;— вызови скорую помощь или экстренные службы.</p>
+<p>Специалист поможет понять, нет&nbsp;ли рядом с выгоранием депрессии, тревоги или бессонницы. Тогда нужна уже помощь именно с ними.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="perehod.html"><span class="t">Что такое переход</span><span class="m">понятие</span></a><a href="perekhod-i-rasstroystvo-adaptatsii.html"><span class="t">Переход и расстройство адаптации: где граница</span><span class="m">понятие</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-nagoski-burnout"><span class="t">Выгорание. Новый подход к избавлению от стресса</span><span class="m">книга · Эмили Нагоски, Амелия Нагоски</span></a><a href="../resources.html#book-maslach-challenge"><span class="t">The Burnout Challenge</span><span class="m">книга · Кристина Маслач, Майкл Лейтер</span></a><a href="../resources.html#book-may-wintering"><span class="t">Wintering</span><span class="m">книга · Кэтрин Мэй</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-brooks-strength"><span class="t">From Strength to Strength</span><span class="m">книга · Артур Брукс</span></a><a href="../resources.html#book-dyl-work"><span class="t">Дизайн работы мечты</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#book-harris-trap"><span class="t">Ловушка счастья. Как перестать переживать и начать жить</span><span class="m">книга · Расс Хэррис</span></a></details></dd></div><div><dt>В ситуациях</dt><dd><a href="sily-konchilis.html"><span class="t">Силы кончились, а что вместо — непонятно</span></a></dd></div></dl></section>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="perehod.html"><span class="t">Что такое переход</span><span class="m">понятие</span></a><a href="perekhod-i-rasstroystvo-adaptatsii.html"><span class="t">Переход и&nbsp;расстройство адаптации: где граница</span><span class="m">понятие</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-nagoski-burnout"><span class="t">Выгорание. Новый подход к&nbsp;избавлению от&nbsp;стресса</span><span class="m">книга · Эмили Нагоски, Амелия Нагоски</span></a><a href="../resources.html#book-maslach-challenge"><span class="t">The Burnout Challenge</span><span class="m">книга · Кристина Маслач, Майкл Лейтер</span></a><a href="../resources.html#book-may-wintering"><span class="t">Wintering</span><span class="m">книга · Кэтрин Мэй</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-brooks-strength"><span class="t">From Strength to Strength</span><span class="m">книга · Артур Брукс</span></a><a href="../resources.html#book-dyl-work"><span class="t">Дизайн работы мечты</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#book-harris-trap"><span class="t">Ловушка счастья. Как перестать переживать и&nbsp;начать жить</span><span class="m">книга · Расс Хэррис</span></a></details></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="sily-konchilis.html"><span class="t">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</span></a></dd></div></dl></section>
 <nav class="kb-next" aria-label="Соседние статьи"><a href="vnutrenniy-konflikt.html" rel="prev">← Понятия рядом<b>Внутренний конфликт</b></a><a class="r" href="zashchitnye-mekhanizmy.html" rel="next">Понятия рядом →<b>Защитные механизмы</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
-<p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не проверено по первоисточнику</p>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
+<p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;проверено по&nbsp;первоисточнику</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#look">Как выглядит</a></li><li><a href="#how2">Как это устроено</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#origin">Откуда</a></li><li><a href="#not">Когда идти к специалисту</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#look">Как выглядит</a></li><li><a href="#how2">Как это устроено</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#origin">Откуда</a></li><li><a href="#not">Когда идти к&nbsp;специалисту</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -124,25 +153,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -152,12 +181,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -166,7 +195,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

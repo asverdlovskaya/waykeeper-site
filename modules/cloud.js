@@ -48,7 +48,7 @@
         '<li class="cl-pole"><i aria-hidden="true"></i><a class="link" href="' + a('program', 'program.html') + '">' + T.program + '</a></li>' +
         '<li class="cl-pole"><i aria-hidden="true"></i><a class="link" href="' + a('practices', 'practices.html') + '">' + T.practices + '</a></li>' +
         '<li class="cl-pole"><i aria-hidden="true"></i><a class="link" href="' + a('talk', 'talk.html') + '">' + T.talk + '</a></li>' +
-        '<li class="cl-pole"><i aria-hidden="true"></i><a class="link" href="#telegram" data-tg>' + T.tg + '</a></li>' +
+        '<li class="cl-pole"><i aria-hidden="true"></i><a class="link" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>' + T.tg + '</a></li>' +
       '</ol>';
 
     // адрес Telegram подставляет site.js; если он уже отработал — повторяем его правило здесь

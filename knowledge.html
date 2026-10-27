@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>База знаний и практик · Waykeeper</title>
-<meta name="description" content="Вход в базу знаний Waykeeper: поиск, ситуации, вопросы, четыре раздела — практики, энциклопедия, атлас, ресурсы.">
+<meta name="description" content="Что со мной происходит, что можно сделать своими силами и к кому идти: практики, энциклопедия переходов, атлас помогающих профессий и ресурсы.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/knowledge.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="База знаний и практик · Waykeeper">
-<meta property="og:description" content="Вход в базу знаний Waykeeper: поиск, ситуации, вопросы, четыре раздела — практики, энциклопедия, атлас, ресурсы.">
+<meta property="og:title" content="База знаний и практик">
+<meta property="og:description" content="Что со мной происходит, что можно сделать своими силами и к кому идти: практики, энциклопедия переходов, атлас помогающих профессий и ресурсы.">
 <meta property="og:url" content="https://waykeeper.org/knowledge.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/kb.css">
@@ -36,42 +43,64 @@
 <script src="assets/pages/knowledge.js" defer></script>
 <link rel="stylesheet" href="assets/alive.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html">«Новый сезон»</a></li>
-        <li><a href="project.html">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -82,14 +111,14 @@
   <div class="frame cols">
     <div class="s-7">
       <ol class="kb-crumbs"><li><a href="index.html">Главная</a></li><li>База знаний</li></ol>
-      <h1 class="display" id="h-kb">База знаний <em>и практик</em></h1>
-      <p class="lede kn-lede">Что со мной происходит, что можно сделать самому и к кому идти. Четыре раздела, один поиск. Открыто, без регистрации; всё, что ты заполняешь, остаётся в твоём браузере.</p>
+      <h1 class="display" id="h-kb">База знаний <em>и&nbsp;практик</em></h1>
+      <p class="lede kn-lede">Что со&nbsp;мной происходит, что можно сделать своими силами и&nbsp;к&nbsp;кому идти. Четыре раздела, один поиск.</p>
       <form class="kb-search kn-search" id="kn-search" role="search" onsubmit="return false">
-        <label class="visually-hidden" for="q">Найти в базе знаний</label>
+        <label class="visually-hidden" for="q">Найти в&nbsp;базе знаний</label>
         <input id="q" type="search" placeholder="Найти: выгорание, коуч, WOOP, переезд…" autocomplete="off">
         <kbd>/</kbd>
       </form>
-      <p class="kb-hint">Ищет сразу в практиках, статьях, атласе, ресурсах и словаре. <a href="#not-yet">Если сейчас очень тяжело — сначала сюда ↓</a></p>
+      <p class="kb-hint"><a href="#not-yet">Если сейчас очень тяжело&nbsp;— сначала сюда ↓</a></p>
     </div>
     <div class="s-4 at-9 kn-cover-aside">
       <figure class="plate-alive kn-plate is-right" data-processed data-clear data-pa-eager data-pa-from=".5 .5" style="--pa-r:.7117">
@@ -105,34 +134,34 @@
 <section class="band kn-band" id="situations" aria-labelledby="h-sit">
   <div class="frame">
     <div class="cols kn-head">
-      <div class="s-6"><h2 class="h2" id="h-sit">С чем ты пришёл</h2></div>
-      <p class="s-5 at-8 small kn-head-note">На странице ситуации собрано всё из четырёх разделов: что почитать, что сделать сегодня и кто помогает.</p>
+      <div class="s-6"><h2 class="h2" id="h-sit">С&nbsp;чем ты сейчас</h2></div>
+      <p class="s-5 at-8 small kn-head-note">На&nbsp;странице ситуации собрано всё из&nbsp;четырёх разделов: что почитать, что сделать сегодня и&nbsp;кто помогает.</p>
     </div>
     <div class="kb-index2" data-kb-auto="situations">
-      <ol class="index"><li><a class="index-row" href="encyclopedia/rabota-zakonchilas.html"><span class="index-dot"></span><span class="index-t">Закончилась работа или своё дело, и уже несколько месяцев «надо что-то решать».</span><span class="index-m">4 практики · 6 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/pereezd.html"><span class="index-dot"></span><span class="index-t">Переезд: профессия, которая дома работала, здесь не складывается.</span><span class="index-m">4 практики · 7 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/krizis-identichnosti.html"><span class="index-dot"></span><span class="index-t">Кризис идентичности: кто я, что я, в чем смыслы.</span><span class="index-m">4 практики · 4 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/sily-konchilis.html"><span class="index-dot"></span><span class="index-t">Много лет в одном деле, и силы кончились. Обратно не хочется, а что вместо — непонятно.</span><span class="index-m">6 практик · 6 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/ne-mogu-vybrat.html"><span class="index-dot"></span><span class="index-t">Есть две-три дороги в деле, в призвании, в будущем — и уже давно не получается выбрать.</span><span class="index-m">4 практики · 4 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/plany-sryvayutsya.html"><span class="index-dot"></span><span class="index-t">Планы были, но каждый раз срывались на одном и том же месте.</span><span class="index-m">6 практик · 2 специалиста</span></a></li></ol>
-      <ol class="index"><li><a class="index-row" href="encyclopedia/ne-moe-strashno.html"><span class="index-dot"></span><span class="index-t">Всё в целом хорошо, но что-то чувствуется, что происходящее — не моё, и страшно шагнуть на новый путь.</span><span class="index-m">5 практик · 3 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/ne-znayu-k-komu-idti.html"><span class="index-dot"></span><span class="index-t">Не знаю, к какому специалисту с этим идти: психолог, коуч, карьерный консультант?</span><span class="index-m">1 практика · 4 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/ryadom-chelovek-v-krizise.html"><span class="index-dot"></span><span class="index-t">Рядом человек в кризисе или переходе, и я не знаю, как помочь.</span><span class="index-m">2 практики · 3 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/podvesti-god.html"><span class="index-dot"></span><span class="index-t">Хочется спокойно подвести год, отрефлексировать этап и выбрать, куда дальше.</span><span class="index-m">5 практик · 5 подходов</span></a></li>
-<li><a class="index-row" href="encyclopedia/trevoga.html"><span class="index-dot"></span><span class="index-t">Тревога не отпускает</span><span class="index-m">5 практик · 6 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/poterya-blizkogo.html"><span class="index-dot"></span><span class="index-t">Потеря близкого человека</span><span class="index-m">4 практики · 8 специалистов</span></a></li></ol>
+      <ol class="index"><li><a class="index-row" href="encyclopedia/rabota-zakonchilas.html"><span class="index-dot"></span><span class="index-t">Закончилась работа или своё дело, и уже несколько месяцев «надо что-то решать».</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/pereezd.html"><span class="index-dot"></span><span class="index-t">Переезд: профессия, которая дома работала, здесь не складывается.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/krizis-identichnosti.html"><span class="index-dot"></span><span class="index-t">Кризис идентичности: кто я, что я, в чём смыслы.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/sily-konchilis.html"><span class="index-dot"></span><span class="index-t">Много лет в одном деле, и силы кончились. Обратно не хочется, а что вместо — непонятно.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/ne-mogu-vybrat.html"><span class="index-dot"></span><span class="index-t">Есть две-три дороги в деле, в призвании, в будущем — и уже давно не получается выбрать.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/plany-sryvayutsya.html"><span class="index-dot"></span><span class="index-t">Планы были, но каждый раз срывались на одном и том&nbsp;же месте.</span><span class="index-m"></span></a></li></ol>
+      <ol class="index"><li><a class="index-row" href="encyclopedia/ne-moe-strashno.html"><span class="index-dot"></span><span class="index-t">Всё в целом хорошо, но что-то чувствуется, что происходящее — не моё, и страшно шагнуть на новый путь.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/ne-znayu-k-komu-idti.html"><span class="index-dot"></span><span class="index-t">Не&nbsp;знаю, к какому специалисту с этим идти: психолог, коуч, карьерный консультант?</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/ryadom-chelovek-v-krizise.html"><span class="index-dot"></span><span class="index-t">Рядом человек в кризисе или переходе, и я не знаю, как помочь.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/podvesti-god.html"><span class="index-dot"></span><span class="index-t">Хочется спокойно подвести год, отрефлексировать этап и выбрать, куда дальше.</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/trevoga.html"><span class="index-dot"></span><span class="index-t">Тревога не отпускает</span><span class="index-m"></span></a></li>
+<li><a class="index-row" href="encyclopedia/poterya-blizkogo.html"><span class="index-dot"></span><span class="index-t">Потеря близкого человека</span><span class="index-m"></span></a></li></ol>
     </div>
   </div>
 </section>
 
 <section class="band kn-band" id="questions" aria-labelledby="h-q">
   <div class="frame">
-    <div class="cols kn-head"><div class="s-6"><h2 class="h2" id="h-q">Или начни с вопроса</h2></div></div>
+    <div class="cols kn-head"><div class="s-6"><h2 class="h2" id="h-q">Или начни с&nbsp;вопроса</h2></div></div>
     <div class="kb-index2">
-      <ol class="index"><li><a class="index-row" href="encyclopedia/chto-so-mnoy-proiskhodit.html"><span class="index-dot"></span><span class="index-t">Что со мной происходит?</span><span class="index-m"><span class="kb-state kb-state--plan">статья пишется</span></span></a></li>
-        <li><a class="index-row" href="encyclopedia/k-komu-idti.html"><span class="index-dot"></span><span class="index-t">К кому идти, и когда это терапия?</span><span class="index-m"><span class="kb-state kb-state--plan">статья пишется</span></span></a></li></ol>
-      <ol class="index"><li><a class="index-row" href="encyclopedia/mozhno-li-samomu.html"><span class="index-dot"></span><span class="index-t">Можно ли пройти это самому?</span><span class="index-m"><span class="kb-state kb-state--plan">статья пишется</span></span></a></li>
-        <li><a class="index-row" href="atlas/requests.html"><span class="index-dot"></span><span class="index-t">С каким запросом к кому: «не сплю», «развод», «наследство»…</span><span class="index-m">атлас · указатель запросов</span></a></li></ol>
+      <ol class="index"><li><a class="index-row" href="encyclopedia/chto-so-mnoy-proiskhodit.html"><span class="index-dot"></span><span class="index-t">Что со&nbsp;мной происходит?</span><span class="index-m"></span></a></li>
+        <li><a class="index-row" href="encyclopedia/k-komu-idti.html"><span class="index-dot"></span><span class="index-t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="index-m"></span></a></li></ol>
+      <ol class="index"><li><a class="index-row" href="encyclopedia/mozhno-li-samomu.html"><span class="index-dot"></span><span class="index-t">Можно&nbsp;ли пройти это своими силами?</span><span class="index-m"></span></a></li>
+        <li><a class="index-row" href="atlas/requests.html"><span class="index-dot"></span><span class="index-t">С&nbsp;каким запросом к&nbsp;кому: «не&nbsp;сплю», «развод», «наследство»…</span><span class="index-m">атлас · указатель запросов</span></a></li></ol>
     </div>
   </div>
 </section>
@@ -141,17 +170,17 @@
   <div class="frame">
     <div class="cols kn-head"><div class="s-6"><h2 class="h2" id="h-sec">Четыре раздела</h2></div></div>
     <ul class="kb-sections" data-kb-auto="sections">
-      <li><a href="practices.html"><span class="t">Практики</span><span class="d">Упражнения, которые можно сделать самому; часть работает прямо на сайте</span><span class="n">39 практик</span><span class="n c"><span class="status status--open">открыто</span></span></a></li>
-      <li><a href="encyclopedia.html"><span class="t">Энциклопедия переходов</span><span class="d">Что происходит, как это называется, какие подходы помогают и насколько они исследованы</span><span class="n">100 статей</span><span class="n c"><span class="status status--wip">в работе</span></span></a></li>
-      <li><a href="atlas.html"><span class="t">Атлас помогающих профессий</span><span class="d">Кто чем помогает, с чем к кому идти и с кем их путают</span><span class="n">125 специалистов</span><span class="n c"><span class="status status--wip">в работе</span></span></a></li>
-      <li><a href="resources.html"><span class="t">Ресурсы</span><span class="d">Книги, тесты, подкасты и сервисы с честными метками</span><span class="n">150 записей</span><span class="n c"><span class="status status--wip">в работе</span></span></a></li>
+      <li><a href="practices.html"><span class="t">Практики</span><span class="d">Упражнения, которые можно сделать своими силами</span><span class="n"></span><span class="n c"><span class="status status--open">открыто</span></span></a></li>
+      <li><a href="encyclopedia.html"><span class="t">Энциклопедия переходов</span><span class="d">Что происходит, как это называется, какие подходы помогают и&nbsp;насколько они исследованы</span><span class="n"></span><span class="n c"><span class="status status--wip">в&nbsp;работе</span></span></a></li>
+      <li><a href="atlas.html"><span class="t">Атлас помогающих профессий</span><span class="d">Кто чем помогает, с&nbsp;чем к&nbsp;кому идти и&nbsp;с&nbsp;кем их путают</span><span class="n"></span><span class="n c"><span class="status status--wip">в&nbsp;работе</span></span></a></li>
+      <li><a href="resources.html"><span class="t">Ресурсы</span><span class="d">Книги, тесты, подкасты и&nbsp;сервисы</span><span class="n"></span><span class="n c"><span class="status status--wip">в&nbsp;работе</span></span></a></li>
     </ul>
     <div class="cols kn-foot">
       <div class="s-8">
-        <p class="small">Метки одинаковы во всех разделах: насколько исследован подход, на котором стоит вещь.</p>
+        <p class="small">Метка говорит, насколько исследован подход, на&nbsp;котором стоит практика или статья.</p>
         <ul class="ev-legend kn-legend"><li><span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></li><li><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></li><li><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></li><li><span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></li><li><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></li></ul>
       </div>
-      <p class="s-4 at-9 small kn-foot-links"><a href="glossary.html">Словарь</a> &nbsp;·&nbsp; <a href="how.html">Как устроена база и как мы проверяем</a></p>
+      <p class="s-4 at-9 small kn-foot-links"><a href="glossary.html">Словарь</a> &nbsp;·&nbsp; <a href="how.html">Как устроена база и&nbsp;как мы проверяем</a></p>
     </div>
   </div>
 </section>
@@ -163,25 +192,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -191,12 +220,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -205,7 +234,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

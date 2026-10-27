@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Практики · Waykeeper</title>
-<meta name="description" content="Практики, которыми работает Саша Свердловская.">
+<meta name="description" content="Практики, которыми я работаю на встречах: многие упражнения старше меня, часть я придумала сама. Каждую можно сделать без меня.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Практики · Waykeeper">
-<meta property="og:description" content="Практики, которыми работает Саша Свердловская.">
+<meta property="og:title" content="Практики">
+<meta property="og:description" content="Практики, которыми я работаю на встречах: многие упражнения старше меня, часть я придумала сама. Каждую можно сделать без меня.">
 <meta property="og:url" content="https://waykeeper.org/practices.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/kb.css">
@@ -43,42 +50,64 @@
 <script>/* старые якоря (#prize, #wheel, #practice-…) ведут сразу на страницу практики */
 (function(){var m={"#seasons": "practices/t-periods.html", "#wheel": "practices/t-wheel.html", "#prize": "practices/t-money.html", "#ritual": "practices/t-ritual.html", "#mykit": "practices/t-mykit.html", "#kit": "practices/t-kit.html", "#worry": "practices/t-worry.html", "#monday": "practices/t-monday.html", "#practice-five-questions-elder": "practices/t-five-questions.html", "#practice-genogram-evening": "practices/t-genogram.html", "#practice-family-shoulds": "practices/t-family-musts.html", "#practice-three-lively-periods": "practices/t-periods.html", "#practice-life-in-15-minutes": "practices/t-15min.html", "#practice-life-chapters": "practices/t-chapters.html", "#practice-expressive-writing": "practices/t-express.html", "#practice-three-summary-questions": "practices/t-life-review.html", "#practice-wheel-of-contexts": "practices/t-wheel.html", "#practice-my-heroes": "practices/t-heroes.html", "#practice-four-horsemen": "practices/t-horsemen.html", "#practice-values-from-actions": "practices/t-values.html", "#practice-close-interviews": "practices/t-close.html", "#practice-balcony-basement": "practices/t-balcony.html", "#practice-table-negotiation": "practices/t-parts.html", "#practice-seven-lives": "practices/t-lives.html", "#practice-best-possible-self": "practices/t-best-self.html", "#practice-event-cards": "practices/t-cards.html", "#practice-road-premortem": "practices/t-premortem.html", "#practice-prototype-talk": "practices/t-proto.html", "#practice-money-prize": "practices/t-money.html", "#practice-one-ritual": "practices/t-ritual.html", "#practice-wall-kit": "practices/t-kit.html", "#practice-worry-container": "practices/t-worry.html", "#practice-pattern-card": "practices/t-pattern.html", "#practice-tiny-habit": "practices/t-tiny.html", "#practice-letter-as-friend": "practices/t-friend.html", "#practice-feel-worse": "practices/t-window.html", "#practice-support-map": "practices/t-supports.html", "#practice-woop-5": "practices/t-woop.html", "#practice-three-if-then": "practices/t-ifthen.html", "#practice-route-5-years": "practices/t-horizons.html", "#practice-sunday-retro": "practices/t-retro.html", "#practice-monday-check": "practices/t-monday.html", "#practice-quarter-check": "practices/t-quarter.html", "#practice-note-for-close-one": "practices/t-presence.html", "#practice-who-next": "practices/t-who.html", "#practice-forty-wishes": "practices/t-forty.html", "#practice-my-kit": "practices/t-mykit.html", "#practice-prize": "practices/t-money.html"};function go(){var t=m[location.hash];if(t)location.replace(t);}go();window.addEventListener("hashchange",go);})();</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html">«Новый сезон»</a></li>
-        <li><a href="project.html">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -87,11 +116,11 @@
     <div class="frame">
       <h1 class="display cover-title" id="page-title"><span class="ln"><span>Практики,</span></span> <span class="ln"><span><em>которыми я работаю</em></span></span></h1>
       <div class="cover-text">
-        <p class="lede">Здесь почти всё, чем я пользуюсь на встречах: многие упражнения старше меня, часть я придумала сама, когда стандартные не заходили. Одного пути к своим опорам, по-моему, нет: общая картина бывает похожей, а дальше всё зависит от твоей истории.</p>
-        <p class="lede-em pr-start">Если в работе что-то закончилось, начни с двух: <a class="link" href="program.html#then-now">«Тогда и сейчас»</a> и <a class="link" href="practices/t-money.html">«Приз в деньгах»</a>.</p>
+        <p class="lede">Здесь почти всё, чем я пользуюсь на&nbsp;встречах: многие упражнения старше меня, часть я придумала сама, когда стандартные не&nbsp;заходили. Одного пути к&nbsp;своим опорам, по-моему, нет: общая картина бывает похожей, а&nbsp;дальше всё зависит от&nbsp;твоей истории.</p>
+        <p class="lede-em pr-start">Если в&nbsp;работе что-то закончилось, начни с&nbsp;двух: <a class="link" href="program.html#then-now">«Тогда и&nbsp;сейчас»</a> и&nbsp;<a class="link" href="practices/t-money.html">«Приз в&nbsp;деньгах»</a>.</p>
       </div>
       <div class="cover-foot">
-        <div class="cover-links"><a href="#try">Сделать прямо здесь</a><a href="#catalog">Каталог практик</a><a href="#how-program">Как из практик собирается программа</a></div>
+        <div class="cover-links"><a href="#try">Сделать прямо здесь</a><a href="#catalog">Каталог практик</a><a href="#how-program">Как из&nbsp;практик собирается программа</a></div>
       </div>
     </div>
   </section>
@@ -102,31 +131,31 @@
       <div data-module="minutes" data-clear data-no-art data-then-now-href="program.html#then-now"></div>
       <div class="pr-mosaic">
           <a class="pr-card pr-card--try pr-card--feat" href="program.html#then-now">
-            <span class="pr-card-body"><span class="t3">Тогда и сейчас</span><span class="pr-card-gives">Что ты умеешь, если забыть про должность.</span><span class="small">3 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Тогда и&nbsp;сейчас</span><span class="pr-card-gives">Что ты умеешь, если забыть про&nbsp;должность.</span><span class="small">3&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="seasons" href="practices/t-periods.html">
-            <span class="pr-card-body"><span class="t3">Три живых периода</span><span class="pr-card-gives">Три живых периода и глаголы, которые в них повторяются.</span><span class="small">40 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Три живых периода</span><span class="pr-card-gives">Три живых периода и&nbsp;глаголы, которые в&nbsp;них повторяются.</span><span class="small">40&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="wheel" href="practices/t-wheel.html">
-            <span class="pr-card-body"><span class="t3">Колесо контекстов</span><span class="pr-card-gives">Где ты в каждой сфере жизни.</span><span class="small">20 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Колесо контекстов</span><span class="pr-card-gives">Где ты в&nbsp;каждой сфере жизни.</span><span class="small">20&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="prize" href="practices/t-money.html">
-            <span class="pr-card-body"><span class="t3">Приз в деньгах</span><span class="pr-card-gives">Сколько стоит желанная жизнь.</span><span class="small">20 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Приз в&nbsp;деньгах</span><span class="pr-card-gives">Сколько стоит желанная жизнь.</span><span class="small">20&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="ritual" href="practices/t-ritual.html">
-            <span class="pr-card-body"><span class="t3">Собрать один ритуал</span><span class="pr-card-gives">Карточка из пяти деталей.</span><span class="small">15 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Собрать один ритуал</span><span class="pr-card-gives">Карточка из&nbsp;пяти деталей.</span><span class="small">15&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="mykit" href="practices/t-mykit.html">
-            <span class="pr-card-body"><span class="t3">Кит (kit)</span><span class="pr-card-gives">Набор под одно состояние, карточка из шести деталей.</span><span class="small">20 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Кит (kit)</span><span class="pr-card-gives">Набор под&nbsp;одно состояние, карточка из&nbsp;шести деталей.</span><span class="small">20&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="kit" href="practices/t-kit.html">
-            <span class="pr-card-body"><span class="t3">Аптечка на стену</span><span class="pr-card-gives">Страница на плохой день.</span><span class="small">30 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Аптечка на&nbsp;стену</span><span class="pr-card-gives">Страница на&nbsp;плохой день.</span><span class="small">30&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="worry" href="practices/t-worry.html">
-            <span class="pr-card-body"><span class="t3">Контейнер для тревоги</span><span class="pr-card-gives">Отложить мысль до назначенного часа.</span><span class="small">2 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Контейнер для&nbsp;тревоги</span><span class="pr-card-gives">Отложить мысль до&nbsp;назначенного часа.</span><span class="small">2&nbsp;мин</span></span>
           </a>
           <a class="pr-card pr-card--try" id="monday" href="practices/t-monday.html">
-            <span class="pr-card-body"><span class="t3">Проверка «завтра понедельник»</span><span class="pr-card-gives">Уменьшить шаг до выполнимого.</span><span class="small">2 мин</span></span>
+            <span class="pr-card-body"><span class="t3">Проверка «завтра понедельник»</span><span class="pr-card-gives">Уменьшить шаг до&nbsp;выполнимого.</span><span class="small">2&nbsp;мин</span></span>
           </a>
       </div>
     </div>
@@ -136,180 +165,180 @@
   <section class="band pr-catalog" id="catalog" data-atmo="haze" data-atmo-rule aria-labelledby="catalog-h">
     <div class="frame">
       <div class="band-head"><h2 id="catalog-h">Каталог практик</h2></div>
-      <p class="small pr-care">Если упражнение поднимает больше, чем по силам,&nbsp;— остановись: с этим лучше к специалисту.</p>
+      <p class="small pr-care">Если упражнение поднимает больше, чем по&nbsp;силам,&nbsp;— остановись: с&nbsp;этим лучше к&nbsp;специалисту.</p>
       <div class="kb-filters pr-filters">
         <div class="kb-filters-row">
-          <label class="kb-select"><span class="pr-sr">С чем ты пришёл</span><select id="pr-sit" data-sit-select><option value="">С чем ты пришёл: любая ситуация</option><option value="rabota-zakonchilas">Закончилась работа или своё дело</option><option value="pereezd">Переезд, и профессия не складывается</option><option value="krizis-identichnosti">Кризис идентичности</option><option value="sily-konchilis">Силы кончились, а что вместо — непонятно</option><option value="ne-mogu-vybrat">Несколько дорог, и не получается выбрать</option><option value="plany-sryvayutsya">Планы срываются на одном и том же месте</option><option value="ne-moe-strashno">Всё хорошо, но не моё, и страшно</option><option value="ne-znayu-k-komu-idti">Не знаю, к какому специалисту идти</option><option value="ryadom-chelovek-v-krizise">Рядом человек в кризисе</option><option value="podvesti-god">Подвести год и выбрать, куда дальше</option><option value="trevoga">Тревога не отпускает</option><option value="poterya-blizkogo">Потеря близкого человека</option></select></label>
+          <label class="kb-select"><span class="pr-sr">С&nbsp;чем ты сейчас</span><select id="pr-sit" data-sit-select><option value="">С&nbsp;чем ты сейчас: любая ситуация</option><option value="rabota-zakonchilas">Закончилась работа или своё дело</option><option value="pereezd">Переезд, и&nbsp;профессия не&nbsp;складывается</option><option value="krizis-identichnosti">Кризис идентичности</option><option value="sily-konchilis">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</option><option value="ne-mogu-vybrat">Несколько дорог, и&nbsp;не&nbsp;получается выбрать</option><option value="plany-sryvayutsya">Планы срываются на&nbsp;одном и&nbsp;том&nbsp;же месте</option><option value="ne-moe-strashno">Всё хорошо, но&nbsp;не&nbsp;моё, и&nbsp;страшно</option><option value="ne-znayu-k-komu-idti">Не&nbsp;знаю, к&nbsp;какому специалисту идти</option><option value="ryadom-chelovek-v-krizise">Рядом человек в&nbsp;кризисе</option><option value="podvesti-god">Подвести год и&nbsp;выбрать, куда дальше</option><option value="trevoga">Тревога не&nbsp;отпускает</option><option value="poterya-blizkogo">Потеря близкого человека</option></select></label>
           <div class="kb-seg" role="group" aria-label="Какие практики показывать">
             <button type="button" aria-pressed="true" data-only="all">Все <span class="n" data-cnt="all">39</span></button>
             <button type="button" aria-pressed="false" data-only="core">Основные <span class="n" data-cnt="core">27</span></button>
           </div>
         </div>
-        <p class="kb-result" aria-live="polite"><span data-result>39 из 39</span><a href="#catalog" data-reset hidden>Сбросить</a></p>
+        <p class="kb-result" aria-live="polite"><span data-result>39&nbsp;из&nbsp;39</span><a href="#catalog" data-reset hidden>Сбросить</a></p>
       </div>
       <div class="pr-list">
         <div class="kb-group pr-group" data-group="core">
           <div class="kb-group-h"><h3 class="kb-h3">Основные практики</h3><span class="n" data-n>27</span></div>
           <ol class="kb-rows">
           <li class="kb-row pr-row" data-core="1" data-sit="pereezd podvesti-god">
-            <span class="k"><b>основная</b>20 мин</span>
-            <div><span class="t"><a href="practices/t-wheel.html">Колесо контекстов</a></span><span class="d">Сферы жизни своими словами и где в каждой ты сейчас.</span></div>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-wheel.html">Колесо контекстов</a></span><span class="d">Сферы жизни своими словами и&nbsp;где в&nbsp;каждой ты сейчас.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-wheel.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="krizis-identichnosti ne-moe-strashno">
-            <span class="k"><b>основная</b>40 мин</span>
-            <div><span class="t"><a href="practices/t-periods.html">Три живых периода</a></span><span class="d">Три живых периода и глаголы, которые в них повторяются.</span></div>
+            <span class="k"><b>основная</b>40&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-periods.html">Три живых периода</a></span><span class="d">Три живых периода и&nbsp;глаголы, которые в&nbsp;них повторяются.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-periods.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="krizis-identichnosti">
-            <span class="k"><b>основная</b>45 мин</span>
-            <div><span class="t"><a href="practices/t-heroes.html">Мои герои</a></span><span class="d">Двадцать персонажей, которые цепляют, и что у них общего.</span></div>
+            <span class="k"><b>основная</b>45&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-heroes.html">Мои герои</a></span><span class="d">Двадцать персонажей, которые цепляют, и&nbsp;что у&nbsp;них общего.</span></div>
             <span class="marks"></span>
             <a class="go" href="practices/t-heroes.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="">
-            <span class="k"><b>основная</b>30 мин</span>
-            <div><span class="t"><a href="practices/t-horsemen.html">Всадники апокалипсиса</a></span><span class="d">Что ты противопоставишь Болезни, Голоду, Вражде и Смерти: черновик миссии.</span></div>
+            <span class="k"><b>основная</b>30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-horsemen.html">Всадники апокалипсиса</a></span><span class="d">Что ты противопоставишь Болезни, Голоду, Вражде и&nbsp;Смерти: черновик миссии.</span></div>
             <span class="marks"></span>
             <a class="go" href="practices/t-horsemen.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="krizis-identichnosti ne-moe-strashno">
-            <span class="k"><b>основная</b>30 мин</span>
-            <div><span class="t"><a href="practices/t-values.html">Ценности из поступков</a></span><span class="d">Три решения, которыми гордишься, их цена и ценности за ними.</span></div>
+            <span class="k"><b>основная</b>30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-values.html">Ценности из&nbsp;поступков</a></span><span class="d">Три решения, которыми гордишься, их цена и&nbsp;ценности за&nbsp;ними.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-values.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="">
-            <span class="k"><b>основная</b>20 мин</span>
-            <div><span class="t"><a href="practices/t-family-musts.html">Семейные «надо»</a></span><span class="d">Десять фраз «в нашей семье считалось, что…» и решение по каждой.</span></div>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-family-musts.html">Семейные «надо»</a></span><span class="d">Десять фраз «в&nbsp;нашей семье считалось, что…» и&nbsp;решение по&nbsp;каждой.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-family-musts.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="rabota-zakonchilas">
             <span class="k"><b>основная</b>неделя</span>
-            <div><span class="t"><a href="practices/t-close.html">Интервью близких</a></span><span class="d">Три вопроса пяти людям и что совпало в ответах.</span></div>
+            <div><span class="t"><a href="practices/t-close.html">Интервью близких</a></span><span class="d">Три вопроса пяти людям и&nbsp;что совпало в&nbsp;ответах.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-close.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="">
-            <span class="k"><b>основная</b>20 мин</span>
-            <div><span class="t"><a href="practices/t-balcony.html">Балкон и подвал</a></span><span class="d">Каждая сильная сторона в зрелой версии и она же без меры.</span></div>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-balcony.html">Балкон и&nbsp;подвал</a></span><span class="d">Каждая сильная сторона в&nbsp;зрелой версии и&nbsp;она&nbsp;же без&nbsp;меры.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-balcony.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="rabota-zakonchilas ne-mogu-vybrat ne-moe-strashno">
-            <span class="k"><b>основная</b>30 мин</span>
-            <div><span class="t"><a href="practices/t-lives.html">Семь жизней</a></span><span class="d">Семь жизней, которые могли бы быть, и две подробно.</span></div>
+            <span class="k"><b>основная</b>30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-lives.html">Семь жизней</a></span><span class="d">Семь жизней, которые могли&nbsp;бы быть, и&nbsp;две подробно.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-lives.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="">
-            <span class="k"><b>основная</b>10 мин</span>
-            <div><span class="t"><a href="practices/t-forty.html">40 хочу</a></span><span class="d">Сорок желаний под музыку без цензуры, потом разложить по кварталам.</span></div>
+            <span class="k"><b>основная</b>10&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-forty.html">40&nbsp;хочу</a></span><span class="d">Сорок желаний под&nbsp;музыку без&nbsp;цензуры, потом разложить по&nbsp;кварталам.</span></div>
             <span class="marks"></span>
             <a class="go" href="practices/t-forty.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="ne-moe-strashno">
-            <span class="k"><b>основная</b>20 мин</span>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
             <div><span class="t"><a href="practices/t-best-self.html">Лучшее возможное «я»</a></span><span class="d">Обычный день через пять лет, когда всё сложилось.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-best-self.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="podvesti-god">
-            <span class="k"><b>основная</b>45 мин</span>
-            <div><span class="t"><a href="practices/t-cards.html">Карточки событий</a></span><span class="d">События через год, будто уже случились, и шаги назад к каждому.</span></div>
+            <span class="k"><b>основная</b>45&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-cards.html">Карточки событий</a></span><span class="d">События через год, будто уже случились, и&nbsp;шаги назад к&nbsp;каждому.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-cards.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="ne-mogu-vybrat">
-            <span class="k"><b>основная</b>20 мин</span>
-            <div><span class="t"><a href="practices/t-money.html">Приз в деньгах</a></span><span class="d">Сколько стоит жизнь, которой хочется: минимум, комфорт и мечта.</span></div>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-money.html">Приз в&nbsp;деньгах</a></span><span class="d">Сколько стоит жизнь, которой хочется: минимум, комфорт и&nbsp;мечта.</span></div>
             <span class="marks"></span>
             <a class="go" href="practices/t-money.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="ne-mogu-vybrat">
-            <span class="k"><b>основная</b>20 мин</span>
-            <div><span class="t"><a href="practices/t-premortem.html">Премортем дороги</a></span><span class="d">«Прошёл год, ничего не вышло, потому что…» — пять причин и что делать.</span></div>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-premortem.html">Премортем дороги</a></span><span class="d">«Прошёл год, ничего не&nbsp;вышло, потому что…» — пять причин и&nbsp;что делать.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-premortem.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="ne-mogu-vybrat ne-moe-strashno">
             <span class="k"><b>основная</b>неделя</span>
-            <div><span class="t"><a href="practices/t-proto.html">Разговор-прототип</a></span><span class="d">Двадцать минут с тем, кто уже так живёт: про его обычный вторник.</span></div>
+            <div><span class="t"><a href="practices/t-proto.html">Разговор-прототип</a></span><span class="d">Двадцать минут с&nbsp;тем, кто уже так живёт: про&nbsp;его обычный вторник.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-proto.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="sily-konchilis plany-sryvayutsya">
-            <span class="k"><b>основная</b>20 мин</span>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
             <div><span class="t"><a href="practices/t-pattern.html">Карточка паттерна</a></span><span class="d">Повторяющийся сценарий: как узнать, откуда растёт, где другая дорожка.</span></div>
             <span class="marks"><span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-pattern.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="plany-sryvayutsya">
-            <span class="k"><b>основная</b>40 мин</span>
-            <div><span class="t"><a href="practices/t-parts.html">Переговоры за столом</a></span><span class="d">В спокойный день: две спорящие части, ответ каждой «от чего ты меня бережёшь» и договор.</span></div>
+            <span class="k"><b>основная</b>40&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-parts.html">Переговоры за&nbsp;столом</a></span><span class="d">В&nbsp;спокойный день: две спорящие части, ответ каждой «от&nbsp;чего ты меня бережёшь» и&nbsp;договор.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-parts.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="pereezd">
-            <span class="k"><b>основная</b>30 мин</span>
-            <div><span class="t"><a href="practices/t-supports.html">Карта опор</a></span><span class="d">Места, люди, время: что держит сейчас и чего не хватает.</span></div>
+            <span class="k"><b>основная</b>30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-supports.html">Карта опор</a></span><span class="d">Места, люди, время: что держит сейчас и&nbsp;чего не&nbsp;хватает.</span></div>
             <span class="marks"></span>
             <a class="go" href="practices/t-supports.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="sily-konchilis plany-sryvayutsya">
-            <span class="k"><b>основная</b>20 мин</span>
-            <div><span class="t"><a href="practices/t-mykit.html">Кит (kit)</a></span><span class="d">Вещи, место и звук под одно состояние: собрал — легче войти в роль.</span></div>
+            <span class="k"><b>основная</b>20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-mykit.html">Кит (kit)</a></span><span class="d">Вещи, место и&nbsp;звук под&nbsp;одно состояние: собрал&nbsp;— легче войти в&nbsp;роль.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-mykit.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="pereezd poterya-blizkogo">
-            <span class="k"><b>основная</b>15 мин</span>
-            <div><span class="t"><a href="practices/t-ritual.html">Собрать один ритуал</a></span><span class="d">Ритуал из пяти деталей, достаточно короткий для плохого дня.</span></div>
+            <span class="k"><b>основная</b>15&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-ritual.html">Собрать один ритуал</a></span><span class="d">Ритуал из&nbsp;пяти деталей, достаточно короткий для&nbsp;плохого дня.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-ritual.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="sily-konchilis trevoga">
-            <span class="k"><b>основная</b>30 мин</span>
-            <div><span class="t"><a href="practices/t-kit.html">Аптечка на стену</a></span><span class="d">Собирается в спокойный день: «где я → что открыть → одно действие».</span></div>
+            <span class="k"><b>основная</b>30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-kit.html">Аптечка на&nbsp;стену</a></span><span class="d">Собирается в&nbsp;спокойный день: «где я → что открыть → одно действие».</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-kit.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="plany-sryvayutsya">
-            <span class="k"><b>основная</b>10 мин</span>
-            <div><span class="t"><a href="practices/t-ifthen.html">Три плана «если — то»</a></span><span class="d">Три ситуации, где срываешься, и решение для каждой, принятое заранее.</span></div>
+            <span class="k"><b>основная</b>10&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-ifthen.html">Три плана «если&nbsp;— то»</a></span><span class="d">Три ситуации, где срываешься, и&nbsp;решение для&nbsp;каждой, принятое заранее.</span></div>
             <span class="marks"><span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span>
             <a class="go" href="practices/t-ifthen.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="">
-            <span class="k"><b>основная</b>5 мин</span>
-            <div><span class="t"><a href="practices/t-woop.html">WOOP за 5 минут</a></span><span class="d">Желание, лучший исход, главное внутреннее препятствие и план «если — то».</span></div>
+            <span class="k"><b>основная</b>5&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-woop.html">WOOP за&nbsp;5&nbsp;минут</a></span><span class="d">Желание, лучший исход, главное внутреннее препятствие и&nbsp;план «если — то».</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-woop.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="podvesti-god">
-            <span class="k"><b>основная</b>40 мин</span>
-            <div><span class="t"><a href="practices/t-horizons.html">Маршрут от 5 лет до сегодня</a></span><span class="d">Пять лет одной фразой, вехи на год-два, шаг на завтра.</span></div>
+            <span class="k"><b>основная</b>40&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-horizons.html">Маршрут от&nbsp;5&nbsp;лет до&nbsp;сегодня</a></span><span class="d">Пять лет одной фразой, вехи на&nbsp;год-два, шаг на&nbsp;завтра.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-horizons.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="plany-sryvayutsya">
-            <span class="k"><b>основная</b>2 мин</span>
-            <div><span class="t"><a href="practices/t-monday.html">Проверка «завтра понедельник»</a></span><span class="d">«Завтра я это сделаю?» Если нет, уменьшить шаг вдвое и спросить снова.</span></div>
+            <span class="k"><b>основная</b>2&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-monday.html">Проверка «завтра понедельник»</a></span><span class="d">«Завтра я это сделаю?» Если нет, уменьшить шаг вдвое и&nbsp;спросить снова.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-monday.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="sily-konchilis trevoga">
-            <span class="k"><b>основная</b>15 мин</span>
-            <div><span class="t"><a href="practices/t-window.html">Как я понимаю, что мне хуже</a></span><span class="d">Признаки, что тебя начинает нести, и что обычно помогает.</span></div>
+            <span class="k"><b>основная</b>15&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-window.html">Как я понимаю, что мне хуже</a></span><span class="d">Признаки, что тебя начинает нести, и&nbsp;что обычно помогает.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-window.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="1" data-sit="trevoga">
-            <span class="k"><b>основная</b>2 мин</span>
-            <div><span class="t"><a href="practices/t-worry.html">Контейнер для тревоги</a></span><span class="d">Записать мысль, которая крутится, одной строкой и назначить ей время.</span></div>
+            <span class="k"><b>основная</b>2&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-worry.html">Контейнер для&nbsp;тревоги</a></span><span class="d">Записать мысль, которая крутится, одной строкой и&nbsp;назначить ей время.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-worry.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
@@ -319,155 +348,155 @@
           <div class="kb-group-h"><h3 class="kb-h3">Остальные практики</h3><span class="n" data-n>12</span></div>
           <ol class="kb-rows">
           <li class="kb-row pr-row" data-core="0" data-sit="pereezd">
-            <span class="k">15 мин</span>
-            <div><span class="t"><a href="practices/t-15min.html">Жизнь за 15 минут</a></span><span class="d">Жизнь вслух за пятнадцать минут и пять поворотов, которые слышно в записи.</span></div>
+            <span class="k">15&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-15min.html">Жизнь за&nbsp;15&nbsp;минут</a></span><span class="d">Жизнь вслух за&nbsp;пятнадцать минут и&nbsp;пять поворотов, которые слышно в&nbsp;записи.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-15min.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="rabota-zakonchilas krizis-identichnosti">
-            <span class="k">30 мин</span>
-            <div><span class="t"><a href="practices/t-chapters.html">Главы моей жизни</a></span><span class="d">Пять-восемь глав, высшая и низшая точка, поворот и название следующей главы.</span></div>
+            <span class="k">30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-chapters.html">Главы моей жизни</a></span><span class="d">Пять-восемь глав, высшая и&nbsp;низшая точка, поворот и&nbsp;название следующей главы.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-chapters.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="rabota-zakonchilas">
-            <span class="k">20 мин</span>
-            <div><span class="t"><a href="practices/t-life-review.html">Три вопроса итога</a></span><span class="d">Пять «горжусь», три «жалею», пять «хочу успеть» и что их связывает.</span></div>
+            <span class="k">20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-life-review.html">Три вопроса итога</a></span><span class="d">Пять «горжусь», три «жалею», пять «хочу успеть» и&nbsp;что их связывает.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-life-review.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="sily-konchilis">
-            <span class="k">5 мин</span>
-            <div><span class="t"><a href="practices/t-tiny.html">Одна маленькая привычка</a></span><span class="d">Привычка такого размера, что её почти невозможно не сделать.</span></div>
+            <span class="k">5&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-tiny.html">Одна маленькая привычка</a></span><span class="d">Привычка такого размера, что её почти невозможно не&nbsp;сделать.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span>
             <a class="go" href="practices/t-tiny.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="poterya-blizkogo">
-            <span class="k">60 мин</span>
-            <div><span class="t"><a href="practices/t-five-questions.html">Пять вопросов старшему</a></span><span class="d">Один записанный разговор со старшим в семье и три находки.</span></div>
+            <span class="k">60&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-five-questions.html">Пять вопросов старшему</a></span><span class="d">Один записанный разговор со&nbsp;старшим в&nbsp;семье и&nbsp;три находки.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-five-questions.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="">
-            <span class="k">60 мин</span>
-            <div><span class="t"><a href="practices/t-genogram.html">Генограмма за вечер</a></span><span class="d">Древо на три поколения и сюжеты, которые в нём повторяются.</span></div>
+            <span class="k">60&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-genogram.html">Генограмма за&nbsp;вечер</a></span><span class="d">Древо на&nbsp;три поколения и&nbsp;сюжеты, которые в&nbsp;нём повторяются.</span></div>
             <span class="marks"><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-genogram.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="trevoga poterya-blizkogo">
-            <span class="k">4 дня по 15 мин</span>
-            <div><span class="t"><a href="practices/t-express.html">Экспрессивное письмо</a></span><span class="d">Пятнадцать минут письма о том, что не отпускает, четыре дня подряд.</span></div>
+            <span class="k">4&nbsp;дня по&nbsp;15&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-express.html">Экспрессивное письмо</a></span><span class="d">Пятнадцать минут письма о&nbsp;том, что не&nbsp;отпускает, четыре дня подряд.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-express.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="sily-konchilis plany-sryvayutsya trevoga">
-            <span class="k">15 мин</span>
+            <span class="k">15&nbsp;мин</span>
             <div><span class="t"><a href="practices/t-friend.html">Письмо себе как другу</a></span><span class="d">Написать себе то, что говоришь близкому человеку, когда ему плохо.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-friend.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="podvesti-god">
-            <span class="k">20 мин</span>
-            <div><span class="t"><a href="practices/t-retro.html">Воскресное ретро</a></span><span class="d">Двадцать минут раз в неделю: три победы, утечка, зарядка и что поменять.</span></div>
+            <span class="k">20&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-retro.html">Воскресное ретро</a></span><span class="d">Двадцать минут раз в&nbsp;неделю: три победы, утечка, зарядка и&nbsp;что поменять.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-retro.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="podvesti-god">
-            <span class="k">30 мин</span>
-            <div><span class="t"><a href="practices/t-quarter.html">Сверка раз в квартал</a></span><span class="d">Раз в квартал свериться с компасом, колесом и маршрутом.</span></div>
+            <span class="k">30&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-quarter.html">Сверка раз в&nbsp;квартал</a></span><span class="d">Раз в&nbsp;квартал свериться с&nbsp;компасом, колесом и&nbsp;маршрутом.</span></div>
             <span class="marks"><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-quarter.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="ryadom-chelovek-v-krizise poterya-blizkogo">
-            <span class="k">10 мин</span>
-            <div><span class="t"><a href="practices/t-presence.html">Памятка для близкого</a></span><span class="d">Как быть рядом с человеком в кризисе или горе и не советовать.</span></div>
+            <span class="k">10&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-presence.html">Памятка для&nbsp;близкого</a></span><span class="d">Как быть рядом с&nbsp;человеком в&nbsp;кризисе или горе и&nbsp;не&nbsp;советовать.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span>
             <a class="go" href="practices/t-presence.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           <li class="kb-row pr-row" data-core="0" data-sit="ne-znayu-k-komu-idti ryadom-chelovek-v-krizise">
-            <span class="k">15 мин</span>
-            <div><span class="t"><a href="practices/t-who.html">К кому идти дальше</a></span><span class="d">Карта специалистов: с какой темой к кому и что сделать первым.</span></div>
+            <span class="k">15&nbsp;мин</span>
+            <div><span class="t"><a href="practices/t-who.html">К&nbsp;кому идти дальше</a></span><span class="d">Карта специалистов: с&nbsp;какой темой к&nbsp;кому и&nbsp;что сделать первым.</span></div>
             <span class="marks"><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span>
             <a class="go" href="practices/t-who.html" aria-hidden="true" tabindex="-1">→</a>
           </li>
           </ol>
         </div>
-        <div class="kb-none" data-none hidden><p class="kb-none-t">В этой ситуации таких практик нет.</p><p class="kb-hint"><a href="#catalog" data-reset>Показать все практики</a></p></div>
+        <div class="kb-none" data-none hidden><p class="kb-none-t">В&nbsp;этой ситуации таких практик нет.</p><p class="kb-hint"><a href="#catalog" data-reset>Показать все практики</a></p></div>
       </div>
     </div>
   </section>
 
   <section class="band pr-how-sec" id="how-program" data-atmo="day" data-atmo-rule aria-labelledby="hp-h">
     <div class="frame">
-      <div class="band-head"><h2 id="hp-h">Как из практик собирается программа</h2></div>
-      <p class="pr-sec-lead">Колесо за двадцать минут покажет, где у тебя тройка, но не ответит, почему она там третий год. Поэтому у каждой цели несколько способов, и я подбираю тот, что заходит.</p>
+      <div class="band-head"><h2 id="hp-h">Как из&nbsp;практик собирается программа</h2></div>
+      <p class="pr-sec-lead">Колесо за&nbsp;двадцать минут покажет, где у&nbsp;тебя тройка, но&nbsp;не&nbsp;ответит, почему она там третий год. Поэтому у&nbsp;каждой цели несколько способов, и&nbsp;я подбираю тот, что заходит.</p>
       <h3 class="pr-goal-stage">Компас&nbsp;— кто выбирает</h3>
       <div class="pr-goals">
         <article class="pr-goal">
           <h4>Миссия</h4>
-          <p>На руках: одна-две фразы, зачем ты делаешь своё дело — это <a class="link" href="program.html#week-3">неделя 3</a>.</p>
+          <p>На&nbsp;руках: одна-две фразы, зачем ты делаешь своё дело&nbsp;— это <a class="link" href="program.html#week-3">неделя 3</a>.</p>
           <p class="pr-goal-pr"><a href="practices/t-horsemen.html">Всадники апокалипсиса</a>, <a href="practices/t-heroes.html">Мои герои</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>заходит игра&nbsp;— всадники, неловко говорить о себе&nbsp;— герои.</p></details>
+          <details class="pr-how"><summary>Как выбираю</summary><p>заходит игра&nbsp;— всадники, неловко говорить о&nbsp;себе&nbsp;— герои.</p></details>
         </article>
         <article class="pr-goal">
-          <h4>Ценности и их конфликт</h4>
-          <p>На руках: пять-семь ценностей и правило для двух спорящих — это <a class="link" href="program.html#week-3">неделя 3</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-values.html">Ценности из поступков</a>, <a href="practices/t-heroes.html">Мои герои</a>, <a href="practices/t-wheel.html">Колесо контекстов</a>, тест ценностей Шварца по желанию</p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>начинаю с поступков, в дорогих решениях себя обманывать труднее; Шварц&nbsp;— одна из призм, внешняя сверка.</p></details>
+          <h4>Ценности и&nbsp;их конфликт</h4>
+          <p>На&nbsp;руках: пять-семь ценностей и&nbsp;правило для&nbsp;двух спорящих&nbsp;— это <a class="link" href="program.html#week-3">неделя 3</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-values.html">Ценности из&nbsp;поступков</a>, <a href="practices/t-heroes.html">Мои герои</a>, <a href="practices/t-wheel.html">Колесо контекстов</a>, тест ценностей Шварца по&nbsp;желанию</p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>начинаю с&nbsp;поступков, в&nbsp;дорогих решениях себя обманывать труднее; Шварц&nbsp;— одна из&nbsp;призм, внешняя сверка.</p></details>
         </article>
         <article class="pr-goal">
           <h4>Наносное</h4>
-          <p>На руках: список «надо», которые не твои — это <a class="link" href="program.html#week-3">неделя 3</a>.</p>
+          <p>На&nbsp;руках: список «надо», которые не&nbsp;твои&nbsp;— это <a class="link" href="program.html#week-3">неделя 3</a>.</p>
           <p class="pr-goal-pr"><a href="practices/t-family-musts.html">Семейные «надо»</a>, <a href="practices/t-cards.html">Карточки событий</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>из семьи&nbsp;— семейные «надо», из профессии&nbsp;— карточки событий.</p></details>
+          <details class="pr-how"><summary>Как выбираю</summary><p>из&nbsp;семьи&nbsp;— семейные «надо», из&nbsp;профессии&nbsp;— карточки событий.</p></details>
         </article>
         <article class="pr-goal">
           <h4>Способности</h4>
-          <p>На руках: что ты умеешь, с историей-доказательством к каждому пункту — это <a class="link" href="program.html#week-4">неделя 4</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-periods.html">Три живых периода</a>, <a href="practices/t-close.html">Интервью близких</a>, <a href="practices/t-balcony.html">Балкон и подвал</a>, CliftonStrengths по желанию</p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>доказательства из истории, CliftonStrengths&nbsp;— по желанию, внешняя сверка.</p></details>
+          <p>На&nbsp;руках: что ты умеешь, с&nbsp;историей-доказательством к&nbsp;каждому пункту&nbsp;— это <a class="link" href="program.html#week-4">неделя 4</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-periods.html">Три живых периода</a>, <a href="practices/t-close.html">Интервью близких</a>, <a href="practices/t-balcony.html">Балкон и&nbsp;подвал</a>, CliftonStrengths по&nbsp;желанию</p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>доказательства из&nbsp;истории, CliftonStrengths&nbsp;— по&nbsp;желанию, внешняя сверка.</p></details>
         </article>
       </div>
       <h3 class="pr-goal-stage">Горизонты&nbsp;— какое дело</h3>
       <div class="pr-goals">
         <article class="pr-goal">
           <h4>Образ будущего</h4>
-          <p>На руках: подробная картинка жизни, которой хочется — это <a class="link" href="program.html#week-5">неделя 5</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-lives.html">Семь жизней</a>, <a href="practices/t-forty.html">40 хочу</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>страшно ошибиться&nbsp;— семь жизней, ничего не хочется&nbsp;— сорок желаний.</p></details>
+          <p>На&nbsp;руках: подробная картинка жизни, которой хочется&nbsp;— это <a class="link" href="program.html#week-5">неделя 5</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-lives.html">Семь жизней</a>, <a href="practices/t-forty.html">40&nbsp;хочу</a></p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>страшно ошибиться&nbsp;— семь жизней, ничего не&nbsp;хочется&nbsp;— сорок желаний.</p></details>
         </article>
         <article class="pr-goal">
           <h4>Направления</h4>
-          <p>На руках: два-три направления «сфера плюс роль» — это <a class="link" href="program.html#week-6">неделя 6</a>.</p>
-          <p class="pr-goal-pr">Сборка на встрече, <a href="practices/t-best-self.html">Лучшее возможное «я»</a>, <a href="practices/t-cards.html">Карточки событий</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>собираем вдвоём, ИИ зову, когда варианты ходят по кругу.</p></details>
+          <p>На&nbsp;руках: два-три направления «сфера плюс роль»&nbsp;— это <a class="link" href="program.html#week-6">неделя 6</a>.</p>
+          <p class="pr-goal-pr">Сборка на&nbsp;встрече, <a href="practices/t-best-self.html">Лучшее возможное «я»</a>, <a href="practices/t-cards.html">Карточки событий</a></p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>собираем вдвоём, ИИ зову, когда варианты ходят по&nbsp;кругу.</p></details>
         </article>
         <article class="pr-goal">
           <h4>Решение</h4>
-          <p>На руках: одна дорога, деньги и ответ «да», «нет» или «пока не знаю» — это <a class="link" href="program.html#week-7">неделя 7</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-money.html">Приз в деньгах</a>, <a href="practices/t-premortem.html">Премортем дороги</a>, <a href="practices/t-proto.html">Разговор-прототип</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>деньги считаем всегда, премортем&nbsp;— если о рисках говорить неловко.</p></details>
+          <p>На&nbsp;руках: одна дорога, деньги и&nbsp;ответ «да», «нет» или «пока не&nbsp;знаю»&nbsp;— это <a class="link" href="program.html#week-7">неделя 7</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-money.html">Приз в&nbsp;деньгах</a>, <a href="practices/t-premortem.html">Премортем дороги</a>, <a href="practices/t-proto.html">Разговор-прототип</a></p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>деньги считаем всегда, премортем&nbsp;— если о&nbsp;рисках говорить неловко.</p></details>
         </article>
       </div>
-      <h3 class="pr-goal-stage">Выход на маршрут&nbsp;— как дойти</h3>
+      <h3 class="pr-goal-stage">Выход на&nbsp;маршрут&nbsp;— как дойти</h3>
       <div class="pr-goals">
         <article class="pr-goal">
           <h4>Паттерны</h4>
-          <p>На руках: один-три сценария, которые срывали попытки, и другая дорожка — это <a class="link" href="program.html#week-9">неделя 9</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-pattern.html">Карточка паттерна</a>, <a href="practices/t-parts.html">Переговоры за столом</a>, <a href="practices/t-window.html">Как я понимаю, что мне хуже</a>, <a href="practices/t-ifthen.html">Три плана «если&nbsp;— то»</a></p>
+          <p>На&nbsp;руках: один-три сценария, которые срывали попытки, и&nbsp;другая дорожка&nbsp;— это <a class="link" href="program.html#week-9">неделя 9</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-pattern.html">Карточка паттерна</a>, <a href="practices/t-parts.html">Переговоры за&nbsp;столом</a>, <a href="practices/t-window.html">Как я понимаю, что мне хуже</a>, <a href="practices/t-ifthen.html">Три плана «если&nbsp;— то»</a></p>
           <details class="pr-how"><summary>Как выбираю</summary><p>карточка всем, переговоры&nbsp;— когда внутри спорят двое.</p></details>
         </article>
         <article class="pr-goal">
           <h4>Опоры</h4>
-          <p>На руках: места, люди, ритм, ритуал и аптечка — это <a class="link" href="program.html#week-9">неделя 9</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-supports.html">Карта опор</a>, <a href="practices/t-mykit.html">Кит (kit)</a>, <a href="practices/t-ritual.html">Собрать один ритуал</a>, <a href="practices/t-kit.html">Аптечка на стену</a>, <a href="practices/t-worry.html">Контейнер для тревоги</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>сначала среда, её проще поменять: карта показывает, что держит, кит собирает это под одно состояние.</p></details>
+          <p>На&nbsp;руках: места, люди, ритм, ритуал и&nbsp;аптечка&nbsp;— это <a class="link" href="program.html#week-9">неделя 9</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-supports.html">Карта опор</a>, <a href="practices/t-mykit.html">Кит (kit)</a>, <a href="practices/t-ritual.html">Собрать один ритуал</a>, <a href="practices/t-kit.html">Аптечка на&nbsp;стену</a>, <a href="practices/t-worry.html">Контейнер для&nbsp;тревоги</a></p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>сначала среда, её проще поменять: карта показывает, что держит, кит собирает это под&nbsp;одно состояние.</p></details>
         </article>
         <article class="pr-goal">
           <h4>Маршрут</h4>
-          <p>На руках: вехи на год-два, квартал шагами, первый шаг в календаре — это <a class="link" href="program.html#week-10">неделя 10</a>.</p>
-          <p class="pr-goal-pr"><a href="practices/t-horizons.html">Маршрут от 5 лет до сегодня</a>, <a href="practices/t-woop.html">WOOP за 5 минут</a>, <a href="practices/t-monday.html">Проверка «завтра понедельник»</a></p>
-          <details class="pr-how"><summary>Как выбираю</summary><p>большой&nbsp;— на встрече, «завтра понедельник»&nbsp;— на застрявший шаг.</p></details>
+          <p>На&nbsp;руках: вехи на&nbsp;год-два, квартал шагами, первый шаг в&nbsp;календаре&nbsp;— это <a class="link" href="program.html#week-10">неделя 10</a>.</p>
+          <p class="pr-goal-pr"><a href="practices/t-horizons.html">Маршрут от&nbsp;5&nbsp;лет до&nbsp;сегодня</a>, <a href="practices/t-woop.html">WOOP за&nbsp;5&nbsp;минут</a>, <a href="practices/t-monday.html">Проверка «завтра понедельник»</a></p>
+          <details class="pr-how"><summary>Как выбираю</summary><p>большой&nbsp;— на&nbsp;встрече, «завтра понедельник»&nbsp;— на&nbsp;застрявший шаг.</p></details>
         </article>
       </div>
     </div>
@@ -475,10 +504,10 @@
 
   <section class="band band--split pr-ai" id="ai" data-atmo="night-soft" data-atmo-rule aria-labelledby="ai-h">
     <div class="frame">
-      <div class="band-side"><h2 id="ai-h">Практики со своим ИИ</h2></div>
+      <div class="band-side"><h2 id="ai-h">Практики со&nbsp;своим ИИ</h2></div>
       <div class="band-main">
-        <p>Готовлю раздел о том, что дать своему ИИ, что оставить при себе и где он додумывает и льстит. Когда совсем плохо, с ним лучше не оставаться один на один. Появится раздел&nbsp;— напишу в канале.</p>
-        <div class="actions"><a class="btn quiet glass" href="#channel" data-channel>Канал в Telegram</a></div>
+        <p>Готовлю раздел о&nbsp;том, что дать своему ИИ, что оставить при&nbsp;себе и&nbsp;где он додумывает и&nbsp;льстит. Когда совсем плохо, с&nbsp;ним лучше не&nbsp;оставаться один на&nbsp;один. Появится раздел&nbsp;— напишу в&nbsp;канале.</p>
+        <div class="actions"><a class="btn quiet glass" href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></div>
       </div>
     </div>
   </section>
@@ -486,7 +515,7 @@
   <section class="band pr-bridge-sec" id="bridge" data-atmo="dawn" aria-label="«Переход»">
     <div class="frame cols">
       <div class="s-8">
-      <p class="lede pr-bridge-lead">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг, а я замечаю, когда разговор пошёл по кругу: у себя самой я этого обычно не вижу.</p>
+      <p class="lede pr-bridge-lead">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг, а&nbsp;я замечаю, когда разговор пошёл по&nbsp;кругу: у&nbsp;себя самой я этого обычно не&nbsp;вижу.</p>
       <div class="actions"><a class="btn primary" href="program.html">Как устроен «Переход» →</a> <a class="link" href="talk.html">Как проходит разговор →</a></div>
       </div>
     </div>
@@ -494,7 +523,7 @@
 
   <section class="band pr-colleagues-sec" id="colleagues" aria-label="Коллегам">
     <div class="frame">
-      <p class="small pr-colleagues"><strong>Коллегам.</strong> Практики можно брать в работу со ссылкой на источник. <a class="link small" href="project.html#keepers">Письмо коллегам →</a></p>
+      <p class="small pr-colleagues"><strong>Коллегам.</strong> Практики можно брать в&nbsp;работу со&nbsp;ссылкой на&nbsp;источник. <a class="link small" href="project.html#keepers">Письмо коллегам →</a></p>
     </div>
   </section>
 
@@ -505,25 +534,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -533,12 +562,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -547,7 +576,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

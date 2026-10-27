@@ -1,0 +1,38 @@
+/* Главная на телефоне — вариант A «под кат» (решение Саши 27.10; образец options-v2/reveal/m-home-a.html). Только до 760 px.
+   Включается атрибутом data-mh="a" на <html> в index.html; скрипт — home-mobile.js. Ленты вбок (вариант B) не берём. */
+.mh-cta,.mh-more{display:none}
+@media (max-width:760px){
+  /* порядок: первый экран → для кого (1 абзац) → работа со мной → с чем приходят → база → с чего начать → вид → о проекте → кто это делает */
+  [data-mh] main{display:flex; flex-direction:column}
+  [data-mh] .hm-cover{order:1} [data-mh] .hm-who-intro{order:2} [data-mh] .hm-work{order:3} [data-mh] .hm-sit{order:4}
+  [data-mh] .hm-kb{order:5} [data-mh] .hm-start{order:6} [data-mh] .hm-view{order:7} [data-mh] .hm-project{order:8} [data-mh] .hm-me-band{order:9}
+
+  /* первый экран: кнопка «Перехода» сразу под текстом; картина — низкой полосой под ним */
+  [data-mh] .mh-cta{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-3) var(--sp-5); margin-top:var(--sp-5)}
+  [data-mh] .mh-cta .btn{flex:1 1 100%}
+  [data-mh] .mh-start{min-height:44px; display:inline-flex; align-items:center}
+  [data-mh] .hm-cover .cover-foot{display:none}
+  [data-mh] .hm-cover .cover-aside{margin:0 0 var(--sp-4)}
+  [data-mh] .hm-plate{--pa-r:1.7 !important; --pa-h:none !important; width:100% !important}
+  [data-mh] .hm-plate .pa-img img{object-fit:cover !important; object-position:50% 62%}
+  [data-mh] .hm-stage{display:none}
+
+  /* секции плотнее: на телефоне стык 72 вместо 84–120 */
+  [data-mh] main > .band,[data-mh] .hm-work{padding-top:var(--sp-8); padding-bottom:0}
+  [data-mh] .hm-work{padding-bottom:var(--sp-6)}
+
+  /* под кат */
+  [data-mh] .mh-hidden.mh-hidden{display:none !important}
+  [data-mh] .mh-more{display:inline-flex; align-items:center; gap:8px; min-height:44px; margin-top:var(--sp-4); padding:0 18px; border-radius:999px;
+    border:1px solid var(--line-2); background:rgba(255,255,255,.72); justify-self:start; align-self:start; width:auto; font:500 var(--s4)/1 var(--f-text); color:var(--ink); cursor:pointer}
+  [data-mh] .mh-more::after{content:"↓"; color:var(--ink-3)}
+  [data-mh] .mh-more:active{transform:translateY(1px)}
+  [data-mh] .mh-more:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+
+  /* картинки ниже ростом: смысл тот же, экранов меньше */
+  [data-mh] .hm-work .tile--product .tile-view{height:150px}
+  [data-mh] .hm-me-plate{--pa-h:300px !important; margin:0 0 var(--sp-5) !important}
+  [data-mh] .hm-start-plate{--pa-r:2.2 !important; --pa-h:none !important; width:100% !important}
+  [data-mh] .hm-start-plate .pa-img img{object-fit:cover !important; object-position:50% 50%}
+  [data-mh] .hm-acts{row-gap:var(--sp-6) !important}
+}

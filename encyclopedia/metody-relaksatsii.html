@@ -7,9 +7,9 @@
 <meta name="description" content="Методы релаксации — приёмы, которые учат тело и психику переходить из напряжения в покой. Чаще всего это часть большой терапии, а не самостоятельное лечение.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/metody-relaksatsii.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Методы релаксации · школа терапии · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Методы релаксации">
 <meta property="og:description" content="Методы релаксации — приёмы, которые учат тело и психику переходить из напряжения в покой. Чаще всего это часть большой терапии, а не самостоятельное лечение.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/metody-relaksatsii.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,40 +107,40 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Школы · ещё школы (черновики)"><ul><li><a href="gruppovaya-terapiya.html">Групповая терапия</a></li><li><a href="interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a></li><li><a class="is-here" aria-current="page" href="metody-relaksatsii.html">Методы релаксации</a></li><li><a href="povedencheskaya-terapiya.html">Поведенческая терапия</a></li><li><a href="sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Школы · ещё школы"><ul><li><a href="gruppovaya-terapiya.html">Групповая терапия</a></li><li><a href="interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a></li><li><a class="is-here" aria-current="page" href="metody-relaksatsii.html">Методы релаксации</a></li><li><a href="povedencheskaya-terapiya.html">Поведенческая терапия</a></li><li><a href="sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Ещё школы (черновики)</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Методы релаксации</li></ol>
 <h1 class="kb-h1" id="h1">Методы релаксации</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Методы релаксации — приёмы, которые учат тело и психику переходить из напряжения в покой. Чаще всего это часть большой терапии, а не самостоятельное лечение.</p></div>
+<div class="kb-two"><p>Методы релаксации&nbsp;— приёмы, которые учат тело и психику переходить из напряжения в покой. Чаще всего это часть большой терапии, а не&nbsp;самостоятельное лечение.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <div class="kb-do"><a class="btn primary" href="../atlas/breathwork-practitioner.html">Кто так работает: Практик дыхательных техник</a><span class="kb-do-alt">или <a href="../atlas.html">весь атлас</a></span></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Ещё называют</dt><dd>прогрессивная мышечная релаксация, аутогенная тренировка, аутотренинг, relaxation techniques</dd></div></dl>
 <section class="kb-sec" id="origin"><h2 class="kb-h2">Откуда</h2>
-<p>Два классических метода носят имена своих авторов: прогрессивная мышечная релаксация — Эдмунда Джекобсона, <a class="kb-term" href="../glossary.html#term-autogennaya-trenirovka" title="Расслабление через самовнушение ощущений тепла и тяжести в теле.">аутогенная тренировка</a> — Иоганнеса Шульца.</p></section>
+<p>Два классических метода носят имена своих авторов: прогрессивная мышечная релаксация&nbsp;— Эдмунда Джекобсона, <a class="kb-term" href="../glossary.html#term-autogennaya-trenirovka" title="Расслабление через самовнушение ощущений тепла и тяжести в теле.">аутогенная тренировка</a>&nbsp;— Иоганнеса Шульца.</p></section>
 <section class="kb-sec" id="idea"><h2 class="kb-h2">Главная идея</h2>
-<p>Тревога и напряжение тела связаны: когда расслабляется тело, утихает и тревога. По теории Джозефа Вольпе, тревога и расслабление несовместимы; на этом построена <a class="kb-term" href="../glossary.html#term-sistematicheskaya-desensibilizatsiya" title="Постепенная встреча со страшным в сочетании с релаксацией (тревога и расслабление несовместимы).">систематическая десенсибилизация</a> — одна из техник поведенческой терапии.</p></section>
+<p>Тревога и напряжение тела связаны: когда расслабляется тело, утихает и тревога. По теории Джозефа Вольпе, тревога и расслабление несовместимы; на этом построена <a class="kb-term" href="../glossary.html#term-sistematicheskaya-desensibilizatsiya" title="Постепенная встреча со страшным в сочетании с релаксацией (тревога и расслабление несовместимы).">систематическая десенсибилизация</a>&nbsp;— одна из техник поведенческой терапии.</p></section>
 <section class="kb-sec" id="how"><h2 class="kb-h2">Как проходит работа</h2>
-<ul><li><strong>Прогрессивная мышечная релаксация</strong> — по очереди напрягать и отпускать группы мышц, учась замечать разницу.</li><li><strong>Аутогенная тренировка</strong> — спокойные формулы самовнушения: «моя правая рука тяжёлая и тёплая».</li><li><strong>Дыхательные упражнения</strong> — например, выдох длиннее вдоха: вдох на 4 счёта, задержка на 3, выдох на 7 (схемы бывают разные).</li><li><strong>Визуализация</strong> — представить себе безопасное место.</li><li><strong>Биологическая обратная связь</strong> — прибор показывает пульс или напряжение мышц, и человек учится ими управлять.</li></ul>
-<p>Тренироваться нужно регулярно — тогда навык срабатывает и в трудную минуту.</p></section>
+<ul><li><strong>Прогрессивная мышечная релаксация</strong>&nbsp;— по очереди напрягать и отпускать группы мышц, учась замечать разницу.</li><li><strong>Аутогенная тренировка</strong>&nbsp;— спокойные формулы самовнушения: «моя правая рука тяжёлая и тёплая».</li><li><strong>Дыхательные упражнения</strong>&nbsp;— например, выдох длиннее вдоха: вдох на 4&nbsp;счёта, задержка на 3, выдох на 7 (схемы бывают разные).</li><li><strong>Визуализация</strong>&nbsp;— представить себе безопасное место.</li><li><strong>Биологическая обратная связь</strong>&nbsp;— прибор показывает пульс или напряжение мышц, и человек учится ими управлять.</li></ul>
+<p>Тренироваться нужно регулярно&nbsp;— тогда навык срабатывает и в&nbsp;трудную минуту.</p></section>
 <section class="kb-sec" id="with"><h2 class="kb-h2">С чем работает</h2>
-<p>Проверено: сиюминутная тревожность (эффект средний, данные до 2007 года); при депрессии релаксация помогает слабее, чем КПТ. Применяют также при бессоннице, головных болях напряжения и психосоматических жалобах (телесных симптомах, которые поддерживает долгое напряжение), но проверок по ним в нашей базе нет; как самостоятельного лечения тревожных расстройств — тоже. Как часть когнитивно-поведенческой терапии — при тревожных расстройствах.</p></section>
+<p>Проверено: сиюминутная тревожность (эффект средний, данные до 2007&nbsp;года); при депрессии релаксация помогает слабее, чем КПТ. Применяют также при бессоннице, головных болях напряжения и психосоматических жалобах (телесных симптомах, которые поддерживает долгое напряжение), но проверок по ним в нашей базе нет; как самостоятельного лечения тревожных расстройств&nbsp;— тоже. Как часть когнитивно-поведенческой терапии&nbsp;— при тревожных расстройствах.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
 <p><strong>По состояниям:</strong></p>
-<ul><li>умеренная — сиюминутная тревожность по опроснику (прогрессивная мышечная релаксация, аутогенная тренировка, медитация; эффект средний; данные до 2007 года)</li><li>ранняя — депрессия (лучше «ничего» по самооценке, по оценке врача разница незначима; слабее КПТ)</li><li>нет данных — тревожные расстройства как диагноз</li><li>ранняя — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a> (треть участников — добровольцы и студенты, у них эффект был сильнее; но это срез одного старого обзора, а не отдельная проверка)</li></ul>
-<p><strong>Оценки и рекомендации:</strong> в обзоре Кокрейна 2008 GRADE не приводится; ВОЗ, NICE — в проверенных источниках нет.</p>
-<p><strong>Что проверено и на ком.</strong> Тревожность: 27 исследований, из них 19 РКИ (1 005 человек); почти половина — люди с телесными болезнями, треть — добровольцы и студенты; тревогу в основном мерили опросником «тревога в данный момент». Депрессия: 15 исследований у людей с диагнозом или выраженными симптомами. Обе работы 2008 года; свежих не нашли.</p>
+<ul><li>умеренная&nbsp;— сиюминутная тревожность по опроснику (прогрессивная мышечная релаксация, аутогенная тренировка, медитация; эффект средний; данные до 2007&nbsp;года)</li><li>ранняя&nbsp;— депрессия (лучше «ничего» по самооценке, по оценке врача разница незначима; слабее КПТ)</li><li>нет данных&nbsp;— тревожные расстройства как диагноз</li><li>ранняя&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a> (треть участников&nbsp;— добровольцы и студенты, у них эффект был сильнее; но это срез одного старого обзора, а не&nbsp;отдельная проверка)</li></ul>
+<p><strong>Оценки и рекомендации:</strong> в обзоре Кокрейна 2008&nbsp;GRADE не приводится; ВОЗ, NICE&nbsp;— в проверенных источниках нет.</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Тревожность: 27&nbsp;исследований, из них 19&nbsp;РКИ (1&nbsp;005&nbsp;человек); почти половина&nbsp;— люди с телесными болезнями, треть&nbsp;— добровольцы и студенты; тревогу в основном мерили опросником «тревога в данный момент». Депрессия: 15&nbsp;исследований у людей с диагнозом или выраженными симптомами. Обе работы 2008&nbsp;года; свежих не нашли.</p>
 <p><strong>Опора:</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/18518981/" target="_blank" rel="noopener">Manzoni 2008<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 19 РКИ: релаксация снижает тревожность, эффект средний; сильнее у медитации, у добровольцев и при более долгих занятиях; смешаны РКИ и исследования без контроля — читано: полный текст — ⏳; конфликтов нет</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/18843744/" target="_blank" rel="noopener">Jorm 2008<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — О (Кокрейн, с метаанализом) — против «ничего» по самооценке депрессия ниже; по оценке врача незначимо; против <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапии</a>, в основном КПТ, релаксация слабее — читано: аннотация — ⏳</li></ul>
-<p><strong>Чего не знаем.</strong> Что показали исследования после 2008 года. Работает ли релаксация при тревожных расстройствах как самостоятельное лечение.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/18518981/" target="_blank" rel="noopener">Manzoni 2008<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 19&nbsp;РКИ: релаксация снижает тревожность, эффект средний; сильнее у медитации, у добровольцев и при&nbsp;более долгих занятиях; смешаны РКИ и исследования без контроля&nbsp;— читано: полный текст&nbsp;— ⏳; конфликтов нет</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/18843744/" target="_blank" rel="noopener">Jorm 2008<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— О (Кокрейн, с метаанализом)&nbsp;— против «ничего» по самооценке депрессия ниже; по оценке врача незначимо; против <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапии</a>, в основном КПТ, релаксация слабее&nbsp;— читано: аннотация&nbsp;— ⏳</li></ul>
+<p><strong>Чего не знаем.</strong> Что показали исследования после 2008&nbsp;года. Работает&nbsp;ли релаксация при тревожных расстройствах как самостоятельное лечение.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда не подходит</h2>
-<p>У некоторых людей расслабление, наоборот, вызывает тревогу или панику — это называют тревогой, вызванной релаксацией. Людям с травмой, диссоциацией (ощущением, что происходящее «не со мной») или психозом нужна осторожность: лучше с открытыми глазами и с опорой на ощущения «здесь». Если есть расстройство, релаксация не заменяет лечения: при депрессии она помогает слабее психотерапии (обзор Кокрейна, Jorm 2008).</p>
-<p>Это не то же самое, что медитация осознанности: её цель — замечать, а не расслабиться. И не гипноз.</p></section>
+<p>У некоторых людей расслабление, наоборот, вызывает тревогу или панику&nbsp;— это называют тревогой, вызванной релаксацией. Людям с травмой, диссоциацией (ощущением, что происходящее «не со&nbsp;мной») или психозом нужна осторожность: лучше с открытыми глазами и с&nbsp;опорой на ощущения «здесь». Если есть расстройство, релаксация не заменяет лечения: при депрессии она помогает слабее психотерапии (обзор Кокрейна, Jorm 2008).</p>
+<p>Это не&nbsp;то же самое, что медитация осознанности: её цель&nbsp;— замечать, а не&nbsp;расслабиться. И не&nbsp;гипноз.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="okno-tolerantnosti.html"><span class="t">Окно толерантности</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="mayndfulnes-mbsr.html"><span class="t">Майндфулнес</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><details class="kb-more-d"><summary>ещё 2</summary><a href="povedencheskaya-terapiya.html"><span class="t">Поведенческая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/breathwork-practitioner.html"><span class="t">Практик дыхательных техник</span><span class="m">атлас · уровень «Практика»</span></a><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="interpersonalnaya-psikhoterapiya.html" rel="prev">← Ещё школы (черновики)<b>Интерперсональная психотерапия</b></a><a class="r" href="povedencheskaya-terapiya.html" rel="next">Ещё школы (черновики) →<b>Поведенческая терапия</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="okno-tolerantnosti.html"><span class="t">Окно толерантности</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="mayndfulnes-mbsr.html"><span class="t">Майндфулнес</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><details class="kb-more-d"><summary>ещё 2</summary><a href="povedencheskaya-terapiya.html"><span class="t">Поведенческая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/breathwork-practitioner.html"><span class="t">Практик дыхательных техник</span><span class="m">атлас · уровень «Практика»</span></a><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="interpersonalnaya-psikhoterapiya.html" rel="prev">← Ещё школы<b>Интерперсональная психотерапия</b></a><a class="r" href="povedencheskaya-terapiya.html" rel="next">Ещё школы →<b>Поведенческая терапия</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#with">С чем работает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#not">Когда не подходит</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#with">С&nbsp;чем работает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#not">Когда не&nbsp;подходит</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -122,25 +151,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -150,12 +179,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -164,7 +193,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

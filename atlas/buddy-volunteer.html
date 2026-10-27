@@ -7,9 +7,9 @@
 <meta name="description" content="Волонтёр-«бадди» / наставник-волонтёр: Регулярное дружеское присутствие рядом с одиноким или уязвимым человеком. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/buddy-volunteer.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Волонтёр-друг · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Волонтёр-друг">
 <meta property="og:description" content="Волонтёр-«бадди» / наставник-волонтёр: Регулярное дружеское присутствие рядом с одиноким или уязвимым человеком. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/buddy-volunteer.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Сообщества и взаимопомощь · 8</span><ul><li><a href="support-group-facilitator.html">Ведущий группы поддержки</a></li><li><a href="buddy-volunteer.html" class="is-here" aria-current="page">Волонтёр-друг</a></li><li><a href="online-community-moderator.html">Модератор сообщества</a></li><li><a href="community-organizer.html">Комьюнити-менеджер</a></li><li><a href="volunteer-coordinator.html">Координатор волонтёров</a></li><li><a href="migrant-support-worker.html">Помощь мигрантам</a></li><li><a href="facilitator.html">Фасилитатор</a></li><li><a href="youth-worker.html">Молодёжный работник</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-comm" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Сообщества и&nbsp;взаимопомощь · 8</span><ul><li><a href="support-group-facilitator.html">Ведущий группы поддержки</a></li><li><a href="buddy-volunteer.html" class="is-here" aria-current="page">Волонтёр-друг</a></li><li><a href="online-community-moderator.html">Модератор сообщества</a></li><li><a href="community-organizer.html">Комьюнити-менеджер</a></li><li><a href="volunteer-coordinator.html">Координатор волонтёров</a></li><li><a href="migrant-support-worker.html">Помощь мигрантам</a></li><li><a href="facilitator.html">Фасилитатор</a></li><li><a href="youth-worker.html">Молодёжный работник</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-comm" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-comm.html">Сообщества и взаимопомощь</a></li><li>Волонтёр-друг</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>семья «Сообщества и взаимопомощь»<span class="sep">·</span>данные 27.10.2026</p>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-comm.html">Сообщества и&nbsp;взаимопомощь</a></li><li>Волонтёр-друг</li></ol>
+      
       <h1 class="kb-h1" id="page-title">Волонтёр-«бадди» / наставник-волонтёр<small lang="en">Befriender / buddy volunteer / volunteer mentor</small></h1>
       
-      <div class="kb-two"><span class="label">В двух словах</span><p>Регулярное дружеское присутствие рядом с одиноким или уязвимым человеком</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>4 источника</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 4 утверждения не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — средний. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
-      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li class="is-here"><b>Опыт</b>свой прожитый опыт и участие</li><li><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>нет</dd></div><div><dt>Работает с будущим</dt><dd>иногда</dd></div><div><dt>Работает с телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>иногда</dd></div><div><dt>Работает с группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в НКО</dd></div><div><dt>Характер помощи</dt><dd>поддержка и практическая помощь</dd></div><div><dt>Что можно получить</dt><dd>эмоциональная поддержка, практическое действие, сеть/контакты</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Регулярно бывает рядом с одним человеком, которому одиноко или трудно: пожилым, ребёнком из детского дома, новоприбывшим в страну, человеком с болезнью или инвалидностью. Даёт дружеское общение, внимание, иногда помощь в простых делах. Организация подбирает пару, обучает и поддерживает волонтёра и помогает правильно завершить отношения.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«Пожилая мама живёт одна и ни с кем не разговаривает»</li><li>«Ребёнку из детского дома нужен значимый взрослый»</li><li>«Я недавно переехал — хочу практиковать язык и разобраться, как тут всё устроено»</li><li>«После болезни я почти не выхожу из дома»</li><li>«Хочу помогать, но не знаю как» (запрос самого будущего волонтёра)</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>По определению британской сети Befriending Networks, это отношения, которые поддерживает организация, чтобы дать человеку значимую связь; встречи один на один или в малой группе — лично, по телефону, видео, письмами. Организация отбирает и обучает волонтёров, подбирает пары, следит за отношениями. Наставничество (<a href="mentor.html">менторство</a>) похоже, но больше нацелено на развитие и цели (например, у подростка).</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Один на один (иногда малые группы); обычно встречи или звонки раз в неделю–раз в две недели в течение многих месяцев <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Не <a href="home-care-worker.html">сиделка</a>, не <a href="social-worker.html">социальный работник</a>, не психолог. Не берёт деньги и не решает за человека юридические и финансовые вопросы. При тревожных признаках (насилие, острое состояние) сообщает координатору организации.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Отбор и обучение внутри организации; для работы с детьми и уязвимыми людьми — собеседование и проверки <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Профессией не является. Волонтёрство регулируется законом от 11.08.1995 № 135-ФЗ «О благотворительной деятельности и добровольчестве (волонтёрстве)». Условия участия волонтёра можно закрепить в договоре с организацией, и он может обязывать соблюдать её внутренние правила (ст. 17.1) <sup class="ref"><a href="#src-4" title="Федеральный закон от 11.08.1995 № 135-ФЗ «О благотворительной деятельности и добровольчестве (волонтёрстве)» (ред. от 04.08.2026) — legalacts.ru">4</a></sup>. В мире обычно: стандарты качества задают сети и организации (например, Befriending Networks).</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Фонд «Старость в радость» — визиты в дома престарелых, переписка «Внуки по переписке», видео-волонтёрство; горячая линия 8 800 700-44-01; наставнические программы для детей и молодёжи в трудной жизненной ситуации, в том числе сирот, — например, «Старшие Братья Старшие Сёстры» <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>; платформа «Добро.рф» для поиска волонтёрских проектов <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в НКО</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Направляют: <a href="social-worker.html">социальные работники</a>, НКО, дома престарелых, детские учреждения, специалисты по поддержке мигрантов. Передаёт (через координатора): социальному работнику, психологу, врачу.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Помогает, когда главный риск перехода — изоляция: переезд, выход на пенсию, вдовство, болезнь. И наоборот: стать волонтёром — тоже способ пройти собственный переход.</p><p>См. также: <a href="migrant-support-worker.html">Специалист по поддержке беженцев и мигрантов</a>; <a href="volunteer-coordinator.html">Координатор волонтёров</a>.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 4</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.befriending.co.uk/about/what-is-befriending/" target="_blank" rel="noopener">What is befriending? — Befriending Networks ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://starikam.org/" target="_blank" rel="noopener">Фонд «Старость в радость» ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://starikam.org/volontyoram/" target="_blank" rel="noopener">Волонтёрам — фонд «Старость в радость» ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-11081995-n-135-fz-o/" target="_blank" rel="noopener">Федеральный закон от 11.08.1995 № 135-ФЗ «О благотворительной деятельности и добровольчестве (волонтёрстве)» (ред. от 04.08.2026) — legalacts.ru ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр — в чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В атласе</dt><dd><a href="social-worker.html"><span class="t">Социальный работник</span><span class="m">стыкуется</span></a><a href="support-group-facilitator.html"><span class="t">Ведущий группы поддержки / группы самопомощи</span><span class="m">та же семья</span></a><a href="online-community-moderator.html"><span class="t">Модератор онлайн-сообществ поддержки</span><span class="m">та же семья</span></a><a href="community-organizer.html"><span class="t">Организатор местного сообщества / комьюнити-менеджер</span><span class="m">та же семья</span></a><a href="volunteer-coordinator.html"><span class="t">Координатор волонтёров</span><span class="m">та же семья</span></a><a href="migrant-support-worker.html"><span class="t">Специалист по поддержке беженцев и мигрантов</span><span class="m">та же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=buddy-volunteer,social-worker,support-group-facilitator">Сравнить с похожими</a><a class="kb-do-alt" href="../atlas-map.html#buddy-volunteer" target="_blank" rel="noopener">Показать на карте ↗</a></div></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="support-group-facilitator.html" rel="prev">← Предыдущий в семье<b>Ведущий группы поддержки</b></a><a class="r" href="online-community-moderator.html" rel="next">Следующий в семье →<b>Модератор сообщества</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <div class="kb-two"><p>Регулярное дружеское присутствие рядом с&nbsp;одиноким или уязвимым человеком</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;4&nbsp;источникам<span class="kb-pending">, 4&nbsp;утверждения ещё сверяются</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— средний. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На&nbsp;чём держится помощь</span><ol><li class="is-here"><b>Опыт</b>свой прожитый опыт и&nbsp;участие</li><li><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>нет</dd></div><div><dt>Практическая помощь</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>короткие курсы</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>бесплатно в&nbsp;НКО</dd></div><div><dt>Характер помощи</dt><dd>поддержка и&nbsp;практическая помощь</dd></div><div><dt>Что можно получить</dt><dd>эмоциональная поддержка, практическое действие, сеть/контакты</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Регулярно бывает рядом с&nbsp;одним человеком, которому одиноко или трудно: пожилым, ребёнком из&nbsp;детского дома, новоприбывшим в&nbsp;страну, человеком с&nbsp;болезнью или инвалидностью. Даёт дружеское общение, внимание, иногда помощь в&nbsp;простых делах. Организация подбирает пару, обучает и&nbsp;поддерживает волонтёра и&nbsp;помогает правильно завершить отношения.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем к&nbsp;нему приходят</h2><ul><li>«Пожилая мама живёт одна и&nbsp;ни&nbsp;с&nbsp;кем не&nbsp;разговаривает»</li><li>«Ребёнку из&nbsp;детского дома нужен значимый взрослый»</li><li>«Я недавно переехал&nbsp;— хочу практиковать язык и&nbsp;разобраться, как тут всё устроено»</li><li>«После болезни я почти не&nbsp;выхожу из&nbsp;дома»</li><li>«Хочу помогать, но&nbsp;не&nbsp;знаю как» (запрос самого будущего волонтёра)</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>По&nbsp;определению британской сети Befriending Networks, это отношения, которые поддерживает организация, чтобы дать человеку значимую связь; встречи один на&nbsp;один или в&nbsp;малой группе&nbsp;— лично, по&nbsp;телефону, видео, письмами. Организация отбирает и&nbsp;обучает волонтёров, подбирает пары, следит за&nbsp;отношениями. Наставничество (<a href="mentor.html">менторство</a>) похоже, но&nbsp;больше нацелено на&nbsp;развитие и&nbsp;цели (например, у&nbsp;подростка).</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Один на&nbsp;один (иногда малые группы); обычно встречи или звонки раз в&nbsp;неделю–раз в&nbsp;две недели в&nbsp;течение многих месяцев <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>Не&nbsp;<a href="home-care-worker.html">сиделка</a>, не&nbsp;<a href="social-worker.html">социальный работник</a>, не&nbsp;психолог. Не&nbsp;берёт деньги и&nbsp;не&nbsp;решает за&nbsp;человека юридические и&nbsp;финансовые вопросы. При&nbsp;тревожных признаках (насилие, острое состояние) сообщает координатору организации.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>Отбор и&nbsp;обучение внутри организации; для&nbsp;работы с&nbsp;детьми и&nbsp;уязвимыми людьми&nbsp;— собеседование и&nbsp;проверки <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>Профессией не&nbsp;является. Волонтёрство регулируется законом от&nbsp;11.08.1995 №&nbsp;135-ФЗ «О&nbsp;благотворительной деятельности и&nbsp;добровольчестве (волонтёрстве)». Условия участия волонтёра можно закрепить в&nbsp;договоре с&nbsp;организацией, и&nbsp;он может обязывать соблюдать её внутренние правила (ст. 17.1)<sup class="ref"><a href="#src-4" title="Федеральный закон от 11.08.1995 № 135-ФЗ «О благотворительной деятельности и добровольчестве (волонтёрстве)» (ред. от 04.08.2026) — legalacts.ru">4</a></sup>. В&nbsp;мире обычно: стандарты качества задают сети и&nbsp;организации (например, Befriending Networks).</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Фонд «Старость в&nbsp;радость»&nbsp;— визиты в&nbsp;дома престарелых, переписка «Внуки по&nbsp;переписке», видео-волонтёрство; горячая линия 8&nbsp;800 700-44-01; наставнические программы для&nbsp;детей и&nbsp;молодёжи в&nbsp;трудной жизненной ситуации, в&nbsp;том числе сирот,&nbsp;— например, «Старшие Братья Старшие Сёстры» <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>; платформа «Добро.рф» для&nbsp;поиска волонтёрских проектов <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> бесплатно в&nbsp;НКО</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С&nbsp;кем стыкуется</h2><div class="prose"><p>Направляют: <a href="social-worker.html">социальные работники</a>, НКО, дома престарелых, детские учреждения, специалисты по&nbsp;поддержке мигрантов. Передаёт (через координатора): социальному работнику, психологу, врачу.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В&nbsp;переходе</h2><div class="prose"><p>Помогает, когда главный риск перехода&nbsp;— изоляция: переезд, выход на&nbsp;пенсию, вдовство, болезнь. И&nbsp;наоборот: стать волонтёром&nbsp;— тоже способ пройти собственный переход.</p><p>См. также: <a href="migrant-support-worker.html">Специалист по&nbsp;поддержке беженцев и&nbsp;мигрантов</a>; <a href="volunteer-coordinator.html">Координатор волонтёров</a>.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 4</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.befriending.co.uk/about/what-is-befriending/" target="_blank" rel="noopener">What is befriending?&nbsp;— Befriending Networks ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://starikam.org/" target="_blank" rel="noopener">Фонд «Старость в&nbsp;радость» ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://starikam.org/volontyoram/" target="_blank" rel="noopener">Волонтёрам&nbsp;— фонд «Старость в&nbsp;радость» ↗</a></span></li><li id="src-4" data-n="4"><span><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-11081995-n-135-fz-o/" target="_blank" rel="noopener">Федеральный закон от&nbsp;11.08.1995 №&nbsp;135-ФЗ «О&nbsp;благотворительной деятельности и&nbsp;добровольчестве (волонтёрстве)» (ред. от&nbsp;04.08.2026)&nbsp;— legalacts.ru ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#art-yasno-difference"><span class="t">Психолог, психотерапевт, психиатр&nbsp;— в&nbsp;чём разница («Ясно»)</span><span class="m">статья · Катерина Герман, «Ясно»</span></a><a href="../resources.html#art-zigmund-choose"><span class="t">Как выбрать психолога и&nbsp;формат терапии (Zigmund)</span><span class="m">статья</span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="social-worker.html"><span class="t">Социальный работник</span><span class="m">стыкуется</span></a><a href="support-group-facilitator.html"><span class="t">Ведущий группы поддержки / группы самопомощи</span><span class="m">та&nbsp;же семья</span></a><a href="online-community-moderator.html"><span class="t">Модератор онлайн-сообществ поддержки</span><span class="m">та&nbsp;же семья</span></a><a href="community-organizer.html"><span class="t">Организатор местного сообщества / комьюнити-менеджер</span><span class="m">та&nbsp;же семья</span></a><a href="volunteer-coordinator.html"><span class="t">Координатор волонтёров</span><span class="m">та&nbsp;же семья</span></a><a href="migrant-support-worker.html"><span class="t">Специалист по&nbsp;поддержке беженцев и&nbsp;мигрантов</span><span class="m">та&nbsp;же семья</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=buddy-volunteer,social-worker,support-group-facilitator">Сравнить с&nbsp;похожими</a><a class="kb-do-alt" href="../atlas-map.html#buddy-volunteer" target="_blank" rel="noopener">Показать на&nbsp;карте ↗</a></div></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="support-group-facilitator.html" rel="prev">← Предыдущий в&nbsp;семье<b>Ведущий группы поддержки</b></a><a class="r" href="online-community-moderator.html" rel="next">Следующий в&nbsp;семье →<b>Модератор сообщества</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 4</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем к&nbsp;нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С&nbsp;кем стыкуется</a></li><li><a href="#perehod">В&nbsp;переходе</a></li><li><a href="#istochniki">Источники · 4</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

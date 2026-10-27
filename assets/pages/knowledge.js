@@ -2,13 +2,14 @@
    Waykeeper · вход в базу знаний (knowledge.html): результаты поиска по адресу ?q=
    Пакет 2, 26.10.2026. Использует window.KB из assets/kb.js (реестр assets/data/kb-index.json).
    Показывает результаты сгруппированными по типу; по 8 строк в группе, «Показать ещё».
+   Правка 27.10 (patches/states.md): группы идут по лучшему совпадению (первой — группа, где самый
+   высокий результат), «Ищу…» пока грузится реестр, спокойная ошибка и «Проверь, нет ли опечатки».
    ===================================================================== */
 (function(){
   'use strict';
   var D = document;
   var box = D.getElementById('kn-results'), main = D.getElementById('q');
   if(!box || !main || !window.KB) return;
-  var TYPE_ORDER = ['situation', 'question', 'practice', 'approach', 'school', 'concept', 'person', 'specialist', 'family', 'resource', 'term'];
   var PAGE = 8;
   var RTYPE = { book: 'книга', test: 'тест', workbook: 'тетрадь', tool: 'инструмент', app: 'приложение', podcast: 'подкаст', video: 'видео',
     article: 'статья', media: 'медиа', service: 'сервис', community: 'сообщество', course: 'курс', pro: 'для специалистов' };
@@ -40,18 +41,26 @@
     }
     li.appendChild(marks);
     var go = el('a', 'go', '→'); go.href = KB.url(it); go.setAttribute('aria-label', 'Открыть: ' + it.title);
+    go.setAttribute('tabindex', '-1'); go.setAttribute('aria-hidden', 'true');   // та же ссылка, что и название: одна остановка Tab
     li.appendChild(go);
     return li;
   }
 
+  var TXT = KB.TXT || {};
   function show(q){
+    var t = setTimeout(function(){                    // «Ищу…», если реестр грузится дольше 150 мс
+      box.textContent = ''; var fr = el('div', 'frame'); fr.appendChild(el('p', 'kb-wait', TXT.wait || 'Ищу…'));
+      box.appendChild(fr); box.hidden = false; box.setAttribute('aria-busy', 'true');
+    }, 150);
     KB.ready(function(idx){
+      clearTimeout(t); box.removeAttribute('aria-busy');
       var res = KB.search(q), items = res.map(function(r){ return r.item; });
       box.textContent = '';
       var fr = el('div', 'frame');
       if(!items.length){
         var none = el('div', 'kb-none');
-        none.appendChild(el('p', 'kb-none-t', 'По слову «' + q + '» в базе ничего нет. База — про переходы, а не про деньги и право.'));
+        none.appendChild(el('p', 'kb-none-t', 'По слову «' + q + '» в базе ничего нет.'));
+        none.appendChild(el('p', 'kb-hint kb-typo', TXT.typo || 'Проверь, нет ли опечатки.'));
         var hint = el('p', 'kb-hint');
         hint.appendChild(D.createTextNode('Ближе всего: '));
         var a1 = el('a', null, 'ситуации'); a1.href = '#situations'; hint.appendChild(a1);
@@ -65,9 +74,9 @@
         r.appendChild(el('span', null, 'по запросу «' + q + '»'));
         var reset = el('a', null, 'Сбросить'); reset.href = 'knowledge.html'; r.appendChild(reset);
         fr.appendChild(r);
-        var groups = {};
-        items.forEach(function(it){ (groups[it.type] = groups[it.type] || []).push(it); });
-        TYPE_ORDER.forEach(function(ty){
+        var groups = {}, order = [];               // items уже отсортированы по совпадению: порядок первых встреч = лучшее первым
+        items.forEach(function(it){ if(!groups[it.type]){ groups[it.type] = []; order.push(it.type); } groups[it.type].push(it); });
+        order.forEach(function(ty){
           var g = groups[ty]; if(!g) return;
           var sec = el('section', 'kb-group'), h = el('div', 'kb-group-h');
           h.appendChild(el('h3', 'kb-h3', idx.types[ty].label_pl));
@@ -93,6 +102,19 @@
       box.hidden = false;
       D.title = 'Результаты: ' + q + ' · Waykeeper';
       if(location.hash === '' ){ box.scrollIntoView({ block: 'start' }); }
+    }, function(){
+      clearTimeout(t); box.removeAttribute('aria-busy');
+      box.textContent = '';
+      var fr = el('div', 'frame'), none = el('div', 'kb-none kb-fail'), p = el('p', 'kb-none-t');
+      p.setAttribute('role', 'status');
+      p.appendChild(D.createTextNode(TXT.fail1 || 'Поиск сейчас не работает. Обнови страницу или открой '));
+      var a = el('a', null, TXT.failLink || 'всю базу'); a.href = 'knowledge.html'; p.appendChild(a);
+      p.appendChild(D.createTextNode('.'));
+      none.appendChild(p);
+      var again = el('p', 'kb-hint'), b = el('button', 'link', TXT.retry || 'Попробовать ещё раз'); b.type = 'button';
+      b.addEventListener('click', function(){ show(q); });
+      again.appendChild(b); none.appendChild(again);
+      fr.appendChild(none); box.appendChild(fr); box.hidden = false;
     });
   }
 

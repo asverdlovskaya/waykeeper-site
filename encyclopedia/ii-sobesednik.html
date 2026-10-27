@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ИИ-собеседник · подход · Энциклопедия переходов · Waykeeper</title>
-<meta name="description" content="Материалы встреч, загруженные в проект с ИИ, который отвечает вашими же словами. Опора между встречами; не заменяет живого человека и терапию.">
+<meta name="description" content="Материалы встреч, загруженные в проект с ИИ, который отвечает твоими же словами. Опора между встречами; не заменяет живого человека и терапию.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/ii-sobesednik.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="ИИ-собеседник · подход · Энциклопедия переходов · Waykeeper">
-<meta property="og:description" content="Материалы встреч, загруженные в проект с ИИ, который отвечает вашими же словами. Опора между встречами; не заменяет живого человека и терапию.">
+<meta property="og:title" content="ИИ-собеседник">
+<meta property="og:description" content="Материалы встреч, загруженные в проект с ИИ, который отвечает твоими же словами. Опора между встречами; не заменяет живого человека и терапию.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/ii-sobesednik.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,52 +107,52 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 5 «Снаряжение»"><ul><li><a href="patterny-i-drugaya-dorozhka.html">Паттерны и другая дорожка</a></li><li><a href="ritualy.html">Ритуалы</a></li><li><a href="malenkie-privychki.html">Маленькие привычки</a></li><li><a href="vremya-dlya-trevogi.html">Время для тревоги</a></li><li><a href="okno-tolerantnosti.html">Окно толерантности</a></li><li><a href="samosostradanie.html">Самосострадание</a></li><li><a href="plan-samopomoshchi-wrap.html">План самопомощи</a></li><li><a class="is-here" aria-current="page" href="ii-sobesednik.html">ИИ-собеседник</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38 подходов →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 5 «Снаряжение»"><ul><li><a href="patterny-i-drugaya-dorozhka.html">Паттерны и&nbsp;другая дорожка</a></li><li><a href="ritualy.html">Ритуалы</a></li><li><a href="malenkie-privychki.html">Маленькие привычки</a></li><li><a href="vremya-dlya-trevogi.html">Время для&nbsp;тревоги</a></li><li><a href="okno-tolerantnosti.html">Окно толерантности</a></li><li><a href="samosostradanie.html">Самосострадание</a></li><li><a href="plan-samopomoshchi-wrap.html">План самопомощи</a></li><li><a class="is-here" aria-current="page" href="ii-sobesednik.html">ИИ-собеседник</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38&nbsp;подходов →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Шаг 5. Снаряжение</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>ИИ-собеседник</li></ol>
 <h1 class="kb-h1" id="h1">ИИ-собеседник</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Материалы встреч, загруженные в проект с ИИ, который отвечает вашими же словами. Опора между встречами; не заменяет живого человека и терапию.</p></div>
+<div class="kb-two"><p>Материалы встреч, загруженные в проект с ИИ, который отвечает твоими&nbsp;же словами. Опора между встречами; не заменяет живого человека и терапию.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--craft ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
-<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Из моего метода, 2026.</dd></div><div><dt>В «Переходе»</dt><dd><a href="../project.html#steps">шаг 5 «Снаряжение»</a>, <a href="../program.html#week-9">неделя 9</a></dd></div></dl>
+<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Из моего метода, 2026.</dd></div><div><dt>В&nbsp;«Переходе»</dt><dd><a href="../project.html#steps">шаг 5 «Снаряжение»</a>, <a href="../program.html#week-9">неделя 9</a></dd></div></dl>
 <section class="kb-sec" id="what"><h2 class="kb-h2">Что это</h2>
-<p><strong>Коротко.</strong> Расшифровки встреч, превращённые в собеседника, который отвечает вашими словами.</p>
-<p>Все материалы встреч загружаются в один проект с ИИ. Он отвечает вашими же словами из прошлых встреч: вопрос к себе, зеркало в моменте, предъявить <a class="kb-term" href="../glossary.html#term-pattern" title="повторяющаяся связь между условиями, способом действия и последствиями.">паттерн</a>.</p></section>
+<p><strong>Коротко.</strong> Расшифровки встреч, превращённые в собеседника, который отвечает твоими словами.</p>
+<p>Все материалы встреч загружаются в один проект с ИИ. Он отвечает твоими&nbsp;же словами из прошлых встреч: вопрос к себе, зеркало в моменте, предъявить <a class="kb-term" href="../glossary.html#term-pattern" title="повторяющаяся связь между условиями, способом действия и последствиями.">паттерн</a>.</p></section>
 <section class="kb-sec" id="when"><h2 class="kb-h2">Когда помогает</h2>
 <p>Материала много, перечитывать невозможно. Нужна опора между встречами.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда не подходит</h2>
-<p>Не заменяет живого человека и терапию. В остром состоянии, при мыслях о самоубийстве или тяжёлых симптомах это не опора: нужен живой человек или экстренная помощь. Расшифровки встреч — личные данные: загружайте их только с согласия всех, чьи слова там есть (если вы специалист — с согласия клиента), и в сервис с понятными условиями хранения.</p></section>
+<p>Не заменяет живого человека и терапию. В остром состоянии, при мыслях о самоубийстве или тяжёлых симптомах это не&nbsp;опора: нужен живой человек или экстренная помощь. Расшифровки встреч&nbsp;— личные данные: загружай их только с согласия всех, чьи слова там есть (если ты специалист&nbsp;— с согласия клиента), и в&nbsp;сервис с понятными условиями хранения.</p></section>
 <section class="kb-sec" id="mine"><h2 class="kb-h2">Как это у меня</h2>
 <p>Часть Снаряжения и основа будущего ИИ-помощника для помогающих специалистов.</p></section>
 <section class="kb-sec" id="try"><h2 class="kb-h2">Попробовать</h2>
-<p>Загрузите расшифровки и плейбук. Первая правка: отметить, где не ваш голос.</p></section>
+<p>Загрузи расшифровки и плейбук. Первая правка: отметить, где не твой голос.</p></section>
 <section class="kb-sec" id="pro"><h2 class="kb-h2">Для помогающих специалистов</h2>
-<p>Расскажите клиенту о границах: ИИ может ошибаться и выдумывать связи.</p></section>
+<p>Расскажи клиенту о границах: ИИ может ошибаться и выдумывать связи.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Опыт практиков ◇</strong> — сам приём (ИИ отвечает вашими словами из прошлых встреч): никто не проверял.</li><li><strong>Умеренная ●●○</strong> — родственное: специальные чат-боты для психического здоровья у людей с симптомами депрессии, тревоги, стресса, на короткий срок (эффект малый или средний, держится недели).</li><li><strong>Ранняя ●○○</strong> — генеративный бот, дообученный специалистами как «терапевт», при клинических симптомах: одно испытание авторов бота.</li><li><strong>Нет данных</strong> — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>.</li></ul>
-<p>Что говорят организации (отдельной строкой, метку не меняет): Американская психологическая ассоциация (APA, ноябрь 2025) советует не опираться на генеративные чат-боты и приложения для благополучия как на <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапию</a>; допустимы как дополнение к работе со специалистом.</p>
-<p><strong>Что проверено и на ком.</strong> Исследования специальных чат-ботов нельзя <a class="kb-term" href="../glossary.html#term-perenos" title="Клиент переносит на терапевта чувства из других отношений.">переносить</a> на ChatGPT или Claude по вашим расшифровкам: это другой инструмент. Специальные боты (в основном на правилах) проверяли на студентах и взрослых с симптомами: эффект на депрессию и тревогу есть сразу после курса, на долгий срок — нет или не изучен. Обзор работ про большие языковые модели: риски клинического использования могут превышать пользу. Вред почти никто не измерял.</p>
+<ul><li><strong>Опыт практиков ◇</strong>&nbsp;— сам приём (ИИ отвечает твоими словами из прошлых встреч): никто не проверял.</li><li><strong>Умеренная ●●○</strong>&nbsp;— родственное: специальные чат-боты для психического здоровья у людей с симптомами депрессии, тревоги, стресса, на короткий срок (эффект малый или средний, держится недели).</li><li><strong>Ранняя ●○○</strong>&nbsp;— генеративный бот, дообученный специалистами как «терапевт», при клинических симптомах: одно испытание авторов бота.</li><li><strong>Нет данных</strong>&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>.</li></ul>
+<p>Что говорят организации (отдельной строкой, метку не меняет): Американская психологическая ассоциация (APA, ноябрь 2025) советует не опираться на генеративные чат-боты и приложения для благополучия как на&nbsp;<a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапию</a>; допустимы как дополнение к работе со специалистом.</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Исследования специальных чат-ботов нельзя <a class="kb-term" href="../glossary.html#term-perenos" title="Клиент переносит на терапевта чувства из других отношений.">переносить</a> на ChatGPT или Claude по твоим расшифровкам: это другой инструмент. Специальные боты (в основном на правилах) проверяли на студентах и взрослых с симптомами: эффект на депрессию и тревогу есть сразу после курса, на долгий срок&nbsp;— нет или не&nbsp;изучен. Обзор работ про большие языковые модели: риски клинического использования могут превышать пользу. Вред почти никто не измерял.</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/38114588/" target="_blank" rel="noopener">Li 2023<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 15 испытаний специальных ботов: депрессия и дистресс снизились, благополучие — без значимой разницы; разброс между исследованиями большой — читано: полный текст — 🆕</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/37115595/" target="_blank" rel="noopener">He 2023<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 32 испытания, около 6 тыс. человек: короткий срок — малый эффект на депрессию, тревогу, благополучие; на долгий срок для большинства исходов незначимо — читано: полный текст — 🆕</li><li><a href="https://doi.org/10.1056/AIoa2400802" target="_blank" rel="noopener">Heinz 2025<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› — 210 человек, генеративный бот против листа ожидания: большие эффекты за 4 и 8 недель — читано: аннотация — 🆕 ✱ (вероятно, команда-разработчик)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/39423368/" target="_blank" rel="noopener">Guo 2024<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹О› — 40 работ про большие языковые модели: риски клинического использования могут превышать пользу, не замена специалисту — читано: полный текст — 🆕</li></ul>
-<p><strong>Чего не знаем.</strong> Помогает ли разговор с ИИ по собственным материалам людям в переходе. Что будет дольше двух месяцев. Насколько часто ИИ-собеседник вредит (подкрепляет ложную картину, создаёт зависимость).</p>
-<p><strong>Осторожно.</strong> ИИ может уверенно выдумывать связи и «паттерны», а человек склонен ему слишком доверять. В остром состоянии, при мыслях о самоубийстве и при тяжёлых симптомах это не опора: нужен живой специалист.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/38114588/" target="_blank" rel="noopener">Li 2023<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 15&nbsp;испытаний специальных ботов: депрессия и дистресс снизились, благополучие&nbsp;— без значимой разницы; разброс между исследованиями большой&nbsp;— читано: полный текст&nbsp;— 🆕</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/37115595/" target="_blank" rel="noopener">He 2023<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 32&nbsp;испытания, около 6&nbsp;тыс. человек: короткий срок&nbsp;— малый эффект на депрессию, тревогу, благополучие; на долгий срок для большинства исходов незначимо&nbsp;— читано: полный текст&nbsp;— 🆕</li><li><a href="https://doi.org/10.1056/AIoa2400802" target="_blank" rel="noopener">Heinz 2025<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р›&nbsp;— 210&nbsp;человек, генеративный бот против листа ожидания: большие эффекты за 4&nbsp;и 8&nbsp;недель&nbsp;— читано: аннотация&nbsp;— 🆕 ✱ (вероятно, команда-разработчик)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/39423368/" target="_blank" rel="noopener">Guo 2024<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹О›&nbsp;— 40&nbsp;работ про большие языковые модели: риски клинического использования могут превышать пользу, не замена специалисту&nbsp;— читано: полный текст&nbsp;— 🆕</li></ul>
+<p><strong>Чего не знаем.</strong> Помогает&nbsp;ли разговор с ИИ по собственным материалам людям в переходе. Что будет дольше двух месяцев. Насколько часто ИИ-собеседник вредит (подкрепляет ложную картину, создаёт зависимость).</p>
+<p><strong>Осторожно.</strong> ИИ может уверенно выдумывать связи и «паттерны», а человек склонен ему слишком доверять. В остром состоянии, при мыслях о самоубийстве и при&nbsp;тяжёлых симптомах это не&nbsp;опора: нужен живой специалист.</p></section>
 <section class="kb-sec" id="s10"><h2 class="kb-h2">Подробно: как это устроено у меня</h2>
-<p>За несколько месяцев встреч накапливаются сотни страниц расшифровок. Никто не будет это перечитывать. Без ключа такой архив становится мёртвым грузом и ещё одним поводом для вины: «надо бы разобрать».</p>
-<p>Ключ — собеседник. Весь материал загружается в один проект с ИИ, который держит контекст всех встреч. Вы пишете ему как человеку, который был на всех сессиях и всё помнит.</p>
+<p>За несколько месяцев встреч накапливаются сотни страниц расшифровок. Никто не будет это перечитывать. Без ключа такой архив становится мёртвым грузом и ещё одним поводом для вины: «надо&nbsp;бы разобрать».</p>
+<p>Ключ&nbsp;— собеседник. Весь материал загружается в один проект с ИИ, который держит контекст всех встреч. Ты пишешь ему как человеку, который был на всех сессиях и всё помнит.</p>
 <h3 class="kb-h3">Три режима</h3>
-<ul><li><strong>Вопрос к себе.</strong> «Что я говорил про деньги за все встречи? Менялось ли отношение?»</li><li><strong>Зеркало в моменте.</strong> «Мне сейчас плохо. Что в моих записях говорит о том, что помогало в похожем состоянии?» И вы получаете свои же слова с одной из прошлых встреч.</li><li><strong>Предъявить паттерн.</strong> «Найди сценарии, которые я сам не замечаю», «Где я противоречу сам себе?»</li></ul>
+<ul><li><strong>Вопрос к себе.</strong> «Что я говорил про деньги за все встречи? Менялось&nbsp;ли отношение?»</li><li><strong>Зеркало в моменте.</strong> «Мне сейчас плохо. Что в&nbsp;моих записях говорит о том, что помогало в похожем состоянии?» И ты получаешь свои&nbsp;же слова с одной из прошлых встреч.</li><li><strong>Предъявить паттерн.</strong> «Найди сценарии, которые я сам не замечаю», «Где я противоречу сам себе?»</li></ul>
 <h3 class="kb-h3">Главное правило</h3>
-<p>ИИ готовит заготовку, человек делает то, что может только он. ИИ-помощник не заменяет мышление и не ставит диагнозов. Он подсвечивает. Решать, что с этим делать, остаётся вам.</p>
+<p>ИИ готовит заготовку, человек делает то, что может только он. ИИ-помощник не заменяет мышление и не&nbsp;ставит диагнозов. Он подсвечивает. Решать, что с&nbsp;этим делать, остаётся тебе.</p>
 <h3 class="kb-h3">Куда это растёт</h3>
 <p>Сейчас это делается руками с помощью ИИ. Следующий шаг: оформить то, что сработало, как повторяемые скиллы. Скиллы, написанные с психологической точки зрения: на что смотреть в речи, какие формулировки выдают паттерн, где человек говорит чужими словами.</p>
 <p>Такие скиллы нужны не только мне. Терапевты, доулы, коучи, все, кто работает с речью человека, могут видеть больше, чем слышат. Сначала методология, потом скиллы, потом технология. Не наоборот.</p>
 <h3 class="kb-h3">Границы</h3>
-<p>Собеседник знает вас только по материалам, которые вы ему дали. Он может ошибаться и выдумывать связи. Он не заменяет живого человека рядом и не заменяет терапию.</p></section>
+<p>Собеседник знает тебя только по материалам, которые ты ему даёшь. Он может ошибаться и выдумывать связи. Он не&nbsp;заменяет живого человека рядом и не&nbsp;заменяет терапию.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices.html"><span class="t">Каталог практик</span><span class="m">все 39, с фильтром по ситуации</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas.html"><span class="t">Атлас помогающих профессий</span><span class="m">кто чем помогает</span></a></dd></div></dl></section>
+<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices.html"><span class="t">Каталог практик</span><span class="m">все 39, с&nbsp;фильтром по&nbsp;ситуации</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas.html"><span class="t">Атлас помогающих профессий</span><span class="m">кто чем помогает</span></a></dd></div></dl></section>
 <nav class="kb-next" aria-label="Соседние статьи"><a href="plan-samopomoshchi-wrap.html" rel="prev">← 5. Снаряжение<b>План самопомощи</b></a><span></span></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не подходит</a></li><li><a href="#mine">Как это у меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#s10">Подробно: как это устроено у меня</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не&nbsp;подходит</a></li><li><a href="#mine">Как это у&nbsp;меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для&nbsp;помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#s10">Подробно: как это устроено у&nbsp;меня</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -134,25 +163,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -162,12 +191,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -176,7 +205,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

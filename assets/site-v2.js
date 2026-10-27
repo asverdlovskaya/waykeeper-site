@@ -160,22 +160,16 @@ function initTopo(){
 
 /* ---------- 4. Проявление ---------- */
 function initRise(){
-  var auto = D.querySelectorAll('main .tile, main .index > li, main .view, main .plate-map, main .band-head, main .band-side, main .cover-text, main .testimony, main .artifacts > li, main .showcase, .foot-grid > *');
+  /* 27.10 (дизайн-слой, patches/motion.md п. 1): текст больше не прячется — мягко проявляются только картинки-виды и карты.
+     Лесенка задержек и страховка 4 с убраны; заголовки .display не наблюдаются. */
+  var auto = D.querySelectorAll('main .view, main .plate-map');
   Array.prototype.forEach.call(auto, function(el){ if(!el.closest('[data-module]')) el.classList.add('rise'); });
-  /* у соседей лёгкая лесенка задержек */
-  var groups = new Map();
-  Array.prototype.forEach.call(D.querySelectorAll('.rise'), function(el){
-    var p = el.parentElement, n = groups.get(p) || 0; groups.set(p, n + 1);
-    if(!el.style.getPropertyValue('--rise-d')) el.style.setProperty('--rise-d', Math.min(n, 6)*0.07 + 's');
-  });
-  var els = D.querySelectorAll('.rise, .display');
+  var els = D.querySelectorAll('.rise');
   if(RM.matches || !('IntersectionObserver' in W)){ Array.prototype.forEach.call(els, function(el){ el.classList.add('is-in'); }); return; }
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
   }, {rootMargin:'0px 0px -6% 0px', threshold:.06});
   Array.prototype.forEach.call(els, function(el){ io.observe(el); });
-  /* страховка: если что-то не попало в наблюдение (печать, снимок страницы), через 4 с показываем всё */
-  setTimeout(function(){ Array.prototype.forEach.call(D.querySelectorAll('.rise:not(.is-in)'), function(el){ var r = el.getBoundingClientRect(); if(r.top < W.innerHeight) el.classList.add('is-in'); }); }, 4000);
 }
 
 /* ---------- 5–6. Параллакс видов и роза ---------- */
@@ -219,85 +213,9 @@ function initFrame(){
   var t = 0; W.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(set, 180); });
 }
 
-/* ---------- 8. Живые картины .plate-alive: проявка, как фотография в проявителе или акварель по мокрому ----------
-   1) Края листа растворены неровно, как акварель (шум): маска рисуется на маленьком холсте и ставится картинке
-      как mask-image — браузер растягивает её мягко. Картина видна целиком.
-   2) Проявление (один раз за визит, когда лист въехал в экран; первый экран — сразу):
-      старт — картина почти невидима: бледный, холодный, размытый подмалёвок (копия .pa-ghost, CSS-фильтр);
-      из точки смысла (data-pa-from="x y" в долях листа; у Левитана — лодка) расходится мягкое неровное пятно,
-      внутри которого картина обретает резкость и цвет; рост с замедлением; в конце подмалёвок тает.
-      Первый экран — 3,6 с, остальные — 1,8 с. Точек, колец и силуэта в поле нет (решение Саши 26.10).
-   «Меньше движения» — сразу итог. Служебное для снимков: ?pa-t=1.2 — показать момент проявки и остановиться. */
-function smooth01(a, b, x){ var t = (x - a)/(b - a); t = t < 0 ? 0 : t > 1 ? 1 : t; return t*t*(3 - 2*t); }
-function initPlates(){
-  var plates = Array.prototype.slice.call(D.querySelectorAll('figure.plate-alive'));
-  plates.forEach(function(fig, k){ setupPlate(fig, k); });
-}
-function setupPlate(fig, k){
-  var img = fig.querySelector('.pa-img img'); if(!img) return;
-  var r = parseFloat(getComputedStyle(fig).getPropertyValue('--pa-r')) || ((+img.getAttribute('width') || 1) / (+img.getAttribute('height') || 1));
-  var eager = fig.hasAttribute('data-pa-eager');
-  /* --- маска: размер под пропорции листа, ~84 клетки по длинной стороне --- */
-  var mw = r >= 1 ? 84 : Math.max(24, Math.round(84*r)), mh = r >= 1 ? Math.max(24, Math.round(84/r)) : 84, ms = Math.min(mw, mh);
-  var f = noise2(101 + k*17), feather = parseFloat(fig.getAttribute('data-pa-feather')) || .11;
-  var from = (fig.getAttribute('data-pa-from') || '.5 .55').split(' ').map(Number);
-  var FIN = new Float32Array(mw*mh), ARR = new Float32Array(mw*mh), maxd = 0;
-  for(var y = 0; y < mh; y++) for(var x = 0; x < mw; x++){
-    var i = y*mw + x, px = x + .5, py = y + .5;
-    var e = Math.min(px, mw - px, py, mh - py)/ms;                       /* 0 у края … 0,5 в середине */
-    var n = f(px/ms*3.2, py/ms*3.2), n2 = f(px/ms*6.5 + 11, py/ms*6.5 + 5);
-    FIN[i] = smooth01(0, feather, e + (n - .5)*.11 + (n2 - .5)*.03 - .012);
-    var dx = (px/mw - from[0])*mw/ms, dy = (py/mh - from[1])*mh/ms, d = Math.sqrt(dx*dx + dy*dy);
-    ARR[i] = d + (n - .5)*.42 + (n2 - .5)*.22; if(ARR[i] > maxd) maxd = ARR[i];  /* неровный край пятна: шум */
-  }
-  for(var j = 0; j < ARR.length; j++) ARR[j] = Math.max(0, ARR[j]/maxd);
-  var mc = D.createElement('canvas'); mc.width = mw; mc.height = mh;
-  var mg = mc.getContext('2d'), id = mg.createImageData(mw, mh), md = id.data;
-  function maskURL(p){                                 /* p: 0 — пятна нет, 1 — проявлено всё */
-    for(var i = 0; i < FIN.length; i++){
-      var a = p >= 1 ? FIN[i] : FIN[i]*smooth01(ARR[i]*.78 - .02, ARR[i]*.78 + .24, p);
-      md[i*4 + 3] = Math.round(a*255);
-    }
-    mg.putImageData(id, 0, 0);
-    return 'url(' + mc.toDataURL() + ')';
-  }
-  function setMask(el, u){ el.style.webkitMaskImage = u; el.style.maskImage = u; el.style.webkitMaskComposite = 'source-over'; el.style.maskComposite = 'add'; }
-  var finU = maskURL(1);
-  function done(){ setMask(img, finU); if(ghost){ ghost.remove(); ghost = null; } fig.setAttribute('data-pa', 'done'); }
-  var ghost = null;
-  if(RM.matches){ done(); return; }
-  /* подмалёвок: та же картина, бледная, холодная и размытая, с теми же растворёнными краями */
-  ghost = img.cloneNode(false); ghost.className = 'pa-ghost'; ghost.alt = ''; ghost.setAttribute('aria-hidden', 'true');
-  ghost.removeAttribute('fetchpriority'); setMask(ghost, finU); img.parentNode.insertBefore(ghost, img);
-  setMask(img, maskURL(0)); fig.setAttribute('data-pa', 'wait');
-
-  var started = false, FIX = /[?&]pa-t=([\d.]+)/.exec(location.search), fixT = FIX ? parseFloat(FIX[1]) : -1;
-  function go(){
-    if(started) return; started = true;
-    if(img.complete && img.naturalWidth) run(); else { img.addEventListener('load', run); img.addEventListener('error', done); }
-  }
-  function run(){
-    fig.setAttribute('data-pa', 'run');
-    var DUR = eager ? 3.6 : 1.8, T0 = performance.now(), last = 0;
-    function frame(){
-      var now = performance.now(), t = fixT >= 0 ? fixT : (now - T0)/1000, u = t/DUR;
-      if(u >= 1){ done(); return; }
-      if(fixT >= 0 || now - last > 33){               /* маска — не чаще 30 раз в секунду */
-        last = now;
-        var p = 1 - Math.pow(1 - u, 2.2);             /* растёт с замедлением */
-        setMask(img, maskURL(p));
-        if(ghost) ghost.style.opacity = (.55*(1 - smooth01(.55, 1, u))).toFixed(3);
-      }
-      if(fixT < 0) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-  if(eager || !('IntersectionObserver' in W)) go();
-  else {
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); go(); } }); }, {threshold:.35});
-    io.observe(fig);
-  }
-}
+/* ---------- 8. Живые картины .plate-alive ----------
+   С 27.10 появление картин делает assets/design-layer.js (вариант I «Тихий масштаб», один раз за визит; решение Саши).
+   Старая проявка (маска 30 раз в секунду, размытый подмалёвок) убрана — patches/motion.md, п. 2. */
 
 /* картинки карточек тают в карточку, когда карточка въехала в экран */
 function initMelt(){
@@ -308,7 +226,7 @@ function initMelt(){
 }
 
 function start(){
-  initKB(); initPaper(); initTopo(); initRise(); initScrollBits(); initFrame(); initPlates(); initMelt();
+  initKB(); initPaper(); initTopo(); initRise(); initScrollBits(); initFrame(); initMelt();
 }
 if(D.readyState === 'loading') D.addEventListener('DOMContentLoaded', start); else start();
 })();

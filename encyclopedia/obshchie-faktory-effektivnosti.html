@@ -7,9 +7,9 @@
 <meta name="description" content="Многие исследователи считают, что в любой терапии помогают общие вещи: отношения, надежда, ясное объяснение — неважно, к какой школе принадлежит специалист и какими приёмами он пользуется. Связь…">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/obshchie-faktory-effektivnosti.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Общие факторы эффективности психотерапии · понятие · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Общие факторы эффективности психотерапии">
 <meta property="og:description" content="Многие исследователи считают, что в любой терапии помогают общие вещи: отношения, надежда, ясное объяснение — неважно, к какой школе принадлежит специалист и какими приёмами он пользуется. Связь…">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/obshchie-faktory-effektivnosti.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,32 +107,32 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Понятия"><ul><li><a href="fazy-gorya-po-kast.html">Фазы горя по Верене Каст</a></li><li><a href="gore.html">Горе и затяжное горе</a></li><li><a class="is-here" aria-current="page" href="obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a></li><li><a href="paradigmy-psikhoterapii.html">Парадигмы психотерапии</a></li><li><a href="terapevticheskiy-alyans.html">Терапевтический альянс</a></li><li><a href="vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a></li><li><a href="vnutrenniy-konflikt.html">Внутренний конфликт</a></li><li><a href="vygoranie.html">Выгорание</a></li><li><a href="zashchitnye-mekhanizmy.html">Защитные механизмы</a></li></ul><a class="all" href="../encyclopedia.html#concepts">Все понятия →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Понятия"><ul><li><a href="fazy-gorya-po-kast.html">Фазы горя по&nbsp;Верене Каст</a></li><li><a href="gore.html">Горе и&nbsp;затяжное горе</a></li><li><a class="is-here" aria-current="page" href="obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a></li><li><a href="paradigmy-psikhoterapii.html">Парадигмы психотерапии</a></li><li><a href="terapevticheskiy-alyans.html">Терапевтический альянс</a></li><li><a href="vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a></li><li><a href="vnutrenniy-konflikt.html">Внутренний конфликт</a></li><li><a href="vygoranie.html">Выгорание</a></li><li><a href="zashchitnye-mekhanizmy.html">Защитные механизмы</a></li></ul><a class="all" href="../encyclopedia.html#concepts">Все понятия →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
 <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#concepts">Понятия</a></li><li>Общие факторы эффективности психотерапии</li></ol>
 <h1 class="kb-h1" id="h1">Общие факторы эффективности психотерапии</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Многие исследователи считают, что в любой терапии помогают общие вещи: отношения, надежда, ясное объяснение — неважно, к какой школе принадлежит специалист и какими приёмами он пользуется. Связь доказана, а что именно это причина пользы — до сих пор спорят.</p></div>
+<div class="kb-two"><p>Многие исследователи считают, что в&nbsp;любой терапии помогают общие вещи: отношения, надежда, ясное объяснение&nbsp;— неважно, к какой школе принадлежит специалист и какими приёмами он пользуется. Связь доказана, а что именно это причина пользы&nbsp;— до сих пор спорят.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Идея исследователей психотерапии: что может помогать в любой школе</dd></div><div><dt>Ещё называют</dt><dd>неспецифические факторы, common factors</dd></div></dl>
 <section class="kb-sec" id="how2"><h2 class="kb-h2">Как это устроено</h2>
-<p>Вот что часто называют среди общих факторов (источник этого списка не назван, по пунктам его не проверяли <span class="q-mark" title="не проверено по первоисточнику">∗</span>):</p>
-<ol><li><strong>Качество отношений</strong> между специалистом и человеком. Это один из самых изученных факторов: чем крепче союз, тем в среднем лучше результат. Но связь умеренная, и причина ли это, не доказано.</li><li><strong>Хорошее мнение о терапии</strong> у самого человека.</li><li><strong>Надежда</strong> на перемены к лучшему.</li><li><strong>Уверенность специалиста</strong>, что он может помочь.</li><li><strong>Какой-то определённый приём.</strong> Он может быть общим (например, сочувственное понимание) или очень особым (например, ролевая игра). Важно, чтобы специалист хоть чем-то владел уверенно.</li><li><strong>Чуткость</strong> к переживаниям человека и к тому, что задевает его самооценку.</li><li><strong>Совместный поиск решений.</strong></li><li><strong>Саморефлексия</strong> — готовность и человека, и специалиста думать о себе и своих реакциях.</li><li><strong>Новый опыт</strong>, для которого специалист создаёт условия.</li><li><strong>Понятное объяснение трудностей.</strong> Методы с ясной теорией объясняют, как устроен человек, откуда берутся трудности и что помогает от них.</li></ol>
+<p>Вот что часто называют среди общих факторов (источник этого списка не назван, по пунктам его не&nbsp;проверяли <span class="q-mark" title="не проверено по первоисточнику">∗</span>):</p>
+<ol><li><strong>Качество отношений</strong> между специалистом и человеком. Это один из самых изученных факторов: чем крепче союз, тем в среднем лучше результат. Но связь умеренная, и причина&nbsp;ли это, не доказано.</li><li><strong>Хорошее мнение о терапии</strong> у самого человека.</li><li><strong>Надежда</strong> на перемены к лучшему.</li><li><strong>Уверенность специалиста</strong>, что он может помочь.</li><li><strong>Какой-то определённый приём.</strong> Он может быть общим (например, сочувственное понимание) или очень особым (например, ролевая игра). Важно, чтобы специалист хоть чем-то владел уверенно.</li><li><strong>Чуткость</strong> к переживаниям человека и к&nbsp;тому, что задевает его самооценку.</li><li><strong>Совместный поиск решений.</strong></li><li><strong>Саморефлексия</strong>&nbsp;— готовность и человека, и специалиста думать о себе и своих реакциях.</li><li><strong>Новый опыт</strong>, для которого специалист создаёт условия.</li><li><strong>Понятное объяснение трудностей.</strong> Методы с ясной теорией объясняют, как устроен человек, откуда берутся трудности и что помогает от них.</li></ol>
 <p>И отдельно: у каждой терапии есть начало, середина и конец.</p>
-<p>Этот список помогает понять, почему так важны доверие, договорённость о целях и ясный план. Одних приёмов мало — нужны ещё отношения и надежда.</p>
-<p>Общие факторы не стоит путать с особыми приёмами конкретного метода. Например, в когнитивно-поведенческой терапии есть постепенная встреча со страхом, в психоанализе — разбор чувств к терапевту. Такие приёмы работают поверх общих факторов, а не вместо них.</p></section>
+<p>Этот список помогает понять, почему так важны доверие, договорённость о целях и ясный план. Одних приёмов мало&nbsp;— нужны ещё отношения и надежда.</p>
+<p>Общие факторы не стоит путать с особыми приёмами конкретного метода. Например, в когнитивно-поведенческой терапии есть постепенная встреча со страхом, в психоанализе&nbsp;— разбор чувств к терапевту. Такие приёмы работают поверх общих факторов, а не&nbsp;вместо них.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Умеренная</strong> — общие для всех школ вещи (отношения, ожидания, эмпатия) связаны с результатом терапии.</li><li><strong>Спорная</strong> — что общие факторы и есть причина пользы, а отношения — самый важный фактор.</li><li><strong>Практика</strong> — список из 10 факторов в этой карточке: источник не назван, по пунктам его не проверяли.</li><li><strong>Нет данных</strong> — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>: <a class="kb-term" href="../glossary.html#term-kouching" title="недирективная работа, обычно сфокусированная на целях, выборе и действиях клиента.">коучинг</a> и разговор с проводником так не изучали.</li></ul>
-<p><strong>Что проверено и на ком.</strong> Взрослые в <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапии</a>. Два обзора пришли к противоположным выводам по одним и тем же данным: одни авторы считают общие факторы главными, другие пишут, что ни для общих, ни для особых приёмов причинность не доказана. Количественная опора — метаанализы союза специалиста и клиента: связь с результатом есть, но это связь, а не доказанная причина.</p>
+<ul><li><strong>Умеренная</strong>&nbsp;— общие для всех школ вещи (отношения, ожидания, эмпатия) связаны с результатом терапии.</li><li><strong>Спорная</strong>&nbsp;— что общие факторы и есть причина пользы, а отношения&nbsp;— самый важный фактор.</li><li><strong>Практика</strong>&nbsp;— список из 10&nbsp;факторов в этой карточке: источник не назван, по пунктам его не&nbsp;проверяли.</li><li><strong>Нет данных</strong>&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>: <a class="kb-term" href="../glossary.html#term-kouching" title="недирективная работа, обычно сфокусированная на целях, выборе и действиях клиента.">коучинг</a> и разговор с проводником так не&nbsp;изучали.</li></ul>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Взрослые в <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапии</a>. Два обзора пришли к противоположным выводам по одним и тем&nbsp;же данным: одни авторы считают общие факторы главными, другие пишут, что ни&nbsp;для общих, ни для&nbsp;особых приёмов причинность не доказана. Количественная опора&nbsp;— метаанализы союза специалиста и клиента: связь с результатом есть, но это связь, а не&nbsp;доказанная причина.</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/26407772/" target="_blank" rel="noopener">Wampold 2015<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Т — обзор метаанализов: общие факторы важны для пользы терапии — читано: аннотация — 🏛 ✱ (автор продвигает эту модель)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/30550721/" target="_blank" rel="noopener">Cuijpers, Reijnders, Huibers 2019<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Т — критический обзор: неизвестно, работает ли терапия через общие или особые факторы — читано: аннотация</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/29792475/" target="_blank" rel="noopener">Flückiger и соавт. 2018<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 295 исследований: союз специалиста и клиента связан с результатом при любом подходе (связь умеренная) — читано: аннотация — среди соавторов Wampold</li></ul>
-<p><strong>Чего не знаем.</strong> Откуда взят список из 10 пунктов. Какая доля результата приходится на общие факторы. Переносится ли это на коучинг и разговор с проводником.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/26407772/" target="_blank" rel="noopener">Wampold 2015<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Т&nbsp;— обзор метаанализов: общие факторы важны для пользы терапии&nbsp;— читано: аннотация&nbsp;— 🏛 ✱ (автор продвигает эту модель)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/30550721/" target="_blank" rel="noopener">Cuijpers, Reijnders, Huibers 2019<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Т&nbsp;— критический обзор: неизвестно, работает&nbsp;ли терапия через общие или особые факторы&nbsp;— читано: аннотация</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/29792475/" target="_blank" rel="noopener">Flückiger и соавт. 2018<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 295&nbsp;исследований: союз специалиста и клиента связан с результатом при любом подходе (связь умеренная)&nbsp;— читано: аннотация&nbsp;— среди соавторов Wampold</li></ul>
+<p><strong>Чего не знаем.</strong> Откуда взят список из 10&nbsp;пунктов. Какая доля результата приходится на общие факторы. Переносится&nbsp;ли это на коучинг и разговор с проводником.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="gruppovaya-terapiya.html"><span class="t">Групповая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="paradigmy-psikhoterapii.html"><span class="t">Парадигмы психотерапии</span><span class="m">понятие</span></a><a href="terapevticheskiy-alyans.html"><span class="t">Терапевтический альянс</span><span class="m">понятие</span></a><details class="kb-more-d"><summary>ещё 1</summary><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-white-maps"><span class="t">Карты нарративной практики. Введение в нарративную терапию</span><span class="m">книга · Майкл Уайт</span></a><a href="../resources.html#book-gottlieb"><span class="t">Вы хотите поговорить об этом?</span><span class="m">книга · Лори Готтлиб</span></a><a href="../resources.html#book-stanier-coaching"><span class="t">The Coaching Habit</span><span class="m">книга · Майкл Бунгей Станье</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-van-der-kolk"><span class="t">Тело помнит всё. Какую роль психологическая травма играет в жизни человека</span><span class="m">книга · Бессел ван дер Колк</span></a><a href="../resources.html#book-grinberg-migration"><span class="t">Psychoanalytic Perspectives on Migration and Exile</span><span class="m">книга · Леон Гринберг, Ребека Гринберг</span></a><a href="../resources.html#test-proqol"><span class="t">ProQOL — качество профессиональной жизни помогающих</span><span class="m">тест · Бет Хадналл Стамм · бесплатно</span></a></details></dd></div><div><dt>В ситуациях</dt><dd><a href="ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="gore.html" rel="prev">← Понятия рядом<b>Горе и затяжное горе</b></a><a class="r" href="paradigmy-psikhoterapii.html" rel="next">Понятия рядом →<b>Парадигмы психотерапии</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
-<p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не проверено по первоисточнику</p>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="gruppovaya-terapiya.html"><span class="t">Групповая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="paradigmy-psikhoterapii.html"><span class="t">Парадигмы психотерапии</span><span class="m">понятие</span></a><a href="terapevticheskiy-alyans.html"><span class="t">Терапевтический альянс</span><span class="m">понятие</span></a><details class="kb-more-d"><summary>ещё 1</summary><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-white-maps"><span class="t">Карты нарративной практики. Введение в&nbsp;нарративную терапию</span><span class="m">книга · Майкл Уайт</span></a><a href="../resources.html#book-gottlieb"><span class="t">Вы хотите поговорить об&nbsp;этом?</span><span class="m">книга · Лори Готтлиб</span></a><a href="../resources.html#book-stanier-coaching"><span class="t">The Coaching Habit</span><span class="m">книга · Майкл Бунгей Станье</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-van-der-kolk"><span class="t">Тело помнит всё. Какую роль психологическая травма играет в&nbsp;жизни человека</span><span class="m">книга · Бессел ван дер Колк</span></a><a href="../resources.html#book-grinberg-migration"><span class="t">Psychoanalytic Perspectives on Migration and Exile</span><span class="m">книга · Леон Гринберг, Ребека Гринберг</span></a><a href="../resources.html#test-proqol"><span class="t">ProQOL&nbsp;— качество профессиональной жизни помогающих</span><span class="m">тест · Бет Хадналл Стамм · бесплатно</span></a></details></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="gore.html" rel="prev">← Понятия рядом<b>Горе и&nbsp;затяжное горе</b></a><a class="r" href="paradigmy-psikhoterapii.html" rel="next">Понятия рядом →<b>Парадигмы психотерапии</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
+<p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;проверено по&nbsp;первоисточнику</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#how2">Как это устроено</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#how2">Как это устроено</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -114,25 +143,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -142,12 +171,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -156,7 +185,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

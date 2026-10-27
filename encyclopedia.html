@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Энциклопедия переходов · Waykeeper</title>
-<meta name="description" content="Энциклопедия переходов Waykeeper: что происходит, как это называется и что помогает. Статьи выходят по мере готовности.">
+<meta name="description" content="Что происходит в переходе, как это называется и что помогает: ситуации, подходы и школы терапии с метками, насколько каждый подход исследован.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Энциклопедия переходов · Waykeeper">
-<meta property="og:description" content="Энциклопедия переходов Waykeeper: что происходит, как это называется и что помогает. Статьи выходят по мере готовности.">
+<meta property="og:title" content="Энциклопедия переходов">
+<meta property="og:description" content="Что происходит в переходе, как это называется и что помогает: ситуации, подходы и школы терапии с метками, насколько каждый подход исследован.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/atmo.css">
@@ -35,9 +42,29 @@
 <script src="assets/kb.js" defer></script>
 <script src="assets/kb-head.js" defer></script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -45,33 +72,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html">«Новый сезон»</a></li>
-        <li><a href="project.html">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -85,43 +114,43 @@
       <h1 class="display" id="h-enc">Энциклопедия <em>переходов</em></h1>
       <p class="lede" style="margin-top:var(--sp-5)">Что происходит, как это называется и&nbsp;что помогает. У&nbsp;каждого подхода метка, насколько он&nbsp;исследован, и&nbsp;предупреждение, когда он&nbsp;не&nbsp;подходит.</p>
       <form class="kb-search" role="search" style="margin-top:var(--sp-6)" onsubmit="return false">
-        <label class="visually-hidden" for="q">Найти в базе знаний</label>
+        <label class="visually-hidden" for="q">Найти в&nbsp;базе знаний</label>
         <input id="q" type="search" placeholder="Найти: выгорание, коуч, WOOP, переезд…" autocomplete="off">
         <kbd>/</kbd>
       </form>
-      <p class="kb-hint">Ищет сразу в практиках, статьях, атласе, ресурсах и словаре. <a href="#begin">Или начните с&nbsp;главного ↓</a></p>
+      <p class="kb-hint"><a href="#begin">Или начни с&nbsp;главного ↓</a></p>
     </div>
     <div class="s-5 at-8">
       <figure class="plate-map plate-map--inset enc-plate" data-processed style="--pm-r:1.4925">
         <div class="pm-img"><img src="assets/img/pd/ad/processed/carte-de-tendre-1200.jpg" alt="Гравированная карта XVII века: река Склонности течёт через страну с городками-чувствами, слева бурное море, справа Озеро Безразличия, вверху Опасное море и Неизведанные земли" width="1200" height="804" decoding="async"></div>
-        <figcaption class="pm-cap">Франсуа Шово · «Карта Страны Нежности», 1654<span class="pa-src"> · по замыслу Мадлен де Скюдери · Библиотека Принстонского университета</span></figcaption>
+        <figcaption class="pm-cap">Франсуа Шово · «Карта Страны Нежности», 1654<span class="pa-src"> · по&nbsp;замыслу Мадлен де Скюдери · Библиотека Принстонского университета</span></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section class="band enc-begin" id="begin" aria-labelledby="h-begin"><div class="frame cols"><div class="s-9"><span class="label">Начните здесь</span><h2 class="h2" id="h-begin"><a href="encyclopedia/perehod.html">Что такое переход</a></h2><p class="lede" style="margin-top:var(--sp-3)">Переход — период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились. Это не поломка, а нормальная часть жизни. Чтобы о нём говорить, удобно язык трёх стадий Уильяма Бриджеса — окончание, нейтральная зона, новое начало. Это модель-язык, а не исследованный этапный процесс.</p><p class="enc-go"><a class="btn primary" href="encyclopedia/perehod.html">Читать: Что такое переход</a> <a href="encyclopedia/perekhod-i-rasstroystvo-adaptatsii.html">Переход и расстройство адаптации: где граница →</a></p></div></div></section>
+<section class="band enc-begin" id="begin" aria-labelledby="h-begin"><div class="frame cols"><div class="s-9"><h2 class="h2" id="h-begin"><a href="encyclopedia/perehod.html">Что такое переход</a></h2><p class="lede" style="margin-top:var(--sp-3)">Переход&nbsp;— период, когда прежняя опора или способ жить уже не&nbsp;работают, а новые ещё не&nbsp;сложились. Это не&nbsp;поломка, а нормальная часть жизни. Чтобы о нём говорить, удобно язык трёх стадий Уильяма Бриджеса&nbsp;— окончание, нейтральная зона, новое начало. Это модель-язык, а не&nbsp;исследованный этапный процесс.</p><p class="enc-go"><a class="btn primary" href="encyclopedia/perehod.html">Читать: Что такое переход</a> <a href="encyclopedia/perekhod-i-rasstroystvo-adaptatsii.html">Переход и&nbsp;расстройство адаптации: где граница →</a></p></div></div></section>
 
-<section class="band enc-band" id="sit" aria-labelledby="h-sit"><div class="frame"><div class="enc-bh"><h2 class="h2" id="h-sit">С чем ты пришёл</h2><p class="small">12 ситуаций. На&nbsp;странице ситуации собрано всё из&nbsp;четырёх разделов: что сделать, что понять, кто помогает и&nbsp;что почитать.</p></div><div class="kb-index2"><ol class="index"><li><a class="index-row" href="encyclopedia/rabota-zakonchilas.html"><span class="index-dot"></span><span class="index-t">Закончилась работа или своё дело</span><span class="index-m">4 практики · 6 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/pereezd.html"><span class="index-dot"></span><span class="index-t">Переезд, и профессия не складывается</span><span class="index-m">4 практики · 7 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/krizis-identichnosti.html"><span class="index-dot"></span><span class="index-t">Кризис идентичности</span><span class="index-m">4 практики · 4 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/sily-konchilis.html"><span class="index-dot"></span><span class="index-t">Силы кончились, а что вместо — непонятно</span><span class="index-m">6 практик · 6 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/ne-mogu-vybrat.html"><span class="index-dot"></span><span class="index-t">Несколько дорог, и не получается выбрать</span><span class="index-m">4 практики · 4 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/plany-sryvayutsya.html"><span class="index-dot"></span><span class="index-t">Планы срываются на одном и том же месте</span><span class="index-m">6 практик · 2 специалиста</span></a></li></ol><ol class="index"><li><a class="index-row" href="encyclopedia/ne-moe-strashno.html"><span class="index-dot"></span><span class="index-t">Всё хорошо, но не моё, и страшно</span><span class="index-m">5 практик · 3 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/ne-znayu-k-komu-idti.html"><span class="index-dot"></span><span class="index-t">Не знаю, к какому специалисту идти</span><span class="index-m">1 практика · 4 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/ryadom-chelovek-v-krizise.html"><span class="index-dot"></span><span class="index-t">Рядом человек в кризисе</span><span class="index-m">2 практики · 3 специалиста</span></a></li>
-<li><a class="index-row" href="encyclopedia/podvesti-god.html"><span class="index-dot"></span><span class="index-t">Подвести год и выбрать, куда дальше</span><span class="index-m">5 практик · 5 подходов</span></a></li>
-<li><a class="index-row" href="encyclopedia/trevoga.html"><span class="index-dot"></span><span class="index-t">Тревога не отпускает</span><span class="index-m">5 практик · 6 специалистов</span></a></li>
-<li><a class="index-row" href="encyclopedia/poterya-blizkogo.html"><span class="index-dot"></span><span class="index-t">Потеря близкого человека</span><span class="index-m">4 практики · 8 специалистов</span></a></li></ol></div></div></section>
-<section class="band enc-band" id="questions" aria-labelledby="h-questions"><div class="frame"><div class="enc-bh"><h2 class="h2" id="h-questions">Или начни с вопроса</h2></div><div class="kb-index2"><ol class="index"><li><a class="index-row" href="encyclopedia/chto-so-mnoy-proiskhodit.html"><span class="index-dot"></span><span class="index-t">Что со мной происходит?</span><span class="index-m"><span class="kb-state kb-state--plan">статья пишется</span></span></a></li>
-<li><a class="index-row" href="encyclopedia/k-komu-idti.html"><span class="index-dot"></span><span class="index-t">К кому идти, и когда это терапия?</span><span class="index-m"><span class="kb-state kb-state--plan">статья пишется</span></span></a></li>
-<li><a class="index-row" href="encyclopedia/mozhno-li-samomu.html"><span class="index-dot"></span><span class="index-t">Можно ли пройти это самому?</span><span class="index-m"><span class="kb-state kb-state--plan">статья пишется</span></span></a></li></ol><ol class="index"><li><a class="index-row" href="atlas/requests.html"><span class="index-dot"></span><span class="index-t">С каким запросом к кому: «не сплю», «развод», «наследство»</span><span class="index-m">атлас</span></a></li></ol></div></div></section>
-<section class="band enc-band" id="approaches" aria-labelledby="h-approaches"><div class="frame"><div class="enc-bh"><h2 class="h2" id="h-approaches">Подходы и школы</h2><p class="small">38 подходов по&nbsp;семи шагам метода, 23 школы терапии, понятия и&nbsp;люди. Точки — метка доказательности.</p></div><ol class="enc-steps" aria-label="Подходы по шагам метода"><li><span class="n">1</span><b>История рода</b><span class="l"><a href="encyclopedia/genogramma.html">Генограмма</a> · <a href="encyclopedia/ustnaya-istoriya-semi.html">Устная история семьи</a> · <a href="encyclopedia/transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a> · <a href="encyclopedia/arkhivnyy-poisk-s-ii.html">Архивный поиск с ИИ</a></span></li><li><span class="n">2</span><b>Твоя история</b><span class="l"><a href="encyclopedia/narrativnaya-praktika.html">Нарративная практика</a> · <a href="encyclopedia/narrativnaya-identichnost.html">Нарративная идентичность</a> · <a href="encyclopedia/put-geroya.html">Путь героя</a> · <a href="encyclopedia/liniya-zhizni.html">Линия жизни</a> · <a href="encyclopedia/obzor-zhizni.html">Обзор жизни</a> · <a href="encyclopedia/ekspressivnoe-pismo.html">Экспрессивное письмо</a></span></li><li><span class="n">3</span><b>Компас</b><span class="l"><a href="encyclopedia/koleso-kontekstov.html">Колесо контекстов</a> · <a href="encyclopedia/logicheskie-urovni-diltsa.html">Логические уровни Дилтса</a> · <a href="encyclopedia/tsennosti-v-act.html">Ценности в ACT</a> · <a href="encyclopedia/cliftonstrengths.html">CliftonStrengths</a> · <a href="encyclopedia/silnye-storony-via.html">Сильные стороны VIA</a> · <a href="encyclopedia/bolshaya-pyaterka.html">Большая пятёрка</a> · <a href="encyclopedia/enneagramma.html">Эннеаграмма</a> · <a href="encyclopedia/rabota-s-chastyami-ifs.html">Работа с частями (IFS)</a></span></li><li><span class="n">4</span><b>Карта</b><span class="l"><a href="encyclopedia/plany-odissei.html">Планы Одиссеи</a> · <a href="encyclopedia/luchshee-vozmozhnoe-ya.html">Лучшее возможное «я»</a> · <a href="encyclopedia/vzglyad-iz-budushchego.html">Взгляд из будущего</a> · <a href="encyclopedia/prototipiruyushchie-razgovory.html">Прототипирующие разговоры</a> · <a href="encyclopedia/ikigay.html">Икигай</a></span></li><li><span class="n">5</span><b>Снаряжение</b><span class="l"><a href="encyclopedia/patterny-i-drugaya-dorozhka.html">Паттерны и другая дорожка</a> · <a href="encyclopedia/ritualy.html">Ритуалы</a> · <a href="encyclopedia/malenkie-privychki.html">Маленькие привычки</a> · <a href="encyclopedia/vremya-dlya-trevogi.html">Время для тревоги</a> · <a href="encyclopedia/okno-tolerantnosti.html">Окно толерантности</a> · <a href="encyclopedia/samosostradanie.html">Самосострадание</a> · <a href="encyclopedia/plan-samopomoshchi-wrap.html">План самопомощи</a> · <a href="encyclopedia/ii-sobesednik.html">ИИ-собеседник</a></span></li><li><span class="n">6</span><b>Маршрут</b><span class="l"><a href="encyclopedia/woop.html">WOOP</a> · <a href="encyclopedia/namereniya-esli-to.html">Намерения «если — то»</a> · <a href="encyclopedia/gorizonty-fokusa.html">Горизонты фокуса</a> · <a href="encyclopedia/lichnye-retrospektivy.html">Личные ретроспективы</a></span></li><li><span class="n">7</span><b>Спутник</b><span class="l"><a href="encyclopedia/klient-tsentrirovannyy-podkhod.html">Клиент-центрированный подход</a> · <a href="encyclopedia/praktika-douly-smerti.html">Практика доулы смерти</a> · <a href="encyclopedia/stupenchataya-pomoshch.html">Ступенчатая помощь</a></span></li></ol><ol class="enc-steps enc-steps--sub" id="schools" aria-label="Школы терапии"><li><span class="n"></span><b>Больше про прошлое</b><span class="l"><a href="encyclopedia/skhema-terapiya.html">Схема-терапия</a> · <a href="encyclopedia/psikhodinamicheskaya-terapiya.html">Психоанализ и психодинамическая терапия</a> · <a href="encyclopedia/narrativnaya-praktika-shkola.html">Нарративная практика</a> · <a href="encyclopedia/ifs.html">Модель внутренних семейных систем</a> · <a href="encyclopedia/emdr-dpdg.html">ДПДГ</a> · <a href="encyclopedia/protsess-khoffmana.html">Процесс Хоффмана</a></span></li><li><span class="n"></span><b>Больше про настоящее</b><span class="l"><a href="encyclopedia/kpt.html">Когнитивно-поведенческая терапия</a> · <a href="encyclopedia/dbt.html">Диалектическая поведенческая терапия</a> · <a href="encyclopedia/geshtalt-terapiya.html">Гештальт-терапия</a> · <a href="encyclopedia/ekzistentsialnaya-terapiya.html">Экзистенциальная терапия</a> · <a href="encyclopedia/klient-tsentrirovannaya-terapiya.html">Клиент-центрированный подход</a> · <a href="encyclopedia/somaticheskoe-perezhivanie.html">Соматическое переживание</a> · <a href="encyclopedia/mayndfulnes-mbsr.html">Майндфулнес</a></span></li><li><span class="n"></span><b>Больше про будущее</b><span class="l"><a href="encyclopedia/act.html">Терапия принятия и ответственности</a> · <a href="encyclopedia/pozitivnaya-psikhologiya.html">Позитивная психология</a> · <a href="encyclopedia/kouching.html">Коучинг</a> · <a href="encyclopedia/dizayn-zhizni.html">Дизайн жизни</a> · <a href="encyclopedia/death-positive.html">Движение «позитивного отношения к смерти»</a></span></li><li><span class="n"></span><b>Ещё школы (черновики)</b><span class="l"><a href="encyclopedia/gruppovaya-terapiya.html">Групповая терапия</a> · <a href="encyclopedia/interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a> · <a href="encyclopedia/metody-relaksatsii.html">Методы релаксации</a> · <a href="encyclopedia/povedencheskaya-terapiya.html">Поведенческая терапия</a> · <a href="encyclopedia/sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></span></li></ol><ol class="enc-steps enc-steps--sub" id="concepts" aria-label="Понятия и люди"><li><span class="n"></span><b>Понятия</b><span class="l"><a href="encyclopedia/fazy-gorya-po-kast.html">Фазы горя по Верене Каст</a> · <a href="encyclopedia/gore.html">Горе и затяжное горе</a> · <a href="encyclopedia/obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a> · <a href="encyclopedia/paradigmy-psikhoterapii.html">Парадигмы психотерапии</a> · <a href="encyclopedia/terapevticheskiy-alyans.html">Терапевтический альянс</a> · <a href="encyclopedia/vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a> · <a href="encyclopedia/vnutrenniy-konflikt.html">Внутренний конфликт</a> · <a href="encyclopedia/vygoranie.html">Выгорание</a> · <a href="encyclopedia/zashchitnye-mekhanizmy.html">Защитные механизмы</a></span></li><li><span class="n"></span><b>Люди</b><span class="l"><a href="encyclopedia/aaron-bek.html">Аарон Бек</a> · <a href="encyclopedia/abrakham-maslou.html">Абрахам Маслоу</a> · <a href="encyclopedia/alfred-adler.html">Альфред Адлер</a> · <a href="encyclopedia/bob-khoffman.html">Боб Хоффман</a> · <a href="encyclopedia/dzhon-boulbi.html">Джон Боулби</a> · <a href="encyclopedia/frits-perlz.html">Фриц Перлз</a> · <a href="encyclopedia/ivan-pavlov.html">Иван Павлов</a> · <a href="encyclopedia/karl-rodzhers.html">Карл Роджерс</a> · <a href="encyclopedia/karl-yung.html">Карл Густав Юнг</a> · <a href="encyclopedia/marsha-linekhan.html">Марша Линехан</a> · <a href="encyclopedia/viktor-frankl.html">Виктор Франкл</a> · <a href="encyclopedia/virdzhiniya-satir.html">Вирджиния Сатир</a> · <a href="encyclopedia/zigmund-freyd.html">Зигмунд Фрейд</a></span></li></ol></div></section>
+<section class="band enc-band" id="sit" aria-labelledby="h-sit"><div class="frame"><div class="enc-bh"><h2 class="h2" id="h-sit">С&nbsp;чем ты сейчас</h2><p class="small">На&nbsp;странице ситуации собрано всё из&nbsp;четырёх разделов: что сделать, что понять, кто помогает и&nbsp;что почитать.</p></div><div class="kb-index2"><ol class="index"><li><a class="index-row" href="encyclopedia/rabota-zakonchilas.html"><span class="index-dot"></span><span class="index-t">Закончилась работа или своё дело</span></a></li>
+<li><a class="index-row" href="encyclopedia/pereezd.html"><span class="index-dot"></span><span class="index-t">Переезд, и&nbsp;профессия не&nbsp;складывается</span></a></li>
+<li><a class="index-row" href="encyclopedia/krizis-identichnosti.html"><span class="index-dot"></span><span class="index-t">Кризис идентичности</span></a></li>
+<li><a class="index-row" href="encyclopedia/sily-konchilis.html"><span class="index-dot"></span><span class="index-t">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</span></a></li>
+<li><a class="index-row" href="encyclopedia/ne-mogu-vybrat.html"><span class="index-dot"></span><span class="index-t">Несколько дорог, и&nbsp;не&nbsp;получается выбрать</span></a></li>
+<li><a class="index-row" href="encyclopedia/plany-sryvayutsya.html"><span class="index-dot"></span><span class="index-t">Планы срываются на&nbsp;одном и&nbsp;том&nbsp;же месте</span></a></li></ol><ol class="index"><li><a class="index-row" href="encyclopedia/ne-moe-strashno.html"><span class="index-dot"></span><span class="index-t">Всё хорошо, но&nbsp;не&nbsp;моё, и&nbsp;страшно</span></a></li>
+<li><a class="index-row" href="encyclopedia/ne-znayu-k-komu-idti.html"><span class="index-dot"></span><span class="index-t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span></a></li>
+<li><a class="index-row" href="encyclopedia/ryadom-chelovek-v-krizise.html"><span class="index-dot"></span><span class="index-t">Рядом человек в&nbsp;кризисе</span></a></li>
+<li><a class="index-row" href="encyclopedia/podvesti-god.html"><span class="index-dot"></span><span class="index-t">Подвести год и&nbsp;выбрать, куда дальше</span></a></li>
+<li><a class="index-row" href="encyclopedia/trevoga.html"><span class="index-dot"></span><span class="index-t">Тревога не&nbsp;отпускает</span></a></li>
+<li><a class="index-row" href="encyclopedia/poterya-blizkogo.html"><span class="index-dot"></span><span class="index-t">Потеря близкого человека</span></a></li></ol></div></div></section>
+<section class="band enc-band" id="questions" aria-labelledby="h-questions"><div class="frame"><div class="enc-bh"><h2 class="h2" id="h-questions">Или начни с&nbsp;вопроса</h2></div><div class="kb-index2"><ol class="index"><li><a class="index-row" href="encyclopedia/chto-so-mnoy-proiskhodit.html"><span class="index-dot"></span><span class="index-t">Что со&nbsp;мной происходит?</span></a></li>
+<li><a class="index-row" href="encyclopedia/k-komu-idti.html"><span class="index-dot"></span><span class="index-t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span></a></li>
+<li><a class="index-row" href="encyclopedia/mozhno-li-samomu.html"><span class="index-dot"></span><span class="index-t">Можно&nbsp;ли пройти это своими силами?</span></a></li></ol><ol class="index"><li><a class="index-row" href="atlas/requests.html"><span class="index-dot"></span><span class="index-t">С&nbsp;каким запросом к&nbsp;кому: «не&nbsp;сплю», «развод», «наследство»</span><span class="index-m">атлас</span></a></li></ol></div></div></section>
+<section class="band enc-band" id="approaches" aria-labelledby="h-approaches"><div class="frame"><div class="enc-bh"><h2 class="h2" id="h-approaches">Подходы и&nbsp;школы</h2><p class="small">38&nbsp;подходов по&nbsp;семи шагам метода, 23&nbsp;школы терапии, понятия и&nbsp;люди. Точки&nbsp;— метка доказательности.</p></div><ol class="enc-steps" aria-label="Подходы по шагам метода"><li><span class="n">1</span><b>История рода</b><span class="l"><a href="encyclopedia/genogramma.html">Генограмма</a> · <a href="encyclopedia/ustnaya-istoriya-semi.html">Устная история семьи</a> · <a href="encyclopedia/transgeneratsionnyy-podkhod.html">Трансгенерационный подход</a> · <a href="encyclopedia/arkhivnyy-poisk-s-ii.html">Архивный поиск с&nbsp;ИИ</a></span></li><li><span class="n">2</span><b>Твоя история</b><span class="l"><a href="encyclopedia/narrativnaya-praktika.html">Нарративная практика</a> · <a href="encyclopedia/narrativnaya-identichnost.html">Нарративная идентичность</a> · <a href="encyclopedia/put-geroya.html">Путь героя</a> · <a href="encyclopedia/liniya-zhizni.html">Линия жизни</a> · <a href="encyclopedia/obzor-zhizni.html">Обзор жизни</a> · <a href="encyclopedia/ekspressivnoe-pismo.html">Экспрессивное письмо</a></span></li><li><span class="n">3</span><b>Компас</b><span class="l"><a href="encyclopedia/koleso-kontekstov.html">Колесо контекстов</a> · <a href="encyclopedia/logicheskie-urovni-diltsa.html">Логические уровни Дилтса</a> · <a href="encyclopedia/tsennosti-v-act.html">Ценности в&nbsp;ACT</a> · <a href="encyclopedia/cliftonstrengths.html">CliftonStrengths</a> · <a href="encyclopedia/silnye-storony-via.html">Сильные стороны VIA</a> · <a href="encyclopedia/bolshaya-pyaterka.html">Большая пятёрка</a> · <a href="encyclopedia/enneagramma.html">Эннеаграмма</a> · <a href="encyclopedia/rabota-s-chastyami-ifs.html">Работа с&nbsp;частями (IFS)</a></span></li><li><span class="n">4</span><b>Карта</b><span class="l"><a href="encyclopedia/plany-odissei.html">Планы Одиссеи</a> · <a href="encyclopedia/luchshee-vozmozhnoe-ya.html">Лучшее возможное «я»</a> · <a href="encyclopedia/vzglyad-iz-budushchego.html">Взгляд из&nbsp;будущего</a> · <a href="encyclopedia/prototipiruyushchie-razgovory.html">Прототипирующие разговоры</a> · <a href="encyclopedia/ikigay.html">Икигай</a></span></li><li><span class="n">5</span><b>Снаряжение</b><span class="l"><a href="encyclopedia/patterny-i-drugaya-dorozhka.html">Паттерны и&nbsp;другая дорожка</a> · <a href="encyclopedia/ritualy.html">Ритуалы</a> · <a href="encyclopedia/malenkie-privychki.html">Маленькие привычки</a> · <a href="encyclopedia/vremya-dlya-trevogi.html">Время для&nbsp;тревоги</a> · <a href="encyclopedia/okno-tolerantnosti.html">Окно толерантности</a> · <a href="encyclopedia/samosostradanie.html">Самосострадание</a> · <a href="encyclopedia/plan-samopomoshchi-wrap.html">План самопомощи</a> · <a href="encyclopedia/ii-sobesednik.html">ИИ-собеседник</a></span></li><li><span class="n">6</span><b>Маршрут</b><span class="l"><a href="encyclopedia/woop.html">WOOP</a> · <a href="encyclopedia/namereniya-esli-to.html">Намерения «если&nbsp;— то»</a> · <a href="encyclopedia/gorizonty-fokusa.html">Горизонты фокуса</a> · <a href="encyclopedia/lichnye-retrospektivy.html">Личные ретроспективы</a></span></li><li><span class="n">7</span><b>Спутник</b><span class="l"><a href="encyclopedia/klient-tsentrirovannyy-podkhod.html">Клиент-центрированный подход</a> · <a href="encyclopedia/praktika-douly-smerti.html">Практика доулы смерти</a> · <a href="encyclopedia/stupenchataya-pomoshch.html">Ступенчатая помощь</a></span></li></ol><ol class="enc-steps enc-steps--sub" id="schools" aria-label="Школы терапии"><li><span class="n"></span><b>Больше про&nbsp;прошлое</b><span class="l"><a href="encyclopedia/skhema-terapiya.html">Схема-терапия</a> · <a href="encyclopedia/psikhodinamicheskaya-terapiya.html">Психоанализ и&nbsp;психодинамическая терапия</a> · <a href="encyclopedia/narrativnaya-praktika-shkola.html">Нарративная практика</a> · <a href="encyclopedia/ifs.html">Модель внутренних семейных систем</a> · <a href="encyclopedia/emdr-dpdg.html">ДПДГ</a> · <a href="encyclopedia/protsess-khoffmana.html">Процесс Хоффмана</a></span></li><li><span class="n"></span><b>Больше про&nbsp;настоящее</b><span class="l"><a href="encyclopedia/kpt.html">Когнитивно-поведенческая терапия</a> · <a href="encyclopedia/dbt.html">Диалектическая поведенческая терапия</a> · <a href="encyclopedia/geshtalt-terapiya.html">Гештальт-терапия</a> · <a href="encyclopedia/ekzistentsialnaya-terapiya.html">Экзистенциальная терапия</a> · <a href="encyclopedia/klient-tsentrirovannaya-terapiya.html">Клиент-центрированный подход</a> · <a href="encyclopedia/somaticheskoe-perezhivanie.html">Соматическое переживание</a> · <a href="encyclopedia/mayndfulnes-mbsr.html">Майндфулнес</a></span></li><li><span class="n"></span><b>Больше про&nbsp;будущее</b><span class="l"><a href="encyclopedia/act.html">Терапия принятия и&nbsp;ответственности</a> · <a href="encyclopedia/pozitivnaya-psikhologiya.html">Позитивная психология</a> · <a href="encyclopedia/kouching.html">Коучинг</a> · <a href="encyclopedia/dizayn-zhizni.html">Дизайн жизни</a> · <a href="encyclopedia/death-positive.html">Движение «позитивного отношения к&nbsp;смерти»</a></span></li><li><span class="n"></span><b>Ещё школы</b><span class="l"><a href="encyclopedia/gruppovaya-terapiya.html">Групповая терапия</a> · <a href="encyclopedia/interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a> · <a href="encyclopedia/metody-relaksatsii.html">Методы релаксации</a> · <a href="encyclopedia/povedencheskaya-terapiya.html">Поведенческая терапия</a> · <a href="encyclopedia/sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></span></li></ol><ol class="enc-steps enc-steps--sub" id="concepts" aria-label="Понятия и люди"><li><span class="n"></span><b>Понятия</b><span class="l"><a href="encyclopedia/fazy-gorya-po-kast.html">Фазы горя по&nbsp;Верене Каст</a> · <a href="encyclopedia/gore.html">Горе и&nbsp;затяжное горе</a> · <a href="encyclopedia/obshchie-faktory-effektivnosti.html">Общие факторы эффективности психотерапии</a> · <a href="encyclopedia/paradigmy-psikhoterapii.html">Парадигмы психотерапии</a> · <a href="encyclopedia/terapevticheskiy-alyans.html">Терапевтический альянс</a> · <a href="encyclopedia/vidy-psikhologicheskoy-pomoshchi.html">Виды психологической помощи</a> · <a href="encyclopedia/vnutrenniy-konflikt.html">Внутренний конфликт</a> · <a href="encyclopedia/vygoranie.html">Выгорание</a> · <a href="encyclopedia/zashchitnye-mekhanizmy.html">Защитные механизмы</a></span></li><li><span class="n"></span><b>Люди</b><span class="l"><a href="encyclopedia/aaron-bek.html">Аарон Бек</a> · <a href="encyclopedia/abrakham-maslou.html">Абрахам Маслоу</a> · <a href="encyclopedia/alfred-adler.html">Альфред Адлер</a> · <a href="encyclopedia/bob-khoffman.html">Боб Хоффман</a> · <a href="encyclopedia/dzhon-boulbi.html">Джон Боулби</a> · <a href="encyclopedia/frits-perlz.html">Фриц Перлз</a> · <a href="encyclopedia/ivan-pavlov.html">Иван Павлов</a> · <a href="encyclopedia/karl-rodzhers.html">Карл Роджерс</a> · <a href="encyclopedia/karl-yung.html">Карл Густав Юнг</a> · <a href="encyclopedia/marsha-linekhan.html">Марша Линехан</a> · <a href="encyclopedia/viktor-frankl.html">Виктор Франкл</a> · <a href="encyclopedia/virdzhiniya-satir.html">Вирджиния Сатир</a> · <a href="encyclopedia/zigmund-freyd.html">Зигмунд Фрейд</a></span></li></ol></div></section>
 
 <section class="band enc-band enc-marks" id="marks" aria-label="Как читать метки"><div class="frame">
-  <p class="small">Метка у каждого подхода: насколько он исследован. Не про то, как он сработает у&nbsp;вас.</p>
+  <p class="small">Метка у&nbsp;каждого подхода: насколько он исследован. Не&nbsp;про&nbsp;то, как он сработает у&nbsp;тебя.</p>
   <ul class="ev-legend" aria-label="Метки доказательности"><li><span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></li><li><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></li><li><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></li><li><span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></li><li><span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></li></ul>
-  <p class="small enc-foot"><a href="glossary.html">Словарь</a> &nbsp;·&nbsp; <a href="how.html#marks">Как устроена база и как мы проверяем</a> &nbsp;·&nbsp; <a href="#telegram" data-tg>Заметили ошибку — напишите в Telegram</a></p>
+  <p class="small enc-foot"><a href="glossary.html">Словарь</a> &nbsp;·&nbsp; <a href="how.html#marks">Как устроена база и&nbsp;как мы проверяем</a> &nbsp;·&nbsp; <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Если нашлась ошибка&nbsp;— напиши в&nbsp;Telegram</a></p>
 </div></section>
 
 </main>
@@ -132,25 +161,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -160,12 +189,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -174,7 +203,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

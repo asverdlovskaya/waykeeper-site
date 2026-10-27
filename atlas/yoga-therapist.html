@@ -7,9 +7,9 @@
 <meta name="description" content="Йогатерапевт: Подбор практик йоги под состояние здоровья конкретного человека. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/atlas/yoga-therapist.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Йогатерапевт · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Йогатерапевт">
 <meta property="og:description" content="Йогатерапевт: Подбор практик йоги под состояние здоровья конкретного человека. Атлас помогающих профессий Waykeeper — описываем, не рекомендуем.">
 <meta property="og:url" content="https://waykeeper.org/atlas/yoga-therapist.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -38,42 +45,64 @@
 <link rel="stylesheet" href="../assets/alive.css">
 <link rel="stylesheet" href="../modules/passage.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off" data-aw-root="../">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html" aria-current="page"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,22 +110,22 @@
 <main id="main" class="aw">
 <div class="frame kb-page" data-atmo="day">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Тело и здоровье · 19</span><ul><li><a href="peer-cancer.html">Равный в онкологии</a></li><li><a href="peer-hiv.html">Равный по ВИЧ</a></li><li><a href="breathwork-practitioner.html">Дыхательные практики</a></li><li><a href="yoga-therapist.html" class="is-here" aria-current="page">Йогатерапевт</a></li><li><a href="massage-therapist.html">Массажист</a></li><li><a href="nutritionist.html">Нутрициолог</a></li><li><a href="psychomotor-therapist.html">Психомоторный терапевт</a></li><li><a href="somatic-educator.html">Фельденкрайз и Александер</a></li><li><a href="exercise-coach.html">Инструктор ЛФК</a></li><li><a href="speech-therapist.html">Логопед</a></li><li><a href="physiotherapist.html">Физический терапевт</a></li><li><a href="occupational-therapist.html">Эрготерапевт</a></li><li><a href="rehabilitation-physician.html">Врач-реабилитолог</a></li><li><a href="dietitian.html">Диетолог</a></li><li><a href="neurologist.html">Невролог</a></li><li><a href="home-nurse.html">Патронажная медсестра</a></li><li><a href="sleep-specialist.html">Сомнолог</a></li><li><a href="mse-specialist.html">Специалист МСЭ</a></li><li><a href="general-practitioner.html">Терапевт</a></li></ul><a class="all" href="all.html">Все 125 специалистов →</a><br><a class="all" href="../atlas-map.html#fam-body" target="_blank" rel="noopener">Семья на карте ↗</a></nav>
+    <nav class="kb-side" aria-label="Семья специалистов"><span class="label">Тело и&nbsp;здоровье · 19</span><ul><li><a href="peer-cancer.html">Равный в&nbsp;онкологии</a></li><li><a href="peer-hiv.html">Равный по&nbsp;ВИЧ</a></li><li><a href="breathwork-practitioner.html">Дыхательные практики</a></li><li><a href="yoga-therapist.html" class="is-here" aria-current="page">Йогатерапевт</a></li><li><a href="massage-therapist.html">Массажист</a></li><li><a href="nutritionist.html">Нутрициолог</a></li><li><a href="psychomotor-therapist.html">Психомоторный терапевт</a></li><li><a href="somatic-educator.html">Фельденкрайз и&nbsp;Александер</a></li><li><a href="exercise-coach.html">Инструктор ЛФК</a></li><li><a href="speech-therapist.html">Логопед</a></li><li><a href="physiotherapist.html">Физический терапевт</a></li><li><a href="occupational-therapist.html">Эрготерапевт</a></li><li><a href="rehabilitation-physician.html">Врач-реабилитолог</a></li><li><a href="dietitian.html">Диетолог</a></li><li><a href="neurologist.html">Невролог</a></li><li><a href="home-nurse.html">Патронажная медсестра</a></li><li><a href="sleep-specialist.html">Сомнолог</a></li><li><a href="mse-specialist.html">Специалист МСЭ</a></li><li><a href="general-practitioner.html">Терапевт</a></li></ul><a class="all" href="all.html">Все 125&nbsp;специалистов →</a><br><a class="all" href="../atlas-map.html#fam-body" target="_blank" rel="noopener">Семья на&nbsp;карте ↗</a></nav>
     <article class="kb-main" aria-labelledby="page-title">
-      <ol class="kb-crumbs" aria-label="Вы здесь"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-body.html">Тело и здоровье</a></li><li>Йогатерапевт</li></ol>
-      <p class="kb-type">Специалист<span class="sep">·</span>семья «Тело и здоровье»<span class="sep">·</span>данные 27.10.2026</p>
+      <ol class="kb-crumbs" aria-label="Навигация по разделу"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../atlas.html">Атлас помогающих профессий</a></li><li><a href="fam-body.html">Тело и&nbsp;здоровье</a></li><li>Йогатерапевт</li></ol>
+      
       <h1 class="kb-h1" id="page-title">Йогатерапевт<small lang="en">Yoga therapist (C-IAYT)</small></h1>
       
-      <div class="kb-two"><span class="label">В двух словах</span><p>Подбор практик йоги под состояние здоровья конкретного человека</p></div>
-      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверка фактов</span><span>3 источника</span><span class="kb-pending"><span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> 5 утверждений не удалось проверить</span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки — средний. Атлас описывает, а не рекомендует. У каждого факта номер источника; то, что не удалось проверить по первоисточнику, помечено в тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
-      <div class="kb-ladder"><span class="label">На чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
-      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с прошлым</dt><dd>нет</dd></div><div><dt>Работает с будущим</dt><dd>иногда</dd></div><div><dt>Работает с телом</dt><dd>да</dd></div><div><dt>Практическая помощь</dt><dd>нет</dd></div><div><dt>Работает с группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>длительная подготовка и сертификация</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, обучение навыкам</dd></div></dl>
-      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Подбирает практики йоги — позы, дыхание, расслабление, медитацию — под состояние здоровья и цели конкретного человека. В отличие от преподавателя йоги, учитывает заболевания и ограничения и составляет индивидуальную программу.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С чем к нему приходят</h2><ul><li>«болит спина, хочу заниматься, но боюсь навредить»</li><li>«тревога и бессонница — нужна практика для себя»</li><li>«восстанавливаюсь после болезни, нужна мягкая нагрузка»</li><li>«хроническое заболевание — что можно, а что нельзя»</li><li>«выгорание, хочу снова чувствовать тело»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Расспрашивает о здоровье, смотрит на движение и дыхание, составляет программу для самостоятельной практики и корректирует её на следующих встречах.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуальные встречи около часа <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> плюс самостоятельная практика; иногда небольшие тематические группы.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не делает</h2><div class="prose"><p>Не ставит диагноз и не лечит болезни вместо врача. Польза йоги при хронической боли в спине небольшая: по обзору Cochrane 2022 года улучшение по сравнению с отсутствием занятий мало и ниже порога, который человек заметит; от других лечебных упражнений разницы почти нет; у части людей боль в спине сначала усиливается. При тревоге и депрессии данные предварительные. Обычный преподаватель йоги без подготовки по работе с заболеваниями — не йогатерапевт.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и правила</h2><div class="prose"><p>Международный ориентир — сертификат C-IAYT Международной ассоциации йогатерапевтов (IAYT): программа не менее 800 часов и не меньше 2 лет <sup class="ref"><a href="#src-1" title="International Association of Yoga Therapists (IAYT) — сайт не открылся при проверке">1</a></sup>; обычно после базового курса преподавателя йоги (200 часов) <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В России — частные курсы разной длительности <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div><h3 class="kb-h3">Регулирование в России</h3><div class="prose"><p>Не регулируется; профстандарта «йогатерапевт» нет <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В мире обычно: тоже не государственная профессия; ориентир качества — сертификат C-IAYT.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Частные студии и центры йоги, оздоровительные центры, онлайн-школы <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. Проверять сертификат C-IAYT или медицинское/реабилитационное образование.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С кем стыкуется</h2><div class="prose"><p>Врач (нужен ли допуск к нагрузке), <a href="physiotherapist.html">физический терапевт</a>, психолог; <a href="exercise-coach.html">инструктор ЛФК</a> и преподаватель майндфулнес.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В переходе</h2><div class="prose"><p>Подходит как мягкая опора для тела и сна в долгом переходе; при острой боли, травме или тяжёлом заболевании — сначала врач.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 3</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.iayt.org/" target="_blank" rel="noopener">International Association of Yoga Therapists (IAYT) — сайт не открылся при проверке ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://en.wikipedia.org/wiki/Yoga_as_therapy" target="_blank" rel="noopener">Yoga as therapy — Wikipedia (EN), отправная точка ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://pubmed.ncbi.nlm.nih.gov/36398843/" target="_blank" rel="noopener">Wieland L. S. et al. Yoga for chronic non-specific low back pain. Cochrane Database Syst Rev, 2022 — PubMed ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К кому идти дальше</span><span class="m">практика · 15 мин</span></a></dd></div><div><dt>В ситуациях</dt><dd><a href="../encyclopedia/sily-konchilis.html"><span class="t">Силы кончились, а что вместо — непонятно</span><span class="m">ситуация</span></a><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не знаю, к какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#media-cuprum"><span class="t">Купрум</span><span class="m">медиа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="../resources.html#book-van-der-kolk"><span class="t">Тело помнит всё. Какую роль психологическая травма играет в жизни человека</span><span class="m">книга · Бессел ван дер Колк · <span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></span></a></dd></div><div><dt>В атласе</dt><dd><a href="physiotherapist.html"><span class="t">Физический терапевт (физиотерапевт)</span><span class="m">стыкуется</span></a><a href="general-practitioner.html"><span class="t">Терапевт / врач общей практики</span><span class="m">стыкуется</span></a><a href="exercise-coach.html"><span class="t">Инструктор ЛФК / тренер по физической активности</span><span class="m">стыкуется</span></a><a href="somatic-educator.html"><span class="t">Педагог соматических методов: Фельденкрайз и техника Александера</span><span class="m">упоминает</span></a><a href="dance-movement-therapist.html"><span class="t">Танцевально-двигательный терапевт</span><span class="m">упоминает</span></a><a href="breathwork-practitioner.html"><span class="t">Практик дыхательных техник</span><span class="m">упоминает</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=yoga-therapist,physiotherapist,general-practitioner">Сравнить с похожими</a><a class="kb-do-alt" href="../atlas-map.html#yoga-therapist" target="_blank" rel="noopener">Показать на карте ↗</a></div></section>
-      <nav class="kb-next" aria-label="Соседи по семье"><a href="breathwork-practitioner.html" rel="prev">← Предыдущий в семье<b>Дыхательные практики</b></a><a class="r" href="massage-therapist.html" rel="next">Следующий в семье →<b>Массажист</b></a></nav>
-      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не удалось проверить по первоисточнику</p>
-      <p class="kb-fix">Нашли ошибку — <a href="#telegram" data-tg>напишите в Telegram</a>. Атлас описывает, а не рекомендует.</p>
+      <div class="kb-two"><p>Подбор практик йоги под&nbsp;состояние здоровья конкретного человека</p></div>
+      <details class="kb-stamp kb-stamp--none"><summary><span class="kb-stamp-t">Проверено по&nbsp;3&nbsp;источникам<span class="kb-pending">, 5&nbsp;утверждений ещё сверяются</span></span><span class="more">Как проверяем</span></summary><div class="kb-stamp-body"><p>Уровень проверки&nbsp;— средний. Атлас описывает, а&nbsp;не&nbsp;рекомендует. У&nbsp;каждого факта номер источника; то, что не&nbsp;удалось проверить по&nbsp;первоисточнику, помечено в&nbsp;тексте знаком <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. <a href="../how.html#check">Как проверяем</a> · <a href="how.html">Как устроен атлас</a></p></div></details>
+      <div class="kb-ladder"><span class="label">На&nbsp;чём держится помощь</span><ol><li><b>Опыт</b>свой прожитый опыт и&nbsp;участие</li><li class="is-here"><b>Практика</b>обучение методу: курсы, сертификат ассоциации</li><li><b>Профессия</b>профильное высшее или среднее образование и/или профстандарт</li><li><b>Полномочия</b>государственный допуск: аккредитация, лицензия, статус, реестр</li></ol><p class="kb-hint"><a href="how.html#levels">Что значат уровни</a></p></div>
+      <dl class="kb-facts"><div><dt>Ставит диагноз</dt><dd>нет</dd></div><div><dt>Назначает лекарства</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;прошлым</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;будущим</dt><dd>иногда</dd></div><div><dt>Работает с&nbsp;телом</dt><dd>да</dd></div><div><dt>Практическая помощь</dt><dd>нет</dd></div><div><dt>Работает с&nbsp;группами</dt><dd>иногда</dd></div><div><dt>Подготовка</dt><dd>длительная подготовка и&nbsp;сертификация</dd></div><div><dt>Онлайн</dt><dd>частично</dd></div><div><dt>Доступность</dt><dd>платно</dd></div><div><dt>Характер помощи</dt><dd>сопровождение и&nbsp;консультирование</dd></div><div><dt>Что можно получить</dt><dd>план, обучение навыкам</dd></div></dl>
+      <section class="kb-sec" id="pomogaet" aria-labelledby="pomogaet-h"><h2 class="kb-h2" id="pomogaet-h">Чем помогает</h2><div class="prose"><p>Подбирает практики йоги&nbsp;— позы, дыхание, расслабление, медитацию&nbsp;— под&nbsp;состояние здоровья и&nbsp;цели конкретного человека. В&nbsp;отличие от&nbsp;преподавателя йоги, учитывает заболевания и&nbsp;ограничения и&nbsp;составляет индивидуальную программу.</p></div></section><section class="kb-sec" id="voprosy" aria-labelledby="voprosy-h"><h2 class="kb-h2" id="voprosy-h">С&nbsp;чем к&nbsp;нему приходят</h2><ul><li>«болит спина, хочу заниматься, но&nbsp;боюсь навредить»</li><li>«тревога и&nbsp;бессонница&nbsp;— нужна практика для&nbsp;себя»</li><li>«восстанавливаюсь после болезни, нужна мягкая нагрузка»</li><li>«хроническое заболевание&nbsp;— что можно, а&nbsp;что нельзя»</li><li>«выгорание, хочу снова чувствовать тело»</li></ul></section><section class="kb-sec" id="kak" aria-labelledby="kak-h"><h2 class="kb-h2" id="kak-h">Как проходит работа</h2><div class="prose"><p>Расспрашивает о&nbsp;здоровье, смотрит на&nbsp;движение и&nbsp;дыхание, составляет программу для&nbsp;самостоятельной практики и&nbsp;корректирует её на&nbsp;следующих встречах.</p></div><h3 class="kb-h3">Формат работы</h3><div class="prose"><p>Индивидуальные встречи около часа <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span> плюс самостоятельная практика; иногда небольшие тематические группы.</p></div></section><section class="kb-careful" id="granitsy" aria-labelledby="granitsy-h"><h2 class="kb-h2" id="granitsy-h">Чего не&nbsp;делает</h2><div class="prose"><p>Не&nbsp;ставит диагноз и&nbsp;не&nbsp;лечит болезни вместо врача. Польза йоги при&nbsp;хронической боли в&nbsp;спине небольшая: по&nbsp;обзору Cochrane 2022&nbsp;года улучшение по&nbsp;сравнению с&nbsp;отсутствием занятий мало и&nbsp;ниже порога, который человек заметит; от&nbsp;других лечебных упражнений разницы почти нет; у&nbsp;части людей боль в&nbsp;спине сначала усиливается. При&nbsp;тревоге и&nbsp;депрессии данные предварительные. Обычный преподаватель йоги без&nbsp;подготовки по&nbsp;работе с&nbsp;заболеваниями&nbsp;— не&nbsp;йогатерапевт.</p></div></section><section class="kb-sec" id="uchitsya" aria-labelledby="uchitsya-h"><h2 class="kb-h2" id="uchitsya-h">Подготовка и&nbsp;правила</h2><div class="prose"><p>Международный ориентир&nbsp;— сертификат C-IAYT Международной ассоциации йогатерапевтов (IAYT): программа не&nbsp;менее 800&nbsp;часов и&nbsp;не&nbsp;меньше 2&nbsp;лет<sup class="ref"><a href="#src-1" title="International Association of Yoga Therapists (IAYT) — сайт не открылся при проверке">1</a></sup>; обычно после базового курса преподавателя йоги (200&nbsp;часов) <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В&nbsp;России&nbsp;— частные курсы разной длительности <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>.</p></div><h3 class="kb-h3">Регулирование в&nbsp;России</h3><div class="prose"><p>Не&nbsp;регулируется; профстандарта «йогатерапевт» нет <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. В&nbsp;мире обычно: тоже не&nbsp;государственная профессия; ориентир качества&nbsp;— сертификат C-IAYT.</p></div></section><section class="kb-sec" id="gde" aria-labelledby="gde-h"><h2 class="kb-h2" id="gde-h">Где искать</h2><div class="prose"><p>Частные студии и&nbsp;центры йоги, оздоровительные центры, онлайн-школы <span class="q-mark" title="Не удалось проверить по первоисточнику">∗</span>. Проверять сертификат C-IAYT или медицинское/реабилитационное образование.</p><p><b>Онлайн?</b> частично · <b>Доступность.</b> платно</p></div></section><section class="kb-sec" id="styk" aria-labelledby="styk-h"><h2 class="kb-h2" id="styk-h">С&nbsp;кем стыкуется</h2><div class="prose"><p>Врач (нужен&nbsp;ли допуск к&nbsp;нагрузке), <a href="physiotherapist.html">физический терапевт</a>, психолог; <a href="exercise-coach.html">инструктор ЛФК</a> и&nbsp;преподаватель майндфулнес.</p></div></section><section class="kb-sec" id="perehod" aria-labelledby="perehod-h"><h2 class="kb-h2" id="perehod-h">В&nbsp;переходе</h2><div class="prose"><p>Подходит как мягкая опора для&nbsp;тела и&nbsp;сна в&nbsp;долгом переходе; при&nbsp;острой боли, травме или тяжёлом заболевании&nbsp;— сначала врач.</p></div></section><section class="kb-sec" id="istochniki" aria-labelledby="istochniki-h"><h2 class="kb-h2" id="istochniki-h">Источники · 3</h2><ol class="kb-src aw-srcn"><li id="src-1" data-n="1"><span><a href="https://www.iayt.org/" target="_blank" rel="noopener">International Association of Yoga Therapists (IAYT)&nbsp;— сайт не&nbsp;открылся при&nbsp;проверке ↗</a></span></li><li id="src-2" data-n="2"><span><a href="https://en.wikipedia.org/wiki/Yoga_as_therapy" target="_blank" rel="noopener">Yoga as therapy&nbsp;— Wikipedia (EN), отправная точка ↗</a></span></li><li id="src-3" data-n="3"><span><a href="https://pubmed.ncbi.nlm.nih.gov/36398843/" target="_blank" rel="noopener">Wieland L. S. et al. Yoga for chronic non-specific low back pain. Cochrane Database Syst Rev, 2022&nbsp;— PubMed ↗</a></span></li></ol></section><section class="kb-sec" id="ryadom" aria-labelledby="ryadom-h"><h2 class="kb-h2" id="ryadom-h">Рядом</h2><dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-who.html"><span class="t">К&nbsp;кому идти дальше</span><span class="m">практика · 15&nbsp;мин</span></a></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/sily-konchilis.html"><span class="t">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</span><span class="m">ситуация</span></a><a href="../encyclopedia/ne-znayu-k-komu-idti.html"><span class="t">Не&nbsp;знаю, к&nbsp;какому специалисту идти</span><span class="m">ситуация</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#media-cuprum"><span class="t">Купрум</span><span class="m">медиа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="../resources.html#book-van-der-kolk"><span class="t">Тело помнит всё. Какую роль психологическая травма играет в&nbsp;жизни человека</span><span class="m">книга · Бессел ван дер Колк · <span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></span></a></dd></div><div><dt>В&nbsp;атласе</dt><dd><a href="physiotherapist.html"><span class="t">Физический терапевт (физиотерапевт)</span><span class="m">стыкуется</span></a><a href="general-practitioner.html"><span class="t">Терапевт / врач общей практики</span><span class="m">стыкуется</span></a><a href="exercise-coach.html"><span class="t">Инструктор ЛФК / тренер по&nbsp;физической активности</span><span class="m">стыкуется</span></a><a href="somatic-educator.html"><span class="t">Педагог соматических методов: Фельденкрайз и&nbsp;техника Александера</span><span class="m">упоминает</span></a><a href="dance-movement-therapist.html"><span class="t">Танцевально-двигательный терапевт</span><span class="m">упоминает</span></a><a href="breathwork-practitioner.html"><span class="t">Практик дыхательных техник</span><span class="m">упоминает</span></a></dd></div></dl><div class="kb-do"><a class="btn quiet glass sm" href="compare.html?ids=yoga-therapist,physiotherapist,general-practitioner">Сравнить с&nbsp;похожими</a><a class="kb-do-alt" href="../atlas-map.html#yoga-therapist" target="_blank" rel="noopener">Показать на&nbsp;карте ↗</a></div></section>
+      <nav class="kb-next" aria-label="Соседи по семье"><a href="breathwork-practitioner.html" rel="prev">← Предыдущий в&nbsp;семье<b>Дыхательные практики</b></a><a class="r" href="massage-therapist.html" rel="next">Следующий в&nbsp;семье →<b>Массажист</b></a></nav>
+      <p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;удалось проверить по&nbsp;первоисточнику</p>
+      <p class="kb-fix">Если нашлась ошибка&nbsp;—<a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>.</p>
     </article>
-    <nav class="kb-toc" aria-label="На странице"><span class="label">На странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С чем к нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не делает</a></li><li><a href="#uchitsya">Подготовка и правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С кем стыкуется</a></li><li><a href="#perehod">В переходе</a></li><li><a href="#istochniki">Источники · 3</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="На странице"><span class="label">На&nbsp;странице</span><ul><li><a href="#pomogaet">Чем помогает</a></li><li><a href="#voprosy">С&nbsp;чем к&nbsp;нему приходят</a></li><li><a href="#kak">Как проходит работа</a></li><li><a href="#granitsy">Чего не&nbsp;делает</a></li><li><a href="#uchitsya">Подготовка и&nbsp;правила</a></li><li><a href="#gde">Где искать</a></li><li><a href="#styk">С&nbsp;кем стыкуется</a></li><li><a href="#perehod">В&nbsp;переходе</a></li><li><a href="#istochniki">Источники · 3</a></li><li><a href="#ryadom">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -106,25 +135,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -134,12 +163,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -148,7 +177,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

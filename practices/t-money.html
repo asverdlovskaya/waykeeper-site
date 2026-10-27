@@ -7,9 +7,9 @@
 <meta name="description" content="Сколько стоит жизнь, которой хочется: минимум, комфорт и мечта.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices/t-money.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Приз в деньгах · Практики · Waykeeper">
+<meta property="og:title" content="Приз в деньгах">
 <meta property="og:description" content="Сколько стоит жизнь, которой хочется: минимум, комфорт и мечта.">
 <meta property="og:url" content="https://waykeeper.org/practices/t-money.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -43,42 +50,64 @@
 <script src="../assets/pages/practices.js" defer></script>
 <script src="../modules/trail.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -87,17 +116,17 @@
     <div class="frame">
       <div class="pr-top-grid">
         <div class="pr-top-text">
-          <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Приз в деньгах</li></ol>
-          <p class="kb-type">Практика<span class="sep">·</span>20 минут<span class="sep">·</span>без меня<span class="sep">·</span>основная</p>
-          <h1 id="pr-title" class="kb-h1 pr-title">Приз в деньгах</h1>
-          <div class="kb-two"><span class="label">В двух словах</span><p>Сколько стоит жизнь, которой хочется: минимум, комфорт и мечта. Заодно видно, на сколько месяцев хватит подушки, а если её нет — считаем от нуля.</p></div>
-          <div class="kb-stamp kb-stamp--none pr-stamp"><p class="pr-stamp-none"><span class="pr-stamp-k">На чём стоит</span><span>Исходного метода нет: упражнение придумано мной.</span></p></div>
+          <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Приз в&nbsp;деньгах</li></ol>
+          <p class="kb-type">Практика<span class="sep">·</span>20&nbsp;минут<span class="sep">·</span>без&nbsp;меня<span class="sep">·</span>основная</p>
+          <h1 id="pr-title" class="kb-h1 pr-title">Приз в&nbsp;деньгах</h1>
+          <div class="kb-two"><p>Сколько стоит жизнь, которой хочется: минимум, комфорт и&nbsp;мечта. Заодно видно, на&nbsp;сколько месяцев хватит подушки, а&nbsp;если её нет&nbsp;— считаем от&nbsp;нуля.</p></div>
+          <div class="kb-stamp kb-stamp--none pr-stamp"><p class="pr-stamp-none"><span class="pr-stamp-k">На&nbsp;чём стоит</span><span>Исходного метода нет: упражнение придумано мной.</span></p></div>
           <div class="kb-do"><a class="btn primary" href="#steps">Начать</a></div>
         </div>
         <div class="pr-top-art">
           <figure class="plate-alive plate-alive--quiet is-right pr-plate" data-processed data-clear style="--pa-r:1.333; --pa-h:min(52vh, 460px)">
           <div class="pa-img"><img src="../assets/img/pd/practices/priz-v-dengah-1200.jpg" alt="Корабль сокровищ с тремя крысами (суримоно на год Крысы). Кубо Сюнман" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <figcaption class="pa-cap">Кубо Сюнман · «Корабль сокровищ с тремя крысами (суримоно на год Крысы)», 1816<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
+          <figcaption class="pa-cap">Кубо Сюнман · «Корабль сокровищ с&nbsp;тремя крысами (суримоно на&nbsp;год Крысы)», 1816<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
         </figure>
         </div>
       </div>
@@ -106,10 +135,10 @@
 
   <section class="pr-sec pr-sec--facts" aria-label="О практике">
     <div class="frame"><dl class="kb-facts kb-facts--one pr-facts">
-      <div><dt>На руках</dt><dd>Три цифры — минимум, комфорт, мечта — и сколько месяцев свободы у тебя уже есть.</dd></div>
-      <div><dt>Откуда</dt><dd>видно, на сколько хватит подушки; нет её — считаем от нуля.</dd></div>
+      <div><dt>На&nbsp;руках</dt><dd>Три цифры&nbsp;— минимум, комфорт, мечта&nbsp;— и&nbsp;сколько месяцев свободы у&nbsp;тебя уже есть.</dd></div>
+      <div><dt>Откуда</dt><dd>видно, на&nbsp;сколько хватит подушки; нет её&nbsp;— считаем от&nbsp;нуля.</dd></div>
       <div><dt>Это упражнение</dt><dd>моё.</dd></div>
-      <div><dt>В «Переходе»</dt><dd>это <a class="link" href="../program.html#week-7">неделя 7</a>: одна дорога и деньги — минимум, комфорт, мечта.</dd></div>
+      <div><dt>В&nbsp;«Переходе»</dt><dd>это <a class="link" href="../program.html#week-7">неделя 7</a>: одна дорога и&nbsp;деньги&nbsp;— минимум, комфорт, мечта.</dd></div>
     </dl></div>
   </section>
 
@@ -118,7 +147,7 @@
       <aside class="pr-careful">
         <h2 class="pr-h" id="pr-careful">Осторожно</h2>
         <ul class="list">
-            <li>Это не финансовый совет: калькулятор складывает то, что ты в него вписываешь, и решений за тебя не принимает.</li>
+            <li>Это не&nbsp;финансовый совет: калькулятор складывает то, что ты в&nbsp;него вписываешь, и&nbsp;решений за&nbsp;тебя не&nbsp;принимает.</li>
         </ul>
       </aside>
     </div>
@@ -129,13 +158,13 @@
       <div class="pr-kit pr-kit--tool" data-module="practice-kit" data-id="t-money" data-title="Приз в деньгах" data-minutes="20" data-store="waykeeper.practice.t-money">
         <div class="pr-kit-side">
           <ol class="pr-steps" data-kit-steps>
-              <li data-kit-step="0">Впиши траты жизни, которой хочется, по категориям: жильё, еда, транспорт, здоровье, радости, путешествия. То, что платишь раз в год, можно вписать годовой суммой — калькулятор поделит её на двенадцать.</li>
-              <li data-kit-step="1">Траты разложены по трём уровням: минимум — без этого никак, комфорт — жизнь, которой хочется, мечта — если всё сложится.</li>
-              <li data-kit-step="2">Впиши свой налог, если он есть, и сколько отложено сейчас.</li>
-              <li data-kit-step="3">Посмотри на три цифры и на месяцы свободы: на сколько месяцев хватит отложенного, если жить на минимуме или на комфорте.</li>
-              <li data-kit-step="4">Сверь цифры с дорогой, которую выбираешь: какой уровень она выдерживает и когда.</li>
+              <li data-kit-step="0">Впиши траты жизни, которой хочется, по&nbsp;категориям: жильё, еда, транспорт, здоровье, радости, путешествия. То, что платишь раз в&nbsp;год, можно вписать годовой суммой&nbsp;— калькулятор поделит её на&nbsp;двенадцать.</li>
+              <li data-kit-step="1">Траты разложены по&nbsp;трём уровням: минимум&nbsp;— без&nbsp;этого никак, комфорт&nbsp;— жизнь, которой хочется, мечта&nbsp;— если всё сложится.</li>
+              <li data-kit-step="2">Впиши свой налог, если он есть, и&nbsp;сколько отложено сейчас.</li>
+              <li data-kit-step="3">Посмотри на&nbsp;три цифры и&nbsp;на&nbsp;месяцы свободы: на&nbsp;сколько месяцев хватит отложенного, если жить на&nbsp;минимуме или на&nbsp;комфорте.</li>
+              <li data-kit-step="4">Сверь цифры с&nbsp;дорогой, которую выбираешь: какой уровень она выдерживает и&nbsp;когда.</li>
           </ol>
-          <p class="pr-stuck"><span class="pr-stuck-k">Если не получается начать.</span> Впиши только жильё, остальное допишешь потом.</p>
+          <p class="pr-stuck"><span class="pr-stuck-k">Если не&nbsp;получается начать.</span> Впиши только жильё, остальное допишешь потом.</p>
         </div>
         <div class="pr-kit-main">
             <div class="pr-tool" data-kit-tool>
@@ -143,14 +172,14 @@
             </div>
             <div class="pr-fields" data-kit-fields>
               <div class="pr-field">
-                <label for="f-t-money-0">Что видно из моих цифр</label>
+                <label for="f-t-money-0">Что видно из&nbsp;моих цифр</label>
                 <textarea id="f-t-money-0" data-kit-field="0" rows="3" placeholder="Что удивило, что поменяю"></textarea>
-                <p class="pr-ex">Комфорт обходится дешевле, чем казалось. Больше всего уходит на жильё.</p>
+                <p class="pr-ex">Комфорт обходится дешевле, чем казалось. Больше всего уходит на&nbsp;жильё.</p>
               </div>
               <div class="pr-field">
                 <label for="f-t-money-1">Какую дорогу эти цифры выдерживают</label>
                 <textarea id="f-t-money-1" data-kit-field="1" rows="3" placeholder="Сверь с дорогой, которую выбираешь"></textarea>
-                <p class="pr-ex">Дорога с новой профессией выдерживает комфорт через год. Мечту — только если появятся постоянные заказы.</p>
+                <p class="pr-ex">Дорога с&nbsp;новой профессией выдерживает комфорт через год. Мечту&nbsp;— только если появятся постоянные заказы.</p>
               </div>
             </div>
           <div class="pr-kit-bar" data-kit-bar></div>
@@ -161,9 +190,9 @@
 
   <section class="pr-sec pr-pros" data-atmo="haze" aria-labelledby="pr-pros-h">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-pros-h">Для специалистов</h2>
+      <h2 class="kb-h2" id="pr-pros-h">Для&nbsp;специалистов</h2>
       <div class="actions pr-pros-acts"><button type="button" class="btn quiet" data-print-page>Распечатать</button> <button type="button" class="btn quiet" data-copy-steps>Скопировать шаги</button><span class="pr-copied" role="status" aria-live="polite" data-copy-note></span></div>
-      <p class="small pr-pros-note">Тексты базы можно брать в работу со ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
+      <p class="small pr-pros-note">Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
     </div></div>
   </section>
 
@@ -171,19 +200,19 @@
     <div class="frame"><div class="kb-near-wrap">
       <h2 class="kb-h2" id="pr-near">Рядом</h2>
         <dl class="kb-near">
-          <div><dt>Сделать</dt><dd><a href="../practices/t-proto.html"><span class="t">Разговор-прототип</span><span class="m">практика · неделя</span></a><a href="../practices/t-premortem.html"><span class="t">Премортем дороги</span><span class="m">практика · 20 мин</span></a><a href="../practices/t-horizons.html"><span class="t">Маршрут от 5 лет до сегодня</span><span class="m">практика · 40 мин</span></a><details class="pr-more"><summary>ещё 2 →</summary><a href="../practices/t-lives.html"><span class="t">Семь жизней</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-forty.html"><span class="t">40 хочу</span><span class="m">практика · 10</span></a></details></dd></div>
+          <div><dt>Сделать</dt><dd><a href="../practices/t-proto.html"><span class="t">Разговор-прототип</span><span class="m">практика · неделя</span></a><a href="../practices/t-premortem.html"><span class="t">Премортем дороги</span><span class="m">практика · 20&nbsp;мин</span></a><a href="../practices/t-horizons.html"><span class="t">Маршрут от&nbsp;5&nbsp;лет до&nbsp;сегодня</span><span class="m">практика · 40&nbsp;мин</span></a><details class="pr-more"><summary>ещё 2 →</summary><a href="../practices/t-lives.html"><span class="t">Семь жизней</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-forty.html"><span class="t">40&nbsp;хочу</span><span class="m">практика · 10</span></a></details></dd></div>
           <div><dt>Понять</dt><dd><a href="../encyclopedia/plany-odissei.html"><span class="t">Планы Одиссеи</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="../encyclopedia/prototipiruyushchie-razgovory.html"><span class="t">Прототипирующие разговоры</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a></dd></div>
-          <div><dt>В ситуациях</dt><dd><a href="../encyclopedia/ne-mogu-vybrat.html"><span class="t">Несколько дорог, и не получается выбрать</span></a></dd></div>
+          <div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/ne-mogu-vybrat.html"><span class="t">Несколько дорог, и&nbsp;не&nbsp;получается выбрать</span></a></dd></div>
         </dl>
       <nav class="kb-next" aria-label="Соседние практики"><a href="t-cards.html">← предыдущая<b>Карточки событий</b></a><a class="r" href="t-premortem.html">следующая →<b>Премортем дороги</b></a></nav>
-      <p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+      <p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-end" data-atmo="dawn" data-atmo-rule aria-label="Дальше">
     <div class="frame cols">
       <div class="s-7">
-        <p class="lede pr-bridge">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
+        <p class="lede pr-bridge">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
         <div class="actions"><a class="btn primary" href="../practices.html#catalog">Все практики →</a></div>
       </div>
     </div>
@@ -196,25 +225,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -224,12 +253,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -238,7 +267,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

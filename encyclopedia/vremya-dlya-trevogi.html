@@ -7,9 +7,9 @@
 <meta name="description" content="Назначить тревоге отдельное время, а не носить её весь день. Простой приём с небольшим эффектом: помогает немного сократить время, которое уходит на повседневное беспокойство; в аптечке метода …">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/vremya-dlya-trevogi.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Время для тревоги · подход · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Время для тревоги">
 <meta property="og:description" content="Назначить тревоге отдельное время, а не носить её весь день. Простой приём с небольшим эффектом: помогает немного сократить время, которое уходит на повседневное беспокойство; в аптечке метода …">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/vremya-dlya-trevogi.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,44 +107,44 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 5 «Снаряжение»"><ul><li><a href="patterny-i-drugaya-dorozhka.html">Паттерны и другая дорожка</a></li><li><a href="ritualy.html">Ритуалы</a></li><li><a href="malenkie-privychki.html">Маленькие привычки</a></li><li><a class="is-here" aria-current="page" href="vremya-dlya-trevogi.html">Время для тревоги</a></li><li><a href="okno-tolerantnosti.html">Окно толерантности</a></li><li><a href="samosostradanie.html">Самосострадание</a></li><li><a href="plan-samopomoshchi-wrap.html">План самопомощи</a></li><li><a href="ii-sobesednik.html">ИИ-собеседник</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38 подходов →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 5 «Снаряжение»"><ul><li><a href="patterny-i-drugaya-dorozhka.html">Паттерны и&nbsp;другая дорожка</a></li><li><a href="ritualy.html">Ритуалы</a></li><li><a href="malenkie-privychki.html">Маленькие привычки</a></li><li><a class="is-here" aria-current="page" href="vremya-dlya-trevogi.html">Время для&nbsp;тревоги</a></li><li><a href="okno-tolerantnosti.html">Окно толерантности</a></li><li><a href="samosostradanie.html">Самосострадание</a></li><li><a href="plan-samopomoshchi-wrap.html">План самопомощи</a></li><li><a href="ii-sobesednik.html">ИИ-собеседник</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38&nbsp;подходов →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Шаг 5. Снаряжение</li></ol>
-<h1 class="kb-h1" id="h1">Время для тревоги</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Назначить тревоге отдельное время, а не носить её весь день. Простой приём с небольшим эффектом: помогает немного сократить время, которое уходит на повседневное беспокойство; в аптечке метода — «Контейнер для тревоги».</p></div>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Время для&nbsp;тревоги</li></ol>
+<h1 class="kb-h1" id="h1">Время для&nbsp;тревоги</h1>
+<div class="kb-two"><p>Назначить тревоге отдельное время, а не&nbsp;носить её весь день. Простой приём с небольшим эффектом: помогает немного сократить время, которое уходит на повседневное беспокойство; в аптечке метода&nbsp;— «Контейнер для тревоги».</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
-<div class="kb-do"><a class="btn primary" href="../practices/t-worry.html">Сделать: Контейнер для тревоги</a></div>
-<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Томас Борковец и коллеги, контроль стимула для беспокойства, 1983.</dd></div><div><dt>Ещё называют</dt><dd>контроль стимула для беспокойства</dd></div><div><dt>В «Переходе»</dt><dd><a href="../project.html#steps">шаг 5 «Снаряжение»</a>, <a href="../program.html#week-9">неделя 9</a></dd></div></dl>
+<div class="kb-do"><a class="btn primary" href="../practices/t-worry.html">Сделать: Контейнер для&nbsp;тревоги</a></div>
+<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Томас Борковец и коллеги, контроль стимула для беспокойства, 1983.</dd></div><div><dt>Ещё называют</dt><dd>контроль стимула для&nbsp;беспокойства</dd></div><div><dt>В&nbsp;«Переходе»</dt><dd><a href="../project.html#steps">шаг 5 «Снаряжение»</a>, <a href="../program.html#week-9">неделя 9</a></dd></div></dl>
 <section class="kb-sec" id="what"><h2 class="kb-h2">Что это</h2>
-<p><strong>Коротко.</strong> Назначить тревоге отдельное время, а не носить её весь день.</p>
+<p><strong>Коротко.</strong> Назначить тревоге отдельное время, а не&nbsp;носить её весь день.</p>
 <p>Беспокойство откладывается на назначенный получасовой слот. Когда тревожная мысль приходит, её записывают и возвращаются к ней в своё время.</p></section>
 <section class="kb-sec" id="when"><h2 class="kb-h2">Когда помогает</h2>
 <p>Мысли крутятся по кругу. Тревога съедает день.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда не подходит</h2>
-<p>При генерализованной тревоге данных мало; приём может быть частью лечения у специалиста, но не заменяет его. Ждать, что он наладит сон, не стоит.</p></section>
+<p>При генерализованной тревоге данных мало; приём может быть частью лечения у специалиста, но не&nbsp;заменяет его. Ждать, что он наладит сон, не стоит.</p></section>
 <section class="kb-sec" id="mine"><h2 class="kb-h2">Как это у меня</h2>
-<p>«Контейнер для тревоги» — одна из главных реактивных практик в моей аптечке.</p></section>
+<p>«Контейнер для тревоги»&nbsp;— одна из главных реактивных практик в моей аптечке.</p></section>
 <section class="kb-sec" id="try"><h2 class="kb-h2">Попробовать</h2>
-<p>Мантра: «Я подумаю об этом в определённое время». Запишите и назначьте слот.</p>
+<p>Мантра: «Я подумаю об этом в определённое время». Запиши и назначь слот.</p>
 <p>Практики:</p>
 <ul><li><a href="../practices/t-worry.html">Контейнер для тревоги</a></li></ul></section>
 <section class="kb-sec" id="pro"><h2 class="kb-h2">Для помогающих специалистов</h2>
-<p>Простой приём с небольшим эффектом: по метаанализу 7 испытаний помогает сократить время, которое уходит на повседневное беспокойство. Как долго держится, не изучено. Подходит для домашней работы, хорошо сочетается с письмом.</p></section>
+<p>Простой приём с небольшим эффектом: по метаанализу 7&nbsp;испытаний помогает сократить время, которое уходит на повседневное беспокойство. Как долго держится, не изучено. Подходит для домашней работы, хорошо сочетается с письмом.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Умеренная ●●○</strong> — меньше времени уходит на повседневное беспокойство (эффект малый).</li><li><strong>Ранняя ●○○</strong> — генерализованное тревожное расстройство (с терапевтом).</li><li><strong>Спорная ○○○</strong> — сон: в одном испытании бессонница уменьшилась, в другом сон не улучшился.</li><li><strong>Умеренная ●●○</strong> — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>: большая часть данных как раз на людях без диагноза; эффект малый, долгих наблюдений нет.</li></ul>
-<p><strong>Что проверено и на ком.</strong> Откладывать беспокойство на заранее выбранные полчаса в день и в определённом месте. Метаанализ 7 испытаний (999 человек, в основном женщины, из них 250 с сильной тревогой) — сравнение с простым записыванием тревог; срок от недели до месяца. Отдельные испытания: 53 сильно тревожащихся без диагноза (2 недели); 186 онлайн-участников (14 дней); 47 человек с генерализованной тревогой и 35 с ипохондрией в поликлинике (два сеанса с психологом).</p>
+<ul><li><strong>Умеренная ●●○</strong>&nbsp;— меньше времени уходит на повседневное беспокойство (эффект малый).</li><li><strong>Ранняя ●○○</strong>&nbsp;— генерализованное тревожное расстройство (с терапевтом).</li><li><strong>Спорная ○○○</strong>&nbsp;— сон: в одном испытании бессонница уменьшилась, в другом сон не улучшился.</li><li><strong>Умеренная ●●○</strong>&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a>: большая часть данных как раз на людях без диагноза; эффект малый, долгих наблюдений нет.</li></ul>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Откладывать беспокойство на заранее выбранные полчаса в день и в&nbsp;определённом месте. Метаанализ 7&nbsp;испытаний (999&nbsp;человек, в основном женщины, из них 250&nbsp;с сильной тревогой)&nbsp;— сравнение с простым записыванием тревог; срок от недели до месяца. Отдельные испытания: 53&nbsp;сильно тревожащихся без диагноза (2&nbsp;недели); 186&nbsp;онлайн-участников (14&nbsp;дней); 47&nbsp;человек с генерализованной тревогой и 35&nbsp;с ипохондрией в поликлинике (два сеанса с психологом).</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://doi.org/10.1007/s41811-023-00193-x" target="_blank" rel="noopener">Dippel, Brosschot &amp; Verkuil 2023<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 7 испытаний, 999 человек: длительность тревог меньше (эффект 0,31), частота меньше (0,19) по сравнению с простым записыванием; долгих наблюдений нет — читано: аннотация — 🆕</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/39119056/" target="_blank" rel="noopener">Krzikalla 2024<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› — при генерализованной тревоге беспокойство снизилось сильнее, чем в листе ожидания (в группах около 24 человек); при ипохондрии разницы нет; формат с терапевтом — читано: полный текст — 🆕</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/22977265/" target="_blank" rel="noopener">McGowan &amp; Behar 2013<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› — 53 сильно тревожащихся: меньше беспокойства, тревоги, бессонницы; на депрессию — нет; сами авторы называют это предварительной поддержкой — читано: аннотация — ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/41347618/" target="_blank" rel="noopener">McCarrick 2025<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› — 186 онлайн-участников: сон не улучшился ни в одной группе — читано: аннотация — 🆕</li></ul>
-<p><strong>Чего не знаем.</strong> Держится ли эффект дольше месяца. Помогает ли самостоятельное «время для тревоги» людям с диагнозом.</p>
-<p><strong>Осторожно.</strong> Это помогает немного сократить «прокручивание», но не лечит тревожное расстройство: при генерализованной тревоге данных мало, при ипохондрии пользы не нашли. Ждать, что упражнение наладит сон, не стоит.</p></section>
+<ul><li><a href="https://doi.org/10.1007/s41811-023-00193-x" target="_blank" rel="noopener">Dippel, Brosschot &amp; Verkuil 2023<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 7&nbsp;испытаний, 999&nbsp;человек: длительность тревог меньше (эффект 0,31), частота меньше (0,19) по сравнению с простым записыванием; долгих наблюдений нет&nbsp;— читано: аннотация&nbsp;— 🆕</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/39119056/" target="_blank" rel="noopener">Krzikalla 2024<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р›&nbsp;— при генерализованной тревоге беспокойство снизилось сильнее, чем в листе ожидания (в группах около 24&nbsp;человек); при ипохондрии разницы нет; формат с терапевтом&nbsp;— читано: полный текст&nbsp;— 🆕</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/22977265/" target="_blank" rel="noopener">McGowan &amp; Behar 2013<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р›&nbsp;— 53&nbsp;сильно тревожащихся: меньше беспокойства, тревоги, бессонницы; на депрессию&nbsp;— нет; сами авторы называют это предварительной поддержкой&nbsp;— читано: аннотация&nbsp;— ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/41347618/" target="_blank" rel="noopener">McCarrick 2025<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р›&nbsp;— 186&nbsp;онлайн-участников: сон не улучшился ни в&nbsp;одной группе&nbsp;— читано: аннотация&nbsp;— 🆕</li></ul>
+<p><strong>Чего не знаем.</strong> Держится&nbsp;ли эффект дольше месяца. Помогает&nbsp;ли самостоятельное «время для тревоги» людям с диагнозом.</p>
+<p><strong>Осторожно.</strong> Это помогает немного сократить «прокручивание», но не&nbsp;лечит тревожное расстройство: при генерализованной тревоге данных мало, при ипохондрии пользы не нашли. Ждать, что упражнение наладит сон, не стоит.</p></section>
 <section class="kb-sec" id="lit"><h2 class="kb-h2">Литература</h2>
-<ul class="kb-books"><li><span class="a">Томас Борковец и коллеги</span> <span class="soft">Время для тревоги</span>, 1983</li><li><a href="https://en.wikipedia.org/wiki/Worry" target="_blank" rel="noopener"><em>Worry, Wikipedia</em><span class="visually-hidden"> (откроется в новой вкладке)</span></a><span class="w">Время для тревоги</span></li></ul></section>
+<ul class="kb-books"><li><span class="a">Томас Борковец и&nbsp;коллеги</span> <span class="soft">Время для&nbsp;тревоги</span>, 1983</li><li><a href="https://en.wikipedia.org/wiki/Worry" target="_blank" rel="noopener"><em>Worry, Wikipedia</em><span class="visually-hidden"> (откроется в&nbsp;новой вкладке)</span></a><span class="w">Время для&nbsp;тревоги</span></li></ul></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-worry.html"><span class="t">Контейнер для тревоги</span><span class="m">практика · 2 мин</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-harris-trap"><span class="t">Ловушка счастья. Как перестать переживать и начать жить</span><span class="m">книга · Расс Хэррис</span></a><a href="../resources.html#book-hayes-mind"><span class="t">Освобождённый разум</span><span class="m">книга · Стивен Хейс</span></a><a href="../resources.html#book-david-agility"><span class="t">Эмоциональная гибкость</span><span class="m">книга · Сьюзан Дэвид</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-neff"><span class="t">Сочувствие к себе (ранее «Самосострадание. О силе сочувствия и доброты к себе»)</span><span class="m">книга · Кристин Нефф</span></a><a href="../resources.html#book-nagoski-burnout"><span class="t">Выгорание. Новый подход к избавлению от стресса</span><span class="m">книга · Эмили Нагоски, Амелия Нагоски</span></a><a href="../resources.html#book-chodron"><span class="t">Когда всё рушится. Сердечный совет в трудные времена</span><span class="m">книга · Пема Чодрон</span></a></details></dd></div><div><dt>В ситуациях</dt><dd><a href="trevoga.html"><span class="t">Тревога не отпускает</span></a></dd></div></dl></section>
+<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-worry.html"><span class="t">Контейнер для&nbsp;тревоги</span><span class="m">практика · 2&nbsp;мин</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-harris-trap"><span class="t">Ловушка счастья. Как перестать переживать и&nbsp;начать жить</span><span class="m">книга · Расс Хэррис</span></a><a href="../resources.html#book-hayes-mind"><span class="t">Освобождённый разум</span><span class="m">книга · Стивен Хейс</span></a><a href="../resources.html#book-david-agility"><span class="t">Эмоциональная гибкость</span><span class="m">книга · Сьюзан Дэвид</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-neff"><span class="t">Сочувствие к&nbsp;себе (ранее «Самосострадание. О&nbsp;силе сочувствия и&nbsp;доброты к&nbsp;себе»)</span><span class="m">книга · Кристин Нефф</span></a><a href="../resources.html#book-nagoski-burnout"><span class="t">Выгорание. Новый подход к&nbsp;избавлению от&nbsp;стресса</span><span class="m">книга · Эмили Нагоски, Амелия Нагоски</span></a><a href="../resources.html#book-chodron"><span class="t">Когда всё рушится. Сердечный совет в&nbsp;трудные времена</span><span class="m">книга · Пема Чодрон</span></a></details></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="trevoga.html"><span class="t">Тревога не&nbsp;отпускает</span></a></dd></div></dl></section>
 <nav class="kb-next" aria-label="Соседние статьи"><a href="malenkie-privychki.html" rel="prev">← 5. Снаряжение<b>Маленькие привычки</b></a><a class="r" href="okno-tolerantnosti.html" rel="next">5. Снаряжение →<b>Окно толерантности</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не подходит</a></li><li><a href="#mine">Как это у меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не&nbsp;подходит</a></li><li><a href="#mine">Как это у&nbsp;меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для&nbsp;помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -126,25 +155,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -154,12 +183,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -168,7 +197,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

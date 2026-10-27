@@ -1,6 +1,6 @@
 /* =====================================================================
    Waykeeper · словарь (glossary.html): поиск по словарю на месте, без перезагрузки.
-   Пакет 2, 26.10.2026. Фильтр прячет термины и буквы без совпадений, строка результата показывает «N из M».
+   Пакет 2, 26.10.2026. Фильтр прячет термины и буквы без совпадений, строка результата во время поиска — «Найдено: N» (с 27.10; без поиска пусто).
    ===================================================================== */
 (function(){
   'use strict';
@@ -20,7 +20,7 @@
     }
     for(i = 0; i < groups.length; i++){ groups[i].hidden = !groups[i].querySelector('.gl-term:not([hidden])'); }
     result.innerHTML = '';
-    var b = D.createElement('b'); b.textContent = q ? shown + ' из ' + total + ' ' + plural(total) : total + ' ' + plural(total);
+    var b = D.createElement('b'); b.textContent = q ? 'Найдено: ' + shown : '';  /* число — только во время поиска (решение Саши 27.10) */
     result.appendChild(b);
     if(q){
       var reset = D.createElement('a'); reset.href = '#'; reset.textContent = 'Сбросить';

@@ -40,7 +40,7 @@ if (reqBox) {
     out.innerHTML = hits.length
       ? `<ul>${hits.slice(0, 8).map(h => `<li><a href="${page(h.p.id)}"><b>${esc(h.p.s)}</b><em>${esc(h.p.fn)}</em><small>${esc(h.m[0])}</small></a></li>`).join('')}</ul>
          <p>${plural(n, 'запрос', 'запроса', 'запросов')} у ${plural(hits.length, 'специалиста', 'специалистов', 'специалистов')}${hits.length > 8 ? ' · показаны первые 8' : ''}</p>`
-      : '<p>Ничего не нашлось. Попробуйте другое слово.</p>';
+      : '<p>Ничего не нашлось. Проверь, нет ли опечатки, или попробуй другое слово.</p>';
   });
   inp.addEventListener('input', draw);
   $$('[data-req-try]', reqBox).forEach(b => b.addEventListener('click', () => { inp.value = b.dataset.reqTry; draw(); inp.focus(); }));
@@ -59,7 +59,7 @@ if (reqPage) {
       d.hidden = !k; $('[data-n]', d).textContent = k; n += k;
       if (ws.length) d.open = k > 0 && k <= 40 || d.open;
     });
-    cnt.textContent = ws.length ? plural(n, 'запрос', 'запроса', 'запросов') + ' подходит' : plural(total, 'запрос', 'запроса', 'запросов') + ' · нажмите на семью, чтобы раскрыть';
+    cnt.textContent = ws.length ? plural(n, 'запрос', 'запроса', 'запросов') + ' подходит' : '';
     empty.hidden = !!n;
   };
   inp.addEventListener('input', run);
@@ -119,13 +119,13 @@ if (cmpBox) {
       const table = ps.length >= 2
         ? `<div class="aw-cmp"><table><thead><tr><th scope="col"><span class="visually-hidden">Поле</span></th>${ps.map(p => `<th scope="col"><a href="${p.id}.html">${esc(p.short)}</a>${p.name !== p.short ? `<small>${esc(p.name)}</small>` : ''}<button type="button" class="aw-x" data-un="${p.id}">убрать</button></th>`).join('')}</tr></thead><tbody>
           ${ROWS.map(r => { const v = ps.map(r[1]); const diff = !r[2] && new Set(v).size > 1; return `<tr class="${diff ? 'diff' : ''}"><th scope="row">${esc(r[0])}</th>${v.map(x => `<td>${x}</td>`).join('')}</tr>`; }).join('')}</tbody></table></div>`
-        : `<p class="aw-meta" style="margin-top:var(--sp-4)">${ps.length ? 'Добавьте ещё одного специалиста: «' + esc(ps[0].short) + '» уже в сравнении. <button type="button" class="aw-x" data-un="' + ps[0].id + '">убрать</button>' : 'Выберите двух-четырёх специалистов в поле выше или нажмите «Сравнить с другим» на странице специалиста.'}</p>`;
+        : `<p class="aw-meta" style="margin-top:var(--sp-4)">${ps.length ? 'Добавь ещё одного специалиста: «' + esc(ps[0].short) + '» уже в сравнении. <button type="button" class="aw-x" data-un="' + ps[0].id + '">убрать</button>' : 'Выбери двух-четырёх специалистов в поле выше или нажми «Сравнить с похожими» на странице специалиста.'}</p>`;
       cmpBox.innerHTML = pick + table + `<div class="aw-cmp-pairs"><h2>Кого чаще всего путают</h2><p class="aw-chips">${PAIRS.filter(pp => pp.every(x => BY[x])).map(pp => `<a class="aw-chip" href="?ids=${pp.join(',')}">${pp.map(x => esc(BY[x].short)).join(' · ')}</a>`).join('')}</p></div>`;
       const inp = $('#cq', cmpBox);
       inp.addEventListener('change', () => { const p = ALL.find(x => x.short === inp.value || x.name === inp.value); if (p && !ids.includes(p.id)) { if (ids.length >= 4) ids.shift(); ids.push(p.id); save(); draw(); $('#cq', cmpBox).focus(); } });
     };
     cmpBox.addEventListener('click', e => { const b = e.target.closest('[data-un]'); if (b) { ids = ids.filter(x => x !== b.dataset.un); save(); draw(); } });
     draw();
-  }).catch(err => { cmpBox.innerHTML = '<p class="aw-meta">Не удалось загрузить данные атласа (' + esc(err.message) + '). Обновите страницу.</p>'; });
+  }).catch(err => { cmpBox.innerHTML = '<p class="aw-meta">Атлас не загрузился. Обнови страницу.</p>'; });
 }
 })();

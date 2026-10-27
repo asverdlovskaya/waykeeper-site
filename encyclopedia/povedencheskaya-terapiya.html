@@ -7,9 +7,9 @@
 <meta name="description" content="Поведенческая терапия исходит из простой мысли: многие страхи и привычки мы когда-то выучили — значит, их можно «разучить» и выучить новое. Работа короткая и конкретная, с домашними заданиями.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/povedencheskaya-terapiya.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Поведенческая терапия · школа терапии · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Поведенческая терапия">
 <meta property="og:description" content="Поведенческая терапия исходит из простой мысли: многие страхи и привычки мы когда-то выучили — значит, их можно «разучить» и выучить новое. Работа короткая и конкретная, с домашними заданиями.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/povedencheskaya-terapiya.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,41 +107,41 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Школы · ещё школы (черновики)"><ul><li><a href="gruppovaya-terapiya.html">Групповая терапия</a></li><li><a href="interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a></li><li><a href="metody-relaksatsii.html">Методы релаксации</a></li><li><a class="is-here" aria-current="page" href="povedencheskaya-terapiya.html">Поведенческая терапия</a></li><li><a href="sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Школы · ещё школы"><ul><li><a href="gruppovaya-terapiya.html">Групповая терапия</a></li><li><a href="interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a></li><li><a href="metody-relaksatsii.html">Методы релаксации</a></li><li><a class="is-here" aria-current="page" href="povedencheskaya-terapiya.html">Поведенческая терапия</a></li><li><a href="sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Ещё школы (черновики)</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Поведенческая терапия</li></ol>
 <h1 class="kb-h1" id="h1">Поведенческая терапия</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Поведенческая терапия исходит из простой мысли: многие страхи и привычки мы когда-то выучили — значит, их можно «разучить» и выучить новое. Работа короткая и конкретная, с домашними заданиями.</p></div>
+<div class="kb-two"><p>Поведенческая терапия исходит из простой мысли: многие страхи и привычки мы когда-то выучили&nbsp;— значит, их можно «разучить» и выучить новое. Работа короткая и конкретная, с домашними заданиями.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <div class="kb-do"><a class="btn primary" href="../atlas/clinical-psychologist.html">Кто так работает: Клинический психолог</a><span class="kb-do-alt">или <a href="../atlas.html">весь атлас</a></span></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Ещё называют</dt><dd>бихевиоральная терапия, behavior therapy</dd></div></dl>
 <section class="kb-sec" id="origin"><h2 class="kb-h2">Откуда</h2>
-<p>Подход вырос из теории научения — науки о том, как живые существа учатся на опыте. Её основы связаны с именами Павлова, Скиннера и Вольпе; как метод терапии подход сложился в 1950–60-е.</p></section>
+<p>Подход вырос из теории научения&nbsp;— науки о том, как живые существа учатся на опыте. Её основы связаны с именами Павлова, Скиннера и Вольпе; как метод терапии подход сложился в 1950–60-е.</p></section>
 <section class="kb-sec" id="idea"><h2 class="kb-h2">Главная идея</h2>
-<p>Мы учимся двумя основными способами. Первый — <strong><a class="kb-term" href="../glossary.html#term-klassicheskoe-obuslovlivanie" title="Два стимула связываются (Павлов: звонок → слюна).">классическое обусловливание</a></strong>: два события связываются между собой. Собака в опытах Павлова связала звонок с едой, а человек может так же связать лифт со страхом. Второй — <strong><a class="kb-term" href="../glossary.html#term-operantnoe-obuslovlivanie" title="Учимся на последствиях: что подкрепляется — повторяется.">оперантное обусловливание</a></strong>: поведение закрепляется тем, что следует за ним. Например, если избегать пугающего, тревога сразу спадает — поэтому избегание закрепляется, а страх остаётся.</p>
-<p>Когнитивно-поведенческая терапия (КПТ) — это поведенческая терапия плюс работа с мыслями.</p></section>
+<p>Мы учимся двумя основными способами. Первый&nbsp;— <strong><a class="kb-term" href="../glossary.html#term-klassicheskoe-obuslovlivanie" title="Два стимула связываются (Павлов: звонок → слюна).">классическое обусловливание</a></strong>: два события связываются между собой. Собака в опытах Павлова связала звонок с едой, а человек может так же связать лифт со страхом. Второй&nbsp;— <strong><a class="kb-term" href="../glossary.html#term-operantnoe-obuslovlivanie" title="Учимся на последствиях: что подкрепляется — повторяется.">оперантное обусловливание</a></strong>: поведение закрепляется тем, что следует за ним. Например, если избегать пугающего, тревога сразу спадает&nbsp;— поэтому избегание закрепляется, а страх остаётся.</p>
+<p>Когнитивно-поведенческая терапия (КПТ)&nbsp;— это поведенческая терапия плюс работа с мыслями.</p></section>
 <section class="kb-sec" id="how"><h2 class="kb-h2">Как проходит работа</h2>
-<p>Сначала терапевт вместе с человеком делает <strong>поведенческий анализ</strong>: что происходит до трудного момента, как человек реагирует и что следует после. Цели формулируют так, чтобы их можно было проверить: не «стать увереннее», а «самой позвонить в банк». Дальше — техники:</p>
-<ul><li><strong>экспозиция</strong> — постепенно и добровольно встречаться с тем, что пугает;</li><li><strong><a class="kb-term" href="../glossary.html#term-sistematicheskaya-desensibilizatsiya" title="Постепенная встреча со страшным в сочетании с релаксацией (тревога и расслабление несовместимы).">систематическая десенсибилизация</a></strong> — такая же постепенная встреча со страшным, но вместе с расслаблением: по теории Вольпе, тревога и расслабление несовместимы;</li><li><strong>поведенческая активация</strong> — при подавленности понемногу возвращать в жизнь приятные и значимые дела;</li><li>тренировка навыков, поощрение (подкрепление) нужного поведения, релаксация.</li></ul>
-<p>Всё делается добровольно и в темпе человека — это не дрессировка.</p></section>
+<p>Сначала терапевт вместе с человеком делает <strong>поведенческий анализ</strong>: что происходит до трудного момента, как человек реагирует и что следует после. Цели формулируют так, чтобы их можно было проверить: не «стать увереннее», а «самой позвонить в банк». Дальше&nbsp;— техники:</p>
+<ul><li><strong>экспозиция</strong>&nbsp;— постепенно и добровольно встречаться с тем, что пугает;</li><li><strong><a class="kb-term" href="../glossary.html#term-sistematicheskaya-desensibilizatsiya" title="Постепенная встреча со страшным в сочетании с релаксацией (тревога и расслабление несовместимы).">систематическая десенсибилизация</a></strong>&nbsp;— такая&nbsp;же постепенная встреча со страшным, но вместе с расслаблением: по теории Вольпе, тревога и расслабление несовместимы;</li><li><strong>поведенческая активация</strong>&nbsp;— при подавленности понемногу возвращать в жизнь приятные и значимые дела;</li><li>тренировка навыков, поощрение (подкрепление) нужного поведения, релаксация.</li></ul>
+<p>Всё делается добровольно и в&nbsp;темпе человека&nbsp;— это не&nbsp;дрессировка.</p></section>
 <section class="kb-sec" id="with"><h2 class="kb-h2">С чем работает</h2>
-<p>Метод применяют при фобиях (сильных страхах конкретных вещей или ситуаций), паническом расстройстве (повторяющихся приступах внезапного сильного страха), обсессивно-компульсивном расстройстве (навязчивых мыслях и ритуалах, которые трудно остановить), депрессии, трудностях поведения у детей, зависимостях, а экспозицию — ещё и при посттравматическом стрессовом расстройстве (ПТСР). В нашей базе проверены три применения: депрессия, ПТСР и обучение родителей детей с трудностями поведения (подробнее — ниже, в «Доказательности»). Про фобии, паническое расстройство, ОКР и зависимости в проверенных работах данных нет.</p></section>
+<p>Метод применяют при фобиях (сильных страхах конкретных вещей или ситуаций), паническом расстройстве (повторяющихся приступах внезапного сильного страха), обсессивно-компульсивном расстройстве (навязчивых мыслях и ритуалах, которые трудно остановить), депрессии, трудностях поведения у детей, зависимостях, а экспозицию&nbsp;— ещё и&nbsp;при посттравматическом стрессовом расстройстве (ПТСР). В нашей базе проверены три применения: депрессия, ПТСР и обучение родителей детей с трудностями поведения (подробнее&nbsp;— ниже, в «Доказательности»). Про фобии, паническое расстройство, ОКР и зависимости в проверенных работах данных нет.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
 <p><strong>По состояниям:</strong></p>
-<ul><li>умеренная — депрессия у взрослых: поведенческая активация (против отсутствия лечения эффект средний–большой, но исследования в основном маленькие и слабые; не хуже КПТ и других <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапий</a>)</li><li>умеренная — ПТСР: экспозиция (против листа ожидания эффект большой; не лучше других методов с фокусом на травме)</li><li>умеренная — трудности поведения у детей 3–12 лет через групповое обучение родителей (эффект средний, проверен только на ближайшие месяцы)</li><li>нет данных — люди без диагноза в переходе</li></ul>
-<p>Почему не «сильная»: по каждому состоянию нет двух независимых метаанализов. При депрессии обзор 2014 года — обновление обзора 2007 года той же группы авторов; при ПТСР два метаанализа, скорее всего, во многом опираются на одни и те же исследования, а в одном из них соавтор — создатель метода ✱. Оценку КПТ на поведенческую терапию не переносим.</p>
-<p><strong>Оценки и рекомендации:</strong> депрессия — обзор Кокрейна 2013 (Shinohara): качество доказательств «низкое–умеренное», сама база «очень слабая» (по аннотации). Оценок ВОЗ и NICE в карточках читателя нет; NICE упомянут только в тексте испытания COBRA (до 2016 года не рекомендовал поведенческую активацию как первый выбор). Оценки метку не повышают.</p>
-<p><strong>Что проверено и на ком.</strong> Депрессия: взрослые с депрессией. Два метаанализа одной линии (2007 — 16 исследований, 2014 — 26 исследований, 1524 человека) показали, что поведенческая активация заметно лучше отсутствия лечения, но большинство исследований маленькие и низкого качества. Обзор Кокрейна (25 испытаний, 955 взрослых): поведенческие терапии работают так же, как другие психотерапии. Крупное испытание COBRA в Великобритании (440 взрослых): поведенческая активация от специалистов без <a class="kb-term" href="../glossary.html#term-training" title="Насколько серьёзно обучен специалист: без подготовки, короткие курсы, длительная подготовка и сертификация, профильное образование…">подготовки</a> психотерапевта дала тот же результат через год, что КПТ, и обошлась на пятую часть дешевле. ПТСР: подростки и взрослые после разных травм. Метаанализ 2010 года по одному протоколу экспозиции (13 исследований, соавтор — создатель метода Эдна Фоа ✱) и метаанализ 2022 года (65 работ, 4929 взрослых): экспозиция намного лучше листа ожидания и обычной помощи, но наравне с другими методами с фокусом на травме. Обучение родителей: родители детей 3–12 лет с ранними трудностями поведения; групповые программы уменьшают трудности поведения у ребёнка и улучшают самочувствие самих родителей в ближайшие месяцы.</p>
+<ul><li>умеренная&nbsp;— депрессия у взрослых: поведенческая активация (против отсутствия лечения эффект средний–большой, но исследования в основном маленькие и слабые; не хуже КПТ и других <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапий</a>)</li><li>умеренная&nbsp;— ПТСР: экспозиция (против листа ожидания эффект большой; не лучше других методов с фокусом на травме)</li><li>умеренная&nbsp;— трудности поведения у детей 3–12&nbsp;лет через групповое обучение родителей (эффект средний, проверен только на ближайшие месяцы)</li><li>нет данных&nbsp;— люди без диагноза в переходе</li></ul>
+<p>Почему не «сильная»: по каждому состоянию нет двух независимых метаанализов. При депрессии обзор 2014&nbsp;года&nbsp;— обновление обзора 2007&nbsp;года той&nbsp;же группы авторов; при ПТСР два метаанализа, скорее всего, во многом опираются на одни и те&nbsp;же исследования, а в&nbsp;одном из них соавтор&nbsp;— создатель метода ✱. Оценку КПТ на поведенческую терапию не переносим.</p>
+<p><strong>Оценки и рекомендации:</strong> депрессия&nbsp;— обзор Кокрейна 2013 (Shinohara): качество доказательств «низкое–умеренное», сама база «очень слабая» (по аннотации). Оценок ВОЗ и NICE в карточках читателя нет; NICE упомянут только в тексте испытания COBRA (до 2016&nbsp;года не рекомендовал поведенческую активацию как первый выбор). Оценки метку не повышают.</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Депрессия: взрослые с депрессией. Два метаанализа одной линии (2007&nbsp;— 16&nbsp;исследований, 2014&nbsp;— 26&nbsp;исследований, 1524&nbsp;человека) показали, что поведенческая активация заметно лучше отсутствия лечения, но большинство исследований маленькие и низкого качества. Обзор Кокрейна (25&nbsp;испытаний, 955&nbsp;взрослых): поведенческие терапии работают так же, как другие психотерапии. Крупное испытание COBRA в Великобритании (440&nbsp;взрослых): поведенческая активация от специалистов без <a class="kb-term" href="../glossary.html#term-training" title="Насколько серьёзно обучен специалист: без подготовки, короткие курсы, длительная подготовка и сертификация, профильное образование…">подготовки</a> психотерапевта дала тот&nbsp;же результат через год, что КПТ, и обошлась на пятую часть дешевле. ПТСР: подростки и взрослые после разных травм. Метаанализ 2010&nbsp;года по одному протоколу экспозиции (13&nbsp;исследований, соавтор&nbsp;— создатель метода Эдна Фоа ✱) и метаанализ 2022&nbsp;года (65&nbsp;работ, 4929&nbsp;взрослых): экспозиция намного лучше листа ожидания и обычной помощи, но наравне с другими методами с фокусом на травме. Обучение родителей: родители детей 3–12&nbsp;лет с ранними трудностями поведения; групповые программы уменьшают трудности поведения у ребёнка и улучшают самочувствие самих родителей в ближайшие месяцы.</p>
 <p><strong>Опора:</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/24936656/" target="_blank" rel="noopener">Ekers 2014<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 26 РКИ, 1524 человека: поведенческая активация при депрессии лучше контроля (эффект средний–большой), но качество большинства исследований низкое, группы в среднем по 11 человек — читано: полный текст — ✱ (авторы ведут исследования этого метода); обновление обзора Cuijpers 2007</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27461440/" target="_blank" rel="noopener">Richards 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a> (COBRA) — Р — 440 взрослых с депрессией, Великобритания: поведенческая активация не хуже КПТ через 12 месяцев и дешевле на 21%; сравнения с отсутствием лечения нет — читано: полный текст — ✱</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/34954460/" target="_blank" rel="noopener">McLean 2022<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 65 работ, 4929 взрослых с ПТСР: экспозиция сильно лучше листа ожидания и обычной помощи, почти не отличается от других методов с фокусом на травме и (сразу после лечения) от лекарств; у военных и при зависимостях эффект меньше — читано: аннотация; вероятно, во многом пересекается с Powers 2010 ✱</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/22336837/" target="_blank" rel="noopener">Furlong 2012<span class="visually-hidden"> (откроется в новой вкладке)</span></a> (Кокрейн) — О — 13 испытаний, 1078 участников: групповое обучение родителей уменьшает трудности поведения детей (эффект средний) и улучшает самочувствие родителей в краткосрочной перспективе — читано: аннотация — ⏳</li></ul>
-<p><strong>Чего не знаем.</strong> Как поведенческая терапия работает при фобиях, паническом расстройстве, ОКР и зависимостях — в проверенных работах этого нет (обзоров по экспозиции при этих расстройствах в выборке не нашли). Отдельно не проверяли систематическую десенсибилизацию и подкрепление. Долгосрочные результаты при депрессии и обучении родителей. Насколько пересекаются два метаанализа по ПТСР. Детали отбора и риск ошибок у трёх метаанализов (прочитаны только аннотации). Работает ли что-то из этого у людей без диагноза в переходе.</p>
-<p><strong>Осторожно.</strong> Эффект при депрессии, скорее всего, преувеличен: исследования маленькие, а сами авторы называют их качество низким. Утверждение «поведенческая активация лучше лекарств» не подтверждено — разница на границе (4 испытания). Экспозиция при ПТСР работает, но не лучше других методов с фокусом на травме; её проверяли в работе со специалистом по протоколу. Часть авторов опорных работ сами развивают метод ✱.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/24936656/" target="_blank" rel="noopener">Ekers 2014<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 26&nbsp;РКИ, 1524&nbsp;человека: поведенческая активация при депрессии лучше контроля (эффект средний–большой), но качество большинства исследований низкое, группы в среднем по 11&nbsp;человек&nbsp;— читано: полный текст&nbsp;— ✱ (авторы ведут исследования этого метода); обновление обзора Cuijpers 2007</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27461440/" target="_blank" rel="noopener">Richards 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a> (COBRA)&nbsp;— Р&nbsp;— 440&nbsp;взрослых с депрессией, Великобритания: поведенческая активация не хуже КПТ через 12&nbsp;месяцев и дешевле на 21%; сравнения с отсутствием лечения нет&nbsp;— читано: полный текст&nbsp;— ✱</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/34954460/" target="_blank" rel="noopener">McLean 2022<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 65&nbsp;работ, 4929&nbsp;взрослых с ПТСР: экспозиция сильно лучше листа ожидания и обычной помощи, почти не отличается от других методов с фокусом на травме и (сразу после лечения) от лекарств; у военных и при&nbsp;зависимостях эффект меньше&nbsp;— читано: аннотация; вероятно, во многом пересекается с Powers 2010 ✱</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/22336837/" target="_blank" rel="noopener">Furlong 2012<span class="visually-hidden"> (откроется в новой вкладке)</span></a> (Кокрейн)&nbsp;— О — 13&nbsp;испытаний, 1078&nbsp;участников: групповое обучение родителей уменьшает трудности поведения детей (эффект средний) и улучшает самочувствие родителей в краткосрочной перспективе&nbsp;— читано: аннотация&nbsp;— ⏳</li></ul>
+<p><strong>Чего не знаем.</strong> Как поведенческая терапия работает при фобиях, паническом расстройстве, ОКР и зависимостях&nbsp;— в проверенных работах этого нет (обзоров по экспозиции при этих расстройствах в выборке не нашли). Отдельно не проверяли систематическую десенсибилизацию и подкрепление. Долгосрочные результаты при депрессии и обучении родителей. Насколько пересекаются два метаанализа по ПТСР. Детали отбора и риск ошибок у трёх метаанализов (прочитаны только аннотации). Работает&nbsp;ли что-то из этого у людей без диагноза в переходе.</p>
+<p><strong>Осторожно.</strong> Эффект при депрессии, скорее всего, преувеличен: исследования маленькие, а сами авторы называют их качество низким. Утверждение «поведенческая активация лучше лекарств» не подтверждено&nbsp;— разница на границе (4&nbsp;испытания). Экспозиция при ПТСР работает, но не&nbsp;лучше других методов с фокусом на травме; её проверяли в работе со специалистом по протоколу. Часть авторов опорных работ сами развивают метод ✱.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="malenkie-privychki.html"><span class="t">Маленькие привычки</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="metody-relaksatsii.html"><span class="t">Методы релаксации</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><details class="kb-more-d"><summary>ещё 4</summary><a href="paradigmy-psikhoterapii.html"><span class="t">Парадигмы психотерапии</span><span class="m">понятие</span></a><a href="ivan-pavlov.html"><span class="t">Иван Павлов</span><span class="m">человек</span></a><a href="marsha-linekhan.html"><span class="t">Марша Линехан</span><span class="m">человек</span></a><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-physician.html"><span class="t">Врач-психотерапевт</span><span class="m">атлас · уровень «Полномочия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="metody-relaksatsii.html" rel="prev">← Ещё школы (черновики)<b>Методы релаксации</b></a><a class="r" href="sistemnaya-semeynaya-terapiya.html" rel="next">Ещё школы (черновики) →<b>Системная семейная терапия</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="malenkie-privychki.html"><span class="t">Маленькие привычки</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="metody-relaksatsii.html"><span class="t">Методы релаксации</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><details class="kb-more-d"><summary>ещё 4</summary><a href="paradigmy-psikhoterapii.html"><span class="t">Парадигмы психотерапии</span><span class="m">понятие</span></a><a href="ivan-pavlov.html"><span class="t">Иван Павлов</span><span class="m">человек</span></a><a href="marsha-linekhan.html"><span class="t">Марша Линехан</span><span class="m">человек</span></a><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-physician.html"><span class="t">Врач-психотерапевт</span><span class="m">атлас · уровень «Полномочия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="metody-relaksatsii.html" rel="prev">← Ещё школы<b>Методы релаксации</b></a><a class="r" href="sistemnaya-semeynaya-terapiya.html" rel="next">Ещё школы →<b>Системная семейная терапия</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#with">С чем работает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#with">С&nbsp;чем работает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -123,25 +152,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -151,12 +180,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -165,7 +194,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

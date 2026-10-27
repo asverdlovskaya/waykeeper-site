@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://waykeeper.org/atlas-map.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Большая карта · Атлас помогающих профессий · Waykeeper">
+<meta property="og:title" content="Большая карта">
 <meta property="og:description" content="Большая карта атласа помогающих профессий: 125 специалистов, семьи по кругу, уровни от центра к краю. Приближение, связи, маршруты.">
 <meta property="og:url" content="https://waykeeper.org/atlas-map.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <script src="assets/site.js" defer></script>
@@ -31,13 +38,17 @@
 <script src="assets/pages/atlas-map-page.js" defer></script>
 <script src="assets/pages/atlas-map.js" defer></script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body class="am-body" data-aw-root="">
-<a class="skip" href="#atlasMap">К карте</a>
+<a class="skip" href="#atlasMap">К&nbsp;карте</a>
 <!-- Узкая шапка карты (не site-head: v2_chrome.py её не заменяет). Поиск и фильтры — на самой карте:
      поле поиска слева сверху, инструменты (фильтры, кольца, заливка, маршруты) — на полосе слева. -->
 <header class="am-head">
-  <a class="am-back" href="atlas.html">← к атласу</a>
+  <a class="am-back" href="atlas.html">← к&nbsp;атласу</a>
   <p class="am-title"><a href="atlas.html">Атлас помогающих профессий</a><span class="am-sub"> · большая карта</span></p>
   <nav class="am-tools" aria-label="Карта">
     <a class="btn quiet glass sm" href="atlas/all.html">Все специалисты списком</a>
@@ -45,7 +56,7 @@
 </header>
 <main id="main" class="am-main">
   <div class="atlas-host" id="atlasMap"><p data-boot>Загружаю карту…</p></div>
-  <noscript><p class="am-noscript">Карта работает с включённым JavaScript. Без него — <a href="atlas/all.html">все специалисты списком</a>.</p></noscript>
+  <noscript><p class="am-noscript">Карта работает с&nbsp;включённым JavaScript. Без&nbsp;него&nbsp;— <a href="atlas/all.html">все специалисты списком</a>.</p></noscript>
 </main>
 </body>
 </html>

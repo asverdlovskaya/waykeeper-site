@@ -7,9 +7,9 @@
 <meta name="description" content="Ценности как направление жизни, а не цель, которую можно вычеркнуть. Может пригодиться, когда цели достигнуты, а радости нет. В Компасе — поиск ценностей и их главного конфликта.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/tsennosti-v-act.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Ценности в ACT · подход · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Ценности в ACT">
 <meta property="og:description" content="Ценности как направление жизни, а не цель, которую можно вычеркнуть. Может пригодиться, когда цели достигнуты, а радости нет. В Компасе — поиск ценностей и их главного конфликта.">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/tsennosti-v-act.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,44 +107,44 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 3 «Компас»"><ul><li><a href="koleso-kontekstov.html">Колесо контекстов</a></li><li><a href="logicheskie-urovni-diltsa.html">Логические уровни Дилтса</a></li><li><a class="is-here" aria-current="page" href="tsennosti-v-act.html">Ценности в ACT</a></li><li><a href="cliftonstrengths.html">CliftonStrengths</a></li><li><a href="silnye-storony-via.html">Сильные стороны VIA</a></li><li><a href="bolshaya-pyaterka.html">Большая пятёрка</a></li><li><a href="enneagramma.html">Эннеаграмма</a></li><li><a href="rabota-s-chastyami-ifs.html">Работа с частями (IFS)</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38 подходов →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Подходы · шаг 3 «Компас»"><ul><li><a href="koleso-kontekstov.html">Колесо контекстов</a></li><li><a href="logicheskie-urovni-diltsa.html">Логические уровни Дилтса</a></li><li><a class="is-here" aria-current="page" href="tsennosti-v-act.html">Ценности в&nbsp;ACT</a></li><li><a href="cliftonstrengths.html">CliftonStrengths</a></li><li><a href="silnye-storony-via.html">Сильные стороны VIA</a></li><li><a href="bolshaya-pyaterka.html">Большая пятёрка</a></li><li><a href="enneagramma.html">Эннеаграмма</a></li><li><a href="rabota-s-chastyami-ifs.html">Работа с&nbsp;частями (IFS)</a></li></ul><a class="all" href="../encyclopedia.html#approaches">Все 38&nbsp;подходов →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Шаг 3. Компас</li></ol>
-<h1 class="kb-h1" id="h1">Ценности в ACT</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Ценности как направление жизни, а не цель, которую можно вычеркнуть. Может пригодиться, когда цели достигнуты, а радости нет. В Компасе — поиск ценностей и их главного конфликта.</p></div>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#approaches">Подходы</a></li><li>Ценности в&nbsp;ACT</li></ol>
+<h1 class="kb-h1" id="h1">Ценности в&nbsp;ACT</h1>
+<div class="kb-two"><p>Ценности как направление жизни, а не&nbsp;цель, которую можно вычеркнуть. Может пригодиться, когда цели достигнуты, а радости нет. В Компасе&nbsp;— поиск ценностей и их главного конфликта.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--early ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
-<div class="kb-do"><a class="btn primary" href="../practices/t-family-musts.html">Сделать: Семейные «надо»</a><span class="kb-do-alt">или <a href="../practices/t-values.html">«Ценности из поступков»</a> · 30 мин</span></div>
-<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Стивен Хейс и коллеги, терапия принятия и ответственности, 1999.</dd></div><div><dt>Ещё называют</dt><dd>ACT</dd></div><div><dt>В «Переходе»</dt><dd><a href="../project.html#steps">шаг 3 «Компас»</a>, <a href="../program.html#week-3">недели 3–4</a></dd></div></dl>
+<div class="kb-do"><a class="btn primary" href="../practices/t-family-musts.html">Сделать: Семейные «надо»</a><span class="kb-do-alt">или <a href="../practices/t-values.html">«Ценности из&nbsp;поступков»</a> · 30&nbsp;мин</span></div>
+<dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Стивен Хейс и коллеги, терапия принятия и ответственности, 1999.</dd></div><div><dt>Ещё называют</dt><dd>ACT</dd></div><div><dt>В&nbsp;«Переходе»</dt><dd><a href="../project.html#steps">шаг 3 «Компас»</a>, <a href="../program.html#week-3">недели 3–4</a></dd></div></dl>
 <section class="kb-sec" id="what"><h2 class="kb-h2">Что это</h2>
-<p><strong>Коротко.</strong> Ценности как направление, а не цель, которую можно достичь.</p>
-<p>В ACT ценности — это выбранные направления жизни, а не цели. Цель можно выполнить и вычеркнуть, ценность нет. Задача — действовать в сторону ценностей, даже когда трудно.</p></section>
+<p><strong>Коротко.</strong> Ценности как направление, а не&nbsp;цель, которую можно достичь.</p>
+<p>В ACT ценности&nbsp;— это выбранные направления жизни, а не&nbsp;цели. Цель можно выполнить и вычеркнуть, ценность нет. Задача&nbsp;— действовать в сторону ценностей, даже когда трудно.</p></section>
 <section class="kb-sec" id="when"><h2 class="kb-h2">Когда помогает</h2>
 <p>Может пригодиться, когда непонятно, чего хочу; цели достигнуты, а радости нет; жизнь идёт по чужим «надо». Это опыт практиков; польза для людей без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a> не изучена.</p></section>
 <section class="kb-careful" id="not"><h2 class="kb-h2">Когда не подходит</h2>
-<p>Список «правильных» ценностей легко придумать. Ищите их в поступках и историях. Помогает ли упражнение на ценности само по себе людям без диагноза, неизвестно.</p></section>
+<p>Список «правильных» ценностей легко придумать. Ищи их в&nbsp;поступках и историях. Помогает&nbsp;ли упражнение на ценности само по себе людям без диагноза, неизвестно.</p></section>
 <section class="kb-sec" id="mine"><h2 class="kb-h2">Как это у меня</h2>
-<p>В Компасе ищем ценности и главный конфликт между ними, плюс правило, как с ним жить.</p></section>
+<p>В Компасе ищем ценности и главный конфликт между ними, плюс правило, как с&nbsp;ним жить.</p></section>
 <section class="kb-sec" id="try"><h2 class="kb-h2">Попробовать</h2>
-<p>Спросите себя: каким человеком я хочу быть в этой сфере? Что бы я делал, если бы никто не видел?</p>
+<p>Спроси себя: каким человеком я хочу быть в этой сфере? Как выглядели&nbsp;бы мои дни, если&nbsp;бы никто не видел?</p>
 <p>Практики:</p>
 <ul><li><a href="../practices/t-family-musts.html">Семейные «надо»</a></li><li><a href="../practices/t-values.html">Ценности из поступков</a></li></ul></section>
 <section class="kb-sec" id="pro"><h2 class="kb-h2">Для помогающих специалистов</h2>
-<p>Отделяйте ценности от правил и «надо». Ценность звучит как «быть…», а не «должен…».</p></section>
+<p>Отделяй ценности от правил и «надо». Ценность звучит как «быть…», а не&nbsp;«должен…».</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
-<ul><li><strong>Ранняя ●○○</strong> (на границе с умеренной) — упражнения на ценности как часть ACT: короткие лабораторные задания и одно небольшое испытание на студентах.</li><li><strong>Нет данных</strong> — люди без диагноза в переходе.</li></ul>
-<p><strong>Что проверено и на ком.</strong> Терапия принятия и ответственности (ACT) в целом изучена хорошо, но отдельно компонент «ценности» проверяли мало. Короткие лабораторные упражнения на ценности лучше, чем ничего (метаанализ от авторов метода). Испытание на 181 студенте: версия «ценности + действие» помогла не хуже полной ACT и лучше листа ожидания, но ценности тут нельзя отделить от действий. В пилоте того же коллектива (55 взрослых) эта версия через месяц была хуже полной ACT по функционированию в жизни. Что именно ценности, а не вся программа, дают пользу, не показано.</p>
+<ul><li><strong>Ранняя ●○○</strong> (на границе с умеренной)&nbsp;— упражнения на ценности как часть ACT: короткие лабораторные задания и одно небольшое испытание на студентах.</li><li><strong>Нет данных</strong>&nbsp;— люди без диагноза в переходе.</li></ul>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Терапия принятия и ответственности (ACT) в целом изучена хорошо, но отдельно компонент «ценности» проверяли мало. Короткие лабораторные упражнения на ценности лучше, чем ничего (метаанализ от авторов метода). Испытание на 181&nbsp;студенте: версия «ценности + действие» помогла не хуже полной ACT и лучше листа ожидания, но ценности тут нельзя отделить от действий. В пилоте того&nbsp;же коллектива (55&nbsp;взрослых) эта версия через месяц была хуже полной ACT по функционированию в жизни. Что именно ценности, а не&nbsp;вся программа, дают пользу, не показано.</p>
 <p><strong>Опора.</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/23046777/" target="_blank" rel="noopener">Levin, Hildebrandt, Lillis &amp; Hayes 2012<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹М› — 66 лабораторных опытов: упражнения на ценности лучше неактивного сравнения — читано: аннотация — ✱ ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/32014692/" target="_blank" rel="noopener">Levin, Krafft и др. 2020<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› (181 студент, онлайн) — «ценности + действие» не хуже полной ACT, лучше листа ожидания — читано: аннотация</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/31550904/" target="_blank" rel="noopener">Petersen, Krafft, Twohig, Levin<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — ‹Р› (пилот, 55 взрослых) — версия «ценности + действие» через месяц хуже полной ACT по функционированию — читано: аннотация</li></ul>
-<p><strong>Чего не знаем.</strong> Помогает ли упражнение на ценности само по себе людям без диагноза. Что будет через полгода.</p>
-<p><strong>Осторожно.</strong> Прояснение ценностей — естественная часть многих практик, но то, что именно ценности, а не вся программа, дают пользу, не показано.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/23046777/" target="_blank" rel="noopener">Levin, Hildebrandt, Lillis &amp; Hayes 2012<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹М›&nbsp;— 66&nbsp;лабораторных опытов: упражнения на ценности лучше неактивного сравнения&nbsp;— читано: аннотация&nbsp;— ✱ ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/32014692/" target="_blank" rel="noopener">Levin, Krafft и др. 2020<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р› (181&nbsp;студент, онлайн)&nbsp;— «ценности + действие» не хуже полной ACT, лучше листа ожидания&nbsp;— читано: аннотация</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/31550904/" target="_blank" rel="noopener">Petersen, Krafft, Twohig, Levin<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— ‹Р› (пилот, 55&nbsp;взрослых)&nbsp;— версия «ценности + действие» через месяц хуже полной ACT по функционированию&nbsp;— читано: аннотация</li></ul>
+<p><strong>Чего не знаем.</strong> Помогает&nbsp;ли упражнение на ценности само по себе людям без диагноза. Что будет через полгода.</p>
+<p><strong>Осторожно.</strong> Прояснение ценностей&nbsp;— естественная часть многих практик, но то, что именно ценности, а не&nbsp;вся программа, дают пользу, не показано.</p></section>
 <section class="kb-sec" id="lit"><h2 class="kb-h2">Литература</h2>
-<ul class="kb-books"><li><span class="a">Стивен Хейс и коллеги</span> <span class="soft">ACT</span>, 1999</li><li><a href="https://en.wikipedia.org/wiki/Acceptance_and_commitment_therapy" target="_blank" rel="noopener"><em>Acceptance and commitment therapy, Wikipedia</em><span class="visually-hidden"> (откроется в новой вкладке)</span></a><span class="w">Ценности в ACT</span></li></ul></section>
+<ul class="kb-books"><li><span class="a">Стивен Хейс и&nbsp;коллеги</span> <span class="soft">ACT</span>, 1999</li><li><a href="https://en.wikipedia.org/wiki/Acceptance_and_commitment_therapy" target="_blank" rel="noopener"><em>Acceptance and commitment therapy, Wikipedia</em><span class="visually-hidden"> (откроется в&nbsp;новой вкладке)</span></a><span class="w">Ценности в&nbsp;ACT</span></li></ul></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-family-musts.html"><span class="t">Семейные «надо»</span><span class="m">практика · 20 мин</span></a><a href="../practices/t-values.html"><span class="t">Ценности из поступков</span><span class="m">практика · 30 мин</span></a></dd></div><div><dt>Понять</dt><dd><a href="act.html"><span class="t">Терапия принятия и ответственности</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-bridges-transitions"><span class="t">Трансформация себя. Осмысление изменений в жизни</span><span class="m">книга · Уильям Бриджес</span></a><a href="../resources.html#book-feiler"><span class="t">Life Is in the Transitions</span><span class="m">книга · Брюс Файлер</span></a><a href="../resources.html#book-may-wintering"><span class="t">Wintering</span><span class="m">книга · Кэтрин Мэй</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-brooks-strength"><span class="t">From Strength to Strength</span><span class="m">книга · Артур Брукс</span></a><a href="../resources.html#book-dyl"><span class="t">Дизайн вашей жизни. Живите так, как нужно именно вам</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#book-dyl-work"><span class="t">Дизайн работы мечты</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a></details></dd></div><div><dt>В ситуациях</dt><dd><a href="krizis-identichnosti.html"><span class="t">Кризис идентичности</span></a><a href="ne-moe-strashno.html"><span class="t">Всё хорошо, но не моё, и страшно</span></a><a href="ne-mogu-vybrat.html"><span class="t">Несколько дорог, и не получается выбрать</span></a><details class="kb-more-d"><summary>ещё 1</summary><a href="sily-konchilis.html"><span class="t">Силы кончились, а что вместо — непонятно</span></a></details></dd></div></dl></section>
+<dl class="kb-near"><div><dt>Сделать</dt><dd><a href="../practices/t-family-musts.html"><span class="t">Семейные «надо»</span><span class="m">практика · 20&nbsp;мин</span></a><a href="../practices/t-values.html"><span class="t">Ценности из&nbsp;поступков</span><span class="m">практика · 30&nbsp;мин</span></a></dd></div><div><dt>Понять</dt><dd><a href="act.html"><span class="t">Терапия принятия и&nbsp;ответственности</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-bridges-transitions"><span class="t">Трансформация себя. Осмысление изменений в&nbsp;жизни</span><span class="m">книга · Уильям Бриджес</span></a><a href="../resources.html#book-feiler"><span class="t">Life Is in the Transitions</span><span class="m">книга · Брюс Файлер</span></a><a href="../resources.html#book-may-wintering"><span class="t">Wintering</span><span class="m">книга · Кэтрин Мэй</span></a><details class="kb-more-d"><summary>ещё 3</summary><a href="../resources.html#book-brooks-strength"><span class="t">From Strength to Strength</span><span class="m">книга · Артур Брукс</span></a><a href="../resources.html#book-dyl"><span class="t">Дизайн вашей жизни. Живите так, как нужно именно вам</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#book-dyl-work"><span class="t">Дизайн работы мечты</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a></details></dd></div><div><dt>В&nbsp;ситуациях</dt><dd><a href="krizis-identichnosti.html"><span class="t">Кризис идентичности</span></a><a href="ne-moe-strashno.html"><span class="t">Всё хорошо, но&nbsp;не&nbsp;моё, и&nbsp;страшно</span></a><a href="ne-mogu-vybrat.html"><span class="t">Несколько дорог, и&nbsp;не&nbsp;получается выбрать</span></a><details class="kb-more-d"><summary>ещё 1</summary><a href="sily-konchilis.html"><span class="t">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</span></a></details></dd></div></dl></section>
 <nav class="kb-next" aria-label="Соседние статьи"><a href="logicheskie-urovni-diltsa.html" rel="prev">← 3. Компас<b>Логические уровни Дилтса</b></a><a class="r" href="cliftonstrengths.html" rel="next">3. Компас →<b>CliftonStrengths</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не подходит</a></li><li><a href="#mine">Как это у меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#what">Что это</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#not">Когда не&nbsp;подходит</a></li><li><a href="#mine">Как это у&nbsp;меня</a></li><li><a href="#try">Попробовать</a></li><li><a href="#pro">Для&nbsp;помогающих специалистов</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -126,25 +155,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -154,12 +183,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -168,7 +197,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

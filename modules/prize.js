@@ -102,7 +102,7 @@
       '</div></div>' +
       '<p class="pz-note" data-note></p>' +
       '<p class="pz-sr" data-live aria-live="polite"></p>' +
-      '<div class="pz-foot"><button type="button" class="pz-clear" data-clear-all>стереть</button></div>' +
+      '<div class="pz-foot"><button type="button" class="pz-clear" data-clear-all>Стереть ответы</button></div>' +
       '</aside>' +
       '<button type="button" class="pz-peek" data-peek tabindex="-1" aria-hidden="true"></button>';
     root.innerHTML = h;
@@ -275,17 +275,25 @@
       if (id) paintInput(id);
     });
 
+    var armed = 0;
     root.addEventListener('click', function (e) {
       var b = e.target.closest('[data-lv]');
       if (b) { st.lvl = b.getAttribute('data-lv'); paintOut(); save(); return; }
       if (e.target.closest('[data-clear-all]')) {
+        /* как в «Колесе», WOOP и «Контейнере»: первое нажатие спрашивает, второе (в течение 3 с) стирает */
+        var cl = $('[data-clear-all]');
+        if (!armed) {
+          armed = setTimeout(function () { armed = 0; cl.textContent = 'Стереть ответы'; }, 3000);
+          cl.textContent = 'Точно стереть?';
+          return;
+        }
+        clearTimeout(armed); armed = 0;
         st = blank();
         try { localStorage.removeItem(KEY); } catch (er) { }
         paintAll();
-        var cl = $('[data-clear-all]');
-        cl.textContent = 'стёрто';
+        cl.textContent = 'Стёрто';
         $('[data-live]').textContent = 'Все ответы стёрты.';
-        setTimeout(function () { cl.textContent = 'стереть'; }, 1600);
+        setTimeout(function () { cl.textContent = 'Стереть ответы'; }, 1600);
       }
     });
 

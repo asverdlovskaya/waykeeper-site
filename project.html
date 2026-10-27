@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>О проекте · Waykeeper</title>
-<meta name="description" content="Waykeeper — проект про то, как пройти время, когда старое рухнуло, а новое ещё не построено: как он появился, метод из семи шагов, статусы и планы.">
+<meta name="description" content="Waykeeper — мой проект про время, когда старое рухнуло, а новое ещё не построено: как он появился, на чём стоит метод из семи шагов и куда идёт дальше.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/project.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="О проекте · Waykeeper">
-<meta property="og:description" content="Waykeeper — проект про то, как пройти время, когда старое рухнуло, а новое ещё не построено: как он появился, метод из семи шагов, статусы и планы.">
+<meta property="og:title" content="О проекте">
+<meta property="og:description" content="Waykeeper — мой проект про время, когда старое рухнуло, а новое ещё не построено: как он появился, на чём стоит метод из семи шагов и куда идёт дальше.">
 <meta property="og:url" content="https://waykeeper.org/project.html">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/site-v2.css">
 <link rel="stylesheet" href="assets/kb.css">
@@ -37,42 +44,64 @@
 <script src="modules/coop.js" defer></script>
 <link rel="stylesheet" href="assets/pages/project.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="program.html">«Переход»</a></li>
         <li><a href="new-season.html">«Новый сезон»</a></li>
-        <li><a href="project.html" aria-current="page">О проекте</a></li>
-        <li><a href="about.html">О себе</a></li>
+        <li><a href="project.html" aria-current="page">О&nbsp;проекте</a></li>
+        <li><a href="about.html">О&nbsp;себе</a></li>
         <li><a href="talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -81,14 +110,14 @@
 
   <section class="cover cover--text pj-cover" id="hero" data-topo="27" data-atmo="dawn" aria-labelledby="page-title">
     <div class="frame">
-      <h1 class="display cover-title" id="page-title"><span class="ln"><span>Что такое Waykeeper</span></span> <span class="ln"><span><em>и куда он идёт</em></span></span></h1>
+      <h1 class="display cover-title" id="page-title"><span class="ln"><span>Что такое Waykeeper</span></span> <span class="ln"><span><em>и&nbsp;куда он идёт</em></span></span></h1>
       <div class="cover-text">
-        <p class="lede">Waykeeper&nbsp;— мой проект про то, как пройти время, когда старое рухнуло, а новое ещё не построено.</p>
-        <p class="lede-em pj-mission">Миссия проекта&nbsp;— помочь человеку перейти от «со мной так получилось» к «вот что я делаю с этим дальше».</p>
+        <p class="lede">Waykeeper&nbsp;— мой проект про&nbsp;то, как пройти время, когда старое рухнуло, а&nbsp;новое ещё не&nbsp;построено.</p>
+        <p class="lede-em pj-mission">Миссия проекта&nbsp;— помочь человеку перейти от&nbsp;«со&nbsp;мной так получилось» к&nbsp;«вот что я делаю с&nbsp;этим дальше».</p>
         <div class="actions"><a class="btn primary" href="program.html">Как устроен «Переход» →</a></div>
       </div>
       <div class="cover-foot">
-        <div class="cover-links"><a href="#origin">Как он появился</a><a href="#method">Почему через историю</a><a href="#status">Из чего Waykeeper состоит сейчас</a><a href="#steps">Семь шагов</a><a href="#next">Что будет дальше</a></div>
+        <div class="cover-links"><a href="#origin">Как он появился</a><a href="#method">Почему через историю</a><a href="#status">Из&nbsp;чего Waykeeper состоит сейчас</a><a href="#steps">Семь шагов</a><a href="#next">Что будет дальше</a></div>
       </div>
     </div>
   </section>
@@ -98,8 +127,8 @@
       <div class="band-side"><h2 id="h-origin">Как он появился</h2></div>
       <div class="band-main is-wide">
         <div class="prose pj-text">
-        <p>В январе 2025-го я впервые рассказала на людях про свой «Внутренний компас», маленький свод опор, на который у меня ушли сотни часов поисков, и удивилась, что он нашёл отклик. Тогда же я поняла, что годами пыталась прорисовать карту своей жизни так подробно, чтобы быть готовой ко всему, а это невозможно. Сама идея жила со мной гораздо дольше, просто долго не находила формы. Летом 2026-го, после недельного ретрита, я призналась себе, что почти всегда считала себя жертвой обстоятельств и жить так было удобно; для меня самым тяжёлым сдвигом было перестать ждать, что обстоятельства решат за меня.</p>
-        <p>Рабочее название долго было LifeCompass, по самой проработанной части&nbsp;— компасу: кто ты, что тебе важно, что ты умеешь. Весной 2026-го я ещё представляла проект приложением с ИИ-помощником, а осенью поняла, что в центре метод, семь шагов от истории семьи до встреч после программы, и компас&nbsp;— только один из них. В октябре 2026-го проект и получил имя Waykeeper&nbsp;— от keep your way.</p>
+        <p>В&nbsp;январе 2025-го я впервые рассказала на&nbsp;людях про&nbsp;свой «Внутренний компас», маленький свод опор, на&nbsp;который у&nbsp;меня ушли сотни часов поисков, и&nbsp;удивилась, что он нашёл отклик. Тогда&nbsp;же я поняла, что годами пыталась прорисовать карту своей жизни так подробно, чтобы быть готовой ко&nbsp;всему, а&nbsp;это невозможно. Сама идея жила со&nbsp;мной гораздо дольше, просто долго не&nbsp;находила формы. Летом 2026-го, после недельного ретрита, я призналась себе, что почти всегда считала себя жертвой обстоятельств и&nbsp;жить так было удобно; для&nbsp;меня самым тяжёлым сдвигом было перестать ждать, что обстоятельства решат за&nbsp;меня.</p>
+        <p>Рабочее название долго было LifeCompass, по&nbsp;самой проработанной части&nbsp;— компасу: кто ты, что тебе важно, что ты умеешь. Весной 2026-го я ещё представляла проект приложением с&nbsp;ИИ-помощником, а&nbsp;осенью поняла, что в&nbsp;центре метод, семь шагов от&nbsp;истории семьи до&nbsp;встреч после программы, и&nbsp;компас&nbsp;— только один из&nbsp;них. В&nbsp;октябре 2026-го проект и&nbsp;получил имя Waykeeper&nbsp;— от&nbsp;keep your way.</p>
       </div>
       </div>
     </div>
@@ -110,10 +139,10 @@
       <div class="band-side"><h2 id="h-method">Почему через историю</h2></div>
       <div class="band-main is-wide">
         <div class="prose pj-text">
-        <p>Мне кажется, о себе человек думает историей: что было, что случилось, где было живо, что получалось и что выматывало даже тогда, когда всё шло хорошо,&nbsp;— и почти всё, из чего собирается следующий шаг, в этой истории уже лежит. Поэтому в Waykeeper ценности, способности и повторяющиеся сценарии мы достаём из прожитого и к каждому выводу ищем пример из жизни.</p>
-        <p>Сами методы выросли из того, что я проходила на себе: курсы и выезды, рефлексивные практики, итоги года, тесты. Я насмотрелась, как по-разному люди собирают одни и те же внутренние опоры, поэтому шаги в Waykeeper у всех одни, а упражнения внутри я подбираю под человека, и тест у нас идёт только сверкой к истории.</p>
-        <p>Для себя я спроектировала много помощников&nbsp;— приложения, системы, ИИ-ассистентов, ритуалы. Многие из них отмерли, и так я увидела, что работает, а что нет, когда живёшь из себя, а не по схеме. Поэтому в программе остаётся только то, что держится в реальной жизни.</p>
-        <p class="pj-more"><a class="link" href="about.html">Подробнее обо мне →</a></p>
+        <p>Мне кажется, о&nbsp;себе человек думает историей: что было, что случилось, где было живо, что получалось и&nbsp;что выматывало даже тогда, когда всё шло хорошо,&nbsp;— и&nbsp;почти всё, из&nbsp;чего собирается следующий шаг, в&nbsp;этой истории уже лежит. Поэтому в&nbsp;Waykeeper ценности, способности и&nbsp;повторяющиеся сценарии мы достаём из&nbsp;прожитого и&nbsp;к&nbsp;каждому выводу ищем пример из&nbsp;жизни.</p>
+        <p>Сами методы выросли из&nbsp;того, что я проходила на&nbsp;себе: курсы и&nbsp;выезды, рефлексивные практики, итоги года, тесты. Я насмотрелась, как по-разному люди собирают одни и&nbsp;те&nbsp;же внутренние опоры, поэтому шаги в&nbsp;Waykeeper у&nbsp;всех одни, а&nbsp;упражнения внутри я подбираю под&nbsp;человека, и&nbsp;тест у&nbsp;нас идёт только сверкой к&nbsp;истории.</p>
+        <p>Для&nbsp;себя я спроектировала много помощников&nbsp;— приложения, системы, ИИ-ассистентов, ритуалы. Многие из&nbsp;них отмерли, и&nbsp;так я увидела, что работает, а&nbsp;что нет, когда живёшь из&nbsp;себя, а&nbsp;не&nbsp;по&nbsp;схеме. Поэтому в&nbsp;программе остаётся только то, что держится в&nbsp;реальной жизни.</p>
+        <p class="pj-more"><a class="link" href="about.html">Подробнее обо&nbsp;мне →</a></p>
       </div>
       </div>
     </div>
@@ -126,38 +155,38 @@
 
   <section class="band pj-status-sec" id="status" data-atmo="day" data-atmo-rule aria-labelledby="h-status">
     <div class="frame">
-      <div class="band-head"><h2 id="h-status">Из чего Waykeeper состоит сейчас</h2></div>
+      <div class="band-head"><h2 id="h-status">Из&nbsp;чего Waykeeper состоит сейчас</h2></div>
       <div class="tiles pj-cards">
         <article class="tile tile--product tile--wide pj-card pj-card--main" data-status="open">
           <div class="tile-body">
             <div class="tile-top"><span class="num">01</span><span class="status status--open pj-status">открыто</span></div>
             <h3 class="tile-title">Программа «Переход»</h3>
-            <p>Три месяца один на один, если в работе что-то закончилось и нужно решить, чем заниматься дальше. В этом формате программа идёт впервые: первые два человека начинают в ноябре.</p>
+            <p>Три месяца один на&nbsp;один, если в&nbsp;работе что-то закончилось и&nbsp;нужно решить, чем заниматься дальше. В&nbsp;этом формате программа идёт впервые: первые два человека начинают в&nbsp;ноябре.</p>
             <p class="actions pj-go"><a class="btn quiet glass" href="program.html">Как устроен «Переход» →</a></p>
           </div>
         </article>
         <article class="tile tile--kb pj-card" data-status="waitlist">
           <div class="tile-top"><span class="num">02</span><span class="status status--wait pj-status">лист ожидания</span></div>
           <h3 class="tile-title">«Новый сезон»</h3>
-          <p>Две встречи онлайн в группе на стыке годов: в конце декабря смотрим на прошлый год, в начале января выбираем, куда дальше. Даты объявлю позже.</p>
+          <p>Две встречи онлайн в&nbsp;группе на&nbsp;стыке годов: в&nbsp;конце декабря смотрим на&nbsp;прошлый год, в&nbsp;начале января выбираем, куда дальше. Даты объявлю позже.</p>
             <p class="tile-go pj-go"><a class="link" href="new-season.html">«Новый сезон» →</a></p>
         </article>
         <article class="tile tile--kb pj-card" data-status="open">
           <div class="tile-top"><span class="num">03</span><span class="status status--open pj-status">открыто</span></div>
           <h3 class="tile-title">Практики</h3>
-          <p>Упражнения, которыми я пользуюсь на встречах.</p>
+          <p>Упражнения, которыми я пользуюсь на&nbsp;встречах.</p>
             <p class="tile-go pj-go"><a class="link" href="practices.html">Все практики →</a></p>
         </article>
         <article class="tile tile--kb pj-card" data-status="wip">
-          <div class="tile-top"><span class="num">04</span><span class="status status--wip pj-status">в работе</span></div>
+          <div class="tile-top"><span class="num">04</span><span class="status status--wip pj-status">в&nbsp;работе</span></div>
           <h3 class="tile-title">Атлас помогающих профессий</h3>
-          <p>Кто чем помогает и с каким вопросом к кому идти, у каждой профессии&nbsp;— источники. Уже открыт: 125 специалистов, и я продолжаю его дополнять.</p>
+          <p>Кто чем помогает и&nbsp;с&nbsp;каким вопросом к&nbsp;кому идти, у&nbsp;каждой профессии&nbsp;— источники. Уже открыт, и&nbsp;я продолжаю его дополнять.</p>
             <p class="tile-go pj-go"><a class="link" href="atlas.html">Открыть атлас →</a></p>
         </article>
         <article class="tile tile--kb pj-card" data-status="wip">
-          <div class="tile-top"><span class="num">05</span><span class="status status--wip pj-status">в работе</span></div>
-          <h3 class="tile-title">ИИ-помощник для расшифровок</h3>
-          <p>Собираю его себе для расшифровок встреч: он будет искать повторы и противоречия, а я проверять каждый вывод, потому что он ошибается, и иногда красиво.</p>
+          <div class="tile-top"><span class="num">05</span><span class="status status--wip pj-status">в&nbsp;работе</span></div>
+          <h3 class="tile-title">ИИ-помощник для&nbsp;расшифровок</h3>
+          <p>Собираю его себе для&nbsp;расшифровок встреч: он будет искать повторы и&nbsp;противоречия, а&nbsp;я проверять каждый вывод, потому что он ошибается, и&nbsp;иногда красиво.</p>
         </article>
       </div>
     </div>
@@ -167,7 +196,7 @@
   <section class="band pj-steps-sec" id="steps" data-atmo="day" data-atmo-rule aria-labelledby="h-steps">
     <div class="frame">
       <div class="band-head"><h2 id="h-steps">Семь шагов</h2></div>
-      <p class="prose pj-steps-lead">Весь метод&nbsp;— семь шагов, от истории семьи до встреч после программы. Это карта целиком: шаги 2–6 проходят внутри «Перехода», первый станет отдельной частью проекта, седьмой&nbsp;— по желанию после программы.</p>
+      <p class="prose pj-steps-lead">Весь метод&nbsp;— семь шагов, от&nbsp;истории семьи до&nbsp;встреч после программы. Это карта целиком: шаги 2–6&nbsp;проходят внутри «Перехода», первый станет отдельной частью проекта, седьмой&nbsp;— по&nbsp;желанию после программы.</p>
     </div>
     <div class="frame">
       <ol class="pj-route">
@@ -176,15 +205,15 @@
             <article class="pj-step" data-step="1" data-status="waitlist">
               <div class="pj-step-body"><h3>1. История рода</h3>
               <p class="pj-status-l"><span class="status status--wait">лист ожидания</span></p>
-              <p class="pj-text-step">Что передавалось в семье: ремесло, отношение к работе, «надо», доставшиеся по наследству. Пока собираю свою родословную как прототип. Если тебе это интересно, напиши, и я сообщу, когда начну.</p>
-              <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a></div>
+              <p class="pj-text-step">Что передавалось в&nbsp;семье: ремесло, отношение к&nbsp;работе, «надо», доставшиеся по&nbsp;наследству. Пока собираю свою родословную как прототип. Если тебе это интересно, напиши, и&nbsp;я сообщу, когда начну.</p>
+              <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a></div>
             </article>
           </li>
           <li class="pj-stop pj-stop--in">
             <span class="pj-node" aria-hidden="true"></span>
             <article class="pj-step" data-step="2" data-in-program>
               <div class="pj-step-body"><h3>2. Твоя история</h3>
-              <p class="pj-text-step">Жизнь по сезонам: где была энергия, где получалось, что не считалось работой.</p>
+              <p class="pj-text-step">Жизнь по&nbsp;сезонам: где была энергия, где получалось, что не&nbsp;считалось работой.</p>
               <p class="pj-go"><a class="link" href="program.html#week-2">Неделя 2 →</a></p></div>
             </article>
           </li>
@@ -192,7 +221,7 @@
             <span class="pj-node" aria-hidden="true"></span>
             <article class="pj-step" data-step="3" data-in-program>
               <div class="pj-step-body"><h3>3. Компас</h3>
-              <p class="pj-text-step">Миссия одной строкой, ценности и их главный конфликт, способности с примерами из жизни.</p>
+              <p class="pj-text-step">Миссия одной строкой, ценности и&nbsp;их главный конфликт, способности с&nbsp;примерами из&nbsp;жизни.</p>
               <p class="pj-go"><a class="link" href="program.html#week-3">Недели 3–4 →</a></p></div>
             </article>
           </li>
@@ -200,7 +229,7 @@
             <span class="pj-node" aria-hidden="true"></span>
             <article class="pj-step" data-step="4" data-in-program>
               <div class="pj-step-body"><h3>4. Карта</h3>
-              <p class="pj-text-step">Две-три дороги, разговоры с людьми, которые там уже работают, деньги и решение, в том числе остаться. В программе этот блок называется «Горизонты».</p>
+              <p class="pj-text-step">Две-три дороги, разговоры с&nbsp;людьми, которые там уже работают, деньги и&nbsp;решение, в&nbsp;том числе остаться. В&nbsp;программе этот блок называется «Горизонты».</p>
               <p class="pj-go"><a class="link" href="program.html#week-5">Недели 5–8 →</a></p></div>
             </article>
           </li>
@@ -208,7 +237,7 @@
             <span class="pj-node" aria-hidden="true"></span>
             <article class="pj-step" data-step="5" data-in-program>
               <div class="pj-step-body"><h3>5. Снаряжение</h3>
-              <p class="pj-text-step">Почему срывались прошлые попытки, на что опереться, один ритуал и аптечка на плохой день.</p>
+              <p class="pj-text-step">Почему срывались прошлые попытки, на&nbsp;что опереться, один ритуал и&nbsp;аптечка на&nbsp;плохой день.</p>
               <p class="pj-go"><a class="link" href="program.html#week-9">Неделя 9 →</a></p></div>
             </article>
           </li>
@@ -216,7 +245,7 @@
             <span class="pj-node" aria-hidden="true"></span>
             <article class="pj-step" data-step="6" data-in-program>
               <div class="pj-step-body"><h3>6. Маршрут</h3>
-              <p class="pj-text-step">Вехи на год-два, ближайший квартал шагами, первый шаг и вопрос напоследок: завтра понедельник&nbsp;— сделаешь?</p>
+              <p class="pj-text-step">Вехи на&nbsp;год-два, ближайший квартал шагами, первый шаг и&nbsp;вопрос напоследок: завтра понедельник&nbsp;— сделаешь?</p>
               <p class="pj-go"><a class="link" href="program.html#week-10">Недели 10–11 →</a></p></div>
             </article>
           </li>
@@ -225,7 +254,7 @@
             <article class="pj-step" data-step="7" data-status="after">
               <div class="pj-step-body"><h3>7. Спутник</h3>
               <p class="pj-status-l"><span class="status pj-after">после программы</span></p>
-              <p class="pj-text-step">Встречи-сверки раз в две–четыре недели, по договорённости: свериться с компасом и подкрутить маршрут.</p></div>
+              <p class="pj-text-step">Встречи-сверки раз в&nbsp;две–четыре недели, по&nbsp;договорённости: свериться с&nbsp;компасом и&nbsp;подкрутить маршрут.</p></div>
             </article>
           </li>
       </ol>
@@ -236,11 +265,11 @@
     <div class="frame">
       <div class="band-side"><h2 id="h-next">Что будет дальше</h2></div>
       <div class="band-main is-wide">
-        <p class="prose">Дат здесь нет специально: следующую часть я беру в работу, когда заработала предыдущая.</p>
+        <p class="prose">Дат здесь нет специально: следующую часть я беру в&nbsp;работу, когда заработала предыдущая.</p>
         <div class="pj-bands">
-          <div class="pj-band pj-band--now"><p><strong>Сейчас.</strong> С ноября первые два человека проходят «Переход», а я по ходу его поправляю.</p></div>
-          <div class="pj-band pj-band--next"><p><strong>Следом.</strong> Личные страницы для людей в программе, где компас, карта и маршрут лежат вместе. Собеседник&nbsp;— ИИ на материалах человека, который останется после программы; его я делаю впервые, вместе с первыми участниками. И раздел «Практики со своим ИИ».</p></div>
-          <div class="pj-band pj-band--later"><p><strong>Потом.</strong> История рода: поиск по семье вместе с генеалогами и ИИ, который помогает разбирать архивы. «Книга жизни»&nbsp;— вся история по главам; свою я сейчас пишу. Сеть keepers, открытая энциклопедия, которую мы напишем вместе с ними, и короткий тест, который по твоему вопросу подскажет, к какому специалисту из атласа идти. Соревноваться я не люблю: даже в играх мне физически больно выходить в PvP, а <span data-coop tabindex="-1">кооперативные</span> я обожаю.</p></div>
+          <div class="pj-band pj-band--now"><p><strong>Сейчас.</strong> С&nbsp;ноября первые два человека проходят «Переход», а&nbsp;я по&nbsp;ходу его поправляю.</p></div>
+          <div class="pj-band pj-band--next"><p><strong>Следом.</strong> Личные страницы для&nbsp;людей в&nbsp;программе, где компас, карта и&nbsp;маршрут лежат вместе. Собеседник&nbsp;— ИИ на&nbsp;материалах человека, который останется после программы; его я делаю впервые, вместе с&nbsp;первыми участниками. И&nbsp;раздел «Практики со&nbsp;своим ИИ».</p></div>
+          <div class="pj-band pj-band--later"><p><strong>Потом.</strong> История рода: поиск по&nbsp;семье вместе с&nbsp;генеалогами и&nbsp;ИИ, который помогает разбирать архивы. «Книга жизни»&nbsp;— вся история по&nbsp;главам; свою я сейчас пишу. Сеть keepers, открытая энциклопедия, которую мы напишем вместе с&nbsp;ними, и&nbsp;короткий тест, который по&nbsp;твоему вопросу подскажет, к&nbsp;какому специалисту из&nbsp;атласа идти. Соревноваться я не&nbsp;люблю: даже в&nbsp;играх мне физически больно выходить в&nbsp;PvP, а&nbsp;<span data-coop tabindex="-1">кооперативные</span> я обожаю.</p></div>
         </div>
       </div>
     </div>
@@ -251,12 +280,12 @@
       <div class="band-side"><h2 id="h-principles">Принципы</h2></div>
       <div class="band-main is-wide">
         <ol class="list pj-principles">
-        <li><strong>Только через разговор.</strong> Записаться в программу можно, только написав мне; сначала разговор на&nbsp;45–60 минут, потом второй&nbsp;— с планом под твой запрос. Форм, таймеров и рассылок здесь нет.</li>
-        <li><strong>Что открыто.</strong> Открыто без регистрации: практики и вся база знаний, включая атлас. Закрыто: сценарии встреч, настройки ИИ-помощника, истории людей.</li>
-        <li><strong>Записи.</strong> Только с твоего согласия; как храним и что остаётся у тебя, обсуждаем и фиксируем письменно до старта.</li>
-        <li><strong>На себе.</strong> Каждую практику я сначала делаю на себе и только потом приношу на встречу.</li>
-        <li><strong>Две метки.</strong> У каждой практики отмечено, насколько исследован исходный подход, и отдельно&nbsp;— что само упражнение моя адаптация.</li>
-        <li><strong>Статусы.</strong> У каждой части проекта есть статус, а дату я ставлю, только когда могу её сдержать.</li>
+        <li><strong>Только через разговор.</strong> Записаться в&nbsp;программу можно, только написав мне; сначала разговор на&nbsp;45–60&nbsp;минут, потом второй&nbsp;— с&nbsp;планом под&nbsp;твой запрос. Форм, таймеров и&nbsp;рассылок здесь нет.</li>
+        <li><strong>Что открыто.</strong> Открыто без&nbsp;регистрации: практики и&nbsp;вся база знаний, включая атлас. Закрыто: сценарии встреч, настройки ИИ-помощника, истории людей.</li>
+        <li><strong>Записи.</strong> Только с&nbsp;твоего согласия; как храним и&nbsp;что остаётся у&nbsp;тебя, обсуждаем и&nbsp;фиксируем письменно до&nbsp;старта.</li>
+        <li><strong>На&nbsp;себе.</strong> Каждую практику я сначала делаю на&nbsp;себе и&nbsp;только потом приношу на&nbsp;встречу.</li>
+        <li><strong>Две метки.</strong> У&nbsp;каждой практики отмечено, насколько исследован исходный подход, и&nbsp;отдельно&nbsp;— что само упражнение моя адаптация.</li>
+        <li><strong>Статусы.</strong> У&nbsp;каждой части проекта есть статус, а&nbsp;дату я ставлю, только когда могу её сдержать.</li>
       </ol>
       </div>
     </div>
@@ -266,13 +295,13 @@
     <div class="frame">
       <div class="band-side"><h2 id="h-keepers">Keepers&nbsp;— коллегам</h2></div>
       <div class="band-main is-wide">
-        <p class="prose">Keepers, или хранители,&nbsp;— так я называю помогающих специалистов рядом с проектом: психологов, психотерапевтов, коучей, карьерных консультантов, доул. Это люди, к которым можно направить человека, когда его вопрос выходит за мои рамки.</p>
+        <p class="prose">Keepers, или хранители,&nbsp;— так я называю помогающих специалистов рядом с&nbsp;проектом: психологов, психотерапевтов, коучей, карьерных консультантов, доул. Это люди, к&nbsp;которым можно направить человека, когда его вопрос выходит за&nbsp;мои рамки.</p>
         <div class="pj-letter">
-          <p>Если вы работаете в одной из этих профессий, несколько слов вам.</p>
-          <p>Я работаю с людьми, у которых в работе что-то закончилось: три месяца один на один мы собираем из их истории компас и маршрут к делу. Я не психолог и не сертифицированный коуч, и всё, что требует вашей компетенции, я передаю дальше.</p>
-          <p>Если у человека, с которым вы работаете, вопрос про дело, а состояние в целом держит, можно дать ему ссылку на «Переход». До старта мы дважды разговариваем, и если это не ко мне, я скажу ему об этом прямо. Если человек, который работает со мной, уже в терапии, я не лезу в вашу работу.</p>
-          <p>Чтобы направлять точнее, я собираю атлас помогающих профессий с источниками и покажу его, когда он будет готов. Если хотите, чтобы я знала о вас, когда у человека появится запрос в вашей зоне, напишите пару строк о себе и о том, с чем вы работаете.</p>
-          <div class="actions"><a class="btn quiet glass" href="#telegram" data-tg>Написать в Telegram</a></div></div>
+          <p>Если ты работаешь в&nbsp;одной из&nbsp;этих профессий, несколько слов тебе.</p>
+          <p>Я работаю с&nbsp;людьми, у&nbsp;которых в&nbsp;работе что-то закончилось: три месяца один на&nbsp;один мы собираем из&nbsp;их истории компас и&nbsp;маршрут к&nbsp;делу. Я не&nbsp;психолог и&nbsp;не&nbsp;сертифицированный коуч, и&nbsp;всё, что требует твоей компетенции, я передаю дальше.</p>
+          <p>Если у&nbsp;человека, с&nbsp;которым ты работаешь, вопрос про&nbsp;дело, а&nbsp;состояние в&nbsp;целом держит, можно дать ему ссылку на&nbsp;«Переход». До&nbsp;старта мы дважды разговариваем, и&nbsp;если это не&nbsp;ко&nbsp;мне, я скажу ему об&nbsp;этом прямо. Если человек, который работает со&nbsp;мной, уже в&nbsp;терапии, я не&nbsp;лезу в&nbsp;твою работу.</p>
+          <p>Чтобы направлять точнее, я собираю <a class="link" href="atlas.html">атлас помогающих профессий</a> с&nbsp;источниками, он уже открыт. Если хочешь, чтобы я знала о&nbsp;тебе, когда у&nbsp;человека появится запрос в&nbsp;твоей зоне, напиши пару строк о&nbsp;себе и&nbsp;о&nbsp;том, с&nbsp;чем ты работаешь.</p>
+          <div class="actions"><a class="btn quiet glass" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a></div></div>
       </div>
     </div>
   </section>
@@ -283,16 +312,16 @@
       <div class="pj-join-cols">
         <article class="tile tile--product pj-join"><div class="tile-body">
         <h3>Пройти программу</h3>
-        <p>Если в работе что-то закончилось и хочется решить, чем заниматься дальше. Всё начинается с разговора на&nbsp;45–60 минут.</p>
+        <p>Если в&nbsp;работе что-то закончилось и&nbsp;хочется решить, чем заниматься дальше. Всё начинается с&nbsp;разговора на&nbsp;45–60&nbsp;минут.</p>
         <div class="actions">
           <a class="btn primary" href="program.html">Как устроен «Переход» →</a>
-          <a class="btn quiet glass" href="#telegram" data-tg>Написать в Telegram</a>
+          <a class="btn quiet glass" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
         </div>
       </div></article>
         <div class="pj-small-lines small">
-        <p>Подвести год в группе&nbsp;— <a class="link" href="new-season.html">«Новый сезон» →</a></p>
-        <p>Следить, как растёт проект,&nbsp;— <a class="link" href="#channel" data-channel>Канал в Telegram</a></p>
-        <p>Поправлять атлас и вместе писать энциклопедию можно будет, когда атлас будет готов.</p>
+        <p>Подвести год в&nbsp;группе&nbsp;— <a class="link" href="new-season.html">«Новый сезон» →</a></p>
+        <p>Следить, как растёт проект,&nbsp;— <a class="link" href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></p>
+        <p>Поправлять атлас и&nbsp;вместе писать энциклопедию можно уже сейчас.</p>
       </div>
       </div>
     </div>
@@ -305,25 +334,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="practices.html">Практики</a></li>
-          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="knowledge.html">Вся база знаний</a></li>
           <li><a href="glossary.html">Словарь</a></li>
           <li><a href="how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="program.html">«Переход»</a></li>
           <li><a href="new-season.html">«Новый сезон»</a></li>
@@ -333,12 +362,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="project.html">О проекте</a></li>
-          <li><a href="about.html">О себе</a></li>
+          <li><a href="project.html">О&nbsp;проекте</a></li>
+          <li><a href="about.html">О&nbsp;себе</a></li>
           <li><a href="project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="privacy.html">Данные и приватность</a></li>
+          <li><a href="privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -347,7 +376,7 @@
     <a class="foot-mark" href="index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

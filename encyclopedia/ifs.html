@@ -7,9 +7,9 @@
 <meta name="description" content="Модель, в которой психика состоит из частей, а за ними есть спокойное Я. В энциклопедии с ней связан подход «Работа с частями (IFS)».">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/ifs.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Модель внутренних семейных систем · школа терапии · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Модель внутренних семейных систем">
 <meta property="og:description" content="Модель, в которой психика состоит из частей, а за ними есть спокойное Я. В энциклопедии с ней связан подход «Работа с частями (IFS)».">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/ifs.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,11 +107,11 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Школы · больше про прошлое"><ul><li><a href="skhema-terapiya.html">Схема-терапия</a></li><li><a href="psikhodinamicheskaya-terapiya.html">Психоанализ и психодинамическая терапия</a></li><li><a href="narrativnaya-praktika-shkola.html">Нарративная практика</a></li><li><a class="is-here" aria-current="page" href="ifs.html">Модель внутренних семейных систем</a></li><li><a href="emdr-dpdg.html">ДПДГ</a></li><li><a href="protsess-khoffmana.html">Процесс Хоффмана</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Школы · больше про прошлое"><ul><li><a href="skhema-terapiya.html">Схема-терапия</a></li><li><a href="psikhodinamicheskaya-terapiya.html">Психоанализ и&nbsp;психодинамическая терапия</a></li><li><a href="narrativnaya-praktika-shkola.html">Нарративная практика</a></li><li><a class="is-here" aria-current="page" href="ifs.html">Модель внутренних семейных систем</a></li><li><a href="emdr-dpdg.html">ДПДГ</a></li><li><a href="protsess-khoffmana.html">Процесс Хоффмана</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Больше про прошлое</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Модель внутренних семейных систем</li></ol>
 <h1 class="kb-h1" id="h1">Модель внутренних семейных систем</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Модель, в которой психика состоит из частей, а за ними есть спокойное Я. В энциклопедии с ней связан подход «Работа с частями (IFS)».</p></div>
+<div class="kb-two"><p>Модель, в которой психика состоит из частей, а за&nbsp;ними есть спокойное Я. В энциклопедии с ней связан подход «Работа с частями (IFS)».</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--early ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <div class="kb-do"><a class="btn primary" href="../atlas/psychotherapist-psychologist.html">Кто так работает: Психолог-психотерапевт</a><span class="kb-do-alt">или <a href="../atlas.html">весь атлас</a></span></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Откуда</dt><dd>Ричард Шварц, 1980-е.</dd></div><div><dt>Ещё называют</dt><dd>IFS</dd></div></dl>
@@ -94,21 +123,21 @@
 <p>С моделью работают при внутренних конфликтах, внутреннем критике, травме. Проверяли при ПТСР, депрессии и ревматоидном артрите (данные ранние). Для «внутреннего критика» и внутренних конфликтов данных нет. При ПТСР IFS не оказалась лучше активной альтернативы.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
 <p><strong>По состояниям:</strong></p>
-<ul><li>ранняя — ПТСР у взрослых (не лучше активной альтернативы)</li><li>ранняя — депрессия (пилот, наравне с КПТ и межличностной терапией)</li><li>ранняя — самочувствие при ревматоидном артрите (боль и настроение чуть лучше; сама болезнь не изменилась)</li><li>нет данных — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a></li></ul>
-<p><strong>Оценки и рекомендации:</strong> GRADE, ВОЗ, NICE — в проверенных источниках нет.</p>
-<p><strong>Что проверено и на ком.</strong> Три небольших РКИ: ревматоидный артрит (79 человек, против рассылки по почте), депрессия у студенток (37 человек, против КПТ или межличностной терапии), ПТСР (60 человек, против активной программы «на природе»). При депрессии и ПТСР обеим группам стало лучше, разницы нет; при артрите сама болезнь не изменилась, боль и настроение — на границе значимости. Остальное — испытания без контрольной группы. Метаанализов нет; все исследования сделали люди и организации, связанные с моделью. Все данные — про терапию с обученным терапевтом.</p>
+<ul><li>ранняя&nbsp;— ПТСР у взрослых (не лучше активной альтернативы)</li><li>ранняя&nbsp;— депрессия (пилот, наравне с КПТ и межличностной терапией)</li><li>ранняя&nbsp;— самочувствие при ревматоидном артрите (боль и настроение чуть лучше; сама болезнь не изменилась)</li><li>нет данных&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a></li></ul>
+<p><strong>Оценки и рекомендации:</strong> GRADE, ВОЗ, NICE&nbsp;— в проверенных источниках нет.</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Три небольших РКИ: ревматоидный артрит (79&nbsp;человек, против рассылки по почте), депрессия у студенток (37&nbsp;человек, против КПТ или межличностной терапии), ПТСР (60&nbsp;человек, против активной программы «на природе»). При депрессии и ПТСР обеим группам стало лучше, разницы нет; при артрите сама болезнь не изменилась, боль и настроение&nbsp;— на границе значимости. Остальное&nbsp;— испытания без контрольной группы. Метаанализов нет; все исследования сделали люди и организации, связанные с моделью. Все данные&nbsp;— про терапию с обученным терапевтом.</p>
 <p><strong>Опора:</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/41609644/" target="_blank" rel="noopener">Joss 2026<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Р — 60 человек с ПТСР: IFS-группа и активный контроль улучшились одинаково; IFS посещали чаще и были довольнее — читано: аннотация — ✱ 🆕; кто платил: Foundation for Self Leadership и NIH</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/23950186/" target="_blank" rel="noopener">Shadick 2013<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Р (пилот, 79 человек) — против рассылки: болезнь не изменилась, боль и депрессия чуть лучше; авторы сами пишут, что дело может быть просто во внимании — читано: полный текст — ✱ (соавтор — Шварц, создатель IFS) ⏳; кто платил: фармкомпании</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27500908/" target="_blank" rel="noopener">Haddock 2017<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Р (пилот, 37 студенток) — депрессия снизилась так же, как при КПТ или межличностной терапии — читано: аннотация — ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/38934934/" target="_blank" rel="noopener">Comeau 2024<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — Н (без контроля, 15 человек) — онлайн-программа при ПТСР выполнима, симптомы снизились — читано: аннотация — ✱ 🆕; кто платил: Foundation for Self Leadership</li></ul>
-<p><strong>Чего не знаем.</strong> Повторится ли результат у независимых исследователей. Есть ли побочные эффекты. Что даёт модель людям без диагноза.</p>
-<p><strong>Осторожно.</strong> Самостоятельная работа с частями без терапевта — практика, она не проверялась. При ПТСР IFS пока не показала себя лучше хорошей альтернативы; проверенные методы при ПТСР — другие.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/41609644/" target="_blank" rel="noopener">Joss 2026<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Р&nbsp;— 60&nbsp;человек с ПТСР: IFS-группа и активный контроль улучшились одинаково; IFS посещали чаще и были довольнее&nbsp;— читано: аннотация&nbsp;— ✱ 🆕; кто платил: Foundation for Self Leadership и NIH</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/23950186/" target="_blank" rel="noopener">Shadick 2013<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Р (пилот, 79&nbsp;человек)&nbsp;— против рассылки: болезнь не изменилась, боль и депрессия чуть лучше; авторы сами пишут, что дело может быть просто во внимании&nbsp;— читано: полный текст&nbsp;— ✱ (соавтор&nbsp;— Шварц, создатель IFS) ⏳; кто платил: фармкомпании</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27500908/" target="_blank" rel="noopener">Haddock 2017<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Р (пилот, 37&nbsp;студенток)&nbsp;— депрессия снизилась так же, как при&nbsp;КПТ или межличностной терапии&nbsp;— читано: аннотация&nbsp;— ⏳</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/38934934/" target="_blank" rel="noopener">Comeau 2024<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— Н (без контроля, 15&nbsp;человек)&nbsp;— онлайн-программа при ПТСР выполнима, симптомы снизились&nbsp;— читано: аннотация&nbsp;— ✱ 🆕; кто платил: Foundation for Self Leadership</li></ul>
+<p><strong>Чего не знаем.</strong> Повторится&nbsp;ли результат у независимых исследователей. Есть&nbsp;ли побочные эффекты. Что даёт модель людям без диагноза.</p>
+<p><strong>Осторожно.</strong> Самостоятельная работа с частями без терапевта&nbsp;— практика, она не&nbsp;проверялась. При ПТСР IFS пока не показала себя лучше хорошей альтернативы; проверенные методы при ПТСР&nbsp;— другие.</p></section>
 <section class="kb-sec" id="read"><h2 class="kb-h2">Почитать</h2>
 <p><a href="https://www.ifs-institute.com" target="_blank" rel="noopener">IFS Institute<span class="visually-hidden"> (откроется в новой вкладке)</span></a></p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="rabota-s-chastyami-ifs.html"><span class="t">Работа с частями (IFS)</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="narrativnaya-praktika-shkola.html" rel="prev">← Больше про прошлое<b>Нарративная практика</b></a><a class="r" href="emdr-dpdg.html" rel="next">Больше про прошлое →<b>ДПДГ</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="rabota-s-chastyami-ifs.html"><span class="t">Работа с&nbsp;частями (IFS)</span><span class="m">подход · <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span></a><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="narrativnaya-praktika-shkola.html" rel="prev">← Больше про&nbsp;прошлое<b>Нарративная практика</b></a><a class="r" href="emdr-dpdg.html" rel="next">Больше про&nbsp;прошлое →<b>ДПДГ</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#read">Почитать</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#read">Почитать</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -119,25 +148,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -147,12 +176,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -161,7 +190,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

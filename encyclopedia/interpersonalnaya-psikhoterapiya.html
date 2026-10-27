@@ -7,9 +7,9 @@
 <meta name="description" content="Интерперсональная психотерапия (ИПТ) — короткая структурированная терапия депрессии, обычно 12–16 встреч. «Интерперсональный» значит «межличностный»: подход связывает настроение человека с тем, как…">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/interpersonalnaya-psikhoterapiya.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Интерперсональная психотерапия · школа терапии · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Интерперсональная психотерапия">
 <meta property="og:description" content="Интерперсональная психотерапия (ИПТ) — короткая структурированная терапия депрессии, обычно 12–16 встреч. «Интерперсональный» значит «межличностный»: подход связывает настроение человека с тем, как…">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/interpersonalnaya-psikhoterapiya.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,42 +107,42 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Школы · ещё школы (черновики)"><ul><li><a href="gruppovaya-terapiya.html">Групповая терапия</a></li><li><a class="is-here" aria-current="page" href="interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a></li><li><a href="metody-relaksatsii.html">Методы релаксации</a></li><li><a href="povedencheskaya-terapiya.html">Поведенческая терапия</a></li><li><a href="sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Школы · ещё школы"><ul><li><a href="gruppovaya-terapiya.html">Групповая терапия</a></li><li><a class="is-here" aria-current="page" href="interpersonalnaya-psikhoterapiya.html">Интерперсональная психотерапия</a></li><li><a href="metody-relaksatsii.html">Методы релаксации</a></li><li><a href="povedencheskaya-terapiya.html">Поведенческая терапия</a></li><li><a href="sistemnaya-semeynaya-terapiya.html">Системная семейная терапия</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Ещё школы (черновики)</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Интерперсональная психотерапия</li></ol>
 <h1 class="kb-h1" id="h1">Интерперсональная психотерапия</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Интерперсональная психотерапия (ИПТ) — короткая структурированная терапия депрессии, обычно 12–16 встреч. «Интерперсональный» значит «межличностный»: подход связывает настроение человека с тем, как сейчас устроены его отношения с другими. Один из четырёх её фокусов — <strong>ролевой переход</strong>, то есть большая перемена в жизни.</p></div>
+<div class="kb-two"><p>Интерперсональная психотерапия (ИПТ)&nbsp;— короткая структурированная терапия депрессии, обычно 12–16&nbsp;встреч. «Интерперсональный» значит «межличностный»: подход связывает настроение человека с тем, как сейчас устроены его отношения с другими. Один из четырёх её фокусов&nbsp;— <strong>ролевой переход</strong>, то есть большая перемена в жизни.</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--mid ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <div class="kb-do"><a class="btn primary" href="../atlas/clinical-psychologist.html">Кто так работает: Клинический психолог</a><span class="kb-do-alt">или <a href="../atlas.html">весь атлас</a></span></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Ещё называют</dt><dd>ИПТ, IPT, interpersonal therapy</dd></div></dl>
 <section class="kb-sec" id="origin"><h2 class="kb-h2">Откуда</h2>
-<p>Её создали Джеральд Клерман и Мирна Вайсман в 1970–80-е — специально для лечения депрессии.</p></section>
+<p>Её создали Джеральд Клерман и Мирна Вайсман в 1970–80-е&nbsp;— специально для лечения депрессии.</p></section>
 <section class="kb-sec" id="idea"><h2 class="kb-h2">Главная идея</h2>
 <p>Подавленность часто связана с тем, что происходит в отношениях сейчас. Поэтому полезный вопрос звучит так: «Что изменилось в ваших отношениях перед тем, как стало плохо?». Терапия работает с настоящим, детство почти не разбирают: как сейчас устроены отношения, что можно сказать или сделать иначе, где найти поддержку.</p></section>
 <section class="kb-sec" id="how"><h2 class="kb-h2">Как проходит работа</h2>
-<p>Сначала депрессию объясняют как болезнь, а не как вину — это снимает стыд. Затем вместе выбирают одну-две «проблемные области»:</p>
-<ul><li><strong>горе</strong> — утрата близкого человека;</li><li><strong>конфликт</strong> — затяжной спор с важным человеком;</li><li><strong>ролевой <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переход</a></strong> — большая перемена: выход на пенсию, развод, рождение ребёнка, переезд;</li><li><strong>дефицит отношений</strong> — одиночество, когда трудно строить связи.</li></ul>
-<p>Дальше работают с выбранной областью: что в ней происходит сейчас и что можно изменить в отношениях.</p>
+<p>Сначала депрессию объясняют как болезнь, а не&nbsp;как вину&nbsp;— это снимает стыд. Затем вместе выбирают одну-две «проблемные области»:</p>
+<ul><li><strong>горе</strong>&nbsp;— утрата близкого человека;</li><li><strong>конфликт</strong>&nbsp;— затяжной спор с важным человеком;</li><li><strong>ролевой <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переход</a></strong>&nbsp;— большая перемена: выход на пенсию, развод, рождение ребёнка, переезд;</li><li><strong>дефицит отношений</strong>&nbsp;— одиночество, когда трудно строить связи.</li></ul>
+<p>Дальше работают с выбранной областью: что в&nbsp;ней происходит сейчас и что можно изменить в отношениях.</p>
 <p>Ролевой переход как фокус проверяли у людей с диагнозом депрессии; у людей без диагноза в переходе данных нет.</p>
-<p>Это не психодинамическая терапия — там ищут корни в прошлом. И не транзактный анализ — другая школа, про внутренних «Родителя, Взрослого и Ребёнка».</p></section>
+<p>Это не&nbsp;психодинамическая терапия&nbsp;— там ищут корни в прошлом. И не&nbsp;транзактный анализ&nbsp;— другая школа, про внутренних «Родителя, Взрослого и Ребёнка».</p></section>
 <section class="kb-sec" id="with"><h2 class="kb-h2">С чем работает</h2>
-<p>Депрессия у взрослых — здесь ИПТ работает примерно наравне с другими основными <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапиями</a> (эффект средний); все главные обзоры сделала одна группа авторов вместе с людьми из самого метода. Проверяли и при послеродовой депрессии и депрессии у подростков (исследований мало), при расстройствах питания, например булимии (данные ранние).</p></section>
+<p>Депрессия у взрослых&nbsp;— здесь ИПТ работает примерно наравне с другими основными <a class="kb-term" href="../glossary.html#term-psikhoterapiya" title="Психологическая помощь обученного специалиста, в основном через разговор и взаимодействие: помогает справиться с тяжёлыми переживаниями…">психотерапиями</a> (эффект средний); все главные обзоры сделала одна группа авторов вместе с людьми из самого метода. Проверяли и при&nbsp;послеродовой депрессии и депрессии у подростков (исследований мало), при расстройствах питания, например булимии (данные ранние).</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
 <p><strong>По состояниям:</strong></p>
-<ul><li>умеренная, на границе с сильной — депрессия у взрослых: лечение и профилактика возврата (эффект средний против контроля; наравне с другими психотерапиями; вместе с лекарствами лучше предупреждает возврат, чем одни лекарства)</li><li>ранняя — расстройства питания, тревожные расстройства, профилактика большой депрессии при лёгких симптомах</li><li>нет данных — люди без диагноза в переходе («ролевой переход» отдельно не проверялся)</li></ul>
-<p><strong>Оценки и рекомендации:</strong> GRADE, ВОЗ, NICE — в проверенных источниках нет.</p>
-<p><strong>Что проверено и на ком.</strong> Люди с диагнозом депрессии: взрослые, подростки, пожилые, люди с телесными болезнями, послеродовая депрессия. Сравнивали с обычной помощью, листом ожидания, плацебо, другими психотерапиями и лекарствами. «Сильной» метка не стала, потому что все три главных метаанализа сделала одна группа авторов и среди соавторов есть люди из самого метода. Независимый метаанализ (Tolin 2010) показал, что КПТ не лучше межличностной терапии.</p>
+<ul><li>умеренная, на границе с сильной&nbsp;— депрессия у взрослых: лечение и профилактика возврата (эффект средний против контроля; наравне с другими психотерапиями; вместе с лекарствами лучше предупреждает возврат, чем одни лекарства)</li><li>ранняя&nbsp;— расстройства питания, тревожные расстройства, профилактика большой депрессии при лёгких симптомах</li><li>нет данных&nbsp;— люди без диагноза в переходе («ролевой переход» отдельно не проверялся)</li></ul>
+<p><strong>Оценки и рекомендации:</strong> GRADE, ВОЗ, NICE&nbsp;— в проверенных источниках нет.</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Люди с диагнозом депрессии: взрослые, подростки, пожилые, люди с телесными болезнями, послеродовая депрессия. Сравнивали с обычной помощью, листом ожидания, плацебо, другими психотерапиями и лекарствами. «Сильной» метка не стала, потому что все три главных метаанализа сделала одна группа авторов и среди соавторов есть люди из самого метода. Независимый метаанализ (Tolin 2010) показал, что КПТ не лучше межличностной терапии.</p>
 <p><strong>Опора:</strong></p>
-<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/21362740/" target="_blank" rel="noopener">Cuijpers 2011<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 38 РКИ, 4 356 человек с депрессией: против контроля эффект средний, против других психотерапий разницы нет, лекарства чуть лучше; вместе с лекарствами лучше предупреждает возврат; у приспособленных версий IPT цифры выше, чем у исходной, авторы просят относиться к ним осторожно — читано: полный текст (принятая рукопись) — ✱ ⏳ (соавтор — из метода, раскрыто)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27032627/" target="_blank" rel="noopener">Cuijpers 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — 90 РКИ, все психические проблемы: при острой депрессии наравне с другими терапиями; снижала риск большой депрессии при лёгких симптомах — читано: аннотация — ✱ <span class="q-mark" title="не проверено по первоисточнику">∗</span>; пересекается с 2011, не независимое подтверждение</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/34002502/" target="_blank" rel="noopener">Cuijpers 2021<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М (сетевой) — 331 РКИ, 34 285 взрослых с депрессией: основные психотерапии, включая межличностную, между собой не различаются — читано: аннотация — та же ведущая группа</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/20547435/" target="_blank" rel="noopener">Tolin 2010<span class="visually-hidden"> (откроется в новой вкладке)</span></a> — М — КПТ не лучше межличностной и поддерживающей терапии — читано: аннотация — ⏳; независимая группа; IPT здесь только как сравнение</li></ul>
-<p><strong>Чего не знаем.</strong> Работает ли IPT у людей без депрессии. Проверялся ли отдельно фокус «ролевой переход», который прямо касается людей в переходе.</p>
-<p><strong>Осторожно.</strong> Это лечение депрессии с обученным терапевтом, проверенное на людях с диагнозом. Красивые цифры у «приспособленных» версий IPT получили в основном их же разработчики — им доверять меньше, чем исходной версии.</p></section>
+<ul><li><a href="https://pubmed.ncbi.nlm.nih.gov/21362740/" target="_blank" rel="noopener">Cuijpers 2011<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 38&nbsp;РКИ, 4&nbsp;356&nbsp;человек с депрессией: против контроля эффект средний, против других психотерапий разницы нет, лекарства чуть лучше; вместе с лекарствами лучше предупреждает возврат; у приспособленных версий IPT цифры выше, чем у исходной, авторы просят относиться к ним осторожно&nbsp;— читано: полный текст (принятая рукопись)&nbsp;— ✱ ⏳ (соавтор&nbsp;— из метода, раскрыто)</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/27032627/" target="_blank" rel="noopener">Cuijpers 2016<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— 90&nbsp;РКИ, все психические проблемы: при острой депрессии наравне с другими терапиями; снижала риск большой депрессии при лёгких симптомах&nbsp;— читано: аннотация&nbsp;— ✱ <span class="q-mark" title="не проверено по первоисточнику">∗</span>; пересекается с 2011, не независимое подтверждение</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/34002502/" target="_blank" rel="noopener">Cuijpers 2021<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М (сетевой)&nbsp;— 331&nbsp;РКИ, 34&nbsp;285&nbsp;взрослых с депрессией: основные психотерапии, включая межличностную, между собой не различаются&nbsp;— читано: аннотация&nbsp;— та&nbsp;же ведущая группа</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/20547435/" target="_blank" rel="noopener">Tolin 2010<span class="visually-hidden"> (откроется в новой вкладке)</span></a>&nbsp;— М&nbsp;— КПТ не лучше межличностной и поддерживающей терапии&nbsp;— читано: аннотация&nbsp;— ⏳; независимая группа; IPT здесь только как сравнение</li></ul>
+<p><strong>Чего не знаем.</strong> Работает&nbsp;ли IPT у людей без депрессии. Проверялся&nbsp;ли отдельно фокус «ролевой переход», который прямо касается людей в переходе.</p>
+<p><strong>Осторожно.</strong> Это лечение депрессии с обученным терапевтом, проверенное на людях с диагнозом. Красивые цифры у «приспособленных» версий IPT получили в основном их же разработчики&nbsp;— им доверять меньше, чем исходной версии.</p></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="psikhodinamicheskaya-terapiya.html"><span class="t">Психоанализ и психодинамическая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="gore.html"><span class="t">Горе и затяжное горе</span><span class="m">понятие</span></a><details class="kb-more-d"><summary>ещё 4</summary><a href="perekhod-i-rasstroystvo-adaptatsii.html"><span class="t">Переход и расстройство адаптации: где граница</span><span class="m">понятие</span></a><a href="vidy-psikhologicheskoy-pomoshchi.html"><span class="t">Виды психологической помощи</span><span class="m">понятие</span></a><a href="aaron-bek.html"><span class="t">Аарон Бек</span><span class="m">человек</span></a><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-physician.html"><span class="t">Врач-психотерапевт</span><span class="m">атлас · уровень «Полномочия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="gruppovaya-terapiya.html" rel="prev">← Ещё школы (черновики)<b>Групповая терапия</b></a><a class="r" href="metody-relaksatsii.html" rel="next">Ещё школы (черновики) →<b>Методы релаксации</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
-<p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span> — не проверено по первоисточнику</p>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="kpt.html"><span class="t">Когнитивно-поведенческая терапия</span><span class="m">школа · <span class="ev ev--strong"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>сильная</span></span></a><a href="psikhodinamicheskaya-terapiya.html"><span class="t">Психоанализ и&nbsp;психодинамическая терапия</span><span class="m">школа · <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span></a><a href="gore.html"><span class="t">Горе и&nbsp;затяжное горе</span><span class="m">понятие</span></a><details class="kb-more-d"><summary>ещё 4</summary><a href="perekhod-i-rasstroystvo-adaptatsii.html"><span class="t">Переход и&nbsp;расстройство адаптации: где граница</span><span class="m">понятие</span></a><a href="vidy-psikhologicheskoy-pomoshchi.html"><span class="t">Виды психологической помощи</span><span class="m">понятие</span></a><a href="aaron-bek.html"><span class="t">Аарон Бек</span><span class="m">человек</span></a><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></details></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/clinical-psychologist.html"><span class="t">Клинический психолог</span><span class="m">атлас · уровень «Профессия»</span></a><a href="../atlas/psychotherapist-physician.html"><span class="t">Врач-психотерапевт</span><span class="m">атлас · уровень «Полномочия»</span></a><a href="../atlas/psychotherapist-psychologist.html"><span class="t">Психолог-психотерапевт</span><span class="m">атлас · уровень «Профессия»</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="gruppovaya-terapiya.html" rel="prev">← Ещё школы<b>Групповая терапия</b></a><a class="r" href="metody-relaksatsii.html" rel="next">Ещё школы →<b>Методы релаксации</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
+<p class="q-legend"><span class="q-mark" aria-hidden="true">∗</span>&nbsp;— не&nbsp;проверено по&nbsp;первоисточнику</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#with">С чем работает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#with">С&nbsp;чем работает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -124,25 +153,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -152,12 +181,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -166,7 +195,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

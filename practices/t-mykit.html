@@ -7,9 +7,9 @@
 <meta name="description" content="Вещи, место и звук под одно состояние: собрал кит — легче войти в роль, разобрал — легче выйти.">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/practices/t-mykit.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Кит (kit): набор под состояние · Практики · Waykeeper">
+<meta property="og:title" content="Кит (kit): набор под состояние">
 <meta property="og:description" content="Вещи, место и звук под одно состояние: собрал кит — легче войти в роль, разобрал — легче выйти.">
 <meta property="og:url" content="https://waykeeper.org/practices/t-mykit.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/kb.css">
@@ -43,42 +50,64 @@
 <script src="../assets/pages/practices.js" defer></script>
 <script src="../modules/trail.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <header class="site-head">
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html" aria-current="page"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -88,14 +117,14 @@
       <div class="pr-top-grid">
         <div class="pr-top-text">
           <ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../practices.html">Практики</a></li><li><a href="../practices.html?only=core#catalog">Основные практики</a></li><li aria-current="page">Кит (kit)</li></ol>
-          <p class="kb-type">Практика<span class="sep">·</span>20 минут<span class="sep">·</span>без меня<span class="sep">·</span>основная</p>
-          <h1 id="pr-title" class="kb-h1 pr-title">Кит (kit): набор под состояние</h1>
-          <div class="kb-two"><span class="label">В двух словах</span><p>Вещи, место и звук под одно состояние: собрал кит — легче войти в роль, разобрал — легче выйти. Не всегда получается, поэтому есть неделя проверки. Силу воли я у себя так и не нашла (искала), зато заметила, что в одни места и предметы я вхожу как в работу, а в другие — как в диван. Кит — это когда такой набор собираешь нарочно.</p></div>
+          <p class="kb-type">Практика<span class="sep">·</span>20&nbsp;минут<span class="sep">·</span>без&nbsp;меня<span class="sep">·</span>основная</p>
+          <h1 id="pr-title" class="kb-h1 pr-title">Кит (kit): набор под&nbsp;состояние</h1>
+          <div class="kb-two"><p>Вещи, место и&nbsp;звук под&nbsp;одно состояние: собрал кит&nbsp;— легче войти в&nbsp;роль, разобрал&nbsp;— легче выйти. Не&nbsp;всегда получается, поэтому есть неделя проверки. Силу воли я у&nbsp;себя так и&nbsp;не&nbsp;нашла (искала), зато заметила, что в&nbsp;одни места и&nbsp;предметы я вхожу как в&nbsp;работу, а&nbsp;в&nbsp;другие&nbsp;— как в&nbsp;диван. Кит&nbsp;— это когда такой набор собираешь нарочно.</p></div>
           <details class="kb-stamp pr-stamp" id="roots">
-          <summary><span class="pr-stamp-k">На чём стоит</span><span class="pr-root"><span>Привычки и среда</span><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span><span class="pr-root"><span>Дизайн среды</span><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span><span class="pr-root"><span>Одежда задаёт состояние</span><span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></span><span class="kb-who">Привычки и среда: студенты и взрослые без расстройств; привычки питания, спорта, транспорта</span><span class="kb-checked">метки проверены 26.10.2026</span><span class="more">Почему так</span></summary>
+          <summary><span class="pr-stamp-k">На&nbsp;чём стоит</span><span class="pr-root"><span>Привычки и&nbsp;среда</span><span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span></span><span class="pr-root"><span>Дизайн среды</span><span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span></span><span class="pr-root"><span>Одежда задаёт состояние</span><span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span></span><span class="kb-who">Привычки и&nbsp;среда: студенты и&nbsp;взрослые без&nbsp;расстройств; привычки питания, спорта, транспорта</span><span class="kb-checked">метки проверены 26.10.2026</span><span class="more">Почему так</span></summary>
           <div class="kb-stamp-body">
-            <ul class="pr-rootlist"><li><p class="pr-rt">Привычки и среда <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <span class="pr-t">обзор</span></p><p>Что привычку запускает обстановка (то же место, время, предметы), показано много раз, но в основном в наблюдениях и опросах; при переезде привычки и правда ломаются. Программ, построенных на этой идее, проверено мало, и эффект у них скромный.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1037/0022-3514.88.6.918">Wood, Tam, Witt, 2005; Gardner и соавт., 2011</a> · на ком проверяли: студенты и взрослые без расстройств; привычки питания, спорта, транспорта</p></li><li><p class="pr-rt">Дизайн среды <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span> <span class="pr-t">мета-анализ</span></p><p>Мета-анализ 2022 года нашёл средний эффект «подталкиваний», а повторный анализ с поправкой на неопубликованные неудачи — почти нулевой средний эффект при большом разбросе: одни приёмы работают, другие нет.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1073/pnas.2107346118">Mertens и соавт., 2022; критика: Maier и соавт., 2022</a> · на ком проверяли: очень разные группы взрослых, в основном без расстройств</p></li><li><p class="pr-rt">Одежда задаёт состояние <span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span> <span class="pr-t">эксперименты</span></p><p>Исходный эффект «халат врача улучшает внимание» не повторился в предрегистрированной проверке; ранние работы этого направления держатся слабо. Поэтому про «ту самую толстовку» говорю как про язык, не как про науку.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1016/j.jesp.2018.10.001">Burns и соавт., 2019 (повторная проверка Adam, Galinsky, 2012)</a> · на ком проверяли: студенты, лабораторные задачи</p></li></ul>
-            <p>Метка говорит, насколько исследован метод, а не как он сработает у тебя. <a href="../how.html#marks">Что значат метки</a></p>
+            <ul class="pr-rootlist"><li><p class="pr-rt">Привычки и&nbsp;среда <span class="ev ev--mid"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>умеренная</span> <span class="pr-t">обзор</span></p><p>Что привычку запускает обстановка (то&nbsp;же место, время, предметы), показано много раз, но&nbsp;в&nbsp;основном в&nbsp;наблюдениях и&nbsp;опросах; при&nbsp;переезде привычки и&nbsp;правда ломаются. Программ, построенных на&nbsp;этой идее, проверено мало, и&nbsp;эффект у&nbsp;них скромный.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1037/0022-3514.88.6.918">Wood, Tam, Witt, 2005; Gardner и&nbsp;соавт., 2011</a> · на&nbsp;ком проверяли: студенты и&nbsp;взрослые без&nbsp;расстройств; привычки питания, спорта, транспорта</p></li><li><p class="pr-rt">Дизайн среды <span class="ev ev--early"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>ранняя</span> <span class="pr-t">мета-анализ</span></p><p>Мета-анализ 2022&nbsp;года нашёл средний эффект «подталкиваний», а&nbsp;повторный анализ с&nbsp;поправкой на&nbsp;неопубликованные неудачи&nbsp;— почти нулевой средний эффект при&nbsp;большом разбросе: одни приёмы работают, другие нет.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1073/pnas.2107346118">Mertens и&nbsp;соавт., 2022; критика: Maier и&nbsp;соавт., 2022</a> · на&nbsp;ком проверяли: очень разные группы взрослых, в&nbsp;основном без&nbsp;расстройств</p></li><li><p class="pr-rt">Одежда задаёт состояние <span class="ev ev--contested"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>спорная</span> <span class="pr-t">эксперименты</span></p><p>Исходный эффект «халат врача улучшает внимание» не&nbsp;повторился в&nbsp;предрегистрированной проверке; ранние работы этого направления держатся слабо. Поэтому про&nbsp;«ту самую толстовку» говорю как про&nbsp;язык, не&nbsp;как про&nbsp;науку.</p><p class="pr-rs">Исследование: <a href="https://doi.org/10.1016/j.jesp.2018.10.001">Burns и&nbsp;соавт., 2019 (повторная проверка Adam, Galinsky, 2012)</a> · на&nbsp;ком проверяли: студенты, лабораторные задачи</p></li></ul>
+            <p>Метка говорит, насколько исследован метод, а&nbsp;не&nbsp;как он сработает у&nbsp;тебя. <a href="../how.html#marks">Что значат метки</a></p>
           </div>
         </details>
           <div class="kb-do"><a class="btn primary" href="#steps">Начать</a></div>
@@ -103,7 +132,7 @@
         <div class="pr-top-art">
           <figure class="plate-alive plate-alive--quiet is-right pr-plate" data-processed data-clear style="--pa-r:1.333; --pa-h:min(52vh, 460px)">
           <div class="pa-img"><img src="../assets/img/pd/practices/sobrat-kit-1200.jpg" alt="Столик и письменный набор (суримоно). Кубо Сюнман" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <figcaption class="pa-cap">Кубо Сюнман · «Столик и письменный набор (суримоно)», XIX в.<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
+          <figcaption class="pa-cap">Кубо Сюнман · «Столик и&nbsp;письменный набор (суримоно)», XIX в.<span class="pa-src"> · Метрополитен-музей, Нью-Йорк</span></figcaption>
         </figure>
         </div>
       </div>
@@ -112,19 +141,19 @@
 
   <section class="pr-sec pr-sec--facts" aria-label="О практике">
     <div class="frame"><dl class="kb-facts kb-facts--one pr-facts">
-      <div><dt>На руках</dt><dd>Карточка одного кита: состояние, место, три-пять предметов, звук, вход и выход. И честное имя у одного кита, который работает не туда.</dd></div>
-      <div><dt>Откуда</dt><dd>кит собирается из того, что уже есть, покупать ничего не надо. Бывают киты, которые отлично работают, только не туда; их разбираем так же, без стыда.</dd></div>
-      <div><dt>Это упражнение</dt><dd>придумано вместе с Юрой, первым участником программы.</dd></div>
-      <div><dt>В «Переходе»</dt><dd>это <a class="link" href="../program.html#week-9">неделя 9</a>: опоры — люди, ритм, ритуал и аптечка на плохой день. Кит собираем после карты опор, потому что среду поменять проще всего.</dd></div>
+      <div><dt>На&nbsp;руках</dt><dd>Карточка одного кита: состояние, место, три-пять предметов, звук, вход и&nbsp;выход. И&nbsp;имя без&nbsp;прикрас у&nbsp;одного кита, который работает не&nbsp;туда.</dd></div>
+      <div><dt>Откуда</dt><dd>кит собирается из&nbsp;того, что уже есть, покупать ничего не&nbsp;надо. Бывают киты, которые отлично работают, только не&nbsp;туда; их разбираем так&nbsp;же, без&nbsp;стыда.</dd></div>
+      <div><dt>Это упражнение</dt><dd>придумано вместе с&nbsp;Юрой, первым участником программы.</dd></div>
+      <div><dt>В&nbsp;«Переходе»</dt><dd>это <a class="link" href="../program.html#week-9">неделя 9</a>: опоры&nbsp;— люди, ритм, ритуал и&nbsp;аптечка на&nbsp;плохой день. Кит собираем после карты опор, потому что среду поменять проще всего.</dd></div>
     </dl></div>
   </section>
 
   <section class="pr-sec pr-sec--why" aria-labelledby="pr-why">
     <div class="frame"><div class="measure">
       <h2 class="kb-h2" id="pr-why">Зачем кит</h2>
-        <p>Слово kit по-английски — набор: аптечка, набор для похода, стартовый набор. В самопомощи есть похожая идея — коробка, которую собирают заранее, чтобы в тяжёлую минуту не думать, а открыть. Наш кит — тот же принцип, только не на плохой день (про него у меня отдельно — «Аптечка на стену»), а на каждый: набор под любое состояние, в которое хочется входить по кнопке.</p>
-        <p>Ритуал — это одно действие с началом и концом. Аптечка — что делать, когда уже плохо. Кит — то, что лежит вокруг, пока ты ещё ничего не делаешь: вещи, место, звук, одежда. Он не требует решения в моменте, в этом его сила: ноутбук в рюкзаке и наушники на шее для многих людей работают как сигнал: сейчас будем работать.</p>
-        <p>У каждого уже есть свои киты, просто не названы. Один, скорее всего, включает нужное состояние: в этой куртке ты идёшь гулять, за этим столом думаешь. И почти наверняка есть один, который включает ненужное, и включает надёжно, без промаха. Практика про то, чтобы первый собрать нарочно, а второй разобрать без стыда.</p>
+        <p>Слово kit по-английски&nbsp;— набор: аптечка, набор для&nbsp;похода, стартовый набор. В&nbsp;самопомощи есть похожая идея&nbsp;— коробка, которую собирают заранее, чтобы в&nbsp;тяжёлую минуту не&nbsp;думать, а&nbsp;открыть. Наш кит&nbsp;— тот&nbsp;же принцип, только не&nbsp;на&nbsp;плохой день (про&nbsp;него у&nbsp;меня отдельно&nbsp;— «Аптечка на&nbsp;стену»), а&nbsp;на&nbsp;каждый: набор под&nbsp;любое состояние, в&nbsp;которое хочется входить по&nbsp;кнопке.</p>
+        <p>Ритуал&nbsp;— это одно действие с&nbsp;началом и&nbsp;концом. Аптечка&nbsp;— что делать, когда уже плохо. Кит&nbsp;— то, что лежит вокруг, пока ты ещё ничего не&nbsp;делаешь: вещи, место, звук, одежда. Он не&nbsp;требует решения в&nbsp;моменте, в&nbsp;этом его сила: ноутбук в&nbsp;рюкзаке и&nbsp;наушники на&nbsp;шее для&nbsp;многих людей работают как сигнал: сейчас будем работать.</p>
+        <p>У&nbsp;каждого уже есть свои киты, просто не&nbsp;названы. Один, скорее всего, включает нужное состояние: в&nbsp;этой куртке ты идёшь гулять, за&nbsp;этим столом думаешь. И&nbsp;почти наверняка есть один, который включает ненужное, и&nbsp;включает надёжно, без&nbsp;промаха. Практика про&nbsp;то, чтобы первый собрать нарочно, а&nbsp;второй разобрать без&nbsp;стыда.</p>
     </div></div>
   </section>
 
@@ -133,10 +162,10 @@
       <aside class="pr-careful">
         <h2 class="pr-h" id="pr-careful">Осторожно</h2>
         <ul class="list">
-            <li>Кит — про среду, не про состояние само по себе. Если нужное состояние неделями не включается ничем, а ненужное не разбирается, это не вопрос дизайна: сначала врач или психолог.</li>
-            <li>Если кит «не туда» — это алкоголь, еда до боли, игры сутками или что-то, что ты сам называешь зависимостью, разносить зарядку по комнатам мало. С этим лучше к специалисту, упражнение тут не инструмент.</li>
-            <li>Кит не должен становиться списком покупок: собирается из того, что есть. Если «для кита нужен новый стол», это уже не кит, а повод.</li>
-            <li>Кит не должен превращаться в обязанность, за которую стыдно. Не собрал — не собрал.</li>
+            <li>Кит&nbsp;— про&nbsp;среду, не&nbsp;про&nbsp;состояние само по&nbsp;себе. Если нужное состояние неделями не&nbsp;включается ничем, а&nbsp;ненужное не&nbsp;разбирается, это не&nbsp;вопрос дизайна: сначала врач или психолог.</li>
+            <li>Если кит «не&nbsp;туда»&nbsp;— это алкоголь, еда до&nbsp;боли, игры сутками или что-то, что ты про&nbsp;себя называешь зависимостью, разносить зарядку по&nbsp;комнатам мало. С&nbsp;этим лучше к&nbsp;специалисту, упражнение тут не&nbsp;инструмент.</li>
+            <li>Кит не&nbsp;должен становиться списком покупок: собирается из&nbsp;того, что есть. Если «для&nbsp;кита нужен новый стол», это уже не&nbsp;кит, а&nbsp;повод.</li>
+            <li>Кит не&nbsp;должен превращаться в&nbsp;обязанность, за&nbsp;которую стыдно. Не&nbsp;собрал&nbsp;— не&nbsp;собрал.</li>
         </ul>
       </aside>
     </div>
@@ -147,15 +176,15 @@
       <div class="pr-kit pr-kit--tool" data-module="practice-kit" data-id="t-mykit" data-title="Кит (kit): набор под состояние" data-minutes="20" data-store="waykeeper.practice.t-mykit">
         <div class="pr-kit-side">
           <ol class="pr-steps" data-kit-steps>
-              <li data-kit-step="0">Состояние или роль. Выбери одно: в него трудно входить или из него трудно выходить. Работать головой, двигаться, восстанавливаться, думать и писать, разговаривать с людьми, заканчивать день. Одно, не три.</li>
-              <li data-kit-step="1">Когда оно включалось само. Вспомни два-три раза, когда ты в нём оказывался без усилия. Что было вокруг: место, время суток, кто рядом, что в руках. Это и есть детали будущего кита, их не надо придумывать.</li>
-              <li data-kit-step="2">Предметы. Три-пять вещей, не больше, чтобы кит собирался за минуту и в плохой день. Всё из того, что уже есть. Если тянет что-то купить, сначала собери из имеющегося и проверь неделю.</li>
-              <li data-kit-step="3">Место и дом кита. Где кит работает (стол у окна, кофейня, парк, коврик у стены) и где он живёт, когда не нужен: у двери, в рюкзаке, в одной коробке. Кит, разложенный по квартире, собирать не хочется.</li>
-              <li data-kit-step="4">Звук, свет, запах, одежда. Что ещё помогает телу поверить: один и тот же плейлист, настольная лампа вместо верхнего света, та самая толстовка. Одной-двух деталей хватает.</li>
-              <li data-kit-step="5">Вход и выход. Первое движение, с которого кит включается (надеть наушники, налить воду), и последнее, которым выключается (убрать в коробку, снять часы). Без выхода кит растекается на весь день, и рабочий стол превращается в место, где ты и работаешь, и не можешь перестать.</li>
-              <li data-kit-step="6">Неделя проверки. Собери кит хотя бы три раза за неделю. Включил состояние — оставляй. Не включил — поменяй одну деталь: место, время или предмет. Чиним кит, а не себя.</li>
+              <li data-kit-step="0">Состояние или роль. Выбери одно: в&nbsp;него трудно входить или из&nbsp;него трудно выходить. Работать головой, двигаться, восстанавливаться, думать и&nbsp;писать, разговаривать с&nbsp;людьми, заканчивать день. Одно, не&nbsp;три.</li>
+              <li data-kit-step="1">Когда оно включалось само. Вспомни два-три раза, когда это состояние приходило само, без&nbsp;усилия. Что было вокруг: место, время суток, кто рядом, что в&nbsp;руках. Это и&nbsp;есть детали будущего кита, их не&nbsp;надо придумывать.</li>
+              <li data-kit-step="2">Предметы. Три-пять вещей, не&nbsp;больше, чтобы кит собирался за&nbsp;минуту и&nbsp;в&nbsp;плохой день. Всё из&nbsp;того, что уже есть. Если тянет что-то купить, сначала собери из&nbsp;имеющегося и&nbsp;проверь неделю.</li>
+              <li data-kit-step="3">Место и&nbsp;дом кита. Где кит работает (стол у&nbsp;окна, кофейня, парк, коврик у&nbsp;стены) и&nbsp;где он живёт, когда не&nbsp;нужен: у&nbsp;двери, в&nbsp;рюкзаке, в&nbsp;одной коробке. Кит, разложенный по&nbsp;квартире, собирать не&nbsp;хочется.</li>
+              <li data-kit-step="4">Звук, свет, запах, одежда. Что ещё помогает телу поверить: один и&nbsp;тот&nbsp;же плейлист, настольная лампа вместо верхнего света, та самая толстовка. Одной-двух деталей хватает.</li>
+              <li data-kit-step="5">Вход и&nbsp;выход. Первое движение, с&nbsp;которого кит включается (надеть наушники, налить воду), и&nbsp;последнее, которым выключается (убрать в&nbsp;коробку, снять часы). Без&nbsp;выхода кит растекается на&nbsp;весь день, и&nbsp;рабочий стол превращается в&nbsp;место, где ты и&nbsp;работаешь, и&nbsp;не&nbsp;можешь перестать.</li>
+              <li data-kit-step="6">Неделя проверки. Собери кит хотя&nbsp;бы три раза за&nbsp;неделю. Включил состояние&nbsp;— оставляй. Не&nbsp;включил&nbsp;— поменяй одну деталь: место, время или предмет. Чиним кит, а&nbsp;не&nbsp;себя.</li>
           </ol>
-          <p class="pr-stuck"><span class="pr-stuck-k">Если не получается начать.</span> Назови один кит, который у тебя уже есть и работает: хоть в нужную сторону, хоть нет. Или нажми «Пример».</p>
+          <p class="pr-stuck"><span class="pr-stuck-k">Если не&nbsp;получается начать.</span> Назови один кит, который у&nbsp;тебя уже есть и&nbsp;работает: хоть в&nbsp;нужную сторону, хоть нет. Или нажми «Пример».</p>
         </div>
         <div class="pr-kit-main">
             <div class="pr-tool" data-kit-tool>
@@ -169,37 +198,37 @@
 
   <section class="pr-sec pr-sec--extra" aria-labelledby="pr-wrong">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-wrong">Кит, который работает не туда</h2>
-        <p>Подозреваю, что такой у тебя есть: он собирается сам, в одно и то же время, из одних и тех же вещей, и после него не легче, а чуть стыднее. Телефон на зарядке у кровати плюс лента плюс «ещё пять минут» — кит, собранный лучше любого рабочего.</p>
+      <h2 class="kb-h2" id="pr-wrong">Кит, который работает не&nbsp;туда</h2>
+        <p>Подозреваю, что такой у&nbsp;тебя есть: он собирается сам, в&nbsp;одно и&nbsp;то&nbsp;же время, из&nbsp;одних и&nbsp;тех&nbsp;же вещей, и&nbsp;после него не&nbsp;легче, а&nbsp;чуть стыднее. Телефон на&nbsp;зарядке у&nbsp;кровати плюс лента плюс «ещё пять минут»&nbsp;— кит, собранный лучше любого рабочего.</p>
         <p>Хорошая новость: раз он работает, ты умеешь собирать киты. Плохой новости нет, есть пара ходов.</p>
         <ol class="pr-ol">
-          <li><b>Назови его.</b> Из чего он состоит: место, предметы, время, вход. Обычно оказывается, что вход у него один: взять в руки, сесть, открыть.</li>
-          <li><b>Не ломай, разнеси.</b> Не «больше никогда», а «добавить один шаг»: зарядка в другой комнате, приложение на третьем экране, пульт в ящике. Кит, который надо собирать, уже не собирается сам.</li>
-          <li><b>Подставь другой кит на тот же вход.</b> Если вход — «сесть на диван вечером», пусть на диване лежит книга и плед, а телефон живёт на кухне. Место остаётся, состав меняется.</li>
-          <li><b>Проверь неделю, как и любой кит.</b> Разобрался не до конца — нормально, разнеси ещё одну деталь.</li>
+          <li><b>Назови его.</b> Из&nbsp;чего он состоит: место, предметы, время, вход. Обычно оказывается, что вход у&nbsp;него один: взять в&nbsp;руки, сесть, открыть.</li>
+          <li><b>Не&nbsp;ломай, разнеси.</b> Не&nbsp;«больше никогда», а&nbsp;«добавить один шаг»: зарядка в&nbsp;другой комнате, приложение на&nbsp;третьем экране, пульт в&nbsp;ящике. Кит, который надо собирать, уже не&nbsp;собирается сам.</li>
+          <li><b>Подставь другой кит на&nbsp;тот&nbsp;же вход.</b> Если вход&nbsp;— «сесть на&nbsp;диван вечером», пусть на&nbsp;диване лежит книга и&nbsp;плед, а&nbsp;телефон живёт на&nbsp;кухне. Место остаётся, состав меняется.</li>
+          <li><b>Проверь неделю, как и&nbsp;любой кит.</b> Разобрался не&nbsp;до&nbsp;конца&nbsp;— нормально, разнеси ещё одну деталь.</li>
         </ol>
-        <p>Стыдить себя за такой кит бессмысленно: он собрался по тем же законам, что и рабочий, просто его никто не проектировал. Теперь проектируешь ты.</p>
+        <p>Стыдить себя за&nbsp;такой кит бессмысленно: он собрался по&nbsp;тем&nbsp;же законам, что и&nbsp;рабочий, просто его никто не&nbsp;проектировал. Теперь проектируешь ты.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-sec--extra" aria-labelledby="pr-failed">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-failed">Если не пошло</h2>
+      <h2 class="kb-h2" id="pr-failed">Если не&nbsp;пошло</h2>
         <ul class="list">
-          <li>Кит не включает состояние три раза подряд — скорее всего, не та деталь держит. Поменяй место или время, предметы обычно не главное.</li>
-          <li>Кит включает, но собирать лень — он живёт слишком далеко или в нём больше пяти вещей.</li>
-          <li>Кит работает только в одном месте, а место пропало (переезд, кафе закрылось) — опиши, что оно давало: «утро, пока никого, и большой стол», и ищи это, а не точный адрес.</li>
-          <li>Хочется собрать сразу пять китов — собери один и проверь неделю. Остальные никуда не денутся.</li>
+          <li>Кит не&nbsp;включает состояние три раза подряд&nbsp;— скорее всего, не&nbsp;та деталь держит. Поменяй место или время, предметы обычно не&nbsp;главное.</li>
+          <li>Кит включает, но&nbsp;собирать лень&nbsp;— он живёт слишком далеко или в&nbsp;нём больше пяти вещей.</li>
+          <li>Кит работает только в&nbsp;одном месте, а&nbsp;место пропало (переезд, кафе закрылось)&nbsp;— опиши, что оно давало: «утро, пока никого, и&nbsp;большой стол», и&nbsp;ищи это, а&nbsp;не&nbsp;точный адрес.</li>
+          <li>Хочется собрать сразу пять китов&nbsp;— собери один и&nbsp;проверь неделю. Остальные никуда не&nbsp;денутся.</li>
         </ul>
-        <p class="pr-link-note">Из «Карты опор» кит берёт детали: место, время, вещи. Ритуал встаёт внутрь кита как вход или выход: три вдоха у окна — ритуал, а стол у окна, лампа и наушники — кит. Аптечка — это на плохой день, когда думать не получается; кит собирается в спокойный и нужен каждый день. Если кит есть, ритуалу есть где начаться.</p>
+        <p class="pr-link-note">Из&nbsp;«Карты опор» кит берёт детали: место, время, вещи. Ритуал встаёт внутрь кита как вход или выход: три вдоха у&nbsp;окна&nbsp;— ритуал, а&nbsp;стол у&nbsp;окна, лампа и&nbsp;наушники&nbsp;— кит. Аптечка&nbsp;— это на&nbsp;плохой день, когда думать не&nbsp;получается; кит собирается в&nbsp;спокойный и&nbsp;нужен каждый день. Если кит есть, ритуалу есть где начаться.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-pros" data-atmo="haze" aria-labelledby="pr-pros-h">
     <div class="frame"><div class="measure">
-      <h2 class="kb-h2" id="pr-pros-h">Для специалистов</h2>
+      <h2 class="kb-h2" id="pr-pros-h">Для&nbsp;специалистов</h2>
       <div class="actions pr-pros-acts"><button type="button" class="btn quiet" data-print-page>Распечатать</button> <button type="button" class="btn quiet" data-copy-steps>Скопировать шаги</button><span class="pr-copied" role="status" aria-live="polite" data-copy-note></span></div>
-      <p class="small pr-pros-note">Тексты базы можно брать в работу со ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
+      <p class="small pr-pros-note">Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой. <a class="link" href="../how.html#license">Подробнее</a></p>
     </div></div>
   </section>
 
@@ -207,18 +236,18 @@
     <div class="frame"><div class="kb-near-wrap">
       <h2 class="kb-h2" id="pr-near">Рядом</h2>
         <dl class="kb-near">
-          <div><dt>Сделать</dt><dd><a href="../practices/t-supports.html"><span class="t">Карта опор</span><span class="m">практика · 30 мин</span></a><a href="../practices/t-ritual.html"><span class="t">Собрать один ритуал</span><span class="m">практика · 15 мин</span></a><a href="../practices/t-kit.html"><span class="t">Аптечка на стену</span><span class="m">практика · 30 мин</span></a><details class="pr-more"><summary>ещё 2 →</summary><a href="../practices/t-ifthen.html"><span class="t">Три плана «если — то»</span><span class="m">практика · 10 мин</span></a><a href="../practices/t-window.html"><span class="t">Как я понимаю, что мне хуже</span><span class="m">практика · 15 мин</span></a></details></dd></div>
-          <div><dt>В ситуациях</dt><dd><a href="../encyclopedia/plany-sryvayutsya.html"><span class="t">Планы срываются на одном и том же месте</span></a><a href="../encyclopedia/sily-konchilis.html"><span class="t">Силы кончились, а что вместо — непонятно</span></a></dd></div>
+          <div><dt>Сделать</dt><dd><a href="../practices/t-supports.html"><span class="t">Карта опор</span><span class="m">практика · 30&nbsp;мин</span></a><a href="../practices/t-ritual.html"><span class="t">Собрать один ритуал</span><span class="m">практика · 15&nbsp;мин</span></a><a href="../practices/t-kit.html"><span class="t">Аптечка на&nbsp;стену</span><span class="m">практика · 30&nbsp;мин</span></a><details class="pr-more"><summary>ещё 2 →</summary><a href="../practices/t-ifthen.html"><span class="t">Три плана «если&nbsp;— то»</span><span class="m">практика · 10&nbsp;мин</span></a><a href="../practices/t-window.html"><span class="t">Как я понимаю, что мне хуже</span><span class="m">практика · 15&nbsp;мин</span></a></details></dd></div>
+          <div><dt>В&nbsp;ситуациях</dt><dd><a href="../encyclopedia/plany-sryvayutsya.html"><span class="t">Планы срываются на&nbsp;одном и&nbsp;том&nbsp;же месте</span></a><a href="../encyclopedia/sily-konchilis.html"><span class="t">Силы кончились, а&nbsp;что вместо&nbsp;— непонятно</span></a></dd></div>
         </dl>
       <nav class="kb-next" aria-label="Соседние практики"><a href="t-supports.html">← предыдущая<b>Карта опор</b></a><a class="r" href="t-ritual.html">следующая →<b>Собрать один ритуал</b></a></nav>
-      <p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>.</p>
+      <p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </div></div>
   </section>
 
   <section class="pr-sec pr-end" data-atmo="dawn" data-atmo-rule aria-label="Дальше">
     <div class="frame cols">
       <div class="s-7">
-        <p class="lede pr-bridge">Каждую практику можно сделать без меня. В «Переходе» я подбираю их под тебя, и найденное складывается в выбор дела и первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
+        <p class="lede pr-bridge">Каждую практику можно сделать без&nbsp;меня. В&nbsp;«Переходе» я подбираю их под&nbsp;тебя, и&nbsp;найденное складывается в&nbsp;выбор дела и&nbsp;первый шаг. <a class="link" href="../program.html">Как устроен «Переход» →</a></p>
         <div class="actions"><a class="btn primary" href="../practices.html#catalog">Все практики →</a></div>
       </div>
     </div>
@@ -231,25 +260,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -259,12 +288,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -273,7 +302,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>

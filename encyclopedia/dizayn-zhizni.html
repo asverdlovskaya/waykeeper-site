@@ -7,9 +7,9 @@
 <meta name="description" content="Подход из Стэнфорда: жизнь можно проектировать — исследовать, прототипировать, пробовать. Из него в энциклопедии «Планы Одиссеи» и «Прототипирующие разговоры».">
 <!-- seo -->
 <link rel="canonical" href="https://waykeeper.org/encyclopedia/dizayn-zhizni.html">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Waykeeper">
-<meta property="og:title" content="Дизайн жизни · школа терапии · Энциклопедия переходов · Waykeeper">
+<meta property="og:title" content="Дизайн жизни">
 <meta property="og:description" content="Подход из Стэнфорда: жизнь можно проектировать — исследовать, прототипировать, пробовать. Из него в энциклопедии «Планы Одиссеи» и «Прототипирующие разговоры».">
 <meta property="og:url" content="https://waykeeper.org/encyclopedia/dizayn-zhizni.html">
 <meta property="og:locale" content="ru_RU">
@@ -22,6 +22,13 @@
 <meta name="twitter:image" content="https://waykeeper.org/assets/og/waykeeper-og.jpg">
 <!-- /seo -->
 <link rel="stylesheet" href="../assets/fonts.css">
+<!-- head-extra -->
+<link rel="preload" href="../assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/spectral-n300-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<!-- /head-extra -->
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/site-v2.css">
 <link rel="stylesheet" href="../assets/atmo.css">
@@ -34,9 +41,29 @@
 <script src="../assets/kb.js" defer></script>
 <script src="../assets/kb-head.js" defer></script>
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<!-- design-layer -->
+<link rel="stylesheet" href="../assets/design-layer.css">
+<!-- без JavaScript (правка 27.10, patches/states.md): меню на телефоне открывается ссылкой #site-nav,
+     окошко «База знаний» на компьютере — наведением и клавишей Tab; поиск без скрипта не работает — прячем. -->
+<noscript><style>
+button.menu-btn{display:none !important}
+.menu-close-nojs{display:none}
+.kb-pop-search,.kb-search kbd{display:none}
+.cl-pole{opacity:1}
+@media (max-width:980px){
+  .site-nav:target{opacity:1; visibility:visible; transform:none; transition:none; outline:none}
+  .site-nav:target .menu-close-nojs.btn.quiet.glass{display:inline-flex; position:absolute; top:14px; right:14px; width:auto; margin:0; background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line-2)}
+}
+@media (min-width:981px){
+  a.menu-btn{display:none}
+  .kb:hover .kb-pop,.kb:focus-within .kb-pop{opacity:1; visibility:visible; transform:none}
+}
+</style></noscript>
+<script src="../assets/design-layer.js" defer></script>
+<!-- /design-layer -->
 </head>
 <body data-atmo-frame data-field-blobs="off">
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
 
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
 <!-- ===== ШАПКА v2: одна на все страницы (образец — _template.html, замена — _tools/v2_chrome.py) ===== -->
@@ -44,33 +71,35 @@
   <div class="frame head-row">
     <a class="wordmark" href="../index.html">Waykeeper</a>
     <button class="menu-btn btn quiet glass sm" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <noscript><a class="menu-btn btn quiet glass sm" href="#site-nav">Меню</a></noscript>
     <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <noscript><a class="menu-close-nojs btn quiet glass sm" href="#">Закрыть</a></noscript>
       <ul>
         <li class="kb">
           <button class="kb-btn is-current" type="button" aria-expanded="false" aria-controls="kb-pop">База знаний<span class="kb-caret" aria-hidden="true"></span></button>
           <div class="kb-pop nodes" id="kb-pop">
-            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без регистрации</span></p>
+            <p class="kb-head"><span class="label">База знаний</span><span class="kb-note">открыто, без&nbsp;регистрации</span></p>
             <form class="kb-search kb-search--sm kb-pop-search" role="search" onkeydown="event.stopPropagation()" onsubmit="return false">
-              <label class="visually-hidden" for="kb-pop-q">Найти в базе знаний</label>
+              <label class="visually-hidden" for="kb-pop-q">Найти в&nbsp;базе знаний</label>
               <input id="kb-pop-q" type="search" placeholder="Найти в базе" autocomplete="off">
               <kbd>/</kbd>
             </form>
             <ul class="kb-list">
               <li><a class="kb-item" href="../practices.html"><span class="kb-t">Практики</span><span class="status status--open">открыто</span></a></li>
-              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в работе</span></a></li>
-              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в работе</span></a></li>
+              <li><a class="kb-item" href="../encyclopedia.html" aria-current="page"><span class="kb-t">Энциклопедия переходов</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../atlas.html"><span class="kb-t">Атлас помогающих профессий</span><span class="status status--wip">в&nbsp;работе</span></a></li>
+              <li><a class="kb-item" href="../resources.html"><span class="kb-t">Ресурсы</span><span class="status status--wip">в&nbsp;работе</span></a></li>
             </ul>
-            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С чем ты пришёл →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
+            <p class="kb-hint kb-pop-links"><a href="../knowledge.html#situations">С&nbsp;чем ты сейчас →</a> &nbsp;·&nbsp; <a href="../knowledge.html">Вся база знаний →</a></p>
           </div>
         </li>
         <li><a href="../program.html">«Переход»</a></li>
         <li><a href="../new-season.html">«Новый сезон»</a></li>
-        <li><a href="../project.html">О проекте</a></li>
-        <li><a href="../about.html">О себе</a></li>
+        <li><a href="../project.html">О&nbsp;проекте</a></li>
+        <li><a href="../about.html">О&nbsp;себе</a></li>
         <li><a href="../talk.html">Разговор</a></li>
       </ul>
-      <a class="btn quiet glass sm" href="#telegram" data-tg>Написать в Telegram</a>
+      <a class="btn quiet glass sm" href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>Написать в&nbsp;Telegram</a>
     </nav>
   </div>
 </header>
@@ -78,40 +107,40 @@
 <main id="main">
 <div class="frame kb-page">
   <div class="kb-grid">
-    <nav class="kb-side" aria-label="В этом разделе: Школы · больше про будущее"><ul><li><a href="act.html">Терапия принятия и ответственности</a></li><li><a href="pozitivnaya-psikhologiya.html">Позитивная психология</a></li><li><a href="kouching.html">Коучинг</a></li><li><a class="is-here" aria-current="page" href="dizayn-zhizni.html">Дизайн жизни</a></li><li><a href="death-positive.html">Движение «позитивного отношения к смерти»</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
+    <nav class="kb-side" aria-label="В этом разделе: Школы · больше про будущее"><ul><li><a href="act.html">Терапия принятия и&nbsp;ответственности</a></li><li><a href="pozitivnaya-psikhologiya.html">Позитивная психология</a></li><li><a href="kouching.html">Коучинг</a></li><li><a class="is-here" aria-current="page" href="dizayn-zhizni.html">Дизайн жизни</a></li><li><a href="death-positive.html">Движение «позитивного отношения к&nbsp;смерти»</a></li></ul><a class="all" href="../encyclopedia.html#schools">Все школы →</a></nav>
     <article class="kb-main" aria-labelledby="h1">
-<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Больше про будущее</li></ol>
+<ol class="kb-crumbs"><li><a href="../knowledge.html">База знаний</a></li><li><a href="../encyclopedia.html">Энциклопедия переходов</a></li><li><a href="../encyclopedia.html#schools">Школы терапии</a></li><li>Дизайн жизни</li></ol>
 <h1 class="kb-h1" id="h1">Дизайн жизни</h1>
-<div class="kb-two"><span class="label">В двух словах</span><p>Подход из Стэнфорда: жизнь можно проектировать — исследовать, прототипировать, пробовать. Из него в энциклопедии «Планы Одиссеи» и «Прототипирующие разговоры».</p></div>
+<div class="kb-two"><p>Подход из Стэнфорда: жизнь можно проектировать&nbsp;— исследовать, прототипировать, пробовать. Из него в энциклопедии «Планы Одиссеи» и «Прототипирующие разговоры».</p></div>
 <div class="kb-ev"><p class="kb-ev-line"><span class="ev ev--craft ev--big"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span> <a class="kb-ev-how" href="../how.html#marks">Что значат метки</a></p></div>
 <div class="kb-do"><a class="btn primary" href="../atlas/career-counsellor.html">Кто так работает: Карьерный консультант / карьерный коуч</a><span class="kb-do-alt">или <a href="../atlas.html">весь атлас</a></span></div>
 <dl class="kb-facts kb-facts--one"><div><dt>Ещё называют</dt><dd>Designing Your Life</dd></div></dl>
 <section class="kb-sec" id="origin"><h2 class="kb-h2">Откуда</h2>
 <p>Билл Бёрнетт и Дэйв Эванс, Стэнфорд, 2016.</p>
-<p>Не путать с «Life Design» Марка Савикаса — это другая традиция карьерного консультирования.</p></section>
+<p>Не путать с «Life Design» Марка Савикаса&nbsp;— это другая традиция карьерного консультирования.</p></section>
 <section class="kb-sec" id="idea"><h2 class="kb-h2">Главная идея</h2>
-<p>Жизнь можно проектировать как продукт: исследовать, прототипировать, пробовать, а не искать единственный правильный ответ.</p></section>
+<p>Жизнь можно проектировать как продукт: исследовать, прототипировать, пробовать, а не&nbsp;искать единственный правильный ответ.</p></section>
 <section class="kb-sec" id="how"><h2 class="kb-h2">Как проходит работа</h2>
 <p>Упражнения: <a class="kb-term" href="../glossary.html#term-plany-odissei" title="Несколько версий следующих пяти лет вместо одной правильной.">планы Одиссеи</a>, <a class="kb-term" href="../glossary.html#term-prototipiruyushchie-razgovory" title="Проверить версию будущего разговором с тем, кто уже так живёт.">прототипирующие разговоры</a>, журнал энергии.</p></section>
 <section class="kb-sec" id="when"><h2 class="kb-h2">Когда помогает</h2>
 <p>Авторы предлагают подход для выбора направления и смены карьеры. Проверок самого курса нет.</p></section>
 <section class="kb-sec" id="evidence"><h2 class="kb-h2">Доказательность</h2>
 <p><strong>По состояниям:</strong></p>
-<ul><li>практика — курс и упражнения Бёрнетта и Эванса (планы Одиссеи, прототипирующие разговоры)</li><li>нет проверенных данных — карьерные вмешательства в целом (главный обзор мы не прочитали)</li><li>нет данных — люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a></li></ul>
+<ul><li>практика&nbsp;— курс и упражнения Бёрнетта и Эванса (планы Одиссеи, прототипирующие разговоры)</li><li>нет проверенных данных&nbsp;— карьерные вмешательства в целом (главный обзор мы не&nbsp;прочитали)</li><li>нет данных&nbsp;— люди без диагноза в <a class="kb-term" href="../glossary.html#term-perekhod" title="период, когда прежняя опора или способ жить уже не работают, а новые ещё не сложились.">переходе</a></li></ul>
 <p><strong>Оценки и рекомендации:</strong> в проверенных источниках нет.</p>
-<p><strong>Что проверено и на ком.</strong> Рецензируемых проверок курса Бёрнетта и Эванса не нашли: по семи <a class="kb-term" href="../glossary.html#term-zapros" title="Чего клиент хочет и ждёт от терапевта. Без запроса работы нет.">запросам</a> в двух научных базах — ни одной. Нашлись только описательное сравнение двух методик, комментарий со ссылкой на книгу самих авторов и исследования других курсов с похожим названием «Life Design».</p>
+<p><strong>Что проверено и на&nbsp;ком.</strong> Рецензируемых проверок курса Бёрнетта и Эванса не нашли: по семи <a class="kb-term" href="../glossary.html#term-zapros" title="Чего клиент хочет и ждёт от терапевта. Без запроса работы нет.">запросам</a> в двух научных базах&nbsp;— ни одной. Нашлись только описательное сравнение двух методик, комментарий со ссылкой на книгу самих авторов и исследования других курсов с похожим названием «Life Design».</p>
 <p><strong>Опора</strong> (родственные работы, не проверка самого метода):</p>
-<ul><li>Ibarra 1999 — Н (качественное исследование) — при переходе на новую роль люди пробуют «временные Я» и оценивают результат; это корень идеи прототипирования — читано: аннотация — 🏛 ⏳</li><li>Oyserman, Terry &amp; Bybee 2002 — Н (контролируемое, без рандомизации) — школьная программа «возможные Я» у подростков: больше вовлечённости и посещаемости; не про взрослых и не про планы Одиссеи — читано: аннотация — ✱ ⏳; NIMH</li><li>Savickas 2012 — Т — «Life Design» в карьерном консультировании; другая традиция, не Бёрнетт и Эванс — читано: аннотация — ✱ ⏳</li></ul>
-<p><strong>Чего не знаем.</strong> Помогают ли планы Одиссеи и прототипирующие разговоры взрослым в переходе принимать решения или чувствовать себя увереннее. Как курс выглядит по сравнению с другими карьерными методами.</p>
+<ul><li>Ibarra 1999&nbsp;— Н (качественное исследование)&nbsp;— при переходе на новую роль люди пробуют «временные Я» и оценивают результат; это корень идеи прототипирования&nbsp;— читано: аннотация&nbsp;— 🏛 ⏳</li><li>Oyserman, Terry &amp; Bybee 2002&nbsp;— Н (контролируемое, без рандомизации)&nbsp;— школьная программа «возможные Я» у подростков: больше вовлечённости и посещаемости; не про&nbsp;взрослых и не&nbsp;про планы Одиссеи&nbsp;— читано: аннотация&nbsp;— ✱ ⏳; NIMH</li><li>Savickas 2012&nbsp;— Т&nbsp;— «Life Design» в карьерном консультировании; другая традиция, не Бёрнетт и Эванс&nbsp;— читано: аннотация&nbsp;— ✱ ⏳</li></ul>
+<p><strong>Чего не знаем.</strong> Помогают&nbsp;ли планы Одиссеи и прототипирующие разговоры взрослым в переходе принимать решения или чувствовать себя увереннее. Как курс выглядит по сравнению с другими карьерными методами.</p>
 <p><strong>Осторожно.</strong> Это хороший набор упражнений для воображения и проверки вариантов, но доказательств, что он помогает лучше других способов выбора, нет.</p></section>
 <section class="kb-sec" id="lit"><h2 class="kb-h2">Литература</h2>
 <ul class="kb-books"><li><span class="a">Билл Бёрнетт, Дэйв Эванс</span> <em>Designing Your Life</em>, 2016<span class="w">Планы Одиссеи, прототипирующие разговоры, дизайн жизни</span></li></ul></section>
 <section class="kb-sec" id="near"><h2 class="kb-h2">Рядом</h2>
-<dl class="kb-near"><div><dt>Понять</dt><dd><a href="plany-odissei.html"><span class="t">Планы Одиссеи</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="k-komu-idti.html"><span class="t">К кому идти, и когда это терапия?</span><span class="m">вопрос</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/career-counsellor.html"><span class="t">Карьерный консультант / карьерный коуч</span><span class="m">атлас · уровень «Практика»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-dyl"><span class="t">Дизайн вашей жизни. Живите так, как нужно именно вам</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#tool-dyl-resources"><span class="t">Designing Your Life: бесплатные материалы</span><span class="m">инструмент · Билл Бёрнетт, Дэйв Эванс · бесплатно</span></a></dd></div></dl></section>
-<nav class="kb-next" aria-label="Соседние статьи"><a href="kouching.html" rel="prev">← Больше про будущее<b>Коучинг</b></a><a class="r" href="death-positive.html" rel="next">Больше про будущее →<b>Движение «позитивного отношения к смерти»</b></a></nav>
-<p class="kb-fix">Заметили ошибку или устаревшее — <a href="#telegram" data-tg>напишите в Telegram</a>. Тексты базы можно брать в работу со ссылкой.</p>
+<dl class="kb-near"><div><dt>Понять</dt><dd><a href="plany-odissei.html"><span class="t">Планы Одиссеи</span><span class="m">подход · <span class="ev ev--craft"><span class="ev-dots" aria-hidden="true"><i></i><i></i><i></i></span>опыт практиков</span></span></a><a href="k-komu-idti.html"><span class="t">К&nbsp;кому идти, и&nbsp;когда это терапия?</span><span class="m">вопрос</span></a></dd></div><div><dt>Кто помогает</dt><dd><a href="../atlas/career-counsellor.html"><span class="t">Карьерный консультант / карьерный коуч</span><span class="m">атлас · уровень «Практика»</span></a></dd></div><div><dt>Почитать</dt><dd><a href="../resources.html#book-dyl"><span class="t">Дизайн вашей жизни. Живите так, как нужно именно вам</span><span class="m">книга · Билл Бёрнетт, Дэйв Эванс</span></a><a href="../resources.html#tool-dyl-resources"><span class="t">Designing Your Life: бесплатные материалы</span><span class="m">инструмент · Билл Бёрнетт, Дэйв Эванс · бесплатно</span></a></dd></div></dl></section>
+<nav class="kb-next" aria-label="Соседние статьи"><a href="kouching.html" rel="prev">← Больше про&nbsp;будущее<b>Коучинг</b></a><a class="r" href="death-positive.html" rel="next">Больше про&nbsp;будущее →<b>Движение «позитивного отношения к&nbsp;смерти»</b></a></nav>
+<p class="kb-fix">Если нашлась ошибка или что-то устарело&nbsp;— <a href="https://t.me/asverdlovskaya" target="_blank" rel="noopener" data-tg>напиши в&nbsp;Telegram</a>. Тексты базы можно брать в&nbsp;работу со&nbsp;ссылкой.</p>
     </article>
-    <nav class="kb-toc" aria-label="В статье"><span class="label">В статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
+    <nav class="kb-toc" aria-label="В статье"><span class="label">В&nbsp;статье</span><ul><li><a href="#origin">Откуда</a></li><li><a href="#idea">Главная идея</a></li><li><a href="#how">Как проходит работа</a></li><li><a href="#when">Когда помогает</a></li><li><a href="#evidence">Доказательность</a></li><li><a href="#lit">Литература</a></li><li><a href="#near">Рядом</a></li></ul></nav>
   </div>
 </div>
 </main>
@@ -122,25 +151,25 @@
   <div class="frame"><div class="ruler" aria-hidden="true"></div></div>
   <div class="frame foot-grid">
     <div class="foot-care-col" id="not-yet">
-      <p class="foot-care">Если сейчас очень тяжело и сил не хватает даже на обычный день — это не про программу и не про практики; сначала врач или психолог.</p>
-      <p class="foot-care">Если сил мало, но с обычными делами справляешься — пиши.</p>
-      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper — не терапия и не трудоустройство. Я не ставлю диагнозов и не беру людей в остром состоянии.</p>
+      <p class="foot-care">Если сейчас очень тяжело и&nbsp;сил не&nbsp;хватает даже на&nbsp;обычный день&nbsp;— это не&nbsp;про&nbsp;программу и&nbsp;не&nbsp;про&nbsp;практики; сначала врач или психолог.</p>
+      <p class="foot-care">Если сил мало, но&nbsp;с&nbsp;обычными делами справляешься&nbsp;— пиши.</p>
+      <p class="foot-bounds"><strong>Границы.</strong> Waykeeper&nbsp;— не&nbsp;терапия и&nbsp;не&nbsp;трудоустройство. Я не&nbsp;ставлю диагнозов и&nbsp;не&nbsp;беру людей в&nbsp;остром состоянии.</p>
     </div>
     <nav class="foot-doors" aria-label="Все разделы сайта">
       <div class="foot-group">
         <p class="label">База знаний</p>
         <ul>
           <li><a href="../practices.html">Практики</a></li>
-          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в работе</span></li>
-          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в работе</span></li>
+          <li><a href="../encyclopedia.html">Энциклопедия переходов</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../atlas.html">Атлас помогающих профессий</a><span class="status status--wip">в&nbsp;работе</span></li>
+          <li><a href="../resources.html">Ресурсы</a><span class="status status--wip">в&nbsp;работе</span></li>
           <li><a href="../knowledge.html">Вся база знаний</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../how.html">Как устроена база</a></li>
         </ul>
       </div>
       <div class="foot-group">
-        <p class="label">Работа со мной</p>
+        <p class="label">Работа со&nbsp;мной</p>
         <ul>
           <li><a href="../program.html">«Переход»</a></li>
           <li><a href="../new-season.html">«Новый сезон»</a></li>
@@ -150,12 +179,12 @@
       <div class="foot-group">
         <p class="label">Проект</p>
         <ul>
-          <li><a href="../project.html">О проекте</a></li>
-          <li><a href="../about.html">О себе</a></li>
+          <li><a href="../project.html">О&nbsp;проекте</a></li>
+          <li><a href="../about.html">О&nbsp;себе</a></li>
           <li><a href="../project.html#method">Почему через историю</a></li>
-          <li><a href="#channel" data-channel>Канал в Telegram</a></li>
+          <li><a href="https://t.me/refdesign" target="_blank" rel="noopener" data-channel>Канал в&nbsp;Telegram</a></li>
           <li><a href="https://www.instagram.com/asverdlovskaya/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="../privacy.html">Данные и приватность</a></li>
+          <li><a href="../privacy.html">Данные и&nbsp;приватность</a></li>
         </ul>
       </div>
     </nav>
@@ -164,7 +193,7 @@
     <a class="foot-mark" href="../index.html" aria-label="Waykeeper — на главную">Waykeeper</a>
     <div class="foot-line">
       <p class="small foot-sign">Waykeeper · Keep your way · Саша Свердловская, Амстердам</p>
-      <p class="small foot-license">Тексты практик и базы знаний — открытые, CC BY 4.0: можно брать и переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в работу</a></p>
+      <p class="small foot-license">Тексты практик и&nbsp;базы знаний&nbsp;— открытые, CC BY 4.0: можно брать и&nbsp;переделывать, указав источник. <a href="../how.html#license">Коллегам можно брать в&nbsp;работу</a></p>
       <p class="small tnum">Амстердам · 52°22′ с. ш. · 4°54′ в. д.</p>
     </div>
   </div>
